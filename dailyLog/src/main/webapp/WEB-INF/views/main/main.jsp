@@ -5,15 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+position:absolute; bottom:0;
+</style>
 </head>
 <body>
-	<jsp:include page="../common/menubar.jsp"></jsp:include>
+	<jsp:include page="../common/mainBar.jsp"></jsp:include>
 	
-	<br><br>
-	
-	<div align="center">
-		<img src="${ contextPath }/resources/images/spring.png" width="700px;">
-	</div>
+	<br><br><br><br><br><br><br><br><br><br>
 
 </body>
 </html>

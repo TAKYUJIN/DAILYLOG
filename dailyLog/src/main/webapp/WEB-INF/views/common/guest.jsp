@@ -77,67 +77,40 @@ html {
                 </fieldset>
             </form>
         </div>
+<!-- 오른쪽 상단바 -->
         <div class="wrap_util">
-            <strong class="screen_out">kakaoTV 부가메뉴</strong>
-
-            <ul class="list_utility" id="utility">
-                <li>
-                    <a href="/station/uploader" target="_blank" class="btn_global btn_s btn_void vod" data-tiara-action-name="GNB 동영상 업로드" data-tiara-layer="gnb upload" data-should-login="">업로드</a>
-                </li>
-                <li class="item_broadcast">
-                    <a href="#none" class="btn_global btn_s btn_void live">방송하기</a>
-                    <div class="dropdown_menu align_left">
-                        <ul class="list_dropdown">
-                            <li>
-                                <a href="#none" id="pot_player_live" class="link_tab">팟플레이어 방송하기</a>
-                            </li>
-                            <li>
-                                <a href="https://live-tv.kakao.com/kakaotv/live" target="_blank" class="link_tab">인코더 방송하기</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
-                <a href="#none" class="btn_global btn_blue link_login" data-btn-login="">로그인</a>
+			<a href="#none" class="btn_global link_login" data-btn-login="">JOIN</a>
+			<a href="#none" class="btn_global link_login" data-btn-login="">LOGIN</a>
         </div>
     </div>
-
+<!-- 메뉴바 -->
     <div class="h_head">
         <div class="inner_hhead">
             <h2 class="screen_out">DailyLog 홈 메뉴</h2>
             <ul class="list_mtab">
                 <li class="on">
-                    <a href="/top" class="link_tab">홈</a>
+                    <a href="#" class="link_tab">홈</a>
                 </li>
                 <li>
-                    <a href="/category/entertainment" class="link_tab">최근 본 동영상</a>
+                    <a href="#" class="link_tab">동영상 북마크</a>
                 </li>
                 <li>
-                    <a href="/category/drama" class="link_tab">좋아요 표시 영상</a>
+                    <a href="#" class="link_tab">구독</a>
                 </li>
                 <li>
-                    <a href="/category/enterlife" class="link_tab">동영상 북마크</a>
+                    <a href="#" class="link_tab">최근 본 동영상</a>
                 </li>
                 <li>
-                    <a href="/category/sports" class="link_tab">Loger 스튜디오</a>
+                    <a href="#" class="link_tab">좋아요 표시 영상</a>
                 </li>
                 <li>
-                    <a href="/category/news" class="link_tab">구독</a>
-                </li>
-                <li>
-                    <a href="/category/game" class="link_tab">설정</a>
-                </li>
-                <li>
-                    <a href="/live" class="link_tab">라이브<span class="ico_point">HOT</span></a>
+                    <a href="#" class="link_tab">Loger 스튜디오</a>
                 </li>
             </ul>
 
         </div>
     </div>
 </div>
-    <hr class="hide">
-    
-
 
     <div id="cEtc">
         <div class="footer_kakaotv">
@@ -300,16 +273,6 @@ html {
 
     <script type="text/javascript" src="//t1.daumcdn.net/kakaotv/desktop/cssjs/vendor-105193ac55.min.js"></script>
     <script type="text/javascript" src="//t1.daumcdn.net/kakaotv/desktop/cssjs/kakaotv-62de6c5dac.min.js"></script>
-
-    <script type="text/javascript">
-        $.ajaxSetup({cache:false});
-    </script>
-
-<script>
-    kakaotv.modules.common.init();
-    kakaotv.modules.common.gnb.init({hasDefaultChannel: false });
-    kakaotv.modules.top.init();
-</script>
 
 
 
