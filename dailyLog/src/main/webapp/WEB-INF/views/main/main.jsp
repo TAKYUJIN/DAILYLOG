@@ -10,9 +10,7 @@ position:absolute; bottom:0;
 </style>
 </head>
 <body>
-	<jsp:include page="../common/mainBar.jsp"></jsp:include>
-	
-	<br><br><br><br><br><br><br><br><br><br>
+  <jsp:include page="../subscribe/subscribeList.jsp"></jsp:include>	
 
 </body>
 </html>

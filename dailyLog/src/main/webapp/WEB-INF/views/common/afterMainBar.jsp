@@ -56,7 +56,7 @@ html {
     <a href="#kakaoGnb">메뉴 바로가기</a>
 </div>
 
-<div id="kakaoWrap" class=" ">
+
 <div id="kakaoHead" role="banner" class="scroll_on">
     <div class="k_head">
         <h1>
@@ -142,124 +142,7 @@ html {
     </div>
 </div>
 
-    <div id="cEtc">
-        <div class="footer_kakaotv">
-            <div class="service_menu">
-                <div class="inner_service">
-                    <div class="wrap_date">
-                        <h3 class="screen_out">관련 서비스</h3>
-                        <div class="service_data">
-                            
-                            <span class="txt_bar">|</span>
-                            <a href="https://t1.daumcdn.net/potplayer/PotPlayer/Version/Latest/PotPlayerSetup64.exe" target="_blank" class="link_data"></a>
-                        </div>
-                        <div class="service_data">
-                            
-                        <span class="txt_bar">|</span>
-                        <a href="https://play.google.com/store/apps/details?id=com.kakao.playball" target="_blank" class="link_data"></a>
-                    </span>
-                        </div>
-                    </div>
-                    <h2 class="screen_out">서비스 이용정보</h2>
-                    <ul class="list_service">
-                        <li>
-                            <a href="/info/policy" class="link_service">DailyLog 이용약관</a>
-                        </li>
-                        <li>
-                            <a href="/info/oppolicy" class="link_service">DailyLog 운영정책</a>
-                        </li>
-                        <li>
-                            <a href="/guide/station" target="_blank" class="link_service">DailyLog 안내</a>
-                        </li>
-                        <li>
-                            <a href="//www.kakao.com/policy/terms" target="_blank" class="link_service">청소년보호 정책</a>
-                        </li>
-                        <li>
-                            <a href="//kakao-tv.tistory.com/" target="_blank" class="link_service">공지사항</a>
-                        </li>
-                        <li>
-                            <a href="/station/summary" target="_blank" class="link_service">영상 관리하기</a>
-                        </li>
-                        <li class="emph_g">
-                            <a href="//www.kakao.com/policy/privacy" target="_blank" class="link_service">개인정보처리방침</a>
-                        </li>
-                        <li class="line_d">
-                            <a href="//cs.kakao.com/helps?service=53" target="_blank" class="link_service">도움말</a>
-                        </li>
-                        <li>
-                            <a href="//biz.kakao.com/resources/html/business_privacy.html" target="_blank" class="link_service">비즈니스파트너 개인정보처리방침</a>
-                        </li>
-                        <li class="line_d">
-                            <a href="//cs.kakao.com/requests?service=53" target="_blank" class="link_service">문의하기</a>
-                        </li>
-                        <li class="line_d">
-                            <a href="//cs.kakao.com/conflict" target="_blank" class="link_service">전자상거래 피해구제신청 대행 접수</a>
-                        </li>
-                        <li class="line_d">
-                            <a href="//t1.daumcdn.net/kakaotv/kakaoTV_Commercial_Broadcast_Guide.pdf" target="_blank" class="link_service">상업방송 가이드</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <!-- 2018-06-19 사업자 정보 추가 -->
-            <div class="service_company">
-                <div class="inner_service">
-                    <h2 class="screen_out">사업자 정보</h2>
-                    <ul class="list_company">
-                        <li>
-                            <strong class="tit_company">사업자등록번호 : </strong>
-                            <span class="txt_company">120-81-47521</span>
-                        </li>
-                        <li>
-                            <strong class="tit_company">통신판매업신고번호 : </strong>
-                            <span class="txt_company">제 2015-서울KH-00C호</span>
-                        </li>
-                        <li>
-                            <strong class="tit_company">호스팅서비스사업자 : </strong>
-                            <span class="txt_company">(주)WITH</span>
-                        </li>
-                        <li>
-                            <strong class="tit_company">대표이사 : </strong>
-                            <span class="txt_company">김채원</span>
-                        </li>
-                        <li>
-                            <a href="#none" target="_blank" class="link_g" id="business_info">사업자정보 확인</a>
-                        </li>
-                        <li>
-                            <strong class="tit_company">주소 : </strong>
-                            <span class="txt_company">서울시 강남구 역삼동  (주)WITH</span>
-                        </li>
-                        <li>
-                            <strong class="tit_company">대표번호 : </strong>
-                            <span class="txt_company">1253-53</span>
-                        </li>
-                        <li>
-                            <strong class="tit_company">이메일 : </strong>
-                            <a href="mailto:help.notice@kakaocorp.com" class="link_email">help.notice@withcorp.com</a>
-                        </li>
-                        <li>
-                            <a href="//cs.kakao.com/requests?service=53" class="link_g">고객센터</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <!-- 2018-06-19 사업자 정보 추가 끝-->
-            <div class="service_copyright">
-                <div class="inner_service">
-                       
-                    <a href="#none" class="ico_kakaotv_new link_tvlogo"><img src="images/logo.PNG" style="max-width: 100%; height: auto;"></a>
-                    <small class="info_copyright">Copyright © <a href="#none" target="_blank" class="link_kakaocorp">WITH Corp.</a> All rights reserved.</small>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    </div>
-    <!-- // daumContent -->
-    <hr class="hide">
-    <!-- // daumFoot -->
-</div>
-
+    
 
 <script type="text/javascript">
     window.klimt = (typeof window.klimt === 'undefined') ? {} : window.klimt;
