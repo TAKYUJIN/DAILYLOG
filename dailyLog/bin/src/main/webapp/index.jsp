@@ -11,6 +11,7 @@
 	<h1 align="center">인덱스페이지</h1>
 	<c:set var="contextPath" value="${ pageContext.servletContext.contextPath }" scope="application"/>
 	<jsp:forward page="WEB-INF/views/main/main.jsp"></jsp:forward>
+	<jsp:forward page="WEB-INF/Top.jsp"></jsp:forward>
 	
   	
 </body>
