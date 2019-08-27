@@ -10,11 +10,17 @@
 <body>
 
 	<%-- <jsp:include page="../main/bookmark.jsp"></jsp:include> --%>
+
 <%-- 	<jsp:include page="../loger/searchLogerVideo.jsp"></jsp:include>
  --%>	 <jsp:include page="../common/mainBar.jsp"></jsp:include> --%>
       <jsp:include page="../subscribe/subscribeList.jsp"></jsp:include>	
       	<jsp:include page="../common/footer.jsp"></jsp:include>
   	  
-  
+	<jsp:include page="../loger/logerCalculate.jsp"></jsp:include>
+	<%-- <jsp:include page="../common/mainBar.jsp"></jsp:include> --%>
+  <%-- <jsp:include page="../subscribe/subscribeList.jsp"></jsp:include> --%>	
+
+
+
 </body>
 </html>

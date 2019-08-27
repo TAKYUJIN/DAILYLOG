@@ -9,7 +9,7 @@
 <style>
 
 .bookmarkForm {
-	width:75%;
+	width:800px;
 	margin-left:10%;
 	text-align:center;
 }
@@ -21,7 +21,7 @@
 }
 
 #searchArea {
-	width:20%;
+	width:150px;
 	text-align:right;
 }
 
@@ -51,7 +51,7 @@
 	<table id="bookmarkArea">
 		<tr>
 			<td>
-				<video width="300px;" height="200px;" controls loop>
+				<video width="200px;" height="150px;" controls loop>
 					<source src="" type="">
 					<source src="nature.ogg" type="">
 				</video><br>
@@ -59,7 +59,7 @@
 			<input type="text" value="업데이트 2019.08.13" class="video_td" id="videoDate">
 			</td>
 			<td>
-				<video width="300px;" height="200px;" controls loop>
+				<video width="200px;" height="150px;" controls loop>
 					<source src="" type="">
 					<source src="nature.ogg" type="">
 				</video><br>
@@ -67,7 +67,7 @@
 			<input type="text" value="업데이트 2019.08.13" class="video_td" id="videoDate">
 			</td>
 			<td>
-				<video width="300px;" height="200px;" controls loop>
+				<video width="200px;" height="150px;" controls loop>
 					<source src="" type="">
 					<source src="nature.ogg" type="">
 				</video><br>
@@ -77,7 +77,7 @@
 		</tr>
 		<tr>
 			<td>
-				<video width="300px;" height="200px;" controls loop>
+				<video width="200px;" height="150px;" controls loop>
 					<source src="" type="">
 					<source src="nature.ogg" type="">
 				</video><br>
@@ -85,7 +85,7 @@
 			<input type="text" value="업데이트 2019.08.13" class="video_td" id="videoDate">
 			</td>
 			<td>
-				<video width="300px;" height="200px;" controls loop>
+				<video width="200px;" height="150px;" controls loop>
 					<source src="" type="">
 					<source src="nature.ogg" type="">
 				</video><br>
@@ -93,7 +93,7 @@
 			<input type="text" value="업데이트 2019.08.13" class="video_td" id="videoDate">
 			</td>
 			<td>
-				<video width="300px;" height="200px;" controls loop>
+				<video width="200px;" height="150px;" controls loop>
 					<source src="" type="">
 					<source src="nature.ogg" type="">
 				</video><br>
