@@ -80,7 +80,7 @@ html {
 			<a href="#none" class="btn_global link_login">
 				<img src="resources/images/laugh.png" style="width:25px;">
 			</a>
-			<a href="#none" class="btn_global link_login">
+			<a href="#none" class="btn_global link_login" onclick="showPopup();">
 				<img src="resources/images/bell.png" style="width:25px;">
 			</a>
 			<a href="#none" class="btn_global link_login" onclick="account();">
@@ -88,6 +88,12 @@ html {
 			</a>
         </div>
     </div>
+    <script>
+    	function showPopup(){
+    		window.open("../main/notification.jsp", "실시간 알림창", "width=300, height=200, left=560, top=100");
+    		
+    	}
+    </script>
 <!-- 메뉴바 -->
     <div class="h_head">
         <div class="inner_hhead">
