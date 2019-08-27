@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="../common/loger.jsp"></jsp:include>
 	<form:form action="updateBoard.do" method="post" modelAttribute="boardVO">
 		<table style="width:500px; border:1px solid black">
 			<form:input type="hidden" path="idx"/>

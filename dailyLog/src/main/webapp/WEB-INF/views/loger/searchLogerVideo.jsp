@@ -6,12 +6,40 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+/* #LogerVideoNav {
+	list-style:none;
+	height:35px;
+	width:450px;
+	background:#F6F6F7;
+}
+
+#LogerVideoNav li {
+	float:left;
+	width:100px;
+	position:relative;
+}
+
+#LogerVideoNav ul {
+	list-style:none;
+	position:absolute;
+	display:none;
+}
+
+#LogerVideoNav li:hover ul {
+	display:block;
+}
+
+#LogerVideoNav ul li {
+	background:pink;
+	width:100px;
+}
+ */
 .searchLogerVideoForm {
-	width:75%;
+	width:800px;
 	margin-top:200px;
-	margin-left:auto;
-	margin-right:auto;
-	text-align:center;
+/* 	margin-left:auto;
+	margin-right:auto; */
+	text-align:left;
 }
 #searchLogerVideoArea {
 	border-top:1px solid black;
@@ -24,12 +52,19 @@
 }
 
 #searchLogerVideoBtn {
-	width:100%;
+	width:900px;
 	text-align:center;
+	padding:30px;
 }
+.btn_bookmark {
+	/* border:1px solid black; */
+	font-size:15px;
+}
+
 #searchLogerVideoArea > tr {
 	border-bottom:1px solid black;
 	text-align:cetner;
+	width:50px;
 }
 
 .video_td {
@@ -63,18 +98,14 @@
 
 <form action="" method="" class="searchLogerVideoForm">
 			<div id="searchLogerVideoBtn">
-				<button type="button" style="margin-right:230px;">최신순</button>
-				<button type="button" style="margin-right:240px;">인기순</button>
-				<button type="button" style="margin-right:30px;">업로드</button>
-                <button type="button" style="margin-right:20px;" onclick="location.href='updateBoardForm.do?idx=${board.idx }'">수정</button>
-				<button type="button" style="margin-right:10px;" onclick="location.href='deleteBoard.do?idx=${board.idx }'">삭제</button>
+				<button type="button" class="btn_bookmark" style="float:left;" onclick="location.href='deleteBoard.do?idx=${board.idx }'">&nbsp;최신순&nbsp;</button> 
+                <button type="button" class="btn_bookmark" style="float:left;" onclick="location.href='updateBoardForm.do?idx=${board.idx }'">&nbsp;인기순&nbsp;</button>
+			
+				<button type="button" class="btn_bookmark" style="float:right;" onclick="location.href='deleteBoard.do?idx=${board.idx }'">&nbsp;삭제&nbsp;</button> 
+				<button type="button" class="btn_bookmark" style="float:right;" onclick="location.href='updateLogerVideo.jsp'">&nbsp;수정&nbsp;</button>
+                <%-- <button type="button" class="btn_bookmark" style="float:right;" onclick="location.href='updateBoardForm.do?idx=${board.idx }'">&nbsp;수정&nbsp;</button> --%>
                 </div>
-
 	<table id="searchLogerVideoArea">
-		<tr>
-		
-	
-		</tr>
 		<tr>
 		<th class="video_th"><input type="checkbox" name="selectedAll"></th>
 		<th class="video_th" colspan="2">목록</th>
@@ -86,7 +117,7 @@
 		<tr>
 			<td><input type="checkbox" name="selectedOne" value=""></td>
 			<td>
-				<video width="250px;" height="150px;" controls loop>
+				<video width="200px;" height="150px;" controls loop>
 					<source src="" type="">
 					<source src="nature.ogg" type="">
 				</video><br>
@@ -103,7 +134,7 @@
 		<tr>
 			<td><input type="checkbox" name="selectedOne" value=""></td>
 			<td>
-				<video width="250px;" height="150px;" controls loop>
+				<video width="200px;" height="150px;" controls loop>
 					<source src="" type="">
 					<source src="nature.ogg" type="">
 				</video><br>
