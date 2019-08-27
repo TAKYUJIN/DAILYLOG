@@ -6,6 +6,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+
+body{
+weight:100%;
+height:100%;
+}
 table.type09 {
     border-collapse: collapse;
     text-align: left;
