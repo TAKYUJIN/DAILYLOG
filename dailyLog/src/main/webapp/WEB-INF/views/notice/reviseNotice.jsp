@@ -18,7 +18,7 @@
 <style>
 .mainpage {
 	width: 1024px;
-	height: 800px;
+
 	/* border: 1px solid black; */
 	margin-top: 80px;
 }
@@ -73,6 +73,6 @@ border:none; border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;
 		<button class="button">취소</button>
 	</div>
 
-	
+
 </body>
 </html>
