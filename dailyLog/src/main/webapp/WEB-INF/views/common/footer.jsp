@@ -79,7 +79,7 @@ address,caption,cite,code,dfn,em,var{font-style:normal;font-weight:400}#kakaoInd
 <body>
 
 <!-- <div class="footerArea" style="position:absolute;">
- --><hr>
+ -->
          <div class="footer_kakaotv">
             <div class="service_menu">
                 <div class="inner_service">
