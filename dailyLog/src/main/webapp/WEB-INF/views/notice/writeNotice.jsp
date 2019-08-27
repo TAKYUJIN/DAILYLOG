@@ -18,7 +18,7 @@
 <style>
 .mainpage {
 	width: 1024px;
-	height: 800px;
+
 	/* border: 1px solid black; */
 	margin-top: 80px;
 }

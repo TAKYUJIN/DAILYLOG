@@ -122,6 +122,48 @@ html {
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    window.klimt = (typeof window.klimt === 'undefined') ? {} : window.klimt;
+    window.kakaotv = (typeof window.kakaotv === 'undefined') ? {} : window.kakaotv;
+
+    // product_phase: real
+    // kakao_phase: real
+    // debug_mode: false
+    (function(exports) {
+        var ENV = exports.ENV = {
+            phase: 'real'
+        };
+        ENV.debugmode = (ENV.phase !== 'real');
+    })(window.klimt = (typeof window.klimt === 'undefined') ? {} : window.klimt);
+
+    (function(exports) {
+        var ENV = exports.ENV = {
+            phase: 'real',
+            kakao: {
+                phase: 'real',
+                applicationKey: '8ea44e3f160a4c276592eda5f1c7cb61',
+                domainPrefix: ''
+            }
+        };
+
+        ENV.user = {
+            isTalkUser: false,
+            isKakaoLogin: false,
+            isNeedIntegrationTerms: false
+        };
+
+        ENV.debugmode = (ENV.phase !== 'real');
+        ENV.fontCssPath = '//t1.daumcdn.net/kakaotv/desktop/cssjs/font-e7392073ac.min.css';
+    })(window.kakaotv);
+</script>
+
+<script type="text/javascript" src="//mk.kakaocdn.net/dn/emoticon/static/javascripts/sdk/1.3.2/kakao-1.3.2-k.min.js"></script>
+
+<script type="text/javascript" src="/player/script/sdk/player_api.min.js"></script>
+<script type="text/javascript" src="//t1.daumcdn.net/tiara/js/v1/tiara.min.js"></script>
+
+    <script type="text/javascript" src="//t1.daumcdn.net/kakaotv/desktop/cssjs/vendor-105193ac55.min.js"></script>
+    <script type="text/javascript" src="//t1.daumcdn.net/kakaotv/desktop/cssjs/kakaotv-62de6c5dac.min.js"></script>
 
 </body>
 </html>
