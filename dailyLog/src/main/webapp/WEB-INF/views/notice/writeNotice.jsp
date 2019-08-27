@@ -31,8 +31,8 @@
 
 .buttonarea {
 	width: 180px;
-	margin-left: 55%;
-	margin-top: -10%;
+	margin-left: 65%;
+	margin-top: 0%;
 }
 input{
 border:none; border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;

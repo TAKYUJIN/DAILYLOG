@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <style>
 .mainpage {
 	width: 1024px;
@@ -16,7 +17,7 @@
 	margin-top: 200px;
 	margin-left:40px;
 	width:1024px;
-	background:red;
+
 	
 }
 #new{
