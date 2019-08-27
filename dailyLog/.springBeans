@@ -9,6 +9,7 @@
 	<configs>
 	</configs>
 	<autoconfigs>
+		<config>src/main/resources/root-context.xml</config>
 	</autoconfigs>
 	<configSets>
 	</configSets>
