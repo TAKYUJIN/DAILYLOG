@@ -37,8 +37,6 @@
 .searchLogerVideoForm {
 	width:800px;
 	margin-top:200px;
-/* 	margin-left:auto;
-	margin-right:auto; */
 	text-align:left;
 }
 #searchLogerVideoArea {
