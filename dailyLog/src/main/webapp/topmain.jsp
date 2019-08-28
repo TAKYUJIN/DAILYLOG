@@ -7,11 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
- <jsp:include page="/WEB-INF/views/common/mainBar.jsp"></jsp:include>
-
-      <jsp:include page="/WEB-INF/views/main/top1.jsp"></jsp:include>	
-    
-   <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+<%--  <jsp:include page="/WEB-INF/views/common/mainBar.jsp"></jsp:include>
+ --%>
+<%--       <jsp:include page="/WEB-INF/views/main/top1.jsp"></jsp:include>	
+ --%>    
+<%--  <jsp:include page="/WEB-INF/views/admin/ublacklist.jsp"></jsp:include>
+ --%>  
+ 
+ <jsp:include page="/WEB-INF/views/loger/declarationlist.jsp"></jsp:include>
+  <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
  
   
 </body>
