@@ -28,7 +28,7 @@
 </style>
 </head>
 <body>
-	<jsp:include page="../common/mainBar.jsp"></jsp:include>
+	<%-- <jsp:include page="../common/mainBar.jsp"></jsp:include> --%>
 
 	<div class="maingape">
 
