@@ -33,7 +33,7 @@
 		background: #fff;
 		padding-left: 10px;
 		padding-right: 10px;
-		border-bottom: 1px solid #dfe3e8;
+		border-bottom: 1px solid #dfe3e8; /* 상단바 밑 라인 색 #dfe3e8 */
 		border-radius: 0;
 	}
 	.nav-link img {
@@ -67,7 +67,7 @@
     }	
     .search-box input {
         padding-right: 35px;
-		border-color: #dfe3e8;
+		border-color: #dfe3e8; /* 검색 테두리 색 #dfe3e8 */
         border-radius: 4px !important;
 		box-shadow: none
     }
@@ -82,7 +82,7 @@
 		height: 100%;
     }
     .search-box i {
-        color: #a0a5b1;
+        color: #a0a5b1; /* 검색창 돋보기 색 #a0a5b1 */
 		font-size: 19px;
     }
 	.navbar .nav .btn-primary, .navbar .nav .btn-primary:active {
@@ -126,7 +126,7 @@
 		box-shadow: 0 2px 8px rgba(0,0,0,.05);
 	}
 	.navbar .nav .dropdown-menu li {
-		color: #999;
+		color: #999; /* 알림페이지 폰트색 */
 		font-weight: normal;
 	}
 	.navbar .nav .dropdown-menu li a, .navbar .nav .dropdown-menu li a:hover, .navbar .nav .dropdown-menu li a:focus {
@@ -261,8 +261,8 @@
 </head> 
 <body>
 <nav class="navbar navbar-default navbar-expand-lg navbar-light">
-	<div class="navbar-header d-flex col" style="width:90px;">
-		<a class="navbar-brand" href="#">Daily<b>Log</b></a>  		
+	<div class="navbar-header d-flex col" >
+		<img src="resources/images/logo.png" style="width:90px; padding-top:10px;">	
 	</div>
 	<!-- Collection of nav links, forms, and other content for toggling -->
 	<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
