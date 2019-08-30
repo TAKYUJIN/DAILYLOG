@@ -6,55 +6,110 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-ul,li {
-	list-style: none;
-	font-size:11px;
+.footer-bs {
+    background-color: #3c3d41;
+   padding: 60px 40px;
+   color: rgba(255,255,255,1.00);
+   margin-bottom: 20px;
+   border-bottom-right-radius: 6px;
+   border-top-left-radius: 0px;
+   border-bottom-left-radius: 6px;
 }
- a:link { color: black; text-decoration: none;}
- a:visited { color: black; text-decoration: none;}
- a:hover { color: black; text-decoration: none;}
+.footer-bs .footer-brand, .footer-bs .footer-nav, .footer-bs .footer-social, .footer-bs .footer-ns { padding:10px 25px; }
+.footer-bs .footer-nav, .footer-bs .footer-social, .footer-bs .footer-ns { border-color: transparent; }
+.footer-bs .footer-brand h2 { margin:0px 0px 10px; }
+.footer-bs .footer-brand p { font-size:12px; color:rgba(255,255,255,0.70); }
 
-.footer {
-	height:120px;
-	width:1024px;
-	text-align:center;
-	background:#F2F2F2;
+.footer-bs .footer-nav ul.pages { list-style:none; padding:0px; }
+.footer-bs .footer-nav ul.pages li { padding:5px 0px;}
+.footer-bs .footer-nav ul.pages a { color:rgba(255,255,255,1.00); font-weight:bold; text-transform:uppercase; }
+.footer-bs .footer-nav ul.pages a:hover { color:rgba(255,255,255,0.80); text-decoration:none; }
+.footer-bs .footer-nav h4 {
+   font-size: 11px;
+   text-transform: uppercase;
+   letter-spacing: 3px;
+   margin-bottom:10px;
 }
-.inner {
-	margin-top:0;
-	height:100px;
+
+.footer-bs .footer-nav ul.list { list-style:none; padding:0px; }
+.footer-bs .footer-nav ul.list li { padding:5px 0px;}
+.footer-bs .footer-nav ul.list a { color:rgba(255,255,255,0.80); }
+.footer-bs .footer-nav ul.list a:hover { color:rgba(255,255,255,0.60); text-decoration:none; }
+
+.footer-bs .footer-social ul { list-style:none; padding:0px; }
+.footer-bs .footer-social h4 {
+   font-size: 11px;
+   text-transform: uppercase;
+   letter-spacing: 3px;
+}
+.footer-bs .footer-social li { padding:5px 4px;}
+.footer-bs .footer-social a { color:rgba(255,255,255,1.00);}
+.footer-bs .footer-social a:hover { color:rgba(255,255,255,0.80); text-decoration:none; }
+
+.footer-bs .footer-ns h4 {
+   font-size: 11px;
+   text-transform: uppercase;
+   letter-spacing: 3px;
+   margin-bottom:10px;
+}
+.footer-bs .footer-ns p { font-size:12px; color:rgba(255,255,255,0.70); }
+
+@media (min-width: 768px) {
+   .footer-bs .footer-nav, .footer-bs .footer-social, .footer-bs .footer-ns { border-left:solid 1px rgba(255,255,255,0.10); }
 }
 </style>
 </head>
-<body>    
+<body>
+<div class="container">
+    <section style="height:80px;"></section>
+   <div class="row" style="text-align:center;">
+      
+   </div>
+    <!----------- Footer ------------>
+    <footer class="footer-bs">
+        <div class="row">
+           <div class="col-md-3 footer-brand animated fadeInLeft">
+               <h2>DailyLog</h2>
+                <br><br><br><br><br><br>
+<p>Copyright ©WITH Corp. All rights reserved.</p>
+            </div>
+           <div class="col-md-4 footer-nav animated fadeInUp">
+               <h4>GUIDE</h4> 
+               <div class="col-md-6">
+                    <ul class="list">
+                        <li><a href="#">공지사항</a></li>
+                        <li><a href="#">도움말</a></li>
+                        <li><a href="#">문의하기</a></li>
+                       
+                    </ul>
+                </div>
+            
+               <div class="col-md-6">
+                    <ul class="list">
+                        <li><a href="#">이용약관</a></li>
+                        <li><a href="#">정책및안전</a></li>
+                       
+                    </ul>
+                </div>
+            </div>
+           <div class="col-md-2 footer-social animated fadeInDown">
+               <h4>Contact </h4>
+               <ul>
+                   <li>서울특별시 <br>
+                    강남구<br>테헤란로
+                    <br>14길 6</li>
+                   
+                   <li>1544-9970</li>
+                </ul>
+       
+                      </span>
+                    </div><!-- /input-group -->
+                 </p>
+            </div>
+        </div>
+    </footer>
+    <section style="text-align:center; margin:10px auto;"><p>Designed by <a href="http://enfoplus.net">Prince J. Sargbah</a></p></section>
 
-<div class="footer">
-		<div class="inner" style="width: 33%; float: left;">
-				<h5>DailyLog이용약관</h5>
-				<ul>
-					<li><a href="#">청소년보호 정책</a></li>
-					<li><a href="#">개인정보처리방침</a></li>
-				</ul>
-		</div>
-		<div class="inner" style="width: 33%; float: left;">
-				<h5>DailyLog운영정책</h5>
-				<ul>
-					<li><a href="#">공지사항</a></li>
-					<li><a href="#">도움말</a></li>
-					<li><a href="#">문의하기</a></li>
-				</ul>
-		</div>
-		<div class="inner" style="width: 33%; float: left;">
-				<h5>Contact Us</h5>
-				<p style="font-size:11px;">
-					서울특별시 강남구 강남구<br /> 테헤란로14길 6<br /> 1544-9970
-				</p>
-		</div>
-		<div class="copyright">
-				<li></li>
-				<li>Copyright ©WITH Corp. All rights reserved.</a></li>
-			</ul>
-		</div>
-	</div>
+</div>
 </body>
 </html>

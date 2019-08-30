@@ -75,21 +75,15 @@
 </style>
 </head>
 <body>
-<jsp:include page="../common/logerBar.jsp"></jsp:include>
-	<div class="selectLogerNotice"><!-- 
-		<h4 align="right">기간</h4>
-		<input type="Date" id="cal_dt" value="">-
-		<input type="Date" id="cal_dt" value=""> -->
-		
-	</div>
+<jsp:include page="../common/mainBar.jsp"></jsp:include>
 	<div class="selectSupport" >
 	<form action="" method="" class="selectLogerCalculateForm" float="left;">
 		<table class="selectLogersupport" align="center">
 		<h3 align="left">후원내역</h3>
-		<h4>기간</h4>
-		<input type="Date" id="cal_dt" value="">-
-		<input type="Date" id="cal_dt" value="">
 		<tr><hr></tr>
+		<div style="float:right;"><label>기간</label>&nbsp;<input type="Date" id="cal_dt" value="" float="right;">-
+		<input type="Date" id="cal_dt" value="" float="right;"></div>
+		<tr><br></tr>
 		<tr><br></tr>
 			<tr style="border:1px solid black;">
 				<th class="calculate_th">No</th>
