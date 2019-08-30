@@ -12,7 +12,7 @@
 	margin-left:30px;
 }
 .selectLogerCalculateForm {
-	margin-top:150px;
+	margin-top:50px;
 	margin-left:auto;
 	margin-right:auto;
 	margin-bottom:150px;
@@ -84,7 +84,7 @@
 </style>
 </head>
 <body>
-<jsp:include page="../common/loger.jsp"></jsp:include>
+<jsp:include page="../common/logerBar.jsp"></jsp:include>
 	<div class="selectLogerNotice">
 		<h3>정산 공지</h3><br>
 		<p style="font-size:14px;">회원님이 신고를 많이 받을 경우<br>블랙리스트가 되었을 경우에는<br>정산을 받을 수 없으므로<br>이를 유의해 주시기를 바랍니다.</p>
@@ -93,7 +93,7 @@
 	<div class="selectSupport" >
 	<form action="" method="" class="selectLogerCalculateForm" float="left;">
 		<table class="selectLogersupport" align="center">
-		<h3 align="left">후원내역</h3>
+		<h4 align="left">후원내역</h4>
 		<tr><hr></tr>
 		<tr><br></tr>
 			<tr style="border:1px solid black;">
@@ -115,7 +115,7 @@
 		</table>
 		
 		<table class="selectLogerCalculate" align="center">
-		<h3 align="left">정산내역</h3>
+		<h4 align="left">정산내역</h4>
 		<tr><hr></tr>
 		<tr><br></tr>
 			<tr style="border:1px solid black;">
@@ -144,6 +144,6 @@
 		</div>
 	</form>
 </div>
-<jsp:include page="../common/footer.jsp"></jsp:include>
+<%-- <jsp:include page="../common/footer.jsp"></jsp:include> --%>
 </body>
 </html>

@@ -267,63 +267,30 @@
 	<!-- Collection of nav links, forms, and other content for toggling -->
 	<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
 		<ul class="nav navbar-nav" >
-			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">Home</a></li>
-			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">북마크</a></li>			
-			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">구독</a></li>	
-			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">최근 활동</a></li>	
-			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">좋아요 영상</a></li>
-			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">로거 스튜디오</a></li>
+			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">공지사항</a></li>
+			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">회원관리</a></li>
+			<li class="nav-item dropdown">
+				<a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#" style="padding-right:0px;">신고관리 <b class="caret"></b></a>
+				<ul class="dropdown-menu">					
+					<li><a href="#" class="dropdown-item">신고내역</a></li>
+					<li><a href="#" class="dropdown-item">회원블랙리스트</a></li>
+					<li><a href="#" class="dropdown-item">채널블랙리스트</a></li>
+				</ul>
+			</li>					
+			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">채널관리</a></li>	
+			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">정산관리</a></li>	
+			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">환불</a></li>
+			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">통계</a></li>
+			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">문의내역</a></li>
 		</ul>
-		<form class="navbar-form form-inline" style="width:240px;">
-			<div class="input-group search-box">								
-				<input type="text" id="search" class="form-control" placeholder="검색">
-				<span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
-			</div>
-		</form>
-		<ul class="nav navbar-nav navbar-right ml-auto" style="width:265px;">			
+		
+		<ul class="nav navbar-nav navbar-right ml-auto">			
 			<li class="nav-item">
 				<a href="#none" class="btn_global link_login" >
-				<img src="resources/images/exit.png" style="width:20px;">
+				<img src="resources/images/admin.png" style="width:25px;">
 			</a>
 			</li>
 			
-			<li class="nav-item">
-				<a href="#none" class="btn_global link_login">
-				<img src="resources/images/film.png" style="width:20px;">
-			</a>
-			</li>
-			
-			<li class="nav-item">
-				<a href="#none" class="btn_global link_login">
-				<img src="resources/images/laugh.png" style="width:20px;">
-			</a>
-			</li>
-			
-			<li class="nav-item">
-			<a href="#none" data-toggle="dropdown" class="btn_global link_login">
-				<img src="resources/images/bell.png" style="width:20px;">
-			</a>
-				<ul class="dropdown-menu form-wrapper">					
-					<li>
-						<form action="/examples/actions/confirmation.php" method="post">
-							<div class="noti_text" align="center"><p>알림</p></div>
-							<div class="form-group">
-								<table class="noti_table">
-									<tr>님을 구독하셨습니다.</tr><br>
-									<tr>댓글에 답글이 달렸습니다.</tr><br>
-									
-								</table>
-							</div>
-							<img src="resources/images/settings.png" align="right">
-						</form>
-					</li>
-				</ul>
-			</li>
-			<li class="nav-item">
-				<a href="#none" class="btn_global link_login" onclick="account();">
-				<img src="resources/images/management.png" style="width:20px;">
-			</a>
-			</li>
 		</ul>
 	</div>
 </nav>
