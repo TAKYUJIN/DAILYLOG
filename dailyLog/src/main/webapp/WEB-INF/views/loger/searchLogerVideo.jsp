@@ -149,6 +149,6 @@
 	</table>
 </form>
 
-<jsp:include page="../common/footer.jsp"></jsp:include>
+<jsp:include page="../common/footer2.jsp"></jsp:include>
 </body>
 </html>
