@@ -37,13 +37,13 @@
 	<div class="loginArea" align="center">
 		<c:if test="${ empty sessionScope.loginUser }">
 			<jsp:include page="/WEB-INF/views/common/guest.jsp"></jsp:include>
-			<form action="login.me" method="post">
+			<form action="login.me" method="post" class=form-horizontal>
 				<table id="loginTable" style="text-align:center;">
 					<tr>
 						<td>아이디</td>
 						<td><input type="text" name="userId"></td>
 						<td rowspan="2">
-							<a href="${ contextPath }/login.me" class="btn btn-primary get-started-btn mt-1 mb-1" href="#">Login</a>
+							<a href="login.me" class="btn btn-primary get-started-btn mt-1 mb-1" href="#">Login</a>
 							
 					</tr>
 					<tr>

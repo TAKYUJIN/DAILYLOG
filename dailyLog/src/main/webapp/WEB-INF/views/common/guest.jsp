@@ -289,7 +289,7 @@
 		</form>
 		
 		<div class="nav navbar-nav navbar-right">			
-				<a class="btn btn-primary get-started-btn mt-1 mb-1" href="#">Login</a>
+				<a href="loginbutton.me" class="btn btn-primary get-started-btn mt-1 mb-1" >Login</a>
 				<a href="#" class="btn btn-primary get-started-btn mt-1 mb-1">Sign up</a>
 		</div>
 	</div>
