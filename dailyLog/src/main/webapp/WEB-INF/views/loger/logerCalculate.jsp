@@ -58,7 +58,7 @@
 .cal_btn {
 	margin-top:50px;
 	border:1px solid black;
-	background:#F6F6F7;
+	background:#FFF;
 	padding:5px;
 }
 
@@ -78,7 +78,7 @@
 .selectAccount {
 	margin-top:50px;
 	border:none;
-	background:#F6F6F7;
+	background:#FFF;
 }
 
 </style>

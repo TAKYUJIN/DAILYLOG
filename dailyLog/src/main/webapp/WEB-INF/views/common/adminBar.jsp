@@ -261,8 +261,8 @@
 </head> 
 <body>
 <nav class="navbar navbar-default navbar-expand-lg navbar-light">
-	<div class="navbar-header d-flex col" style="width:90px;">
-		<a class="navbar-brand" href="#">Daily<b>Log</b></a>  		
+	<div class="navbar-header d-flex col" >
+		<img src="resources/images/logo.png" style="width:90px; padding-top:10px;">	
 	</div>
 	<!-- Collection of nav links, forms, and other content for toggling -->
 	<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
