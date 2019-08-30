@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,18 +32,19 @@
 </style>
 </head>
 <body>
-	<jsp:include page="/WEB-INF/views/common/loginbfBar.jsp"></jsp:include>
-	<br><br><br><br><br><br>  
+	
 	
 	<div class="loginArea" align="center">
-	
+		<c:if test="${ empty sessionScope.loginUser }">
+			<jsp:include page="/WEB-INF/views/common/guest.jsp"></jsp:include>
 			<form action="login.me" method="post">
 				<table id="loginTable" style="text-align:center;">
 					<tr>
 						<td>아이디</td>
 						<td><input type="text" name="userId"></td>
 						<td rowspan="2">
-							<button id="loginBtn">로그인</button>
+							<a href="${ contextPath }/login.me" class="btn btn-primary get-started-btn mt-1 mb-1" href="#">Login</a>
+							
 					</tr>
 					<tr>
 						<td>패스워드</td>
@@ -56,8 +58,10 @@
 					</tr>
 				</table>
 			</form>
-	<br><br><br><br><br><br>  
-		
+		</c:if>
+		<c:if test="${ !empty sessionScope.loginUser }">
+			
+		</c:if>
 	</div>
 	
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
