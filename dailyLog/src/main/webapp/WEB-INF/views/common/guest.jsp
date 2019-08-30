@@ -6,7 +6,9 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title></title>
+
 <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -14,6 +16,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style type="text/css">
+
 	body{
 		font-family: 'Varela Round', sans-serif;
 	}
@@ -72,6 +75,7 @@
 		box-shadow: none
     }
 	.search-box .input-group-addon {
+
         min-width: 35px;
         border: none;
         background: transparent;
@@ -79,6 +83,7 @@
         right: 0;
         z-index: 9;
         padding: 7px;
+
 		height: 100%;
     }
     .search-box i {
@@ -257,10 +262,12 @@
 	$(document).on("click", ".navbar-right .dropdown-menu", function(e){
 		e.stopPropagation();
 	});
+
 </script>
 </head> 
 <body>
 <nav class="navbar navbar-default navbar-expand-lg navbar-light">
+
 	<div class="navbar-header d-flex col" style="width:90px;">
 		<a class="navbar-brand" href="#">Daily<b>Log</b></a>  		
 	</div>
@@ -286,6 +293,7 @@
 				<a href="#" class="btn btn-primary get-started-btn mt-1 mb-1">Sign up</a>
 		</div>
 	</div>
+
 </nav>
 </body>
 </html>                                                                                    
