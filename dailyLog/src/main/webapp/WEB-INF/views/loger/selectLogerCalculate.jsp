@@ -12,7 +12,7 @@
 	margin-left:30px;
 }
 .selectLogerCalculateForm {
-	margin-top:150px;
+	margin-top:50px;
 	margin-left:auto;
 	margin-right:auto;
 	margin-bottom:150px;
@@ -75,17 +75,20 @@
 </style>
 </head>
 <body>
-<jsp:include page="../common/loger.jsp"></jsp:include>
-	<div class="selectLogerNotice">
-		<h3>기간</h3>
+<jsp:include page="../common/logerBar.jsp"></jsp:include>
+	<div class="selectLogerNotice"><!-- 
+		<h4 align="right">기간</h4>
 		<input type="Date" id="cal_dt" value="">-
-		<input type="Date" id="cal_dt" value="">
+		<input type="Date" id="cal_dt" value=""> -->
 		
 	</div>
 	<div class="selectSupport" >
 	<form action="" method="" class="selectLogerCalculateForm" float="left;">
 		<table class="selectLogersupport" align="center">
 		<h3 align="left">후원내역</h3>
+		<h4>기간</h4>
+		<input type="Date" id="cal_dt" value="">-
+		<input type="Date" id="cal_dt" value="">
 		<tr><hr></tr>
 		<tr><br></tr>
 			<tr style="border:1px solid black;">
@@ -112,6 +115,6 @@
 		</div>
 	</form>
 </div>
-<jsp:include page="../common/footer.jsp"></jsp:include>
+<%-- <jsp:include page="../common/footer.jsp"></jsp:include> --%>
 </body>
 </html>

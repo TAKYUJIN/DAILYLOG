@@ -7,37 +7,42 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-
+body {
+	background:#FFF;
+}
 .bookmarkForm {
+	
 	width:800px;
-	margin-left:10%;
 	text-align:center;
+	margin-left:50px;
 }
 #bookmarkArea {
-	margin-top:150px;
+	margin-left:50px;
+	margin-top:50px;
 	border-spacing: 10px;
 	border-collapse: separate;
 
 }
 
 #searchArea {
+	margin-top:50px;
 	width:150px;
 	text-align:right;
 }
 
 .video_td {
 	border:none;
-	background:#F6F6F7;
+	background:#FFF;
 }
 </style>
 </head>
 <body>
-<jsp:include page="../common/mainBar.jsp"></jsp:include>
+<jsp:include page="../common/logerBar.jsp"></jsp:include>
 
 <form action="" method="" class="bookmarkForm">
 	
 			<div id="searchArea" style="float:right;">
-                <fieldset>
+                 <!-- <fieldset>
                     <legend class="screen_out">검색어 입력폼</legend>
                     <div class="box_searchbar">
                         <span class="ico_kakaotv_new ico_search"></span>
@@ -45,7 +50,14 @@
                         <label for="q" class="lbl_search" align=center>북마크 검색</label> 
                         <button class="btn_search" type="submit"><span class="txt_search">검색</span></button>
                     </div>
-                </fieldset>
+                </fieldset>  -->
+               <form class="navbar-form form-inline">
+					<div class="input-group search-box">								
+					<input type="text" id="search" class="form-control" placeholder="북마크 검색">
+					<span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
+					</div>
+				</form>
+                
                 </div>
 
 	<table id="bookmarkArea">
@@ -55,7 +67,7 @@
 					<source src="" type="">
 					<source src="nature.ogg" type="">
 				</video><br>
-			<input type="text" value="동영상제목" class="video_td" id="videoTitle"> &nbsp;
+			<input type="text" value="동영상제목" class="video_td" id="videoTitle">
 			<input type="text" value="업데이트 2019.08.13" class="video_td" id="videoDate">
 			</td>
 			<td>
@@ -63,7 +75,7 @@
 					<source src="" type="">
 					<source src="nature.ogg" type="">
 				</video><br>
-			<input type="text" value="동영상제목" class="video_td" id="videoTitle"> &nbsp;
+			<input type="text" value="동영상제목" class="video_td" id="videoTitle">
 			<input type="text" value="업데이트 2019.08.13" class="video_td" id="videoDate">
 			</td>
 			<td>
@@ -71,7 +83,7 @@
 					<source src="" type="">
 					<source src="nature.ogg" type="">
 				</video><br>
-			<input type="text" value="동영상제목" class="video_td" id="videoTitle"> &nbsp;
+			<input type="text" value="동영상제목" class="video_td" id="videoTitle">
 			<input type="text" value="업데이트 2019.08.13" class="video_td" id="videoDate">
 			</td>
 		</tr>
@@ -81,7 +93,7 @@
 					<source src="" type="">
 					<source src="nature.ogg" type="">
 				</video><br>
-			<input type="text" value="동영상제목" class="video_td" id="videoTitle"> &nbsp;
+			<input type="text" value="동영상제목" class="video_td" id="videoTitle">
 			<input type="text" value="업데이트 2019.08.13" class="video_td" id="videoDate">
 			</td>
 			<td>
@@ -89,7 +101,7 @@
 					<source src="" type="">
 					<source src="nature.ogg" type="">
 				</video><br>
-			<input type="text" value="동영상제목" class="video_td" id="videoTitle"> &nbsp;
+			<input type="text" value="동영상제목" class="video_td" id="videoTitle">
 			<input type="text" value="업데이트 2019.08.13" class="video_td" id="videoDate">
 			</td>
 			<td>
@@ -97,12 +109,12 @@
 					<source src="" type="">
 					<source src="nature.ogg" type="">
 				</video><br>
-			<input type="text" value="동영상제목" class="video_td" id="videoTitle"> &nbsp;
+			<input type="text" value="동영상제목" class="video_td" id="videoTitle">
 			<input type="text" value="업데이트 2019.08.13" class="video_td" id="videoDate">
 			</td>
 		</tr>
 	</table>
 </form>
-<jsp:include page="../common/footer.jsp"></jsp:include>
+<jsp:include page="../common/footer2.jsp"></jsp:include>
 </body>
 </html>
