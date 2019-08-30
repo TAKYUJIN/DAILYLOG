@@ -9,10 +9,13 @@
 </head>
 <body>
 
-  
- <%--<jsp:include page="../video/videoUpload.jsp"></jsp:include> --%>
-  
+	 
+<jsp:include page="../common/footer.jsp"></jsp:include> 
+   
+	<%--  <jsp:include page="../subscribe/subscribeList.jsp"></jsp:include> --%>
  
+
+
   <%--    <jsp:include page="../notice/reviseNotice.jsp"></jsp:include>	 --%>	
 
 	 <%-- <jsp:include page="../main/notification.jsp"></jsp:include> --%>
