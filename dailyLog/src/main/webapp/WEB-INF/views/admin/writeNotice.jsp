@@ -31,8 +31,8 @@
 
 .buttonarea {
 	width: 180px;
-	margin-left: 65%;
-	margin-top: 0%;
+	margin-left: 60%;
+
 }
 input{
 border:none; border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;
@@ -40,7 +40,7 @@ border:none; border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;
 </style>
 
 <body>
-	<jsp:include page="../common/defaultAdminBar.jsp"></jsp:include>
+	<jsp:include page="../common/adminBar.jsp"></jsp:include>
 	<div class="mainpage">
 	<div class="container">
   <table class="table">

@@ -7,15 +7,15 @@
 <meta charset="UTF-8">
 </head>
 <body>
-
-<%-- 	<jsp:include page="../loger/searchLogerVideo.jsp"></jsp:include> --%>	 
+<%-- 
+	<jsp:include page="../loger/searchLogerVideo.jsp"></jsp:include> 	 
   	  
-	<%-- <jsp:include page="../loger/selectLogerCalculate.jsp"></jsp:include> --%>
+	 <jsp:include page="../loger/selectLogerCalculate.jsp"></jsp:include>
 
-	<%-- <jsp:include page="../common/mainBar.jsp"/> --%>
+ <jsp:include page="../common/mainBar.jsp"/> --%>
 
 
-	<c:if test="${ empty sessionScope.loginUser }">
+<%-- 	<c:if test="${ empty sessionScope.loginUser }">
 			 <jsp:include page="../common/guest.jsp"></jsp:include> 
 	</c:if>
 	<c:if test="${ !empty sessionScope.loginUser }">
@@ -23,9 +23,18 @@
 	</c:if>
 	
 	<jsp:include page="../common/footer.jsp"/>
-
+ --%>
   	  
-	<jsp:include page="../loger/selectLogerCalculate.jsp"></jsp:include>
+	<jsp:include page="../loger/logerChannel.jsp"></jsp:include>
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 
 </body>

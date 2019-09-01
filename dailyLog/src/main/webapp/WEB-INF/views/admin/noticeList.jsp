@@ -36,7 +36,7 @@
 </style>
 
 <body>
-	<jsp:include page="../common/defaultAdminBar.jsp"></jsp:include>
+	<jsp:include page="../common/adminBar.jsp"></jsp:include>
 	<div class="mainpage">
 		<div class="container">
 			<table class="table table-hover">
