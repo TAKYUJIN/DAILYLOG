@@ -2,6 +2,7 @@ package com.kh.with.member.model.dao;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.with.member.model.exception.LoginException;
 import com.kh.with.member.model.vo.Member;
@@ -23,5 +24,15 @@ public class MemberDaoImpl implements MemberDao{
 		
 		return loginUser;
 	}
+
+	//마이페이지
+	@Override
+	public int update_myPage(SqlSessionTemplate sqlSession, Member m) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("m.update_myPage", m);
+	}
+
+	
+
 
 }

@@ -10,7 +10,7 @@
 
 
 
-  	<jsp:include page="../common/logerBar.jsp"></jsp:include>
+  	<jsp:include page="../common/mainBar.jsp"></jsp:include>
 
   	  
 <%-- 
