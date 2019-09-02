@@ -1,201 +1,324 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE HTML>
-
+<!DOCTYPE html>
+  
 <html>
-	<head>
-		<title>Massively by HTML5 UP</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css"/></noscript>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Insert title here</title>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
-html, body {
-  height: 100%;
-  margin: 0;
+/* #video1{
+/* margin-bottom:80px;
+ */
+/*  }.video2{
+margin-top:20%;
 }
-.video1{
- font-size:30px;
- text-align:left;
- }
- 
- .video2{
-/* margin-top:20%;
- */}
 #imagesection{
 float:left;
 margin:0px auto;
 margin-left:80px;
 }
-
+*/
 img.fixed{
  
-/*  vertical-align: top;
- */
-  width:30px;
- height:30px;  
- }
-</style>
-
-	</head>
-	<body>
-
-		<!-- Wrapper -->
- 					<!-- <div id="intro">
- 						<p>A free, fully responsive HTML5 + CSS3 site template designed by <a href="https://twitter.com/ajlkn">@ajlkn</a> for <a href="https://html5up.net">HTML5 UP</a><br />
-						and released for free under the <a href="https://html5up.net/license">Creative Commons license</a>.</p>
-						<ul class="actions">
-							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-						</ul>
-					</div> -->
-
-				<!-- Header -->
-					<!--  <header id="header">
-						<a href="index.html" class="logo">Daily Log</a>
-					</header> -->
-<!--
-				Nav
-					<nav id="nav">
-						<ul class="links">
-							<li class="active"><a href="index.html">This is Massively</a></li>
-							<li><a href="generic.html">Generic Page</a></li>
-							<li><a href="elements.html">Elements Reference</a></li>
-						</ul>
-						<ul class="icons">
-							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-						</ul>
-					</nav> -->
-
-				<!-- Main -->
-					<div id="main">
-
-						<!-- Featured Post --><article class="post featured"></article>
-							<article class="post featured">
-								<header class="major">
-									<span class="date">April 25, 2017</span>
-									<span class="video1">인기 동영상</span>
-									<article class="post featured"></article>
-									
-									<!-- <p>Aenean ornare velit lacus varius enim ullamcorper proin aliquam<br />
-									facilisis ante sed etiam magna interdum congue. Lorem ipsum dolor<br />
-									amet nullam sed etiam veroeros.</p> -->
-								</header>
-						<a href="#" ><img src="resources/images/three-dot.png" class="fixed" width="30px" height="30px"></a>
-								<a href="#" class="image main"><img src="images/pic02.jpg"width="200px" height="220px"></a>
-										
-								<!-- <ul class="actions special">
-									<li><a href="#" class="button large">Full Story</a></li>
-								</ul> -->
-							</article>
-
-<!--  							<h2>구독 채널 동영상</h2>
- --> 
- 	 <header class="major">
-									<span class="date">April 25, 2017</span>
-									<span class="video1">구독 채널 동영상</span>
- </header>
- 
- 						<!-- Posts -->
-							<section class="posts">
-								<article>
-									<header>
-										<span class="date">April 24, 2017</span>
-										<h2><a href="#">Sed magna<br />
-										</a></h2>
-									</header>
-															<a href="#" ><img src="resources/images/three-dot.png" class="fixed" width="30px" height="30px"></a>
-									<a href="#" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
-									
-									<p> Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">April 22, 2017</span>
-										<h2><a href="#">Primis eget<br />
-										</a></h2>
-									</header>
-															<a href="#" ><img src="resources/images/three-dot.png" class="fixed" width="30px" height="30px"></a>
-									<a href="#" class="image fit"><img src="images/pic03.jpg" alt="" /></a>
-									
-									<p> Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">April 18, 2017</span>
-										<h2><a href="#">Ante mattis<br />
-										</a></h2>
-									</header>
-															<a href="#" ><img src="resources/images/three-dot.png" class="fixed" width="30px" height="30px"></a>
-									<a href="#" class="image fit"><img src="images/pic04.jpg" alt="" /></a>
-									
-									<p> Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">April 14, 2017</span>
-										<h2><a href="#">Tempus sed<br />
-										</a></h2>
-									</header>
-															<a href="#" ><img src="resources/images/three-dot.png" class="fixed" width="30px" height="30px"></a>
-									<a href="#" class="image fit"><img src="images/pic05.jpg" alt="" /></a>
-									
-									<p> Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">April 11, 2017</span>
-										<h2><a href="#">Odio magna<br />
-										</a></h2>
-									</header>
-															<a href="#" ><img src="resources/images/three-dot.png" class="fixed" width="30px" height="30px"></a>
-									<a href="#" class="image fit"><img src="images/pic06.jpg" alt="" /></a>
-									
-									<p> Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">April 7, 2017</span>
-										<h2><a href="#">Augue lorem<br />
-										</a></h2>
-									</header>
-															<a href="#" ><img src="resources/images/three-dot.png" class="fixed" width="30px" height="30px"></a>
-									<a href="#" class="image fit"><img src="images/pic07.jpg" alt="" /></a>
-									
-									<p>Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-							</section>
-							
-							
-					</div>
-
-		<!-- Scripts -->
-		<!-- 	<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script> -->
+ vertical-align: top;
   
-	</body>
+ } 
+ body {
+	background: #ebebeb;
+}
+h2 {
+	color: #696969;
+	font-size: 26px;
+	font-weight: 300;
+	text-align: center;
+	position: relative;
+	margin: 40px 70px;
+	text-transform: uppercase;
+	font-family: 'Open Sans', sans-serif;
+}
+h2::after {
+	content: "";
+    width: 100%;
+    position: absolute;
+    margin: 0 auto;
+    height: 1px;
+    border-radius: 1px;
+    background: #d4d4d4;
+    left: 0;
+    right: 0;
+    bottom: 14px;
+}
+h2 span {
+	display: inline-block;
+	padding: 0 25px;
+	background:#ebebeb;
+	position:relative;
+	z-index:2;
+}
+.col-center {
+	margin: 0 auto;
+	float: none !important;
+}
+.carousel {	
+	margin: 30px auto 50px;
+	padding: 0 68px;
+}
+.carousel .item {
+    text-align: center;
+	overflow: hidden;
+    height: 220px;
+}
+ 
+/* .carousel .item .img-box {
+	background: #fff;
+	padding: 9px;
+	box-shadow: 0 6px 20px -6px rgba(0,0,0,0.4);
+} */
+.carousel .item img {
+    margin: 0 auto;
+}
+.carousel .carousel-control {
+	width: 68px;
+	background: none;
+}
+.carousel .carousel-control i {
+    font-size: 28px;
+    position: absolute;
+    top: 50%;
+    display: inline-block;
+    margin-top: -15px;
+    z-index: 5;
+    left: 0;
+    right: 0;
+	color: rgba(0, 0, 0, 0.8);
+    text-shadow: 0 3px 3px #e6e6e6, 0 0 0 #000;
+}
+.carousel .carousel-indicators {
+	bottom: -40px;
+}
+.carousel-indicators li, .carousel-indicators li.active {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	margin: 1px 4px;
+	box-shadow: inset 0 2px 1px rgba(0,0,0,0.2);
+}
+.carousel-indicators li {	
+	background: #999;
+	border-color: transparent;
+}
+.carousel-indicators li.active {
+	background: #555;
+}
+</style>
+</head>
+<body>
+
+<!-- 							  <div class="video1">
+							 <h2>인기 동영상</h2>
+ 									<div id="imagesection">
+ 
+								Feature
+									<section >
+										<img src="resources/images/video.PNG"width="30px" height="220px">
+										<a href="#" ><img src="resources/images/three-dot.png"width="px" height="30px" class="fixed"></a>
+										 
+									</section>
+
+							</div></div>
+ 		  
+ 		 
+ 		 
+							  <div class="video2">
+							 <h2>최근 동영상</h2>
+ 									<div id="imagesection">
+ 
+								Feature
+									<section >
+										<img src="resources/images/video.PNG"width="400px" height="220px">
+										<a href="#" ><img src="resources/images/three-dot.png"width="30px" height="30px" class="fixed"></a>
+										 
+									</section>
+
+							</div>
+ 									<div id="imagesection">
+ 
+								Feature
+									<section>
+										<img src="resources/images/video.PNG"width="400px" height="220px">
+																				<a href="#" ><img src="resources/images/three-dot.png"width="30px" height="30px"class="fixed" ></a>
+										
+										<header>
+											<h3>Nice! What is HTML5 UP?</h3>
+										</header>
+										<p>I started it as a way to both test my responsive tools and sharpen up my coding
+										and design skills a bit.</p>
+									</section>
+</div>
+
+  
+								Feature
+									<div id="imagesection">
+									<section>
+									
+									<img src="resources/images/video.PNG" width="400px" height="220px">
+																			<a href="#" ><img src="resources/images/three-dot.png"width="30px" height="30px"class="fixed"></a>
+									
+										<header>
+											<h3>What's this built with?</h3>
+										</header>
+										<p><strong>Responsive Tools</strong> is a simple set of tools for building responsive
+										sites and apps. All of my templates at are built using these tools.</p>
+									</section>
+									</div>
+
+ 							 
+						</div> -->
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-9 col-center m-auto">
+			<h2> <span>  <b>인기동영상</b></span> </h2>
+			<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
+				<!-- Carousel indicators -->
+				<ol class="carousel-indicators">
+					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+					<li data-target="#myCarousel" data-slide-to="1"></li>
+					<li data-target="#myCarousel" data-slide-to="2"></li> 
+				</ol>   
+				<!-- Wrapper for carousel items -->
+				<div class="carousel-inner">
+					<div class="item carousel-item active"> 
+						<div class="row">
+							<div class="col-sm-4"><div class="img-box"><img src="resources/images/video22.PNG"  width = "700px"  height="200px" alt=""></div></div>
+							<a href="#" ><img src="resources/images/three-dot.png"width="30px" height="30px"class="fixed" ></a>
+										
+						</div>
+					</div>
+					<div class="item carousel-item">
+						<div class="row">
+							<div class="col-sm-4"><div class="img-box"><img src="resources/images/video22.PNG"  width = "700px"  height="200px"alt=""></div></div>
+						</div>
+					</div>
+					<div class="item carousel-item">
+						<div class="row">
+							<div class="col-sm-4"><div class="img-box"><img src="resources/images/video22.PNG"  width = "700px"  height="200px" alt=""></div></div>
+						</div>
+					</div>
+				</div>
+				<!-- Carousel controls -->
+				<a class="carousel-control left carousel-control-prev" href="#myCarousel" data-slide="prev">
+					<i class="fa fa-chevron-left"></i>
+				</a>
+				<a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
+					<i class="fa fa-chevron-right"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-9 col-center m-auto">
+			<h2> <span>  <b>구독동영상1</b></span> </h2>
+			<div id="myCarousel1" class="carousel slide" data-ride="carousel" data-interval="0">
+				<ol class="carousel-indicators">
+					<li data-target="#myCarousel1" data-slide-to="0" class="active"></li>
+					<li data-target="#myCarousel1" data-slide-to="1"></li>
+					<li data-target="#myCarousel1" data-slide-to="2"></li> 
+				</ol>   
+				<div class="carousel-inner">
+					<div class="item carousel-item active"> 
+						<div class="row">
+							<div class="col-sm-4"><div class="img-box" > <img src="resources/images/video22.PNG" class="img-responsive img-fluid" alt="">
+						    <a href="#" ><img src="resources/images/three-dot.png"width="20px" height="20px"class="fixed" ></a></div></div> 
+							<div class="col-sm-4"><div class="img-box"> <img src="resources/images/video22.PNG" class="img-responsive img-fluid" alt="">
+							 <a href="#" ><img src="resources/images/three-dot.png"width="20px" height="20px"class="fixed" ></a></div></div>
+							<div class="col-sm-4"><div class="img-box"> <img src="resources/images/video22.PNG" class="img-responsive img-fluid" alt="">
+						    <a href="#" ><img src="resources/images/three-dot.png"width="20px" height="20px"class="fixed" ></a></div></div> 
+ 							
+						</div>
+					</div>
+					<div class="item carousel-item">
+						<div class="row">
+							<div class="col-sm-4"><div class="img-box"><img src="resources/images/video22.PNG" class="img-responsive img-fluid" alt=""></div></div>
+							
+							<div class="col-sm-4"><div class="img-box"><img src="resources/images/video22.PNG" class="img-responsive img-fluid" alt=""></div></div>
+							<div class="col-sm-4"><div class="img-box"><img src="resources/images/video22.PNG" class="img-responsive img-fluid" alt=""></div></div>
+						</div>
+					</div>
+					<div class="item carousel-item">
+						<div class="row">
+							<div class="col-sm-4"><div class="img-box"><img src="resources/images/video22.PNG" class="img-responsive img-fluid" alt=""></div></div>
+							<div class="col-sm-4"><div class="img-box"><img src="resources/images/video22.PNG" class="img-responsive img-fluid" alt=""></div></div>
+							<div class="col-sm-4"><div class="img-box"><img src="resources/images/video22.PNG" class="img-responsive img-fluid" alt=""></div></div>
+						</div>
+					</div>
+				</div>
+				<!-- Carousel controls -->
+				<a class="carousel-control left carousel-control-prev" href="#myCarousel1" data-slide="prev">
+					<i class="fa fa-chevron-left"></i>
+				</a>
+				<a class="carousel-control right carousel-control-next" href="#myCarousel1" data-slide="next">
+					<i class="fa fa-chevron-right"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+</div> 
+	<div class="row">
+		<div class="col-md-9 col-center m-auto">
+			<h2> <span>  <b>구독동영상2</b></span> </h2>
+			<div id="myCarousel2" class="carousel slide" data-ride="carousel" data-interval="0">
+				<!-- Carousel indicators -->
+				<ol class="carousel-indicators">
+					<li data-target="#myCarousel2" data-slide-to="0" class="active"></li>
+					<li data-target="#myCarousel2" data-slide-to="1"></li>
+					<li data-target="#myCarousel2" data-slide-to="2"></li> 
+				</ol>   
+				<!-- Wrapper for carousel items -->
+				<div class="carousel-inner">
+					<div class="item carousel-item active"> 
+						<div class="row">
+							<div class="col-sm-4"><div class="img-box"><img src="resources/images/video22.PNG"  class="img-responsive img-fluid" alt="">
+							<a href="#" ><img src="resources/images/three-dot.png"width="20px" height="20px"class="fixed" ></a></div></div>
+							
+							<div class="col-sm-4"><div class="img-box"><img src="resources/images/video22.PNG" class="img-responsive img-fluid" alt="">
+							<a href="#" ><img src="resources/images/three-dot.png"width="20px" height="20px"class="fixed" ></a></div></div>
+							<div class="col-sm-4"><div class="img-box"><img src="resources/images/video22.PNG" class="img-responsive img-fluid" alt="">
+							<a href="#" ><img src="resources/images/three-dot.png"width="20px" height="20px"class="fixed" ></a></div></div>
+						</div>
+					</div>
+					<div class="item carousel-item1">
+						<div class="row">
+							<div class="col-sm-4"><div class="img-box"><img src="resources/images/video22.PNG" class="img-responsive img-fluid" alt=""></div></div>
+							<div class="col-sm-4"><div class="img-box"><img src="resources/images/video22.PNG" class="img-responsive img-fluid" alt=""></div></div>
+							<div class="col-sm-4"><div class="img-box"><img src="resources/images/video22.PNG" class="img-responsive img-fluid" alt=""></div></div>
+						</div>
+					</div>
+					<div class="item carousel-item2">
+						<div class="row">
+							<div class="col-sm-4"><div class="img-box"><img src="resources/images/video22.PNG" class="img-responsive img-fluid" alt=""></div></div>
+							<div class="col-sm-4"><div class="img-box"><img src="resources/images/video22.PNG" class="img-responsive img-fluid" alt=""></div></div>
+							<div class="col-sm-4"><div class="img-box"><img src="resources/images/video22.PNG" class="img-responsive img-fluid" alt=""></div></div>
+						</div>
+					</div>
+				</div>
+ 				<a class="carousel-control left carousel-control-prev" href="#myCarousel2" data-slide="prev">
+					<i class="fa fa-chevron-left"></i>
+				</a>
+				<a class="carousel-control right carousel-control-next" href="#myCarousel2" data-slide="next">
+					<i class="fa fa-chevron-right"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
 </html>
