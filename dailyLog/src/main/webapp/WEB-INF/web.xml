@@ -89,17 +89,12 @@
 		<url-pattern>*.no</url-pattern>
 	</servlet-mapping>
 
-	
-	<servlet-mapping>
-		<servlet-name>main</servlet-name>
-		<url-pattern>*.mb</url-pattern>
-	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>loger</servlet-name>
 		<url-pattern>*.lo</url-pattern>
 	</servlet-mapping>
+	
 	<servlet-mapping>
-
 		<servlet-name>admin</servlet-name>
 		<url-pattern>*.ad</url-pattern>
 	</servlet-mapping>

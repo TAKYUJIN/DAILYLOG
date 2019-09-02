@@ -20,4 +20,12 @@ public class MainController {
 		
 		return "subscribe/subscribeList";
 	}
+	
+	//영상 클릭시 동영상 페이지로 이동
+	@RequestMapping(value="video.mb")
+
+	public String showVideoView() {
+		
+		return "video/videoMain";
+	}
 }
