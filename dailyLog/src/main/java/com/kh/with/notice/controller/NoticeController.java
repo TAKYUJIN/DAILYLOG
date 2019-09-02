@@ -51,11 +51,33 @@ public class NoticeController {
 		return "notice/pReporting";
 	}
 	
+
+	//footer -> 자주 찾는 질문으로 이동
+	@RequestMapping(value="noticeMain.no")
+	public String showNoticeMain() {
+		
+		return "notice/noticeMain";
+	}
 	
-	
-	
-	
-	
-	
-	
+	//footer -> 고객센터로 이동
+		@RequestMapping(value="noticeList.no")
+		public String showNoticeList() {
+			
+			return "notice/noticeList";
+	}
+		
+	//footer -> 이메일 의견 보내기로 이동
+		@RequestMapping(value="noticeEmailQuestion.no")
+		public String showNoticeQuestion() {
+			
+			return "notice/noticeEmailQuestion";
+	}
+		
+	//고객센터 나의 문의 내역로 이동
+		@RequestMapping(value="selectNoticeQuestion.no")
+		public String showSelectNoticeQuestion() {
+			
+			return "notice/selectNoticeQuestion";
+	}
+
 }
