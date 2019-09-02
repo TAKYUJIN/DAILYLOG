@@ -326,7 +326,7 @@
 				</ul>
 			</li>
 			<li class="nav-item">
-				<a href="../member/myPage.me" class="btn_global link_login" onclick="account();">
+				<a href="../myPage.me" class="btn_global link_login" onclick="account();">
 				<img src="resources/images/management.png" style="width:20px;">
 			</a>
 			</li>

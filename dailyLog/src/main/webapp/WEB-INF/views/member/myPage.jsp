@@ -9,20 +9,24 @@
 </head>
 <body>
 <jsp:include page="../common/mainBar.jsp"/>
+<h1>마이페이지</h1>
 <div>
 <img src="#">
-<form action="" method="post">
+<form id="myForm" action="../myPage.me" method="post">
 	<table align="center">
 		<tr>
 			<td>
-				<img src="#">
-				<input type="email" name="email" readonly value="${ member.userId }">
+				<img style="border-radius: 7px; -moz-border-radius: 7px;
+						-khtml-border-radius: 7px; -webkit-border-radius: 7px;"
+						src="#" />
+						
+				<input type="email" name="email" readonly value="${ m.userId }">
 				<input type="button" value="편집"> 
 			</td>
 		</tr>
 		<tr>
 			<td>이름: </td>
-			<td><input type="text" name="userName" readonly value="${ member.userNm }"> </td>
+			<td><input type="text" name="userName" value="${ m.userNm }"> </td>
 		</tr>
 		<tr>
 			<td>비밀번호 : </td>
@@ -34,7 +38,7 @@
 		</tr>
 		<tr>
 			<td>휴대폰 번호 : </td>
-			<td><input type="tel" name="phone" readonly value="${member.phone }"> </td>
+			<td><input type="tel" name="phone" value="${m.phone }"> </td>
 		</tr>
 	</table>
 	</form>

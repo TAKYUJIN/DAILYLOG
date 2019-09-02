@@ -8,5 +8,11 @@ import com.kh.with.member.model.vo.Member;
 public interface MemberDao {
 
 	Member loginMember(SqlSessionTemplate sqlSession, Member m) throws LoginException;
+	
+	int update_myPage(SqlSessionTemplate sqlSession, Member m);
+
+
+
+
 
 }
