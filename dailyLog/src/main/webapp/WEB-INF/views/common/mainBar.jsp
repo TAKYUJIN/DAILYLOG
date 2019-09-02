@@ -272,7 +272,7 @@
 			<li class="nav-item"><a href="subscribe.mb" class="nav-link" style="padding-right:0px;">구독</a></li>	
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">최근 활동</a></li>	
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">좋아요 영상</a></li>
-			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">로거 스튜디오</a></li>
+			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;" onclick="${ contextPath }/searchLogerVideo.jsp">로거 스튜디오</a></li>
 		</ul>
 		<form class="navbar-form form-inline" style="width:240px;">
 			<div class="input-group search-box">								
