@@ -7,8 +7,8 @@
 <meta charset="UTF-8">
 </head>
 <body>
+	<jsp:include page="../video/videoMain.jsp"></jsp:include> 	 
 <%-- 
-	<jsp:include page="../loger/searchLogerVideo.jsp"></jsp:include> 	 
   	  
 
 
@@ -27,14 +27,6 @@
 	<c:if test="${ !empty sessionScope.loginUser }">
 		<jsp:include page="../common/mainBar.jsp"></jsp:include>	
 	</c:if>
-	
-
-	
-	
-	
-	
-	
-	
 	
 	
 
