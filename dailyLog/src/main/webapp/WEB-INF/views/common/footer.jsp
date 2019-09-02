@@ -79,9 +79,9 @@ color:rgba(255,255,255,0.60); text-decoration:none; }
                <h4>GUIDE</h4> 
                <div class="col-md-6">
                     <ul class="list">
-                        <li><a href="#">공지사항</a></li>
-                        <li><a href="#">도움말</a></li>
-                        <li><a href="#">문의하기</a></li>
+                        <li><a href="noticeMain.no">공지사항</a></li>
+                        <li><a href="noticeList.no">도움말</a></li>
+                        <li><a href="noticeEmailQuestion.no">문의하기</a></li>
                        
                     </ul>
                 </div>
