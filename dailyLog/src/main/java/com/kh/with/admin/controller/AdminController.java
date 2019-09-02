@@ -12,4 +12,18 @@ public class AdminController {
 		System.out.println("오긴 오니?");
 		return "admin/adminCalculate";
 	}
+	
+	//관리자 공지사항 리스트 
+	@RequestMapping(value="adminnoticeList.ad")
+	public String adminNoticeList() {
+		return "admin/adminnoticeList";
+	}
+	
+	//관리자 공지사항 작성
+	@RequestMapping(value="adminNoticeWrite.ad")
+	public String adminNoticeWrite() {
+		System.out.println("공지사항작성왔어?");
+		return "admin/adminNoticeWrite";
+	
+	}
 }

@@ -11,5 +11,8 @@ public interface MemberDao {
 	int check_id(String userId) throws Exception;
 
 	int join_member(Member m) throws Exception;
+	
+	int update_myPage(SqlSessionTemplate sqlSession, Member m);
+
 
 }
