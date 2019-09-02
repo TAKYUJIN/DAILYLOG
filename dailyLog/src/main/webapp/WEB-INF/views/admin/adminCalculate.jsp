@@ -24,13 +24,14 @@
     }
     table.table-striped tbody tr:nth-of-type(odd) {
     	background-color: #fcfcfc;
-    	width:900px;
+    	width:1000px;
 	/* text-align:center; */
 		margin-bottom:100px;
 	}
 	.selectSupport {
-		width:900px;
-		margin-left:30px;
+		width:1000px;
+		margin-left:10px;
+		font-size:12px;
 	}
 	
 	.selectLogerCalculateForm {
@@ -38,7 +39,7 @@
 		margin-left:auto;
 		margin-right:auto;
 		margin-bottom:50px;
-		width:900px;
+		width:1000px;
 	}
     .table-wrapper {
         background: #fff;
@@ -82,66 +83,60 @@
         top: 1px;
         margin: 0 2px;
     }
+    #searchAdminCalBtn {
+    		width:900px;
+	text-align:center;
+    }
 </style>
 </head>
 <body>
-<jsp:include page="../common/mainBar.jsp"></jsp:include>
+<jsp:include page="../common/adminBar.jsp"></jsp:include>
     <div class="selectSupport">
     <form action="" method="" class="selectLogerCalculateForm" float="left;">
         <div class="table-wrapper">
-   
             <table class="table table-striped">
-            <tr><h4><b>후원내역</b></h4></tr>
+            <tr><h4><b>정산관리</b></h4></tr>
+				<select id="searchCalculate" style="width:150px; margin-left:350px;">
+					    <option value="">회원명</option>
+					    <option value="">정산유무</option>
+					    <option value="">정산신청일</option>
+					</select>
+					&nbsp;<button type="submit" value="">조회</button>
 			<tr><hr></tr>
-			<div style="float:right;"><label>기간</label>&nbsp;<input type="Date" id="cal_dt" value="" float="right;">-
-			<input type="Date" id="cal_dt" value="" float="right;"></div>
+			<div id="searchAdminCalBtn">
+				<button type="button" class="btn_bookmark" style="float:right;" onclick="location.href='deleteBoard.do?idx=${board.idx }'">&nbsp;취소&nbsp;</button> 
+				<button type="button" class="btn_bookmark" style="float:right;" onclick="location.href='updateLogerVideo.jsp'">&nbsp;정산&nbsp;</button>
 			<tr><br></tr>
 			<tr><br></tr>
                 <thead>
                     <tr>
-                        <th class="calculate_th">No</th>
-						<th class="calculate_th">구분</th>
-						<th class="calculate_th">후원자</th>
-						<th class="calculate_th">후원금액</th>
-						<th class="calculate_th">후원날짜</th>
+                        <th class="calculate_th">회원번호</th>
+						<th class="calculate_th">ID</th>
+						<th class="calculate_th">회원명</th>
+						<th class="calculate_th">정산신청일</th>
+						<th class="calculate_th">정산금액</th>
+						<th class="calculate_th">수수료</th>
+						<th class="calculate_th">실지급액</th>
+						<th class="calculate_th">은행명</th>
+						<th class="calculate_th">계좌번호</th>
+						<th class="calculate_th">정산유무</th>
+						<th class="calculate_th">정산일</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>1</td>
-						<td>좋아요</td>
-						<td>은주의 쿠킹교실</td>
-						<td>3,000원</td>
+                        <td>1234</td>
+						<td>user02@gmail.com</td>
+						<td>김채원</td>
+						<td>2019.08.16</td>
+						<td>250,000원</td>
+						<td>54,000원</td>
+						<td>196,000원</td>
+						<td>우리</td>
+						<td>1002-981-920408</td>
+						<td>Y</td>
 						<td>2019.08.16</td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>좋아요</td>
-						<td>은주의 쿠킹교실</td>
-						<td>3,000원</td>
-						<td>2019.08.16</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>좋아요</td>
-						<td>은주의 쿠킹교실</td>
-						<td>3,000원</td>
-						<td>2019.08.16</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>좋아요</td>
-						<td>은주의 쿠킹교실</td>
-						<td>3,000원</td>
-						<td>2019.08.16</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>좋아요</td>
-						<td>은주의 쿠킹교실</td>
-						<td>3,000원</td>
-						<td>2019.08.16</td>
-                    </tr>        
                 </tbody>
             </table>
             
@@ -160,6 +155,5 @@
         </div>
         </form>
     </div>  
-    <jsp:include page="../common/footer.jsp"></jsp:include>   
 </body>
 </html>
