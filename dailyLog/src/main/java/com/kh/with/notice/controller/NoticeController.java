@@ -50,4 +50,12 @@ public class NoticeController {
 		
 		return "notice/pReporting";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 }
