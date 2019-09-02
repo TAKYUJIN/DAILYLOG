@@ -6,79 +6,91 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+	$(function(){
+		$("#joinForm").submit(function(){
+			if($("#userPwd").val() !== $("#userPwd2").val()){
+				alert("비밀번호가 다릅니다.");
+				$("#userPwd").val("").focus();
+				$("#userPwd2").val("");
+				return false;
+			}else if ($("#userPwd").val().length < 8) {
+				alert("비밀번호는 8자 이상으로 설정해야 합니다.");
+				$("#userPwd").val("").focus();
+				return false;
+			}else if($.trim($("#userPwd").val()) !== $("#userPwd").val() || $.trim($("#userId").val()) !== $("#userId").val() || $.trim($("#nickname").val()) !== $("#nickname").val()){
+				alert("공백은 입력이 불가능합니다.");
+				return false;
+			}
+		})
+		
+		$("#userId").keyup(function() {
+			$.ajax({
+				url : "../member/check_id.do",
+				type : "POST",
+				data : {
+					id : $("#userId").val()
+				},
+				success : function(result) {
+					if (result == 1) {
+						$("#id_check").html("중복된 아이디가 있습니다.");
+						$("#joinBtn").attr("disabled", "disabled");
+					} else {
+						$("#id_check").html("");
+						$("#joinBtn").removeAttr("disabled");
+					}
+				},
+			})
+		});
+		
+	})
+</script>
 </head>
 <body>
 	<jsp:include page="../common/guest.jsp"></jsp:include>
 	
-	<form action="insert.me" method="post" encType="multipart/form-data">
+	<form id="joinForm" action="join_member.me" method="post" encType="multipart/form-data">
 		<table align="center">
 			<tr>
-				<td>* 아이디</td>
-				<td><input type="text" name="userId" id="userId"></td>
-				<td><button onclick="return duplicationCheck();">중복확인</button></td>
+				<td> 아이디 </td>
+				<td><input type="email" name="userId" id="userId" required placeholder="이메일 인증 후 로그인이 가능합니다."></td>
+				<td><button id="id_check">중복확인</button></td>
 			</tr>
 			<tr>
-				<td>* 비밀번호</td>
-				<td><input type="password" name="userPwd"></td>
+				<td> 비밀번호 </td>
+				<td><input type="password" id="userPwd" name="userPwd" required></td>
 			</tr>
 			<tr>
-				<td>* 비밀번호확인</td>
-				<td><input type="password" name="userPwd2"></td>
+				<td> 비밀번호확인 </td>
+				<td><input type="password" id="userPwd2" name="userPwd2" required></td>
 			</tr>
 			<tr>
-				<td>* 이름</td>
-				<td><input type="text" name="userName"></td>
+				<td> 이름 </td>
+				<td><input type="text" id="userNm" name="userNm" required></td> 
 			</tr>
 			<tr>
-				<td>이메일</td>
-				<td><input type="email" name="email"></td>
+				<td> 닉네임 </td>
+				<td><input type="text" id="nickname" name="nickname" required></td>
 			</tr>
 			<tr>
-				<td>주민등록번호</td>
-				<td>
-					<input type="text" name="birthDay" size="6" maxlength="6">-
-					<input type="text" name="gender" size="1" maxlength="1">******
-				</td>
+				<td> 전화번호 </td>
+				<td><input type="tel" id="phone" name="phone"></td>
 			</tr>
 			<tr>
-				<td>전화번호</td>
-				<td><input type="tel" name="phone"></td>
-			</tr>
-			<tr>
-				<td>주소</td>
-				<td><input type="text" name="address"></td>
+				<td> 성별 </td>
+				<td><input type="text" id="gender" name="gender"></td>
 			</tr>	
-			<tr>
-				<td>프로필사진</td>
-				<td><input type="file" name="photo"></td>
-			</tr>
+			
 		</table>
 		<div align="center">
 			<button type="reset">작성취소</button>
-			<button type="submit">가입하기</button>
+			<button id="joinBtn" type="submit">가입하기</button>
 		</div>
 	</form>
-	<script>
-		function duplicationCheck(){
-			var userId = $("#userId").val();
-			
-			console.log(userId);
-			
-			$.ajax({
-				url:"duplicationCheck.me",
-				type:"post",
-				data:{userId:userId},
-				success:function(data){
-					console.log(data);
-				},
-				error:function(err){
-					console.log("실패!");
-				}
-			});
-			
-			return false;
-		}
-	</script>
+	<br><br><br><br><br>
+	
+	
+	<jsp:include page="../common/footer.jsp"></jsp:include>
 
 
 </body>

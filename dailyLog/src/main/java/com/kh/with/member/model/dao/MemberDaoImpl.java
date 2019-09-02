@@ -1,27 +1,34 @@
 package com.kh.with.member.model.dao;
 
-import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.stereotype.Repository;
+import org.apache.ibatis.session.SqlSession;
 
-import com.kh.with.member.model.exception.LoginException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+
 import com.kh.with.member.model.vo.Member;
 
 @Repository
 public class MemberDaoImpl implements MemberDao{
 	
-	//로그인 메소드  
+	@Autowired
+	SqlSession sqlSession = null;
+	
+	
 	@Override
-	public Member loginMember(SqlSessionTemplate sqlSession, Member m) throws LoginException {
-		
-		Member loginUser = sqlSession.selectOne("Member.loginCheck", m);
-		
-		System.out.println("Dao member : " + loginUser);
-		
-		if(loginUser == null) {
-			throw new LoginException("로그인 정보가 존재하지 않습니다.");
-		}
-		
-		return loginUser;
+	public int check_id(String userId) throws Exception{
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("member.check_id", userId);
 	}
+	
+	@Transactional
+	public int join_member(Member m) throws Exception{
+		return sqlSession.insert("member.join_member", m);
+	}
+
+	
+
+	
 
 }
