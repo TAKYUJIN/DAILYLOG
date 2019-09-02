@@ -23,14 +23,20 @@
 		<result property="status" column="STATUS" />
 	</resultMap>
 	
-	<!-- 로그인 정보 조회용 쿼리 -->
-	<select id="loginCheck" resultMap="memberResultSet" parameterType="Member">
-		SELECT * 
-		FROM MEMBER 
-		WHERE USER_ID = #{userId, jdbcType=VARCHAR} 
-		AND USER_PWD = #{userPwd, jdbcType=VARCHAR} 
-		AND STATUS = 0
+	<!-- 회원가입  -->
+	<insert id="join_member" parameterType="Member">
+		INSERT INTO MEMBER
+		VALUES(USER_NO.NEXTVAL, #{userName}, #{userId}, #{userPwd}, #{nickname},
+				#{phone}, #{gender}, DEFAULT, DEFAULT, SYSDATE, NULL, 0, DEFAULT)
+	</insert>
+	
+	<select id="check_id" parameterType="String" resultType="int">
+		select count(*) 
+		from member 
+		where USER_ID = #{userId}
 	</select>
+	
+	
 	
 	<!-- 회원정보수정 -->
 	<update id="update_myPage()" parameterType="Member">

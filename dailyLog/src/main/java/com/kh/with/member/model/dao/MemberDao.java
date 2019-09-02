@@ -7,12 +7,12 @@ import com.kh.with.member.model.vo.Member;
 
 public interface MemberDao {
 
-	Member loginMember(SqlSessionTemplate sqlSession, Member m) throws LoginException;
+
+	int check_id(String userId) throws Exception;
+
+	int join_member(Member m) throws Exception;
 	
 	int update_myPage(SqlSessionTemplate sqlSession, Member m);
-
-
-
 
 
 }

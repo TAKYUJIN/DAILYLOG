@@ -7,10 +7,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+
 	.form-horizontal1 {
 		width:1024px; /* 전체 폼 사이즈임 */
 		margin-top:50px;
 		margin-bottom:50px;
+
 	}
 	
 	
@@ -32,7 +34,6 @@
 	#loginBtn {
 		height:50px;
 	}
-	
 </style>
 </head>
 <body>
@@ -41,13 +42,15 @@
 	<div class="loginArea" align="center">
 		<c:if test="${ empty sessionScope.loginUser }">
 			<jsp:include page="/WEB-INF/views/common/guest.jsp"></jsp:include>
+
 			<form action="login.me" method="post" class="form-horizontal1">
+
 				<table id="loginTable" style="text-align:center;">
 					<tr>
 						<td>아이디</td>
 						<td><input type="text" name="userId"></td>
 						<td rowspan="2">
-							<a href="login.me" class="btn btn-primary get-started-btn" href="#">Login</a>
+							<a href="login.me" class="btn btn-primary get-started-btn mt-1 mb-1" href="#">Login</a>
 							
 					</tr>
 					<tr>
