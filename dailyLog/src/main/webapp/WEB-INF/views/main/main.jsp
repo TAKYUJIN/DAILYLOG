@@ -10,6 +10,10 @@
 
 
 
+
+
+  	  <%-- 
+=======
 <%--
   	<jsp:include page="../common/guest.jsp"></jsp:include>
 	<jsp:include page="../common/footer.jsp"></jsp:include>
@@ -22,6 +26,10 @@
   	<br><br>
 --%>
 <%-- 
+
+
+	<jsp:include page="../common/footer.jsp"/>  --%>
+
 
 
  <jsp:include page="../common/adminBar.jsp"></jsp:include> -
@@ -44,6 +52,7 @@
 	
   	  
 <%-- 	<jsp:include page="../loger/selectLogerCalculate.jsp"></jsp:include> --%>
+
 
 
 

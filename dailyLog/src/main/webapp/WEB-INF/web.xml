@@ -93,6 +93,7 @@
 		<servlet-name>loger</servlet-name>
 		<url-pattern>*.lo</url-pattern>
 	</servlet-mapping>
+	
 	<servlet-mapping>
 		<servlet-name>admin</servlet-name>
 		<url-pattern>*.ad</url-pattern>
