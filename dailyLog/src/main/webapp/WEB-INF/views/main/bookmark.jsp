@@ -42,15 +42,7 @@ body {
 <form action="" method="" class="bookmarkForm">
 	
 			<div id="searchArea" style="float:right;">
-                 <!-- <fieldset>
-                    <legend class="screen_out">검색어 입력폼</legend>
-                    <div class="box_searchbar">
-                        <span class="ico_kakaotv_new ico_search"></span>
-                        <input type="text" class="inp_search" id="q" name="q" value="" title="검색어 입력" autocomplete="off">
-                        <label for="q" class="lbl_search" align=center>북마크 검색</label> 
-                        <button class="btn_search" type="submit"><span class="txt_search">검색</span></button>
-                    </div>
-                </fieldset>  -->
+               
                <form class="navbar-form form-inline">
 					<div class="input-group search-box">								
 					<input type="text" id="search" class="form-control" placeholder="북마크 검색">

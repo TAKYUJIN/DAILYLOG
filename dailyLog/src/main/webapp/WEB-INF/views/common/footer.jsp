@@ -62,6 +62,7 @@ color:rgba(255,255,255,0.60); text-decoration:none; }
    .footer-bs .footer-nav, .footer-bs .footer-social, .footer-bs .footer-ns { 
    border-left:solid 1px rgba(255,255,255,0.10); }
 }
+
 </style>
 </head>
 <body>
