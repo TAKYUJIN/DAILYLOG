@@ -278,7 +278,7 @@
 				</ul>
 			</li>					
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">채널관리</a></li>	
-			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">정산관리</a></li>	
+			<li class="nav-item"><a href="adminCalculate.ad" class="nav-link" style="padding-right:0px;">정산관리</a></li>	
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">환불</a></li>
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">통계</a></li>
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">문의내역</a></li>

@@ -37,12 +37,12 @@ body {
 </style>
 </head>
 <body>
-<jsp:include page="../common/logerBar.jsp"></jsp:include>
+<jsp:include page="../common/mainBar.jsp"></jsp:include>
 
-<form action="" method="" class="bookmarkForm">
+<form action="selectBookmark.mb" method="post" class="bookmarkForm">
 	
 			<div id="searchArea" style="float:right;">
-               
+
                <form class="navbar-form form-inline">
 					<div class="input-group search-box">								
 					<input type="text" id="search" class="form-control" placeholder="북마크 검색">

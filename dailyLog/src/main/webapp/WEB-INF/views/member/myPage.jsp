@@ -16,13 +16,13 @@
 		<tr>
 			<td>
 				<img src="#">
-				<input type="email" name="email" readonly="readonly" value="${member.userId }">
-				<input type="button" value="편집">
+				<input type="email" name="email" readonly value="${ member.userId }">
+				<input type="button" value="편집"> 
 			</td>
 		</tr>
 		<tr>
 			<td>이름: </td>
-			<td><input type="text" name="userName" readonly value="${member.userNm }"> </td>
+			<td><input type="text" name="userName" readonly value="${ member.userNm }"> </td>
 		</tr>
 		<tr>
 			<td>비밀번호 : </td>

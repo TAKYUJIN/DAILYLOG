@@ -27,6 +27,7 @@
     	width:1000px;
 	/* text-align:center; */
 		margin-bottom:100px;
+		text-align:center;
 	}
 	.selectSupport {
 		width:1000px;
@@ -40,6 +41,9 @@
 		margin-right:auto;
 		margin-bottom:50px;
 		width:1000px;
+	}
+	.calculate_th {
+		text-align:center;
 	}
     .table-wrapper {
         background: #fff;

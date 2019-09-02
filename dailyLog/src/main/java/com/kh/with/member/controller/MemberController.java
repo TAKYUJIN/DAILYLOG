@@ -51,6 +51,12 @@ public class MemberController {
 
 	}
 	
+	//마이페이지 이동
+	@RequestMapping(value="/myPage.me")
+	public String myPage() {
+		return"/member/myPage";
+	}
+	
 
 }
 
