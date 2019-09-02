@@ -10,9 +10,17 @@
 
 
 
+<%--
   	<jsp:include page="../common/guest.jsp"></jsp:include>
 	<jsp:include page="../common/footer.jsp"></jsp:include>
   	  
+=======
+  	<jsp:include page="../common/logerBar.jsp"></jsp:include>
+
+  	<!-- 임시 동영상 -->
+  	<a href="video.mb">동영상페이지</a>
+  	<br><br>
+--%>
 <%-- 
 
 
@@ -22,11 +30,6 @@
 
 
 	<%-- <jsp:include page="../admin/noticeList.jsp"></jsp:include> --%>
-
-
-
-
-
 
 
 

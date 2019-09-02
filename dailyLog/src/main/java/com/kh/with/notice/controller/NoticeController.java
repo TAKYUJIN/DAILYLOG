@@ -51,6 +51,7 @@ public class NoticeController {
 		return "notice/pReporting";
 	}
 	
+
 	//footer -> 자주 찾는 질문으로 이동
 	@RequestMapping(value="noticeMain.no")
 	public String showNoticeMain() {
@@ -78,4 +79,5 @@ public class NoticeController {
 			
 			return "notice/selectNoticeQuestion";
 	}
+
 }
