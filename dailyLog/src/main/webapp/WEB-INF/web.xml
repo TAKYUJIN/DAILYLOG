@@ -46,6 +46,7 @@
 			<param-value>/WEB-INF/config/notice-servlet.xml</param-value>
 		</init-param>
 	</servlet>
+
 	<servlet>
 		<servlet-name>main</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -54,6 +55,7 @@
 			<param-value>/WEB-INF/config/main-servlet.xml</param-value>
 		</init-param>
 	</servlet>
+
 	<servlet>
 		<servlet-name>loger</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -62,6 +64,7 @@
 			<param-value>/WEB-INF/config/loger-servlet.xml</param-value>
 		</init-param>
 	</servlet>
+
 	<servlet>
 		<servlet-name>admin</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -70,15 +73,22 @@
 			<param-value>/WEB-INF/config/admin-servlet.xml</param-value>
 		</init-param>
 	</servlet>
+
 	<servlet-mapping>
 		<servlet-name>member</servlet-name>
 		<url-pattern>*.me</url-pattern>
+	</servlet-mapping>
+	
+		<servlet-mapping>
+		<servlet-name>main</servlet-name>
+		<url-pattern>*.mb</url-pattern>
 	</servlet-mapping>
 	
 	<servlet-mapping>
 		<servlet-name>notice</servlet-name>
 		<url-pattern>*.no</url-pattern>
 	</servlet-mapping>
+
 	
 	<servlet-mapping>
 		<servlet-name>main</servlet-name>
@@ -89,6 +99,7 @@
 		<url-pattern>*.lo</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
+
 		<servlet-name>admin</servlet-name>
 		<url-pattern>*.ad</url-pattern>
 	</servlet-mapping>

@@ -17,21 +17,26 @@
 #left {
 	width: 650px;
 	/* height:700px; */
-	margin-top: 120px;
+	margin-top: 50px;
 	margin-left: 20px;
 	/* border: 1px solid black; */
 }
 
 #right {
-	width: 500px;
+	width: 600px;
 	/* height:700px;  */
-	margin-top: -860px;
-	margin-left: 700px;
-	/* border: 1px solid red; */
+	margin-top: -400px;
+	margin-left: 500px;
+	/*  border: 1px solid red; */
 }
 
 #sub_list {
 	margin-top: 50px;
+}
+
+.video_td {
+	border:none;
+	background:#FFF;
 }
 </style>
 </head>
@@ -40,123 +45,6 @@
 	<form action="subscribe.mb" method="post">
 		<div class="maingape">
 			<div id="left">
-				<div class="area_subscribe"></div>
-				<div id="newlist"></div>
-				<br> <br> <br>
-				<h3 class="title_name">구독채널1</h3>
-				<div class="wrap_slider">
-					<div class="slide_paging"></div>
-					<div class="list_favoritem">
-						<div class="inner_favoritem">
-							<a class="link_itembox"> <span class="thumb_box"> <video
-										width="300px;" height="200px;" controls loop>
-										<source src="" type="">
-										<source src="nature.ogg" type="">
-									</video> <span class="mark_play"></span></span> <span class="live_rank">
-									<span class="img_rank rank_1">1</span> <strong
-									class="title_name">영상제목</strong> <span class="assist_info">채널명</span>
-									<span class="append_info"> <span
-										class="info_append info_play"> <span
-											class="ico_kakaotv_new">조회수 : </span>31,380
-									</span></span>
-							</span>
-							</a>
-						</div>
-						<div class="inner_favoritem">
-							<a class="link_itembox"> <span class="thumb_box"> <video
-										width="300px;" height="200px;" controls loop>
-										<source src="" type="">
-										<source src="nature.ogg" type="">
-									</video> <span class="mark_play"></span></span> <span class="live_rank">
-									<span class="img_rank rank_2">2</span> <strong
-									class="title_name">영상제목</strong> <span class="assist_info">채널명</span>
-									<span class="append_info"> <span
-										class="info_append info_play"> <span
-											class="ico_kakaotv_new">조회수 : </span>31,380
-									</span></span>
-							</span>
-							</a>
-						</div>
-					</div>
-
-				</div>
-				<h3 class="title_name">구독채널2</h3>
-				<div class="wrap_slider">
-					<div class="slide_paging"></div>
-					<div class="list_favoritem">
-						<div class="inner_favoritem">
-							<a class="link_itembox"> <span class="thumb_box"> <video
-										width="300px;" height="200px;" controls loop>
-										<source src="" type="">
-										<source src="nature.ogg" type="">
-									</video> <span class="mark_play"></span></span> <span class="live_rank">
-									<span class="img_rank rank_1">1</span> <strong
-									class="title_name">영상제목</strong> <span class="assist_info">채널명</span>
-									<span class="append_info"> <span
-										class="info_append info_play"> <span
-											class="ico_kakaotv_new">조회수 : </span>31,380
-									</span></span>
-							</span>
-							</a>
-						</div>
-						<div class="inner_favoritem">
-							<a class="link_itembox"> <span class="thumb_box"> <video
-										width="300px;" height="200px;" controls loop>
-										<source src="" type="">
-										<source src="nature.ogg" type="">
-									</video> <span class="mark_play"></span></span> <span class="live_rank">
-									<span class="img_rank rank_2">2</span> <strong
-									class="title_name">영상제목</strong> <span class="assist_info">채널명</span>
-									<span class="append_info"> <span
-										class="info_append info_play"> <span
-											class="ico_kakaotv_new">조회수 : </span>31,380
-									</span></span>
-							</span>
-							</a>
-						</div>
-					</div>
-
-				</div>
-				<h3 class="title_name">구독채널3</h3>
-				<div class="wrap_slider">
-					<div class="slide_paging"></div>
-					<div class="list_favoritem">
-						<div class="inner_favoritem">
-							<a class="link_itembox"> <span class="thumb_box"> <video
-										width="300px;" height="200px;" controls loop>
-										<source src="" type="">
-										<source src="nature.ogg" type="">
-									</video> <span class="mark_play"></span></span> <span class="live_rank">
-									<span class="img_rank rank_1">1</span> <strong
-									class="title_name">영상제목</strong> <span class="assist_info">채널명</span>
-									<span class="append_info"> <span
-										class="info_append info_play"> <span
-											class="ico_kakaotv_new">조회수 : </span>31,380
-									</span></span>
-							</span>
-							</a>
-						</div>
-						<div class="inner_favoritem">
-							<a class="link_itembox"> <span class="thumb_box"> <video
-										width="300px;" height="200px;" controls loop>
-										<source src="" type="">
-										<source src="nature.ogg" type="">
-									</video> <span class="mark_play"></span></span> <span class="live_rank">
-									<span class="img_rank rank_2">2</span> <strong
-									class="title_name">영상제목</strong> <span class="assist_info">채널명</span>
-									<span class="append_info"> <span
-										class="info_append info_play"> <span
-											class="ico_kakaotv_new">조회수 : </span>31,380
-									</span></span>
-							</span>
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div id="right">
-
 				<div id="sub_list">
 					<div class="container">
 						<div class="col-xs-3">
@@ -202,42 +90,72 @@
 				</div>
 			</div>
 		</div>
-	</form>
 
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+		<div id="right">
+		<table id="subscribeArea">
+		<tr><th style ="font-size:1.5em">채널1</th></tr>
+		<tr>
+			<td>
+				<video width="200px;" height="150px;" controls loop>
+					<source src="" type="">
+					<source src="nature.ogg" type="">
+				</video><br>
+			<input type="text" value="동영상제목" class="video_td" id="videoTitle">
+			<input type="text" value="조회수" class="video_td" id="videoCount">
+			</td>
+			<td>
+				<video width="200px;" height="150px;" controls loop>
+					<source src="" type="">
+					<source src="nature.ogg" type="">
+				</video><br>
+			<input type="text" value="동영상제목" class="video_td" id="videoTitle">
+			<input type="text" value="조회수" class="video_td" id="videoCount">			
+			</td>
+		</tr>
+		<tr></tr>
+		<tr><th style ="font-size:1.5em; margin-top:100px;">채널2</th></tr>
+		<tr>
+			<td>
+				<video width="200px;" height="150px;" controls loop>
+					<source src="" type="">
+					<source src="nature.ogg" type="">
+				</video><br>
+			<input type="text" value="동영상제목" class="video_td" id="videoTitle">
+			<input type="text" value="조회수" class="video_td" id="videoCount">
+			</td>
+			<td>
+				<video width="200px;" height="150px;" controls loop>
+					<source src="" type="">
+					<source src="nature.ogg" type="">
+				</video><br>
+			<input type="text" value="동영상제목" class="video_td" id="videoTitle">
+			<input type="text" value="조회수" class="video_td" id="videoCount">
+			</td>
+		</tr>
+		<tr><th style ="font-size:1.5em">채널3</th></tr>
+		<tr>
+			<td>
+				<video width="200px;" height="150px;" controls loop>
+					<source src="" type="">
+					<source src="nature.ogg" type="">
+				</video><br>
+			<input type="text" value="동영상제목" class="video_td" id="videoTitle">
+			<input type="text" value="조회수" class="video_td" id="videoCount">
+			</td>
+			<td>
+			
+				<video width="200px;" height="150px;" controls loop>
+					<source src="" type="">
+					<source src="nature.ogg" type="">
+				</video><br>
+			<input type="text" value="동영상제목" class="video_td" id="videoTitle">
+			<input type="text" value="업조회수" class="video_td" id="videoCount">
+			</td>
+		
+		</tr>
+	</table>
+		</div>
+	</form>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 </body>
 

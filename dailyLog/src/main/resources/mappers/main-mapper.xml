@@ -1,1 +1,38 @@
-<?xml version="1.0" encoding="UTF-8"?>
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="Member">
+	
+	<resultMap type="com.kh.with.member.model.vo.Member"
+		id="memberResultSet">
+		
+		<id property="userNo" column="USER_NO" />
+		<result property="userNm" column="USER_NM" />
+		<result property="userId" column="USER_ID" />
+		<result property="userPwd" column="USER_PWD" />
+		<result property="nickname" column="NICKNAME" />
+		<result property="phone" column="PHONE" />
+		<result property="gender" column="GENDER" />
+		<result property="adultYN" column="ADULT_YN" />
+		<result property="chYN" column="CH_YN" />
+		<result property="enrollDT" column="ENROLL_DT" />
+		<result property="leaveDT" column="LEAVE_DT" />
+		<result property="remainPT" column="REMAIN_PT" />
+		<result property="status" column="STATUS" />
+	</resultMap>
+	
+	<!-- 로그인 정보 조회용 쿼리 -->
+	<select id="loginCheck" resultMap="memberResultSet" parameterType="Member">
+		SELECT * 
+		FROM MEMBER 
+		WHERE USER_ID = #{userId, jdbcType=VARCHAR} 
+		AND USER_PWD = #{userPwd, jdbcType=VARCHAR} 
+		AND STATUS = 0
+	</select>
+	
+	
+</mapper>
+
