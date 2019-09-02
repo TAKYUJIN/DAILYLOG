@@ -9,7 +9,9 @@
 <body>
 
 
+
   	<jsp:include page="../common/logerBar.jsp"></jsp:include>
+
   	  
 <%-- 
 
@@ -36,14 +38,6 @@
 	<c:if test="${ !empty sessionScope.loginUser }">
 		<jsp:include page="../common/mainBar.jsp"></jsp:include>	
 	</c:if> --%>
-	
-
-	
-	
-	
-	
-	
-	
 	
 	
 

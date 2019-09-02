@@ -88,8 +88,8 @@ color:rgba(255,255,255,0.60); text-decoration:none; }
             
                <div class="col-md-6">
                     <ul class="list">
-                        <li><a href="#">이용약관</a></li>
-                        <li><a href="#">정책및안전</a></li>
+                        <li><a href="terms.no">이용약관</a></li>
+                        <li><a href="policy.no">정책및안전</a></li>
                        
                     </ul>
                 </div>
