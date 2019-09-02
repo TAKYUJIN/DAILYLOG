@@ -267,7 +267,7 @@
 	<!-- Collection of nav links, forms, and other content for toggling -->
 	<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
 		<ul class="nav navbar-nav" >
-			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">공지사항</a></li>
+			<li class="nav-item"><a href="noticeList.no" class="nav-link" style="padding-right:0px;">공지사항</a></li>
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">회원관리</a></li>
 			<li class="nav-item dropdown">
 				<a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#" style="padding-right:0px;">신고관리 <b class="caret"></b></a>
@@ -278,7 +278,7 @@
 				</ul>
 			</li>					
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">채널관리</a></li>	
-			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">정산관리</a></li>	
+			<li class="nav-item"><a href="adminCalculate.ad" class="nav-link" style="padding-right:0px;">정산관리</a></li>	
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">환불</a></li>
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">통계</a></li>
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">문의내역</a></li>

@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class NoticeController {
+
 	
 	//메인 -> 이용약관
 	@RequestMapping(value="terms.no")
@@ -24,8 +25,10 @@ public class NoticeController {
 	@RequestMapping(value="pVideo.no")
 	public String showPvideoView() {
 		
+
 		return "notice/pVideo";
 	}
+
 	
 	//정책 -> 저작권 정책
 	@RequestMapping(value="pCopyright.no")
