@@ -110,6 +110,6 @@ color:rgba(255,255,255,0.60); text-decoration:none; }
     </footer>
         </div>
 
-    <section style="text-align:center; margin:0px auto;"><p>Designed by <a href="http://enfoplus.net">Prince J. Sargbah</a></p></section>
+  
 </body>
 </html>
