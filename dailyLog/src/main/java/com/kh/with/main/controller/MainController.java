@@ -1,13 +1,15 @@
 package com.kh.with.main.controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+@Controller
 public class MainController {
 	
-	@RequestMapping(value="selectBookmark.mb")
+	//북마크페이지로 이동
+	@RequestMapping(value="bookmark.mb")
 	public String selectBookmark() {
-		
-		return "";
+		return "main/bookmark";
 	}
 
 	//구독페이지로 이동

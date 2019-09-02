@@ -257,26 +257,7 @@ $(document).ready(function(){
 							<td><input type="text" value="댓글수" class="video_td" id="videoReply"></td> -->
                         <td style="vertical-align:middle">
 							<a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-                            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                        </td>
-                    </tr>
-                     <tr style="vertical-align:middle">
-                        <td align="center" style="vertical-align:middle"><video width="200px;" height="150px;" controls loop>
-							<source src="" type="">
-							<source src="nature.ogg" type=""></video><br>
-							<input type="text" value="동영상제목" class="video_td" id="videoTitle"></td>
-						<td style="vertical-align:middle">비공개</td>
-						<td style="vertical-align:middle">2019.08.13</td>
-						<td style="vertical-align:middle">12345</td>
-						<td style="vertical-align:middle">35</td>
-							<!-- <td><input type="text" value="공개" class="video_td" id="videoTitle"></td>
-							<td><input type="text" value="2019.08.13" class="video_td" id="videoDate"></td>
-							<td><input type="text" value="조회수" class="video_td" id="videoCount"></td>
-							<td><input type="text" value="댓글수" class="video_td" id="videoReply"></td> -->
-                        <td style="vertical-align:middle">
-							<a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-                            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                            <a class="edit" title="Edit" data-toggle="tooltip" href="updateLogerVideo.lo"><i class="material-icons">&#xE254;</i></a>
                             <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                         </td>
                     </tr>
