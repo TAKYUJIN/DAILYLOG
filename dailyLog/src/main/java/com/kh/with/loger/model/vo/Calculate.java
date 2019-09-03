@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class Calculate {
 	private int nNo;		//게시판번호
+	private int userNo;
 	private String nickname; //닉네임
 	private int calNo;		//정산번호
 	private Date calSTDT;	//정산신청날짜
@@ -18,10 +19,11 @@ public class Calculate {
 	
 	public Calculate() {}
 
-	public Calculate(int nNo, String nickname, int calNo, Date calSTDT, Date calEDT, int calPrice, int calVAT,
-			int totalPrice, String calTY, String accNm, String bankNm, String account) {
+	public Calculate(int nNo, int userNo, String nickname, int calNo, Date calSTDT, Date calEDT, int calPrice,
+			int calVAT, int totalPrice, String calTY, String accNm, String bankNm, String account) {
 		super();
 		this.nNo = nNo;
+		this.userNo = userNo;
 		this.nickname = nickname;
 		this.calNo = calNo;
 		this.calSTDT = calSTDT;
@@ -41,6 +43,14 @@ public class Calculate {
 
 	public void setnNo(int nNo) {
 		this.nNo = nNo;
+	}
+
+	public int getUserNo() {
+		return userNo;
+	}
+
+	public void setUserNo(int userNo) {
+		this.userNo = userNo;
 	}
 
 	public String getNickname() {
@@ -133,11 +143,11 @@ public class Calculate {
 
 	@Override
 	public String toString() {
-		return "Calculate [nNo=" + nNo + ", nickname=" + nickname + ", calNo=" + calNo + ", calSTDT=" + calSTDT
-				+ ", calEDT=" + calEDT + ", calPrice=" + calPrice + ", calVAT=" + calVAT + ", totalPrice=" + totalPrice
-				+ ", calTY=" + calTY + ", accNm=" + accNm + ", bankNm=" + bankNm + ", account=" + account + "]";
+		return "Calculate [nNo=" + nNo + ", userNo=" + userNo + ", nickname=" + nickname + ", calNo=" + calNo
+				+ ", calSTDT=" + calSTDT + ", calEDT=" + calEDT + ", calPrice=" + calPrice + ", calVAT=" + calVAT
+				+ ", totalPrice=" + totalPrice + ", calTY=" + calTY + ", accNm=" + accNm + ", bankNm=" + bankNm
+				+ ", account=" + account + "]";
 	}
-	
 	
 	
 }
