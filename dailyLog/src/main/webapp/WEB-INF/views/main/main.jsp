@@ -45,9 +45,9 @@
 
 
 
- <jsp:include page="../common/adminBar.jsp"></jsp:include> -
+<%--  <jsp:include page="../common/adminBar.jsp"></jsp:include> -
 
-	<c:if test="${ empty sessionScope.loginUser }">
+	<c:if test="${ empty sessionScope.loginUser }">--%>
 
 
 	<%-- <jsp:include page="../admin/noticeList.jsp"></jsp:include> --%>

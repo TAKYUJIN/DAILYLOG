@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-5.1.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
@@ -29,6 +35,32 @@
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
+	
+	<!-- 어노테이션으로 트랜잭션 매니저를 사용하기 위해 추가하는 설정 -->
+   <tx:annotation-driven transaction-manager="transactionManager"/><!-- around advice 앞뒤에 실행되는 -->
+   
+   <!-- 클래스 만들고 그 안에 메소드4개 생성 -->
+   <tx:advice id="txAdvice" transaction-manager="transactionManager">
+      <tx:attributes>
+         <tx:method name="select*" read-only="true" rollback-for="Exception"/>
+         <tx:method name="insert*" rollback-for="Exception"
+         propagation="REQUIRED" isolation="SERIALIZABLE"/>
+         <tx:method name="update*" rollback-for="Exception"
+         propagation="REQUIRED" isolation="SERIALIZABLE"/>
+         <tx:method name="delete*" rollback-for="Exception"
+         propagation="REQUIRED" isolation="SERIALIZABLE"/>
+      </tx:attributes>
+   </tx:advice>
+
+   <!-- AOP를 이용하여 위의 txAdvice의 적용할 위치를 등록해주어야 한다. -->
+   <aop:config proxy-target-class="true">
+      <aop:pointcut id="serviceMethod" 
+         expression="execution(* com.kh.tsp..*ServiceImpl.*(..))"/> <!-- 리턴타입, 패키지 하위, 클래스 -->
+      <aop:advisor id="transactionAdvisor" pointcut-ref="serviceMethod"
+         advice-ref="txAdvice"/>
+   </aop:config>
+   
+	
 	
 	
 </beans>

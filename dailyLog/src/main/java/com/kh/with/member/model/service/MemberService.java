@@ -8,17 +8,11 @@ import com.kh.with.member.model.vo.Member;
 public interface MemberService {
 
 
+	//로그인 정보 확인용 메소드
+	Member loginMember(Member m) throws LoginException;
 
-	int join_member(Member m, HttpServletResponse response) throws Exception;
+	int insertMember(Member m);
 
-	void check_id(String userId, HttpServletResponse response) throws Exception;
-
-	String create_key() throws Exception;
-
-	
-	Member update_myPage(Member m) throws LoginException;
-	
-	//Member update_Pwd(Member m, String old_pwd, HttpServletResponse response);
 
 
 }

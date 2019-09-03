@@ -49,7 +49,7 @@
 <body>
 	<jsp:include page="../common/guest.jsp"></jsp:include>
 	
-	<form id="joinForm" action="join_member.me" method="post" encType="multipart/form-data">
+	<form id="joinForm" action="insert.me" method="post" encType="multipart/form-data">
 		<table align="center">
 			<tr>
 				<td> 아이디 </td>

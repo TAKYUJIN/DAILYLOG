@@ -7,12 +7,16 @@ import com.kh.with.member.model.vo.Member;
 
 public interface MemberDao {
 
+	Member loginMember(SqlSessionTemplate sqlSession, Member m) throws LoginException;
 
-	int check_id(String userId) throws Exception;
+	int insertMember(SqlSessionTemplate sqlSession, Member m);
 
-	int join_member(Member m) throws Exception;
-	
-	int update_myPage(SqlSessionTemplate sqlSession, Member m);
+	String selectEncPassword(SqlSessionTemplate sqlSession, Member m);
+
+	Member selectMember(SqlSessionTemplate sqlSession, Member m);
+
+
+
 
 
 }
