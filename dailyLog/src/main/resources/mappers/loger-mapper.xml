@@ -30,13 +30,21 @@
   		<result property="bankNm" column="BANK_NM"/>
   		<result property="account" column="ACCOUNT"/>
   		<result property="nickname" column="NICKNAME"/>
+  		
+  		<association javaType="Member" property="userId">
+			<id column="USER_ID" property="userId"/>
+			<result column="USER_NM" property="userNm"/>
+			<result column="NICKNAME" property="nickname"/>
+		</association>
+  		
+  		
   	</resultMap>
   
   	<select id="selectLogerCalculate" resultMap="calculateResultSet">
   		SELECT *
   		FROM CALCULATE C
   		JOIN MEMBER M ON(C.USER_NO = M.USER_NO)
-  		WHERE USER_ID = #{userId}
+  		WHERE M.USER_ID = #{userId}
   	</select>	
   	
 </mapper>
