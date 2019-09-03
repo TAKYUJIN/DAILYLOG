@@ -1,7 +1,10 @@
 package com.kh.with.loger.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.kh.with.loger.model.vo.Calculate;
 
 @Controller
 public class LogerController {
@@ -37,9 +40,9 @@ public class LogerController {
 		public String selectLogerCalculate(Calculate c, Model model) {
 			
 			
-			List<Calculate> list = ls.selectLogerCalculate(c);
+			//List<Calculate> list = ls.selectLogerCalculate(c);
 			
-			model.addAttribute("list", list);
+			//model.addAttribute("list", list);
 			
 			return "loger/logerCalculate";
 		}
