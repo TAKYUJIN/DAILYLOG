@@ -28,4 +28,16 @@ public class MainController {
 		
 		return "video/videoMain";
 	}
+	//home 클릭시 페이지로 이동
+	@RequestMapping(value="home.mb")
+	public String showhome() {
+		return "main/main";
+	}
+	
+	@RequestMapping(value="friends.mb")
+	public String showfriends() {
+		return "friends/addfriends";
+	}
+	
+	
 }

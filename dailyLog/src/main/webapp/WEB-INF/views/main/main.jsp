@@ -19,12 +19,13 @@
 
 
 	 <c:if test="${ empty sessionScope.loginUser }">
-
-
-			 <jsp:include page="../common/guest.jsp"></jsp:include> 
+<%-- <jsp:include page="../common/mainBar.jsp"></jsp:include>	
+ --%>  			 <jsp:include page="../common/guest.jsp"></jsp:include> 
+ 			 <jsp:include page="../main/top.jsp"></jsp:include> 
 	</c:if>
 	<c:if test="${ !empty sessionScope.loginUser }">
-		<jsp:include page="../common/mainBar.jsp"></jsp:include>	
+  		<jsp:include page="../common/mainBar.jsp"></jsp:include>	
+ 				 <jsp:include page="../main/top1.jsp"></jsp:include> 
 	</c:if> 
 
 	

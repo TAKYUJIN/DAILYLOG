@@ -22,7 +22,6 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private DataSourceTransactionManager transactionManager;
 
-	
 
 	@Override
 	public Member loginMember(Member m) throws LoginException {
@@ -43,7 +42,7 @@ public class MemberServiceImpl implements MemberService {
 
 
 
-	/*
+	/*//마이페이지 수정
 	 * @Override public Member update_myPage(Member m) throws LoginException { //
 	 * TODO Auto-generated method stub md.update_myPage(sqlSession, m); return
 	 * md.loginMember(sqlSession, m); }

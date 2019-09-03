@@ -35,9 +35,14 @@ public class AdminController {
 	//관리자 채팅 완료 페이지
 	@RequestMapping(value="adminChattingComplete.ad")
 	public String adminChattingComplete() {
+
 		return "admin/adminChattingComplete";
+
 	}
 
+		return "admin/adminChattingComplete";
+	}
+	
 	//관리자 공지사항 수정 메소드 
 	@RequestMapping(value="adminNoticeRevise.ad")
 	public String adminNoticeRevise() {
