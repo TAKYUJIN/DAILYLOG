@@ -274,7 +274,7 @@
 			<li class="nav-item"><a href="logerHomeChannel.lo" class="nav-link" style="padding-right:0px;">홈</a></li>
 			<li class="nav-item"><a href="logerChannelSet.lo" class="nav-link" style="padding-right:0px;">채널설정</a></li>
 			<li class="nav-item"><a href="logerVideo.lo" class="nav-link" style="padding-right:0px;">동영상</a></li>			
-			<li class="nav-item"><a href="analysis.lo" class="nav-link" style="padding-right:0px;">분석</a></li>	
+			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">분석</a></li>	
 			<li class="nav-item"><a href="logerCalculate.lo" class="nav-link" style="padding-right:0px;">정산</a></li>	
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">댓글</a></li>
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">신고기록</a></li>
@@ -333,4 +333,4 @@
 	</div>
 </nav>
 </body>
-</html>                                                                                    
+</html>                                                     
