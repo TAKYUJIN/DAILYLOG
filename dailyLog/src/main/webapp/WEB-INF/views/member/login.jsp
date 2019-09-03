@@ -40,35 +40,28 @@
 	
 	
 	<div class="loginArea" align="center">
-		<c:if test="${ empty sessionScope.loginUser }">
 			<jsp:include page="/WEB-INF/views/common/guest.jsp"></jsp:include>
 
-			<form action="login.me" method="post" class="form-horizontal1">
-
-				<table id="loginTable" style="text-align:center;">
-					<tr>
-						<td>아이디</td>
-						<td><input type="text" name="userId"></td>
-						<td rowspan="2">
-							<a href="login.me" class="btn btn-primary get-started-btn mt-1 mb-1" href="#">Login</a>
-							
-					</tr>
-					<tr>
-						<td>패스워드</td>
-						<td><input type="password" name="userPwd"></td>
-					</tr>
-					<tr>
-						<td colspan="3">
-							<a href="memberJoinView.me">회원가입</a>
-							<a href="#">아이디/비밀번호 찾기</a>
-						</td>
-					</tr>
-				</table>
-			</form>
-		</c:if>
-		<c:if test="${ !empty sessionScope.loginUser }">
+			 <form action="login.me" method="post">
+            <table id="loginTable" style="text-align:center;">
+               <tr>
+                  <td>아이디</td>
+                  <td><input type="text" name="userId"></td>
+                  <td rowspan="2"><button id="loginBtn">로그인</button></td>
+               </tr>
+               <tr>
+                  <td>패스워드</td>
+                  <td><input type="password" name="userPwd"></td>
+               </tr>
+               <tr>
+                  <td colspan="3">
+                     <a href="memberJoinView.me">회원가입</a>
+                     <a href="#">아이디/비밀번호 찾기</a>
+                  </td>
+               </tr>
+            </table>
+         </form>
 			
-		</c:if>
 	</div>
 	
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>

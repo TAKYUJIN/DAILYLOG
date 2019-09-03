@@ -17,7 +17,9 @@
 
 
 
+
 	 <c:if test="${ empty sessionScope.loginUser }">
+
 
 			 <jsp:include page="../common/guest.jsp"></jsp:include> 
 	</c:if>
