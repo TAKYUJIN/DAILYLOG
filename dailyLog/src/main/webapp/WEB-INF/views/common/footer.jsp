@@ -81,7 +81,7 @@ color:rgba(255,255,255,0.60); text-decoration:none; }
                     <ul class="list">
                         <li><a href="noticeMain.no">공지사항</a></li>
                         <li><a href="noticeList.no">도움말</a></li>
-                        <li><a href="noticeEmailQuestion.no">문의하기</a></li>
+                        <li><a href="noticeChattingQuestion.no">문의하기</a></li>
                        
                     </ul>
                 </div>

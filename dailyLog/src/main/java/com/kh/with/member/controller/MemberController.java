@@ -1,13 +1,21 @@
 package com.kh.with.member.controller;
 
+
 import java.io.File;
 
 import javax.servlet.http.HttpServletRequest;
+
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+
+import org.springframework.web.bind.annotation.ModelAttribute;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -15,8 +23,10 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+
 import com.kh.with.common.CommonUtils;
 import com.kh.with.member.model.exception.LoginException;
+
 import com.kh.with.member.model.service.MemberService;
 import com.kh.with.member.model.vo.Member;
 
@@ -114,6 +124,7 @@ public class MemberController {
 	}
 
 
+
 	@RequestMapping("duplicationCheck.me")
 	public ModelAndView duplicationCheck(String userId, ModelAndView mv) {
 
@@ -126,6 +137,28 @@ public class MemberController {
 
 		return mv;
 	}
+
+	
+	/*
+	 * //myPage 수정
+	 * 
+	 * @RequestMapping(value = "/update_myPage.me", method = RequestMethod.POST)
+	 * public String update_mypage(@ModelAttribute Member m, HttpSession session,
+	 * RedirectAttributes rttr) throws Exception{ session.setAttribute("m",
+	 * ms.update_myPage(m)); rttr.addFlashAttribute("msg", "회원정보 수정 완료"); return
+	 * "redirect:/member/mypage.do"; }
+	 */
+	
+	/*
+	 * // 비밀번호 변경
+	 * 
+	 * @RequestMapping(value = "/update_pw.do", method = RequestMethod.POST) public
+	 * String update_pw(@ModelAttribute Member m, @RequestParam("old_pw") String
+	 * old_pw, HttpSession session, HttpServletResponse response, RedirectAttributes
+	 * rttr) throws Exception{ session.setAttribute("member", ms.update_pw(m,
+	 * old_pw, response)); }
+	 */
+
 
 }
 

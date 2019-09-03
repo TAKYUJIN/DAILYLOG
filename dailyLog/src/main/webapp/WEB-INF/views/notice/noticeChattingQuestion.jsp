@@ -59,7 +59,7 @@
         top: 1px;
         margin: 0 2px;
     }
-	.noticeEmailQuestion {
+	.noticeChattingQuestion {
 		margin-top:50px;
 		margin-left:100px;
 		width:1000px;
@@ -149,7 +149,7 @@
 </head>
 <body>
 <jsp:include page="../common/mainBar.jsp"></jsp:include>
-<div class="noticeEmailQuestion">
+<div class="noticeChattingQuestion">
 		<div class="col-lg-15">
 			<a href="noticeMain.no" class="noticeLink" style="float:left; width:25%;"><h1 class="page-title1">FAQs</h1></a> 
 			<a href="noticeList.no" class="noticeLink" style="float:left; width:25%;"><h1 class="page-title2">Notice</h1></a>
@@ -157,21 +157,21 @@
 			</div>
 			<div>
 			<a href="selectNoticeQuestion.no" class="noticeLink" style="float:right; width:40%;"><h4 class="page-title4">나의 문의내역</h4></a>
-			<a href="noticeEmailQuestion.no" class="noticeLink" style="float:right; width:15%;"><h4 class="page-title5">1:1문의</h4></a>
+			<a href="noticeChattingQuestion.no" class="noticeLink" style="float:right; width:15%;"><h4 class="page-title5">1:1문의</h4></a>
 			</div>
-			<div class="">
-			<a href="selectNoticeQuestion.no" class="noticeLink" style="float:right; width:10%;"><h5>실시간 문의</h5></a>
+			<!-- <div class="">
+			<a href="noticeChattingQuestion.no" class="noticeLink" style="float:left;"><h5>실시간 문의</h5></a>
 			<a href="noticeEmailQuestion.no" class="noticeLink" style="float:right; width:90%;"><h5>이메일 문의</h5></a>
-			</div>
+			</div> -->
 		<div class="table-wrapper">
 			
             <table class="table table-striped">
             	
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>Address</th>
+                        <th>채팅을</th>
+                        <th>할 거랍니다</th>
+                        <th>제발요</th>
                         <th>City</th>
                         <th>Pin Code</th>
                         <th>Country</th>
@@ -186,40 +186,10 @@
                         <td>97219</td>
                         <td>USA</td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Maria Anders</td>
-                        <td>Obere Str. 57</td>
-                        <td>Berlin</td>
-                        <td>12209</td>
-                        <td>Germany</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Fran Wilson</td>
-                        <td>C/ Araquil, 67</td>
-                        <td>Madrid</td>
-                        <td>28023</td>
-                        <td>Spain</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Dominique Perrier</td>
-                        <td>25, rue Lauriston</td>
-                        <td>Paris</td>
-                        <td>75016</td>
-                        <td>France</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Martin Blank</td>
-                        <td>Via Monte Bianco 34</td>
-                        <td>Turin</td>
-                        <td>10100</td>
-                        <td>Italy</td>
-                    </tr>        
+                         
                 </tbody>
             </table>
+            <button style="float:right;">상담 완료하기</button>
 			</div></div>
 <jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
