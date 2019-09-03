@@ -12,7 +12,7 @@ public interface MemberDao {
 
 	int join_member(Member m) throws Exception;
 	
-	int update_myPage(SqlSessionTemplate sqlSession, Member m);
+//	int update_myPage(SqlSessionTemplate sqlSession, Member m);
 
 
 }

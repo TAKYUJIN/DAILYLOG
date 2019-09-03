@@ -21,6 +21,8 @@ import com.kh.with.member.model.vo.Member;
 public class MemberServiceImpl implements MemberService {
 	@Inject
 	private MemberDao md;
+	@Autowired
+	private SqlSessionTemplate sqlSession;
 	
 	@Override
 	public void check_id(String userId, HttpServletResponse response) throws Exception {
@@ -63,13 +65,12 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 
-	@Override
-	public Member update_myPage(Member m) throws LoginException {
-		// TODO Auto-generated method stub
-//		md.update_myPage(sqlSession, m);
-//		return md.loginMember(sqlSession, m);
-		return m;
-	}
+	/*
+	 * @Override public Member update_myPage(Member m) throws LoginException { //
+	 * TODO Auto-generated method stub md.update_myPage(sqlSession, m); return
+	 * md.loginMember(sqlSession, m); }
+	 */
+
 
 	//비밀변호 변경
 	/*
