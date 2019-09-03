@@ -278,8 +278,9 @@
 			<li class="nav-item"><a href="subscribe.mb" class="nav-link" style="padding-right:0px;">구독</a></li>	
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">최근 활동</a></li>	
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">좋아요 영상</a></li>
-			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;" onclick="">로거 스튜디오</a></li>
-		</ul>				<!-- 로거스튜디오 -> loger.mb -->
+			<li class="nav-item"><a href="logerHomeChannel.lo" class="nav-link" style="padding-right:0px;" onclick="">로거 스튜디오</a></li>
+		</ul>
+
 		<form class="navbar-form form-inline" style="width:240px;">
 			<div class="input-group search-box">								
 				<input type="text" id="search" class="form-control" placeholder="검색">
