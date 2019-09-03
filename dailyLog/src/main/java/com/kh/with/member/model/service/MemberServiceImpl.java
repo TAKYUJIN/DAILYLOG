@@ -30,14 +30,6 @@ public class MemberServiceImpl implements MemberService {
 	private DataSourceTransactionManager transactionManager;
 
 	
-	@Override
-	public void check_id(String userId, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
-		PrintWriter out = response.getWriter();
-		out.println(md.check_id(userId));
-		out.close();
-		
-	}
 	
 
 	@Override
@@ -59,7 +51,7 @@ public class MemberServiceImpl implements MemberService {
 
 
 
-	/*
+	/*//마이페이지 수정
 	 * @Override public Member update_myPage(Member m) throws LoginException { //
 	 * TODO Auto-generated method stub md.update_myPage(sqlSession, m); return
 	 * md.loginMember(sqlSession, m); }
