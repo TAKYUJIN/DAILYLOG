@@ -62,6 +62,7 @@ color:rgba(255,255,255,0.60); text-decoration:none; }
    .footer-bs .footer-nav, .footer-bs .footer-social, .footer-bs .footer-ns { 
    border-left:solid 1px rgba(255,255,255,0.10); }
 }
+div.Footer {   width:100%; height:20px;   margin:0px; padding:0px;   text-align:center;   background-color:#090;   }
 
 </style>
 </head>
