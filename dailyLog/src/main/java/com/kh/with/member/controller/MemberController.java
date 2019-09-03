@@ -1,32 +1,18 @@
 package com.kh.with.member.controller;
 
 
-import java.io.File;
-
 import javax.servlet.http.HttpServletRequest;
-
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
-import org.springframework.web.bind.annotation.ModelAttribute;
-
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-
-import com.kh.with.common.CommonUtils;
 import com.kh.with.member.model.exception.LoginException;
-
 import com.kh.with.member.model.service.MemberService;
 import com.kh.with.member.model.vo.Member;
 
@@ -103,6 +89,7 @@ public class MemberController {
 			
 
 			m.setUserPwd(passwordEncoder.encode(m.getUserPwd()));
+			System.out.println(m.getUserPwd());
 
 			if(m.getGender().equals("1") || m.getGender().equals("3")) {
 				m.setGender("M");
