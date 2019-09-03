@@ -280,7 +280,7 @@
 					<li><a href="#" class="dropdown-item">채널블랙리스트</a></li>
 				</ul>
 			</li>					
-			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">채널관리</a></li>	
+			<li class="nav-item"><a href="channelManage.ad" class="nav-link" style="padding-right:0px;">채널관리</a></li>	
 			<li class="nav-item"><a href="adminCalculate.ad" class="nav-link" style="padding-right:0px;">정산관리</a></li>	
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">환불</a></li>
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">통계</a></li>

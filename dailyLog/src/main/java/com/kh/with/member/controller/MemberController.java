@@ -1,32 +1,18 @@
 package com.kh.with.member.controller;
 
 
-import java.io.File;
-
 import javax.servlet.http.HttpServletRequest;
-
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
-import org.springframework.web.bind.annotation.ModelAttribute;
-
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-
-import com.kh.with.common.CommonUtils;
 import com.kh.with.member.model.exception.LoginException;
-
 import com.kh.with.member.model.service.MemberService;
 import com.kh.with.member.model.vo.Member;
 
@@ -50,7 +36,6 @@ public class MemberController {
 	@RequestMapping("logout.me")
 	public String logout(SessionStatus status) {
 
-		//세션에 담지 않은 상태에서 확정을 지어주면 비어지게 된다.
 		status.setComplete();
 
 		return "redirect:index.jsp";
@@ -65,9 +50,7 @@ public class MemberController {
 
 	@RequestMapping(value="login.me")
 	public String loginCheck(Member m, Model model) {
-		//	      //random salt이기 때문에 다름
-		//	      String encPassword = passwordEncoder.encode(m.getUserPwd());
-		//	      System.out.println(encPassword);
+
 
 		try {
 			Member loginUser = ms.loginMember(m);
@@ -86,23 +69,17 @@ public class MemberController {
 	@RequestMapping(value="insert.me")
 	public String insertMember(Model model, Member m, HttpServletRequest request) {
 
-		
 		System.out.println(m);
 
 		String root = request.getSession().getServletContext().getRealPath("resources");
-		// 세션을 발급해준 컨테이너 주소 tsp에 하드디스크상 물리적인 경로 webapp을 가져온다.
 
 		System.out.println(root);
-
 		
-
-		//파일명 변경
-		
-
 		try {
 			
 
 			m.setUserPwd(passwordEncoder.encode(m.getUserPwd()));
+			System.out.println(m.getUserPwd());
 
 			if(m.getGender().equals("1") || m.getGender().equals("3")) {
 				m.setGender("M");
@@ -137,7 +114,12 @@ public class MemberController {
 
 		return mv;
 	}
-
+	
+	//마이페이지 이동
+	@RequestMapping(value="myPage.me")
+	public String myPage() {
+		return"member/myPage";
+	}
 	
 	/*
 	 * //myPage 수정

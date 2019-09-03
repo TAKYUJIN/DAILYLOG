@@ -1,12 +1,5 @@
 package com.kh.with.member.model.service;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Random;
-
-import javax.inject.Inject;
-import javax.servlet.http.HttpServletResponse;
-
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
@@ -29,16 +22,6 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private DataSourceTransactionManager transactionManager;
 
-	
-	@Override
-	public void check_id(String userId, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
-		PrintWriter out = response.getWriter();
-		out.println(md.check_id(userId));
-		out.close();
-		
-	}
-	
 
 	@Override
 	public Member loginMember(Member m) throws LoginException {
@@ -59,7 +42,7 @@ public class MemberServiceImpl implements MemberService {
 
 
 
-	/*
+	/*//마이페이지 수정
 	 * @Override public Member update_myPage(Member m) throws LoginException { //
 	 * TODO Auto-generated method stub md.update_myPage(sqlSession, m); return
 	 * md.loginMember(sqlSession, m); }
@@ -70,9 +53,14 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public int insertMember(Member m) {
-
-
-		return md.insertMember(sqlSession, m);
+		System.out.println("service in!!");
+		
+		int result = md.insertMember(sqlSession, m);
+		
+		System.out.println("result : " + result);
+				
+				
+		return result;
 	}
 
 
