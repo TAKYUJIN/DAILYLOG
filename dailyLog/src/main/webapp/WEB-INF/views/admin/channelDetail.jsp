@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,26 +7,13 @@
 <title>WITH</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style type="text/css">
-body {
-	color: black;
-	background: white;
-	font-family: 'Open Sans', sans-serif;
-}
-
 .table-wrapper {
 	width: 700px;
 	margin: 30px auto;
@@ -124,17 +111,11 @@ table.table td .add {
 }
 
 #subject {
-	width: 100px;
+	width: 200px;
 }
 .mainpage {
 	width:1024px;
 	margin-top:-150px;
-}
-.button1 {
-	background-color: #f08080;
-	padding: 6px 24px;
-	font-color: white;
-	border: none;
 }
 
 .buttonarea {
@@ -143,8 +124,8 @@ table.table td .add {
 	margin-top: 20px;
 }
 </style>
+</head>
 <body>
-
 	<jsp:include page="../common/adminBar.jsp"></jsp:include>
 	<div class="mainpage">
 		<div class="container">
@@ -159,46 +140,53 @@ table.table td .add {
 				</thead>
 				<tbody>
 					<tr>
-						<td id="subject"><strong>NO</strong></td>
-						<td><input type="text" placeholder="공지번호" 
-						style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px; width:500px;"></td>
-
-					</tr>
-					<tr>
-						<td id="subject"><strong>Subject</strong></td>
+						<td id="subject"><strong>채널명</strong></td>
 						<td><input type="text" placeholder="제목" 
 						style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px; width:500px;" ></td>
 
 					</tr>
 					<tr>
-						<td id="subject"><strong>Writer</strong></td>
+						<td id="subject"><strong>채널인</strong></td>
 						<td><input type="text" placeholder="작성자"
 						style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px; width:500px;"></td>
 					</tr>
 					<tr>
-						<td id="subject"><strong>Date</strong></td>
+						<td id="subject"><strong>최초 영상 업로드일</strong></td>
 						<td><input type="text" placeholder="작성일"
 						style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px; width:500px;"></td>
 					</tr>
 					<tr>
-						<td id="subject"><strong>파일첨부</strong></td>
-						<td><input type="file" placeholder="파일첨부"
-						style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px; width:500px;">
+						<td id="subject"><strong>게시 영상 횟수</strong></td>
+						<td><input type="text" placeholder="작성자"
+							style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px; width:500px;">
 						</td>
 					</tr>
 					<tr>
-						<td colspan="2" align="center"><textarea rows = "20"  cols="150" 
-						style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;"></textarea></td>
+						<td id="subject"><strong>영상 삭제 횟수</strong></td>
+						<td><input type="text" placeholder="작성자"
+							style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px; width:500px;">
+						</td>
+					</tr>
+					<tr>
+						<td id="subject"><strong>신고 횟수</strong></td>
+						<td><input type="text" placeholder="작성자"
+							style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px; width:500px;">
+						</td>
+					</tr>
+					<tr>
+						<td id="subject"><strong>중지 유무</strong></td>
+						<td><input type="text" placeholder="작성자"
+							style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px; width:500px;">
+						</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 	</div>
 	<div class="buttonarea">
-		<button class="button1" onclick="location.href= #">작성</button>
-		<button class="button1">취소</button>
+		<button onclick="location.href= #">채널로 이동</button>
+		<button onclick="channelManage.ad">취소</button>
 	</div>
-	<br><br>
-	<jsp:include page="../common/footer.jsp" />
+	
 </body>
 </html>

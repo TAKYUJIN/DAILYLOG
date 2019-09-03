@@ -198,7 +198,11 @@ h2 span {
 				<div class="carousel-inner">
 					<div class="item carousel-item active"> 
 						<div class="row">
-							<div class="col-sm-4"><div class="img-box"><img src="resources/images/video22.PNG"  width = "700px"  height="200px" alt=""></div></div>
+							<div class="col-sm-4"><div class="img-box">
+							<a href="video.vd">
+								<img src="resources/images/video22.PNG"  width = "700px"  height="200px" alt="">
+							</a>
+							</div></div>
 							<a href="#" ><img src="resources/images/three-dot.png"width="30px" height="30px"class="fixed" ></a>
 										
 						</div>

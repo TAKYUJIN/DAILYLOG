@@ -13,12 +13,25 @@ public class LogerController {
 	}
 
 	//로거 동영상 수정 페이지로 이동
-	@RequestMapping(value="updateLogerVideo.lo")
-	public String updateLogerVideo() {
-		return "loger/updateLogerVideo";
-	}
 
+		@RequestMapping(value="updateLogerVideo.lo")
+		public String updateLogerVideo() {
+			return "loger/updateLogerVideo";
+		}
+	
+		//로거 -> 분석
+		@RequestMapping(value="analysis.lo")
+		public String analysisView() {
+			return "loger/analysis";
+		}
 
+		
+		//로거 분석 -> 수익
+		@RequestMapping(value="anal_cal.lo")
+		public String calView() {
+			return "loger/anal_cal";
+		}
+		
 	//로거 정산 페이지로 이동
 	@RequestMapping(value="logerCalculate.lo")
 	public String selectLogerCalculate() {
