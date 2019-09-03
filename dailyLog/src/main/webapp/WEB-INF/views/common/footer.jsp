@@ -66,7 +66,7 @@ color:rgba(255,255,255,0.60); text-decoration:none; }
 </style>
 </head>
 <body>
-<div class="container" style="width:1024px; float:left;">
+<div class="container" style="width:100%; float:left;">
     <!----------- Footer ------------>
     <footer class="footer-bs">
         <div class="row">

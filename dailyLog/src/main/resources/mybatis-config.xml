@@ -5,8 +5,11 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.kh.with.member.model.vo.Member" alias="Member" />
+		<typeAlias type="com.kh.with.loger.model.vo.Calculate" alias="Calculate" />
+		<typeAlias type="com.kh.with.loger.model.vo.Support" alias="Support" />
 	</typeAliases>
 	<mappers>
-		<mapper resource="mappers/member-mapper.xml" />
+		<mapper resource="mappers/member-mapper.xml"/>
+		<mapper resource="mappers/loger-mapper.xml"/>
 	</mappers>
 </configuration>

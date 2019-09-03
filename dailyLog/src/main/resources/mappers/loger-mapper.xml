@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Calculate">
+  	<!-- 길어지다보면 오타 찾기가 너무 힘드니까 컨트롤 스페이스.. -->
+  	
+  <!-- 	<resultMap type="Calculate" id="supportResultSet">
+  	type="Board"로 읽어오려면 mybatis-config에 typeAlias해줘야함
+  		<id property="supNo" column="SUP_NO"/>
+  		<result property="userNo" column="USER_NO"/>
+  		<result property="chNo" column="CH_NO"/>
+  		<result property="supDT" column="SUP_DT"/>
+  		<result property="supPrice" column="SUP_PRICE"/>
+  		<result property="supTY" column="SUP_TY"/>
+  		<result property="nickname" column="NICKNAME"/>
+  	</resultMap> -->
+  	
+  	<resultMap type="Calculate" id="calculateResultSet">
+  	<!-- type="Board"로 읽어오려면 mybatis-config에 typeAlias해줘야함 -->
+  		<id property="calNo" column="CAL_NO"/>
+  		<result property="userNo" column="USER_NO"/>
+  		<result property="chNo" column="CH_NO"/>
+  		<result property="calSTDT" column="CAL_STDT"/>
+  		<result property="calEDT" column="CAL_EDT"/>
+  		<result property="calPrice" column="CAL_PRICE"/>
+  		<result property="calTY" column="CAL_TY"/>
+  		<result property="accNm" column="ACC_NM"/>
+  		<result property="bankNm" column="BANK_NM"/>
+  		<result property="account" column="ACCOUNT"/>
+  		<result property="nickname" column="NICKNAME"/>
+  	</resultMap>
+  
+  	<select id="selectLogerCalculate" resultMap="calculateResultSet">
+  		SELECT *
+  		FROM CALCULATE C
+  		JOIN MEMBER M ON(C.USER_NO = M.USER_NO)
+  		WHERE USER_ID = #{userId}
+  	</select>	
+  	
+</mapper>
