@@ -273,7 +273,7 @@
 	<!-- Collection of nav links, forms, and other content for toggling -->
 	<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
 		<ul class="nav navbar-nav" >
-			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">Home</a></li>
+			<li class="nav-item"><a href="home.mb" class="nav-link" style="padding-right:0px;">Home</a></li>
 			<li class="nav-item"><a href="bookmark.mb" class="nav-link" style="padding-right:0px;" onclick="">북마크</a></li>			
 			<li class="nav-item"><a href="subscribe.mb" class="nav-link" style="padding-right:0px;">구독</a></li>	
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">최근 활동</a></li>	
@@ -300,9 +300,22 @@
 			</li>
 			
 			<li class="nav-item">
-				<a href="#none" class="btn_global link_login">
+				<a href="#none" data-toggle="dropdown" class="btn_global link_login">
 				<img src="resources/images/laugh.png" style="width:20px;">
 			</a>
+			<ul class="dropdown-menu form-wrapper">					
+					<li>
+ 						<div class="noti_text" align="center"><p>채팅</p></div>
+							<div class="form-group">
+								<table class="noti_table">
+									<tr>친구가 없습니다.<br>친구를 추가 해주세요~</tr><br><br>
+									<button class="ui olive button"><a href="friends.mb"> 친구 추가</a></button>
+								</table>
+							</div>
+<!-- 							<img src="resources/images/settings.png" align="right">
+ -->						</form>
+					</li>
+				</ul>
 			</li>
 			
 			<li class="nav-item">
@@ -333,5 +346,5 @@
 		</ul>
 	</div>
 </nav>
-</body>
+ </body>
 </html>                                                                                    

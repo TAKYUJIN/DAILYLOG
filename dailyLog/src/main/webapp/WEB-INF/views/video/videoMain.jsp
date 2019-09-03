@@ -9,7 +9,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-
+	div img {
+		margin:5px;
+	}
 </style>
 </head>
 <body>
@@ -24,7 +26,15 @@
 				<td width="200px" height="100px"></td>
 				<td width="150px" height="100px"></td>
 				<td width="200px" height="100px">
-					<img src="resources/images/heart_black.png">
+					<div style="margin:10px;">
+						<a onclick="selectLike();"><img src="resources/images/heart_black.png" style="width:20px;"></a>
+						<!-- <img src="resources/images/heart_red.png" style="width:20px"> -->
+						<img src="resources/images/broken_black.png" style="width:22px">
+						<!-- <img src="resources/images/broken_red.png" style="width:22px"> -->
+						<img src="resources/images/bookmark_black.png" style="width:20px">
+						<!-- <img src="resources/images/bookmark_yellow.png" style="width:20px"> -->
+						<img src="resources/images/more.png" style="width:20px">
+					</div>
 				</td>
 			</tr>
 			<tr>
@@ -43,6 +53,42 @@
 			</tr>
 		</table>
 	</div>
+	
+	<script>
+		function selectLike(){
+			
+			$.ajax({
+				url:"/coc/idCheck.me",
+				type:"post",
+				data:{userId:userId},
+				success:function(data){
+					
+					if(data === "fail"){
+						
+						document.getElementById('checkId').style.color = "red";
+						document.getElementById('checkId').innerHTML = "중복된 아이디입니다"; 
+						
+					}else {
+			            if (!(ch >= '0' && ch <= '9') && !(ch >= 'a' && ch <= 'z')&&!(ch >= 'A' && ch <= 'Z')) {
+			                //alert("아이디는 영문 대소문자, 숫자만 입력가능합니다.");
+			                document.getElementById('checkId').style.color = "red";
+							document.getElementById('checkId').innerHTML = "아이디는 영문 대소문자, 숫자만 입력가능합니다."; 
+			                document.f.id.focus();
+			                document.f.id.select();
+			            }else {
+			            	
+						document.getElementById('checkId').style.color = "gray";
+						document.getElementById('checkId').innerHTML = "사용가능한 아이디입니다";
+			            }
+					}
+					
+				},
+				error:function(){
+					console.log("실패!");
+				}
+			});
+		}
+	</script>
 	
 	<br><br>
 	<jsp:include page="../common/footer.jsp"></jsp:include>
