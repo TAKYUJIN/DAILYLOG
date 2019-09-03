@@ -1,7 +1,12 @@
 package com.kh.with.loger.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.kh.with.loger.model.vo.Calculate;
 
 @Controller
 public class LogerController {
@@ -33,16 +38,16 @@ public class LogerController {
 		}
 		
 	//로거 정산 페이지로 이동
-		@RequestMapping(value="logerCalculate.lo")
-		public String selectLogerCalculate(Calculate c, Model model) {
+	//	@RequestMapping(value="logerCalculate.lo")
+	//	public String selectLogerCalculate(Calculate c, Model model) {
 			
 			
-			List<Calculate> list = ls.selectLogerCalculate(c);
+		//	List<Calculate> list = ls.selectLogerCalculate(c);
 			
-			model.addAttribute("list", list);
+		//	model.addAttribute("list", list);
 			
-			return "loger/logerCalculate";
-		}
+		//	return "loger/logerCalculate";
+		
 
 	//로거스튜디오 이동
 	@RequestMapping(value="logerHomeChannel.lo")
