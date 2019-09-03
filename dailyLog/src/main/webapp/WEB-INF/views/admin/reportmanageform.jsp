@@ -86,33 +86,31 @@
 	}
 </style>
 </head>
-<body><!-- 회원.채널 블랙리스트 관리 폼 -->
-<div class="signup-form">
+ <div class="signup-form">
     <form action="/examples/actions/confirmation.php" method="post" class="form-horizontal">
 		<div class="col-xs-8 col-xs-offset-4">
-			<h3>회원 블랙리스트 <br>
-			상세 내역</h3>
+			<h3>신고 관리 상세 </h3>
 		</div>		
         <div class="form-group">
-			<label class="control-label col-xs-4">신고번호</label>
+			<label class="control-label col-xs-4">회원번호</label>
 			<div class="col-xs-8">
                 <input type="text" class="form-control" name="text" required="required">
             </div>        	
         </div>
 		<div class="form-group">
-			<label class="control-label col-xs-4">신고 채널</label>
+			<label class="control-label col-xs-4">아이디</label>
 			<div class="col-xs-8">
                 <input type="text" class="form-control"name="text" required="required">
             </div>        	
         </div>
 		<div class="form-group">
-			<label class="control-label col-xs-4">신고인</label>
+			<label class="control-label col-xs-4">휴대폰</label>
 			<div class="col-xs-8">
                 <input type="text" class="form-control" name="text"required="required">
             </div>        	
         </div>
 		<div class="form-group">
-			<label class="control-label col-xs-4">신고날짜</label>
+			<label class="control-label col-xs-4">채널명</label>
 			<div class="col-xs-8">
                 <input type="text" class="form-control" name="text"required="required">
             </div>        	
