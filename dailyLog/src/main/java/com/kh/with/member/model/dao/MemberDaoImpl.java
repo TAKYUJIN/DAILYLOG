@@ -27,12 +27,13 @@ public class MemberDaoImpl implements MemberDao{
 	}
 
 
-	//마이페이지
-	@Override
-	public int update_myPage(SqlSessionTemplate sqlSession, Member m) {
-		// TODO Auto-generated method stub
-		return sqlSession.update("m.update_myPage", m);
-	}
+	/*
+	 * //마이페이지
+	 * 
+	 * @Override public int update_myPage(SqlSessionTemplate sqlSession, Member m) {
+	 * // TODO Auto-generated method stub return
+	 * sqlSession.update("m.update_myPage", m); }
+	 */
 
 	
 
