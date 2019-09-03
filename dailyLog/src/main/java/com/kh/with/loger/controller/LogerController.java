@@ -47,8 +47,9 @@ public class LogerController {
 			
 			
 
-			ArrayList<Calculate> list = ls.selectLogerCalculate(c);
-
+	/*
+	 * ArrayList<Calculate> list = ls.selectLogerCalculate(c);
+	 */
 			
 		//	model.addAttribute("list", list);
 			

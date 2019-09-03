@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title></title>
 <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -306,17 +308,34 @@
 			<ul class="dropdown-menu form-wrapper">					
 					<li>
  						<div class="noti_text" align="center"><p>채팅</p></div>
-							<div class="form-group">
+							<div id="frilist" class="form-group">
 								<table class="noti_table">
-									<tr>친구가 없습니다.<br>친구를 추가 해주세요~</tr><br><br>
-									<button class="ui olive button"><a href="friends.mb"> 친구 추가</a></button>
-								</table>
-							</div>
-<!-- 							<img src="resources/images/settings.png" align="right">
- -->						</form>
-					</li>
-				</ul>
-			</li>
+ 				 <h5>친구 추가를 해주세요~</h5>
+ <button class="ui olive button" id="addfri">친구 추가</button>
+   </table></div>
+ <div id="myDiv">
+ 	 <h4>메일 보내기</h4>
+    <form action="mailSending.mb" method="post">
+      <div>
+        <input type="text" name="FriId" size="120"
+        style="width: 100%" placeholder="상대의 이메일" class="form-control">
+      </div>
+      <div align="center">
+        <!-- 제목 -->
+        <input type="text" name="title" size="120"  style="width: 100%" placeholder="제목을 입력해주세요" class="form-control">
+      </div>
+        <p>
+          <div align="center">
+          <!-- 내용 -->
+            <textarea name="content" cols="120" rows="12"  style="width: 100%; resize: none" placeholder="내용#"  class="form-control"></textarea>
+          </div>
+        <p>
+      <div align="center">
+        <input type="submit" value="메일 보내기" class="btn btn-warning">
+        <input type="reset" value="취소" class="btn btn-default" id="reset">
+        
+      </div>
+  </form></div></li></ul></li>    
 			
 			<li class="nav-item">
 			<a href="#none" data-toggle="dropdown" class="btn_global link_login">
@@ -347,4 +366,35 @@
 	</div>
 </nav>
  </body>
+ <script>
+ //친구 
+ /* var emailsend =true;
+ function emailsend(){
+	 var con=document.getElementById("myDiv");
+	 if(con.style.display == 'none'){
+		 con.style.display == 'block';
+		 
+	 }else{
+		 con.style.display=='none';
+	 }
+ }
+ */
+ $(document).ready(function(){
+	 $('#frilist').show();
+	 $('#myDiv').hide();
+	 
+	 $('#addfri').click(function(){
+		 $('#frilist').hide();
+		 $('#myDiv').show();
+		 return false;
+	 });
+	 $('#reset').click(function(){
+		 $('#frilist').show();
+		 $('#myDiv').hide();
+		 
+	 });
+	 
+ });
+ 
+ </script>
 </html>               

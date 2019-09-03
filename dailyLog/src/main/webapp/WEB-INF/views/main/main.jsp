@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<jsp:include page="../common/logerBar.jsp"></jsp:include> 
+<jsp:include page="../common/mainBar.jsp"></jsp:include> 
 <%-- 	<c:if test="${ empty sessionScope.loginUser }">
 		 <jsp:include page="../common/guest.jsp"></jsp:include> 
 		 <jsp:include page="../main/top.jsp"></jsp:include> 
@@ -19,7 +19,7 @@
 		 <jsp:include page="../main/top1.jsp"></jsp:include> 
 	</c:if> 
  --%>
-
+<jsp:include page="../main/top.jsp"></jsp:include> 
 	<jsp:include page="../common/footer.jsp"></jsp:include> 
 
 
