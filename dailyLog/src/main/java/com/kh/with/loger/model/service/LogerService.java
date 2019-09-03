@@ -4,9 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.kh.with.loger.model.vo.Calculate;
+import com.kh.with.loger.model.vo.Support;
+import com.kh.with.member.model.vo.Member;
 
 public interface LogerService {
-	
-	ArrayList<Calculate> selectLogerCalculate(Calculate c);
+//	ArrayList<Calculate> selectLogerCalculate(Member m);
+//
+//	ArrayList<Calculate> selectLogerCalculate(Calculate c);
+
+	ArrayList<Calculate> selectLogerCalculate(Calculate c, Member m);
+
 
 }

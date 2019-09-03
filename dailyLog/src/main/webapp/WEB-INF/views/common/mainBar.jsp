@@ -288,7 +288,7 @@
 		</form>
 		<ul class="nav navbar-nav navbar-right ml-auto" style="width:265px;">			
 			<li class="nav-item">
-				<a href="#none" class="btn_global link_login" >
+				<a href="logout.me" class="btn_global link_login" >
 				<img src="resources/images/exit.png" style="width:20px;">
 			</a>
 			</li>
@@ -312,8 +312,8 @@
 									<button class="ui olive button"><a href="friends.mb"> 친구 추가</a></button>
 								</table>
 							</div>
-<!-- 							<img src="resources/images/settings.png" align="right">
- -->						</form>
+							<img src="resources/images/settings.png" align="right">
+ 					</form>
 					</li>
 				</ul>
 			</li>
@@ -347,4 +347,4 @@
 	</div>
 </nav>
  </body>
-</html>               
+</html>

@@ -11,11 +11,11 @@ public class Support {
 	private int supPrice;	//후원금액
 	private String supTY;	//후원종류
 	
-	private String nickname; //닉네임
+	
 	
 	public Support() {}
 
-	public Support(int nNo, int supNo, int userNo, int chNo, Date supDT, int supPrice, String supTY, String nickname) {
+	public Support(int nNo, int supNo, int userNo, int chNo, Date supDT, int supPrice, String supTY) {
 		super();
 		this.nNo = nNo;
 		this.supNo = supNo;
@@ -24,7 +24,6 @@ public class Support {
 		this.supDT = supDT;
 		this.supPrice = supPrice;
 		this.supTY = supTY;
-		this.nickname = nickname;
 	}
 
 	public int getnNo() {
@@ -83,18 +82,10 @@ public class Support {
 		this.supTY = supTY;
 	}
 
-	public String getNickname() {
-		return nickname;
-	}
-
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
-	}
-
 	@Override
 	public String toString() {
 		return "Support [nNo=" + nNo + ", supNo=" + supNo + ", userNo=" + userNo + ", chNo=" + chNo + ", supDT=" + supDT
-				+ ", supPrice=" + supPrice + ", supTY=" + supTY + ", nickname=" + nickname + "]";
+				+ ", supPrice=" + supPrice + ", supTY=" + supTY + "]";
 	}
 	
 	
