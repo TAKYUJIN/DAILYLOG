@@ -11,24 +11,47 @@
 margin-top: 50px;
 
 }
+.img_wrap {
+	width: 100px; height: 100px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 50%;
+    magin-top : 50px;
+}
+.img_wrap{
+	max-width: 100%;
+}
 
 </style>
+<script type="text/javascript">
+	var profile;
+	$(document).read(function() {
+		$("#input_img").on("change", handImgFileSelect);
+	});
+	
+	function handleImgFileSelect(e) {
+		var files = e.target.files;
+		var filesArr = Array.prototype.slice.call(files);
+		
+		filesArr.forEach(function(f){
+			if
+		})
+	}
+</script>
 </head>
 <body>
 <jsp:include page="../common/mainBar.jsp"/>
 <h1>마이페이지</h1>
 <div class="nav" align="center">
-<img src="#"/>
 <form id="myForm" action="myPage" method="post">
 	<table align="center">
 		<tr>
 			<td>
-				<img style="border-radius: 7px; -moz-border-radius: 7px;
-						-khtml-border-radius: 7px; -webkit-border-radius: 7px;"
-						src="#" />
-						
+				<img class="img_wrap">
+				</td>
+				<td>		
 				<input type="email" name="email" readonly value="${ m.userId }">
-				<input type="button" value="편집"> 
+			<input type="file" class="pro">
 			</td>
 		</tr>
 		<tr>

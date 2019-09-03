@@ -64,6 +64,7 @@
 	}
 	.search-box {
         position: relative;
+        margin-top:5px;
     }	
     .search-box input {
         padding-right: 35px;
@@ -249,7 +250,10 @@
 	
 	#navbarCollapse a {
 		font-size:12px;
-	}
+	}a:link { color: black; text-decoration: none; color: black;}
+	a:visited { color: black; text-decoration: none; color: black;}
+ 	a:hover { color: black; text-decoration: none; color: black;}
+	a:active { color: black; text-decoration: none; color: black;}
 	
 </style>
 <script type="text/javascript">
@@ -267,9 +271,10 @@
 	<!-- Collection of nav links, forms, and other content for toggling -->
 	<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
 		<ul class="nav navbar-nav" >
-			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">채널설정</a></li>
+			<li class="nav-item"><a href="logerHomeChannel.lo" class="nav-link" style="padding-right:0px;">홈</a></li>
+			<li class="nav-item"><a href="logerChannelSet.lo" class="nav-link" style="padding-right:0px;">채널설정</a></li>
 			<li class="nav-item"><a href="logerVideo.lo" class="nav-link" style="padding-right:0px;">동영상</a></li>			
-			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">분석</a></li>	
+			<li class="nav-item"><a href="analysis.lo" class="nav-link" style="padding-right:0px;">분석</a></li>	
 			<li class="nav-item"><a href="logerCalculate.lo" class="nav-link" style="padding-right:0px;">정산</a></li>	
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">댓글</a></li>
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">신고기록</a></li>
