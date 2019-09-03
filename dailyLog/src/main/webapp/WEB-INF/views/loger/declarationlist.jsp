@@ -19,7 +19,7 @@
 		</style>
 	</head>
 	<body>
-<jsp:include page="../common/loger.jsp"></jsp:include>
+<jsp:include page="../common/logerBar.jsp"></jsp:include>
 <br><br>
 
 		<!-- Wrapper -->

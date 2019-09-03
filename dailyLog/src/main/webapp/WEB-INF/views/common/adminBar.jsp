@@ -250,7 +250,10 @@
 	#navbarCollapse a {
 		font-size:12px;
 	}
-	
+	a:link { color: black; text-decoration: none; color: black;}
+	a:visited { color: black; text-decoration: none; color: black;}
+ 	a:hover { color: black; text-decoration: none; color: black;}
+	a:active { color: black; text-decoration: none; color: black;}
 </style>
 <script type="text/javascript">
 	// Prevent dropdown menu from closing when click inside the form
@@ -285,11 +288,14 @@
 		</ul>
 		
 		<ul class="nav navbar-nav navbar-right ml-auto">			
-			<li class="nav-item">
-				<a href="#none" class="btn_global link_login" >
-				<img src="resources/images/admin.png" style="width:25px;">
-			</a>
-			</li>
+			<li class="nav-item dropdown">
+				<a data-toggle="dropdown" class="btn_global link_login dropdown-toggle" href="adminChatting.ad">
+				<img src="resources/images/admin.png" style="width:25px;"></a>
+				<ul class="dropdown-menu">					
+					<li><a href="adminChatting.ad" class="dropdown-item">상담대기{}</a></li>
+					<li><a href="adminChattingComplete.ad" class="dropdown-item">상담완료{}</a></li>
+				</ul>
+			</li>		
 			
 		</ul>
 	</div>

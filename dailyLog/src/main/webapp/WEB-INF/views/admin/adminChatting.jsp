@@ -14,6 +14,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style type="text/css">
+	
     body {
         color: #666;
         background: #f5f5f5;
@@ -75,12 +76,12 @@
         top: 1px;
         margin: 0 2px;
     }
-	.page-title1 {
+	.page-title {
 		margin: 3rem 0 3rem 1rem;
 		font-family: 'Varela Round', sans-serif;
 		position: relative;
 	}
-	.page-title1::after {
+	.page-title::after {
 		content: "";
 		width: 90px;
 		position: absolute;
@@ -91,82 +92,43 @@
 		bottom: -15px;
 	}
 	
-	.page-title2 {
-		margin: 3rem 0 3rem 1rem;
-		font-family: 'Varela Round', sans-serif;
-		position: relative;
-	}
-	.page-title2::after {
-		content: "";
-		width: 110px;
-		position: absolute;
-		height: 3px;
-		border-radius: 1px;
-		background: #FBC52C; /* #73bb2b 원래 색 */
-		left: 0;
-		bottom: -15px;
-	}
-	
-	.page-title3 {
-		margin: 3rem 0 3rem 1rem;
-		font-family: 'Varela Round', sans-serif;
-		position: relative;
-	}
-	.page-title3::after {
-		content: "";
-		width: 150px;
-		position: absolute;
-		height: 3px;
-		border-radius: 1px;
-		background: #192466; /* #73bb2b 원래 색 */
-		left: 0;
-		bottom: -15px;
-	}
 </style>
 </head>
 <body>
-<jsp:include page="../common/mainBar.jsp"></jsp:include>
+<jsp:include page="../common/adminBar.jsp"></jsp:include>
 	<div class="noticeList">
 			<div class="col-lg-15">
-				<a href="noticeMain.no" class="noticeLink" style="float: left; width: 25%;"><h1 class="page-title1">FAQs</h1></a>
-				<a href="noticeList.no" class="noticeLink" style="float: left; width: 25%;"><h1 class="page-title2">Notice</h1></a>
-				<a href="noticeChattingQuestion.no" class="noticeLink" style="float: left; width: 25%;"><h1 class="page-title3">question</h1></a>
+				<a href="noticeMain.no" class="noticeLink" style="float: left; width: 25%;"><h4 class="page-title">실시간 문의</h4></a>
 			</div>
 		<div class="table-wrapper">
 
 			<table class="table table-striped" style="">
 				<thead>
 					<tr>
-						<th>No</th>
-						<th>제목</th>
-						<th>날짜</th>
-						<th>조회수</th>
+						<th>문의 번호</th>
+						<th>문의자</th>
+						<th>신청일</th>
+						<th>상태</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
 						<td>1</td>
-						<td>공지사항입니다</td>
+						<td>깜찍은주</td>
 						<td>2019-09-02</td>
-						<td>123</td>
+						<td>N</td>
 					</tr>
 					<tr>
 						<td>2</td>
-						<td>후원 안내, 저작권 안내</td>
+						<td>기분좋은 채빈언니</td>
 						<td>2019-09-03</td>
-						<td>333</td>
+						<td>N</td>
 					</tr>
 					<tr>
 						<td>3</td>
-						<td>공지사항입니다</td>
+						<td>막내</td>
 						<td>2019-09-02</td>
-						<td>123</td>
-					</tr>
-					<tr>
-						<td>4</td>
-						<td>후원 안내, 저작권 안내</td>
-						<td>2019-09-03</td>
-						<td>333</td>
+						<td>N</td>
 					</tr>
 				</tbody>
 			</table>
