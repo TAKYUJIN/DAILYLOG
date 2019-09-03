@@ -26,13 +26,7 @@
 	margin-left: 950px;
 	margin-top: 30px;
 }
-tr:hover {
 
-      background-color: #F9EDA5;
-
-      cursor: pointer;
-
-   }
 </style>
 
 <body>
@@ -52,7 +46,7 @@ tr:hover {
 							</tr>
 						</thead>
 						<tbody>
-							<tr class="selecttr">
+							<tr onclick="location.href='adminNoticeRevise.ad'">
 								<td>1</td>
 								<td>Thomas Hardy</td>
 								<td>89 Chiaroscuro Rd.</td>
@@ -60,7 +54,7 @@ tr:hover {
 								<td>97219</td>
 
 							</tr>
-							<tr class="selecttr">
+							<tr">
 								<td>2</td>
 								<td>Maria Anders</td>
 								<td>Obere Str. 57</td>
@@ -68,7 +62,7 @@ tr:hover {
 								<td>12209</td>
 
 							</tr>
-							<tr class="selecttr">
+							<tr >
 								<td>3</td>
 								<td>Fran Wilson</td>
 								<td>C/ Araquil, 67</td>

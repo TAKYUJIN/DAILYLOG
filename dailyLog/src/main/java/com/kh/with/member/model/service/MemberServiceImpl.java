@@ -66,8 +66,9 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public Member update_myPage(Member m) throws LoginException {
 		// TODO Auto-generated method stub
-		md.update_myPage(sqlSession, m);
-		return md.loginMember(sqlSession, m);
+//		md.update_myPage(sqlSession, m);
+//		return md.loginMember(sqlSession, m);
+		return m;
 	}
 
 	//비밀변호 변경
