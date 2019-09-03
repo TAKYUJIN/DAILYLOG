@@ -146,7 +146,7 @@
 		<div class="col-lg-15">
 			<a href="noticeMain.no" class="noticeLink" style="float:left; width:25%;"><h1 class="page-title1">FAQs</h1></a> 
 			<a href="noticeList.no" class="noticeLink" style="float:left; width:25%;"><h1 class="page-title2">Notice</h1></a>
-			<a href="noticeEmailQuestion.no" class="noticeLink" style="float:left; width:25%;"><h1 class="page-title3">question</h1></a></div>
+			<a href="noticeChattingQuestion.no" class="noticeLink" style="float:left; width:25%;"><h1 class="page-title3">question</h1></a></div>
 			<div class="accordion" id="accordionExample">
 				<div class="card">
 					<div class="card-header" id="headingOne">

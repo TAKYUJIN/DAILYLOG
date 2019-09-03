@@ -1,16 +1,12 @@
 package com.kh.with.member.model.service;
 
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Random;
 
 import javax.inject.Inject;
-import java.io.PrintWriter;
-
 import javax.servlet.http.HttpServletResponse;
 
 import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.with.member.model.dao.MemberDao;
@@ -65,11 +61,13 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 
+
 	/*
 	 * @Override public Member update_myPage(Member m) throws LoginException { //
 	 * TODO Auto-generated method stub md.update_myPage(sqlSession, m); return
 	 * md.loginMember(sqlSession, m); }
 	 */
+
 
 
 	//비밀변호 변경

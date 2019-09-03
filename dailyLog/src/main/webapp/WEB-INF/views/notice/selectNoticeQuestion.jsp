@@ -13,11 +13,13 @@
 	}
     table.table tr th, table.table tr td {
         border-color: #e9e9e9;
+        text-align:center;
     }
     table.table-striped tbody tr:nth-of-type(odd) {
     	background-color: #fcfcfc;
 	}
     .table-wrapper {
+    	
     	width:800px;
         background: #fff;
         padding: 20px;
@@ -59,7 +61,7 @@
         top: 1px;
         margin: 0 2px;
     }
-	.noticeEmailQuestion {
+	.selectNoticeQuestion {
 		margin-top:50px;
 		margin-left:100px;
 		width:1000px;
@@ -125,7 +127,7 @@
 		position: absolute;
 		height: 3px;
 		border-radius: 1px;
-		background: #192466; /* #73bb2b 원래 색 */
+		background: #FBC52C; /* #73bb2b 원래 색 */
 		left: 0;
 		bottom: -15px;
 	}
@@ -141,7 +143,7 @@
 		position: absolute;
 		height: 3px;
 		border-radius: 1px;
-		background: #FBC52C; /* #73bb2b 원래 색 */
+		background: #192466; /* #73bb2b 원래 색 */
 		left: 0;
 		bottom: -15px;
 	}
@@ -149,26 +151,24 @@
 </head>
 <body>
 <jsp:include page="../common/mainBar.jsp"></jsp:include>
-<div class="noticeEmailQuestion">
+<div class="selectNoticeQuestion">
 		<div class="col-lg-15">
 			<a href="noticeMain.no" class="noticeLink" style="float:left; width:25%;"><h1 class="page-title1">FAQs</h1></a> 
 			<a href="noticeList.no" class="noticeLink" style="float:left; width:25%;"><h1 class="page-title2">Notice</h1></a>
-			<a href="noticeQuestion.no" class="noticeLink" style="float:left; width:25%;"><h1 class="page-title3">question</h1></a>
+			<a href="noticeChattingQuestion.no" class="noticeLink" style="float:left; width:25%;"><h1 class="page-title3">question</h1></a>
 			</div>
 			<div class="">
-			<a href="noticeQuestion.no" class="noticeLink" style="float:right; width:40%;"><h4 class="page-title4">나의 문의내역</h4></a>
-			<a href="noticeQuestion.no" class="noticeLink" style="float:right; width:15%;"><h4 class="page-title5">1:1문의</h4></a>
+			<a href="selectNoticeQuestion.no" class="noticeLink" style="float:right; width:40%;"><h4 class="page-title4">나의 문의내역</h4></a>
+			<a href="noticeChattingQuestion.no" class="noticeLink" style="float:right; width:15%;"><h4 class="page-title5">1:1문의</h4></a>
 			</div>
 		<div class="table-wrapper">
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>Address</th>
-                        <th>City</th>
-                        <th>Pin Code</th>
-                        <th>Country</th>
+                        <th>No</th>
+                        <th>회원명</th>
+                        <th>제목</th>
+                        <th>문의 날짜</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -177,40 +177,30 @@
                         <td>Thomas Hardy</td>
                         <td>89 Chiaroscuro Rd.</td>
                         <td>Portland</td>
-                        <td>97219</td>
-                        <td>USA</td>
                     </tr>
                     <tr>
                         <td>2</td>
                         <td>Maria Anders</td>
                         <td>Obere Str. 57</td>
                         <td>Berlin</td>
-                        <td>12209</td>
-                        <td>Germany</td>
                     </tr>
                     <tr>
                         <td>3</td>
                         <td>Fran Wilson</td>
                         <td>C/ Araquil, 67</td>
                         <td>Madrid</td>
-                        <td>28023</td>
-                        <td>Spain</td>
                     </tr>
                     <tr>
                         <td>4</td>
                         <td>Dominique Perrier</td>
                         <td>25, rue Lauriston</td>
                         <td>Paris</td>
-                        <td>75016</td>
-                        <td>France</td>
                     </tr>
                     <tr>
                         <td>5</td>
                         <td>Martin Blank</td>
                         <td>Via Monte Bianco 34</td>
                         <td>Turin</td>
-                        <td>10100</td>
-                        <td>Italy</td>
                     </tr>        
                 </tbody>
             </table>

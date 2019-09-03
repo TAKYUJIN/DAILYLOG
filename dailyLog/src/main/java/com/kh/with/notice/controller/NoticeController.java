@@ -60,24 +60,31 @@ public class NoticeController {
 	}
 	
 	//footer -> 고객센터로 이동
-		@RequestMapping(value="noticeList.no")
-		public String showNoticeList() {
-			
-			return "notice/noticeList";
+	@RequestMapping(value="noticeList.no")
+	public String showNoticeList() {
+		
+		return "notice/noticeList";
 	}
 		
 	//footer -> 이메일 의견 보내기로 이동
-		@RequestMapping(value="noticeEmailQuestion.no")
-		public String showNoticeQuestion() {
-			
-			return "notice/noticeEmailQuestion";
-	}
+//		@RequestMapping(value="noticeEmailQuestion.no")
+//		public String showNoticeQuestion() {
+//			
+//			return "notice/noticeEmailQuestion";
+//	}
 		
+		
+	//footer -> 채팅 1:1 문의로 이동
+	@RequestMapping(value="noticeChattingQuestion.no")
+	public String showNoticeChattingQuestion() {
+		return "notice/noticeChattingQuestion";
+	}
+	
 	//고객센터 나의 문의 내역로 이동
-		@RequestMapping(value="selectNoticeQuestion.no")
-		public String showSelectNoticeQuestion() {
-			
-			return "notice/selectNoticeQuestion";
+	@RequestMapping(value="selectNoticeQuestion.no")
+	public String showSelectNoticeQuestion() {
+		
+		return "notice/selectNoticeQuestion";
 	}
 
 }

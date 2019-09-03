@@ -9,7 +9,6 @@ public class AdminController {
 	//관리자 정산 페이지 이동
 	@RequestMapping(value="adminCalculate.ad")
 	public String selectAdminCalculate() {
-		System.out.println("오긴 오니?");
 		return "admin/adminCalculate";
 	}
 	
@@ -25,10 +24,23 @@ public class AdminController {
 		return "admin/adminNoticeWrite";
 	
 	}
+
+	
+	//관리자 채팅 대기 페이지
+	@RequestMapping(value="adminChatting.ad")
+	public String adminChatting() {
+		return "admin/adminChatting";
+	}
+	
+	//관리자 채팅 완료 페이지
+	@RequestMapping(value="adminChattingComplete.ad")
+	public String adminChattingComplete() {
+		return "admin/adminChattingComplete";
+
 	//관리자 공지사항 수정 메소드 
 	@RequestMapping(value="adminNoticeRevise.ad")
 	public String adminNoticeRevise() {
 		return "admin/adminNoticeRevise";
-		
+
 	}
 }
