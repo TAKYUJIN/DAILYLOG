@@ -10,9 +10,6 @@
 <jsp:include page="/WEB-INF/views/common/mainBar.jsp"></jsp:include>
 <br><br><br><br><br><br>  
 
-
-      <jsp:include page="/WEB-INF/views/admin/declarationlist.jsp"></jsp:include>	
-    
    <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
  
 </body>
