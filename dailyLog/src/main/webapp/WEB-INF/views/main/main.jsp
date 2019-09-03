@@ -10,23 +10,19 @@
 
 
 
-	<c:if test="${ empty sessionScope.loginUser }">
-		<jsp:include page="../common/guest.jsp"></jsp:include>
-	</c:if>
-	<c:if test="${ !empty sessionScope.loginUser }">
-		<jsp:include page="../common/mainBar.jsp"></jsp:include>
-	</c:if>
+
+	<%-- 
+	<jsp:include page="../common/mainBar.jsp" />
+ --%>
 
 
-
-	<jsp:include page="../common/footer.jsp" />
 
 
 
 
 
   	  <%-- 
-=======
+
 <%--
   	<jsp:include page="../common/guest.jsp"></jsp:include>
 	<jsp:include page="../common/footer.jsp"></jsp:include>
@@ -62,12 +58,10 @@
 	<c:if test="${ !empty sessionScope.loginUser }">
 		<jsp:include page="../common/mainBar.jsp"></jsp:include>	
 	</c:if> --%>
+
 	
-  	  
-<%-- 	<jsp:include page="../loger/selectLogerCalculate.jsp"></jsp:include> --%>
-
-
-
+	<%-- 
+<jsp:include page="../common/footer.jsp"></jsp:include> --%>
 
 
 </body>

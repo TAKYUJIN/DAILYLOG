@@ -71,6 +71,7 @@ public class MemberServiceImpl implements MemberService {
 	 * md.loginMember(sqlSession, m); }
 	 */
 
+
 	//비밀변호 변경
 	/*
 	 * @Override public Member update_Pwd(Member m, String old_pwd,

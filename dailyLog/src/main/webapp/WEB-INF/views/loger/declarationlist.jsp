@@ -6,6 +6,26 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Elements Reference - Massively by HTML5 UP</title>
+/*
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+/*  		td{
+ 
+  width:50px;
+ height:100px;
+ margin:center;		
+ 
+ } */  
+		
+		</style>
+	</head>
+	<body>
+<jsp:include page="../common/logerBars.jsp"></jsp:include>
+<br><br>
+    */
+
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -83,6 +103,7 @@
                 <tbody>
                     <tr>
                          <td width="450px">
+
 
  												<img src="resources/images/video11.PNG "width = "150px"> 
  												<img src="resources/images/video12.PNG "width = "150px"> 
