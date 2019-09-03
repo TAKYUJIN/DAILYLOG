@@ -17,9 +17,9 @@ margin-top: 50px;
 <body>
 <jsp:include page="../common/mainBar.jsp"/>
 <h1>마이페이지</h1>
-<div class="nav">
-<input type="file" readonly>
-<form id="myForm" action="../myPage.me" method="post">
+<div class="nav" align="center">
+<img src="#"/>
+<form id="myForm" action="myPage" method="post">
 	<table align="center">
 		<tr>
 			<td>

@@ -35,6 +35,7 @@ public class AdminController {
 	//관리자 채팅 완료 페이지
 	@RequestMapping(value="adminChattingComplete.ad")
 	public String adminChattingComplete() {
+
 		return "admin/adminChattingComplete";
 	}
 	
