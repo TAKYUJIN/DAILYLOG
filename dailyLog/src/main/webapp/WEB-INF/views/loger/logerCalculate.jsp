@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,6 +23,7 @@
 	}
     table.table tr th, table.table tr td {
         border-color: #e9e9e9;
+        text-align:center;
     }
     table.table-striped tbody tr:nth-of-type(odd) {
     	background-color: #fcfcfc;
@@ -104,14 +107,16 @@
                     </tr>
                 </thead>
                 <tbody>
+                	<c:forEach items="${list}" var="Calculate">
                     <tr>
-                        <td>1</td>
-						<td>좋아요</td>
-						<td>은주의 쿠킹교실</td>
-						<td>3,000원</td>
-						<td>2019.08.16</td>
+                        <td>${Calculate.nNo}</td>
+						<td>${Calculate.supTY}</td>
+						<td>${Calculate.nickname}</td>
+						<td><fmt:formatNumber value="${Calculate.supTY}" pattern="#,###,###,###" /></td>
+						<td><fmt:formatDate pattern="yyyy-MM-dd" value="${Calculate.supDT}"/></td>
                     </tr>
-                    <tr>
+                    </c:forEach>
+                    <!-- <tr>
                         <td>2</td>
                         <td>좋아요</td>
 						<td>은주의 쿠킹교실</td>
@@ -138,7 +143,7 @@
 						<td>은주의 쿠킹교실</td>
 						<td>3,000원</td>
 						<td>2019.08.16</td>
-                    </tr>        
+                    </tr>   -->      
                 </tbody>
             </table><br><br>
             
@@ -154,36 +159,14 @@
                     </tr>
                 </thead>
                 <tbody>
+                   <c:forEach items="${list}" var="Calculate">
                     <tr>
-                        <td>1</td>
-						<td>2019.08.16</td>
-						<td>총 119,000원</td>
-						<td>승인 대기 또는 지급 완료</td>
+                        <td>${Calculate.nNo}</td>
+						<td><fmt:formatDate pattern="yyyy-MM-dd" value="${Calculate.calSTDT}"/></td>
+						<td><fmt:formatNumber value="${Calculate.calPrice}" pattern="#,###,###,###" /></td>
+						<td>${Calculate.calTY}</td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>2019.08.16</td>
-						<td>총 119,000원</td>
-						<td>승인 대기 또는 지급 완료</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>2019.08.16</td>
-						<td>총 119,000원</td>
-						<td>승인 대기 또는 지급 완료</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>2019.08.16</td>
-						<td>총 119,000원</td>
-						<td>승인 대기 또는 지급 완료</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>2019.08.16</td>
-						<td>총 119,000원</td>
-						<td>승인 대기 또는 지급 완료</td>
-                    </tr>        
+                    </c:forEach>
                 </tbody>
             </table>
             <div class="calculateBtn">

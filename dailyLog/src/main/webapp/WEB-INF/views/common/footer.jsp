@@ -67,7 +67,7 @@ div.Footer {   width:100%; height:20px;   margin:0px; padding:0px;   text-align:
 </style>
 </head>
 <body>
-<div class="container" style="width:1024px; float:left;">
+<div class="container" style="width:100%; float:left;">
     <!----------- Footer ------------>
     <footer class="footer-bs">
         <div class="row">
