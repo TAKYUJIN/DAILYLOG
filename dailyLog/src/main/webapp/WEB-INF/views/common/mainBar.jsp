@@ -279,7 +279,7 @@
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">최근 활동</a></li>	
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">좋아요 영상</a></li>
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;" onclick="">로거 스튜디오</a></li>
-		</ul>
+		</ul>				<!-- 로거스튜디오 -> loger.mb -->
 		<form class="navbar-form form-inline" style="width:240px;">
 			<div class="input-group search-box">								
 				<input type="text" id="search" class="form-control" placeholder="검색">

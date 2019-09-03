@@ -36,7 +36,6 @@ public class MemberController {
 	@RequestMapping("logout.me")
 	public String logout(SessionStatus status) {
 
-		//세션에 담지 않은 상태에서 확정을 지어주면 비어지게 된다.
 		status.setComplete();
 
 		return "redirect:index.jsp";
@@ -51,9 +50,7 @@ public class MemberController {
 
 	@RequestMapping(value="login.me")
 	public String loginCheck(Member m, Model model) {
-		//	      //random salt이기 때문에 다름
-		//	      String encPassword = passwordEncoder.encode(m.getUserPwd());
-		//	      System.out.println(encPassword);
+
 
 		try {
 			Member loginUser = ms.loginMember(m);
@@ -72,19 +69,12 @@ public class MemberController {
 	@RequestMapping(value="insert.me")
 	public String insertMember(Model model, Member m, HttpServletRequest request) {
 
-		
 		System.out.println(m);
 
 		String root = request.getSession().getServletContext().getRealPath("resources");
-		// 세션을 발급해준 컨테이너 주소 tsp에 하드디스크상 물리적인 경로 webapp을 가져온다.
 
 		System.out.println(root);
-
 		
-
-		//파일명 변경
-		
-
 		try {
 			
 

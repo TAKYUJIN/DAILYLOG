@@ -21,13 +21,7 @@ public class MainController {
 		return "subscribe/subscribeList";
 	}
 	
-	//영상 클릭시 동영상 페이지로 이동
-	@RequestMapping(value="video.mb")
 
-	public String showVideoView() {
-		
-		return "video/videoMain";
-	}
 	//home 클릭시 페이지로 이동
 	@RequestMapping(value="home.mb")
 	public String showhome() {
@@ -39,5 +33,9 @@ public class MainController {
 		return "friends/addfriends";
 	}
 	
-	
+	//home 클릭시 페이지로 이동
+	@RequestMapping(value="loger.mb")
+	public String showLoger() {
+		return "loger/logerHomeChannel";
+	}
 }
