@@ -1,6 +1,7 @@
 package com.kh.with.member.controller;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -62,14 +63,15 @@ public class MemberController {
 	}
 
 	
-	//myPage 수정
-	@RequestMapping(value = "/update_myPage.me", method = RequestMethod.POST)
-	public String update_mypage(@ModelAttribute Member m, HttpSession session, RedirectAttributes rttr)
-			throws Exception{
-		session.setAttribute("m", ms.update_myPage(m));
-		rttr.addFlashAttribute("msg", "회원정보 수정 완료");
-		return "redirect:/member/mypage.do";
-	}
+	/*
+	 * //myPage 수정
+	 * 
+	 * @RequestMapping(value = "/update_myPage.me", method = RequestMethod.POST)
+	 * public String update_mypage(@ModelAttribute Member m, HttpSession session,
+	 * RedirectAttributes rttr) throws Exception{ session.setAttribute("m",
+	 * ms.update_myPage(m)); rttr.addFlashAttribute("msg", "회원정보 수정 완료"); return
+	 * "redirect:/member/mypage.do"; }
+	 */
 	
 	/*
 	 * // 비밀번호 변경

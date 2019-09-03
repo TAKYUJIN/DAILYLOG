@@ -16,7 +16,7 @@ public interface MemberService {
 	String create_key() throws Exception;
 
 	
-	Member update_myPage(Member m) throws LoginException;
+//	Member update_myPage(Member m) throws LoginException;
 	
 	//Member update_Pwd(Member m, String old_pwd, HttpServletResponse response);
 
