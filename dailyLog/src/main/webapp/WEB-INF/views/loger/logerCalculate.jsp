@@ -144,43 +144,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                	<%-- <c:forEach items="${list}" var="c">
+                	<c:forEach items="${sList}" var="s">
+                	<%-- <c:if test="${s.supTY eq '1'}">
+                		<c:set var="${s.supTY}">일회</c:set>
+                	</c:if> --%>
                     <tr>
-                        <td><c:out value="${c.userNo}"/></td>
-						<td><c:out value="${c.supTY}"/></td>
-						<td><c:out value="${c.nickname}"/></td>
-						<td><fmt:formatNumber value="${c.supPrice}" pattern="#,###,###,###" /></td>
-						<td><fmt:formatDate pattern="yyyy-MM-dd" value="${c.supDT}"/></td> 
+                        <td><c:out value="${s.nNo}"/></td>
+						<td><c:out value="${s.supTY}"/></td>
+						<td><c:out value="${s.nickname}"/></td>
+						<td><fmt:formatNumber value="${s.supPrice}" pattern="#,###,###,###" /></td>
+						<td><fmt:formatDate pattern="yyyy-MM-dd" value="${s.supDT}"/></td> 
                     </tr>
-                    </c:forEach> --%>
-                    <!-- <tr>
-                        <td>2</td>
-                        <td>좋아요</td>
-						<td>은주의 쿠킹교실</td>
-						<td>3,000원</td>
-						<td>2019.08.16</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>좋아요</td>
-						<td>은주의 쿠킹교실</td>
-						<td>3,000원</td>
-						<td>2019.08.16</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>좋아요</td>
-						<td>은주의 쿠킹교실</td>
-						<td>3,000원</td>
-						<td>2019.08.16</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>좋아요</td>
-						<td>은주의 쿠킹교실</td>
-						<td>3,000원</td>
-						<td>2019.08.16</td>
-                    </tr>   -->      
+                    </c:forEach>
+                    
                 </tbody>
             </table><br><br>
             
@@ -196,7 +172,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach items="${list}" var="c">
+                    <c:forEach items="${cList}" var="c">
                     <tr>
                         <td>${c.nNo}</td>
 						<td><fmt:formatDate pattern="yyyy-MM-dd" value="${c.calSTDT}"/></td>

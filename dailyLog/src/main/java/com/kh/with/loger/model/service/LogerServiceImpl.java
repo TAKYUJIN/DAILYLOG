@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.with.loger.model.dao.LogerDao;
 import com.kh.with.loger.model.vo.Calculate;
+import com.kh.with.loger.model.vo.Support;
 import com.kh.with.member.model.vo.Member;
 
 @Service
@@ -39,6 +40,13 @@ public class LogerServiceImpl implements LogerService{
 	@Override
 	public ArrayList<Calculate> selectLogerCalculate(Calculate c, Member m) {
 		return ld.selectLogerCalculate(sqlSession, c, m);
+	}
+
+
+
+	@Override
+	public ArrayList<Support> selectLogerSupport(Support s, Member m) {
+		return ld.selectLogerSupport(sqlSession, s, m);
 	}
 
 

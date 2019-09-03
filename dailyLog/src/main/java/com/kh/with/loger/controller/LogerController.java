@@ -49,10 +49,23 @@ public class LogerController {
 		@RequestMapping(value="logerCalculate.lo")
 		public String selectLogerCalculate(Calculate c, Support s, Model model, HttpSession session) {
 			Member m = (Member) session.getAttribute("loginUser");
-			ArrayList<Calculate> list = ls.selectLogerCalculate(c, m);
+			ArrayList<Calculate> cList = ls.selectLogerCalculate(c, m);
+			ArrayList<Support> sList = ls.selectLogerSupport(s, m);
 			
-
-			model.addAttribute("list", list);
+			System.out.println("sList" + sList);
+			
+//			for(Support ss : sList) {
+//				if(s.getSupTY().equals("1")) {
+//					s.setSupTY("일회성 후원");
+//				}else if(s.getSupTY().equals("2")) {
+//					s.setSupTY("정기 후원");
+//				}
+//			}
+//			System.out.println("sList" + sList);
+			
+			model.addAttribute("sList", sList);
+			model.addAttribute("cList", cList);
+			model.addAttribute("s", s);
 			model.addAttribute("c", c);
 			
 			return "loger/logerCalculate";

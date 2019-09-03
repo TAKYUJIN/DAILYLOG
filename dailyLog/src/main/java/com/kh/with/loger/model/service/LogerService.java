@@ -14,5 +14,7 @@ public interface LogerService {
 
 	ArrayList<Calculate> selectLogerCalculate(Calculate c, Member m);
 
+	ArrayList<Support> selectLogerSupport(Support s, Member m);
+
 
 }

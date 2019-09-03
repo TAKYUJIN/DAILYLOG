@@ -6,6 +6,7 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 
 import com.kh.with.loger.model.vo.Calculate;
+import com.kh.with.loger.model.vo.Support;
 import com.kh.with.member.model.vo.Member;
 
 public interface LogerDao {
@@ -15,5 +16,7 @@ public interface LogerDao {
 //	ArrayList<Calculate> selectLogerCalculate(SqlSessionTemplate sqlSession, Calculate c);
 
 	ArrayList<Calculate> selectLogerCalculate(SqlSessionTemplate sqlSession, Calculate c, Member m);
+
+	ArrayList<Support> selectLogerSupport(SqlSessionTemplate sqlSession, Support s, Member m);
 
 }

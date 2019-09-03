@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="Calculate">
+<mapper namespace="Loger">
   	
   	<resultMap type="Calculate" id="calculateResultSet">
   		<id property="calNo" column="CAL_NO"/>
@@ -19,12 +19,33 @@
   		<result property="account" column="ACCOUNT"/>
   		<result property="nNo" column="RANK"/>
   	</resultMap>
+  	
+  	<resultMap type="Support" id="supportResultSet">
+  		<id property="supNo" column="SUP_NO"/>
+  		<result property="userNo" column="USER_NO"/>
+  		<result property="chNo" column="CH_NO"/>
+  		<result property="supDT" column="SUP_DT"/>
+  		<result property="supPrice" column="SUP_PRICE"/>
+  		<result property="supTY" column="SUP_TY"/>
+  		<result property="nNo" column="RANK"/>
+  		<result property="nickname" column="NICKNAME"/>
+  	</resultMap>
+	
   
   	<select id="selectLogerCalculate" resultMap="calculateResultSet">
   		SELECT RANK, CAL_NO, USER_NO, CH_NO, CAL_STDT, CAL_EDT, CAL_PRICE, CAL_VAT, TOTAL_PRICE, CAL_TY, ACC_NM, BANK_NM, ACCOUNT
 		FROM(SELECT ROW_NUMBER() OVER(ORDER BY C.CAL_STDT DESC) RANK, C.*
 		FROM CALCULATE C
 		JOIN MEMBER M ON(C.USER_NO = M.USER_NO)
+		WHERE M.USER_ID = #{userId})
+		ORDER BY RANK ASC
+  	</select>	
+  	
+  	<select id="selectLogerSupport" resultMap="supportResultSet">
+  		SELECT RANK, NICKNAME, SUP_NO, USER_NO, CH_NO, SUP_DT, SUP_PRICE, SUP_TY
+		FROM(SELECT ROW_NUMBER() OVER(ORDER BY S.SUP_DT DESC) RANK, M.NICKNAME, S.*
+		FROM SUPPORT S
+		JOIN MEMBER M ON(S.USER_NO = M.USER_NO)
 		WHERE M.USER_ID = #{userId})
 		ORDER BY RANK ASC
   	</select>	

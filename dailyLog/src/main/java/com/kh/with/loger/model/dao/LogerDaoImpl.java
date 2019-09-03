@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.with.loger.model.vo.Calculate;
+import com.kh.with.loger.model.vo.Support;
 import com.kh.with.member.model.vo.Member;
 
 @Repository
@@ -31,11 +32,20 @@ public class LogerDaoImpl implements LogerDao{
 
 	@Override
 	public ArrayList<Calculate> selectLogerCalculate(SqlSessionTemplate sqlSession, Calculate c, Member m) {
-		ArrayList<Calculate> list = null;
+		ArrayList<Calculate> cList = null;
 		
-		list = (ArrayList)sqlSession.selectList("Calculate.selectLogerCalculate", m);
+		cList = (ArrayList)sqlSession.selectList("Loger.selectLogerCalculate", m);
 		
-		return list;
+		return cList;
+	}
+
+	@Override
+	public ArrayList<Support> selectLogerSupport(SqlSessionTemplate sqlSession, Support s, Member m) {
+		ArrayList<Support> sList = null;
+		
+		sList = (ArrayList)sqlSession.selectList("Loger.selectLogerSupport", m);
+		
+		return sList;
 	}
 
 }
