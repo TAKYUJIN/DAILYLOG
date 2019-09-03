@@ -148,7 +148,7 @@
                 <thead>
                     <tr>
                         <th class="calculate_th">No</th>
-						<th class="calculate_th">정산기간</th>
+						<th class="calculate_th">신청일자</th>
 						<th class="calculate_th">정산금액</th>
 						<th class="calculate_th">정산상태</th>
                     </tr>
@@ -156,31 +156,31 @@
                 <tbody>
                     <tr>
                         <td>1</td>
-						<td>2019.07.16~2019.08.16</td>
+						<td>2019.08.16</td>
 						<td>총 119,000원</td>
 						<td>승인 대기 또는 지급 완료</td>
                     </tr>
                     <tr>
                         <td>2</td>
-                        <td>2019.07.16~2019.08.16</td>
+                        <td>2019.08.16</td>
 						<td>총 119,000원</td>
 						<td>승인 대기 또는 지급 완료</td>
                     </tr>
                     <tr>
                         <td>3</td>
-                        <td>2019.07.16~2019.08.16</td>
+                        <td>2019.08.16</td>
 						<td>총 119,000원</td>
 						<td>승인 대기 또는 지급 완료</td>
                     </tr>
                     <tr>
                         <td>4</td>
-                        <td>2019.07.16~2019.08.16</td>
+                        <td>2019.08.16</td>
 						<td>총 119,000원</td>
 						<td>승인 대기 또는 지급 완료</td>
                     </tr>
                     <tr>
                         <td>5</td>
-                        <td>2019.07.16~2019.08.16</td>
+                        <td>2019.08.16</td>
 						<td>총 119,000원</td>
 						<td>승인 대기 또는 지급 완료</td>
                     </tr>        

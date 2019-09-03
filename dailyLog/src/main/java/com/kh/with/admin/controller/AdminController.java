@@ -37,6 +37,10 @@ public class AdminController {
 	public String adminChattingComplete() {
 
 		return "admin/adminChattingComplete";
+		
+	}
+
+		return "admin/adminChattingComplete";
 	}
 	
 	//관리자 공지사항 수정 메소드 
