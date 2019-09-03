@@ -37,7 +37,7 @@ public class AdminController {
 	public String adminChattingComplete() {
 
 		return "admin/adminChattingComplete";
-		
+
 	}
 
 		return "admin/adminChattingComplete";
