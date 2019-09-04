@@ -14,6 +14,7 @@ public interface MemberService {
 
 	
 	Member update_myPage(Member m) throws LoginException;
+
 	
 	//Member update_Pwd(Member m, String old_pwd, HttpServletResponse response);
 

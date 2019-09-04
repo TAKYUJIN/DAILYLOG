@@ -17,64 +17,64 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style type="text/css">
-	body{
-		font-family: 'Varela Round', sans-serif;
-	}
-	.form-control {
-		box-shadow: none;		
-		font-weight: normal;
-		font-size: 12px; /* 검색부분 폰트사이즈 */
-	}
-	.form-control:focus {
-		border-color: #33cabb;
-		box-shadow: 0 0 8px rgba(0,0,0,0.1);
-	}
-	.navbar-header.col {
-		padding: 0 !important;
-	}	
-	.navbar {
-		background: #fff;
-		padding-left: 10px;
-		padding-right: 10px;
-		border-bottom: 1px solid #dfe3e8;
-		border-radius: 0;
-	}
-	.nav-link img {
-		border-radius: 50%;
-		width: 36px;
-		height: 36px;
-		margin: -8px 0;
-		float: left;
-		margin-right: 10px;
-	}
-	.navbar .navbar-brand, .navbar .navbar-brand:hover, .navbar .navbar-brand:focus {
-		padding-left: 0;
-		font-size: 20px; /* 로고부분 폰트사이즈 */
-		padding-right: 50px;
-	}
-	.navbar .navbar-brand b {
-		font-weight: bold;
-		color: #33cabb;		
-	}
-	.navbar .form-inline {
+   body{
+      font-family: 'Varela Round', sans-serif;
+   }
+   .form-control {
+      box-shadow: none;      
+      font-weight: normal;
+      font-size: 12px; /* 검색부분 폰트사이즈 */
+   }
+   .form-control:focus {
+      border-color: #33cabb;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+   }
+   .navbar-header.col {
+      padding: 0 !important;
+   }   
+   .navbar {
+      background: #fff;
+      padding-left: 10px;
+      padding-right: 10px;
+      border-bottom: 1px solid #dfe3e8;
+      border-radius: 0;
+   }
+   .nav-link img {
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      margin: -8px 0;
+      float: left;
+      margin-right: 10px;
+   }
+   .navbar .navbar-brand, .navbar .navbar-brand:hover, .navbar .navbar-brand:focus {
+      padding-left: 0;
+      font-size: 20px; /* 로고부분 폰트사이즈 */
+      padding-right: 50px;
+   }
+   .navbar .navbar-brand b {
+      font-weight: bold;
+      color: #33cabb;      
+   }
+   .navbar .form-inline {
         display: inline-block;
     }
-	.navbar .nav li {
-		position: relative;
-	}
-	.navbar .nav li a {
-		color: #888;
-	}
-	.search-box {
+   .navbar .nav li {
+      position: relative;
+   }
+   .navbar .nav li a {
+      color: #888;
+   }
+   .search-box {
         position: relative;
-    }	
+    }   
     .search-box input {
         padding-right: 35px;
-		border-color: #dfe3e8;
+      border-color: #dfe3e8;
         border-radius: 4px !important;
-		box-shadow: none
+      box-shadow: none
     }
-	.search-box .input-group-addon {
+   .search-box .input-group-addon {
         min-width: 35px;
         border: none;
         background: transparent;
@@ -82,174 +82,175 @@
         right: 0;
         z-index: 9;
         padding: 7px;
-		height: 100%;
+      height: 100%;
     }
     .search-box i {
         color: #a0a5b1;
-		font-size: 19px;
+      font-size: 19px;
     }
-	.navbar .nav .btn-primary, .navbar .nav .btn-primary:active {
-		color: #fff;
-		background: #33cabb;
-		padding-top: 8px;
-		padding-bottom: 6px;
-		vertical-align: middle;
-		border: none;
-	}	
-	.navbar .nav .btn-primary:hover, .navbar .nav .btn-primary:focus {		
-		color: #fff;
-		outline: none;
-		background: #31bfb1;
-	}
-	.navbar .navbar-right li:first-child a {
-		padding-right: 20px;
-	}
-	.navbar .nav-item i {
-		font-size: 18px;
-	}
-	.navbar .dropdown-item i {
-		font-size: 16px;
-		min-width: 22px;
-	}
-	.navbar ul.nav li.active a, .navbar ul.nav li.open > a {
-		background: transparent !important;
-	}	
-	.navbar .nav .get-started-btn {
-		min-width: 120px;
-		margin-top: 8px;
-		margin-bottom: 8px;
-	}
-	.navbar ul.nav li.open > a.get-started-btn {
-		color: #fff;
-		background: #31bfb1 !important;
-	}
-	.navbar .dropdown-menu {
-		border-radius: 1px;
-		border-color: #e5e5e5;
-		box-shadow: 0 2px 8px rgba(0,0,0,.05);
-	}
-	.navbar .nav .dropdown-menu li {
-		color: gray;
-		font-weight: normal;
-	}
-	.navbar .nav .dropdown-menu li a, .navbar .nav .dropdown-menu li a:hover, .navbar .nav .dropdown-menu li a:focus {
-		padding: 8px 20px;
-		line-height: normal;
-	}
-	.navbar .navbar-form {
-		border: none;
-	}
-	.navbar .dropdown-menu.form-wrapper {
-		width: 300px;
-		padding: 20px; /* 알림 패딩 */
-		left: auto;
-		right: 0;
+   .navbar .nav .btn-primary, .navbar .nav .btn-primary:active {
+      color: #fff;
+      background: #33cabb;
+      padding-top: 8px;
+      padding-bottom: 6px;
+      vertical-align: middle;
+      border: none;
+   }   
+   .navbar .nav .btn-primary:hover, .navbar .nav .btn-primary:focus {      
+      color: #fff;
+      outline: none;
+      background: #31bfb1;
+   }
+   .navbar .navbar-right li:first-child a {
+      padding-right: 20px;
+   }
+   .navbar .nav-item i {
+      font-size: 18px;
+   }
+   .navbar .dropdown-item i {
+      font-size: 16px;
+      min-width: 22px;
+   }
+   .navbar ul.nav li.active a, .navbar ul.nav li.open > a {
+      background: transparent !important;
+   }   
+   .navbar .nav .get-started-btn {
+      min-width: 120px;
+      margin-top: 8px;
+      margin-bottom: 8px;
+   }
+   .navbar ul.nav li.open > a.get-started-btn {
+      color: #fff;
+      background: #31bfb1 !important;
+   }
+   .navbar .dropdown-menu {
+      border-radius: 1px;
+      border-color: #e5e5e5;
+      box-shadow: 0 2px 8px rgba(0,0,0,.05);
+   }
+   .navbar .nav .dropdown-menu li {
+      color: gray;
+      font-weight: normal;
+   }
+   .navbar .nav .dropdown-menu li a, .navbar .nav .dropdown-menu li a:hover, .navbar .nav .dropdown-menu li a:focus {
+      padding: 8px 20px;
+      line-height: normal;
+   }
+   .navbar .navbar-form {
+      border: none;
+   }
+   .navbar .dropdown-menu.form-wrapper {
+      width: 300px;
+      padding: 20px; /* 알림 패딩 */
+      left: auto;
+      right: 0;
         font-size:14px; /* 알림 폰트 크기 */
-	}
-	.navbar .dropdown-menu.form-wrapper a {		
-		/* color: #33cabb; */
-		padding: 0 !important;
-	}
-	.navbar .dropdown-menu.form-wrapper a:hover{
-		text-decoration: underline;
-	}
-	.navbar .form-wrapper .hint-text {
-		text-align: center;
-		margin-bottom: 15px;
-		font-size: 13px;
-	}
-	.navbar .form-wrapper .social-btn .btn, .navbar .form-wrapper .social-btn .btn:hover {
-		color: #fff;
+   }
+   .navbar .dropdown-menu.form-wrapper a {      
+      /* color: #33cabb; */
+      padding: 0 !important;
+   }
+   .navbar .dropdown-menu.form-wrapper a:hover{
+      text-decoration: underline;
+   }
+   .navbar .form-wrapper .hint-text {
+      text-align: center;
+      margin-bottom: 15px;
+      font-size: 13px;
+   }
+   .navbar .form-wrapper .social-btn .btn, .navbar .form-wrapper .social-btn .btn:hover {
+      color: #fff;
         margin: 0;
-		padding: 0 !important;
-		font-size: 13px;
-		border: none;
-		transition: all 0.4s;
-		text-align: center;
-		line-height: 34px;
-		width: 47%;
-		text-decoration: none;
-    }	
+      padding: 0 !important;
+      font-size: 13px;
+      border: none;
+      transition: all 0.4s;
+      text-align: center;
+      line-height: 34px;
+      width: 47%;
+      text-decoration: none;
+    }   
 
-	.navbar .form-wrapper .form-footer {
-		text-align: center;
-		padding-top: 10px;
-		font-size: 13px;
-	}
-	.navbar .form-wrapper .form-footer a:hover{
-		text-decoration: underline;
-	}
-	.navbar .form-wrapper .checkbox-inline input {
-		margin-top: 3px;
-	}
-	.or-seperator {
+   .navbar .form-wrapper .form-footer {
+      text-align: center;
+      padding-top: 10px;
+      font-size: 13px;
+   }
+   .navbar .form-wrapper .form-footer a:hover{
+      text-decoration: underline;
+   }
+   .navbar .form-wrapper .checkbox-inline input {
+      margin-top: 3px;
+   }
+   .or-seperator {
         margin-top: 32px;
-		text-align: center;
-		border-top: 1px solid #e0e0e0;
+      text-align: center;
+      border-top: 1px solid #e0e0e0;
     }
     .or-seperator b {
-		color: #666;
+      color: #666;
         padding: 0 8px;
-		width: 30px;
-		height: 30px;
-		font-size: 13px;
-		text-align: center;
-		line-height: 26px;
-		background: #fff;
-		display: inline-block;
-		border: 1px solid #e0e0e0;
-		border-radius: 50%;
-		position: relative;
-		top: -15px;
-		z-index: 1;
+      width: 30px;
+      height: 30px;
+      font-size: 13px;
+      text-align: center;
+      line-height: 26px;
+      background: #fff;
+      display: inline-block;
+      border: 1px solid #e0e0e0;
+      border-radius: 50%;
+      position: relative;
+      top: -15px;
+      z-index: 1;
     }
 
-	.navbar .navbar-right .dropdown-toggle::after {
-		display: none;
-	}
-	@media (min-width: 1200px){
-		.form-inline .input-group {
-			width: 300px;
-			margin-left: 30px;
-		}
-	}
-	@media (max-width: 768px){
-		.navbar .dropdown-menu.form-wrapper {
-			width: 100%;
-			padding: 0px 0px;
-			background: transparent;
-			border: none;
-		}
-		.navbar .form-inline {
-			display: block;
-		}
-		.navbar .input-group {
-			width: 100%;
-		}
-		.navbar .nav .btn-primary, .navbar .nav .btn-primary:active {
-			display: block;
-		}
-	}
-	
-	#navbarCollapse a {
-		font-size:12px;
-	}
-	
-	a:link { color: black; text-decoration: none; color: black;}
-	a:visited { color: black; text-decoration: none; color: black;}
- 	a:hover { color: black; text-decoration: none; color: black;}
-	a:active { color: black; text-decoration: none; color: black;}
-	
+   .navbar .navbar-right .dropdown-toggle::after {
+      display: none;
+   }
+   @media (min-width: 1200px){
+      .form-inline .input-group {
+         width: 300px;
+         margin-left: 30px;
+      }
+   }
+   @media (max-width: 768px){
+      .navbar .dropdown-menu.form-wrapper {
+         width: 100%;
+         padding: 0px 0px;
+         background: transparent;
+         border: none;
+      }
+      .navbar .form-inline {
+         display: block;
+      }
+      .navbar .input-group {
+         width: 100%;
+      }
+      .navbar .nav .btn-primary, .navbar .nav .btn-primary:active {
+         display: block;
+      }
+   }
+   
+   #navbarCollapse a {
+      font-size:12px;
+   }
+   
+   a:link { color: black; text-decoration: none; color: black;}
+   a:visited { color: black; text-decoration: none; color: black;}
+    a:hover { color: black; text-decoration: none; color: black;}
+   a:active { color: black; text-decoration: none; color: black;}
+   
 </style>
 <script type="text/javascript">
-	// Prevent dropdown menu from closing when click inside the form
-	$(document).on("click", ".navbar-right .dropdown-menu", function(e){
-		e.stopPropagation();
-	});
+   // Prevent dropdown menu from closing when click inside the form
+   $(document).on("click", ".navbar-right .dropdown-menu", function(e){
+      e.stopPropagation();
+   });
 </script>
 </head> 
 <body>
 <nav class="navbar navbar-default navbar-expand-lg navbar-light">
+
 	<div class="navbar-header d-flex col" >
 		<img src="resources/images/logo.png" style="width:90px; padding-top:10px;">	
 	</div>
@@ -295,22 +296,7 @@
  <button class="ui olive button" id="addfri">친구 추가</button>
    </table></div>
  <div id="myDiv">
- 	 <!-- <h4>메일 보내기</h4>
-    <form action="mailSending.mb" method="post">
-      <div>
-        <input type="text" name="FriId" size="120"
-        style="width: 100%" placeholder="상대의 이메일" class="form-control">
-      </div>
-      <div align="center">
-        제목
-        <input type="text" name="title" size="120"  style="width: 100%" placeholder="제목을 입력해주세요" class="form-control">
-      </div>
-        <p>
-          <div align="center">
-          내용
-            <textarea name="content" cols="120" rows="12"  style="width: 100%; resize: none" placeholder="내용#"  class="form-control"></textarea>
-          </div>
-        <p> -->
+ 	
         
         <h4>메일 보내기</h4>
         <form action="mailSending.mb" method="POST">
@@ -331,75 +317,52 @@
       </div>
   </form></div></li></ul></li>    
 
-									<!-- <tr>친구가 없습니다.<br>친구를 추가 해주세요~</tr><br><br>
-									<button class="ui olive button"><a href="friends.mb"> 친구 추가</a></button>
-								</table>
-							</div>
-							<img src="resources/images/settings.png" align="right">
- 					</form>
-					</li>
-				</ul>
-			</li> -->
-
-			
-			<li class="nav-item">
-			<a href="#none" data-toggle="dropdown" class="btn_global link_login">
-				<img src="resources/images/bell.png" style="width:20px;">
-			</a>
-				<ul class="dropdown-menu form-wrapper">					
-					<li>
-						<form action="/examples/actions/confirmation.php" method="post">
-							<div class="noti_text" align="center"><p>알림</p></div>
-							<div class="form-group">
-								<table class="noti_table">
-									<tr>님을 구독하셨습니다.</tr><br>
-									<tr>댓글에 답글이 달렸습니다.</tr><br>
-									
-								</table>
-							</div>
-							<img src="resources/images/settings.png" align="right">
-						</form>
-					</li>
-				</ul>
-			</li>
-			<li class="nav-item">
-				<a href="myPage.me" class="btn_global link_login" onclick="account();">
-				<img src="resources/images/management.png" style="width:20px;">
-			</a>
-			</li>
-		</ul>
-	</div>
+         <li class="nav-item">
+         <a href="#none" data-toggle="dropdown" class="btn_global link_login">
+            <img src="resources/images/bell.png" style="width:20px;">
+         </a>
+            <ul class="dropdown-menu form-wrapper">               
+               <li>
+                  <form action="/examples/actions/confirmation.php" method="post">
+                     <div class="noti_text" align="center"><p>알림</p></div>
+                     <div class="form-group">
+                        <table class="noti_table">
+                           <tr>님을 구독하셨습니다.</tr><br>
+                           <tr>댓글에 답글이 달렸습니다.</tr><br>
+                           
+                        </table>
+                     </div>
+                     <img src="resources/images/settings.png" align="right">
+                  </form>
+               </li>
+            </ul>
+         </li>
+         <li class="nav-item">
+            <a href="myPage.me" class="btn_global link_login" onclick="account();">
+            <img src="resources/images/management.png" style="width:20px;">
+         </a>
+         </li>
+      </ul>
+   </div>
 </nav>
  </body>
 
  <script>
- //친구 
- /* var emailsend =true;
- function emailsend(){
-	 var con=document.getElementById("myDiv");
-	 if(con.style.display == 'none'){
-		 con.style.display == 'block';
-		 
-	 }else{
-		 con.style.display=='none';
-	 }
- }
- */
  $(document).ready(function(){
-	 $('#frilist').show();
-	 $('#myDiv').hide();
-	 
-	 $('#addfri').click(function(){
-		 $('#frilist').hide();
-		 $('#myDiv').show();
-		 return false;
-	 });
-	 $('#reset').click(function(){
-		 $('#frilist').show();
-		 $('#myDiv').hide();
-		 
-	 });
-	 
+    $('#frilist').show();
+    $('#myDiv').hide();
+    
+    $('#addfri').click(function(){
+       $('#frilist').hide();
+       $('#myDiv').show();
+       return false;
+    });
+    $('#reset').click(function(){
+       $('#frilist').show();
+       $('#myDiv').hide();
+       
+    });
+    
  });
  
  </script>

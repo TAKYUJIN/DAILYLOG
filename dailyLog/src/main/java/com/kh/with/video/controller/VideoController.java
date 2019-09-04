@@ -1,23 +1,29 @@
 package com.kh.with.video.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import org.springframework.web.bind.annotation.SessionAttributes;
+
+import com.kh.with.member.model.vo.Member;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.kh.with.member.model.service.MemberService;
+
 import com.kh.with.video.model.service.VideoService;
 
 @Controller
+@SessionAttributes("loginUser")
 public class VideoController {
 
 	@Autowired
+	private VideoService vs;
 	private MemberService ms;
-
-	@Autowired
-	private VideoService videoService; 
 
 	//영상 클릭시 동영상 페이지로 이동
 	@RequestMapping(value="video.vd")
@@ -49,6 +55,23 @@ public class VideoController {
 		return "video/videoMain";
 	}	
 
+	
+	//동영상 페이지 포인트 조회
+	@RequestMapping(value="selectPoint.vd")
+	public String selectPoint(HttpSession session, Model model) {
+		System.out.println("selectPoint in !");
+		
+		Member m = (Member) session.getAttribute("loginUser");
+		
+		int point = vs.selectPoint(m);
+		
+		model.addAttribute("point", point);
+		
+		return "video/videoMain";
+	}
+	
+
+
 	//동영상 업로드 페이지 이동
 	@RequestMapping(value="videoUpload.vd")
 	public String  videoUpload() {
@@ -62,10 +85,11 @@ public class VideoController {
 			Model model,
 			@RequestParam("file1") MultipartFile file) {
 
-		String url = videoService.upload(file);
+		String url = vs.upload(file);
 		model.addAttribute("url", url);
 		return "result";
 	}
+
 }
 
 
