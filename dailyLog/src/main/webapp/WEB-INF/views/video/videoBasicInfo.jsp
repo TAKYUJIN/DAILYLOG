@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>\
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +20,7 @@
 <style>
 .mainpage {
 	width: 1024px;
-	height:700px;
+	height: 700px;
 	margin-top: 100px;
 	border: 1px solid black;
 }
@@ -42,38 +43,45 @@
 #advertising {
 	color: gray;
 }
-#innerbox{
-	margin-left:100px;
+
+#innerbox {
+	margin-left: 100px;
 }
-#minor{
-	margin-left:600px;
-	margin-top:-400px;
+
+#minor {
+	margin-left: 600px;
+	margin-top: -400px;
 }
-#minorimg{
-	margin-left:70px;
+
+#minorimg {
+	margin-left: 70px;
 }
-.form-group{
-	width:500px;
-	margin-left:-10px;
+
+.form-group {
+	width: 500px;
+	margin-left: -10px;
 }
 </style>
 
 </head>
 <body>
 
- <jsp:include page="../common/mainBar.jsp"></jsp:include> 
+	<jsp:include page="../common/mainBar.jsp"></jsp:include>
 
-	<div class="mainpage">
-		<form action="" class="mainForm">
+
+
+
+	<form action="insertVideoInfo.vd" method="post">
+		<div class="mainpage">
 			<br> <br> <br>
 			<div class="container">
-				<div class="progress" style="width:950px;">
+				<div class="progress" style="width: 950px;">
 					<div class="progress-bar progress-bar-striped active"
 						role="progressbar" aria-valuenow="40" aria-valuemin="0"
 						aria-valuemax="100" style="width: 40%"></div>
 				</div>
 			</div>
-			<button id="uploadbtn" class="btn btn-primary">게시하기</button>
+			<button id="uploadbtn" class="btn btn-primary" type="submit">게시하기</button>
 			<div id="innerbox">
 				<div class="infobtn">
 					<button type="button" class="btn">기본정보</button>
@@ -83,37 +91,90 @@
 				<div class="basicInfo">
 					<div class="container">
 						<div class="form-group">
-							<input type="text" class="form-control" id="title_name"
+							<input type="text" class="form-control" id="titleName" name="titleName"
 								style="width: 400px" placeholder="동영상제목">
 						</div>
 						<div class="form-group">
-							<textarea class="form-control" rows="3" id="comment"
+							<textarea class="form-control" rows="3" id="videoTag" name="videoTag"
 								style="width: 400px" placeholder="태그(예:일상기록,여행,강아지,음식)"></textarea>
 						</div>
 					</div>
-					<a>시청등급을 선택하세요</a> <br>
-					<br> <input type="checkbox" name="vehicle1" value="Bike">
-					전체시청가능<br> <input type="checkbox" name="vehicle2" value="Car">
-					19세 이상 시청가능<br> <br>
-					<br> <input type="checkbox" name="vehicle1" value="Bike">
-					광고여부<br> <a id="advertising">광고여부 체크시 아래의 문구가 자동으로 기재됩니다<br>
-						본 컨텐츠는 유료제품 추천, 후원, 보증과 같은 유료 광고 내용이 포함되어 있습니다
-					</a>
+					<a>시청등급을 선택하세요</a> <br>  
+					<input type="checkbox"name="allView" value="allView"> 전체시청가능<br>
+					 <input type="checkbox" name="allView" value="19view"> 19세 이상 시청가능<br>
+					<br> <br> 
+					<input type="checkbox" name="allView"value="advyn"> 광고여부<br> 
+					<a id="advertising">광고여부
+						체크시 아래의 문구가 자동으로 기재됩니다<br> 본 컨텐츠는 유료제품 추천, 후원, 보증과 같은 유료 광고
+						내용이 포함되어 있습니다
+					</a><br> <br>
+					<a>공개여부</a> <br>
+					<input type="checkbox"name="open" value="openview">전체공개<br>
+					 <input type="checkbox" name="allView" value="closeview">비공개<br>
 				</div>
 				<div id="minor">
-				<img id="minorimg" src="resources/images/family.png" style="width:100px;">
-				<br>
-				<a>동영상에 미성년자가 등장하는지 살펴주세요<br>
-				DailyLog에서의 아동 안전에 대한 정책과 <br>거주 지역의 모든 노동법 의무를 준수해야합니다</a>
+					<img id="minorimg" src="resources/images/family.png"
+						style="width: 100px;"> <br> <a>동영상에 미성년자가 등장하는지
+						살펴주세요<br> DailyLog에서의 아동 안전에 대한 정책과 <br>거주 지역의 모든 노동법
+						의무를 준수해야합니다
+					</a>
 				</div>
-
-
-
-
 			</div>
-		</form>
-	</div>
-	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+		</div>
+	</form>
+	<input type="text" value="${model}" id="model">
+	<script>
+		$(document).ready(function(){
+			$("#uploadbtn").click(function(){
+				var title_name = $("#titleName").val();
+				var videoTag = $("#videoTag").val();
+				var model = $("#model").val();
+				var lists = [];
+				$("input[name='allView']:checked").each(function(i){   //jQuery로 for문 돌면서 check 된값 배열에 담는다
+				   				lists.push($(this).val());
+				  			}); 
+				
+				console.log(lists);
+				
+				$.ajax({
+					url:"insertVideoInfo.vd",
+					type:"post",
+					data:{titleName:titleName,videoTag:videoTag,model:model,
+						'allView':lists},
+						traditional:true,
+					success:function(data){
+						console.log("성공!");
+					},
+					error:function(data){
+						console.log("실패!");
+					}
+				});
+			});
+		});
+	</script>
+
+
+<%-- 	<p>${model}</p> --%>
+
+
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 </body>

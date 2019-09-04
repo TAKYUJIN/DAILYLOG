@@ -39,9 +39,9 @@
 	margin-top: 20px;
 }
 
-#selectButton {
-	width: 160px;
-	border: 1px solid lightgray;
+#uploadbtn {
+margin-left:500px;
+margin-top:-50px;
 }
 
 #text {
@@ -61,7 +61,7 @@
 </head>
 <body>
 	<jsp:include page="../common/mainBar.jsp"></jsp:include>
-	<form action="uploadVideo.vd" method="post" enctype="multipart/form-data">
+	<form action="insertvideo.vd" method="post" enctype="multipart/form-data">
 	<div class="mainpage">
 		<div class="upload">
 			<div id="uploadimg" align="center">
@@ -76,17 +76,7 @@
 				<h2>업로드파일 선택</h2>
 			</div>
 		</div>
-		<div class="container">
-			<div class="dropdown">
-				<button class="btn btn-default dropdown-toggle" id="selectButton"
-					type="button" data-toggle="dropdown">선택</button>
-				<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-					<li align="center"><a role="menuitem" tabindex="-1" href="#">공개</a></li>
-					<li align="center"><a role="menuitem" tabindex="-1" href="#">비공개</a></li>
-				</ul>
-			</div>
-			<br>
-		</div>
+	
 		<br>
 		<div id="text">
 			<a style="color: gray">DailyLog에 동영상을 업로드하면 DailyLog 서비스 약관 및 운영
@@ -97,7 +87,11 @@
 			</a>
 		</div>
 	</div>
+	<button id="uploadbtn" class="btn btn-primary" >다음으로</button>
 	</form>
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
 </html>
+
+
+
