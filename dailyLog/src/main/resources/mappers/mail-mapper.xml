@@ -3,27 +3,41 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="MailVo">
+<mapper namespace="MailDao">
 	
-	<resultMap type="com.kh.with.mail.model.vo.MailVo"
-		id="mailResultSet">
+	<resultMap type="com.kh.with.main.model.vo.MailVo" id="mailResultSet">
 		
-		<id property="userNo" column="USER_NO" />
-		
+		<!-- <id property="userNo" column="USER_NO" />
 		<result property="frino" column="FRI_NO" />
-		<result property="userId" column="USER_ID" />
+		<result property="userId" column="USER_ID" /> -->
 		<result property="friId" column="FRI_ID" />
 		<result property="status_yn" column="STATUS_YN" />
 	</resultMap>
 	
-	<!--친구 인증키 생성  -->
+	<!--  
 	<select id="GetKey" resultMap="mailResultSet" parameterType="MailVo">
 		UPDATE USERINFO SET USER_KEY =#{param2} WHERE user
 	</select>
-	<!-- 친구 인증키 Y로~ -->
+	친구 인증키 Y로~
 	<select id="alter_userKey" resultMap="mailResultSet" parameterType="MailVo">
 	
-	</select>
+	</select> -->
 	
+	<insert id="regUser" parameterType="MailVO">
+		INSERT INTO FRIEND VALUES(#{FRI_ID},#{STATUS_YN})
+	</insert>
+	
+	<insert id="createAuthKey">
+		INSERT INTO FRIEND VALUES(#{FRI_ID},#{STATUS_YN})
+	</insert>
+	 
+	 <update id="GetKey" parameterType="Map">
+ 	 	UPDATE FRIEND SET STATUS_YN = #{param2} WHERE FRI_ID=#{param1}
+	 </update>
+	 <update id="alter_userKey" parameterType="Map">
+ 	 	UPDATE FRIEND SET STATUS_YN ='Y' WHERE FRI_ID=#{param1} AND STATUS_YN = #{param2}
+	 </update>
+	 
+	 
 	</mapper>
 	

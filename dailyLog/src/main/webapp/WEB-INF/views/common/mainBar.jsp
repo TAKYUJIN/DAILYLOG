@@ -295,22 +295,35 @@
  <button class="ui olive button" id="addfri">친구 추가</button>
    </table></div>
  <div id="myDiv">
- 	 <h4>메일 보내기</h4>
+ 	 <!-- <h4>메일 보내기</h4>
     <form action="mailSending.mb" method="post">
       <div>
         <input type="text" name="FriId" size="120"
         style="width: 100%" placeholder="상대의 이메일" class="form-control">
       </div>
       <div align="center">
-        <!-- 제목 -->
+        제목
         <input type="text" name="title" size="120"  style="width: 100%" placeholder="제목을 입력해주세요" class="form-control">
       </div>
         <p>
           <div align="center">
-          <!-- 내용 -->
+          내용
             <textarea name="content" cols="120" rows="12"  style="width: 100%; resize: none" placeholder="내용#"  class="form-control"></textarea>
           </div>
-        <p>
+        <p> -->
+        
+        <h4>메일 보내기</h4>
+        <form action="mailSending.mb" method="POST">
+ 			<input type="hidden" name="userId" value="${userId}"/>
+			<!-- 아이디 -->
+			<div class="form-group">
+				<label for="friId">아이디</label>
+					<input type="text" class="form-control" id="friId" name="friId" placeholder="친구 이메일" required>
+				<div class="check_font" id="id_check"></div>
+			</div>
+
+        
+        
       <div align="center">
         <input type="submit" value="메일 보내기" class="btn btn-warning">
         <input type="reset" value="취소" class="btn btn-default" id="reset">
@@ -318,7 +331,7 @@
       </div>
   </form></div></li></ul></li>    
 
-									<tr>친구가 없습니다.<br>친구를 추가 해주세요~</tr><br><br>
+									<!-- <tr>친구가 없습니다.<br>친구를 추가 해주세요~</tr><br><br>
 									<button class="ui olive button"><a href="friends.mb"> 친구 추가</a></button>
 								</table>
 							</div>
@@ -326,7 +339,7 @@
  					</form>
 					</li>
 				</ul>
-			</li>
+			</li> -->
 
 			
 			<li class="nav-item">
