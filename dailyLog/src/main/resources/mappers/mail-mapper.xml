@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="MailVo">
+	
+	<resultMap type="com.kh.with.mail.model.vo.MailVo"
+		id="mailResultSet">
+		
+		<id property="userNo" column="USER_NO" />
+		
+		<result property="frino" column="FRI_NO" />
+		<result property="userId" column="USER_ID" />
+		<result property="friId" column="FRI_ID" />
+		<result property="status_yn" column="STATUS_YN" />
+	</resultMap>
+	
+	<!--친구 인증키 생성  -->
+	<select id="GetKey" resultMap="mailResultSet" parameterType="MailVo">
+		UPDATE USERINFO SET USER_KEY =#{param2} WHERE user
+	</select>
+	<!-- 친구 인증키 Y로~ -->
+	<select id="alter_userKey" resultMap="mailResultSet" parameterType="MailVo">
+	
+	</select>
+	
+	</mapper>
+	

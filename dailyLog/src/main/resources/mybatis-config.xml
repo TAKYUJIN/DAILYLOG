@@ -5,6 +5,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.kh.with.member.model.vo.Member" alias="Member" />
+		<typeAlias type="com.kh.with.loger.model.vo.Loger" alias="Loger" />
 		<typeAlias type="com.kh.with.loger.model.vo.Calculate" alias="Calculate" />
 		<typeAlias type="com.kh.with.loger.model.vo.Support" alias="Support" />
 	</typeAliases>
