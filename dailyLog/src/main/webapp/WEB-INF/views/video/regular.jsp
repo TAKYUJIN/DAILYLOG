@@ -177,10 +177,14 @@
 										<a href="#none" data-toggle="dropdown">
 											<img src="resources/images/dollar.png" style="width:15px;">
 										</a>
-										<ul class="dropdown-menu form-wrapper" style="width:100px;">					
+										<ul class="dropdown-menu form-wrapper" style="width:200px;">					
 											<li>
+												<div class="noti_text" align="center"><p>정기후원</p></div>
 												<div class="form-group" >
 													<table class="noti_table">
+														<tr><small>채널명</small></tr>
+														<tr><b>채널명</b></tr>
+														<tr><small>포인트조회</small></tr>
 														<tr><a href="regular.vd">정기후원</a></tr><br>
 														<tr><a href="once.vd">일시후원</a></tr><br>
 													</table>
