@@ -127,7 +127,7 @@
 		box-shadow: 0 2px 8px rgba(0,0,0,.05);
 	}
 	.navbar .nav .dropdown-menu li {
-		color: #999;
+		color: gray;
 		font-weight: normal;
 	}
 	.navbar .nav .dropdown-menu li a, .navbar .nav .dropdown-menu li a:hover, .navbar .nav .dropdown-menu li a:focus {
@@ -145,7 +145,7 @@
         font-size:14px; /* 알림 폰트 크기 */
 	}
 	.navbar .dropdown-menu.form-wrapper a {		
-		color: #33cabb;
+		/* color: #33cabb; */
 		padding: 0 !important;
 	}
 	.navbar .dropdown-menu.form-wrapper a:hover{
@@ -168,24 +168,7 @@
 		width: 47%;
 		text-decoration: none;
     }	
-	.navbar .social-btn .btn-primary {
-		background: #507cc0;
-	}
-	.navbar .social-btn .btn-primary:hover {
-		background: #4676bd;
-	}
-	.navbar .social-btn .btn-info {
-		background: #64ccf1;
-	}
-	.navbar .social-btn .btn-info:hover {
-		background: #4ec7ef;
-	}
-	.navbar .social-btn .btn i {
-		margin-right: 5px;
-		font-size: 16px;
-		position: relative;
-		top: 2px;
-	}
+
 	.navbar .form-wrapper .form-footer {
 		text-align: center;
 		padding-top: 10px;
@@ -218,9 +201,7 @@
 		top: -15px;
 		z-index: 1;
     }
-    .navbar .checkbox-inline {
-		font-size: 13px;
-	}
+
 	.navbar .navbar-right .dropdown-toggle::after {
 		display: none;
 	}
