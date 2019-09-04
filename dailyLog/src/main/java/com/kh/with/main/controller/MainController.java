@@ -131,4 +131,10 @@ public class MainController {
 		return "loger/logerHomeChannel";
 	}
 
+	
+	@RequestMapping(value="notification.mb")
+	public String showNotification() {
+		
+		return "main/test";
+	}
 }

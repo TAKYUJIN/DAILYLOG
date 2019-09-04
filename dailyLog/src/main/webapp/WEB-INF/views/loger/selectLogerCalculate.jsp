@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -107,41 +109,16 @@
                     </tr>
                 </thead>
                 <tbody>
+                	<c:forEach items="${sList}" var="s">
                     <tr>
-                        <td>1</td>
-						<td>좋아요</td>
-						<td>은주의 쿠킹교실</td>
-						<td>3,000원</td>
-						<td>2019.08.16</td>
+                        <td><c:out value="${s.nNo}"/></td>
+						<td><c:out value="${s.supTY}"/></td>
+						<td><c:out value="${s.nickname}"/></td>
+						<td><fmt:formatNumber value="${s.supPrice}" pattern="#,###,###,###" /></td>
+						<td><fmt:formatDate pattern="yyyy-MM-dd" value="${s.supDT}"/></td> 
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>좋아요</td>
-						<td>은주의 쿠킹교실</td>
-						<td>3,000원</td>
-						<td>2019.08.16</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>좋아요</td>
-						<td>은주의 쿠킹교실</td>
-						<td>3,000원</td>
-						<td>2019.08.16</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>좋아요</td>
-						<td>은주의 쿠킹교실</td>
-						<td>3,000원</td>
-						<td>2019.08.16</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>좋아요</td>
-						<td>은주의 쿠킹교실</td>
-						<td>3,000원</td>
-						<td>2019.08.16</td>
-                    </tr>        
+                    </c:forEach>
+                    
                 </tbody>
             </table>
             

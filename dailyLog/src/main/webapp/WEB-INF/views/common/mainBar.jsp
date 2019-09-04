@@ -263,6 +263,7 @@
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">최근 활동</a></li>	
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">좋아요 영상</a></li>
 			<li class="nav-item"><a href="newHomeChannel.lo" class="nav-link" style="padding-right:0px;" onclick="">로거 스튜디오</a></li>
+			<li class="nav-item"><a href="notification.mb" class="nav-link" style="padding-right:0px;" onclick="">알림 예시</a></li>
 		</ul>
 		<form class="navbar-form form-inline" style="width:240px;">
 			<div class="input-group search-box">								
@@ -323,7 +324,7 @@
          </a>
             <ul class="dropdown-menu form-wrapper">               
                <li>
-                  <form action="/examples/actions/confirmation.php" method="post">
+                  <form action="" method="post">
                      <div class="noti_text" align="center"><p>알림</p></div>
                      <div class="form-group">
                         <table class="noti_table">
@@ -362,6 +363,9 @@
        $('#myDiv').hide();
        
     });
+    function notification(){
+    	location.href="notification.mb";
+    }
     
  });
  
