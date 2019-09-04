@@ -62,7 +62,14 @@
 		WHERE USER_ID = #{userId} 
 	</update>
 	
-
-
+	<!-- 동영상 페이지 포인트 조회 -->
+	<select id="selectPoint" parameterType="Member" resultType="int">
+      SELECT REMAIN_PT
+      FROM MEMBER
+      WHERE USER_ID = #{userId}
+      AND STATUS = 0
+   </select>
+	
+	
 </mapper>
 

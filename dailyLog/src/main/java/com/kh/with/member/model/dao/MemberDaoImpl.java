@@ -10,8 +10,8 @@ import com.kh.with.member.model.vo.Member;
 public class MemberDaoImpl implements MemberDao{
 	
 	//로그인용 메소드
-	   @Override
-	   public Member loginMember(SqlSessionTemplate sqlSession, Member m) throws LoginException {
+	@Override
+	public Member loginMember(SqlSessionTemplate sqlSession, Member m) throws LoginException {
 	      
 	      Member loginUser = sqlSession.selectOne("Member.loginCheck", m);
 	      
@@ -44,22 +44,12 @@ public class MemberDaoImpl implements MemberDao{
 	   }
 	
 
-
-	
-
-
 	
 	  //마이페이지
 	  @Override
-	 public int update_myPage(SqlSessionTemplate sqlSession, Member m) {
-	  // TODO Auto-generated method stub
-	return sqlSession.update("m.update_myPage", m); 
-	}
-	 
-
-
-	
-
-
+	  public int update_myPage(SqlSessionTemplate sqlSession, Member m) {
+		  // TODO Auto-generated method stub
+		  return sqlSession.update("m.update_myPage", m); 
+	  }
 
 }
