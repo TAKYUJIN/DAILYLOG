@@ -240,7 +240,7 @@ body {
 
 			<div class="row" style="margin-left: 30px;">
 				<div class="col-lg-15">
-					<a href="logerHomeChannel.lo" class="noticeLink"
+					<a href="newHomeChannel.lo" class="noticeLink"
 						style="float: left; width: 15%;"><h4 class="page-title1">홈</h4></a>
 					<a href="logerHomeAllVideo.lo" class="noticeLink"
 						style="float: left; width: 15%;"><h4 class="page-title2">동영상</h4></a>

@@ -54,9 +54,6 @@ public class LogerController {
 			ArrayList<Support> sList = ls.selectLogerSupport(s, m);
 			
 			System.out.println("sList" + sList);
-			
-
-
 	
 	  ArrayList<Calculate> list = ls.selectLogerCalculate(c);
 	 
@@ -70,7 +67,7 @@ public class LogerController {
 //			}
 //			System.out.println("sList" + sList);
 
-			
+
 			model.addAttribute("sList", sList);
 			model.addAttribute("cList", cList);
 			model.addAttribute("s", s);
@@ -90,9 +87,9 @@ public class LogerController {
 	} */
 
 	//로거스튜디오 이동
-	@RequestMapping(value="logerHomeChannel.lo")
-	public String logerHomeChannel() {
-		return "loger/logerHomeChannel";
+	@RequestMapping(value="newHomeChannel.lo")
+	public String newHomeChannel() {
+		return "loger/newHomeChannel";
 	}
 	
 	//로거스튜디오내 동영상으로 이동
