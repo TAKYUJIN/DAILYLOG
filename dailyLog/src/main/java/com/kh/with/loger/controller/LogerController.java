@@ -2,8 +2,8 @@ package com.kh.with.loger.controller;
 
 import java.util.ArrayList;
 
-import javax.servlet.http.HttpSession;
 
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,6 +46,7 @@ public class LogerController {
 		}
 		
 	//로거 정산 페이지로 이동
+
 		@RequestMapping(value="logerCalculate.lo")
 		public String selectLogerCalculate(Calculate c, Support s, Model model, HttpSession session) {
 			Member m = (Member) session.getAttribute("loginUser");
@@ -70,7 +71,16 @@ public class LogerController {
 			
 			return "loger/logerCalculate";
 		}
+
+/*	@RequestMapping(value="logerCalculate.lo")
+	public String selectLogerCalculate(Calculate c, Model model) {		
+
+		ArrayList<Calculate> list = ls.selectLogerCalculate(c);
 		
+		model.addAttribute("list", list);
+		
+		return "loger/logerCalculate";
+	} */
 
 	//로거스튜디오 이동
 	@RequestMapping(value="logerHomeChannel.lo")
