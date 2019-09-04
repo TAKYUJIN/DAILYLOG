@@ -15,7 +15,7 @@ public interface MemberDao {
 
 	Member selectMember(SqlSessionTemplate sqlSession, Member m);
 	
-//	int update_myPage(SqlSessionTemplate sqlSession, Member m);
+	int update_myPage(SqlSessionTemplate sqlSession, Member m);
 
 
 

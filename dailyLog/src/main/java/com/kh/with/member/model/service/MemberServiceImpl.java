@@ -22,7 +22,6 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private DataSourceTransactionManager transactionManager;
 
-
 	@Override
 	public Member loginMember(Member m) throws LoginException {
 		// 스프링은 기본적으로 자동으로 commit을 해준다.
@@ -30,39 +29,34 @@ public class MemberServiceImpl implements MemberService {
 
 		String encPassword = md.selectEncPassword(sqlSession, m);
 
-		if(!passwordEncoder.matches(m.getUserPwd(), encPassword)) {
+		if (!passwordEncoder.matches(m.getUserPwd(), encPassword)) {
 			throw new LoginException("로그인 실패!");
-		}else {
+		} else {
 			loginUser = md.selectMember(sqlSession, m);
 		}
-
 
 		return loginUser;
 	}
 
-
-
-	/*//마이페이지 수정
-	 * @Override public Member update_myPage(Member m) throws LoginException { //
-	 * TODO Auto-generated method stub md.update_myPage(sqlSession, m); return
-	 * md.loginMember(sqlSession, m); }
-	 */
-
-
-
+	
+	  //마이페이지 수정
+	  
+	  @Override public Member update_myPage(Member m) throws LoginException {
+		  //TODO Auto-generated method stub 
+	  md.update_myPage(sqlSession, m); 
+	  return md.loginMember(sqlSession, m); 
+	  }
+	 
 
 	@Override
 	public int insertMember(Member m) {
 		System.out.println("service in!!");
-		
+
 		int result = md.insertMember(sqlSession, m);
-		
+
 		System.out.println("result : " + result);
-				
-				
+
 		return result;
 	}
-
-
 
 }

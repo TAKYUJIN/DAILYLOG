@@ -42,18 +42,18 @@ public class LogerController {
 		}
 		
 	//로거 정산 페이지로 이동
-	//	@RequestMapping(value="logerCalculate.lo")
-	//	public String selectLogerCalculate(Calculate c, Model model) {
+		@RequestMapping(value="logerCalculate.lo")
+		public String selectLogerCalculate(Calculate c, Model model) {
 			
 			
 
 			ArrayList<Calculate> list = ls.selectLogerCalculate(c);
 
 			
-		//	model.addAttribute("list", list);
+			model.addAttribute("list", list);
 			
-		//	return "loger/logerCalculate";
-		
+			return "loger/logerCalculate";
+		}
 
 	//로거스튜디오 이동
 	@RequestMapping(value="logerHomeChannel.lo")
