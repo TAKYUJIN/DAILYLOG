@@ -75,13 +75,15 @@ public class MemberController {
 
 		System.out.println(root);
 		
+		System.out.println(m.getGender());
+		
 		try {
 			
 
 			m.setUserPwd(passwordEncoder.encode(m.getUserPwd()));
 			System.out.println(m.getUserPwd());
 
-			if(m.getGender().equals("1") || m.getGender().equals("3")) {
+			if(m.getGender().equals("남")) {
 				m.setGender("M");
 			}else {
 				m.setGender("F");

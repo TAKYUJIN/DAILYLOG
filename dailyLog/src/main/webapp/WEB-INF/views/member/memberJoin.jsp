@@ -71,6 +71,7 @@
 			<tr>
 				<td> 닉네임 </td>
 				<td><input type="text" id="nickname" name="nickname" required></td>
+				<td><button id="id_check">중복확인</button></td>
 			</tr>
 			<tr>
 				<td> 전화번호 </td>
@@ -78,7 +79,8 @@
 			</tr>
 			<tr>
 				<td> 성별 </td>
-				<td><input type="text" id="gender" name="gender"></td>
+				<td><input type="radio" name="gender" id="gender" value="여" checked="checked">여 &nbsp; &nbsp; 
+				&nbsp; &nbsp;<input type="radio" name="gender" id="gender" value="남" >남</td>
 			</tr>	
 			
 		</table>
