@@ -1,20 +1,18 @@
 package com.kh.with.video.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.SessionAttributes;
-
-import com.kh.with.member.model.vo.Member;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.kh.with.member.model.service.MemberService;
-
+import com.kh.with.member.model.vo.Member;
 import com.kh.with.video.model.service.VideoService;
 
 @Controller
@@ -70,6 +68,19 @@ public class VideoController {
 		return "video/videoMain";
 	}
 	
+	//정기후원
+	@RequestMapping(value="regSub.vd")
+	public String regSub(HttpServletRequest request, HttpSession session) {
+		int price = Integer.parseInt(request.getParameter("price"));
+		
+		Member m = (Member) session.getAttribute("loginUser");
+		
+		int result = vs.regSub(m, price);
+		
+		//System.out.println("money ::: " + price);
+		
+		return "";
+	}
 
 
 	//동영상 업로드 페이지 이동
@@ -90,22 +101,11 @@ public class VideoController {
 		return "result";
 	}
 
+	
+	
+	
+	
+	
+	
+	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

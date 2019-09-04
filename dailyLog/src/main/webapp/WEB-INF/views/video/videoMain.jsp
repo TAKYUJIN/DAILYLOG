@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <style>
 
 	.chImg {
@@ -382,100 +383,6 @@ button[class*="btn"] {border: 0;}
 .btn-gradient.yellow:active {background: #DBC05B;}
 .btn-gradient.blue:active 	{background: #608FBF;}	
 
-/* 알림창 */
-	.modal-confirm {	
-		color: #8e8e8e;
-		width: 450px;
-	}
-	.modal-confirm .modal-content {
-		padding: 20px;
-		border-radius: 5px;		
-		border: none;
-	}
-	.modal-confirm .modal-header {
-		border-bottom: none;   
-        position: relative;
-		text-align: center;
-		border-radius: 5px 5px 0 0;
-	}
-	.modal-confirm h4 {
-		color: #545557;
-		text-align: center;
-		font-size: 30px;
-		margin: 0 0 25px;
-	}
-	.modal-confirm .form-control, .modal-confirm .btn {
-		min-height: 40px;
-		border-radius: 3px; 
-	}
-	.modal-confirm .close {
-		background: #c0c3c8;
-		position: absolute;
-		top: 15px;
-		right: 15px;
-		color: #fff;
-		text-shadow: none;
-		opacity: 0.5;
-		width: 22px;
-		height: 22px;
-		border-radius: 20px;
-		font-size: 16px;
-	}
-	.modal-confirm .close span {
-		position: relative;
-		top: -1px;
-	}
-	.modal-confirm .close:hover {
-		opacity: 0.8;
-	}
-	.modal-confirm .icon-box {
-		color: #f95858;		
-		display: inline-block;
-		z-index: 9;
-		text-align: center;
-		position: relative;
-		transform: scale(1.5);
-	}
-	.modal-confirm .icon-box i:first-child {
-		font-size: 100px;
-	}
-	.modal-confirm .icon-box i:nth-child(2) {
-		font-size: 138px;
-		position: absolute;
-		left: -19px;
-		top: -23px;
-		font-weight: bold;
-		color: #fff;
-	}
-	.modal-confirm .icon-box i:last-child {
-		font-size: 26px;
-		position: absolute;
-		left: 0;
-		right: 0;
-		margin: 0 auto;
-		top: 44px;
-	}
-    .modal-confirm .btn {
-        color: #fff;
-        border-radius: 4px;
-		background: #eeb711;
-		text-decoration: none;
-		transition: all 0.4s;
-        line-height: normal;
-		border-radius: 3px;
-		margin: 30px 0 20px;
-		padding: 6px 20px;
-		min-width: 150px;
-        border: none;
-    }
-	.modal-confirm .btn:hover, .modal-confirm .btn:focus {
-		background: #eda645;
-		outline: none;
-	}
-	.trigger-btn {
-		display: inline-block;
-		margin: 100px auto;
-	}
 </style>
 <script type="text/javascript">
 	$(document).on("click", ".navbar-right .dropdown-menu", function(e){
@@ -515,7 +422,7 @@ button[class*="btn"] {border: 0;}
 									<a href="#none" data-toggle="dropdown">
 										<img src="resources/images/dollar.png" style="width:15px;">
 									</a>
-									<ul class="dropdown-menu form-wrapper" style="width:250px;">					
+									<ul class="dropdown-menu form-wrapper" style="width:280px;">					
 										<li>
 											<div class="form-group" id="sub">
 												<table class="noti_table">
@@ -523,6 +430,7 @@ button[class*="btn"] {border: 0;}
 													<tr><a id="onceSub">일시후원</a></tr><br>
 												</table>
 											</div>
+											<!-- 정기후원 -->
 											<div id="rSub">
 												<div class="noti_text" align="center" style="margin-top:5%;"><b>정기후원</b></div>
 												<div align="left" style="margin-left:10%; margin-right:10%;">
@@ -533,54 +441,79 @@ button[class*="btn"] {border: 0;}
 														<tr><td><input type="text" class="form-control" id="point" placehold="포인트를 조회하세요" value="${point} 포인트" readonly></td></tr>
 														<tr>
 															<td>
-																<a href="" id="selectPoint" style="width:50px; text-align:center;" class="btn-gradient yellow mini">조회</a>
-																<a href="#myModal" data-toggle="modal" class="trigger-btn">ds<a id="charge" style="width:50px; text-align:center;" class="btn-gradient blue mini">충전</a></a>
-																<div id="myModal" class="modal fade">
-																	<div class="modal-dialog modal-confirm">
-																		<div class="modal-content">
-																			<div class="modal-header">
-																				<div class="icon-box">
-																					<i class="material-icons">&#xE86B;</i>
-																					<i class="material-icons">&#xE86B;</i>
-																					<i class="material-icons">&#xE645;</i>
-																				</div>
-																				<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span>&times;</span></button>
-																			</div>
-																			<div class="modal-body text-center">
-																				<h4>Something went wrong</h4>	
-																				<p>An unexpected error has occurred. Please try again later. Contact support if the error persists.</p>
-																				<button class="btn btn-primary" data-dismiss="modal" onclick="location.href='selectPoint.vd'">Go Back</button>
-																			</div>
-																		</div>
-																	</div>
-																</div> 
-																
+																<a href="selectPoint.vd" id="selectPoint" style="width:50px; text-align:center;" class="btn-gradient yellow mini">조회</a>
+																<a href="" id="chargeBtn" style="width:50px; text-align:center;" class="btn-gradient blue mini">충전</a>
 															</td>
 														</tr>
-														<script>
-															$(document).ready(function(){
-																 $('#selectPoint').click(function(){
-																	 location.href="selectPoint.vd";
-																 });
-															 });
-														</script>	
+																											
+														<tr><td><small>후원</small></td></tr>
+														<tr><td><input type="text" class="form-control" id="rPrice" placehold="후원금액을 입력하세요"></td></tr>
+														<tr>
+															<td>
+																<a style="width:50px;text-align:center;" class="btn-gradient yellow mini" id="cancle1">취소</a>
+																<a id="rOk" style="width:50px; text-align:center;" class="btn-gradient blue mini">후원</a>
+															</td>
+														</tr>
+													</table>
+												</div>
+											</div>
+											<!-- 일시후원 -->
+											<div id="oSub">
+												<div class="noti_text" align="center" style="margin-top:5%;"><b>일시후원</b></div>
+												<div align="left" style="margin-left:10%; margin-right:10%;">
+													<table class="noti_table">
+														<tr><td><small>채널명</small></td></tr>
+														<tr><td><b>채널명</b></td></tr>
+														<tr><td><small>포인트조회</small></td></tr>
+														<tr><td><input type="text" class="form-control" id="point" placehold="포인트를 조회하세요" value="${point} 포인트" readonly></td></tr>
+														<tr>
+															<td>
+																<a href="selectPoint.vd" id="selectPoint" style="width:50px; text-align:center;" class="btn-gradient yellow mini">조회</a>
+																<a id="chargeBtn" style="width:50px; text-align:center;" class="btn-gradient blue mini">충전</a>
+															</td>
+														</tr>
 																											
 														<tr><td><small>후원</small></td></tr>
 														<tr><td><input type="text" class="form-control" id="price" placehold="후원금액을 입력하세요"></td></tr>
 														<tr>
 															<td>
-																<a style="width:50px;text-align:center;" class="btn-gradient yellow mini" id="cancle1">취소</a>
+																<a style="width:50px;text-align:center;" class="btn-gradient yellow mini" id="cancle2">취소</a>
 																<a id="subComplete" style="width:50px; text-align:center;" class="btn-gradient blue mini">후원</a>
 															</td>
 														</tr>
 													</table>
 												</div>
 											</div>
-											
+											<!-- 경고창 -->
+											<div id="caution">
+												<div class="noti_text" align="center" style="margin-top:5%;">
+													<img src="resources/images/caution.png" style="width:30px; margin:5%;"><br>
+												</div>
+												<div align="center" style="margin-left:10%; margin-right:10%; text-align:center">
+													<table class="noti_table">
+														<tr><td><b>포인트에 관한 공지</b></td></tr>
+														<tr>
+															<td>
+																<small>회원님이 신고를 많이 받을 경우<br>블랙리스트가 되었을 경우에는<br>포인트을 받을 수 없으므로<br>이를 유의해 주시기를 바랍니다.</small>
+															</td>
+														</tr>
+														<tr><td style="color:red;"><small><b>*자세한 내용은 공지사항을 참고해 주세요</b></small></td></tr>
+														<tr>
+															<td>
+																<a style="width:50px;text-align:center;" class="btn-gradient yellow small" id="cancle3">취소</a>
+																<a id="cau_ok" style="width:50px; text-align:center;" class="btn-gradient blue small">확인</a>
+															</td>
+														</tr>
+													</table>
+												</div>
+											</div>
+											<!-- 충전 -->
+											<div id="charge">
+												
+											</div>
 										</li>
 									</ul>
 								</li>
-								
 								<li class="nav-item">
 									<a href="#none">
 									<img src="resources/images/heart_black.png" style="width:15px;">
@@ -643,16 +576,11 @@ button[class*="btn"] {border: 0;}
 	</div>
 	
 	<script>
-		//button
-		$('a').click(function(event){
-	  	  event.preventDefault(); 
-		});
+		//좋아요 조회
 		function selectLike(){
-			
 			$.ajax({
 				url:"/with/imgCheck.vd",
 				type:"post",
-				/* data:{userId:userId}, */
 				success:function(data){
 					console.log("성공!");
 					
@@ -662,47 +590,113 @@ button[class*="btn"] {border: 0;}
 				}
 			});
 		}
+		
 		//후원 div 
 		 $(document).ready(function(){
+			 
+			$('#rOk').click(function(){
+				var point = $('#point').val();
+				var price = $('#rPrice').val();
+				
+				//console.log(price);
+				
+				if(price >= point){
+					$.ajax({
+						url:"regSub.vd",
+						type:"post",
+						data:{price:price},
+						success:function(data){
+							alert("reg성공!");
+						},
+						error:function(){
+							alert('reg실패!');
+						}
+					});
+				}else {
+					alert("포인트가 부족합니다.");
+				}
+			});
+			 
 			 $('#sub').show();
 			 $('#rSub').hide();
 			 $('#oSub').hide();
-			 
+			 $('#caution').hide();
+			 $('#charge').hide();
+			 //정기후원
 			 $('#regSub').click(function(){
 				 $('#sub').hide();
 				 $('#rSub').show();
 				 $('#oSub').hide();
+				 $('#caution').hide();
+				 $('#charge').hide();
 				 return false;
 			 });
-			 
+			 //정기 취소
 			 $('#cancle1').click(function(){
 				 $('#sub').show();
 				 $('#rSub').hide();
 				 $('#oSub').hide();
+				 $('#caution').hide();
+				 $('#charge').hide();
 				 return false;
 			 });
-			 
+			 //일시후원
 			 $('#onceSub').click(function(){
 				 $('#sub').hide();
 				 $('#rSub').hide();
 				 $('#oSub').show();
+				 $('#caution').hide();
+				 $('#charge').hide();
 				 return false;
 			 });
-			 
+			 //일시 취소
 			 $('#cancle2').click(function(){
 				 $('#sub').show();
 				 $('#rSub').hide();
 				 $('#oSub').hide();
+				 $('#caution').hide();
+				 $('#charge').hide();
 				 return false;
 			 });
-			 
-			 $('#reset').click(function(){
-				 $('#frilist').show();
-				 $('#myDiv').hide();
-				 
+			 //경고창
+			 $('#caution').click(function(){
+				 $('#sub').hide();
+				 $('#rSub').hide();
+				 $('#oSub').hide();
+				 $('#caution').show();
+				 $('#charge').hide();
+				 return false;
+			 });
+			 //경고창 취소
+			 $('#cancle3').click(function(){
+				 $('#sub').show();
+				 $('#rSub').hide();
+				 $('#oSub').hide();
+				 $('#caution').hide();
+				 $('#charge').hide();
+				 return false;
+			 });
+			 //충전버튼
+			 $('#chargeBtn').click(function(){
+				 $('#sub').hide();
+				 $('#rSub').hide();
+				 $('#oSub').hide();
+				 $('#caution').show();
+				 $('#charge').hide();
+				 return false;
+			 });
+			 //경고창 확인
+			 $('#cau_ok').click(function(){
+				 $('#sub').hide();
+				 $('#rSub').hide();
+				 $('#oSub').hide();
+				 $('#caution').hide();
+				 $('#charge').show();
+				 return false;
 			 });
 		 });
 	</script>
+<input hidden value="${model }" id="dfd">
 
 	<br><br>
 	<jsp:include page="../common/footer.jsp"></jsp:include> 
