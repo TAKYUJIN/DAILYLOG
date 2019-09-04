@@ -8,9 +8,12 @@
 		<typeAlias type="com.kh.with.loger.model.vo.Loger" alias="Loger" />
 		<typeAlias type="com.kh.with.loger.model.vo.Calculate" alias="Calculate" />
 		<typeAlias type="com.kh.with.loger.model.vo.Support" alias="Support" />
+		<typeAlias type="com.kh.with.main.model.vo.MailVo" alias="MailVo" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappers/member-mapper.xml"/>
 		<mapper resource="mappers/loger-mapper.xml"/>
+		<mapper resource="mappers/mail-mapper.xml"/>
+		
 	</mappers>
 </configuration>

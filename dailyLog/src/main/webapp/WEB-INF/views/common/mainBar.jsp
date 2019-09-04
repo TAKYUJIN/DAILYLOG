@@ -250,77 +250,63 @@
 </head> 
 <body>
 <nav class="navbar navbar-default navbar-expand-lg navbar-light">
-   <div class="navbar-header d-flex col" >
-      <img src="resources/images/logo.png" style="width:90px; padding-top:10px;">   
-   </div>
-   <!-- Collection of nav links, forms, and other content for toggling -->
-   <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
-      <ul class="nav navbar-nav" >
-         <li class="nav-item"><a href="home.mb" class="nav-link" style="padding-right:0px;">Home</a></li>
-         <li class="nav-item"><a href="bookmark.mb" class="nav-link" style="padding-right:0px;" onclick="">북마크</a></li>         
-         <li class="nav-item"><a href="subscribe.mb" class="nav-link" style="padding-right:0px;">구독</a></li>   
-         <li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">최근 활동</a></li>   
-         <li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">좋아요 영상</a></li>
-         <li class="nav-item"><a href="logerHomeChannel.lo" class="nav-link" style="padding-right:0px;" onclick="">로거 스튜디오</a></li>
-      </ul>
-      <form class="navbar-form form-inline" style="width:240px;">
-         <div class="input-group search-box">                        
-            <input type="text" id="search" class="form-control" placeholder="검색">
-            <span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
-         </div>
-      </form>
-      <ul class="nav navbar-nav navbar-right ml-auto" style="width:265px;">         
-         <li class="nav-item">
-            <a href="logout.me" class="btn_global link_login" >
-            <img src="resources/images/exit.png" style="width:20px;">
-         </a>
-         </li>
-         
-         <li class="nav-item">
-            <a href="#none" class="btn_global link_login">
-            <img src="resources/images/film.png" style="width:20px;">
-         </a>
-         </li>
-         
-         <li class="nav-item">
-            <a href="#none" data-toggle="dropdown" class="btn_global link_login">
-            <img src="resources/images/laugh.png" style="width:20px;">
-         </a>
-         <ul class="dropdown-menu form-wrapper">               
-               <li>
-                   <div class="noti_text" align="center"><p>채팅</p></div>
-                     <div id="frilist" class="form-group">
-                        <table class="noti_table">
-              <h5>친구 추가를 해주세요~</h5>
+
+	<div class="navbar-header d-flex col" >
+		<img src="resources/images/logo.png" style="width:90px; padding-top:10px;">	
+	</div>
+	<!-- Collection of nav links, forms, and other content for toggling -->
+	<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
+		<ul class="nav navbar-nav" >
+			<li class="nav-item"><a href="home.mb" class="nav-link" style="padding-right:0px;">Home</a></li>
+			<li class="nav-item"><a href="bookmark.mb" class="nav-link" style="padding-right:0px;" onclick="">북마크</a></li>			
+			<li class="nav-item"><a href="subscribe.mb" class="nav-link" style="padding-right:0px;">구독</a></li>	
+			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">최근 활동</a></li>	
+			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">좋아요 영상</a></li>
+			<li class="nav-item"><a href="newHomeChannel.lo" class="nav-link" style="padding-right:0px;" onclick="">로거 스튜디오</a></li>
+		</ul>
+		<form class="navbar-form form-inline" style="width:240px;">
+			<div class="input-group search-box">								
+				<input type="text" id="search" class="form-control" placeholder="검색">
+				<span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
+			</div>
+		</form>
+		<ul class="nav navbar-nav navbar-right ml-auto" style="width:265px;">			
+			<li class="nav-item">
+				<a href="logout.me" class="btn_global link_login" >
+				<img src="resources/images/exit.png" style="width:20px;">
+			</a>
+			</li>
+			
+			<li class="nav-item">
+				<a href="videoUpload.vd" class="btn_global link_login">
+				<img src="resources/images/film.png" style="width:20px;">
+			</a>
+			</li>
+			
+			<li class="nav-item">
+				<a href="#none" data-toggle="dropdown" class="btn_global link_login">
+				<img src="resources/images/laugh.png" style="width:20px;">
+			</a>
+			<ul class="dropdown-menu form-wrapper">					
+					<li>
+ 						<div class="noti_text" align="center"><p>채팅</p></div>
+							<div id="frilist" class="form-group">
+								<table class="noti_table">
+ 				 <h5>친구 추가를 해주세요~</h5>
  <button class="ui olive button" id="addfri">친구 추가</button>
    </table></div>
  <div id="myDiv">
-     <!-- <h4>메일 보내기</h4>
-    <form action="mailSending.mb" method="post">
-      <div>
-        <input type="text" name="FriId" size="120"
-        style="width: 100%" placeholder="상대의 이메일" class="form-control">
-      </div>
-      <div align="center">
-        제목
-        <input type="text" name="title" size="120"  style="width: 100%" placeholder="제목을 입력해주세요" class="form-control">
-      </div>
-        <p>
-          <div align="center">
-          내용
-            <textarea name="content" cols="120" rows="12"  style="width: 100%; resize: none" placeholder="내용#"  class="form-control"></textarea>
-          </div>
-        <p> -->
+ 	
         
         <h4>메일 보내기</h4>
-        <form method="POST">
-          <input type="hidden" name="userId" value="${userId}"/>
-         <!-- 아이디 -->
-         <div class="form-group">
-            <label for="friId">아이디</label>
-               <input type="text" class="form-control" id="friId" name="friId" placeholder="친구 이메일" required>
-            <div class="check_font" id="id_check"></div>
-         </div>
+        <form action="mailSending.mb" method="POST">
+ 			<input type="hidden" name="userId" value="${userId}"/>
+			<!-- 아이디 -->
+			<div class="form-group">
+				<label for="friId">아이디</label>
+					<input type="text" class="form-control" id="friId" name="friId" placeholder="친구 이메일" required>
+				<div class="check_font" id="id_check"></div>
+			</div>
 
         
         
@@ -331,17 +317,6 @@
       </div>
   </form></div></li></ul></li>    
 
-                           <!-- <tr>친구가 없습니다.<br>친구를 추가 해주세요~</tr><br><br>
-                           <button class="ui olive button"><a href="friends.mb"> 친구 추가</a></button>
-                        </table>
-                     </div>
-                     <img src="resources/images/settings.png" align="right">
-                </form>
-               </li>
-            </ul>
-         </li> -->
-
-         
          <li class="nav-item">
          <a href="#none" data-toggle="dropdown" class="btn_global link_login">
             <img src="resources/images/bell.png" style="width:20px;">
@@ -373,18 +348,6 @@
  </body>
 
  <script>
- //친구 
- /* var emailsend =true;
- function emailsend(){
-    var con=document.getElementById("myDiv");
-    if(con.style.display == 'none'){
-       con.style.display == 'block';
-       
-    }else{
-       con.style.display=='none';
-    }
- }
- */
  $(document).ready(function(){
     $('#frilist').show();
     $('#myDiv').hide();
