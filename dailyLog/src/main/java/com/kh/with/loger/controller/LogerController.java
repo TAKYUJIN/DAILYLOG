@@ -55,6 +55,12 @@ public class LogerController {
 			
 			System.out.println("sList" + sList);
 			
+
+
+	
+	  ArrayList<Calculate> list = ls.selectLogerCalculate(c);
+	 
+
 //			for(Support ss : sList) {
 //				if(s.getSupTY().equals("1")) {
 //					s.setSupTY("일회성 후원");
@@ -63,6 +69,7 @@ public class LogerController {
 //				}
 //			}
 //			System.out.println("sList" + sList);
+
 			
 			model.addAttribute("sList", sList);
 			model.addAttribute("cList", cList);
