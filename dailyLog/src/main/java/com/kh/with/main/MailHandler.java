@@ -23,20 +23,21 @@
  * public void setFrom(String email,String name) throws
  * UnsupportedEncodingException, MessagingException {
  * 
- * messageHelper.setFrom(email, name); } public void setTo(String email) throws
- * MessagingException { messageHelper.setTo(email); } public void
- * addInline(String contentId,DataSource dataSource) throws MessagingException {
- * messageHelper.addInline(contentId, dataSource); } public void send() {
- * mailSender.send(message); }
+ * messageHelper.setFrom(email, name); } public void friId(String email) throws
+ * MessagingException { messageHelper.setTo(email); }
  * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
+ * public void addInline(String contentId,DataSource dataSource) throws
+ * MessagingException { messageHelper.addInline(contentId, dataSource); } public
+ * void send() { mailSender.send(message);
  * 
  * }
+ * 
+ * 
+ * 
+ * 
+ * public void setFrom(String string, String string2) { // TODO Auto-generated
+ * method stub
+ * 
+ * } }
+ * 
  */
