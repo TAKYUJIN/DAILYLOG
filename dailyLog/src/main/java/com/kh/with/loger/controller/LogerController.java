@@ -1,7 +1,9 @@
 package com.kh.with.loger.controller;
 
-import java.util.List;
 import java.util.ArrayList;
+
+
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kh.with.loger.model.service.LogerService;
 import com.kh.with.loger.model.vo.Calculate;
+import com.kh.with.loger.model.vo.Support;
+import com.kh.with.member.model.vo.Member;
 
 @Controller
 public class LogerController {
@@ -42,19 +46,45 @@ public class LogerController {
 		}
 		
 	//로거 정산 페이지로 이동
-	//	@RequestMapping(value="logerCalculate.lo")
-	//	public String selectLogerCalculate(Calculate c, Model model) {
-			
-			
 
-	/*
-	 * ArrayList<Calculate> list = ls.selectLogerCalculate(c);
-	 */
+		@RequestMapping(value="logerCalculate.lo")
+		public String selectLogerCalculate(Calculate c, Support s, Model model, HttpSession session) {
+			Member m = (Member) session.getAttribute("loginUser");
+			ArrayList<Calculate> cList = ls.selectLogerCalculate(c, m);
+			ArrayList<Support> sList = ls.selectLogerSupport(s, m);
 			
-		//	model.addAttribute("list", list);
+			System.out.println("sList" + sList);
+	
+	  ArrayList<Calculate> list = ls.selectLogerCalculate(c);
+	 
+
+//			for(Support ss : sList) {
+//				if(s.getSupTY().equals("1")) {
+//					s.setSupTY("일회성 후원");
+//				}else if(s.getSupTY().equals("2")) {
+//					s.setSupTY("정기 후원");
+//				}
+//			}
+//			System.out.println("sList" + sList);
+
+
+			model.addAttribute("sList", sList);
+			model.addAttribute("cList", cList);
+			model.addAttribute("s", s);
+			model.addAttribute("c", c);
 			
-		//	return "loger/logerCalculate";
+			return "loger/logerCalculate";
+		}
+
+/*	@RequestMapping(value="logerCalculate.lo")
+	public String selectLogerCalculate(Calculate c, Model model) {		
+
+		ArrayList<Calculate> list = ls.selectLogerCalculate(c);
 		
+		model.addAttribute("list", list);
+		
+		return "loger/logerCalculate";
+	} */
 
 	//로거스튜디오 이동
 	@RequestMapping(value="newHomeChannel.lo")

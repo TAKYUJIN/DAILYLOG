@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
@@ -14,7 +15,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 <style type="text/css">
     body {
         color: #666;
@@ -57,7 +58,7 @@
     }
     
     .cal_btn {
-	margin-top:50px;
+	margin-top:20px;
 	border:1px solid black;
 	background:#FFF;
 	padding:5px;
@@ -77,10 +78,46 @@
 } */
 
 .selectAccount {
-	margin-top:50px;
+	margin-top:20px;
 	border:none;
 	background:#FFF;
 }
+
+.pagination {
+        margin: 10px 0 5px;
+    }
+    .pagination li a {
+        border: none;
+        min-width: 30px;
+        min-height: 30px;
+        color: #999;
+        margin: 0 2px;
+        line-height: 30px;
+        border-radius: 4px !important;
+        text-align: center;
+        padding: 0;
+    }
+    .pagination li a:hover {
+        color: #666;
+    }
+    .pagination li.active a, .pagination li.active a.page-link {
+        background: #59bdb3;
+    }
+    .pagination li.active a:hover {        
+        background: #45aba0;
+    }
+    .pagination li:first-child a, .pagination li:last-child a {
+        padding: 0 10px;
+    }
+    .pagination li.disabled a {
+        color: #ccc;
+    }
+    .pagination li i {
+        font-size: 17px;
+        position: relative;
+        top: 1px;
+        margin: 0 2px;
+    }
 </style>
 </head>
 <body>
@@ -107,43 +144,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                	<c:forEach items="${list}" var="Calculate">
+                	<c:forEach items="${sList}" var="s">
+                	<%-- <c:if test="${s.supTY eq '1'}">
+                		<c:set var="${s.supTY}">일회</c:set>
+                	</c:if> --%>
                     <tr>
-                        <td>${Calculate.nNo}</td>
-						<td>${Calculate.supTY}</td>
-						<td>${Calculate.nickname}</td>
-						<td><fmt:formatNumber value="${Calculate.supTY}" pattern="#,###,###,###" /></td>
-						<td><fmt:formatDate pattern="yyyy-MM-dd" value="${Calculate.supDT}"/></td>
+                        <td><c:out value="${s.nNo}"/></td>
+						<td><c:out value="${s.supTY}"/></td>
+						<td><c:out value="${s.nickname}"/></td>
+						<td><fmt:formatNumber value="${s.supPrice}" pattern="#,###,###,###" /></td>
+						<td><fmt:formatDate pattern="yyyy-MM-dd" value="${s.supDT}"/></td> 
                     </tr>
                     </c:forEach>
-                    <!-- <tr>
-                        <td>2</td>
-                        <td>좋아요</td>
-						<td>은주의 쿠킹교실</td>
-						<td>3,000원</td>
-						<td>2019.08.16</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>좋아요</td>
-						<td>은주의 쿠킹교실</td>
-						<td>3,000원</td>
-						<td>2019.08.16</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>좋아요</td>
-						<td>은주의 쿠킹교실</td>
-						<td>3,000원</td>
-						<td>2019.08.16</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>좋아요</td>
-						<td>은주의 쿠킹교실</td>
-						<td>3,000원</td>
-						<td>2019.08.16</td>
-                    </tr>   -->      
+                    
                 </tbody>
             </table><br><br>
             
@@ -159,16 +172,29 @@
                     </tr>
                 </thead>
                 <tbody>
-                   <c:forEach items="${list}" var="Calculate">
+                    <c:forEach items="${cList}" var="c">
                     <tr>
-                        <td>${Calculate.nNo}</td>
-						<td><fmt:formatDate pattern="yyyy-MM-dd" value="${Calculate.calSTDT}"/></td>
-						<td><fmt:formatNumber value="${Calculate.calPrice}" pattern="#,###,###,###" /></td>
-						<td>${Calculate.calTY}</td>
+                        <td>${c.nNo}</td>
+						<td><fmt:formatDate pattern="yyyy-MM-dd" value="${c.calSTDT}"/></td>
+						<td><fmt:formatNumber value="${c.calPrice}" pattern="#,###,###,###" /></td>
+						<td>${c.calTY}</td>
                     </tr>
                     </c:forEach>
                 </tbody>
             </table>
+            
+            
+            <div class="text-center">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled"><a href="#"><i class="fa fa-long-arrow-left"></i> Previous</a></li>
+                    <li class="page-item"><a href="#" class="page-link">1</a></li>
+                    <li class="page-item"><a href="#" class="page-link">2</a></li>
+                    <li class="page-item active"><a href="#" class="page-link">3</a></li>
+                    <li class="page-item"><a href="#" class="page-link">4</a></li>
+                    <li class="page-item"><a href="#" class="page-link">5</a></li>
+                    <li class="page-item"><a href="#" class="page-link">Next <i class="fa fa-long-arrow-right"></i></a></li>
+                </ul>
+            </div>
             <div class="calculateBtn">
 			<b><input type="text" class="selectAccount" value="현재 계좌" style="width:70px;"></b>
 			<input type="text" class="selectAccount" value="우리은행" style="width:70px;">
