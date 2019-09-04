@@ -23,20 +23,6 @@ public class LogerServiceImpl implements LogerService{
 	
 
 
-//	@Override
-//	public ArrayList<Calculate> selectLogerCalculate(Member m) {
-//		return ld.selectLogerCalculate(sqlSession, m);
-//	}
-//
-//
-//
-//	@Override
-//	public ArrayList<Calculate> selectLogerCalculate(Calculate c) {
-//		return ld.selectLogerCalculate(sqlSession, c);
-//	}
-
-
-
 	@Override
 	public ArrayList<Calculate> selectLogerCalculate(Calculate c, Member m) {
 		return ld.selectLogerCalculate(sqlSession, c, m);
@@ -47,6 +33,13 @@ public class LogerServiceImpl implements LogerService{
 	@Override
 	public ArrayList<Support> selectLogerSupport(Support s, Member m) {
 		return ld.selectLogerSupport(sqlSession, s, m);
+	}
+
+
+
+	@Override
+	public ArrayList<Calculate> logerLastAccount(Calculate c, Member m) {
+		return ld.logerLastAccount(sqlSession, c, m);
 	}
 
 

@@ -50,4 +50,15 @@
 		ORDER BY RANK ASC
   	</select>	
   	
+  	<select id="logerLastAccount" resultMap="calculateResultSet">
+  		SELECT RANK, CAL_NO, USER_NO, CH_NO, CAL_STDT, CAL_EDT, CAL_PRICE, CAL_VAT, TOTAL_PRICE, CAL_TY, ACC_NM, BANK_NM, ACCOUNT
+		FROM(SELECT ROW_NUMBER() OVER(ORDER BY C.CAL_STDT DESC) RANK, C.*
+		FROM CALCULATE C
+		JOIN MEMBER M ON(C.USER_NO = M.USER_NO)
+		WHERE M.USER_ID = #{userId})
+		WHERE RANK = 1
+  	</select>
+  	
+  	
+  	
 </mapper>

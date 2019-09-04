@@ -19,4 +19,6 @@ public interface LogerDao {
 
 	ArrayList<Support> selectLogerSupport(SqlSessionTemplate sqlSession, Support s, Member m);
 
+	ArrayList<Calculate> logerLastAccount(SqlSessionTemplate sqlSession, Calculate c, Member m);
+
 }

@@ -145,9 +145,6 @@
                 </thead>
                 <tbody>
                 	<c:forEach items="${sList}" var="s">
-                	<%-- <c:if test="${s.supTY eq '1'}">
-                		<c:set var="${s.supTY}">일회</c:set>
-                	</c:if> --%>
                     <tr>
                         <td><c:out value="${s.nNo}"/></td>
 						<td><c:out value="${s.supTY}"/></td>
@@ -195,19 +192,82 @@
                     <li class="page-item"><a href="#" class="page-link">Next <i class="fa fa-long-arrow-right"></i></a></li>
                 </ul>
             </div>
+            
+            <div id="pagingArea" align="center">
+			<c:if test="${ pi.currentPage <= 1 }">
+				[이전] &nbsp;
+			</c:if>
+			<c:if test="${ pi.currentPage > 1 }">
+			<!-- 1페이지 이상의 페이지일 시 -->
+				<c:url var="blistBack" value="/selectList.bo">
+					<c:param name="currentPage" value="${ pi.currentPage - 1 }"/>
+				</c:url>
+				<a href="${ blistBack }">[이전]</a>&nbsp;
+			</c:if>
+			
+			<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
+				<!-- 현재 페이지와 일치하면 -->
+				<c:if test="${ p eq pi.currentPage }">
+					<font color="red" size="4"><b>[${ p }]</b></font>
+				</c:if>
+				<!-- 현재 페이지와 일치하지 않으면 -->
+				<c:if test="${ p ne pi.currentPage }">
+					<c:url var="blistCheck" value="selectList.bo">
+						<c:param name="currentPage" value="${ p }"/>
+					</c:url>
+					<a href="${ blistCheck }">${ p }</a>
+				</c:if>
+			</c:forEach>
+			
+			
+			<c:if test="${ pi.currentPage < pi.maxPage }">
+				<c:url var="blistEnd" value="selectList.bo">
+					<c:param name="currentPage" value="${ pi.currentPage + 1 }"/>
+				</c:url>
+				<a href="${ blistEnd }"> [다음]</a>
+			</c:if>
+			<c:if test="${ pi.currentPage >= pi.maxPage}">
+				&nbsp; [다음]
+			</c:if>
+		</div>
+
             <div class="calculateBtn">
 			<b><input type="text" class="selectAccount" value="현재 계좌" style="width:70px;"></b>
-			<input type="text" class="selectAccount" value="우리은행" style="width:70px;">
-			<input type="text" class="selectAccount" value="1002-000-000000" style="width:130px;">
-			<input type="text" class="selectAccount" value="정은주" style="width:50px;">
-			<input type="button" class="cal_btn" id="accountBtn" value="계좌변경" onclick="">
-			<input type="submit" class="cal_btn" id="calculateBtn" value="정산신청" onclick="">
+			<c:forEach items="${aList}" var="c">
+			<input type="text" class="selectAccount" value="${c.bankNm}" style="width:70px;">
+			<input type="text" class="selectAccount" value="${c.account}" style="width:130px;">
+			<input type="text" class="selectAccount" value="${c.accNm}" style="width:50px;"> 
+			</c:forEach>
+			<input type="button" class="cal_btn" id="accountBtn" value="계좌변경" onclick="accountApi()">
+			<input type="submit" class="cal_btn" id="calculateBtn" value="정산신청" onclick="accountApi()">
 		</div>
-            
-         
         </div>
         </form>
     </div>  
+    <script>
+        function accountApi(){
+        	window.open('accountApi.lo', "", "width=700, height=300, top=50, left=50");
+        }
+        
+        $(function(){
+			//onload function안에
+			$("#boardArea").find("td").mouseenter(function(){
+				//마우스가 올라갈 때
+				$(this).parents("tr").css({"background":"pink", "cursor":"pointer"});
+				
+			}).mouseout(function(){
+				//마우스가 떠났을 때
+				$(this).parents("tr").css({"background":"white"});
+				
+			}).click(function(){
+				//클릭일 때
+				var bid = $(this).parents().children("td").eq(0).text();
+				
+				console.log(bid);
+				location.href = "selectOne.bo?bid=" + bid;
+			});
+		});
+       </script>
     <jsp:include page="../common/footer.jsp"></jsp:include>   
 </body>
 </html>
