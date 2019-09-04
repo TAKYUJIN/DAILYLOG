@@ -51,37 +51,23 @@ public class LogerController {
 		Member m = (Member) session.getAttribute("loginUser");
 		ArrayList<Calculate> cList = ls.selectLogerCalculate(c, m);
 		ArrayList<Support> sList = ls.selectLogerSupport(s, m);
-
-		System.out.println("sList" + sList);
-
-
-		//			for(Support ss : sList) {
-		//				if(s.getSupTY().equals("1")) {
-		//					s.setSupTY("일회성 후원");
-		//				}else if(s.getSupTY().equals("2")) {
-		//					s.setSupTY("정기 후원");
-		//				}
-		//			}
-		//			System.out.println("sList" + sList);
-
-
+		ArrayList<Calculate> aList = ls.logerLastAccount(c, m);
+		
 		model.addAttribute("sList", sList);
 		model.addAttribute("cList", cList);
+		model.addAttribute("aList", aList);
 		model.addAttribute("s", s);
 		model.addAttribute("c", c);
 
 		return "loger/logerCalculate";
 	}
 
-	/*	@RequestMapping(value="logerCalculate.lo")
-	public String selectLogerCalculate(Calculate c, Model model) {		
+		@RequestMapping(value="accountApi.lo")
+	public String selectLogerAccount() {		
+			
 
-		ArrayList<Calculate> list = ls.selectLogerCalculate(c);
-
-		model.addAttribute("list", list);
-
-		return "loger/logerCalculate";
-	} */
+		return "loger/accountApi";
+	} 
 
 
 	//로거스튜디오 이동

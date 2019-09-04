@@ -16,5 +16,7 @@ public interface LogerService {
 
 	ArrayList<Support> selectLogerSupport(Support s, Member m);
 
+	ArrayList<Calculate> logerLastAccount(Calculate c, Member m);
+
 
 }

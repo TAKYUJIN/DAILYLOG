@@ -11,24 +11,6 @@ import com.kh.with.member.model.vo.Member;
 
 @Repository
 public class LogerDaoImpl implements LogerDao{
-	
-//	@Override
-//	public ArrayList<Calculate> selectLogerCalculate(SqlSessionTemplate sqlSession, Member m) {
-//		ArrayList list = null;
-//		
-//		list = (ArrayList)sqlSession.selectList("Calculate.selectLogerCalculate", m);
-//		
-//		return list;
-//	}
-//
-//	@Override
-//	public ArrayList<Calculate> selectLogerCalculate(SqlSessionTemplate sqlSession, Calculate c) {
-//		ArrayList list = null;
-//		
-//		list = (ArrayList)sqlSession.selectList("Calculate.selectLogerCalculate", c);
-//		
-//		return list;
-//	}
 
 	@Override
 	public ArrayList<Calculate> selectLogerCalculate(SqlSessionTemplate sqlSession, Calculate c, Member m) {
@@ -46,6 +28,15 @@ public class LogerDaoImpl implements LogerDao{
 		sList = (ArrayList)sqlSession.selectList("Loger.selectLogerSupport", m);
 		
 		return sList;
+	}
+
+	@Override
+	public ArrayList<Calculate> logerLastAccount(SqlSessionTemplate sqlSession, Calculate c, Member m) {
+		ArrayList<Calculate> aList = null;
+		
+		aList = (ArrayList)sqlSession.selectList("Loger.logerLastAccount", m);
+		
+		return aList;
 	}
 
 }
