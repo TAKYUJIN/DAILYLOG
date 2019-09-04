@@ -26,16 +26,25 @@
 }
 
 #Revisbtn {
-	margin-top:80px;
-	margin-left:-400px;
+	margin-top: 80px;
+	margin-left: -400px;
 }
-#editbtn{
-	margin-top:-550px;
-	margin-left:830px;
-}
-h4{
 
-border:1px solid black;
+#editbtn {
+	margin-top: -85px;
+	margin-left: 830px;
+}
+
+h4 {
+	width: 200px;
+	/* border: 1px solid black; */
+}
+
+.dropdown {
+	width: 150px;
+	margin-top: -70px;
+	margin-left: 600px;
+	/* border: 1px solid black; */
 }
 </style>
 
@@ -53,16 +62,27 @@ border:1px solid black;
 		<textarea rows="10" cols="100" id="textarea" style="margin-top: 26px"></textarea>
 
 		<button id="Revisbtn" class="btn btn-primary">수정</button>
-		<br><br><br><br><br>
-		
-		<h4 style="margin-left: 120px width:500px">
+		<br> <br> <br> <br> <br>
+
+		<h4 style="margin-left: 120px">
 			<strong>채널전체구성</strong>
 		</h4>
 		<div id="line"></div>
-		<textarea rows="10" cols="100" id="textarea" style="margin-top: 26px"></textarea>
-
 		<button id="editbtn" class="btn btn-primary">편집</button>
-		
+
+
+		<div class="dropdown">
+			<button class="btn btn-primary dropdown-toggle" type="button"
+				data-toggle="dropdown">
+				사용자임의지정 <span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu">
+				<li><a href="#">인기동영상</a></li>
+				<li><a href="#">최신순</a></li>
+			</ul>
+		</div>
+
+
 	</div>
 
 

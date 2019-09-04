@@ -47,8 +47,9 @@ public class LogerController {
 			
 			
 
-			ArrayList<Calculate> list = ls.selectLogerCalculate(c);
-
+	/*
+	 * ArrayList<Calculate> list = ls.selectLogerCalculate(c);
+	 */
 			
 		//	model.addAttribute("list", list);
 			
@@ -56,9 +57,9 @@ public class LogerController {
 		
 
 	//로거스튜디오 이동
-	@RequestMapping(value="logerHomeChannel.lo")
-	public String logerHomeChannel() {
-		return "loger/logerHomeChannel";
+	@RequestMapping(value="newHomeChannel.lo")
+	public String newHomeChannel() {
+		return "loger/newHomeChannel";
 	}
 	
 	//로거스튜디오내 동영상으로 이동
