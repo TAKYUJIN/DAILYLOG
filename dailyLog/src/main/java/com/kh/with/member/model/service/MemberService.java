@@ -16,17 +16,21 @@ public interface MemberService {
 	int insertMember(Member m);
 	
 
-	int update_myPage(Member m) throws LoginException;
 	
 	//아이디 중복 체크 
 	int idCheck(String userId);
 
 	//닉네임 중복 체크
 	int nickCheck(String nickname);
+	
+	//mypage 들어가기
+	ArrayList<Member> selectMyPage(Member m);
+	
+	//mypage 수정
+	int update_myPage(Member m) throws LoginException;
   
-  ArrayList<Member> selectMyPage(Member m);
-  
-  boolean delete_myPage(Member m, HttpServletResponse response) throws Exception;
+	//mypage 탈퇴
+	int delete_myPage(Member m) throws Exception;
 
 
 	
@@ -36,7 +40,6 @@ public interface MemberService {
 	
 
 	
-	//Member update_Pwd(Member m, String old_pwd, HttpServletResponse response);
 
 
 

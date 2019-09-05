@@ -129,31 +129,31 @@ public class MemberController {
 	}
 
 
-	//마이페이지 이동
-	@RequestMapping(value="myPage.me")
-	public String myPage() {
-		return"member/myPage";
-	}
-
-	/*
-	 * //myPage 수정
-	 * 
-	 * @RequestMapping(value = "/update_myPage.me", method = RequestMethod.POST)
-	 * public String update_mypage(@ModelAttribute Member m, HttpSession session,
-	 * RedirectAttributes rttr) throws Exception{ session.setAttribute("m",
-	 * ms.update_myPage(m)); rttr.addFlashAttribute("msg", "회원정보 수정 완료"); return
-	 * "redirect:/member/mypage.do"; }
-	 */
-
-	/*
-	 * // 비밀번호 변경
-	 * 
-	 * @RequestMapping(value = "/update_pw.do", method = RequestMethod.POST) public
-	 * String update_pw(@ModelAttribute Member m, @RequestParam("old_pw") String
-	 * old_pw, HttpSession session, HttpServletResponse response, RedirectAttributes
-	 * rttr) throws Exception{ session.setAttribute("member", ms.update_pw(m,
-	 * old_pw, response)); }
-	 */
+//	//마이페이지 이동
+//	@RequestMapping(value="myPage.me")
+//	public String myPage() {
+//		return"member/myPage";
+//	}
+//
+//	/*
+//	 * //myPage 수정
+//	 * 
+//	 * @RequestMapping(value = "/update_myPage.me", method = RequestMethod.POST)
+//	 * public String update_mypage(@ModelAttribute Member m, HttpSession session,
+//	 * RedirectAttributes rttr) throws Exception{ session.setAttribute("m",
+//	 * ms.update_myPage(m)); rttr.addFlashAttribute("msg", "회원정보 수정 완료"); return
+//	 * "redirect:/member/mypage.do"; }
+//	 */
+//
+//	/*
+//	 * // 비밀번호 변경
+//	 * 
+//	 * @RequestMapping(value = "/update_pw.do", method = RequestMethod.POST) public
+//	 * String update_pw(@ModelAttribute Member m, @RequestParam("old_pw") String
+//	 * old_pw, HttpSession session, HttpServletResponse response, RedirectAttributes
+//	 * rttr) throws Exception{ session.setAttribute("member", ms.update_pw(m,
+//	 * old_pw, response)); }
+//	 */
 
 	//아이디 중복확인 
 	@RequestMapping(value="idCheck.me", method=RequestMethod.GET)
@@ -179,81 +179,151 @@ public class MemberController {
 		return Integer.toString(result);
 
 	}
-
-	/*
-
+//
+//	/*
+//
+//	// 마이페이지 이동
+//	@RequestMapping(value = "myPage.me")
+//	public String myPage(Model model, Member m, HttpSession session) {
+//		m = (Member) session.getAttribute("loginUser");
+//
+//		ArrayList<Member> list = ms.selectMyPage(m);
+//		System.out.println("list " + list);
+//		model.addAttribute("list", list.get(0));
+//		//model.addAttribute("m", m);
+//		//System.out.println("m : " + m);
+//
+//		return "member/myPage";
+//	}
+//
+//	// myPage 수정
+//	@RequestMapping(value = "update_myPage.me", method = RequestMethod.POST)
+//	public String update_mypage(@ModelAttribute Member m,Model model,HttpServletRequest request,
+//			@RequestParam(name="pro", required=false) MultipartFile pro ,HttpSession session, RedirectAttributes rttr)
+//					throws Exception {
+//
+//		System.out.println(pro);
+//		// session.setAttribute("m",ms.update_myPage(m));
+//		System.out.println("******************************* : " + m);
+//
+//		System.out.println("왔냐 ? ::::" + m);
+//
+//
+//		String root = request.getSession().getServletContext().getRealPath("resources");
+//		//		System.out.println(encPassword);
+//
+//		String filePath = root + "\\ images";
+//
+//		//파일명 변경
+//		//				String originFileName = pro.getOriginalFilename();
+//		//				String ext = originFileName.substring(originFileName.lastIndexOf("."));
+//		//				String changeName = CommonUtils.getRandomString();
+//		try {
+//			//				pro.transferTo(new File(filePath + "\\" +changeName +ext));
+//
+//			String encPassword = passwordEncoder.encode(m.getUserPwd());
+//			System.out.println(encPassword);
+//
+//			m.setUserPwd(encPassword);
+//			System.out.println("insertMember : " + m);
+//
+//			ms.update_myPage(m);
+//
+//
+//
+//			return "forward:index.jsp";
+//		} catch (Exception e) {
+//			//					new File(filePath + "\\" + changeName + ext).delete();
+//
+//			model.addAttribute("msg", "마이페이지 수정 실패");
+//			return "common/errorPage";
+//		}
+//	}
+//	@RequestMapping(value = "delete_myPage.me", method = RequestMethod.POST)
+//	public String delete_mypage(@ModelAttribute Member m,Model model,HttpServletRequest request,HttpServletResponse response,
+//			HttpSession session, RedirectAttributes rttr)
+//					throws Exception {
+//
+//		System.out.println("탈퇴인가요 ?");
+//
+//		if(ms.delete_myPage(m,response)) {
+//
+//
+//			session.invalidate();
+//
+//
+//		}
+//		return "forward:logout.me";
+//	}
+//	*/
+//}
 	// 마이페이지 이동
-	@RequestMapping(value = "myPage.me")
-	public String myPage(Model model, Member m, HttpSession session) {
-		m = (Member) session.getAttribute("loginUser");
+		@RequestMapping(value = "myPage.me")
+		public String myPage(Model model, Member m, HttpSession session) {
+			m = (Member) session.getAttribute("loginUser");
 
-		ArrayList<Member> list = ms.selectMyPage(m);
-		System.out.println("list " + list);
-		model.addAttribute("list", list.get(0));
-		//model.addAttribute("m", m);
-		//System.out.println("m : " + m);
+			ArrayList<Member> list = ms.selectMyPage(m);
+			System.out.println("list " + list);
+			model.addAttribute("list", list.get(0));
+			//model.addAttribute("m", m);
+			//System.out.println("m : " + m);
 
-		return "member/myPage";
-	}
-
-	// myPage 수정
-	@RequestMapping(value = "update_myPage.me", method = RequestMethod.POST)
-	public String update_mypage(@ModelAttribute Member m,Model model,HttpServletRequest request,
-			@RequestParam(name="pro", required=false) MultipartFile pro ,HttpSession session, RedirectAttributes rttr)
-					throws Exception {
-
-		System.out.println(pro);
-		// session.setAttribute("m",ms.update_myPage(m));
-		System.out.println("******************************* : " + m);
-
-		System.out.println("왔냐 ? ::::" + m);
-
-
-		String root = request.getSession().getServletContext().getRealPath("resources");
-		//		System.out.println(encPassword);
-
-		String filePath = root + "\\ images";
-
-		//파일명 변경
-		//				String originFileName = pro.getOriginalFilename();
-		//				String ext = originFileName.substring(originFileName.lastIndexOf("."));
-		//				String changeName = CommonUtils.getRandomString();
-		try {
-			//				pro.transferTo(new File(filePath + "\\" +changeName +ext));
-
-			String encPassword = passwordEncoder.encode(m.getUserPwd());
-			System.out.println(encPassword);
-
-			m.setUserPwd(encPassword);
-			System.out.println("insertMember : " + m);
-
-			ms.update_myPage(m);
-
-
-
-			return "forward:index.jsp";
-		} catch (Exception e) {
-			//					new File(filePath + "\\" + changeName + ext).delete();
-
-			model.addAttribute("msg", "마이페이지 수정 실패");
-			return "common/errorPage";
+			return "member/myPage";
 		}
-	}
-	@RequestMapping(value = "delete_myPage.me", method = RequestMethod.POST)
-	public String delete_mypage(@ModelAttribute Member m,Model model,HttpServletRequest request,HttpServletResponse response,
-			HttpSession session, RedirectAttributes rttr)
-					throws Exception {
-
-		System.out.println("탈퇴인가요 ?");
-
-		if(ms.delete_myPage(m,response)) {
-
-
-			session.invalidate();
-
-
+		// myPage 수정
+		@RequestMapping(value = "update_myPage.me", method = RequestMethod.POST)
+		public String update_mypage(@ModelAttribute Member m,Model model,HttpServletRequest request,
+				@RequestParam(name="pro", required=false) MultipartFile pro ,HttpSession session, RedirectAttributes rttr)
+				throws Exception {
+			
+			System.out.println(pro);
+			// session.setAttribute("m",ms.update_myPage(m));
+			System.out.println("******************************* : " + m);
+			
+			System.out.println("왔냐 ? ::::" + m);
+			
+			
+			String root = request.getSession().getServletContext().getRealPath("resources");
+//			System.out.println(encPassword);
+			
+			String filePath = root + "\\ images";
+			
+			//파일명 변경
+//					String originFileName = pro.getOriginalFilename();
+//					String ext = originFileName.substring(originFileName.lastIndexOf("."));
+//					String changeName = CommonUtils.getRandomString();
+					try {
+//					pro.transferTo(new File(filePath + "\\" +changeName +ext));
+				
+				String encPassword = passwordEncoder.encode(m.getUserPwd());
+				System.out.println(encPassword);
+				
+				m.setUserPwd(encPassword);
+				System.out.println("insertMember : " + m);
+				
+				ms.update_myPage(m);
+				
+				
+				
+				return "forward:index.jsp";
+					} catch (Exception e) {
+//						new File(filePath + "\\" + changeName + ext).delete();
+						
+						model.addAttribute("msg", "마이페이지 수정 실패");
+						return "common/errorPage";
+					}
 		}
-		return "forward:logout.me";
-	}
-	*/
+		//mypage 탈퇴
+		@RequestMapping(value = "delete_myPage.me", method = RequestMethod.POST)
+		public String delete_mypage(@ModelAttribute Member m,Model model,HttpServletRequest request,
+				HttpSession session, RedirectAttributes rttr)
+				throws Exception {
+			
+			
+		
+			ms.delete_myPage(m);
+			
+			System.out.println("탈퇴인가요 ?");
+			return "forward:logout.me";
+		}
 }
