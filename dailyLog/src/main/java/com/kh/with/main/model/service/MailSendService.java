@@ -42,28 +42,33 @@ public class MailSendService {
 	  
 	  this.lowerCheck=lowerCheck; this.size=size; return init(); }
 	  
-	  public void mailSendWithUserKey(String FriId,HttpServletRequest request) {
-	  String status_yn = getKey(false, 20); userDao = sqlSession.getMapper(MailDao.class); userDao.GetKey(FriId, status_yn); MimeMessage
-	  mail = mailSender.createMimeMessage(); String htmlStr =
-	  "<h2>안녕하세요 :Daily Log 입니다</h2><br><br>" + "<h3>" + FriId + "님</h3>" +
-	  "<p>친구추가 버튼을 누르시면 로그인을 하실 수 있습니다 : " + "<a href='http://localhost:8001" +
-	  request.getContextPath() + "/user/key_alter?FriId="+ FriId
-	  +"&status_yn="+status_yn+"'>친구추가</a></p>" + "(혹시 잘못 전달된 메일이라면 이 이메일을 무시하셔도 됩니다)";
+	  public void mailSendWithUserKey(String friId,String userId,HttpServletRequest request) {
+		  
+		  System.out.println("mailSendWithUserKey"+userId);
+		  
+	  String status_yn = getKey(false, 20); 
+	  userDao = sqlSession.getMapper(MailDao.class); 
+	  userDao.GetKey(userId, status_yn); 
+	  MimeMessage mail = mailSender.createMimeMessage(); 
+	  String htmlStr ="<h2>안녕하세요 :Daily Log 입니다</h2><br><br>" + "<h3>" + friId + "님 친구 요청이 도착 하였습니다.</h3>" +
+	  "<p>요청보기 버튼을 누르시면 친구 요청을 보실 수 있습니다 : " + "<a href='http://localhost:8001" +
+	  request.getContextPath() + "/home.mb?userId="+ userId
+	  +"&status_yn="+status_yn+"'>요청 보기</a></p>" + "(혹시 잘못 전달된 메일이라면 이 이메일을 무시하셔도 됩니다)";
 	  try { mail.setSubject("[친구추가] :친구추가 메일 입니다", "utf-8"); mail.setText(htmlStr,
 	  "utf-8", "html"); mail.addRecipient(RecipientType.TO, new
-	  InternetAddress(FriId)); mailSender.send(mail); } catch (MessagingException
+	  InternetAddress(friId)); mailSender.send(mail); } catch (MessagingException
 	  e) { e.printStackTrace(); }
 	  
 	  
 	  
 	  }
 	  
-	  public int alter_userKey_service(String FriId, String status_yn) {
+	  public int alter_userKey_service(String userId, String status_yn) {
 	  
 	  int resultCnt = 0;
 	  
 	  userDao = sqlSession.getMapper(MailDao.class); 
-	  resultCnt = userDao.alter_userKEY(FriId, status_yn);
+	  resultCnt = userDao.alter_userKEY(userId, status_yn);
 	  
 	  return resultCnt; }
 	 
@@ -87,10 +92,7 @@ public class MailSendService {
 	 * dao.userAuth(FRI_ID); }
 	 */
 
-	public void userReg_service(MailVo mailVo) {
-		// TODO Auto-generated method stub
-		
-	}
+	 
 	
 	
 	

@@ -13,13 +13,15 @@ import com.kh.with.main.model.vo.MailVo;
 public class regService {
  @Autowired
  private SqlSessionTemplate userSqlSession;
- 
  private MailDao maildao;
+ 
  
 	public int userReg_service(MailVo mailVo) {
 		int resultCnt=0;
+		System.out.println("regservice1");
 		
 		maildao =userSqlSession.getMapper(MailDao.class);
+		System.out.println("regserviceMailDao"+maildao);
 		
 		try {
 			resultCnt = maildao.regUser(mailVo);

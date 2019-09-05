@@ -22,6 +22,14 @@
 		<result property="remainPT" column="REMAIN_PT" />
 		<result property="status" column="STATUS" />
 	</resultMap>
+	<resultMap type="com.kh.with.main.model.vo.MailVo" id="friendslistResultSet">
+		
+		 <id property="userNo" column="USER_NO" />
+		<result property="frino" column="FRI_NO" />
+		<result property="userId" column="USER_ID" /> 
+		<result property="friId" column="FRI_ID" />
+		<result property="status_yn" column="STATUS_YN" />
+	</resultMap>
 	
 	<!-- 로그인 정보 조회용 쿼리 -->
 	<select id="loginCheck" resultMap="memberResultSet" parameterType="Member">
@@ -32,6 +40,10 @@
 		AND STATUS = 0
 	</select>
 	
-	
+	 
+	 <select id="FriendsList" resultMap="friendslistResultSet" parameterType="com.kh.with.main.model.vo.MailVo">
+	 		SELECT USER_ID,FRI_ID FROM FRIEND
+	 
+	 </select>
 </mapper>
 
