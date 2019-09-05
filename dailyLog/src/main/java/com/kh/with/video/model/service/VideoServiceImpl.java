@@ -16,7 +16,7 @@ public class VideoServiceImpl implements VideoService{
 	@Autowired
 	private VideoDao vd;
   
-  //동영상 페이지 포인트 조회
+	//동영상 페이지 포인트 조회
 	@Override
 	public int selectPoint(Member m) {
 		
@@ -28,5 +28,21 @@ public class VideoServiceImpl implements VideoService{
 	}
 	
 
-	}
+
+	//		byte[] data = multipartFile.getBytes();
+	//		FileOutputStream fos = new FileOutputStream(SAVE_PATH + "/" + saveFileName);
+	//		fos.write(data);
+	//		fos.close();
+			
+	//		return result;
+	//	}
+		//정기후원
+		@Override
+		public int regSub(Member m, int price) {
+			
+			
+			return vd.regSub(sqlSession, m, price);
+		}
+
+	
 

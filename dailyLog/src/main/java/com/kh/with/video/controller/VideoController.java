@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import org.springframework.web.bind.annotation.RequestMethod;
+
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
@@ -70,6 +72,20 @@ public class VideoController {
 		model.addAttribute("point", point);
 
 		return "video/videoMain";
+	}
+
+	//정기후원
+	@RequestMapping(value="regSub.vd")
+	public String regSub(HttpServletRequest request, HttpSession session) {
+		int price = Integer.parseInt(request.getParameter("price"));
+		
+		Member m = (Member) session.getAttribute("loginUser");
+		
+		int result = vs.regSub(m, price);
+		
+		//System.out.println("money ::: " + price);
+		
+		return "";
 	}
 
 	// 동영상 업로드 페이지 이동
@@ -136,5 +152,25 @@ public class VideoController {
 		/* System.out.println("list::::" + lists); */
 
 		return " ";
-	}
+	
 }
+
+	//동영상업로드
+	@RequestMapping( "/upload" )
+	public String upload(
+			Model model,
+			@RequestParam("file1") MultipartFile file) {
+
+		String url = vs.upload(file);
+		model.addAttribute("url", url);
+		return "result";
+	}
+
+	
+	
+	
+	
+	
+	
+}
+

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+  
  
 <!DOCTYPE html>
 <html lang="en">
@@ -16,6 +18,8 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <style type="text/css">
    body{
       font-family: 'Varela Round', sans-serif;
@@ -289,31 +293,66 @@
 			</a>
 			<ul class="dropdown-menu form-wrapper">					
 					<li>
- 						<div class="noti_text" align="center"><p>채팅</p></div>
-							<div id="frilist" class="form-group">
+ 						<div class="noti_text" align="center"><p>친구 리스트</p></div>
+<%-- 							<div id="frilist" class="form-group">
 								<table class="noti_table">
- 				 <h5>친구 추가를 해주세요~</h5>
- <button class="ui olive button" id="addfri">친구 추가</button>
-   </table></div>
+ 				 <table class="table table-hover">
+                        <thead><tr><th>친구 아이디</th></tr></thead>
+                         <tbody><c:forEach items="${list}" var="MailVo">
+                             <tr><td>${MailVo.friId}</td>
+                            <td><button>채팅</button></td>
+                            </tr></c:forEach>
+                        </tbody></table>
+ <button class="ui olive button" id="addfri">친구 추가</button></table></div> --%>
+ 
+ <div class="page-wrapper">
+    <div class="container-fluid">
+        <div class="col-lg-8"><!--게시판 넓이 -->
+             
+            <div class="row">
+                  
+              </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">친구 리스트 </div>
+                <div class="panel-body">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <td>친구 아이디</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                          		<td><button>채팅</button></td>
+                            </tr>
+                        </tbody>
+                            <tbody><c:forEach items="${list}" var="MailVo">
+                             <tr><td>${MailVo.friId}</td>
+                            <td><button>채팅</button></td>
+                            </tr></c:forEach>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <button class="ui olive button" id="addfri">친구 추가</button>
+ 
  <div id="myDiv">
- 	
-        
-        <h4>메일 보내기</h4>
+        <h4>친구요청 보내기</h4>
         <form action="mailSending.mb" method="POST">
- 			<input type="hidden" name="userId" value="${userId}"/>
+ 			<input type="hidden" id="userId" name="userId" value="userId"/>
 			<!-- 아이디 -->
 			<div class="form-group">
-				<label for="friId">아이디</label>
+				<label for="friId">친구 이메일</label>
 					<input type="text" class="form-control" id="friId" name="friId" placeholder="친구 이메일" required>
 				<div class="check_font" id="id_check"></div>
 			</div>
-
-        
-        
       <div align="center">
         <input type="submit" value="메일 보내기" class="btn btn-warning">
         <input type="reset" value="취소" class="btn btn-default" id="reset">
-        
       </div>
   </form></div></li></ul></li>    
 
