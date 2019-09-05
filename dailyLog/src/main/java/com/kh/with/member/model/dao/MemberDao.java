@@ -1,5 +1,7 @@
 package com.kh.with.member.model.dao;
 
+import java.util.ArrayList;
+
 import org.mybatis.spring.SqlSessionTemplate;
 
 import com.kh.with.member.model.exception.LoginException;
@@ -17,6 +19,10 @@ public interface MemberDao {
 
 	
 	int update_myPage(SqlSessionTemplate sqlSession, Member m);
+
+
+	ArrayList<Member> selectMyPage(SqlSessionTemplate sqlSession, Member m);
+
 
 
 
