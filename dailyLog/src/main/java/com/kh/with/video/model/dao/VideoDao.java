@@ -11,7 +11,7 @@ public interface VideoDao {
 	//동영상 페이지 포인트 조회
 	int selectPoint(SqlSessionTemplate sqlSession, Member m);
 	//정기후원
-	int regSub(SqlSessionTemplate sqlSession, Member m, int price);
+	int regSub(SqlSessionTemplate sqlSession, Member m);
 	
 	// 업로드할 동영상 정보 insert메소드
 	int insertVideoInfo(SqlSessionTemplate sqlSession, Model model);

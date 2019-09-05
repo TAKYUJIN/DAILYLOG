@@ -44,10 +44,10 @@ public class VideoServiceImpl implements VideoService{
 
 	//정기후원
 	@Override
-	public int regSub(Member m, int price) {
+	public int regSub(Member m) {
 
 
-		return vd.regSub(sqlSession, m, price);
+		return vd.regSub(sqlSession, m);
 	}
 
 
@@ -71,6 +71,8 @@ public class VideoServiceImpl implements VideoService{
 
 		return result;
 	}
+
+
 
 
 }
