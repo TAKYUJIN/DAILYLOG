@@ -1,10 +1,16 @@
 package com.kh.with.video.model.dao;
 
+import java.util.List;
+
+import javax.inject.Inject;
+
+import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 
 import com.kh.with.member.model.vo.Member;
+import com.kh.with.video.model.vo.Video;
 
 @Repository
 public class VideoDaoImpl implements VideoDao{
@@ -34,6 +40,14 @@ public class VideoDaoImpl implements VideoDao{
 		return sqlSession.insert("Video.insertVideoInfo", model);
 		
 		
+	}
+	
+	@Inject
+	SqlSession sqlsession;
+	@Override
+	public List<Video> videoimagelist() {
+		System.out.println("videodaoimpl");
+ 		return sqlsession.selectList("Video.videoimagelist");
 	}
 	
 

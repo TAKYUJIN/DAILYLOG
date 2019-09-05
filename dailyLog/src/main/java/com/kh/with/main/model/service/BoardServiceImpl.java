@@ -9,14 +9,19 @@ import org.springframework.stereotype.Service;
 import com.kh.with.main.model.dao.BoardDao;
 import com.kh.with.main.model.dao.BoardDaoImpl;
 import com.kh.with.main.model.vo.MailVo;
+
 @Service
 public class BoardServiceImpl implements BoardService{
 
 	@Inject
-	BoardDaoImpl boarddao;
+	 BoardDaoImpl boarddao;
 	
 	@Override
 	public List<MailVo> FriendList() throws Exception {
+		System.out.println("serviceimpl list:");
+		
+		System.out.println("boarddao"+boarddao);
+		
 		return boarddao.FriendList();
 	}
 	

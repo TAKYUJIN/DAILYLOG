@@ -259,7 +259,9 @@
 	<!-- Collection of nav links, forms, and other content for toggling -->
 	<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
 		<ul class="nav navbar-nav" >
-			<li class="nav-item"><a href="home.mb" class="nav-link" style="padding-right:0px;">Home</a></li>
+			<li class="nav-item">
+			 <button type="button" onclick="location.href='home.mb'" class="nav-link" style="padding-right:0px;">Home</button>
+			</li>
 			<li class="nav-item"><a href="bookmark.mb" class="nav-link" style="padding-right:0px;" onclick="">북마크</a></li>			
 			<li class="nav-item"><a href="subscribe.mb" class="nav-link" style="padding-right:0px;">구독</a></li>	
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">최근 활동</a></li>	
@@ -287,62 +289,52 @@
 			</li>
 			
 			<li class="nav-item">
-				<a href="#none" data-toggle="dropdown" class="btn_global link_login">
+				 
+			 <button type="button" onclick="location.href='FriendList.mb'" data-toggle="dropdown" class="btn_global link_login">
 				<img src="resources/images/laugh.png" style="width:20px;">
-			</a>
+			</button>
 			<ul class="dropdown-menu form-wrapper">					
 					<li>
  						<div class="noti_text" align="center"><p>친구 리스트</p></div>
-<%-- 							<div id="frilist" class="form-group">
-								<table class="noti_table">
- 				 <table class="table table-hover">
-                        <thead><tr><th>친구 아이디</th></tr></thead>
-                         <tbody><c:forEach items="${list}" var="MailVo">
-                             <tr><td>${MailVo.friId}</td>
-                            <td><button>채팅</button></td>
-                            </tr></c:forEach>
-                        </tbody></table>
- <button class="ui olive button" id="addfri">친구 추가</button></table></div> --%>
  
  <div class="page-wrapper">
-    <div class="container-fluid">
+    <div class="container-fluid" id="frilist">
         <div class="col-lg-8"><!--게시판 넓이 -->
-             
-            <div class="row">
-                  
-              </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">친구 리스트 </div>
-                <div class="panel-body">
+            <div class="panel panel-default" >
+            <div>
+                 <div class="panel-body">
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <td>친구 아이디</td>
+                                <td>친구  아이디</td>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                          		<td><button>채팅</button></td>
-                            </tr>
-                        </tbody>
-                            <tbody><c:forEach items="${list}" var="MailVo">
-                             <tr><td>${MailVo.friId}</td>
-                            <td><button>채팅</button></td>
-                            </tr></c:forEach>
+                            <tbody>
+                             <c:forEach var="MailVo" items="${list}">
+                             <tr>
+                             <td>${MailVo.friId}</td>
+                             </tr>
+                           <td><button>채팅</button></td>
+                            </c:forEach>  
                         </tbody>
                     </table>
+                    </div> 
+  					 </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
   <button class="ui olive button" id="addfri">친구 추가</button>
- 
- <div id="myDiv">
-        <h4>친구요청 보내기</h4>
+                </div>
+                </div>
+     <div class="container-fluid" id="myDiv">
+        <div class="col-lg-8"><!--게시판 넓이 -->
+            <div class="panel panel-default" >
+            <div>
+                 <div class="panel-body">
+                    <table class="table table-hover">
+         <h4>친구요청 보내기</h4>
         <form action="mailSending.mb" method="POST">
  			<input type="hidden" id="userId" name="userId" value="userId"/>
+ 			<input type="hidden" id=status_yn name="status_yn" value="Y"/>
+ 			
 			<!-- 아이디 -->
 			<div class="form-group">
 				<label for="friId">친구 이메일</label>
@@ -353,8 +345,11 @@
         <input type="submit" value="메일 보내기" class="btn btn-warning">
         <input type="reset" value="취소" class="btn btn-default" id="reset">
       </div>
-  </form></div></li></ul></li>    
+  </form></table></div></div></div></div></div></div></li></ul></li>  
 
+ 
+ 
+ 
          <li class="nav-item">
          <a data-toggle="dropdown" class="btn_global link_login" onclick="send2();">
             <img src="resources/images/bell.png" style="width:20px;">

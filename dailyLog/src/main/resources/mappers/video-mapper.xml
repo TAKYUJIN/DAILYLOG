@@ -33,6 +33,11 @@
 		#{adYn},DEFAULT,DEFAULT,
 		DEFAULT,#{filepath},#{openTy});
 	</insert>
+	
+	<select id="videoimagelist" resultMap="videoResultSet"  parameterType="Video">
+		SELECT USER_NO,FILEPATH  FROM VIDEO
+	
+	</select>
 
 </mapper>
 

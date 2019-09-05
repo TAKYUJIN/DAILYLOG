@@ -1,17 +1,17 @@
 package com.kh.with.video.model.service;
 
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Service;
-
 import org.springframework.ui.Model;
-
 import org.springframework.web.multipart.MultipartFile;
 
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.video.model.dao.VideoDao;
+import com.kh.with.video.model.vo.Video;
 
 @Service
 public class VideoServiceImpl implements VideoService{
@@ -20,7 +20,7 @@ public class VideoServiceImpl implements VideoService{
 	private SqlSessionTemplate sqlSession;
 	@Autowired
 	private VideoDao vd;
-
+	
 	//동영상 페이지 포인트 조회
 	@Override
 	public int selectPoint(Member m) {
@@ -72,7 +72,11 @@ public class VideoServiceImpl implements VideoService{
 		return result;
 	}
 
-
+	@Override
+	public List<Video> videoimagelist(){
+		System.out.println("videoServiceimpl");
+		return vd.videoimagelist();
+	}
 
 
 }

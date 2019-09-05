@@ -1,12 +1,16 @@
 package com.kh.with.video.model.service;
 
 import com.kh.with.member.model.vo.Member;
+import com.kh.with.video.model.vo.Video;
+
+import java.util.List;
 
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 
 public interface VideoService {
 	
+ 
 	//동영상 페이지 포인트 조회
 	int selectPoint(Member m);
 	
@@ -18,6 +22,9 @@ public interface VideoService {
 
 	// 업로드할 동영상 정보 insert메소드
 	int insertVideoInfo(Model model);
+
+	//동영상 이미지 출력
+	List<Video> videoimagelist();
 
 
 

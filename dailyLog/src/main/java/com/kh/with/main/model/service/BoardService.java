@@ -8,5 +8,4 @@ import com.kh.with.main.model.vo.MailVo;
 public interface BoardService {
 
 	public List<MailVo> FriendList() throws Exception;
-
 }
