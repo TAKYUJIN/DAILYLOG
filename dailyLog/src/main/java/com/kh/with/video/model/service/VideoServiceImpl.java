@@ -5,6 +5,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.video.model.dao.VideoDao;
 
@@ -44,5 +46,14 @@ public class VideoServiceImpl implements VideoService{
 			return vd.regSub(sqlSession, m, price);
 		}
 
-	
+
+
+	@Override
+	public String upload(MultipartFile file) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
+
 

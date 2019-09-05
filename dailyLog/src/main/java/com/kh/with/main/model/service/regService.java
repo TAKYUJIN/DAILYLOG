@@ -18,6 +18,7 @@ public class regService {
  
 	public int userReg_service(MailVo mailVo) {
 		int resultCnt=0;
+		int resultCnt1=0;
 		System.out.println("regservice1");
 		
 		maildao =userSqlSession.getMapper(MailDao.class);
@@ -25,7 +26,9 @@ public class regService {
 		
 		try {
 			resultCnt = maildao.regUser(mailVo);
-		} catch (SQLException e) {
+			resultCnt1=maildao.friendemail(mailVo);
+					
+ 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
