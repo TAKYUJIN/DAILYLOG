@@ -15,5 +15,6 @@ public interface VideoService {
 	int regSub(Member m, int price);
 
 
+
 }
 
