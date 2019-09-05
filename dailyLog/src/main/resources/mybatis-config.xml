@@ -16,6 +16,7 @@
 		<mapper resource="mappers/member-mapper.xml"/>
 		<mapper resource="mappers/loger-mapper.xml"/>
 		<mapper resource="mappers/mail-mapper.xml"/>
-		<mapper resource="mappers/friend-mapper.xml"/>
+    <mapper resource="mappers/friend-mapper.xml"/>
+
 	</mappers>
 </configuration>

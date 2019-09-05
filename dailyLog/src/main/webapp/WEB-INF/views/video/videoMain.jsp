@@ -404,16 +404,17 @@ button[class*="btn"] {border: 0;}
 						<img class="chImg" src="resources/images/man.jpg">
 					</div>
 				</td>
-				<td width="180px" height="60px">
+				<td width="220px" height="60px">
 					<div style="margin-left:10%;">
 						<div>
 							<div style="margin-right:10%; display:inline-block;">채널명</div>
 							<div style="display:inline-block;"><button>30만</button></div>
+							<label id="regsubTY" style="color:gray; position:fixed;">${ msg }</label>
 						</div>
 						<p>게시일 : 2019.09.03</p>
 					</div>
 				</td>
-				<td width="150px" height="60px"></td>
+				<td width="110px" height="60px"></td>
 				<td width="200px" height="60px">
 					<div align="right" style="margin-top:15%;">
 						<nav class="navbar navbar-default navbar-expand-lg navbar-light" style="border:none;">
@@ -438,7 +439,7 @@ button[class*="btn"] {border: 0;}
 														<tr><td><small>채널명</small></td></tr>
 														<tr><td><b>채널명</b></td></tr>
 														<tr><td><small>포인트조회</small></td></tr>
-														<tr><td><input type="text" class="form-control" id="point" placehold="포인트를 조회하세요" value="${point} 포인트" readonly></td></tr>
+														<tr><td><input type="text" class="form-control" id="rPoint" placehold="포인트를 조회하세요" value="${point} 포인트" readonly></td></tr>
 														<tr>
 															<td>
 																<a href="selectPoint.vd" id="selectPoint" style="width:50px; text-align:center;" class="btn-gradient yellow mini">조회</a>
@@ -451,7 +452,7 @@ button[class*="btn"] {border: 0;}
 														<tr>
 															<td>
 																<a style="width:50px;text-align:center;" class="btn-gradient yellow mini" id="cancle1">취소</a>
-																<a id="rOk" style="width:50px; text-align:center;" class="btn-gradient blue mini">후원</a>
+																<a href="" id="rOk" style="width:50px; text-align:center;" class="btn-gradient blue mini">후원</a>
 															</td>
 														</tr>
 													</table>
@@ -478,7 +479,7 @@ button[class*="btn"] {border: 0;}
 														<tr>
 															<td>
 																<a style="width:50px;text-align:center;" class="btn-gradient yellow mini" id="cancle2">취소</a>
-																<a id="subComplete" style="width:50px; text-align:center;" class="btn-gradient blue mini">후원</a>
+																<a href="" id="subComplete" style="width:50px; text-align:center;" class="btn-gradient blue mini">후원</a>
 															</td>
 														</tr>
 													</table>
@@ -579,7 +580,7 @@ button[class*="btn"] {border: 0;}
 		//좋아요 조회
 		function selectLike(){
 			$.ajax({
-				url:"/with/imgCheck.vd",
+				url:"imgCheck.vd",
 				type:"post",
 				success:function(data){
 					console.log("성공!");
@@ -590,32 +591,50 @@ button[class*="btn"] {border: 0;}
 				}
 			});
 		}
-		
+		//후원금액
+		$('#rOk').click(function(){
+			var point = $('#rPoint').val();
+			var price = $('#rPrice').val();
+			
+			//console.log(parseInt(point) - parseInt(price));
+			
+			if(parseInt(price) <= parseInt(point)){
+				var remain = parseInt(point) - parseInt(price);
+				console.log(remain);
+				$.ajax({
+					url:"regSub.vd",
+					type:"post",
+					data:{remain:remain},
+					success:function(data){
+						
+						 $('#regsubTY').text(data.msg);
+						 //alert("dd");
+					},
+					error:function(){
+						alert('reg실패!');
+					}
+				});
+			}else {
+				alert("포인트가 부족합니다.");
+			}
+		});
 		//후원 div 
 		 $(document).ready(function(){
-			 
-			$('#rOk').click(function(){
-				var point = $('#point').val();
-				var price = $('#rPrice').val();
-				
-				//console.log(price);
-				
-				if(price >= point){
-					$.ajax({
-						url:"regSub.vd",
-						type:"post",
-						data:{price:price},
-						success:function(data){
-							alert("reg성공!");
-						},
-						error:function(){
-							alert('reg실패!');
-						}
-					});
-				}else {
-					alert("포인트가 부족합니다.");
-				}
-			});
+/* 			//포인트조회
+			 $('#selectPoint').click(function(){
+				$.ajax({
+					url:"selectPoint.vd",
+					type:"post",
+					success:function(data){
+						console.log("reg성공!");
+						
+					},
+					error:function(){
+						alert('실패!');
+					}					
+				});
+			}); */
+
 			 
 			 $('#sub').show();
 			 $('#rSub').hide();

@@ -1,8 +1,11 @@
 package com.kh.with.member.model.dao;
 
+import java.util.ArrayList;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.kh.with.loger.model.vo.Calculate;
 import com.kh.with.member.model.exception.LoginException;
 import com.kh.with.member.model.vo.Member;
 
@@ -49,7 +52,19 @@ public class MemberDaoImpl implements MemberDao{
 	  @Override
 	  public int update_myPage(SqlSessionTemplate sqlSession, Member m) {
 		  // TODO Auto-generated method stub
-		  return sqlSession.update("m.update_myPage", m); 
+		  return sqlSession.update("Member.update_myPage", m); 
 	  }
+	  
+	  
+	@Override
+	public ArrayList<Member> selectMyPage(SqlSessionTemplate sqlSession, Member m) {
+		ArrayList<Member> list = null;
+		
+		list = (ArrayList)sqlSession.selectList("Member.selectMyPage", m);
+		
+		
+		return list;
+	}
+
 
 }

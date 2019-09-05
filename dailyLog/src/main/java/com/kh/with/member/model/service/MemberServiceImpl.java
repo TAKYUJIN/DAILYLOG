@@ -1,5 +1,7 @@
 package com.kh.with.member.model.service;
 
+import java.util.ArrayList;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
@@ -38,15 +40,20 @@ public class MemberServiceImpl implements MemberService {
 		return loginUser;
 	}
 
-	
-	  //마이페이지 수정
-	  
-	  @Override public Member update_myPage(Member m) throws LoginException {
-		  //TODO Auto-generated method stub 
-	  md.update_myPage(sqlSession, m); 
-	  return md.loginMember(sqlSession, m); 
-	  }
-	 
+	// 마이페이지 수정
+
+//	@Override
+//	public int update_myPage(Member m) throws LoginException {
+//		// TODO Auto-generated method stub
+//		return md.update_myPage(sqlSession, m);
+//		//return md.loginMember(sqlSession, m);
+//		//return dao.update(dto
+//	}
+	@Override
+	public int update_myPage(Member m) throws LoginException {
+		// TODO Auto-generated method stub
+		 return md.update_myPage(sqlSession, m);
+	}
 
 	@Override
 	public int insertMember(Member m) {
@@ -59,5 +66,14 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 
+	@Override
+	public ArrayList<Member> selectMyPage(Member m) {
+
+		return md.selectMyPage(sqlSession, m);
+	}
+
+	
+
+	
 
 }
