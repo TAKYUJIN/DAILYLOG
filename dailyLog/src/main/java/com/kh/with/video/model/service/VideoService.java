@@ -12,7 +12,7 @@ public interface VideoService {
 	String upload(MultipartFile file);
 	
 	//정기후원
-	int regSub(Member m, int price);
+	int regSub(Member m);
 
 
 
