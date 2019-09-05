@@ -1,5 +1,7 @@
 package com.kh.with.member.model.service;
 
+import java.util.ArrayList;
+
 import com.kh.with.member.model.exception.LoginException;
 import com.kh.with.member.model.vo.Member;
 
@@ -13,7 +15,9 @@ public interface MemberService {
 
 
 	
-	Member update_myPage(Member m) throws LoginException;
+	int update_myPage(Member m) throws LoginException;
+
+	ArrayList<Member> selectMyPage(Member m);
 
 	
 	//Member update_Pwd(Member m, String old_pwd, HttpServletResponse response);
