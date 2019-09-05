@@ -59,17 +59,6 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 	
-	
-	  //마이페이지 수정
-	  /*
-	  @Override public Member update_myPage(Member m) throws LoginException {
-		  //TODO Auto-generated method stub 
-	  md.update_myPage(sqlSession, m); 
-	  return md.loginMember(sqlSession, m); 
-	  } */
-	 
-
-	
 	@Override
 	public int update_myPage(Member m) throws LoginException {
 		// TODO Auto-generated method stub
@@ -93,25 +82,16 @@ public class MemberServiceImpl implements MemberService {
 
 		return md.selectMyPage(sqlSession, m);
 	}
-
+	
 	@Override
-	public boolean delete_myPage(Member m, HttpServletResponse response) throws Exception {
+	public int delete_myPage(Member m) throws Exception {
 		// TODO Auto-generated method stub
 		
 		System.out.println("in?????");
 		
-		response.setContentType("text/html;charset=UTF-8");
-		PrintWriter out = response.getWriter();
-		if(md.delete_myPage(sqlSession, m) != 1) {
-			out.println("<script>");
-			out.println("alert('회원탈퇴 실패');");
-			out.println("history.go(-1);");
-			out.println("</script>");
-			out.close();
-		return false;
-	}else {
-		return true;
-	}
+		
+		return md.delete_myPage(sqlSession, m) ;
+		
 	}
 	
 
