@@ -18,14 +18,15 @@ public interface MemberDao {
 	Member selectMember(SqlSessionTemplate sqlSession, Member m);
 
 	
-	int update_myPage(SqlSessionTemplate sqlSession, Member m);
 
 	int idCheck(String userId);
 
 	int nickCheck(String nickname);
-
-
+	
+	//mypage
 	ArrayList<Member> selectMyPage(SqlSessionTemplate sqlSession, Member m);
+	
+	int update_myPage(SqlSessionTemplate sqlSession, Member m);
 
 	int delete_myPage(SqlSessionTemplate sqlSession, Member m);
 

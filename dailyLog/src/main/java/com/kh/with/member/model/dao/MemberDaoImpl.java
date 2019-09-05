@@ -97,7 +97,7 @@ public class MemberDaoImpl implements MemberDao{
 	public int delete_myPage(SqlSessionTemplate sqlSession, Member m) {
 		// TODO Auto-generated method stub
 		System.out.println("in222?????");
-		return sqlSession.delete("Member.delete_myPage", m);
+		return sqlSession.update("Member.delete_myPage", m);
 	}
 
 }
