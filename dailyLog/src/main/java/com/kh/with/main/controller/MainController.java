@@ -1,9 +1,11 @@
 package com.kh.with.main.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,15 +13,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.with.main.model.service.BoardService;
 import com.kh.with.main.model.service.MailSendService;
 import com.kh.with.main.model.service.regService;
 import com.kh.with.main.model.vo.MailVo;
+import com.kh.with.member.model.vo.Member;
 
 @Controller
-@RequestMapping("/board/*")
 public class MainController {
+
 	/*
 	 * @Autowired private JavaMailSender Sender;
 	 */
@@ -28,17 +32,18 @@ public class MainController {
 	private regService reg_service;
 	@Autowired
 	private MailSendService mailSender;
-	 @Inject
-	    private BoardService service;
+	 
+	@Inject
+	  BoardService service;
 	
 	// 북마크페이지로 이동
-	@RequestMapping(value = "bookmark.mb")
+	@RequestMapping(value="bookmark.mb")
 	public String selectBookmark() {
 		return "main/bookmark";
 	}
 
 	// 구독페이지로 이동
-	@RequestMapping(value = "subscribe.mb")
+	@RequestMapping(value="subscribe.mb")
 
 	public String subscribeList() {
 
@@ -46,7 +51,7 @@ public class MainController {
 	}
 
 	// 영상 클릭시 동영상 페이지로 이동
-	@RequestMapping(value = "video.mb")
+	@RequestMapping(value="video.mb")
 
 	public String showVideoView() {
 
@@ -54,12 +59,12 @@ public class MainController {
 	}
 
 	// home 클릭시 페이지로 이동
-	@RequestMapping(value = "home.mb")
+	@RequestMapping(value="home.mb")
 	public String showhome() {
 		return "main/main";
 	}
 
-	@RequestMapping(value = "friends.mb")
+	@RequestMapping(value="friends.mb")
 	public String showfriends() {
 		return "friends/friendslist";
 	}
@@ -121,16 +126,20 @@ public class MainController {
 	 * return "common/mainBar"; }
 	 */
 	  
-	  @RequestMapping(value="FriendsList.mb",method=RequestMethod.GET) 
-	   public String FriendsList(MailVo mailVo,Model model){
-		System.out.println("friendslist");
-		
-		  List<MailVo> list=service.FriendsList(mailVo);
+	
+	  @RequestMapping(value="FriendList.mb")
+	  public String FriendsList(Model model) throws Exception{
+		  System.out.println("friendslist");
+	 
+		  List<MailVo> list=service.FriendList();
 		  model.addAttribute("list", list);
-		  
-		return "common/mainBar";
-		  
+	  
+	  return "friends/friendslist";
+	  
 	  }
+	
+	  
+	  
 	// home 클릭시 페이지로 이동
 	@RequestMapping(value = "loger.mb")
 	public String showLoger() {
@@ -138,9 +147,29 @@ public class MainController {
 	}
 
 	
+//	//알림이요...
+//	@RequestMapping(value="notification.mb")
+//	public String showNotification(Model model,HttpSession session) {
+//		Member m = (Member) session.getAttribute("loginUser");
+//		model.addAttribute("m", m);
+//		
+//		return "main/notification";
+//	}
+//	
 	@RequestMapping(value="notification.mb")
-	public String showNotification() {
+	@ResponseBody
+	public HashMap<String, Object> showNotification(Model model, HttpSession session, Member m) {
+		m = (Member) session.getAttribute("loginUser");
 		
-		return "main/test";
+		
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("m", m);
+		System.out.println(m);
+		
+		model.addAttribute("m", m);
+		
+		return map;
 	}
+	
 }

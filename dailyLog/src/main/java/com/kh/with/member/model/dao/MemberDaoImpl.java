@@ -1,10 +1,13 @@
 package com.kh.with.member.model.dao;
 
 import org.apache.ibatis.session.SqlSession;
+import java.util.ArrayList;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.kh.with.loger.model.vo.Calculate;
 import com.kh.with.member.model.exception.LoginException;
 import com.kh.with.member.model.vo.Member;
 
@@ -28,6 +31,8 @@ public class MemberDaoImpl implements MemberDao{
 
 		return loginUser;
 	}
+  
+  
 
 	//아이디 중복 확인 
 	@Override
@@ -46,6 +51,8 @@ public class MemberDaoImpl implements MemberDao{
 		return result;
 	}
 
+   
+	 
 
 	//회원가입용 메소드
 	@Override
@@ -68,15 +75,29 @@ public class MemberDaoImpl implements MemberDao{
 	}
 
 
-
-	//마이페이지
+	  //마이페이지
+	  @Override
+	  public int update_myPage(SqlSessionTemplate sqlSession, Member m) {
+		  // TODO Auto-generated method stub
+		  return sqlSession.update("Member.update_myPage", m); 
+	  }
+	  
+	  
 	@Override
-	public int update_myPage(SqlSessionTemplate sqlSession, Member m) {
-		// TODO Auto-generated method stub
-		return sqlSession.update("m.update_myPage", m); 
+	public ArrayList<Member> selectMyPage(SqlSessionTemplate sqlSession, Member m) {
+		ArrayList<Member> list = null;
+		
+		list = (ArrayList)sqlSession.selectList("Member.selectMyPage", m);
+		
+		
+		return list;
 	}
-
-
-
+	
+	@Override
+	public int delete_myPage(SqlSessionTemplate sqlSession, Member m) {
+		// TODO Auto-generated method stub
+		System.out.println("in222?????");
+		return sqlSession.delete("Member.delete_myPage", m);
+	}
 
 }
