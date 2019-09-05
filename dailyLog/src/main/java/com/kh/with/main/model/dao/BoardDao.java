@@ -6,6 +6,6 @@ import com.kh.with.main.model.vo.MailVo;
 
 public interface BoardDao {
 
-	public List<MailVo> FriendsList(MailVo mailVo);
+	public List<MailVo> FriendList() throws Exception;
 
 }

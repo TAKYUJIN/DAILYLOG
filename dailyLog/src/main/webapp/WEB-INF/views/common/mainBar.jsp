@@ -5,6 +5,7 @@
  
 <!DOCTYPE html>
 <html lang="en">
+<c:set var="path" value="${pageContext.request.contextPath}"/>
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -238,6 +239,9 @@
    #navbarCollapse a {
       font-size:12px;
    }
+   .panel{
+   width:220px;
+   }
    
    a:link { color: black; text-decoration: none; color: black;}
    a:visited { color: black; text-decoration: none; color: black;}
@@ -287,11 +291,9 @@
 				<img src="resources/images/film.png" style="width:20px;">
 			</a>
 			</li>
-			
-			<li class="nav-item">
-				<a href="#none" data-toggle="dropdown" class="btn_global link_login">
-				<img src="resources/images/laugh.png" style="width:20px;">
-			</a>
+ 			<li class="nav-item">
+				 <a href="${path}/FriendList.mb" data-toggle="dropdown" class="btn_global link_login">
+				 <img src="resources/images/laugh.png" style="width:20px;">  </a>
 			<ul class="dropdown-menu form-wrapper">					
 					<li>
  						<div class="noti_text" align="center"><p>친구 리스트</p></div>
@@ -307,44 +309,45 @@
  <button class="ui olive button" id="addfri">친구 추가</button></table></div> --%>
  
  <div class="page-wrapper">
-    <div class="container-fluid">
+    <div class="container-fluid" id="frilist">
         <div class="col-lg-8"><!--게시판 넓이 -->
-             
-            <div class="row">
-                  
-              </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">친구 리스트 </div>
+            <div class="panel panel-default" >
+            <div>
+           <form action="FriendList.mb" method="GET"> 
                 <div class="panel-body">
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <td>친구 아이디</td>
+                                <td>친구  아이디</td>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                          		<td><button>채팅</button></td>
-                            </tr>
-                        </tbody>
-                            <tbody><c:forEach items="${list}" var="MailVo">
-                             <tr><td>${MailVo.friId}</td>
-                            <td><button>채팅</button></td>
-                            </tr></c:forEach>
+                            <tbody>
+                             <c:forEach var="MailVo" items="${list}">
+                             <tr>
+                             <td>${Mail}</td>
+                             </tr>
+                           <td><button>채팅</button></td>
+                            </c:forEach>  
                         </tbody>
                     </table>
+                    </div> 
+ 					  </form>  
+ 					 </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
   <button class="ui olive button" id="addfri">친구 추가</button>
- 
- <div id="myDiv">
-        <h4>친구요청 보내기</h4>
+                </div>
+                </div>
+     <div class="container-fluid" id="myDiv">
+        <div class="col-lg-8"><!--게시판 넓이 -->
+            <div class="panel panel-default" >
+            <div>
+                 <div class="panel-body">
+                    <table class="table table-hover">
+         <h4>친구요청 보내기</h4>
         <form action="mailSending.mb" method="POST">
  			<input type="hidden" id="userId" name="userId" value="userId"/>
+ 			<input type="hidden" id=status_yn name="status_yn" value="Y"/>
+ 			
 			<!-- 아이디 -->
 			<div class="form-group">
 				<label for="friId">친구 이메일</label>
@@ -355,7 +358,11 @@
         <input type="submit" value="메일 보내기" class="btn btn-warning">
         <input type="reset" value="취소" class="btn btn-default" id="reset">
       </div>
-  </form></div></li></ul></li>    
+  </form></table></div></div></div></div></div></div></li></ul></li>  
+
+
+
+
 
          <li class="nav-item">
          <a href="#none" data-toggle="dropdown" class="btn_global link_login">
@@ -409,4 +416,4 @@
  });
  
  </script>
-</html>               
+</html> 

@@ -3,6 +3,7 @@ package com.kh.with.video.model.service;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -29,27 +30,30 @@ public class VideoServiceImpl implements VideoService{
 	}
 	
 
+
+	//		byte[] data = multipartFile.getBytes();
+	//		FileOutputStream fos = new FileOutputStream(SAVE_PATH + "/" + saveFileName);
+	//		fos.write(data);
+	//		fos.close();
+			
+	//		return result;
+	//	}
 		//정기후원
 		@Override
-		public int regSub(Member m) {
+		public int regSub(Member m, int price) {
 			
 			
-			return vd.regSub(sqlSession, m);
+			return vd.regSub(sqlSession, m, price);
 		}
 
 
-		@Override
-		public String upload(MultipartFile file) {
-		/*
-		 * byte[] data = multipartFile.getBytes(); FileOutputStream fos = new
-		 * FileOutputStream(SAVE_PATH + "/" + saveFileName); fos.write(data);
-		 * fos.close();
-		 * 
-		 * return result;
-		 */
-			return "";
-		}
 
-	
+	@Override
+	public String upload(MultipartFile file) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
+
+

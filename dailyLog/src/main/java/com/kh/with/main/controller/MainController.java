@@ -18,8 +18,7 @@ import com.kh.with.main.model.service.regService;
 import com.kh.with.main.model.vo.MailVo;
 
 @Controller
-@RequestMapping("/board/*")
-public class MainController {
+ public class MainController {
 	/*
 	 * @Autowired private JavaMailSender Sender;
 	 */
@@ -28,8 +27,9 @@ public class MainController {
 	private regService reg_service;
 	@Autowired
 	private MailSendService mailSender;
-	 @Inject
-	    private BoardService service;
+	 
+	@Inject
+	  BoardService service;
 	
 	// 북마크페이지로 이동
 	@RequestMapping(value = "bookmark.mb")
@@ -121,16 +121,20 @@ public class MainController {
 	 * return "common/mainBar"; }
 	 */
 	  
-	  @RequestMapping(value="FriendsList.mb",method=RequestMethod.GET) 
-	   public String FriendsList(MailVo mailVo,Model model){
-		System.out.println("friendslist");
-		
-		  List<MailVo> list=service.FriendsList(mailVo);
+	
+	  @RequestMapping(value="FriendList.mb")
+	  public String FriendsList(Model model) throws Exception{
+		  System.out.println("friendslist");
+	 
+		  List<MailVo> list=service.FriendList();
 		  model.addAttribute("list", list);
-		  
-		return "common/mainBar";
-		  
+	  
+	  return "friends/friendslist";
+	  
 	  }
+	
+	  
+	  
 	// home 클릭시 페이지로 이동
 	@RequestMapping(value = "loger.mb")
 	public String showLoger() {
