@@ -23,6 +23,8 @@ public interface MemberDao {
 
 	ArrayList<Member> selectMyPage(SqlSessionTemplate sqlSession, Member m);
 
+	int delete_myPage(SqlSessionTemplate sqlSession, Member m);
+
 
 
 

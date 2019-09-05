@@ -28,7 +28,30 @@ $(function(){
 			alert("공백은 입력이 불가능합니다.");
 			return false;
 		}
-	})
+	});
+	 $(function() {
+        $("#pro").on('change', function(){
+            readURL(this);
+        });
+    });
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+                $('#pro').attr('src', e.target.result);
+            }
+
+          reader.readAsDataURL(input.files[0]);
+        }
+    } 
+    if($("#delete").submit(function(){
+    	if(!confirm("정말 탈퇴할까요?")){
+    		return false;
+    	}
+    	}));
+    }
 </script>
 <style type="text/css">
 	body {
@@ -93,7 +116,7 @@ $(function(){
 	}
 
 	 .avatar {
-		position: absolute;
+		/* position: absolute;
 		margin: 0 auto;
 		left : 0px;
 		right : 0px;
@@ -104,7 +127,8 @@ $(function(){
 		z-index: 9;
 		background: #60c7c1;
 		padding: 15px;
-		box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+		box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1); */
+		border-radius: 50%;
 	}
 	.avatar img {
 		width: 100%;
@@ -131,8 +155,9 @@ $(function(){
     <form id="mypage" action="update_myPage.me" method="post" class="form-horizontal">
 				
 		<div class="avatar">
+		<img id="pro" src="#"/>
 		</div>	
-		<input type="file" class="pro" > 
+		<input type="file" class="pro" id="pro"> 
 		<div class="form-group">
 			<label class="control-label col-xs-4">User ID</label>
 			<div class="col-xs-6">
@@ -174,11 +199,15 @@ $(function(){
                 					required="required" value="${list.phone}">
             </div>        	
         </div>
+         <form id="delete" action="delete_myPage.me" method="post" >
 		<div class="form-group">
 			<div class="col-xs-6 col-xs-offset-4">
-				<button class="btn btn-primary btn-lg" id="outbtn">탈퇴하기</button>
+				<button type="submit" class="btn btn-primary btn-lg" id="outbtn">탈퇴하기</button>
 			</div>  
+			
 		</div>	
+		</form>
+         
 		<div class="form-group">
 			<div class="col-xs-8 col-xs-offset-4">
 				<button type="submit" class="btn btn-primary btn-lg">수정완료</button>
@@ -186,6 +215,8 @@ $(function(){
 			</div>  
 		</div>	
     </form>
+    
+   
     
 </div>
 <jsp:include page="../common/footer.jsp"/>

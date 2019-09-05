@@ -1,6 +1,10 @@
 package com.kh.with.member.model.service;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,6 +76,25 @@ public class MemberServiceImpl implements MemberService {
 		return md.selectMyPage(sqlSession, m);
 	}
 
+	@Override
+	public boolean delete_myPage(Member m, HttpServletResponse response) throws Exception {
+		// TODO Auto-generated method stub
+		
+		System.out.println("in?????");
+		
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		if(md.delete_myPage(sqlSession, m) != 1) {
+			out.println("<script>");
+			out.println("alert('회원탈퇴 실패');");
+			out.println("history.go(-1);");
+			out.println("</script>");
+			out.close();
+		return false;
+	}else {
+		return true;
+	}
+	}
 	
 
 	
