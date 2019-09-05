@@ -1,8 +1,10 @@
 package com.kh.with.video.model.service;
 
 import com.kh.with.member.model.vo.Member;
+import com.kh.with.video.model.vo.Video;
 
-import org.springframework.ui.Model;
+
+
 import org.springframework.web.multipart.MultipartFile;
 
 public interface VideoService {
@@ -16,8 +18,16 @@ public interface VideoService {
 	//정기후원
 	int regSub(Member m);
 
-	// 업로드할 동영상 정보 insert메소드
-	int insertVideoInfo(Model model);
+	
+	// 업로드할동영상 정보 insert메소드
+	int insertVideoInfo(Video video);
+
+	
+	
+	
+	
+
+
 
 
 

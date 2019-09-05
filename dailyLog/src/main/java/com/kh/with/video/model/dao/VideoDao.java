@@ -1,10 +1,13 @@
 package com.kh.with.video.model.dao;
 
+
+
 import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.ui.Model;
+
 
 
 import com.kh.with.member.model.vo.Member;
+import com.kh.with.video.model.vo.Video;
 
 public interface VideoDao {
 	
@@ -13,10 +16,10 @@ public interface VideoDao {
 	//정기후원
 	int regSub(SqlSessionTemplate sqlSession, Member m);
 	
-	// 업로드할 동영상 정보 insert메소드
-	int insertVideoInfo(SqlSessionTemplate sqlSession, Model model);
+	//동영상 업로드정보 insert 메소드
+	int insertVideoInfo(SqlSessionTemplate sqlSession, Video video);
+	
 
-
-
+	
 
 }

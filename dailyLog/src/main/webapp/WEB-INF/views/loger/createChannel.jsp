@@ -35,7 +35,7 @@
 	<jsp:include page="../common/mainBar.jsp"></jsp:include>
 
 
-	<form action="" method="post">
+	<form action="createChannel.lo" method="post">
 		<div class="mainpage">
 
 			<div class="text1">

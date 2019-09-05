@@ -1,6 +1,8 @@
 package com.kh.with.video.model.service;
 
 
+import java.util.ArrayList;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -12,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.video.model.dao.VideoDao;
+import com.kh.with.video.model.vo.Video;
 
 @Service
 public class VideoServiceImpl implements VideoService{
@@ -60,17 +63,15 @@ public class VideoServiceImpl implements VideoService{
 	}
 
 
-
-	// 업로드할 동영상 정보 insert메소드
+	// 업로드할동영상 정보 insert메소드
 	@Override
-	public int insertVideoInfo(Model model) {
-	 System.out.println("impl에 왔니??" + model); 
-
-
-		int result = vd.insertVideoInfo(sqlSession,model);
-
-		return result;
+	public int insertVideoInfo(Video video) {
+		
+	return vd.insertVideoInfo(sqlSession,video);
 	}
+
+
+
 
 
 

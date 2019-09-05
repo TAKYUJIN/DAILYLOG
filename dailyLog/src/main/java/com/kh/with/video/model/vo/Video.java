@@ -5,7 +5,7 @@ import java.sql.Date;
 public class Video implements java.io.Serializable {
 	private int vNo; //동영상번호
 	private int userNo; //회원번호
-	private String vTitile; //동영상제목
+	private String vTitle; //동영상제목
 	private int count; //조회수
 	private String chNm; //채널명
 	private String tag; //태그
@@ -18,17 +18,18 @@ public class Video implements java.io.Serializable {
 	private String location; //위치
 	private String info; //추가장소정보
 	private String filepath; // 파일경로
+	private String fileName; //파일이름 
 	private String openTy; //공개여부
 	
 	public Video () {}
 
-	public Video(int vNo, int userNo, String vTitile, int count, String chNm, String tag, String vblYn, Date uploadDt,
+	public Video(int vNo, int userNo, String vTitle, int count, String chNm, String tag, String vblYn, Date uploadDt,
 			Date modifyDt, String adultAut, String adYn, String adInfo, String location, String info, String filepath,
-			String openTy) {
+			String fileName, String openTy) {
 		super();
 		this.vNo = vNo;
 		this.userNo = userNo;
-		this.vTitile = vTitile;
+		this.vTitle = vTitle;
 		this.count = count;
 		this.chNm = chNm;
 		this.tag = tag;
@@ -41,6 +42,7 @@ public class Video implements java.io.Serializable {
 		this.location = location;
 		this.info = info;
 		this.filepath = filepath;
+		this.fileName = fileName;
 		this.openTy = openTy;
 	}
 
@@ -60,12 +62,12 @@ public class Video implements java.io.Serializable {
 		this.userNo = userNo;
 	}
 
-	public String getvTitile() {
-		return vTitile;
+	public String getvTitle() {
+		return vTitle;
 	}
 
-	public void setvTitile(String vTitile) {
-		this.vTitile = vTitile;
+	public void setvTitle(String vTitle) {
+		this.vTitle = vTitle;
 	}
 
 	public int getCount() {
@@ -164,6 +166,14 @@ public class Video implements java.io.Serializable {
 		this.filepath = filepath;
 	}
 
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
 	public String getOpenTy() {
 		return openTy;
 	}
@@ -174,13 +184,10 @@ public class Video implements java.io.Serializable {
 
 	@Override
 	public String toString() {
-		return "Video [vNo=" + vNo + ", userNo=" + userNo + ", vTitile=" + vTitile + ", count=" + count + ", chNm="
-				+ chNm + ", tag=" + tag + ", vblYn=" + vblYn + ", uploadDt=" + uploadDt + ", modifyDt=" + modifyDt
+		return "Video [vNo=" + vNo + ", userNo=" + userNo + ", vTitle=" + vTitle + ", count=" + count + ", chNm=" + chNm
+				+ ", tag=" + tag + ", vblYn=" + vblYn + ", uploadDt=" + uploadDt + ", modifyDt=" + modifyDt
 				+ ", adultAut=" + adultAut + ", adYn=" + adYn + ", adInfo=" + adInfo + ", location=" + location
-				+ ", info=" + info + ", filepath=" + filepath + ", openTy=" + openTy + "]";
+				+ ", info=" + info + ", filepath=" + filepath + ", fileName=" + fileName + ", openTy=" + openTy + "]";
 	}
 
-	
-
 }
-
