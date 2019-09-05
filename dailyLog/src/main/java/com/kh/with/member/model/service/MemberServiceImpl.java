@@ -43,21 +43,39 @@ public class MemberServiceImpl implements MemberService {
 
 		return loginUser;
 	}
+		
 
-	// 마이페이지 수정
 
-//	@Override
-//	public int update_myPage(Member m) throws LoginException {
-//		// TODO Auto-generated method stub
-//		return md.update_myPage(sqlSession, m);
-//		//return md.loginMember(sqlSession, m);
-//		//return dao.update(dto
-//	}
+	@Override
+	public int idCheck(String userId) {
+		int result = md.idCheck(userId);
+		return result;
+	}	
+
+	
+	@Override
+	public int nickCheck(String nickname) {
+		int result = md.nickCheck(nickname);
+		return result;
+	}
+	
+	
+	  //마이페이지 수정
+	  /*
+	  @Override public Member update_myPage(Member m) throws LoginException {
+		  //TODO Auto-generated method stub 
+	  md.update_myPage(sqlSession, m); 
+	  return md.loginMember(sqlSession, m); 
+	  } */
+	 
+
+	
 	@Override
 	public int update_myPage(Member m) throws LoginException {
 		// TODO Auto-generated method stub
 		 return md.update_myPage(sqlSession, m);
 	}
+
 
 	@Override
 	public int insertMember(Member m) {
@@ -98,5 +116,10 @@ public class MemberServiceImpl implements MemberService {
 	
 
 	
+
+	
+
+
+
 
 }

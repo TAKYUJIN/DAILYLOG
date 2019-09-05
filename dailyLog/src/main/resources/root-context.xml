@@ -24,7 +24,8 @@
 		<property name="driverClassName"
 			value="oracle.jdbc.driver.OracleDriver" />
 		<property name="url"
-			value="jdbc:oracle:thin:@127.0.0.1:1521:xe"/>
+value="jdbc:oracle:thin:@127.0.0.1:1521:xe"/>
+
 		<property name="username" value="dailylog" />
 		<property name="password" value="dailylog" />
 		<property name="defaultAutoCommit" value="false" />

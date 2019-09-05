@@ -20,6 +20,10 @@ public interface MemberDao {
 	
 	int update_myPage(SqlSessionTemplate sqlSession, Member m);
 
+	int idCheck(String userId);
+
+	int nickCheck(String nickname);
+
 
 	ArrayList<Member> selectMyPage(SqlSessionTemplate sqlSession, Member m);
 

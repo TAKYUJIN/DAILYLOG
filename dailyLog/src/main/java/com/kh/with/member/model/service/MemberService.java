@@ -14,14 +14,26 @@ public interface MemberService {
 	Member loginMember(Member m) throws LoginException;
 
 	int insertMember(Member m);
+	
+
+	int update_myPage(Member m) throws LoginException;
+	
+	//아이디 중복 체크 
+	int idCheck(String userId);
+
+	//닉네임 중복 체크
+	int nickCheck(String nickname);
+  
+  ArrayList<Member> selectMyPage(Member m);
+  
+  boolean delete_myPage(Member m, HttpServletResponse response) throws Exception;
 
 
 	
-	int update_myPage(Member m) throws LoginException;
 
-	ArrayList<Member> selectMyPage(Member m);
+	
 
-	boolean delete_myPage(Member m, HttpServletResponse response) throws Exception;
+	
 
 	
 	//Member update_Pwd(Member m, String old_pwd, HttpServletResponse response);
