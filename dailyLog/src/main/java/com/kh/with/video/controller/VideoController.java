@@ -2,32 +2,33 @@ package com.kh.with.video.controller;
 
 import java.io.File;
 import java.util.HashMap;
-import java.util.List;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.with.common.CommonUtils;
 import com.kh.with.member.model.service.MemberService;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.video.model.service.VideoService;
-import com.kh.with.video.model.vo.Video;
 
 @Controller
 @SessionAttributes("loginUser")
 public class VideoController {
-
+	@Inject
+	VideoService videoservice;
+	
 	@Autowired
 	private VideoService vs;
 	private MemberService ms;
@@ -202,8 +203,19 @@ public class VideoController {
 	}
 
 	
+	//동영상 이미지 출력
 	
-	
+	@RequestMapping(value="home.mb" ,method=RequestMethod.GET)
+	public ModelAndView videoimagelist(ModelAndView mav)
+	{
+		mav.setViewName("/main/top");
+		System.out.println("videocontroller:"+mav);
+		mav.addObject("list", videoservice.videoimagelist());
+		System.out.println("vid"+videoservice);
+		System.out.println("mav"+mav);
+ 		
+		return mav;
+	}
 	
 	
 	

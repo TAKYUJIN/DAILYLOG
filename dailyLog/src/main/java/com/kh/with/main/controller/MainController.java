@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.kh.with.main.model.dao.BoardDao;
 import com.kh.with.main.model.service.BoardService;
 import com.kh.with.main.model.service.MailSendService;
 import com.kh.with.main.model.service.regService;
@@ -34,8 +35,7 @@ public class MainController {
 	private MailSendService mailSender;
 	 
 	@Inject
-	  BoardService service;
-	
+	 BoardService service;
 	// 북마크페이지로 이동
 	@RequestMapping(value="bookmark.mb")
 	public String selectBookmark() {
@@ -59,15 +59,12 @@ public class MainController {
 	}
 
 	// home 클릭시 페이지로 이동
-	@RequestMapping(value="home.mb")
-	public String showhome() {
-		return "main/main";
-	}
+	//@RequestMapping(value="home.mb")
+	//public String showhome() {
+	//	return "main/main";
+	//}
 
-	@RequestMapping(value="friends.mb")
-	public String showfriends() {
-		return "friends/friendslist";
-	}
+	 
 
 	// 메일 보내기
 
@@ -109,7 +106,7 @@ public class MainController {
 	  return "redirect:/"; }
 	  
 	 
-	  @RequestMapping(value = "home.mb", method = RequestMethod.GET) 
+	  @RequestMapping(value = "/main", method = RequestMethod.GET) 
 	  public String key_alterConfirm(@RequestParam(value="userId", required=false) String userId, @RequestParam(value="status_yn", required=false) String status_yn) {
 	  System.out.println("key_alterConfirm");
 	  mailSender.alter_userKey_service(userId, status_yn); // mailsender의 경우 @Autowired
@@ -117,28 +114,22 @@ public class MainController {
 	  return "friends/emailConfirm"; 
 	  }
 
-	  
-	/*
-	 * @RequestMapping(value="mailSending.mb",method=RequestMethod.GET) pubilc
-	 * String FriendsList(Mailvo mailVo,Model model) { List<MailVo> list
-	 * =service.FriendsList(mailVo); model.addAttribute("list", list);
-	 * 
-	 * return "common/mainBar"; }
-	 */
-	  
-	
-	  @RequestMapping(value="FriendList.mb")
-	  public String FriendsList(Model model) throws Exception{
-		  System.out.println("friendslist");
-	 
-		  List<MailVo> list=service.FriendList();
+	  @RequestMapping(value="FriendList.mb",method=RequestMethod.GET)
+	  public String FriendList(Model model) throws Exception{
+ 	 
+ 		  List<MailVo> list=service.FriendList();
+		  System.out.println("controller service:"+service);
+		  System.out.println("list:"+list);
 		  model.addAttribute("list", list);
-	  
-	  return "friends/friendslist";
+
+		  System.out.println("list1:"+list);
+		  	
+		  
+		  //return "common/mainBar";
+	  return  "";
 	  
 	  }
 	
-	  
 	  
 	// home 클릭시 페이지로 이동
 	@RequestMapping(value = "loger.mb")

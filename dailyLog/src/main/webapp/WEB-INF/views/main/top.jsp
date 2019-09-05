@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    
 <!DOCTYPE html>
   
 <html>
@@ -121,72 +123,12 @@ h2 span {
 </style>
 </head>
 <body>
-
-<!-- 							  <div class="video1">
-							 <h2>인기 동영상</h2>
- 									<div id="imagesection">
- 
-								Feature
-									<section >
-										<img src="resources/images/video.PNG"width="30px" height="220px">
-										<a href="#" ><img src="resources/images/three-dot.png"width="px" height="30px" class="fixed"></a>
-										 
-									</section>
-
-							</div></div>
- 		  
- 		 
- 		 
-							  <div class="video2">
-							 <h2>최근 동영상</h2>
- 									<div id="imagesection">
- 
-								Feature
-									<section >
-										<img src="resources/images/video.PNG"width="400px" height="220px">
-										<a href="#" ><img src="resources/images/three-dot.png"width="30px" height="30px" class="fixed"></a>
-										 
-									</section>
-
-							</div>
- 									<div id="imagesection">
- 
-								Feature
-									<section>
-										<img src="resources/images/video.PNG"width="400px" height="220px">
-																				<a href="#" ><img src="resources/images/three-dot.png"width="30px" height="30px"class="fixed" ></a>
-										
-										<header>
-											<h3>Nice! What is HTML5 UP?</h3>
-										</header>
-										<p>I started it as a way to both test my responsive tools and sharpen up my coding
-										and design skills a bit.</p>
-									</section>
-</div>
-
-  
-								Feature
-									<div id="imagesection">
-									<section>
-									
-									<img src="resources/images/video.PNG" width="400px" height="220px">
-																			<a href="#" ><img src="resources/images/three-dot.png"width="30px" height="30px"class="fixed"></a>
-									
-										<header>
-											<h3>What's this built with?</h3>
-										</header>
-										<p><strong>Responsive Tools</strong> is a simple set of tools for building responsive
-										sites and apps. All of my templates at are built using these tools.</p>
-									</section>
-									</div>
-
- 							 
-						</div> -->
-
+ <form action="home.mb" method="post">
 <div class="container">
 	<div class="row">
 		<div class="col-md-9 col-center m-auto">
-			<h2> <span>  <b>인기동영상</b></span> </h2>
+		<c:forEach var="videoimage" items="${list}">
+ 			<h2> <span>  <b>인기동영상</b></span> </h2>
 			<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
 				<!-- Carousel indicators -->
 				<ol class="carousel-indicators">
@@ -199,9 +141,10 @@ h2 span {
 					<div class="item carousel-item active"> 
 						<div class="row">
 							<div class="col-sm-4"><div class="img-box">
-							<a href="video.vd">
-								<img src="resources/images/video22.PNG"  width = "700px"  height="200px" alt="">
-							</a>
+						<h1>${videoimage.userNo}</h1>
+					 
+								<img src="resources/images/${videoimage.filepath}"  width = "700px"  height="200px" alt="">
+						 
 							</div></div>
 							<a href="#" ><img src="resources/images/three-dot.png"width="30px" height="30px"class="fixed" ></a>
 										
@@ -225,7 +168,7 @@ h2 span {
 				<a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
 					<i class="fa fa-chevron-right"></i>
 				</a>
-			</div>
+			</div></c:forEach>
 		</div>
 	</div>
 	<div class="row">
@@ -324,5 +267,6 @@ h2 span {
 		</div>
 	</div>
 </div>
+</form>
 </body>
 </html>
