@@ -22,6 +22,7 @@ import com.kh.with.common.CommonUtils;
 import com.kh.with.member.model.service.MemberService;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.video.model.service.VideoService;
+import com.kh.with.video.model.vo.Video;
 
 @Controller
 @SessionAttributes("loginUser")
@@ -138,28 +139,54 @@ public class VideoController {
 
 	// 업로드할동영상 정보 insert메소드
 	@RequestMapping(value = "insertVideoInfo.vd", method=RequestMethod.POST)
-	public String insertVideoInfo( 
-			@RequestParam(value="allView[]",required=false) List<String> lists, Model model, HttpServletRequest request) {
+	public int insertVideoInfo(Model model, HttpServletRequest request) {
 		String titleName = request.getParameter("titleName");
 		String videoTag = request.getParameter("videoTag");
-		String[] listsa = request.getParameterValues("lists");
-	
-		System.out.println("allViews"+ listsa);
-		 
-		 
-		 
+		String check1 =request.getParameter("check1");
+		String check2 =request.getParameter("check2");
+		String check3 =request.getParameter("check3");
+		
+		if(check2 == null) {
+		check2 = "N";
+	}
+		System.out.println(check2);
+		
 		HttpSession session = request.getSession();
 
 		model = (Model) session.getAttribute("model");
-		/*
-		 * System.out.println("va::: : " + model); System.out.println("model:::::" +
-		 * model); System.out.println( "titleName : " + titleName + "videoTag" +
-		 * videoTag + "model" + model+ "check1" + checkbokx1);
-		 */
-		
-		/* System.out.println("list::::" + lists); */
 
-		return " ";
+		 
+		 System.out.println("model:::::" +
+		 model); System.out.println("check1:::"+ check1+"check2::: "+ check2+ "check3:::" 
+		 + check3 + "titleName:::: : " + titleName + "videoTag:::" +
+		 videoTag + "model::::" + model);
+		
+		//해시태그추가
+		 String finalTag = " "; 
+		 
+		 String [] tag = videoTag.split(",");
+		 for(int i =0; i <tag.length; i++) {
+			finalTag +=  "#" + tag[i];
+
+		 }
+		 
+		 System.out.println(finalTag);
+
+		 model.addAttribute("titleName", titleName); model.addAttribute("finalTag",
+		  finalTag); model.addAttribute("check1", check1); model.addAttribute("check2",
+		  check2); model.addAttribute("check3", check3);
+	
+	
+	
+		System.out.println("최종모델리스트::::" + model);
+	
+		
+
+		int result = vs.insertVideoInfo(model);
+
+		
+		
+		return result;
 	
 }
 

@@ -2,6 +2,7 @@ package com.kh.with.video.model.dao;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.ui.Model;
 
 import com.kh.with.member.model.vo.Member;
 
@@ -22,7 +23,20 @@ public class VideoDaoImpl implements VideoDao{
 		
 		return sqlSession.update("Member.regSub", m);
 	}
-	 
+	
+	// 업로드할 동영상 정보 insert메소드
+	@Override
+	public int insertVideoInfo(SqlSessionTemplate sqlSession, Model model) {
+		
+		System.out.println("디에이오까지왔어??:" + model);
+		
+	
+		return sqlSession.insert("Video.insertVideoInfo", model);
+		
+		
+	}
+	
+
 
 
 	

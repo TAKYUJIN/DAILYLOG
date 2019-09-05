@@ -100,17 +100,17 @@
 						</div>
 					</div>
 					<a>시청등급을 선택하세요</a> <br>  
-					<input type="checkbox"name="allView" value="allView"> 전체시청가능<br>
-					 <input type="checkbox" name="allView" value="19view"> 19세 이상 시청가능<br>
+					<input type="checkbox"name="check1" value="Y"> 전체시청가능<br>
+					 <input type="checkbox" name="check1" value="N"> 19세 이상 시청가능<br>
 					<br> <br> 
-					<input type="checkbox" name="allView"value="advyn"> 광고여부<br> 
+					<input type="checkbox" name="check2"value="Yddd"> 광고여부<br> 
 					<a id="advertising">광고여부
 						체크시 아래의 문구가 자동으로 기재됩니다<br> 본 컨텐츠는 유료제품 추천, 후원, 보증과 같은 유료 광고
 						내용이 포함되어 있습니다
 					</a><br> <br>
 					<a>공개여부</a> <br>
-					<input type="checkbox"name="open" value="openview">전체공개<br>
-					 <input type="checkbox" name="allView" value="closeview">비공개<br>
+					<input type="checkbox"name="check3" value="Y">전체공개<br>
+					 <input type="checkbox" name="check3" value="N">비공개<br>
 				</div>
 				<div id="minor">
 					<img id="minorimg" src="resources/images/family.png"
@@ -122,19 +122,14 @@
 			</div>
 		</div>
 	</form>
-	<input type="text" value="${model}" id="model">
+	<%-- <input type="text" value="${model}" id="model"> --%>
 	<script>
 		$(document).ready(function(){
 			$("#uploadbtn").click(function(){
 				var title_name = $("#titleName").val();
 				var videoTag = $("#videoTag").val();
 				var model = $("#model").val();
-				var lists = [];
-				$("input[name='allView']:checked").each(function(i){   //jQuery로 for문 돌면서 check 된값 배열에 담는다
-				   				lists.push($(this).val());
-				  			}); 
 				
-				console.log(lists);
 				
 				$.ajax({
 					url:"insertVideoInfo.vd",
@@ -152,10 +147,6 @@
 			});
 		});
 	</script>
-
-
-<%-- 	<p>${model}</p> --%>
-
 
 
 	<br>
