@@ -1,11 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-  
- 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
-<c:set var="path" value="${pageContext.request.contextPath}"/>
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -239,9 +236,6 @@
    #navbarCollapse a {
       font-size:12px;
    }
-   .panel{
-   width:220px;
-   }
    
    a:link { color: black; text-decoration: none; color: black;}
    a:visited { color: black; text-decoration: none; color: black;}
@@ -251,12 +245,12 @@
 </style>
 <script type="text/javascript">
    // Prevent dropdown menu from closing when click inside the form
-   $(document).on("click", ".navbar-right .dropdown-menu", function(e){
+    $(document).on("click", ".navbar-right .dropdown-menu", function(e){
       e.stopPropagation();
    });
 </script>
 </head> 
-<body>
+<body onload="notification.mb;">
 <nav class="navbar navbar-default navbar-expand-lg navbar-light">
 
 	<div class="navbar-header d-flex col" >
@@ -271,7 +265,7 @@
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">최근 활동</a></li>	
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">좋아요 영상</a></li>
 			<li class="nav-item"><a href="newHomeChannel.lo" class="nav-link" style="padding-right:0px;" onclick="">로거 스튜디오</a></li>
-			<li class="nav-item"><a href="notification.mb" class="nav-link" style="padding-right:0px;" onclick="">알림 예시</a></li>
+			<li class="nav-item"><a href="notification.mb" class="nav-link" style="padding-right:0px;">알림 예시</a></li>
 		</ul>
 		<form class="navbar-form form-inline" style="width:240px;">
 			<div class="input-group search-box">								
@@ -291,9 +285,11 @@
 				<img src="resources/images/film.png" style="width:20px;">
 			</a>
 			</li>
- 			<li class="nav-item">
-				 <a href="${path}/FriendList.mb" data-toggle="dropdown" class="btn_global link_login">
-				 <img src="resources/images/laugh.png" style="width:20px;">  </a>
+			
+			<li class="nav-item">
+				<a href="#none" data-toggle="dropdown" class="btn_global link_login">
+				<img src="resources/images/laugh.png" style="width:20px;">
+			</a>
 			<ul class="dropdown-menu form-wrapper">					
 					<li>
  						<div class="noti_text" align="center"><p>친구 리스트</p></div>
@@ -309,45 +305,44 @@
  <button class="ui olive button" id="addfri">친구 추가</button></table></div> --%>
  
  <div class="page-wrapper">
-    <div class="container-fluid" id="frilist">
+    <div class="container-fluid">
         <div class="col-lg-8"><!--게시판 넓이 -->
-            <div class="panel panel-default" >
-            <div>
-           <form action="FriendList.mb" method="GET"> 
+             
+            <div class="row">
+                  
+              </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">친구 리스트 </div>
                 <div class="panel-body">
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <td>친구  아이디</td>
+                                <td>친구 아이디</td>
                             </tr>
                         </thead>
-                            <tbody>
-                             <c:forEach var="MailVo" items="${list}">
-                             <tr>
-                             <td>${Mail}</td>
-                             </tr>
-                           <td><button>채팅</button></td>
-                            </c:forEach>  
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                          		<td><button>채팅</button></td>
+                            </tr>
+                        </tbody>
+                            <tbody><c:forEach items="${list}" var="MailVo">
+                             <tr><td>${MailVo.friId}</td>
+                            <td><button>채팅</button></td>
+                            </tr></c:forEach>
                         </tbody>
                     </table>
-                    </div> 
- 					  </form>  
- 					 </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
   <button class="ui olive button" id="addfri">친구 추가</button>
-                </div>
-                </div>
-     <div class="container-fluid" id="myDiv">
-        <div class="col-lg-8"><!--게시판 넓이 -->
-            <div class="panel panel-default" >
-            <div>
-                 <div class="panel-body">
-                    <table class="table table-hover">
-         <h4>친구요청 보내기</h4>
+ 
+ <div id="myDiv">
+        <h4>친구요청 보내기</h4>
         <form action="mailSending.mb" method="POST">
  			<input type="hidden" id="userId" name="userId" value="userId"/>
- 			<input type="hidden" id=status_yn name="status_yn" value="Y"/>
- 			
 			<!-- 아이디 -->
 			<div class="form-group">
 				<label for="friId">친구 이메일</label>
@@ -358,14 +353,10 @@
         <input type="submit" value="메일 보내기" class="btn btn-warning">
         <input type="reset" value="취소" class="btn btn-default" id="reset">
       </div>
-  </form></table></div></div></div></div></div></div></li></ul></li>  
-
-
-
-
+  </form></div></li></ul></li>    
 
          <li class="nav-item">
-         <a href="#none" data-toggle="dropdown" class="btn_global link_login">
+         <a data-toggle="dropdown" class="btn_global link_login" onclick="send2();">
             <img src="resources/images/bell.png" style="width:20px;">
          </a>
             <ul class="dropdown-menu form-wrapper">               
@@ -373,11 +364,16 @@
                   <form action="" method="post">
                      <div class="noti_text" align="center"><p>알림</p></div>
                      <div class="form-group">
-                        <table class="noti_table">
+                     <div id="inputArea" align="center" style="display:none;">
+						<input type="hidden" name="tryMoney" id="tryMoney" value="${m.userId}">
+					</div>
+                     <div id="history">
+			
+					</div>
+                        <!-- <table class="noti_table">
                            <tr>님을 구독하셨습니다.</tr><br>
                            <tr>댓글에 답글이 달렸습니다.</tr><br>
-                           
-                        </table>
+                        </table> -->
                      </div>
                      <img src="resources/images/settings.png" align="right">
                   </form>
@@ -409,11 +405,128 @@
        $('#myDiv').hide();
        
     });
-    function notification(){
-    	location.href="notification.mb";
-    }
     
  });
  
  </script>
-</html> 
+ 
+ <script>
+		$(function(){
+			$("#tryMoney").select();
+			
+			
+		})
+	</script>
+	<script>
+		$(function(){
+			getConnection2();
+			
+		})
+			function getConnection(){
+				ws = new WebSocket("ws://localhost:8001" + '<%=request.getContextPath()%>/serverStart');
+				//서버 시작할 때 동작
+				ws.onopen = function(event){
+
+				}
+				//서버로부터 메세지를 전달 받을 때 동작하는 메소드
+				ws.onmessage = function(event){
+					onMessage(event);
+				}
+				
+				//서버에서 에러가 발생할 경우 동작할 메소드
+				ws.onerror = function(event){
+					onError(event);
+				}
+				
+				//서버와의 연결이 종료될 경우 동작하는 메소드
+				ws.onclose = function(event){
+					onClose(event);
+				}
+			
+			}
+			
+			function send(msg){
+				
+				ws.send(msg);
+				
+				
+			}
+			/* 
+			function onMessage(event){
+				var serverMessage = event.data.split(":");
+				
+				var productName = serverMessage[0];
+				var startPrice = serverMessage[1];
+				var currentPrice = serverMessage[1];
+				var remainHour = serverMessage[2];
+				var remainMin = serverMessage[3];
+				var remainSec = serverMessage[4];
+				
+				$productName = $("#productName");
+				$startPrice = $("#startPrice");
+				$currentPrice = $("#currentPrice");
+				$remainTime = $("#remainTime");
+							
+				$productName.html(productName);
+				$startPrice.html(startPrice);
+				$currentPrice.html(currentPrice);
+				$remainTime.html(remainHour + " : " + remainMin + " : " + remainSec);
+				
+				
+			} */
+			
+			function onError(event){
+				alert(event.data);
+			}
+			
+			function onClose(event){
+				alert(event);
+			}
+			
+			function getConnection2(){
+				ws2 = new WebSocket("ws://localhost:8001" + "<%=request.getContextPath()%>/auctionStart");
+				
+				ws2.onopen2 = function(event){
+
+				}
+				//서버로부터 메세지를 전달 받을 때 동작하는 메소드
+				ws2.onmessage = function(event){
+					onMessage2(event);
+				}
+				
+				//서버에서 에러가 발생할 경우 동작할 메소드
+				ws.onerror = function(event){
+					onError2(event);
+				}
+				
+				//서버와의 연결이 종료될 경우 동작하는 메소드
+				ws2.onclose = function(event){
+					onClose2(event);
+				}
+			}
+			
+			function send2(msg){
+				/* location.href="notification.mb"; */
+				var tryMoney = $("#tryMoney").val();
+				var userId = "${m.userNm}";
+				var sendMsg = userId + ":" + tryMoney;
+				ws2.send(sendMsg);
+			}
+			
+			function onMessage2(event){
+				var msg = event.data.split(":");
+				var user = msg[0];
+				var contents = msg[1];
+				/* $("#currentPrice").html(price); */
+				$("#history").append("<span>" + user + "님이 " + contents + " 원으로 입찰하셨습니다</span><br>");
+			}
+			
+			function onError2(event){
+				alert(event.data);
+			}
+			
+			function onClose2(event){
+				alert(event);
+			}
+		</script>
+</html>               
