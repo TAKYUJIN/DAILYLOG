@@ -14,7 +14,7 @@ public interface VideoService {
 	String upload(MultipartFile file);
 	
 	//정기후원
-	int regSub(Member m, int price);
+	int regSub(Member m);
 
 	// 업로드할 동영상 정보 insert메소드
 	int insertVideoInfo(Model model);

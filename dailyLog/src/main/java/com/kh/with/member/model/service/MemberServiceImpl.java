@@ -1,5 +1,11 @@
 package com.kh.with.member.model.service;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletResponse;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
@@ -37,16 +43,39 @@ public class MemberServiceImpl implements MemberService {
 
 		return loginUser;
 	}
+		
+
+
+	@Override
+	public int idCheck(String userId) {
+		int result = md.idCheck(userId);
+		return result;
+	}	
 
 	
+	@Override
+	public int nickCheck(String nickname) {
+		int result = md.nickCheck(nickname);
+		return result;
+	}
+	
+	
 	  //마이페이지 수정
-	  
+	  /*
 	  @Override public Member update_myPage(Member m) throws LoginException {
 		  //TODO Auto-generated method stub 
 	  md.update_myPage(sqlSession, m); 
 	  return md.loginMember(sqlSession, m); 
-	  }
+	  } */
 	 
+
+	
+	@Override
+	public int update_myPage(Member m) throws LoginException {
+		// TODO Auto-generated method stub
+		 return md.update_myPage(sqlSession, m);
+	}
+
 
 	@Override
 	public int insertMember(Member m) {
@@ -58,6 +87,39 @@ public class MemberServiceImpl implements MemberService {
 
 		return result;
 	}
+
+	@Override
+	public ArrayList<Member> selectMyPage(Member m) {
+
+		return md.selectMyPage(sqlSession, m);
+	}
+
+	@Override
+	public boolean delete_myPage(Member m, HttpServletResponse response) throws Exception {
+		// TODO Auto-generated method stub
+		
+		System.out.println("in?????");
+		
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		if(md.delete_myPage(sqlSession, m) != 1) {
+			out.println("<script>");
+			out.println("alert('회원탈퇴 실패');");
+			out.println("history.go(-1);");
+			out.println("</script>");
+			out.close();
+		return false;
+	}else {
+		return true;
+	}
+	}
+	
+
+	
+
+	
+
+
 
 
 }

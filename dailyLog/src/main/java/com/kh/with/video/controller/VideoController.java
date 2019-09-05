@@ -1,6 +1,7 @@
 package com.kh.with.video.controller;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,11 +10,11 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -77,16 +78,23 @@ public class VideoController {
 
 	//정기후원
 	@RequestMapping(value="regSub.vd")
-	public String regSub(HttpServletRequest request, HttpSession session) {
-		int price = Integer.parseInt(request.getParameter("price"));
+	@ResponseBody
+	public HashMap<String, Object> regSub(Model model, HttpServletRequest request, HttpSession session) {
+		int price = Integer.parseInt(request.getParameter("remain"));
 		
 		Member m = (Member) session.getAttribute("loginUser");
+		m.setRemainPT(price);
 		
-		int result = vs.regSub(m, price);
-		
+		int result = vs.regSub(m);
+		System.out.println("result : " + result);
 		//System.out.println("money ::: " + price);
 		
-		return "";
+		//model.addAttribute("msg", "정기후원중");
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+        map.put("msg", "정기후원중");
+		
+		return map;
 	}
 
 	// 동영상 업로드 페이지 이동

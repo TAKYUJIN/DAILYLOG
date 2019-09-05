@@ -17,8 +17,10 @@ public class VideoDaoImpl implements VideoDao{
 	  }
 	  //동영상정기후원
 	@Override
-	public int regSub(SqlSessionTemplate sqlSession, Member m, int price) {
-
+	public int regSub(SqlSessionTemplate sqlSession, Member m) {
+		
+		
+		
 		return sqlSession.update("Member.regSub", m);
 	}
 	

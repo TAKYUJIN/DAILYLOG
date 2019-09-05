@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ <mapper namespace="friend">
+	 
+	<select id="FriendList" resultType="com.kh.with.main.model.vo.MailVo">
+	SELECT USER_ID,FRI_ID FROM FRIEND
+	
+	</select>
+	
+	
+	 <!-- <select id="FriendsList" resultMap="friendslistResultSet" resultType="com.kh.with.main.model.vo.MailVo">
+	 		SELECT USER_ID,FRI_ID FROM FRIEND
+	 </select> -->
+
+</mapper>

@@ -5,7 +5,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
+
 import org.springframework.ui.Model;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import com.kh.with.member.model.vo.Member;
@@ -39,6 +41,7 @@ public class VideoServiceImpl implements VideoService{
 
 	//		return result;
 	//	}
+
 	//정기후원
 	@Override
 	public int regSub(Member m, int price) {
@@ -49,11 +52,13 @@ public class VideoServiceImpl implements VideoService{
 
 
 
+
 	@Override
 	public String upload(MultipartFile file) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 
 	// 업로드할 동영상 정보 insert메소드
@@ -67,5 +72,8 @@ public class VideoServiceImpl implements VideoService{
 		return result;
 	}
 
+
 }
+
+
 

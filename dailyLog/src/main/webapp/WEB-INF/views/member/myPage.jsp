@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +12,47 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+<script type="text/javascript">
+$(function(){
+	$("#mypage").submit(function(){
+		if($("#userPwd").val() !== $("#userPwd2").val()){
+			alert("비밀번호가 다릅니다.");
+			$("#userPwd").val("").focus();
+			$("#userPwd2").val("");
+			return false;
+		}else if ($("#userPwd").val().length < 8) {
+			alert("비밀번호는 8자 이상으로 설정해야 합니다.");
+			$("#userPwd").val("").focus();
+			return false;
+		}else if($.trim($("#userPwd").val()) !== $("#userPwd").val() || $.trim($("#userId").val()) !== $("#userId").val() || $.trim($("#nickname").val()) !== $("#nickname").val()){
+			alert("공백은 입력이 불가능합니다.");
+			return false;
+		}
+	});
+	 $(function() {
+        $("#pro").on('change', function(){
+            readURL(this);
+        });
+    });
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+                $('#pro').attr('src', e.target.result);
+            }
+
+          reader.readAsDataURL(input.files[0]);
+        }
+    } 
+    if($("#delete").submit(function(){
+    	if(!confirm("정말 탈퇴할까요?")){
+    		return false;
+    	}
+    	}));
+    }
+</script>
 <style type="text/css">
 	body {
 		color: #999;
@@ -74,7 +116,7 @@
 	}
 
 	 .avatar {
-		position: absolute;
+		/* position: absolute;
 		margin: 0 auto;
 		left : 0px;
 		right : 0px;
@@ -85,7 +127,8 @@
 		z-index: 9;
 		background: #60c7c1;
 		padding: 15px;
-		box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+		box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1); */
+		border-radius: 50%;
 	}
 	.avatar img {
 		width: 100%;
@@ -108,58 +151,63 @@
 <div class="col-xs-8 col-xs-offset-4">
 			<h1>마이페이지</h1>
 		</div>
-		
-    <form action="myPage" method="post" class="form-horizontal">
+		<% System.out.print("오냐?"); %>
+    <form id="mypage" action="update_myPage.me" method="post" class="form-horizontal">
 				
 		<div class="avatar">
+		<img id="pro" src="#"/>
 		</div>	
-		<input type="file" class="pro" > 
+		<input type="file" class="pro" id="pro"> 
 		<div class="form-group">
 			<label class="control-label col-xs-4">User ID</label>
 			<div class="col-xs-6">
-                <input type="email" class="form-control" name="email" 
-                			required="required" readonly value="${m.userId }">
+                <input type="email" class="form-control" id="userId" name="userId"  
+                			required="required" readonly value="${list.userId}">
             </div>    
             </div>    	
         <div class="form-group">
 			<label class="control-label col-xs-4">User Name</label>
 			<div class="col-xs-6">
-                <input type="text" class="form-control" name="userName" 
-                					required="required" readonly value="${m.userNm }">
+                <input type="text" class="form-control" id="userNm" name="userNm" 
+                					required="required" readonly value="${list.userNm}">
             </div>        	
         </div>
         <div class="form-group">
 			<label class="control-label col-xs-4">User NickName</label>
 			<div class="col-xs-6">
-                <input type="text" class="form-control" name="nickname" 
-                					required="required" >
+                <input type="text" class="form-control" id="nickname" name="nickname" 
+                					required="required" value="${list.nickname}">
             </div>        	
         </div>
         
 		<div class="form-group">
 			<label class="control-label col-xs-4">Password</label>
 			<div class="col-xs-6">
-                <input type="password" class="form-control" name="passPwd" required="required">
+                <input type="password" class="form-control" id="userPwd" name="userPwd" required="required">
             </div>        	
         </div>
 		<div class="form-group">
 			<label class="control-label col-xs-4">Confirm Password</label>
 			<div class="col-xs-6">
-                <input type="password" class="form-control" name="passPwd2" required="required">
+                <input type="password" class="form-control" id="userPwd2" name="userPwd2" required="required">
             </div>        	
         </div>
         <div class="form-group">
 			<label class="control-label col-xs-4">Phone</label>
 			<div class="col-xs-6">
-                <input type="text" class="form-control" name="phone" 
-                					required="required">
+                <input type="text" class="form-control" id="phone" name="phone" 
+                					required="required" value="${list.phone}">
             </div>        	
         </div>
+         <form id="delete" action="delete_myPage.me" method="post" >
 		<div class="form-group">
 			<div class="col-xs-6 col-xs-offset-4">
-				<button class="btn btn-primary btn-lg" id="outbtn">탈퇴하기</button>
+				<button type="submit" class="btn btn-primary btn-lg" id="outbtn">탈퇴하기</button>
 			</div>  
+			
 		</div>	
+		</form>
+         
 		<div class="form-group">
 			<div class="col-xs-8 col-xs-offset-4">
 				<button type="submit" class="btn btn-primary btn-lg">수정완료</button>
@@ -167,6 +215,8 @@
 			</div>  
 		</div>	
     </form>
+    
+   
     
 </div>
 <jsp:include page="../common/footer.jsp"/>
