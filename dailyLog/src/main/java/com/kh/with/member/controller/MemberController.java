@@ -1,10 +1,12 @@
 package com.kh.with.member.controller;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +19,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.kh.with.common.CommonUtils;
 import com.kh.with.member.model.exception.LoginException;
 import com.kh.with.member.model.service.MemberService;
 import com.kh.with.member.model.vo.Member;
@@ -135,42 +139,60 @@ public class MemberController {
 	// myPage 수정
 	@RequestMapping(value = "update_myPage.me", method = RequestMethod.POST)
 	public String update_mypage(@ModelAttribute Member m,Model model,HttpServletRequest request,
-								HttpSession session, RedirectAttributes rttr)
+			@RequestParam(name="pro", required=false) MultipartFile pro ,HttpSession session, RedirectAttributes rttr)
 			throws Exception {
+		
+		System.out.println(pro);
 		// session.setAttribute("m",ms.update_myPage(m));
 		System.out.println("******************************* : " + m);
 		
 		System.out.println("왔냐 ? ::::" + m);
 		
 		
-	//	String root = request.getSession().getServletContext().getRealPath("resources");
+		String root = request.getSession().getServletContext().getRealPath("resources");
 //		System.out.println(encPassword);
 		
-		try {
+		String filePath = root + "\\ images";
+		
+		//파일명 변경
+//				String originFileName = pro.getOriginalFilename();
+//				String ext = originFileName.substring(originFileName.lastIndexOf("."));
+//				String changeName = CommonUtils.getRandomString();
+				try {
+//				pro.transferTo(new File(filePath + "\\" +changeName +ext));
 			
 			String encPassword = passwordEncoder.encode(m.getUserPwd());
+			System.out.println(encPassword);
+			
+			m.setUserPwd(encPassword);
+			System.out.println("insertMember : " + m);
+			
 			ms.update_myPage(m);
 			
 			
 			
 			return "forward:index.jsp";
-			
-		} catch (LoginException e) {
-			model.addAttribute("msg", e.getMessage());
-			return "common/errorPage";
-		}
-		
-		
+				} catch (Exception e) {
+//					new File(filePath + "\\" + changeName + ext).delete();
+					
+					model.addAttribute("msg", "마이페이지 수정 실패");
+					return "common/errorPage";
+				}
 	}
-
-	/*
-	 * // 비밀번호 변경
-	 * 
-	 * @RequestMapping(value = "/update_pw.do", method = RequestMethod.POST) public
-	 * String update_pw(@ModelAttribute Member m, @RequestParam("old_pw") String
-	 * old_pw, HttpSession session, HttpServletResponse response, RedirectAttributes
-	 * rttr) throws Exception{ session.setAttribute("member", ms.update_pw(m,
-	 * old_pw, response)); }
-	 */
-
+	@RequestMapping(value = "delete_myPage.me", method = RequestMethod.POST)
+	public String delete_mypage(@ModelAttribute Member m,Model model,HttpServletRequest request,HttpServletResponse response,
+			HttpSession session, RedirectAttributes rttr)
+			throws Exception {
+		
+		System.out.println("탈퇴인가요 ?");
+	
+		if(ms.delete_myPage(m,response)) {
+			
+			
+			session.invalidate();
+			
+			
+		}
+		return "forward:logout.me";
+	}
 }
