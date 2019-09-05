@@ -8,6 +8,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,14 +27,14 @@ public class MemberController {
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder; 
 
-	
+
 	@RequestMapping(value="loginbutton.me")
 	public String showMemberloginView() {
 
 		return "member/login";
 
 	}
-	
+
 	@RequestMapping("logout.me")
 	public String logout(SessionStatus status) {
 
@@ -74,11 +76,11 @@ public class MemberController {
 		String root = request.getSession().getServletContext().getRealPath("resources");
 
 		System.out.println(root);
-		
+
 		System.out.println(m.getGender());
-		
+
 		try {
-			
+
 
 			m.setUserPwd(passwordEncoder.encode(m.getUserPwd()));
 			System.out.println(m.getUserPwd());
@@ -94,7 +96,7 @@ public class MemberController {
 			return "redirect:index.jsp";
 
 		} catch (Exception e) {
-			
+
 
 			model.addAttribute("msg", "회원 가입 실패");
 			return "common/errorPage";
@@ -116,13 +118,13 @@ public class MemberController {
 
 		return mv;
 	}
-	
+
 	//마이페이지 이동
 	@RequestMapping(value="myPage.me")
 	public String myPage() {
 		return"member/myPage";
 	}
-	
+
 	/*
 	 * //myPage 수정
 	 * 
@@ -132,7 +134,7 @@ public class MemberController {
 	 * ms.update_myPage(m)); rttr.addFlashAttribute("msg", "회원정보 수정 완료"); return
 	 * "redirect:/member/mypage.do"; }
 	 */
-	
+
 	/*
 	 * // 비밀번호 변경
 	 * 
@@ -143,7 +145,30 @@ public class MemberController {
 	 * old_pw, response)); }
 	 */
 
+	//아이디 중복확인 
+	@RequestMapping(value="idCheck.me", method=RequestMethod.GET)
+	@ResponseBody
+	public String idCheck(HttpServletRequest request) {
 
+		String userId = request.getParameter("userId");
+		int result = ms.idCheck(userId);
+
+		return Integer.toString(result);
+
+	}
+
+
+	//닉네 중복확인 
+	@RequestMapping(value="nickCheck.me", method=RequestMethod.GET)
+	@ResponseBody
+	public String nickCheck(HttpServletRequest request) {
+
+		String nickname = request.getParameter("nickname");
+		int result = ms.nickCheck(nickname);
+
+		return Integer.toString(result);
+
+	}
 }
 
 

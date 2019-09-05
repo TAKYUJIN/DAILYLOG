@@ -37,7 +37,21 @@ public class MemberServiceImpl implements MemberService {
 
 		return loginUser;
 	}
+		
 
+	@Override
+	public int idCheck(String userId) {
+		int result = md.idCheck(userId);
+		return result;
+	}	
+
+	
+	@Override
+	public int nickCheck(String nickname) {
+		int result = md.nickCheck(nickname);
+		return result;
+	}
+	
 	
 	  //마이페이지 수정
 	  
@@ -58,6 +72,11 @@ public class MemberServiceImpl implements MemberService {
 
 		return result;
 	}
+
+
+	
+
+
 
 
 }

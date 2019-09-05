@@ -10,10 +10,14 @@ public interface MemberService {
 	Member loginMember(Member m) throws LoginException;
 
 	int insertMember(Member m);
-
-
 	
 	Member update_myPage(Member m) throws LoginException;
+	
+	//아이디 중복 체크 
+	int idCheck(String userId);
+
+	//닉네임 중복 체크
+	int nickCheck(String nickname);
 
 	
 	//Member update_Pwd(Member m, String old_pwd, HttpServletResponse response);
