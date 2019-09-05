@@ -62,14 +62,22 @@ public class LogerController {
 		return "loger/logerCalculate";
 	}
 
-		@RequestMapping(value="accountApi.lo")
-	public String selectLogerAccount() {		
+	@RequestMapping(value="accountApi.lo")
+	public String selectLogerAccount() {	
 			
-
 		return "loger/accountApi";
 	} 
-
-
+	
+	@RequestMapping(value="logerCalculateApply.lo")
+	public String logerCalculateApply(Support s, Model model, HttpSession session) {	
+		Member m = (Member) session.getAttribute("loginUser");
+		ArrayList<Support> sList = ls.selectLogerSupport(s, m);
+		
+		model.addAttribute("sList", sList);
+		model.addAttribute("s", s);
+			
+		return "loger/selectLogerCalculate";
+	} 
 	//로거스튜디오 이동
 	@RequestMapping(value="newHomeChannel.lo")
 	public String newHomeChannel() {
