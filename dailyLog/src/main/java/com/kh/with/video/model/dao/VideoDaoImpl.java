@@ -41,15 +41,12 @@ public class VideoDaoImpl implements VideoDao{
 	}
 	
 
-	
-
-
 
 
 }
 
+	/*
 
-/*
 	@Inject
 	SqlSession sqlsession;
 	@Override

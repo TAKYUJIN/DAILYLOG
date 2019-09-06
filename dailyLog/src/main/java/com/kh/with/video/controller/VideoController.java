@@ -24,6 +24,7 @@ import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.member.model.service.MemberService;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.video.model.service.VideoService;
+import com.kh.with.video.model.vo.Video;
 
 @Controller
 @SessionAttributes("loginUser")
