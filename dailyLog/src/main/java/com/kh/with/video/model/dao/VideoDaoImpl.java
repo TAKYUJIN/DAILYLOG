@@ -2,9 +2,13 @@ package com.kh.with.video.model.dao;
 
 
 
+import java.util.List;
+
+import javax.inject.Inject;
+
+import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
-
 
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.video.model.vo.Video;

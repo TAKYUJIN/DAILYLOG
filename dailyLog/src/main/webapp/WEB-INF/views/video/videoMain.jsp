@@ -389,6 +389,11 @@ button[class*="btn"] {border: 0;}
 		e.stopPropagation();
 	});
 </script>
+  <link href="https://vjs.zencdn.net/7.6.0/video-js.css" rel="stylesheet">
+
+  <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
+  <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+  <script src='https://vjs.zencdn.net/7.6.0/video.js'></script>
 </head>
 <body>
  	<jsp:include page="../common/mainBar.jsp"></jsp:include>
@@ -550,9 +555,21 @@ button[class*="btn"] {border: 0;}
 			</tr>
 			<tr>
 				<!-- 비디오 -->
-				<td colspan="4" height="400px"></td>
+				<td colspan="4" height="400px">
+					  <video id='my-video' class='video-js' controls autoplay="autoplay" preload='auto' width='800' height='450'
+						  poster='MY_VIDEO_POSTER.jpg' data-setup='{}' >
+						  <source src='resources/uploadFiles/oceans.mp4' type='video/mp4'>
+						  <source src='MY_VIDEO.webm' type='video/webm'>
+						  <p class='vjs-no-js'>
+						      To view this video please enable JavaScript, and consider upgrading to a web browser that
+						  <a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
+						  </p>
+					  </video>
+				</td>
 				<!-- 댓글 -->
-				<td rowspan="3" width="250px"></td>
+				<td rowspan="3" width="250px">
+					<a href="test.vd">test</a>
+				</td>
 			</tr>
 			<tr>
 				<!-- 영상 제목, 태그 -->

@@ -201,7 +201,7 @@ h2 span {
 					<div class="item carousel-item active"> 
 						<div class="row">
 							<div class="col-sm-4"><div class="img-box"><h1>${videoimage.userNo}</h1>
-							<img src="resources/images/${videoimage.filepath}" width = "700px"  height="200px" alt=""></div></div>
+							<a href="video.vd"><img src="resources/images/${videoimage.filepath}" width = "700px"  height="200px" alt=""></a></div></div>
 							<a href="#" ><img src="resources/images/three-dot.png"width="30px" height="30px"class="fixed" ></a>
 										
 						</div>
