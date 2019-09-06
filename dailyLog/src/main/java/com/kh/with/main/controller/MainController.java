@@ -138,27 +138,23 @@ public class MainController {
 	}
 
 	
-//	//알림이요...
-//	@RequestMapping(value="notification.mb")
-//	public String showNotification(Model model,HttpSession session) {
-//		Member m = (Member) session.getAttribute("loginUser");
-//		model.addAttribute("m", m);
-//		
-//		return "main/notification";
-//	}
-//	
+	//알림이요...
+	@RequestMapping(value="notification1.mb")
+	public String showNotification(Model model,HttpSession session) {
+		Member m = (Member) session.getAttribute("loginUser");
+		model.addAttribute("m", m);
+		
+		return "main/notification";
+	}
+	
 	@RequestMapping(value="notification.mb")
 	@ResponseBody
-	public HashMap<String, Object> showNotification(Model model, HttpSession session, Member m) {
+	public HashMap<String, Object> showNotification(HttpSession session, Member m) {
 		m = (Member) session.getAttribute("loginUser");
-		
-		
-		
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("m", m);
 		System.out.println(m);
 		
-		model.addAttribute("m", m);
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("m", "안녕안녕");
 		
 		return map;
 	}
