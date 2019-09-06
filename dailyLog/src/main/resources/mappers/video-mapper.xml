@@ -25,6 +25,22 @@
 		<result property="filepath" column="FILEPATH" />
 		<result property="openTy" column="OPEN_TY" />
 	</resultMap>
+	
+	
+	
+	<resultMap type="com.kh.with.video.model.vo.Attachment"
+		id="attachmentResultSet">
+
+		<id property="userNo" column="USER_NO" />
+		<result property="amNo" column="AM_NO" />
+		<result property="filepath" column="FILEPATH" />
+		<result property="amDt" column="AM_DT" />
+		<result property="enrollNm" column="ENROLL_NM" />
+		<result property="modifyNm" column="MODIFY_NM" />
+		<result property="amTY" column="AM_TY" />
+	</resultMap>
+	
+	
 
 	<!-- 업로드할 동영상 정보 insert 쿼리 -->
  	<insert id="insertVideoInfo" parameterType="Video">
@@ -34,6 +50,15 @@
 	NULL, NULL, #{filepath}, #{openTy})
  	
 	</insert>
+	
+		<!-- 썸네일 정보 insert 쿼리 -->
+	<insert id="insertAttachment" parameterType="attachment">
+ 	
+	INSERT INTO ATTACHMENT
+	VALUES(3, AM_NO.NEXTVAL, '파일경로', SYSDATE , '원본이름' , 'NULL'  , '회원'); 
+
+	</insert>
+	
 	
 	
 	

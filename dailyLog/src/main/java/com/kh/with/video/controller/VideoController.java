@@ -1,6 +1,7 @@
 package com.kh.with.video.controller;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 
 import javax.inject.Inject;
@@ -13,7 +14,6 @@ import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -25,6 +25,7 @@ import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.member.model.service.MemberService;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.video.model.service.VideoService;
+import com.kh.with.video.model.vo.Attachment;
 import com.kh.with.video.model.vo.Video;
 
 @Controller
@@ -81,24 +82,24 @@ public class VideoController {
 		return "video/videoMain";
 	}
 
-	//정기후원
-	@RequestMapping(value="regSub.vd")
+	// 정기후원
+	@RequestMapping(value = "regSub.vd")
 	@ResponseBody
 	public HashMap<String, Object> regSub(Model model, HttpServletRequest request, HttpSession session) {
 		int price = Integer.parseInt(request.getParameter("remain"));
-		
+
 		Member m = (Member) session.getAttribute("loginUser");
 		m.setRemainPT(price);
-		
+
 		int result = vs.regSub(m);
 		System.out.println("result : " + result);
-		//System.out.println("money ::: " + price);
-		
-		//model.addAttribute("msg", "정기후원중");
-		
+		// System.out.println("money ::: " + price);
+
+		// model.addAttribute("msg", "정기후원중");
+
 		HashMap<String, Object> map = new HashMap<String, Object>();
-        map.put("msg", "정기후원중");
-		
+		map.put("msg", "정기후원중");
+
 		return map;
 	}
 
@@ -146,12 +147,32 @@ public class VideoController {
 
 	// 업로드할동영상 정보 insert메소드
 	@RequestMapping(value = "insertVideoInfo.vd")
-	public String insertVideoInfo(@ModelAttribute Member m, Model model,HttpServletRequest request, HttpSession session) {
+	public String insertVideoInfo(@ModelAttribute Member m, Model model,HttpServletRequest request, HttpSession session,
+			@RequestParam("file2") MultipartFile file2) {
+
+		//썸네일 업로드 및 파일이름바꾸기
+		String root = request.getSession().getServletContext().getRealPath("resources");
+
+		String filepath1 = root + "\\uploadFiles";
+
+		String beforeenrollNm = file2.getOriginalFilename();
+		String ext = beforeenrollNm.substring(beforeenrollNm.lastIndexOf("."));
+		String enrollNm = CommonUtils.getRandomString();
+
+		/* System.out.println(enrollNm + filepath1 ); */
+
+		//파일 업로드 하는 구문
+		try {
+			file2.transferTo(new File(filepath1 + "\\" + enrollNm + ext));
+		} catch (IllegalStateException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		m = (Member) session.getAttribute("loginUser");
 
 
-		String filepath = (String) session.getAttribute("filepath");
+		String filepath = (String) request.getSession().getAttribute("filepath");
 		String fileName = (String) session.getAttribute("fileName");
 		String vTitle = request.getParameter("vTitle"); 
 		String beforetag =request.getParameter("tag"); 
@@ -192,9 +213,22 @@ public class VideoController {
 
 
 
-		System.out.println("정상적으로 출력이 되나요?" + video);
 
+
+		
 		int result = vs.insertVideoInfo(video);
+
+
+		Attachment attachment = new Attachment(); 
+
+		attachment.setEnrollNm(enrollNm);
+		attachment.setFilepath(filepath1);
+		attachment.setUserNo(getUserNo);
+		
+		int result1 = vs.insertAttachment(attachment);
+		
+		
+		System.out.println("정상적으로 출력이 되나요?" + attachment);
 
 
 		if(result > 0 ) {
@@ -204,42 +238,22 @@ public class VideoController {
 			return "common/errorPage";
 		}
 
-	}
 
-	/*
-	 * //썸네일 ATTACHMENT insert
-	 * 
-	 * @RequestMapping(value = "insertthumbNail.vd") public int insertthumbNail
-	 * (@ModelAttribute Member m,Model model, HttpServletRequest request,
-	 * HttpSession session ,
-	 * 
-	 * @RequestParam(name = "thumbNail", required = false) MultipartFile thumbNail)
-	 * {
-	 * 
-	 * String root =
-	 * request.getSession().getServletContext().getRealPath("resources");
-	 * 
-	 * String filepath = root + "\\uploadFiles";
-	 * 
-	 * // 파일명 변경 String originFileName = thumbNail.getOriginalFilename(); String ext
-	 * = originFileName.substring(originFileName.lastIndexOf(".")); String fileName
-	 * = CommonUtils.getRandomString(); try { thumbNail.transferTo(new File(filepath
-	 * + "\\" + fileName + ext));
-	 * 
-	 * 
-	 * HttpSession session = request.getSession();
-	 * 
-	 * session.setAttribute("filepath", filepath); session.setAttribute("fileName",
-	 * fileName);
-	 * 
-	 * return "video/videoBasicInfo";
-	 * 
-	 * } catch (Exception e) { new File(filepath + "\\" + fileName + ext).delete();
-	 * 
-	 * model.addAttribute("msg", "동영상업로드실패"); return "common/errorPage"; }
-	 * 
-	 * }
-	 */
+
+
+
+
+		/*
+		 * try { file2.transferTo(new File(filepath + "\\" + fileName + ext)); return
+		 * "";
+		 * 
+		 * 
+		 * 
+		 * } catch (Exception e) { new File(filepath + "\\" + fileName + ext).delete();
+		 * 
+		 * model.addAttribute("msg", "동영상업로드실패"); return "common/errorPage"; }
+		 */
+	}
 
 
 
@@ -255,25 +269,24 @@ public class VideoController {
 	}
 
 
+}
 
+/*
 	//동영상 이미지 출력
 
 	@RequestMapping(value="home.mb" ,method=RequestMethod.GET)
 	public ModelAndView videoimagelist(ModelAndView mav)
 	{
-		mav.setViewName("/main/top1");
+		mav.setViewName("/main/top");
 		System.out.println("videocontroller:"+mav);
 		mav.addObject("list", videoservice.videoimagelist());
 		System.out.println("vid"+videoservice);
 		System.out.println("mav"+mav);
 
-
 		return mav;
 	}
 
-	
-	
-	
-} 
 
+
+} */
 

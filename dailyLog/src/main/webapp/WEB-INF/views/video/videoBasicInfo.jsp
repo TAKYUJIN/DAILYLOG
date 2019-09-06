@@ -20,9 +20,7 @@
 <style>
 .mainpage {
 	width: 1024px;
-	
 	margin-top: 100px;
-
 }
 
 .btn {
@@ -61,9 +59,10 @@
 	width: 500px;
 	margin-left: -10px;
 }
-#thumbnail{
-	margin-top:80px;
-	margin-left:-85px;
+
+#thumbnail {
+	margin-top: 80px;
+	margin-left: -85px;
 }
 </style>
 
@@ -75,7 +74,8 @@
 
 
 
-	<form action="insertVideoInfo.vd" method="post">
+	<form action="insertVideoInfo.vd" method="post"
+		enctype="multipart/form-data">
 		<div class="mainpage">
 			<br> <br> <br>
 			<div class="container">
@@ -103,27 +103,24 @@
 								style="width: 400px" placeholder="태그(예:일상기록,여행,강아지,음식)"></textarea>
 						</div>
 					</div>
-					<a>시청등급을 선택하세요</a> <br>  
-					<input type="checkbox"name="adultAut" value="Y"> 전체시청가능<br>
-					 <input type="checkbox" name="adultAut" value="N"> 19세 이상 시청가능<br>
-					<br> <br> 
-					<input type="checkbox" name="adYn"value="Y"> 광고여부<br> 
-					<a id="advertising">광고여부
-						체크시 아래의 문구가 자동으로 기재됩니다<br> 본 컨텐츠는 유료제품 추천, 후원, 보증과 같은 유료 광고
-						내용이 포함되어 있습니다
-					</a>
-					<input type="text" class="form-control" id="adInfo" name="adInfo"
-								style="width: 400px" placeholder="광고정보">
-					<br> <br>
-					<a>공개여부</a> <br>
-					<input type="checkbox"name="openTy" value="Y">전체공개<br>
-					 <input type="checkbox" name="openTy" value="N">비공개<br>
+					<a>시청등급을 선택하세요</a> <br> <input type="checkbox" name="adultAut"
+						value="Y"> 전체시청가능<br> <input type="checkbox"
+						name="adultAut" value="N"> 19세 이상 시청가능<br> <br>
+					
+					<br> <input type="checkbox" name="adYn" value="Y">
+					광고여부<br> <a >광고여부 체크시 아래의 문구가 자동으로 기재됩니다<br>
+						본 컨텐츠는 유료제품 추천, 후원, 보증과 같은 유료 광고 내용이 포함되어 있습니다
+					</a> <input type="text" class="form-control" id="adInfo" name="adInfo"
+						style="width: 400px" placeholder="광고정보"> <br> <br>
+						
+						
+					<a>공개여부</a> <br> <input type="checkbox" name="openTy"
+						value="Y">전체공개<br> <input type="checkbox"
+						name="openTy" value="N">비공개<br>
 				</div>
-				<br><br>
-					<a>썸네일이미지첨부</a>
-					<input type=file name='thumbNail' id='thumbNail' style='display: none;'> 
-				<img src="resources/images/thumbnail.png" border='0'  style="width: 50px;" id="thumbnail"
-					onclick='document.all.thumbNail.click(); document.all.file2.value=document.all.thumbNail.value'>
+				<br>
+				<br> <a>썸네일이미지첨부</a> <input type="file" name="file2" value="file2" id="file2"/> 
+
 				<div id="minor">
 					<img id="minorimg" src="resources/images/family.png"
 						style="width: 100px;"> <br> <a>동영상에 미성년자가 등장하는지
@@ -135,9 +132,9 @@
 		</div>
 	</form>
 
-<%-- 	<input type="text" value="${filepath}" id="filepath" name="filepath">
+	<%-- 	<input type="text" value="${filepath}" id="filepath" name="filepath">
 		<input type="text" value="${fileName}" id="fileName" name="fileName"> --%>
-	
+
 	<script>
 		$(document).ready(function(){
 			$("#uploadbtn").click(function(){
@@ -147,14 +144,13 @@
 				var filepath = $("#filepath").val();
 				var fileName = $("#fileName").val();
 				var adInfo = $("#adInfo").val();
-				
-				var filepath = $("#filepath").val(); 
+				var file2 = $("#file2").val();
 				
 				$.ajax({
 					url:"insertVideoInfo.vd",
 					type:"post",
 					data:{titleName:titleName,videoTag:videoTag,model:model,filepath:filepath,fileName:fileName,adInfo:adInfo,
-						'allView':lists},
+						file2:file2,'allView':lists},
 						traditional:true,
 					success:function(data){
 						console.log("성공!");
@@ -162,31 +158,26 @@
 					error:function(data){
 						console.log("실패!");
 					}
-				});	
-			});
-		});
-	</script>
-
-	<script>
-		$(document).ready(function(){
-			$("#uploadbtn").click(function(){		
-				var thumbNail = $("#thumbNail").val();
+				});
 				
 				$.ajax({
-					url:"insertthumbNail.vd",
+					url:"insertThumbNail.vd",
 					type:"post",
 					data:{thumbNail:thumbNail},
-					
+						
 					success:function(data){
 						console.log("성공!");
 					},
 					error:function(data){
 						console.log("실패!");
 					}
-				});	
+				});
+				
 			});
 		});
 	</script>
+
+
 	<br>
 	<br>
 	<br>

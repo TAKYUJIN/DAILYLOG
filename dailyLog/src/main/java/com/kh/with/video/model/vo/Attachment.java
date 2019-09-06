@@ -1,4 +1,4 @@
-package com.kh.with.loger.model.vo;
+package com.kh.with.video.model.vo;
 
 import java.sql.Date;
 
