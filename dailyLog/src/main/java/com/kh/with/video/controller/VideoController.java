@@ -271,7 +271,14 @@ public class VideoController {
 		return mav;
 	}
 
-	
+	//test
+	@RequestMapping(value="test.vd")
+	public String test()
+	{
+		
+
+		return "video/test";
+	}
 	
 	
 } 
