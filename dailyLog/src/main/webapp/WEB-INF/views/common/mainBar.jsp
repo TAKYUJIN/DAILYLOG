@@ -289,15 +289,35 @@
 			</li>
 			
 			<li class="nav-item">
-				 
-			 <button type="button" onclick="location.href='FriendList.mb'" data-toggle="dropdown" class="btn_global link_login">
+				 <!-- onclick="location.href='FriendList.mb'" -->
+			 <button type="button" class="friendlist"  data-toggle="dropdown"  >
 				<img src="resources/images/laugh.png" style="width:20px;">
 			</button>
 			<ul class="dropdown-menu form-wrapper">					
 					<li>
  						<div class="noti_text" align="center"><p>친구 리스트</p></div>
+<script type="text/javascript">
+$('.friendlist').click(function(){
+ 
+$.ajax({
+	url:"FriendList.mb",
+	type:"post",
+	dataType:"json",
+ 	success:function(data){
+		alert("우아ㅗ");
+	},
+	error:function(){
+		alert("으아아아");
+	}
+});
+	
+});
+
+
+</script>                                    
  
  <div class="page-wrapper">
+  <form action="FriendList.mb" method="post">
     <div class="container-fluid" id="frilist">
         <div class="col-lg-8"><!--게시판 넓이 -->
             <div class="panel panel-default" >
@@ -323,7 +343,7 @@
                 </div>
   <button class="ui olive button" id="addfri">친구 추가</button>
                 </div>
-                </div>
+                </div></form>
      <div class="container-fluid" id="myDiv">
         <div class="col-lg-8"><!--게시판 넓이 -->
             <div class="panel panel-default" >

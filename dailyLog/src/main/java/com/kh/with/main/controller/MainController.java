@@ -2,10 +2,10 @@ package com.kh.with.main.controller;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.kh.with.main.model.dao.BoardDao;
 import com.kh.with.main.model.service.BoardService;
 import com.kh.with.main.model.service.MailSendService;
 import com.kh.with.main.model.service.regService;
@@ -116,14 +115,30 @@ public class MainController {
 	  }
 
 	  @RequestMapping(value="FriendList.mb",method=RequestMethod.GET)
-	  @ResponseBody
-	  public HashMap<String, Object> FriendList(Model model) throws Exception{
-		  List<MailVo> list=service.FriendList();
-		  HashMap<String,Object>map=new HashMap<String, Object>(); map.put("list", list);
-		  System.out.println("list3:"+list);
-		  model.addAttribute("m", list);
-		  return map;
- 	 
+	 // @ResponseBody
+
+	/*
+	 * public HashMap<String, Object> FriendList(Model model) throws Exception{
+	 * HashMap<String,Object> map=new HashMap<String, Object>(); List<MailVo>
+	 * list=service.FriendList(); map.put("list", list);
+	 * System.out.println("list3:"+list); System.out.println("hashmodel"+model);
+	 * System.out.println("hashmap"+map); System.out.println("hashlist"+list);
+	 * 
+	 * return (list);}
+	 */
+	  public void FriendList(Model model, HttpServletResponse response) throws Exception{
+ 		  List<MailVo> list=service.FriendList();
+ 		  	model.addAttribute("m", list);	
+ 		  	System.out.println("list"+list);
+ 		 
+ 		  	String list1=  list.toString();
+ 		  	System.out.println("list1"+list);
+ 		  	response.getWriter().print(list1);
+ 		  	//return list1;
+ 		  	
+		  
+	  
+	  }
 		/*
 		 * int index=0;
 		 * 
@@ -142,7 +157,7 @@ public class MainController {
 		 * return map;
 		 */
 	  
-	  }
+ 
 	
 	  
 	// home 클릭시 페이지로 이동
