@@ -267,7 +267,7 @@
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">최근 활동</a></li>	
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">좋아요 영상</a></li>
 			<li class="nav-item"><a href="newHomeChannel.lo" class="nav-link" style="padding-right:0px;" onclick="">로거 스튜디오</a></li>
-			<li class="nav-item"><a href="notification1.mb" class="nav-link" style="padding-right:0px;">알림 예시</a></li>
+			<li class="nav-item"><a href="lotest.lo" class="nav-link" style="padding-right:0px;">알림 예시</a></li>
 		</ul>
 		<form class="navbar-form form-inline" style="width:240px;">
 			<div class="input-group search-box">								

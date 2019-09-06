@@ -65,12 +65,14 @@ public class LogerController {
 		return "loger/logerCalculate";
 	}
 
+	//계좌 api로 연결
 	@RequestMapping(value="accountApi.lo")
 	public String selectLogerAccount() {	
 			
 		return "loger/accountApi";
 	} 
 	
+	//계좌인증 후 후원 내역으로 연결
 	@RequestMapping(value="logerCalculateApply.lo")
 	public ModelAndView logerCalculateApply(@RequestBody ArrayList<Object> account,Support s, ModelAndView mv, HttpSession session) {	
 		Member m = (Member) session.getAttribute("loginUser");
@@ -82,12 +84,18 @@ public class LogerController {
 			
 		return mv;
 	} 
+	//후원 내역 기간 선택 테스트용
+	@RequestMapping(value="lotest.lo")
+	public String selectLogerCalculate() {
+		return "loger/selectLogerCalculate";
+	}
+	
 	//로거스튜디오 이동
 	@RequestMapping(value="newHomeChannel.lo")
 	public String newHomeChannel() {
 		return "loger/newHomeChannel";
 	}
-
+	
 	//로거스튜디오내 동영상으로 이동
 	@RequestMapping(value="logerHomeAllVideo.lo")
 	public String logerHomeAllVideo() {
