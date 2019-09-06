@@ -31,7 +31,7 @@ import com.kh.with.video.model.vo.Video;
 public class VideoController {
 	@Inject
 	VideoService videoservice;
-	
+
 	@Autowired
 	private VideoService vs;
 	private MemberService ms;
@@ -108,8 +108,8 @@ public class VideoController {
 		return "video/videoUpload";
 	}
 
-	
-	
+
+
 	// 동영상 업로드 insert 메소드
 	@RequestMapping(value = "insertvideo.vd")
 	public String insertVideo(Model model, HttpServletRequest request,
@@ -127,8 +127,8 @@ public class VideoController {
 		String fileName = CommonUtils.getRandomString();
 		try {
 			file1.transferTo(new File(filepath + "\\" + fileName + ext));
-		
-		
+
+
 			HttpSession session = request.getSession();
 			session.setAttribute("filepath", filepath);
 			session.setAttribute("fileName", fileName);
@@ -145,11 +145,11 @@ public class VideoController {
 
 	// 업로드할동영상 정보 insert메소드
 	@RequestMapping(value = "insertVideoInfo.vd")
-	public int insertVideoInfo(@ModelAttribute Member m, HttpServletRequest request, HttpSession session) {
+	public String insertVideoInfo(@ModelAttribute Member m, Model model,HttpServletRequest request, HttpSession session) {
 
 		m = (Member) session.getAttribute("loginUser");
 
-	
+
 		String filepath = (String) session.getAttribute("filepath");
 		String fileName = (String) session.getAttribute("fileName");
 		String vTitle = request.getParameter("vTitle"); 
@@ -157,9 +157,11 @@ public class VideoController {
 		String adultAut=request.getParameter("adultAut");
 		String adYn =request.getParameter("adYn");
 		String openTy =request.getParameter("openTy");
+		String adInfo = request.getParameter("adInfo");
 		int getUserNo = ((Member) request.getSession().getAttribute("loginUser")).getUserNo();
-	
-	
+		String chNm   = ((Member) request.getSession().getAttribute("loginUser")).getNickname(); //닉네임이 채널명
+
+
 		if(adYn == null) {
 			adYn = "N"; }
 
@@ -172,15 +174,10 @@ public class VideoController {
 		for(int i =0; i <Tags.length; i++) { 
 			tag += "#" + Tags[i];
 		}
-		
-		Loger loger = new Loger();
-		String chNm = loger.getChNm();
-		int vNo = loger.getvNo();
-		
-		System.out.println("채널명"+chNm);
-		System.out.println("채널번호"+vNo);
-		
-		
+
+
+
+
 		Video video = new Video();
 		video.setvTitle(vTitle);
 		video.setTag(tag);
@@ -189,20 +186,62 @@ public class VideoController {
 		video.setOpenTy(openTy);
 		video.setUserNo(getUserNo);
 		video.setFilepath(filepath);
-		video.setFileName(fileName);
-		
-	
-	
+		video.setAdInfo(adInfo);
+		video.setChNm(chNm);		
+
+
 
 		System.out.println("정상적으로 출력이 되나요?" + video);
-		
+
 		int result = vs.insertVideoInfo(video);
 
-		return result;
-		
-		
+
+		if(result > 0 ) {
+			return "redirect:index.jsp";
+		}else {
+			model.addAttribute("msg", "동영상 업로드실패");
+			return "common/errorPage";
+		}
 
 	}
+
+	/*
+	 * //썸네일 ATTACHMENT insert
+	 * 
+	 * @RequestMapping(value = "insertthumbNail.vd") public int insertthumbNail
+	 * (@ModelAttribute Member m,Model model, HttpServletRequest request,
+	 * HttpSession session ,
+	 * 
+	 * @RequestParam(name = "thumbNail", required = false) MultipartFile thumbNail)
+	 * {
+	 * 
+	 * String root =
+	 * request.getSession().getServletContext().getRealPath("resources");
+	 * 
+	 * String filepath = root + "\\uploadFiles";
+	 * 
+	 * // 파일명 변경 String originFileName = thumbNail.getOriginalFilename(); String ext
+	 * = originFileName.substring(originFileName.lastIndexOf(".")); String fileName
+	 * = CommonUtils.getRandomString(); try { thumbNail.transferTo(new File(filepath
+	 * + "\\" + fileName + ext));
+	 * 
+	 * 
+	 * HttpSession session = request.getSession();
+	 * 
+	 * session.setAttribute("filepath", filepath); session.setAttribute("fileName",
+	 * fileName);
+	 * 
+	 * return "video/videoBasicInfo";
+	 * 
+	 * } catch (Exception e) { new File(filepath + "\\" + fileName + ext).delete();
+	 * 
+	 * model.addAttribute("msg", "동영상업로드실패"); return "common/errorPage"; }
+	 * 
+	 * }
+	 */
+
+
+
 
 
 	// 동영상업로드
@@ -217,9 +256,9 @@ public class VideoController {
 
 }
 
-	/*
+/*
 	//동영상 이미지 출력
-	
+
 	@RequestMapping(value="home.mb" ,method=RequestMethod.GET)
 	public ModelAndView videoimagelist(ModelAndView mav)
 	{
@@ -228,11 +267,11 @@ public class VideoController {
 		mav.addObject("list", videoservice.videoimagelist());
 		System.out.println("vid"+videoservice);
 		System.out.println("mav"+mav);
- 		
+
 		return mav;
 	}
-	
-	
-	
+
+
+
 } */
 

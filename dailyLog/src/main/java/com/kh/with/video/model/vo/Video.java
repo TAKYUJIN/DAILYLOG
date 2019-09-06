@@ -18,14 +18,13 @@ public class Video implements java.io.Serializable {
 	private String location; //위치
 	private String info; //추가장소정보
 	private String filepath; // 파일경로
-	private String fileName; //파일이름 
 	private String openTy; //공개여부
 	
 	public Video () {}
 
 	public Video(int vNo, int userNo, String vTitle, int count, String chNm, String tag, String vblYn, Date uploadDt,
 			Date modifyDt, String adultAut, String adYn, String adInfo, String location, String info, String filepath,
-			String fileName, String openTy) {
+			String openTy) {
 		super();
 		this.vNo = vNo;
 		this.userNo = userNo;
@@ -42,7 +41,6 @@ public class Video implements java.io.Serializable {
 		this.location = location;
 		this.info = info;
 		this.filepath = filepath;
-		this.fileName = fileName;
 		this.openTy = openTy;
 	}
 
@@ -166,14 +164,6 @@ public class Video implements java.io.Serializable {
 		this.filepath = filepath;
 	}
 
-	public String getFileName() {
-		return fileName;
-	}
-
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
-	}
-
 	public String getOpenTy() {
 		return openTy;
 	}
@@ -187,7 +177,7 @@ public class Video implements java.io.Serializable {
 		return "Video [vNo=" + vNo + ", userNo=" + userNo + ", vTitle=" + vTitle + ", count=" + count + ", chNm=" + chNm
 				+ ", tag=" + tag + ", vblYn=" + vblYn + ", uploadDt=" + uploadDt + ", modifyDt=" + modifyDt
 				+ ", adultAut=" + adultAut + ", adYn=" + adYn + ", adInfo=" + adInfo + ", location=" + location
-				+ ", info=" + info + ", filepath=" + filepath + ", fileName=" + fileName + ", openTy=" + openTy + "]";
+				+ ", info=" + info + ", filepath=" + filepath + ", openTy=" + openTy + "]";
 	}
 
 }
