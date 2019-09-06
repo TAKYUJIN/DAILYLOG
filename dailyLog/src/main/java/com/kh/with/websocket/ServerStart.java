@@ -2,7 +2,9 @@ package com.kh.with.websocket;
 
 import java.io.IOException;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import javax.websocket.OnClose;
@@ -12,9 +14,11 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
+
 @ServerEndpoint("/serverStart")
 public class ServerStart {
 	private static Set<Session> clients = Collections.synchronizedSet(new HashSet<Session>());
+	private static Map<String, Session> user = Collections.synchronizedMap(new HashMap<String, Session>());
 
 	@OnOpen
 	public void onOpen(Session session) {

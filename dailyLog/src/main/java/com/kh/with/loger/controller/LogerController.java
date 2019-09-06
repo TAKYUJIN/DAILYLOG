@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -71,10 +72,10 @@ public class LogerController {
 	} 
 	
 	@RequestMapping(value="logerCalculateApply.lo")
-	public ModelAndView logerCalculateApply(Support s, ModelAndView mv, HttpSession session,
-			@RequestParam(value="status_yn", required=false) String bankNm) {	
+	public ModelAndView logerCalculateApply(@RequestBody ArrayList<Object> account,Support s, ModelAndView mv, HttpSession session) {	
 		Member m = (Member) session.getAttribute("loginUser");
 		ArrayList<Support> sList = ls.selectLogerSupport(s, m);
+		System.out.println(account.toString());
 		
 		mv.addObject("sList", sList);
 		mv.addObject("s", s);
