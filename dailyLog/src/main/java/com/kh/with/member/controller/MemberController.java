@@ -40,7 +40,7 @@ public class MemberController {
 
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
-
+	
 
 	@RequestMapping(value = "loginbutton.me")
 	public String showMemberloginView() {
@@ -70,26 +70,28 @@ public class MemberController {
 			Member loginUser = ms.loginMember(m);
 
 			model.addAttribute("loginUser", loginUser);
-
-			return "redirect:index.jsp";
+			System.out.println(loginUser.getUserNm());
+			
+			if(loginUser.getUserNm().equals("관리자")) {
+				return "main/adminMain";
+			}else {
+				return "redirect:index.jsp";
+			}
+			
 
 		} catch (LoginException e) {
 			model.addAttribute("msg", e.getMessage());
-			return "common/errorPage";
+			return "common/errorPage"; 
 		}
 
 	}
 
-	@RequestMapping(value = "insert.me")
+	@RequestMapping(value = "insert.me", method=RequestMethod.POST)
 	public String insertMember(Model model, Member m, HttpServletRequest request) {
 
 		System.out.println(m);
 
 		String root = request.getSession().getServletContext().getRealPath("resources");
-
-		System.out.println(root);
-
-		System.out.println(m.getGender());
 
 		try {
 
@@ -104,11 +106,12 @@ public class MemberController {
 			}
 
 			ms.insertMember(m);
+			
+			
 
 			return "redirect:index.jsp";
 
 		} catch (Exception e) {
-
 
 			model.addAttribute("msg", "회원 가입 실패");
 			return "common/errorPage";
