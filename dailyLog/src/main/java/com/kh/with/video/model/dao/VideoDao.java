@@ -27,7 +27,7 @@ public interface VideoDao {
 	//int insertVideoInfo(SqlSessionTemplate sqlSession, Model model);
 	
 	
-	//List<Video> videoimagelist();
+	List<Video> videoimagelist();
 
 
 

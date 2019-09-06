@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -80,24 +81,24 @@ public class VideoController {
 		return "video/videoMain";
 	}
 
-	// 정기후원
-	@RequestMapping(value = "regSub.vd")
+	//정기후원
+	@RequestMapping(value="regSub.vd")
 	@ResponseBody
 	public HashMap<String, Object> regSub(Model model, HttpServletRequest request, HttpSession session) {
 		int price = Integer.parseInt(request.getParameter("remain"));
-
+		
 		Member m = (Member) session.getAttribute("loginUser");
 		m.setRemainPT(price);
-
+		
 		int result = vs.regSub(m);
 		System.out.println("result : " + result);
-		// System.out.println("money ::: " + price);
-
-		// model.addAttribute("msg", "정기후원중");
-
+		//System.out.println("money ::: " + price);
+		
+		//model.addAttribute("msg", "정기후원중");
+		
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("msg", "정기후원중");
-
+        map.put("msg", "정기후원중");
+		
 		return map;
 	}
 
@@ -215,9 +216,7 @@ public class VideoController {
 	}
 
 
-}
-
-	/*
+	
 	//동영상 이미지 출력
 	
 	@RequestMapping(value="home.mb" ,method=RequestMethod.GET)
@@ -228,11 +227,13 @@ public class VideoController {
 		mav.addObject("list", videoservice.videoimagelist());
 		System.out.println("vid"+videoservice);
 		System.out.println("mav"+mav);
- 		
+		
 		return mav;
 	}
 	
+}
 	
 	
-} */
+	
+
 
