@@ -23,7 +23,5 @@
 	
 	<context:component-scan base-package="com.kh.with" />
 	
-	
-	
 </beans:beans>
 

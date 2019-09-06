@@ -250,7 +250,7 @@
    });
 </script>
 </head> 
-<body onload="notification.mb;">
+<body onload="getConnection();">
 <nav class="navbar navbar-default navbar-expand-lg navbar-light">
 
 	<div class="navbar-header d-flex col" >
@@ -267,7 +267,7 @@
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">최근 활동</a></li>	
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">좋아요 영상</a></li>
 			<li class="nav-item"><a href="newHomeChannel.lo" class="nav-link" style="padding-right:0px;" onclick="">로거 스튜디오</a></li>
-			<li class="nav-item"><a href="notification.mb" class="nav-link" style="padding-right:0px;">알림 예시</a></li>
+			<li class="nav-item"><a href="notification1.mb" class="nav-link" style="padding-right:0px;">알림 예시</a></li>
 		</ul>
 		<form class="navbar-form form-inline" style="width:240px;">
 			<div class="input-group search-box">								
@@ -351,7 +351,7 @@
  
  
          <li class="nav-item">
-         <a data-toggle="dropdown" class="btn_global link_login" onclick="send2();">
+         <a <%-- href="notification.mb" --%> data-toggle="dropdown" class="btn_global link_login" onclick="notification();send2();">
             <img src="resources/images/bell.png" style="width:20px;">
          </a>
             <ul class="dropdown-menu form-wrapper">               
@@ -404,13 +404,42 @@
  });
  
  </script>
- 
  <script>
-		$(function(){
-			$("#tryMoney").select();
+ 
+ /* $("#notification").click(function(){
+	 $.ajax({
+		url:"notification.mb",
+		type:"post",
+		success:function(data){
+			console.log("성공!");
+			
+		},
+		error:function(){
+			console.log("실패!");
+		}
+	}); 
+		
+	}); */
+ 	function notification(){
+ 		location.href="notification.mb";
+		/* $.ajax({
+			url:"notification.mb",
+			type:"post",
+			success:function(data){
+				console.log("성공!");
+				
+			},
+			error:function(){
+				console.log("실패!");
+			}
+		}); */
+	}
+ 
+	$(function(){
+		$("#tryMoney").select();
 			
 			
-		})
+	});
 	</script>
 	<script>
 		$(function(){
@@ -446,7 +475,7 @@
 				
 				
 			}
-			/* 
+			
 			function onMessage(event){
 				var serverMessage = event.data.split(":");
 				
@@ -468,7 +497,7 @@
 				$remainTime.html(remainHour + " : " + remainMin + " : " + remainSec);
 				
 				
-			} */
+			} 
 			
 			function onError(event){
 				alert(event.data);
@@ -513,7 +542,7 @@
 				var user = msg[0];
 				var contents = msg[1];
 				/* $("#currentPrice").html(price); */
-				$("#history").append("<span>" + user + "님이 " + contents + " 원으로 입찰하셨습니다</span><br>");
+				$("#history").append("<span>" + user + "님이 " + contents + " 습니다.</span><br>");
 			}
 			
 			function onError2(event){

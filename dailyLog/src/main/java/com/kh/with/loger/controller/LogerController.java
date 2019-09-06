@@ -2,12 +2,14 @@ package com.kh.with.loger.controller;
 
 import java.util.ArrayList;
 
-
 import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.with.loger.model.service.LogerService;
 import com.kh.with.loger.model.vo.Calculate;
@@ -69,14 +71,15 @@ public class LogerController {
 	} 
 	
 	@RequestMapping(value="logerCalculateApply.lo")
-	public String logerCalculateApply(Support s, Model model, HttpSession session) {	
+	public ModelAndView logerCalculateApply(Support s, ModelAndView mv, HttpSession session,
+			@RequestParam(value="status_yn", required=false) String bankNm) {	
 		Member m = (Member) session.getAttribute("loginUser");
 		ArrayList<Support> sList = ls.selectLogerSupport(s, m);
 		
-		model.addAttribute("sList", sList);
-		model.addAttribute("s", s);
+		mv.addObject("sList", sList);
+		mv.addObject("s", s);
 			
-		return "loger/selectLogerCalculate";
+		return mv;
 	} 
 	//로거스튜디오 이동
 	@RequestMapping(value="newHomeChannel.lo")
