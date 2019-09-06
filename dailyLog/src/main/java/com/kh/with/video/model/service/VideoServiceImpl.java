@@ -68,23 +68,14 @@ public class VideoServiceImpl implements VideoService{
 	}
 
 
-
-	@Override
-	public List<Video> videoimagelist() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-
-	/*
+	 //동영상 이미지 출력
 	@Override
 	public List<Video> videoimagelist(){
 		System.out.println("videoServiceimpl");
 		return vd.videoimagelist();
 	}
 
-	*/
+	 
 }
 
 

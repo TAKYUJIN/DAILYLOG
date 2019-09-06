@@ -24,10 +24,6 @@ public interface VideoService {
 
 	
 	
-	
-	
-
-
 
 	//동영상 이미지 출력
 	List<Video> videoimagelist();

@@ -37,8 +37,7 @@
 	</insert>
 	
 	<select id="videoimagelist" resultMap="videoResultSet"  parameterType="Video">
-		SELECT USER_NO,FILEPATH  FROM VIDEO
-	
+		SELECT FILEPATH FROM VIDEO
 	</select>
 
 
