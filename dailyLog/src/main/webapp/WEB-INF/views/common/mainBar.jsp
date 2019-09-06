@@ -351,7 +351,7 @@
  
  
          <li class="nav-item">
-         <a <%-- href="notification.mb" --%> data-toggle="dropdown" class="btn_global link_login" onclick="notification();send2();">
+         <a <%-- href="notification.mb" --%> data-toggle="dropdown" class="btn_global link_login" onclick="send2();">
             <img src="resources/images/bell.png" style="width:20px;">
          </a>
             <ul class="dropdown-menu form-wrapper">               
@@ -360,7 +360,7 @@
                      <div class="noti_text" align="center"><p>알림</p></div>
                      <div class="form-group">
                      <div id="inputArea" align="center" style="display:none;">
-						<input type="hidden" name="tryMoney" id="tryMoney" value="${m.userId}">
+						<input type="hidden" name="tryMoney" id="tryMoney" value="${sessionScope.loginUser.nickname}">
 					</div>
                      <div id="history">
 			
@@ -542,7 +542,7 @@
 				var user = msg[0];
 				var contents = msg[1];
 				/* $("#currentPrice").html(price); */
-				$("#history").append("<span>" + user + "님이 " + contents + " 습니다.</span><br>");
+				$("#history").append("<span>" + contents + "님이 " + "구독하셨습니다.</span><br>");
 			}
 			
 			function onError2(event){
