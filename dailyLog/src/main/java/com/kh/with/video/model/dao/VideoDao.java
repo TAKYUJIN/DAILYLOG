@@ -9,6 +9,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 
 
 import com.kh.with.member.model.vo.Member;
+import com.kh.with.video.model.vo.Attachment;
 import com.kh.with.video.model.vo.Video;
 
 public interface VideoDao {
@@ -28,6 +29,9 @@ public interface VideoDao {
 	
 	
 	List<Video> videoimagelist();
+	
+	//썸네일  insert 메소드
+	int insertAttachment(SqlSessionTemplate sqlSession, Attachment attachment);
 
 
 

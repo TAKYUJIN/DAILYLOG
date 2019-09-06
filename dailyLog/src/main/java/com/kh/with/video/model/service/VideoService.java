@@ -1,6 +1,7 @@
 package com.kh.with.video.model.service;
 
 import com.kh.with.member.model.vo.Member;
+import com.kh.with.video.model.vo.Attachment;
 import com.kh.with.video.model.vo.Video;
 import java.util.List;
 
@@ -26,6 +27,10 @@ public interface VideoService {
 
 	//동영상 이미지 출력
 	List<Video> videoimagelist();
+
+	
+	//썸네일 insert
+	int insertAttachment(Attachment attachment);
 
 
 
