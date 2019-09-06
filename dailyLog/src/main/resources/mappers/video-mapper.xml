@@ -52,12 +52,12 @@
 	</insert>
 	
 		<!-- 썸네일 정보 insert 쿼리 -->
-	<insert id="insertAttachment" parameterType="attachment">
+	<!--  <insert id="insertAttachment" parameterType="attachment">
  	
 	INSERT INTO ATTACHMENT
 	VALUES(3, AM_NO.NEXTVAL, '파일경로', SYSDATE , '원본이름' , 'NULL'  , '회원'); 
 
-	</insert>
+	</insert> -->
 	
 	
 	
