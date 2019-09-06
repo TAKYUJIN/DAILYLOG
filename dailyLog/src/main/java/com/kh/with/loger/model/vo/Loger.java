@@ -5,7 +5,7 @@ import java.sql.Date;
 public class Loger {
 	private int chNo;		//채널번호
 	private int userNo;		//회원번호
-	private int chNm;		//채널명
+	private String chNm;		//채널명
 	private int vNo;		//동영상번호
 	private String calApply;//정산신청
 	private Date chDT;		//채널생성일자
@@ -13,7 +13,7 @@ public class Loger {
 	
 	public Loger() {}
 
-	public Loger(int chNo, int userNo, int chNm, int vNo, String calApply, Date chDT, String chInfo) {
+	public Loger(int chNo, int userNo, String chNm, int vNo, String calApply, Date chDT, String chInfo) {
 		super();
 		this.chNo = chNo;
 		this.userNo = userNo;
@@ -40,11 +40,11 @@ public class Loger {
 		this.userNo = userNo;
 	}
 
-	public int getChNm() {
+	public String getChNm() {
 		return chNm;
 	}
 
-	public void setChNm(int chNm) {
+	public void setChNm(String chNm) {
 		this.chNm = chNm;
 	}
 
@@ -85,6 +85,8 @@ public class Loger {
 		return "Loger [chNo=" + chNo + ", userNo=" + userNo + ", chNm=" + chNm + ", vNo=" + vNo + ", calApply="
 				+ calApply + ", chDT=" + chDT + ", chInfo=" + chInfo + "]";
 	}
+
+	
 	
 	
 	

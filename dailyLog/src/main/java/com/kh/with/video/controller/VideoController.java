@@ -10,8 +10,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -19,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.with.common.CommonUtils;
+import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.member.model.service.MemberService;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.video.model.service.VideoService;
@@ -77,24 +79,24 @@ public class VideoController {
 		return "video/videoMain";
 	}
 
-	//정기후원
-	@RequestMapping(value="regSub.vd")
+	// 정기후원
+	@RequestMapping(value = "regSub.vd")
 	@ResponseBody
 	public HashMap<String, Object> regSub(Model model, HttpServletRequest request, HttpSession session) {
 		int price = Integer.parseInt(request.getParameter("remain"));
-		
+
 		Member m = (Member) session.getAttribute("loginUser");
 		m.setRemainPT(price);
-		
+
 		int result = vs.regSub(m);
 		System.out.println("result : " + result);
-		//System.out.println("money ::: " + price);
-		
-		//model.addAttribute("msg", "정기후원중");
-		
+		// System.out.println("money ::: " + price);
+
+		// model.addAttribute("msg", "정기후원중");
+
 		HashMap<String, Object> map = new HashMap<String, Object>();
-        map.put("msg", "정기후원중");
-		
+		map.put("msg", "정기후원중");
+
 		return map;
 	}
 
@@ -105,33 +107,35 @@ public class VideoController {
 		return "video/videoUpload";
 	}
 
+	
+	
 	// 동영상 업로드 insert 메소드
 	@RequestMapping(value = "insertvideo.vd")
 	public String insertVideo(Model model, HttpServletRequest request,
-			@RequestParam(name = "file1", required = false) MultipartFile file1) {
+			@RequestParam(name = "file1", required = false) MultipartFile file1 ) {
 
 		/* System.out.println(file1); */
 
 		String root = request.getSession().getServletContext().getRealPath("resources");
 
-		String filePath = root + "\\uploadFiles";
+		String filepath = root + "\\uploadFiles";
 
 		// 파일명 변경
 		String originFileName = file1.getOriginalFilename();
 		String ext = originFileName.substring(originFileName.lastIndexOf("."));
-		String changeName = CommonUtils.getRandomString();
+		String fileName = CommonUtils.getRandomString();
 		try {
-			file1.transferTo(new File(filePath + "\\" + changeName + ext));
-			model.addAttribute("changeName", changeName);
-			model.addAttribute("filePath", filePath);
-
+			file1.transferTo(new File(filepath + "\\" + fileName + ext));
+		
+		
 			HttpSession session = request.getSession();
-			session.setAttribute("model", model);
+			session.setAttribute("filepath", filepath);
+			session.setAttribute("fileName", fileName);
 
 			return "video/videoBasicInfo";
 
 		} catch (Exception e) {
-			new File(filePath + "\\" + changeName + ext).delete();
+			new File(filepath + "\\" + fileName + ext).delete();
 
 			model.addAttribute("msg", "동영상업로드실패");
 			return "common/errorPage";
@@ -139,70 +143,80 @@ public class VideoController {
 	}
 
 	// 업로드할동영상 정보 insert메소드
-	@RequestMapping(value = "insertVideoInfo.vd", method=RequestMethod.POST)
-	public int insertVideoInfo(Model model, HttpServletRequest request) {
-		String titleName = request.getParameter("titleName");
-		String videoTag = request.getParameter("videoTag");
-		String check1 =request.getParameter("check1");
-		String check2 =request.getParameter("check2");
-		String check3 =request.getParameter("check3");
-		
-		if(check2 == null) {
-		check2 = "N";
-	}
-		System.out.println(check2);
-		
-		HttpSession session = request.getSession();
+	@RequestMapping(value = "insertVideoInfo.vd")
+	public int insertVideoInfo(@ModelAttribute Member m, HttpServletRequest request, HttpSession session) {
 
-		model = (Model) session.getAttribute("model");
+		m = (Member) session.getAttribute("loginUser");
 
-		 
-		 System.out.println("model:::::" +
-		 model); System.out.println("check1:::"+ check1+"check2::: "+ check2+ "check3:::" 
-		 + check3 + "titleName:::: : " + titleName + "videoTag:::" +
-		 videoTag + "model::::" + model);
-		
+	
+		String filepath = (String) session.getAttribute("filepath");
+		String fileName = (String) session.getAttribute("fileName");
+		String vTitle = request.getParameter("vTitle"); 
+		String beforetag =request.getParameter("tag"); 
+		String adultAut=request.getParameter("adultAut");
+		String adYn =request.getParameter("adYn");
+		String openTy =request.getParameter("openTy");
+		int getUserNo = ((Member) request.getSession().getAttribute("loginUser")).getUserNo();
+	
+	
+		if(adYn == null) {
+			adYn = "N"; }
+
+
+
 		//해시태그추가
-		 String finalTag = " "; 
-		 
-		 String [] tag = videoTag.split(",");
-		 for(int i =0; i <tag.length; i++) {
-			finalTag +=  "#" + tag[i];
+		String tag = " ";
 
-		 }
-		 
-		 System.out.println(finalTag);
-
-		 model.addAttribute("titleName", titleName); model.addAttribute("finalTag",
-		  finalTag); model.addAttribute("check1", check1); model.addAttribute("check2",
-		  check2); model.addAttribute("check3", check3);
-	
-	
-	
-		System.out.println("최종모델리스트::::" + model);
-	
+		String [] Tags = beforetag.split(",");
+		for(int i =0; i <Tags.length; i++) { 
+			tag += "#" + Tags[i];
+		}
 		
-
-		int result = vs.insertVideoInfo(model);
-
+		Loger loger = new Loger();
+		String chNm = loger.getChNm();
+		int vNo = loger.getvNo();
+		
+		System.out.println("채널명"+chNm);
+		System.out.println("채널번호"+vNo);
 		
 		
+		Video video = new Video();
+		video.setvTitle(vTitle);
+		video.setTag(tag);
+		video.setAdultAut(adultAut);
+		video.setAdYn(adYn);
+		video.setOpenTy(openTy);
+		video.setUserNo(getUserNo);
+		video.setFilepath(filepath);
+		video.setFileName(fileName);
+		
+	
+	
+
+		System.out.println("정상적으로 출력이 되나요?" + video);
+		
+		int result = vs.insertVideoInfo(video);
+
 		return result;
-	
-}
+		
+		
 
-	//동영상업로드
-	@RequestMapping( "/upload" )
-	public String upload(
-			Model model,
-			@RequestParam("file1") MultipartFile file) {
+	}
+
+
+	// 동영상업로드
+	@RequestMapping("/upload")
+	public String upload(Model model, @RequestParam("file1") MultipartFile file) {
 
 		String url = vs.upload(file);
 		model.addAttribute("url", url);
 		return "result";
 	}
 
-	
+
+}
+
+	/*
 	//동영상 이미지 출력
 	
 	@RequestMapping(value="home.mb" ,method=RequestMethod.GET)
@@ -219,5 +233,5 @@ public class VideoController {
 	
 	
 	
-}
+} */
 

@@ -1,6 +1,6 @@
 package com.kh.with.video.model.service;
 
-
+import java.util.ArrayList;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -60,17 +60,15 @@ public class VideoServiceImpl implements VideoService{
 	}
 
 
-
-	// 업로드할 동영상 정보 insert메소드
+	// 업로드할동영상 정보 insert메소드
 	@Override
-	public int insertVideoInfo(Model model) {
-	 System.out.println("impl에 왔니??" + model); 
-
-
-		int result = vd.insertVideoInfo(sqlSession,model);
-
-		return result;
+	public int insertVideoInfo(Video video) {
+		
+	return vd.insertVideoInfo(sqlSession,video);
 	}
+
+
+
 
 	@Override
 	public List<Video> videoimagelist(){
