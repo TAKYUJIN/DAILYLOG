@@ -2,6 +2,7 @@ package com.kh.with.main.controller;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -115,18 +116,31 @@ public class MainController {
 	  }
 
 	  @RequestMapping(value="FriendList.mb",method=RequestMethod.GET)
-	  public String FriendList(Model model) throws Exception{
+	  @ResponseBody
+	  public HashMap<String, Object> FriendList(Model model) throws Exception{
+		  List<MailVo> list=service.FriendList();
+		  HashMap<String,Object>map=new HashMap<String, Object>(); map.put("list", list);
+		  System.out.println("list3:"+list);
+		  model.addAttribute("m", list);
+		  return map;
  	 
- 		  List<MailVo> list=service.FriendList();
-		  System.out.println("controller service:"+service);
-		  System.out.println("list:"+list);
-		  model.addAttribute("list", list);
-
-		  System.out.println("list1:"+list);
-		  	
-		  
-		  //return "common/mainBar";
-	  return  "";
+		/*
+		 * int index=0;
+		 * 
+		 * List<MailVo> list=service.FriendList();
+		 * System.out.println("controller service:"+service);
+		 * System.out.println("list1:"+list); model.addAttribute("list", list);
+		 * 
+		 * HashMap<String,Object>map=new HashMap<String, Object>(); map.put("list",
+		 * list);
+		 * 
+		 * System.out.println("list3:"+list);
+		 * 
+		 * 
+		 * model.addAttribute("m", list);
+		 * 
+		 * return map;
+		 */
 	  
 	  }
 	

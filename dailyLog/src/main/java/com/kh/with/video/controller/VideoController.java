@@ -255,12 +255,13 @@ public class VideoController {
 	}
 
 
+
 	//동영상 이미지 출력
 
 	@RequestMapping(value="home.mb" ,method=RequestMethod.GET)
 	public ModelAndView videoimagelist(ModelAndView mav)
 	{
-		mav.setViewName("/main/top");
+		mav.setViewName("/main/top1");
 		System.out.println("videocontroller:"+mav);
 		mav.addObject("list", videoservice.videoimagelist());
 		System.out.println("vid"+videoservice);
@@ -270,9 +271,9 @@ public class VideoController {
 		return mav;
 	}
 
-
-
+	
+	
+	
 } 
-		
-		
+
 

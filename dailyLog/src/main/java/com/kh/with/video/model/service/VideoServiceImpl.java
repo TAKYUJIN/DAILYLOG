@@ -66,11 +66,13 @@ public class VideoServiceImpl implements VideoService{
 	return vd.insertVideoInfo(sqlSession,video);
 	}
 
+
 	@Override
 	public List<Video> videoimagelist(){
 		System.out.println("videoServiceimpl");
 		return vd.videoimagelist();
 	}
+
 
 }
 
