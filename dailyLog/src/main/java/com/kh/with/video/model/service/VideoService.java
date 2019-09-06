@@ -22,8 +22,7 @@ public interface VideoService {
 	// 업로드할동영상 정보 insert메소드
 	int insertVideoInfo(Video video);
 
-	
-	
+
 
 	//동영상 이미지 출력
 	List<Video> videoimagelist();

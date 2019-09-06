@@ -28,13 +28,17 @@
 
 	<!-- 업로드할 동영상 정보 insert 쿼리 -->
  	<insert id="insertVideoInfo" parameterType="Video">
- 	
- 	
+ 	 	
 	INSERT INTO VIDEO
-	VALUES(V_NO.NEXTVAL,${userNo}, ${vTitle},0,'NULL',${tag},'NULL',SYSDATE,
- 	'NULL',${adultAut},${adYn},'NULL','NULL','NULL','NULL',${openTy})
-
+	VALUES(V_NO.NEXTVAL, #{userNo}, #{vTitle}, 0, #{chNm}, #{tag},'N', SYSDATE, NULL,'Y','Y',#{adInfo},
+	NULL, NULL, #{filepath}, #{openTy})
+ 	
 	</insert>
+	
+	
+	
+	
+	
 	
 	<select id="videoimagelist" resultMap="videoResultSet"  parameterType="Video">
 		SELECT FILEPATH FROM VIDEO

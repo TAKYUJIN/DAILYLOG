@@ -1,12 +1,11 @@
 package com.kh.with.video.model.service;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.kh.with.member.model.vo.Member;
@@ -68,14 +67,13 @@ public class VideoServiceImpl implements VideoService{
 	}
 
 
-	 //동영상 이미지 출력
 	@Override
 	public List<Video> videoimagelist(){
 		System.out.println("videoServiceimpl");
 		return vd.videoimagelist();
 	}
 
-	 
+
 }
 
 
