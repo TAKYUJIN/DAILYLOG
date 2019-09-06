@@ -201,7 +201,7 @@ h2 span {
 					<div class="item carousel-item active"> 
 						<div class="row">
 							<div class="col-sm-4"><div class="img-box"><h1>${videoimage.userNo}</h1>
-							<a href="video.vd"><img src="resources/images/${videoimage.filepath}" width = "700px"  height="200px" alt=""></a></div></div>
+							<img src="resources/images/${videoimage.filepath}" width = "700px"  height="200px" alt=""></div></div>
 							<a href="#" ><img src="resources/images/three-dot.png"width="30px" height="30px"class="fixed" ></a>
 										
 						</div>
@@ -229,7 +229,7 @@ h2 span {
 	</div>
 	<div class="row">
 		<div class="col-md-9 col-center m-auto">
-			<h2> <span>  <b>구독동영상1</b></span> </h2>
+			<h2> <span><a href="video.vd"><b>구독동영상1</b></a></span> </h2>
 			<div id="myCarousel1" class="carousel slide" data-ride="carousel" data-interval="0">
 				<ol class="carousel-indicators">
 					<li data-target="#myCarousel1" data-slide-to="0" class="active"></li>

@@ -42,11 +42,6 @@ public class VideoDaoImpl implements VideoDao{
 	
 
 
-
-}
-
-	/*
-
 	@Inject
 	SqlSession sqlsession;
 	@Override
@@ -54,7 +49,10 @@ public class VideoDaoImpl implements VideoDao{
 		System.out.println("videodaoimpl");
  		return sqlsession.selectList("Video.videoimagelist");
 	}
-	*/
+
+
+}
+
 
 
 
