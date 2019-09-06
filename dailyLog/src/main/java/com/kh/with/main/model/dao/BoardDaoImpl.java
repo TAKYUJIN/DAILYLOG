@@ -17,8 +17,9 @@ public class BoardDaoImpl implements BoardDao {
 	//친구 리스트
 	@Override
 	public List<MailVo> FriendList() throws Exception {
-
-		return session.selectList("friend.FriendList");
-	}
+		System.out.println("session:"+session);
+		
+		 return session.selectList("friend.FriendList"); 
+ 	}
 
 }

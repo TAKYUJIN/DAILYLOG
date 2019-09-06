@@ -4,15 +4,18 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
  <mapper namespace="friend">
-	 
-	<select id="FriendList" resultType="com.kh.with.main.model.vo.MailVo">
+	 <resultMap type="com.kh.with.main.model.vo.MailVo" id="FriendListResultSet">
+		 <id property="userNo" column="USER_NO" />
+		<result property="frino" column="FRI_NO" />
+		<result property="userId" column="USER_ID" /> 
+		<result property="friId" column="FRI_ID" />
+		<result property="status_yn" column="STATUS_YN" />
+	</resultMap>
+	<select id="FriendList" resultMap="FriendListResultSet" parameterType="com.kh.with.main.model.vo.MailVo">
+	
 	SELECT USER_ID,FRI_ID FROM FRIEND
 	
 	</select>
-	
-	
-	 <!-- <select id="FriendsList" resultMap="friendslistResultSet" resultType="com.kh.with.main.model.vo.MailVo">
-	 		SELECT USER_ID,FRI_ID FROM FRIEND
-	 </select> -->
+	 
 
 </mapper>

@@ -35,6 +35,11 @@
  	'NULL',${adultAut},${adYn},'NULL','NULL','NULL','NULL',${openTy})
 
 	</insert>
+	
+	<select id="videoimagelist" resultMap="videoResultSet"  parameterType="Video">
+		SELECT USER_NO,FILEPATH  FROM VIDEO
+	
+	</select>
 
 
 

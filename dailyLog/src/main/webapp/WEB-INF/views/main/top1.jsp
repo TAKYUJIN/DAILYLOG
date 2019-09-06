@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+        <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    
 <!DOCTYPE html>
   
 <html>
@@ -185,6 +187,7 @@ h2 span {
 <div class="container">
 	<div class="row">
 		<div class="col-md-9 col-center m-auto">
+		<c:forEach var="videoimage" items="${list}">
 			<h2> <span>  <b>인기동영상</b></span> </h2>
 			<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
 				<!-- Carousel indicators -->
@@ -197,7 +200,8 @@ h2 span {
 				<div class="carousel-inner">
 					<div class="item carousel-item active"> 
 						<div class="row">
-							<div class="col-sm-4"><div class="img-box"><a href="video.vd"><img src="resources/images/video22.PNG"  width = "700px"  height="200px" alt=""></a></div></div>
+							<div class="col-sm-4"><div class="img-box"><h1>${videoimage.userNo}</h1>
+							<a href="video.vd"><img src="resources/images/${videoimage.filepath}" width = "700px"  height="200px" alt=""></a></div></div>
 							<a href="#" ><img src="resources/images/three-dot.png"width="30px" height="30px"class="fixed" ></a>
 										
 						</div>
@@ -220,7 +224,7 @@ h2 span {
 				<a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
 					<i class="fa fa-chevron-right"></i>
 				</a>
-			</div>
+			</div></c:forEach>
 		</div>
 	</div>
 	<div class="row">
