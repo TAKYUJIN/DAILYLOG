@@ -43,33 +43,20 @@
 	
 
 	<!-- 업로드할 동영상 정보 insert 쿼리 -->
- 	<insert id="insertVideoInfo" parameterType="Video">
- 	 	
+ 	<insert id="insertVideoInfo" parameterType="Video">	 	
 	INSERT INTO VIDEO
 	VALUES(V_NO.NEXTVAL, #{userNo}, #{vTitle}, 0, #{chNm}, #{tag},'N', SYSDATE, NULL,'Y','Y',#{adInfo},
 	NULL, NULL, #{filepath}, #{openTy})
  	
 	</insert>
 	
-		<!-- 썸네일 정보 insert 쿼리 -->
-	<!--  <insert id="insertAttachment" parameterType="attachment">
- 	
+	<!-- 썸네일 정보 insert 쿼리 -->
+	<insert id="insertAttachment" parameterType="Loger">	
 	INSERT INTO ATTACHMENT
-	VALUES(3, AM_NO.NEXTVAL, '파일경로', SYSDATE , '원본이름' , 'NULL'  , '회원'); 
+	VALUES(#{userNo}, AM_NO.NEXTVAL,  #{filepath}, SYSDATE ,  #{enrollNm} , 'NULL'  , '회원')
+	</insert>  
 
-	</insert> -->
 	
-	
-	
-	
-	
-	
-	
-	<select id="videoimagelist" resultMap="videoResultSet"  parameterType="Video">
-		SELECT FILEPATH FROM VIDEO
-	</select>
-
-
 
 
 </mapper>

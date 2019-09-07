@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.with.loger.model.dao.LogerDao;
 import com.kh.with.loger.model.vo.Calculate;
+import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.loger.model.vo.Support;
 import com.kh.with.member.model.vo.Member;
 
@@ -40,6 +41,17 @@ public class LogerServiceImpl implements LogerService{
 	@Override
 	public ArrayList<Calculate> logerLastAccount(Calculate c, Member m) {
 		return ld.logerLastAccount(sqlSession, c, m);
+	}
+
+
+
+	//로거채널개설
+	@Override
+	public int insertcreateChannel(Loger loger) {
+		
+		
+		
+		return ld.insertcreateChannel(sqlSession,loger);
 	}
 
 
