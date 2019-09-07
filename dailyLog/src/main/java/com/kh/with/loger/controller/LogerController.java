@@ -93,6 +93,25 @@ public class LogerController {
 		return "loger/selectLogerCalculate";
 	}
 
+	
+	//후원 내역 기간 선택
+	@RequestMapping("/datepic")
+	 public String datepic(HttpSession session, HttpServletRequest request){
+		Member m = (Member) session.getAttribute("loginUser");
+	   String mon1 = request.getParameter("mon1");
+	   String mon2 = request.getParameter("mon2");
+	   String mon3 = request.getParameter("mon3");
+	   String day = request.getParameter("day");
+	   
+	   System.out.println("mon1   " + mon1);
+	   System.out.println("mon2   " + mon2);
+	   System.out.println("mon3   " + mon3);
+	   System.out.println("day    " + day);
+	   
+	  return "loger/selectLogerCalculate";
+	 }
+	
+
 	//로거스튜디오 이동
 	@RequestMapping(value="newHomeChannel.lo")
 	public String newHomeChannel() {
