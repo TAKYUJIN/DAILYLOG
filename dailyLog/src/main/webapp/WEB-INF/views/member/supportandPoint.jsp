@@ -14,6 +14,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style type="text/css">
+ .bs-example{
+        margin-left: 20px; 
+        margin-top : 10%;
+        width: 20%;       
+    }
     body {
         color: #566787;
 		background: #f5f5f5;
@@ -134,6 +139,22 @@ $(document).ready(function(){
 </head>
 <body>
 <jsp:include page="../common/mainBar.jsp"/>
+	<div class="bs-example">    
+    <div class="list-group">
+        <a href="myPage.me" class="list-group-item list-group-item-action active">
+            <i class="fa fa-home"></i> 
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">
+            <i class="fa fa-camera"></i> 알림
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">
+            <i class="fa fa-music"></i> 후원&포인트 충전
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">
+            <i class="fa fa-film"></i> 환불
+        </a>
+    </div>
+</div>
     <div class="container">
        <h1>
        <a>정기후원</a>

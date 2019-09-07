@@ -267,7 +267,7 @@ public class MemberController {
 
 			ArrayList<Member> list = ms.selectMyPage(m);
 			System.out.println("list " + list);
-			model.addAttribute("list", list.get(0));
+			model.addAttribute("memberList", list.get(0));
 			//model.addAttribute("m", m);
 			//System.out.println("m : " + m);
 
