@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.with.main.model.service.BoardService;
 import com.kh.with.main.model.service.MailSendService;
@@ -28,6 +29,8 @@ public class MainController {
 	/*
 	 * @Autowired private JavaMailSender Sender;
 	 */
+	
+	
 	
 	@Autowired
 	private regService reg_service;
@@ -114,31 +117,65 @@ public class MainController {
 	  return "friends/emailConfirm"; 
 	  }
 
-	  @RequestMapping(value="FriendList.mb",method=RequestMethod.GET)
-	 // @ResponseBody
+	  @RequestMapping(value = "List.mb", method = RequestMethod.GET) 
+	  public ModelAndView videoimagelist(ModelAndView mav) throws Exception{
+		  mav.setViewName("/friends/friendslist");
+		 // List<MailVo> list=service.FriendList();
+			mav.addObject("list", service.FriendList()); 
+			System.out.println("mav"+mav);
 
-	/*
-	 * public HashMap<String, Object> FriendList(Model model) throws Exception{
-	 * HashMap<String,Object> map=new HashMap<String, Object>(); List<MailVo>
-	 * list=service.FriendList(); map.put("list", list);
-	 * System.out.println("list3:"+list); System.out.println("hashmodel"+model);
-	 * System.out.println("hashmap"+map); System.out.println("hashlist"+list);
-	 * 
-	 * return (list);}
-	 */
-	  public void FriendList(Model model, HttpServletResponse response) throws Exception{
- 		  List<MailVo> list=service.FriendList();
- 		  	model.addAttribute("m", list);	
- 		  	System.out.println("list"+list);
- 		 
- 		  	String list1=  list.toString();
- 		  	System.out.println("list1"+list);
- 		  	response.getWriter().print(list1);
- 		  	//return list1;
- 		  	
-		  
-	  
+			return mav;
 	  }
+
+	  
+	/*
+	 * @RequestMapping(value="FriendList.mb",method=RequestMethod.POST)
+	 * 
+	 * @ResponseBody
+	 * 
+	 * public HashMap<String, Object> FriendList(Model model) throws Exception{
+	 * HashMap<String,Object> map=new HashMap<String, Object>();
+	 * List<MailVo>list=service.FriendList(); map.put("list", list);
+	 * System.out.println(list); System.out.println(map);
+	 * 
+	 * 
+	 * return map;
+	 * 
+	 * }
+	 */
+	  
+	  
+	/*
+	 * @RequestMapping(value="FriendList.mb",method=RequestMethod.POST)
+	 * 
+	 * @ResponseBody public void FriendList(Model model, HttpServletResponse
+	 * response) throws Exception{
+	 * 
+	 * List<MailVo> list=service.FriendList();
+	 * 
+	 * model.addAttribute("m", list);
+	 * 
+	 * String list1= list.toString(); System.out.println("list1"+list1);
+	 * response.getWriter().print(list1); }
+	 */
+	  
+	  
+	  @RequestMapping(value="FriendList.mb")
+	 
+	  public void FriendList(Model model, HttpServletResponse response) throws Exception{
+		  List<MailVo>list=service.FriendList();
+		  String list1= list.toString(); 
+		//  System.out.println("list"+list);
+		  System.out.println("list"+list1);
+		  response.getWriter().print(list1);
+		   
+	  }
+		  
+	 	  
+		  
+		  // return list;
+	 	//	  	
+	//  }
 		/*
 		 * int index=0;
 		 * 
