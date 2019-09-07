@@ -105,12 +105,21 @@ public class VideoController {
 
 	// 동영상 업로드 페이지 이동
 	@RequestMapping(value = "videoUpload.vd")
-	public String videoUpload() {
+	public String videoUpload(HttpServletRequest request) {
 
-		return "video/videoUpload";
+
+		String chYN = ((Member) request.getSession().getAttribute("loginUser")).getChYN();
+
+		System.out.println("페이지이동의 로그인유저정보 가지고 왔니?:::" + chYN);
+
+		if(chYN.equals("Y")) {
+			return"video/videoBasicInfo";
+		}else {
+			return "loger/createChannel";
+
+		}
+		 
 	}
-
-
 
 	// 동영상 업로드 insert 메소드
 	@RequestMapping(value = "insertvideo.vd")
@@ -198,8 +207,6 @@ public class VideoController {
 		}
 
 
-
-
 		Video video = new Video();
 		video.setvTitle(vTitle);
 		video.setTag(tag);
@@ -211,27 +218,18 @@ public class VideoController {
 		video.setAdInfo(adInfo);
 		video.setChNm(chNm);		
 
-
-
-
-
-		
 		int result = vs.insertVideoInfo(video);
 
 
 		Attachment attachment = new Attachment(); 
-
 		attachment.setEnrollNm(enrollNm);
 		attachment.setFilepath(filepath1);
 		attachment.setUserNo(getUserNo);
-		
+
 		int result1 = vs.insertAttachment(attachment);
-		
-		
-		System.out.println("정상적으로 출력이 되나요?" + attachment);
 
 
-		if(result > 0 ) {
+		if(result > 0  && result1 > 0 ) {
 			return "redirect:index.jsp";
 		}else {
 			model.addAttribute("msg", "동영상 업로드실패");
@@ -239,23 +237,7 @@ public class VideoController {
 		}
 
 
-
-
-
-
-		/*
-		 * try { file2.transferTo(new File(filepath + "\\" + fileName + ext)); return
-		 * "";
-		 * 
-		 * 
-		 * 
-		 * } catch (Exception e) { new File(filepath + "\\" + fileName + ext).delete();
-		 * 
-		 * model.addAttribute("msg", "동영상업로드실패"); return "common/errorPage"; }
-		 */
 	}
-
-
 
 
 

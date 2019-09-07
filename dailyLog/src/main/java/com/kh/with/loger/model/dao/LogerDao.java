@@ -6,6 +6,7 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 
 import com.kh.with.loger.model.vo.Calculate;
+import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.loger.model.vo.Support;
 import com.kh.with.member.model.vo.Member;
 
@@ -20,5 +21,8 @@ public interface LogerDao {
 	ArrayList<Support> selectLogerSupport(SqlSessionTemplate sqlSession, Support s, Member m);
 
 	ArrayList<Calculate> logerLastAccount(SqlSessionTemplate sqlSession, Calculate c, Member m);
+
+	//로거채널개설
+	int insertcreateChannel(SqlSessionTemplate sqlSession, Loger loger);
 
 }

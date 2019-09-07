@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.with.loger.model.vo.Calculate;
+import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.loger.model.vo.Support;
 import com.kh.with.member.model.vo.Member;
 
@@ -37,6 +38,15 @@ public class LogerDaoImpl implements LogerDao{
 		aList = (ArrayList)sqlSession.selectList("Loger.logerLastAccount", m);
 		
 		return aList;
+	}
+
+	//로거채널개설
+	@Override
+	public int insertcreateChannel(SqlSessionTemplate sqlSession, Loger loger) {
+		
+		System.out.println("loger:::::" + loger);
+		
+		return sqlSession.insert("Loger.insertcreateChannel",loger);
 	}
 
 }
