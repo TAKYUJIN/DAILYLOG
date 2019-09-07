@@ -61,11 +61,12 @@
 	});
 </script>
 <style type="text/css">
-body {
-	color: #999;
-	background: #f3f3f3;
-	font-family: 'Roboto', sans-serif;
-}
+ .bs-example{
+        margin-left: 20px; 
+        margin-top : 10%;
+        width: 20%;       
+    }
+
 
 .form-horizontal {
 	margin-top: 200px;
@@ -88,7 +89,8 @@ body {
 
 .signup-form {
 	width: 800px;
-	margin: 0 auto;
+	margin-top : -21%;
+	margin-left: 30%;
 	padding: 30px 0;
 }
 
@@ -106,7 +108,6 @@ body {
 	border-radius: 3px;
 	margin-bottom: 15px;
 	background: #fff;
-	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
 	padding: 30px;
 }
 
@@ -165,10 +166,26 @@ body {
 </style>
 </head>
 <body>
-	<%-- <jsp:include page="../common/mainBar.jsp" /> --%>
+	<jsp:include page="../common/mainBar.jsp" />
+	<div class="bs-example">    
+    <div class="list-group">
+        <a href="myPage.me" class="list-group-item list-group-item-action active">
+            <i class="fa fa-home"></i> 
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">
+            <i class="fa fa-camera"></i> 알림
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">
+            <i class="fa fa-music"></i> 후원&포인트 충전
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">
+            <i class="fa fa-film"></i> 환불
+        </a>
+    </div>
+</div>
 	<div class="signup-form">
 		<div class="col-xs-8 col-xs-offset-4">
-			<h1>마이페이지</h1>
+			<h1>&nbsp;마이페이지</h1>
 		</div>
 		<%
 			System.out.print("오냐?");
@@ -183,21 +200,21 @@ body {
 				<label class="control-label col-xs-4">User ID</label>
 				<div class="col-xs-6">
 					<input type="email" class="form-control" id="userId" name="userId"
-						required="required" readonly value="${list.userId}">
+						required="required" readonly value="${memberList.userId}">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-xs-4">User Name</label>
 				<div class="col-xs-6">
 					<input type="text" class="form-control" id="userNm" name="userNm"
-						required="required" readonly value="${list.userNm}">
+						required="required" readonly value="${memberList.userNm}">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-xs-4">User NickName</label>
 				<div class="col-xs-6">
 					<input type="text" class="form-control" id="nickname"
-						name="nickname" required="required" value="${list.nickname}">
+						name="nickname" required="required" value="${memberList.nickname}">
 				</div>
 			</div>
 
@@ -219,7 +236,7 @@ body {
 				<label class="control-label col-xs-4">Phone</label>
 				<div class="col-xs-6">
 					<input type="text" class="form-control" id="phone" name="phone"
-						required="required" value="${list.phone}">
+						required="required" value="${memberList.phone}">
 				</div>
 			</div>
 
@@ -236,9 +253,9 @@ body {
 			<div class="form-group">
 				<div class="col-xs-6 col-xs-offset-4">
 					<input type="hidden" class="form-control" id="userPwd"
-						name="userPwd" required="required" value="${list.userPwd}">
+						name="userPwd" required="required" value="${memberList.userPwd}">
 					<input type="hidden" class="form-control" id="userId" name="userId"
-						required="required" readonly value="${list.userId}">
+						required="required" readonly value="${memberList.userId}">
 					<button type="submit" class="btn btn-primary btn-lg" id="outbtn">탈퇴하기</button>
 				</div>
 

@@ -5,12 +5,35 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+ .bs-example{
+        margin-left: 20px; 
+        margin-top : 10%;
+        width: 20%;       
+    }
+   </style>
 </head>
 <body>
-<jsp:include page="../common/mainBar.jsp"/>
+<jsp:include page="../common/mainBar.jsp" />
 
 
 <form action="" method="post">
+	<div class="bs-example">    
+    <div class="list-group">
+        <a href="myPage.me" class="list-group-item list-group-item-action active">
+            <i class="fa fa-home"></i> 
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">
+            <i class="fa fa-camera"></i> 알림
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">
+            <i class="fa fa-music"></i> 후원&포인트 충전
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">
+            <i class="fa fa-film"></i> 환불
+        </a>
+    </div>
+</div>
 		<h1>알림을 받을 방법을 선택하여 주세요.</h1>
 		<br><br><br>
 		
