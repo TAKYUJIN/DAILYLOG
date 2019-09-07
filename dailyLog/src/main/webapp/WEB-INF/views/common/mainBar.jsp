@@ -250,7 +250,7 @@
    });
 </script>
 </head> 
-<body onload="getConnection();">
+<body>
 <nav class="navbar navbar-default navbar-expand-lg navbar-light">
 
 	<div class="navbar-header d-flex col" >
