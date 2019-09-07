@@ -287,7 +287,6 @@
 				<img src="resources/images/film.png" style="width:20px;">
 			</a>
 			</li>
-			
 			<li class="nav-item">
 				 <!-- onclick="location.href='FriendList.mb'" -->
 			 <button type="button" class="friendlist"  data-toggle="dropdown"  >
@@ -296,28 +295,53 @@
 			<ul class="dropdown-menu form-wrapper">					
 					<li>
  						<div class="noti_text" align="center"><p>친구 리스트</p></div>
-<script type="text/javascript">
+  <script type="text/javascript">
+var run =false;
+
 $('.friendlist').click(function(){
- 
+/* //	console.log(data);
+	if(run ==true){
+		return;
+	}
+	run =true;
 $.ajax({
 	url:"FriendList.mb",
 	type:"post",
-	dataType:"json",
+	//dataType : "xml",
+    // data:$("#frm").serialize(),
+	// data :{'friId':friId},
  	success:function(data){
-		alert("우아ㅗ");
+  		  $(data).find("FriendList").each(function() {
+ 		 
+          //  table +="<td>"+$(this).find("firId").text()+"</td>";
+ 		/* for(var i=0; i<data.length; i++){
+              $('.b').append(data[i] + "<br>");
+          } */
+ /*          $('.b').text(data);
+ 		 
+ 		  });
+           
+        console.log(data);
+ 		run=false;
+	 
 	},
 	error:function(){
-		alert("으아아아");
+		alert("안돼ㅠ");
 	}
 });
-	
+	 */
+	 
+	 var popUrl = "List.mb";	//팝업창에 출력될 페이지 URL
+	 var popOption = "width=370, height=360, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
+			window.open(popUrl,"",popOption);
+	 
 });
 
 
-</script>                                    
+</script>                                  
  
  <div class="page-wrapper">
-  <form action="FriendList.mb" method="post">
+  <form action="List.mb" method="post" id="frm">
     <div class="container-fluid" id="frilist">
         <div class="col-lg-8"><!--게시판 넓이 -->
             <div class="panel panel-default" >
@@ -327,10 +351,15 @@ $.ajax({
                         <thead>
                             <tr>
                                 <td>친구  아이디</td>
+                                 <td class="b" > </td>  
+                                  
+                                
                             </tr>
                         </thead>
                             <tbody>
-                             <c:forEach var="MailVo" items="${list}">
+                             <c:forEach var="MailVo" items="${list1}">
+                             <td>친구  아이디</td>
+                            <td><input type="text" name="friId"></td> 
                              <tr>
                              <td>${MailVo.friId}</td>
                              </tr>
@@ -351,7 +380,7 @@ $.ajax({
                  <div class="panel-body">
                     <table class="table table-hover">
          <h4>친구요청 보내기</h4>
-        <form action="mailSending.mb" method="POST">
+        <form action="mailSending.mb" method="post">
  			<input type="hidden" id="userId" name="userId" value="userId"/>
  			<input type="hidden" id=status_yn name="status_yn" value="Y"/>
  			

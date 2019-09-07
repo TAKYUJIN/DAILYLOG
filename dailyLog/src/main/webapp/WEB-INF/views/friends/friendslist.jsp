@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,357 +19,197 @@
 <style type="text/css">
 	body{
 		font-family: 'Varela Round', sans-serif;
+		margin: 10px;
 	}
-	.form-control {
-		box-shadow: none;		
-		font-weight: normal;
-		font-size: 12px; /* 검색부분 폰트사이즈 */
-	}
-	.form-control:focus {
-		border-color: #33cabb;
-		box-shadow: 0 0 8px rgba(0,0,0,0.1);
-	}
-	.navbar-header.col {
-		padding: 0 !important;
-	}	
-	.navbar {
-		background: #fff;
-		padding-left: 10px;
-		padding-right: 10px;
-		border-bottom: 1px solid #dfe3e8;
-		border-radius: 0;
-	}
-	.nav-link img {
-		border-radius: 50%;
-		width: 36px;
-		height: 36px;
-		margin: -8px 0;
-		float: left;
-		margin-right: 10px;
-	}
-	.navbar .navbar-brand, .navbar .navbar-brand:hover, .navbar .navbar-brand:focus {
-		padding-left: 0;
-		font-size: 20px; /* 로고부분 폰트사이즈 */
-		padding-right: 50px;
-	}
-	.navbar .navbar-brand b {
-		font-weight: bold;
-		color: #33cabb;		
-	}
-	.navbar .form-inline {
-        display: inline-block;
-    }
-	.navbar .nav li {
-		position: relative;
-	}
-	.navbar .nav li a {
-		color: #888;
-	}
-	.search-box {
-        position: relative;
-    }	
-    .search-box input {
-        padding-right: 35px;
-		border-color: #dfe3e8;
-        border-radius: 4px !important;
-		box-shadow: none
-    }
-	.search-box .input-group-addon {
-        min-width: 35px;
-        border: none;
-        background: transparent;
-        position: absolute;
-        right: 0;
-        z-index: 9;
-        padding: 7px;
-		height: 100%;
-    }
-    .search-box i {
-        color: #a0a5b1;
-		font-size: 19px;
-    }
-	.navbar .nav .btn-primary, .navbar .nav .btn-primary:active {
-		color: #fff;
-		background: #33cabb;
-		padding-top: 8px;
-		padding-bottom: 6px;
-		vertical-align: middle;
-		border: none;
-	}	
-	.navbar .nav .btn-primary:hover, .navbar .nav .btn-primary:focus {		
-		color: #fff;
-		outline: none;
-		background: #31bfb1;
-	}
-	.navbar .navbar-right li:first-child a {
-		padding-right: 20px;
-	}
-	.navbar .nav-item i {
-		font-size: 18px;
-	}
-	.navbar .dropdown-item i {
-		font-size: 16px;
-		min-width: 22px;
-	}
-	.navbar ul.nav li.active a, .navbar ul.nav li.open > a {
-		background: transparent !important;
-	}	
-	.navbar .nav .get-started-btn {
-		min-width: 120px;
-		margin-top: 8px;
-		margin-bottom: 8px;
-	}
-	.navbar ul.nav li.open > a.get-started-btn {
-		color: #fff;
-		background: #31bfb1 !important;
-	}
-	.navbar .dropdown-menu {
-		border-radius: 1px;
-		border-color: #e5e5e5;
-		box-shadow: 0 2px 8px rgba(0,0,0,.05);
-	}
-	.navbar .nav .dropdown-menu li {
-		color: #999;
-		font-weight: normal;
-	}
-	.navbar .nav .dropdown-menu li a, .navbar .nav .dropdown-menu li a:hover, .navbar .nav .dropdown-menu li a:focus {
-		padding: 8px 20px;
-		line-height: normal;
-	}
-	.navbar .navbar-form {
-		border: none;
-	}
-	.navbar .dropdown-menu.form-wrapper {
-		width: 300px;
-		padding: 20px; /* 알림 패딩 */
-		left: auto;
-		right: 0;
-        font-size:14px; /* 알림 폰트 크기 */
-	}
-	.navbar .dropdown-menu.form-wrapper a {		
-		color: #33cabb;
-		padding: 0 !important;
-	}
-	.navbar .dropdown-menu.form-wrapper a:hover{
-		text-decoration: underline;
-	}
-	.navbar .form-wrapper .hint-text {
-		text-align: center;
-		margin-bottom: 15px;
-		font-size: 13px;
-	}
-	.navbar .form-wrapper .social-btn .btn, .navbar .form-wrapper .social-btn .btn:hover {
-		color: #fff;
-        margin: 0;
-		padding: 0 !important;
-		font-size: 13px;
-		border: none;
-		transition: all 0.4s;
-		text-align: center;
-		line-height: 34px;
-		width: 47%;
-		text-decoration: none;
-    }	
-	.navbar .social-btn .btn-primary {
-		background: #507cc0;
-	}
-	.navbar .social-btn .btn-primary:hover {
-		background: #4676bd;
-	}
-	.navbar .social-btn .btn-info {
-		background: #64ccf1;
-	}
-	.navbar .social-btn .btn-info:hover {
-		background: #4ec7ef;
-	}
-	.navbar .social-btn .btn i {
-		margin-right: 5px;
-		font-size: 16px;
-		position: relative;
-		top: 2px;
-	}
-	.navbar .form-wrapper .form-footer {
-		text-align: center;
-		padding-top: 10px;
-		font-size: 13px;
-	}
-	.navbar .form-wrapper .form-footer a:hover{
-		text-decoration: underline;
-	}
-	.navbar .form-wrapper .checkbox-inline input {
-		margin-top: 3px;
-	}
-	.or-seperator {
-        margin-top: 32px;
-		text-align: center;
-		border-top: 1px solid #e0e0e0;
-    }
-    .or-seperator b {
-		color: #666;
-        padding: 0 8px;
-		width: 30px;
-		height: 30px;
-		font-size: 13px;
-		text-align: center;
-		line-height: 26px;
-		background: #fff;
-		display: inline-block;
-		border: 1px solid #e0e0e0;
-		border-radius: 50%;
-		position: relative;
-		top: -15px;
-		z-index: 1;
-    }
-    .navbar .checkbox-inline {
-		font-size: 13px;
-	}
-	.navbar .navbar-right .dropdown-toggle::after {
-		display: none;
-	}
-	@media (min-width: 1200px){
-		.form-inline .input-group {
-			width: 300px;
-			margin-left: 30px;
-		}
-	}
-	@media (max-width: 768px){
-		.navbar .dropdown-menu.form-wrapper {
-			width: 100%;
-			padding: 0px 0px;
-			background: transparent;
-			border: none;
-		}
-		.navbar .form-inline {
-			display: block;
-		}
-		.navbar .input-group {
-			width: 100%;
-		}
-		.navbar .nav .btn-primary, .navbar .nav .btn-primary:active {
-			display: block;
-		}
-	}
-	
-	#navbarCollapse a {
-		font-size:12px;
-	}
-	
-	a:link { color: black; text-decoration: none; color: black;}
-	a:visited { color: black; text-decoration: none; color: black;}
- 	a:hover { color: black; text-decoration: none; color: black;}
-	a:active { color: black; text-decoration: none; color: black;}
-	
+.where {
+  display: block;
+  margin: 25px 15px;
+  font-size: 11px;
+  color: #000;
+  text-decoration: none;
+ /*  font-family: verdana;
+  font-style: italic; */
+}
+
+/*  .checks {position: relative;} */
+
+.checks input[type="checkbox"] {  /* 실제 체크박스는 화면에서 숨김 */
+ /*  position: absolute; */
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip:rect(0,0,0,0);
+  border: 0
+}
+.checks input[type="checkbox"] + label {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+.checks input[type="checkbox"] + label:before {  /* 가짜 체크박스 */
+  content: ' ';
+  display: inline-block;
+  width: 21px;  /* 체크박스의 너비를 지정 */
+  height: 21px;  /* 체크박스의 높이를 지정 */
+  line-height: 21px; /* 세로정렬을 위해 높이값과 일치 */
+  margin: -2px 8px 0 0;
+  text-align: center; 
+  vertical-align: middle;
+  background: #fafafa;
+  border: 1px solid #16499c;
+  border-radius : 3px;
+  box-shadow: 0px 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+}
+.checks input[type="checkbox"] + label:active:before,
+.checks input[type="checkbox"]:checked + label:active:before {
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+}
+
+.checks input[type="checkbox"]:checked + label:before {  /* 체크박스를 체크했을때 */ 
+  content: '\2714';  /* 체크표시 유니코드 사용 */
+  color: #16499c;
+  text-shadow: 1px 1px #fff;
+  background: #16499c;
+  border-color: #adb8c0;
+  box-shadow: 0px 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
+}
+
+.checks.etrans input[type="checkbox"] + label {
+  padding-left: 30px;
+}
+.checks.etrans input[type="checkbox"] + label:before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin-top: 0;
+  opacity: .6;
+  box-shadow: none;
+  border-color: #16499c;
+  -webkit-transition: all .12s, border-color .08s;
+  transition: all .12s, border-color .08s;
+}
+
+.checks.etrans input[type="checkbox"]:checked + label:before {
+  position: absolute;
+  content: "";
+  width: 10px;
+  top: -5px;
+  left: 5px;
+  border-radius: 0;
+  opacity:1; 
+  background: transparent;
+  border-color:transparent #16499c #16499c transparent;
+  border-top-color:transparent;
+  border-left-color:transparent;
+  -ms-transform:rotate(45deg);
+  -webkit-transform:rotate(45deg);
+  transform:rotate(45deg);
+}
+
+.no-csstransforms .checks.etrans input[type="checkbox"]:checked + label:before {
+  /*content:"\2713";*/
+  content: "\2714";
+  top: 0;
+  left: 0;
+  width: 21px;
+  line-height: 21px;
+  color: #16499c;
+  text-align: center;
+  border: 1px solid #16499c;
+  }
 </style>
-<script type="text/javascript">
-	// Prevent dropdown menu from closing when click inside the form
-	$(document).on("click", ".navbar-right .dropdown-menu", function(e){
-		e.stopPropagation();
-	});
-</script>
+ 
 </head> 
 <body>
+<!-- <div class="checks etrans">
+  <input type="checkbox" id="ex_chk3"> 
+  <label for="ex_chk3">체크박스</label> 
+</div> -->
+
 <nav class="navbar navbar-default navbar-expand-lg navbar-light">
 	<div class="navbar-header d-flex col" >
 		<img src="resources/images/logo.png" style="width:90px; padding-top:10px;">	
-	</div>
-	<!-- Collection of nav links, forms, and other content for toggling -->
-	<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
-		<ul class="nav navbar-nav" >
-			<li class="nav-item"><a href="home.mb" class="nav-link" style="padding-right:0px;">Home</a></li>
-			<li class="nav-item"><a href="bookmark.mb" class="nav-link" style="padding-right:0px;" onclick="">북마크</a></li>			
-			<li class="nav-item"><a href="subscribe.mb" class="nav-link" style="padding-right:0px;">구독</a></li>	
-			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">최근 활동</a></li>	
-			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">좋아요 영상</a></li>
-			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;" onclick="">로거 스튜디오</a></li>
-		</ul>
-		<form class="navbar-form form-inline" style="width:240px;">
-			<div class="input-group search-box">								
-				<input type="text" id="search" class="form-control" placeholder="검색">
-				<span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
+	</div><br><br>
+  <div class="page-wrapper">
+  <form action="List.mb" method="get"  >
+    <div class="container-fluid" id="frilist">
+        <div class="col-lg-8"><!--게시판 넓이 -->
+            <div class="panel panel-default" >
+                 <div class="panel-body">
+            <!--  <div class="checks etrans" > -->
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <td>친구  아이디</td>
+                            </tr>
+                        </thead>
+                            <tbody>
+                             <c:forEach var="MailVo" items="${list}">
+                             <tr>
+                             <td><input type="checkbox" name="list" id="ex_chk3" value="${MailVo.friId}">
+ 			   
+ 				 ${MailVo.friId}
+ 				   </td> 
+ 				 
+                             </tr> </c:forEach>
+                        </tbody>
+                    </table>
+					<%-- <c:forEach var="l" items="${paramValues['list'] }">
+					<c:out value="${l}"/>	 --%>					
+                     <input type="submit" value="채팅" /> 
+                            <%-- </c:forEach> --%> 
+                    </div> 
+  					 </div>
+                </div>
+  <button class="ui olive button" id="addfri">친구 추가</button>
+                </div></form>
+     <div class="container-fluid" id="myDiv">
+        <div class="col-lg-8"><!--게시판 넓이 -->
+            <div class="panel panel-default" >
+            <div>
+                 <div class="panel-body">
+                    <table class="table table-hover">
+         <h4>친구요청 보내기</h4>
+        <form action="mailSending.mb" method="post">
+ 			<input type="hidden" id="userId" name="userId" value="userId"/>
+ 			<input type="hidden" id=status_yn name="status_yn" value="Y"/>
+ 			
+			<!-- 아이디 -->
+			<div class="form-group">
+				<label for="friId">친구 이메일</label>
+					<input type="text" class="form-control" id="friId" name="friId" placeholder="친구 이메일" required>
+				<div class="check_font" id="id_check"></div>
 			</div>
-		</form>
-		<ul class="nav navbar-nav navbar-right ml-auto" style="width:265px;">			
-			<li class="nav-item">
-				<a href="#none" class="btn_global link_login" >
-				<img src="resources/images/exit.png" style="width:20px;">
-			</a>
-			</li>
-			
-			<li class="nav-item">
-				<a href="#none" class="btn_global link_login">
-				<img src="resources/images/film.png" style="width:20px;">
-			</a>
-			</li>
-			
-			<li class="nav-item">
-				<a href="#none" data-toggle="dropdown" class="btn_global link_login">
-				<img src="resources/images/laugh.png" style="width:20px;">
-			</a>
-			<ul class="dropdown-menu form-wrapper">					
-					<li>
- 						<div class="noti_text" align="center"><p>채팅</p></div>
-							<div class="form-group">
-								<table class="noti_table">
-									 <h4>메일 보내기</h4>
-    <form action="mailSending.mb" method="post">
-      <div>
-        <input type="text" name="tomail" size="120"
-        style="width: 100%" placeholder="상대의 이메일"
-        class="form-control">
-      </div>
-      <div align="center">
-        <!-- 제목 -->
-        <input type="text" name="title" size="120"
-        style="width: 100%" placeholder="제목을 입력해주세요"
-        class="form-control">
-      </div>
-        <p>
-          <div align="center">
-          <!-- 내용 -->
-            <textarea name="content" cols="120" rows="12"
-            style="width: 100%; resize: none" placeholder="내용#"
-            class="form-control"></textarea>
-          </div>
-        <p>
       <div align="center">
         <input type="submit" value="메일 보내기" class="btn btn-warning">
+        <input type="reset" value="취소" class="btn btn-default" id="reset">
       </div>
-    </form>
-								</table>
-							</div>
-<!-- 							<img src="resources/images/settings.png" align="right">
- -->						</form>
-					</li>
-				</ul>
-			</li>
-			
-			<li class="nav-item">
-			<a href="#none" data-toggle="dropdown" class="btn_global link_login">
-				<img src="resources/images/bell.png" style="width:20px;">
-			</a>
-				<ul class="dropdown-menu form-wrapper">					
-					<li>
-						<form action="/examples/actions/confirmation.php" method="post">
-							<div class="noti_text" align="center"><p>알림</p></div>
-							<div class="form-group">
-								<table class="noti_table">
-									<tr>님을 구독하셨습니다.</tr><br>
-									<tr>댓글에 답글이 달렸습니다.</tr><br>
-									
-								</table>
-							</div>
-							<img src="resources/images/settings.png" align="right">
-						</form>
-					</li>
-				</ul>
-			</li>
-			<li class="nav-item">
-				<a href="myPage.me" class="btn_global link_login" onclick="account();">
-				<img src="resources/images/management.png" style="width:20px;">
-			</a>
-			</li>
-		</ul>
-	</div>
+  </form></table></div></div></div></div></div></div>
+	 
 </nav>
  </body>
+  <script>
+ $(document).ready(function(){
+    $('#frilist').show();
+    $('#myDiv').hide();
+    
+    $('#addfri').click(function(){
+       $('#frilist').hide();
+       $('#myDiv').show();
+       return false;
+    });
+    $('#reset').click(function(){
+       $('#frilist').show();
+       $('#myDiv').hide();
+       
+    });
+    
+ });
+ </script>
+ 
 </html>                                                                                    
