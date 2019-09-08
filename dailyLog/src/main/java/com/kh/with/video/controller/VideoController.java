@@ -247,8 +247,6 @@ public class VideoController {
 
 	}
 
-
-
 	// 동영상업로드
 	@RequestMapping("/upload")
 	public String upload(Model model, @RequestParam("file1") MultipartFile file) {

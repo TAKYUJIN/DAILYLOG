@@ -543,7 +543,6 @@ button[class*="btn"] {border: 0;}
 									</a>
 									<ul class="dropdown-menu form-wrapper" style="width:280px;">					
 										<li>
-										
 											<div class="form-group" id="sub">
 												<table class="noti_table">
 													<tr><a id="regSub">신고</a></tr><br>
