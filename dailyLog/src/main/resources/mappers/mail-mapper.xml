@@ -55,8 +55,10 @@ UPDATE FRIEND SET STATUS_YN = #{param2} WHERE USER_ID= #{param1}
 
 
  <update id="alter_userKEY" parameterType="Map">
-UPDATE FRIEND SET STATUS_YN ='Y' WHERE USER_ID=#{param1} AND FRI_ID=3AND STATUS_YN = #{param2} 
-<!-- UPDATE FRINED SET STATUS_YN = CASE USER_ID WHEN #{userId} THEN 'Y' ELSE STATUS_YN END,WHERE USER_ID=#{param1} AND STATUS_YN = #{param2} -->
+  UPDATE FRIEND SET STATUS_YN ='Y' WHERE USER_ID=#{param1}  AND STATUS_YN = #{param2} 
+ 
+ 
+  <!-- UPDATE FRINED SET STATUS_YN = CASE USER_ID WHEN #{userId} THEN 'Y' ELSE STATUS_YN END,WHERE USER_ID=#{param1} AND STATUS_YN = #{param2}  -->
 </update>
 
 

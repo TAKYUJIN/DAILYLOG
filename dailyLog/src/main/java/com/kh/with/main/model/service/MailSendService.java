@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 import com.kh.with.main.model.dao.MailDao;
@@ -45,19 +46,52 @@ public class MailSendService {
 	  public void mailSendWithUserKey(String friId,String userId,HttpServletRequest request) {
 		  
 		  System.out.println("mailSendWithUserKey"+userId);
-		  
 	  String status_yn = getKey(false, 20); 
 	  userDao = sqlSession.getMapper(MailDao.class); 
 	  userDao.GetKey(userId, status_yn); 
 	  MimeMessage mail = mailSender.createMimeMessage(); 
-	  String htmlStr ="<h2>안녕하세요 :Daily Log 입니다</h2><br><br>" + "<h3>" + friId + "님 친구 요청이 도착 하였습니다.</h3>" +
-	  "<p>요청보기 버튼을 누르시면 친구 요청을 보실 수 있습니다 : " + "<a href='http://localhost:8001" +
-	  request.getContextPath() + "/home.mb?userId="+ userId
-	  +"&status_yn="+status_yn+"'>요청 보기</a></p>" + "(혹시 잘못 전달된 메일이라면 이 이메일을 무시하셔도 됩니다)";
-	  try { mail.setSubject("[친구추가] :친구추가 메일 입니다", "utf-8"); mail.setText(htmlStr,
-	  "utf-8", "html"); mail.addRecipient(RecipientType.TO, new
-	  InternetAddress(friId)); mailSender.send(mail); } catch (MessagingException
-	  e) { e.printStackTrace(); }
+	  String content = request.getParameter("content");
+	 // MimeMessageHelper messageHelper = new MimeMessageHelper(mail,true, "UTF-8");  
+		/*
+		 * String contents = content +
+		 * "<img src=\"https://s3.ap-northeast-2.amazonaws.com/opentutorials-user-file/module/1590/3428.jpg\">"
+		 * ; messageHelper.setText(contents, true);
+		 */
+		 
+		   
+	 
+			  String htmlStr =
+				/*
+				 * "<img src= 'resources\images\logo.png\' style='width:90px; padding-top:10px;\'>"
+				 */   "<h2>안녕하세요 :Daily Log 입니다</h2><br><br>" + "<h3>" + friId +
+			  "님 친구 요청이 도착 하였습니다.</h3>" + "<p>요청보기 버튼을 누르시면 친구 요청을 보실 수 있습니다 : " +
+			  "<a href='http://localhost:8001" + request.getContextPath() +
+			  "/frimail.mb?userId="+ userId
+			  +"&status_yn="+status_yn+"'><button style='background:blue;'>요청 보기</button></a></p>" +
+			  "(혹시 잘못 전달된 메일이라면 이 이메일을 무시하셔도 됩니다)"; try {
+			  mail.setSubject("[친구추가] :친구추가 메일 입니다", "utf-8"); mail.setText(htmlStr,
+			  "utf-8", "html"); mail.addRecipient(RecipientType.TO, new
+			  InternetAddress(friId)); mailSender.send(mail); } catch (MessagingException
+			 e) { e.printStackTrace(); }
+			  
+			/*  String htmlStr1 =
+			  
+			  
+			 * "<img src='resources/images/logo.png' style='width:90px; padding-top:10px;'>"
+			 * 
+			 * +"<h1>안녕하세요 :Daily Log 입니다</h1><br><br>" + "<h3>" + friId +
+			 * "님 친구 요청이 도착 하였습니다.</h3>" + "<p>친구 추가 버튼을 누르시면 친구 추가가 완료됩니다. : " +
+			 * "<a href='http://localhost:8001" + request.getContextPath() +
+			 * "/frimail.mb?userId="+ userId +"&status_yn="+
+			 * status_yn+"'><button style='background:blue;'>친구 추가</button></a></p>" +
+			 * "(혹시 잘못 전달된 메일이라면 이 이메일을 무시하셔도 됩니다)"; try {
+			 * mail.setSubject("[친구추가] :친구추가 메일 입니다", "utf-8"); mail.setText(htmlStr,
+			 * "utf-8", "html"); mail.addRecipient(RecipientType.TO, new
+			 * InternetAddress(friId)); mailSender.send(mail); } catch (MessagingException
+			 * e) { e.printStackTrace(); }
+			 */ 
+			  
+	   
 	  
 	  
 	  

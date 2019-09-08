@@ -93,7 +93,7 @@ public class MainController {
 	 */
 
 	
-	  @RequestMapping(value = "mailSending.mb",method=RequestMethod.POST)
+	  @RequestMapping(value = "mailSending.mb",method=RequestMethod.GET)
 	  public String mailSending(MailVo MailVo,Model model,HttpServletRequest request) {
 		  String userId = request.getParameter("userId");
 		 System.out.println("userId"+userId); 
@@ -106,10 +106,10 @@ public class MainController {
 	  mailSender.mailSendWithUserKey(MailVo.getFriId(),MailVo.getUserId(), request);
 	  System.out.println("friId:"+MailVo.getFriId());
 	  
-	  return "redirect:/"; }
+	  return "forward:/List.mb"; }
 	  
 	 
-	  @RequestMapping(value = "/main", method = RequestMethod.GET) 
+	  @RequestMapping(value = "frimail.mb", method = RequestMethod.GET) 
 	  public String key_alterConfirm(@RequestParam(value="userId", required=false) String userId, @RequestParam(value="status_yn", required=false) String status_yn) {
 	  System.out.println("key_alterConfirm");
 	  mailSender.alter_userKey_service(userId, status_yn); // mailsender의 경우 @Autowired

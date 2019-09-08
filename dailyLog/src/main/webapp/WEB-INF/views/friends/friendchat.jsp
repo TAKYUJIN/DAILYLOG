@@ -12,14 +12,6 @@
 		<img src="resources/images/logo.png" style="width:90px; padding-top:10px;">	
 	</div><br><br>
 	
-	
-	
-	
-	
-	
-	
-	
-	
 	</nav>
 </body>
 </html>

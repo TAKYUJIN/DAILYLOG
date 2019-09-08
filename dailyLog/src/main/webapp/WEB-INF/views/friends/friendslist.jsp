@@ -160,8 +160,11 @@
                         </tbody>
                     </table>
 					<%-- <c:forEach var="l" items="${paramValues['list'] }">
-					<c:out value="${l}"/>	 --%>					
-                     <input type="submit" value="채팅" /> 
+					<c:out value="${l}"/>	
+					 --%>					
+                     <input type="submit" onclick="location.href='FriendChat.mb'" value="채팅" />  
+                           <!-- <button type="button" onclick="location.href='FriendChat.mb'" >채팅</button>
+                            -->
                             <%-- </c:forEach> --%> 
                     </div> 
   					 </div>
@@ -175,7 +178,7 @@
                  <div class="panel-body">
                     <table class="table table-hover">
          <h4>친구요청 보내기</h4>
-        <form action="mailSending.mb" method="post">
+        <form action="mailSending.mb" method="get">
  			<input type="hidden" id="userId" name="userId" value="userId"/>
  			<input type="hidden" id=status_yn name="status_yn" value="Y"/>
  			
