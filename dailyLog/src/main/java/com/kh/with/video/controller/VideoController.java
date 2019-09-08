@@ -11,9 +11,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -21,7 +21,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.with.common.CommonUtils;
-import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.member.model.service.MemberService;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.video.model.service.VideoService;
@@ -36,6 +35,7 @@ public class VideoController {
 
 	@Autowired
 	private VideoService vs;
+	@Autowired
 	private MemberService ms;
 
 	// 영상 클릭시 동영상 페이지로 이동
@@ -58,6 +58,14 @@ public class VideoController {
 
 		return "video/videoMain";
 	}
+	
+	// 영상 클릭시 동영상 페이지로 이동
+	@RequestMapping(value = "test.vd")
+	public String test() {
+
+		return "video/test";
+	}
+	
 
 	// 영상 클릭시 동영상 페이지로 이동
 	@RequestMapping(value = "imgCheck.vd")
@@ -239,8 +247,6 @@ public class VideoController {
 
 	}
 
-
-
 	// 동영상업로드
 	@RequestMapping("/upload")
 	public String upload(Model model, @RequestParam("file1") MultipartFile file) {
@@ -250,12 +256,7 @@ public class VideoController {
 		return "result";
 	}
 
-
-}
-
-/*
 	//동영상 이미지 출력
-
 	@RequestMapping(value="home.mb" ,method=RequestMethod.GET)
 	public ModelAndView videoimagelist(ModelAndView mav)
 	{
@@ -264,12 +265,9 @@ public class VideoController {
 		mav.addObject("list", videoservice.videoimagelist());
 		System.out.println("vid"+videoservice);
 		System.out.println("mav"+mav);
-
+		
 		return mav;
 	}
 
-
-
-
-} */
+}
 

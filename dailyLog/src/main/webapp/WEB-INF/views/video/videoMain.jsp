@@ -540,7 +540,46 @@ button[class*="btn"] {border: 0;}
 								<li class="nav-item">
 									<a href="myPage.me" class="btn_global link_login" onclick="account();">
 									<img src="resources/images/more.png" style="width:15px;">
-								</a>
+									</a>
+									<ul class="dropdown-menu form-wrapper" style="width:280px;">					
+										<li>
+											<div class="form-group" id="sub">
+												<table class="noti_table">
+													<tr><a id="regSub">신고</a></tr><br>
+													<tr><a id="onceSub">차단</a></tr><br>
+													<tr><a id="share">공유</a></tr><br>
+												</table>
+											</div>
+											<!-- 신고&차단 -->
+											<div id="rSub">
+												<div class="noti_text" align="center" style="margin-top:5%;"><b>정기후원</b></div>
+												<div align="left" style="margin-left:10%; margin-right:10%;">
+													<table class="noti_table">
+														<tr><td><small>채널명</small></td></tr>
+														<tr><td><b>채널명</b></td></tr>
+														<tr><td><small>포인트조회</small></td></tr>
+														<tr><td><input type="text" class="form-control" id="rPoint" placehold="포인트를 조회하세요" value="${point} 포인트" readonly></td></tr>
+														<tr>
+															<td>
+																<a href="selectPoint.vd" id="selectPoint" style="width:50px; text-align:center;" class="btn-gradient yellow mini">조회</a>
+																<a href="" id="chargeBtn" style="width:50px; text-align:center;" class="btn-gradient blue mini">충전</a>
+															</td>
+														</tr>
+																											
+														<tr><td><small>후원</small></td></tr>
+														<tr><td><input type="text" class="form-control" id="rPrice" placehold="후원금액을 입력하세요"></td></tr>
+														<tr>
+															<td>
+																<a style="width:50px;text-align:center;" class="btn-gradient yellow mini" id="cancle1">취소</a>
+																<a href="" id="rOk" style="width:50px; text-align:center;" class="btn-gradient blue mini">후원</a>
+															</td>
+														</tr>
+													</table>
+												</div>
+											</div>
+											
+										</li>
+									</ul>
 								</li>
 							</ul>
 						</nav>
@@ -568,7 +607,6 @@ button[class*="btn"] {border: 0;}
 				</td>
 				<!-- 댓글 -->
 				<td rowspan="3" width="250px">
-					<a href="test.vd">test</a>
 				</td>
 			</tr>
 			<tr>
