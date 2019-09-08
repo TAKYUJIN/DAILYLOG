@@ -259,7 +259,6 @@ public class VideoController {
 	}
 
 	//동영상 이미지 출력
-	
 	@RequestMapping(value="home.mb" ,method=RequestMethod.GET)
 	public ModelAndView videoimagelist(ModelAndView mav)
 	{
