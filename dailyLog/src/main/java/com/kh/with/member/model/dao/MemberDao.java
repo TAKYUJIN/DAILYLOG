@@ -30,6 +30,11 @@ public interface MemberDao {
 
 	int delete_myPage(SqlSessionTemplate sqlSession, Member m);
 
+	int GetKey(String userId, String key);
+
+	int alter_userKEY(String userId, String status);
+
+
 
 
 

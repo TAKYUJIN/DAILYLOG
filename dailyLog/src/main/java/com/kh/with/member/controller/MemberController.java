@@ -86,7 +86,7 @@ public class MemberController {
 
 	}
 
-	@RequestMapping(value = "insert.me", method=RequestMethod.POST)
+	@RequestMapping(value = "insert.me", method= {RequestMethod.GET, RequestMethod.POST})
 	public String insertMember(Model model, Member m, HttpServletRequest request) {
 
 		System.out.println(m);
@@ -106,6 +106,11 @@ public class MemberController {
 			}
 
 			ms.insertMember(m);
+			System.out.println("컨트롤러 회원가입 ");
+			
+			ms.mailSendWithUserKey(m.getUserId(), m.getUserNm(), request);
+			
+			System.out.println("email 인즈");
 			
 			
 

@@ -2,6 +2,7 @@ package com.kh.with.member.model.service;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.with.member.model.exception.LoginException;
@@ -31,6 +32,8 @@ public interface MemberService {
   
 	//mypage 탈퇴
 	int delete_myPage(Member m) throws Exception;
+
+	void mailSendWithUserKey(String userId, String userNm, HttpServletRequest request);
 
 
 	

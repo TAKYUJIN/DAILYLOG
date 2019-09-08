@@ -100,4 +100,22 @@ public class MemberDaoImpl implements MemberDao{
 		return sqlSession.update("Member.delete_myPage", m);
 	}
 
+
+
+	@Override
+	public int GetKey(String userId, String key) {
+		System.out.println("md.getKey() ... ");
+		
+		return sqlSession.update("Member.getKey", key);
+	}
+
+
+
+	@Override
+	public int alter_userKEY(String userId, String status) {
+		System.out.println("md.alter_userKey ...");
+		
+		return sqlSession.update("Member.alter_userKey", status);
+	}
+
 }

@@ -124,5 +124,18 @@
    			WHERE NICKNAME = #{nickname}
    			]]>
 	</select>
+	
+	<insert id="GetKey" parameterType="Map">
+		UPDATE MEMBER SET STATUS = #{param2}
+		WHERE USER_ID = #{param1}
+	</insert>
+	
+	<update id="alter_userKey" parameterType="Map">
+		UPDATE MEMBER SET STATUS = 0
+		WHERE USER_ID = #{param1} 
+		AND STATUS = #{param2}
+	</update>
+	
+	
 </mapper>
 
