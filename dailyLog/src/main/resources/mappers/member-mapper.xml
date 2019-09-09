@@ -125,10 +125,9 @@
    			]]>
 	</select>
 	
-	<insert id="GetKey" parameterType="Map">
-		UPDATE MEMBER SET STATUS = #{param2}
-		WHERE USER_ID = #{param1}
-	</insert>
+	<update id="GetKey" parameterType="Map">
+		UPDATE MEMBER SET STATUS = #{param1}
+	</update>
 	
 	<update id="alter_userKey" parameterType="Map">
 		UPDATE MEMBER SET STATUS = 0

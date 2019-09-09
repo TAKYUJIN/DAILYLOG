@@ -1,13 +1,16 @@
 package com.kh.with.member.model.dao;
 
-import org.apache.ibatis.session.SqlSession;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
+import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.kh.with.loger.model.vo.Calculate;
 import com.kh.with.member.model.exception.LoginException;
 import com.kh.with.member.model.vo.Member;
 
@@ -104,9 +107,11 @@ public class MemberDaoImpl implements MemberDao{
 
 	@Override
 	public int GetKey(String userId, String key) {
-		System.out.println("md.getKey() ... ");
 		
-		return sqlSession.update("Member.getKey", key);
+		System.out.println("md.getKey() ... ");
+			
+		
+		return sqlSession.update("Member.GetKey", key);
 	}
 
 
@@ -117,5 +122,9 @@ public class MemberDaoImpl implements MemberDao{
 		
 		return sqlSession.update("Member.alter_userKey", status);
 	}
+
+
+
+	
 
 }
