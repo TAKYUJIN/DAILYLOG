@@ -40,8 +40,11 @@ public class VideoController {
 
 	// 영상 클릭시 동영상 페이지로 이동
 	@RequestMapping(value = "video.vd")
-	public String showVideoView() {
-
+	public String showVideoView(HttpServletRequest request) {
+		System.out.println("LL" + request.getAttribute("userNo"));
+		int userNo = Integer.parseInt((String) request.getAttribute("userNo"));
+		System.out.println("userNO : " + userNo);
+		
 		return "video/videoMain";
 	}
 
@@ -63,7 +66,7 @@ public class VideoController {
 	@RequestMapping(value = "test.vd")
 	public String test() {
 
-		return "video/test";
+		return "video/test22";
 	}
 	
 
@@ -261,10 +264,13 @@ public class VideoController {
 	public ModelAndView videoimagelist(ModelAndView mav)
 	{
 		mav.setViewName("/main/top");
-		System.out.println("videocontroller:"+mav);
+		
+		System.out.println("videocontroller : " + mav);
+		
 		mav.addObject("list", videoservice.videoimagelist());
-		System.out.println("vid"+videoservice);
-		System.out.println("mav"+mav);
+		
+		//System.out.println("vid" + videoservice);
+		//System.out.println("mav"+mav);
 		
 		return mav;
 	}
