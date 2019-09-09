@@ -11,12 +11,14 @@
 		<typeAlias type="com.kh.with.main.model.vo.MailVo" alias="MailVo" />
  		<typeAlias type="com.kh.with.video.model.vo.Video" alias="Video" />
 		<typeAlias type="com.kh.with.video.model.vo.Attachment" alias="Attachment" />
+		<typeAlias type="com.kh.with.admin.model.vo.Board" alias="Board" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappers/member-mapper.xml"/>
 		<mapper resource="mappers/loger-mapper.xml"/>
 		<mapper resource="mappers/mail-mapper.xml"/>
-    <mapper resource="mappers/friend-mapper.xml"/>
-	<mapper resource="mappers/video-mapper.xml"/>
+    	<mapper resource="mappers/friend-mapper.xml"/>
+		<mapper resource="mappers/video-mapper.xml"/>
+		<mapper resource="mappers/Board-mapper.xml"/>
 	</mappers>
 </configuration>

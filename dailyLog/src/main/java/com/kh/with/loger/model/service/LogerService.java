@@ -22,10 +22,12 @@ public interface LogerService {
 	//로거 마지막 계좌 조회
 	ArrayList<Calculate> logerLastAccount(Calculate c, Member m);
 
-	//로거채널 개설
+	
+	//로거채널개설
 	int insertcreateChannel(Loger loger);
 
 	ArrayList<Support> selectLogerSupportDate(Support s, Member m);
+
 
 
 }

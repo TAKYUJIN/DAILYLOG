@@ -146,6 +146,7 @@ table.table td .add {
 <body>
 
 	<jsp:include page="../common/adminBar.jsp"></jsp:include>
+	<form action="noticeWriteAdmin.ad" method="post">
 	<div class="mainpage">
 		<div class="container">
 			<div class="table-wrapper">
@@ -158,36 +159,14 @@ table.table td .add {
 
 				</thead>
 				<tbody>
-					<tr>
-						<td id="subject"><strong>NO</strong></td>
-						<td><input type="text" placeholder="공지번호" 
-						style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px; width:500px;"></td>
-
-					</tr>
+				
 					<tr>
 						<td id="subject"><strong>Subject</strong></td>
-						<td><input type="text" placeholder="제목" 
+						<td><input type="text" placeholder="제목"   id="bTitle" name="bTitle"
 						style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px; width:500px;" ></td>
-
 					</tr>
 					<tr>
-						<td id="subject"><strong>Writer</strong></td>
-						<td><input type="text" placeholder="작성자"
-						style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px; width:500px;"></td>
-					</tr>
-					<tr>
-						<td id="subject"><strong>Date</strong></td>
-						<td><input type="text" placeholder="작성일"
-						style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px; width:500px;"></td>
-					</tr>
-					<tr>
-						<td id="subject"><strong>파일첨부</strong></td>
-						<td><input type="file" placeholder="파일첨부"
-						style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px; width:500px;">
-						</td>
-					</tr>
-					<tr>
-						<td colspan="2" align="center"><textarea rows = "20"  cols="150" 
+						<td colspan="2" align="center"><textarea rows = "20"  cols="150"  id="bcontent" name="bcontent"
 						style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;"></textarea></td>
 					</tr>
 				</tbody>
@@ -195,9 +174,10 @@ table.table td .add {
 		</div>
 	</div>
 	<div class="buttonarea">
-		<button class="button1" onclick="location.href= #">작성</button>
+		<button class="button1" type="submit" >작성</button>
 		<button class="button1">취소</button>
 	</div>
+	</form>
 	<br><br>
 	<jsp:include page="../common/footer.jsp" />
 </body>

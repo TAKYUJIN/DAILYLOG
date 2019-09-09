@@ -1,31 +1,3 @@
-<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<jsp:include page="../common/guest.jsp"/>
-<div style="text-align:center">
-
-<div style="margin: 100px;">
- 		
- 		<br>
-		<p><b>환영합니다!</b></p>
-		<br>
-		<p>친구 추가가 정상적으로 이루어 졌습니다.</p>
-		<br>
-		<p>로그인 하시면 친구 기능 서비스를 이용하실 수 있습니다.</p>
-		<br> <a href="loginbutton.me">로그인 페이지로 이동하기</a>
-	
-	</div></div>
-	<jsp:include page="../common/footer.jsp"/>
-	
-</body>
-</html> --%>
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
