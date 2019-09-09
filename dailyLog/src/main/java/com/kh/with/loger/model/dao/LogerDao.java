@@ -12,17 +12,20 @@ import com.kh.with.member.model.vo.Member;
 
 public interface LogerDao {
 
-//	ArrayList<Calculate> selectLogerCalculate(SqlSessionTemplate sqlSession, Member m);
-//
-//	ArrayList<Calculate> selectLogerCalculate(SqlSessionTemplate sqlSession, Calculate c);
-
+	//로거 정산내역 조회
 	ArrayList<Calculate> selectLogerCalculate(SqlSessionTemplate sqlSession, Calculate c, Member m);
 
+	//로거 후원내역 조회
 	ArrayList<Support> selectLogerSupport(SqlSessionTemplate sqlSession, Support s, Member m);
 
+	//로거 마지막 계좌 조회
 	ArrayList<Calculate> logerLastAccount(SqlSessionTemplate sqlSession, Calculate c, Member m);
 
 	//로거채널개설
 	int insertcreateChannel(SqlSessionTemplate sqlSession, Loger loger);
+
+	//로거 기간별 후원내역 조회
+
+	ArrayList<Support> selectLogerSupportDate(SqlSessionTemplate sqlSession, Support s, Member m);
 
 }

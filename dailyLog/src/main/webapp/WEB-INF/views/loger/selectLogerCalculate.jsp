@@ -32,6 +32,7 @@ body {
 
 table.table tr th, table.table tr td {
 	border-color: #e9e9e9;
+	text-align:center;
 }
 
 table.table-striped tbody tr:nth-of-type(odd) {
@@ -108,7 +109,7 @@ table.table-striped tbody tr:nth-of-type(odd) {
 <body>
 	<jsp:include page="../common/mainBar.jsp"></jsp:include>
 	<div class="selectSupport">
-		<form action="" method="" class="selectLogerCalculateForm"
+		<form action="datepic.lo" method="post" class="selectLogerCalculateForm"
 			float="left;">
 			<div class="table-wrapper">
 				<table class="table table-striped">
@@ -121,65 +122,73 @@ table.table-striped tbody tr:nth-of-type(odd) {
 						<hr>
 					</tr>
 					<div style="float: right;">
-						<label>기간</label>&nbsp; <span class="chkbox"> <input
-							type="button" name="dateType" id="dateType1" value="1개월"
-							onclick="month1();" /> <label for="dateType1"></label>
-						</span> <span class="chkbox"> <input type="button" name="dateType"
-							id="dateType2" value="2개월" onclick="month2();" /> <label
-							for="dateType2"></label>
-						</span> <span class="chkbox"> <input type="button" name="dateType"
-							id="dateType3" value="3개월" onclick="month3();" /> <label
-							for="dateType3"></label>
+						<label>기간</label>&nbsp; <span class="chkbox"> 
+						<input type="button" name="dateType" id="dateType1" value="1개월" /> <label for="dateType1"></label></span> 
+						<span class="chkbox"> <input type="button" name="dateType" id="dateType2" value="2개월"/> 
+						<label for="dateType2"></label></span> 
+						<span class="chkbox"> <input type="button" name="dateType" id="dateType3" value="3개월"/> 
+						<label for="dateType3"></label>
 						</span>
-
+						<input type="date" id="monthDate" name="monthDate"/>
+					  <input type="date" id="todayDate" name="todayDate"/>
+					  <input type="submit" name="selectDate" id="selectDate" onclick="search();" value="조회">
+					
+					<script>
+					  document.getElementById('todayDate').value = new Date().toISOString().substring(0, 10);
+					</script>
+						
 						<script>
 		
-		function month1(){
-			var day = new Date();
-			var mon1 = new Date();
-			
-			   var monthOfYear = mon1.getMonth();
-			   mon1.setMonth(monthOfYear - 1);
-		           
-           location.href='datepic.lo?mon1='+mon1+'&&day='+day;
+			$("#dateType1").click(function(){
+				
+				var day = new Date();
+				var mon = new Date();
+				var monthOfYear = mon.getMonth();
+				mon.setMonth(monthOfYear - 1);
+				document.getElementById('monthDate').value = mon.toISOString().substring(0, 10);
+			});
+				/* 
+				
+				mon1.toISOString().substring(0, 10);
+				
+				console.log(mon1);
+				$("#monthDate").val('mon1'); */
+            /* location.href='datepic.lo?mon1='+mon1+'&&day='+day; */
 
 			
-		};
+		$("#dateType2").click(function(){
+				
+				var day = new Date();
+				var mon = new Date();
+				var monthOfYear = mon.getMonth();
+				mon.setMonth(monthOfYear - 2);
+				document.getElementById('monthDate').value = mon.toISOString().substring(0, 10);
+			});
 		
-		function month2(){
+		$("#dateType3").click(function(){
+			
 			var day = new Date();
-			var mon2 = new Date();
-			
-			   var monthOfYear = mon2.getMonth();
-			   mon2.setMonth(monthOfYear - 2);
-		           
-           location.href='datepic.lo?mon2='+mon2+'&&day='+day;
-
-			
-		};
-		
-		function month3(){
-			var day = new Date();
-			var mon3 = new Date();
-			
-			   var monthOfYear = mon3.getMonth();
-			   mon3.setMonth(monthOfYear - 3);
+			var mon = new Date();
+			var monthOfYear = mon.getMonth();
+			mon.setMonth(monthOfYear - 3);
+			document.getElementById('monthDate').value = mon.toISOString().substring(0, 10);
+		});
 		           
            /* location.href='datepic.lo?mon3='+mon3+'&&day='+day; */
 
 			
-		};
 		
 		function search(){
-			
-			location.href='datepic.lo?mon3='+mon3+'&&day='day;
+			var month = $("#monthDate").val();
+			console.log(month);
+			var day = $("#todayDate").val();
+			console.log(day);
+			/* location.href="datepic.lo?month="+month+"&day="day; */
 		}
-			
+			 
 		</script>
 
-						</span> <span> <input type="button" name="selectDate"
-							id="selectDate" onclick="search();" value="조회">
-						</span>
+						
 
 						<%-- <span class="dset">
                    <input type="date" class="datepicker inpType" name="startdate" id="searchStartDate" style="border:1px solid #ccc;" value="${adminBuildEnergyVo.startdate }" >               </span>
@@ -211,7 +220,7 @@ table.table-striped tbody tr:nth-of-type(odd) {
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${sList}" var="s">
+						<c:forEach items="${dateList}" var="s">
 							<tr>
 								<td><c:out value="${s.nNo}" /></td>
 								<td><c:out value="${s.supTY}" /></td>
@@ -240,6 +249,10 @@ table.table-striped tbody tr:nth-of-type(odd) {
 						</a></li>
 					</ul>
 				</div>
+				
+				<button class="cal_btn btn-gradient yellow mini" id="accountBtn" onclick='location.href="logerCalculate.lo"' style="font-size:13px;">취소</button>
+				<button class="cal_btn btn-gradient yellow mini" id="calculateBtn" onclick="" style="font-size:13px; margin-top:16px;">정산신청</button>
+				
 			</div>
 		</form>
 	</div>

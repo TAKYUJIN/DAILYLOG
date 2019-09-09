@@ -23,21 +23,21 @@ public class LogerServiceImpl implements LogerService{
 	private DataSourceTransactionManager transactionManager; 
 	
 
-
+	//로거 정산내역 조회
 	@Override
 	public ArrayList<Calculate> selectLogerCalculate(Calculate c, Member m) {
 		return ld.selectLogerCalculate(sqlSession, c, m);
 	}
 
 
-
+	//로거 후원내역 조회
 	@Override
 	public ArrayList<Support> selectLogerSupport(Support s, Member m) {
 		return ld.selectLogerSupport(sqlSession, s, m);
 	}
 
 
-
+	//로거 마지막 계좌 조회
 	@Override
 	public ArrayList<Calculate> logerLastAccount(Calculate c, Member m) {
 		return ld.logerLastAccount(sqlSession, c, m);
@@ -48,12 +48,20 @@ public class LogerServiceImpl implements LogerService{
 	//로거채널개설
 	@Override
 	public int insertcreateChannel(Loger loger) {
-		
-		
-		
 		return ld.insertcreateChannel(sqlSession,loger);
 	}
 
+
+	//로거 기간별 후원내역 조회
+	@Override
+	public ArrayList<Support> selectLogerSupportDate(Support s, Member m) {
+		return ld.selectLogerSupportDate(sqlSession, s, m);
+	}
+
+
+	
+
+	
 
 
 

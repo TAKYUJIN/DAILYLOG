@@ -317,10 +317,10 @@ button[class*="btn"] {border: 0;}
 							
 							<button class="btn-gradient yellow mini" id="confirmacc" onclick="fnSearchAccessToken()" style="font-size:14px;">확인</button>
 							
-							<button class="btn-gradient yellow mini" style="display:none;font-size:14px;" id="changeacc" onclick="logerCalculateApply();">변경</button>
+							<button class="btn-gradient yellow mini" style="display:none;font-size:14px;" id="changeacc" onclick="location.href='logerCalculateApply.lo'">변경</button>
 						</div>
 						
-						<script>
+						<!-- <script>
 							/* function logerCalculateApply(){
 								var bankNm = $("#bankcodeID option:selected").text();
 								 console.log(bankNm); 
@@ -390,7 +390,7 @@ button[class*="btn"] {border: 0;}
 											}
 										});
 							}
-						</script>
+						</script> -->
 						
 					</td>
 					<td>&nbsp;</td>

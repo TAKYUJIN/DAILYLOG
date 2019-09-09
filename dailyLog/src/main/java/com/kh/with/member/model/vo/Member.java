@@ -16,11 +16,14 @@ public class Member implements java.io.Serializable{
 	private Date leaveDT;
 	private int remainPT;
 	private String status;
+	private Date mon;	//입력한 날짜
+	private Date day;	//오늘 날짜
 	
 	public Member() {}
 
 	public Member(int userNo, String userNm, String userId, String userPwd, String nickname, String phone,
-			String gender, String adultYN, String chYN, Date enrollDT, Date leaveDT, int remainPT, String status) {
+			String gender, String adultYN, String chYN, Date enrollDT, Date leaveDT, int remainPT, String status,
+			Date mon, Date day) {
 		super();
 		this.userNo = userNo;
 		this.userNm = userNm;
@@ -35,11 +38,9 @@ public class Member implements java.io.Serializable{
 		this.leaveDT = leaveDT;
 		this.remainPT = remainPT;
 		this.status = status;
+		this.mon = mon;
+		this.day = day;
 	}
-
-
-
-
 
 	public int getUserNo() {
 		return userNo;
@@ -145,12 +146,28 @@ public class Member implements java.io.Serializable{
 		this.status = status;
 	}
 
+	public Date getMon() {
+		return mon;
+	}
+
+	public void setMon(Date mon) {
+		this.mon = mon;
+	}
+
+	public Date getDay() {
+		return day;
+	}
+
+	public void setDay(Date day) {
+		this.day = day;
+	}
+
 	@Override
 	public String toString() {
 		return "Member [userNo=" + userNo + ", userNm=" + userNm + ", userId=" + userId + ", userPwd=" + userPwd
 				+ ", nickname=" + nickname + ", phone=" + phone + ", gender=" + gender + ", adultYN=" + adultYN
 				+ ", chYN=" + chYN + ", enrollDT=" + enrollDT + ", leaveDT=" + leaveDT + ", remainPT=" + remainPT
-				+ ", status=" + status + "]";
+				+ ", status=" + status + ", mon=" + mon + ", day=" + day + "]";
 	}
 
 	
