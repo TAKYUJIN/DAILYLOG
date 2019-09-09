@@ -1,5 +1,6 @@
 package com.kh.with.loger.controller;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -55,8 +56,11 @@ public class LogerController {
 	@RequestMapping(value="logerCalculate.lo")
 	public String selectLogerCalculate(Calculate c, Support s, Model model, HttpSession session) {
 		Member m = (Member) session.getAttribute("loginUser");
+		//로거 정산내역 조회
 		ArrayList<Calculate> cList = ls.selectLogerCalculate(c, m);
+		//로거 후원내역 조회
 		ArrayList<Support> sList = ls.selectLogerSupport(s, m);
+		//로거 마지막 계좌 조회
 		ArrayList<Calculate> aList = ls.logerLastAccount(c, m);
 
 		model.addAttribute("sList", sList);
@@ -75,7 +79,7 @@ public class LogerController {
 		return "loger/accountApi";
 	} 
 
-	//계좌인증 후 후원 내역으로 연결
+	//계좌인증 후 후원 내역으로 연결 계좌 내역 저장
 	@RequestMapping(value="logerCalculateApply.lo")
 	public ModelAndView logerCalculateApply(@RequestBody ArrayList<Object> account,Support s, ModelAndView mv, HttpSession session) {	
 		Member m = (Member) session.getAttribute("loginUser");
@@ -94,20 +98,21 @@ public class LogerController {
 	}
 
 	
-	//후원 내역 기간 선택
-	@RequestMapping("/datepic")
-	 public String datepic(HttpSession session, HttpServletRequest request){
+	//로거 기간별 후원 내역 조회
+	@RequestMapping("/datepic.lo")
+	 public String datepic(HttpSession session, HttpServletRequest request, @RequestParam(value="monthDate", required=false) Date mon, 
+			 @RequestParam(value="todayDate", required=false) Date day, Support s, Model model){
 		Member m = (Member) session.getAttribute("loginUser");
-	   String mon1 = request.getParameter("mon1");
-	   String mon2 = request.getParameter("mon2");
-	   String mon3 = request.getParameter("mon3");
-	   String day = request.getParameter("day");
-	   
-	   System.out.println("mon1   " + mon1);
-	   System.out.println("mon2   " + mon2);
-	   System.out.println("mon3   " + mon3);
-	   System.out.println("day    " + day);
-	   
+		System.out.println(m);
+		m.setMon(mon);
+		m.setDay(day);
+		
+		ArrayList<Support> dateList = ls.selectLogerSupportDate(s, m);
+		model.addAttribute("dateList", dateList);
+		model.addAttribute("s", s);
+		
+		
+		
 	  return "loger/selectLogerCalculate";
 	 }
 	

@@ -31,6 +31,17 @@
   		<result property="nickname" column="NICKNAME"/>
   	</resultMap>
 	
+	<resultMap type="Support" id="supportResultSet2">
+  		<id property="supNo" column="SUP_NO"/>
+  		<result property="userNo" column="USER_NO"/>
+  		<result property="chNo" column="CH_NO"/>
+  		<result property="supDT" column="SUP_DT"/>
+  		<result property="supPrice" column="SUP_PRICE"/>
+  		<result property="supTY" column="SUP_TY"/>
+  		<result property="nNo" column="RANK"/>
+  		<result property="nickname" column="NICKNAME"/>
+  	</resultMap>
+	
 	<resultMap type="com.kh.with.loger.model.vo.Loger" id="logerResultSet">
 		<id property="chNo" column="CH_NO"/>
   		<result property="userNo" column="USER_NO"/>
@@ -39,9 +50,6 @@
   		<result property="calApply" column="CAL_APPLY"/>
   		<result property="chDT" column="CH_DT"/>
   		<result property="chInfo" column="CH_INFO"/>
-	
-	
-	
 	</resultMap>
 	
 	
@@ -86,6 +94,19 @@
 	VALUES (CH_NO.NEXTVAL, #{userNo},  #{chNo} , 0, 'N' , SYSDATE , #{chNo})
 	</insert>  
   	
+  	
+  	<!-- 로거 기간별 후원 내역 조회 -->
+  	<select id="selectLogetSupportDate" resultMap="supportResultSet2">
+  	
+  	SELECT RANK, NICKNAME, SUP_NO, USER_NO, CH_NO, SUP_DT, SUP_PRICE, SUP_TY
+		FROM(SELECT ROW_NUMBER() OVER(ORDER BY S.SUP_DT DESC) RANK, M.NICKNAME, S.*
+		FROM SUPPORT S
+		JOIN MEMBER M ON(S.USER_NO = M.USER_NO)
+		WHERE M.USER_ID = #{userId})
+		WHERE SUP_DT BETWEEN TO_CHAR(TO_DATE(#{mon},'YYYY-MM-DD')) AND TO_CHAR(TO_DATE(#{day},'YYYY-MM-DD'))
+		<!-- AND RANK BETWEEN 1 AND 10 -->
+		ORDER BY RANK ASC
+  	</select>
   	
 
 </mapper>

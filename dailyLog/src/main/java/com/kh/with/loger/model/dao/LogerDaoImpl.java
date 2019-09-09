@@ -12,7 +12,7 @@ import com.kh.with.member.model.vo.Member;
 
 @Repository
 public class LogerDaoImpl implements LogerDao{
-
+	//로거 정산내역 조회
 	@Override
 	public ArrayList<Calculate> selectLogerCalculate(SqlSessionTemplate sqlSession, Calculate c, Member m) {
 		ArrayList<Calculate> cList = null;
@@ -21,7 +21,7 @@ public class LogerDaoImpl implements LogerDao{
 		
 		return cList;
 	}
-
+	//로거 후원내역 조회
 	@Override
 	public ArrayList<Support> selectLogerSupport(SqlSessionTemplate sqlSession, Support s, Member m) {
 		ArrayList<Support> sList = null;
@@ -30,7 +30,7 @@ public class LogerDaoImpl implements LogerDao{
 		
 		return sList;
 	}
-
+	//로거 마지막 계좌 조회
 	@Override
 	public ArrayList<Calculate> logerLastAccount(SqlSessionTemplate sqlSession, Calculate c, Member m) {
 		ArrayList<Calculate> aList = null;
@@ -48,6 +48,24 @@ public class LogerDaoImpl implements LogerDao{
 		
 		return sqlSession.insert("Loger.insertcreateChannel",loger);
 	}
+	
+	//로거 기간별 후원내역 조회
+	@Override
+	public ArrayList<Support> selectLogerSupportDate(SqlSessionTemplate sqlSession, Support s, Member m) {
+		ArrayList<Support> dateList = null;
+		System.out.println("온다고?");
+		
+		dateList = (ArrayList)sqlSession.selectList("Loger.selectLogetSupportDate", m);
+		
+		System.out.println("dateList : " + dateList);
+		
+		return dateList;
+		
+	}
+	
+	
+
+
 
 }
 	
