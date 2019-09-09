@@ -23,7 +23,7 @@
 </head>
 <body>
 <nav class="navbar navbar-default navbar-expand-lg navbar-light">
-<form action="FriendChat.mb" method="get">
+ 
 	<div class="navbar-header d-flex col" >
 		<img src="resources/images/logo.png" style="width:90px; padding-top:10px;">	
 	</div><br><br>
@@ -31,7 +31,7 @@
     <div id="chat_box"></div>
     <input type="text" id="msg">
     <button id="msg_process">전송</button>
- </form>
+ 
     <script src="http://localhost:82/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
