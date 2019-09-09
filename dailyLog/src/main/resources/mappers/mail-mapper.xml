@@ -11,55 +11,21 @@
 		<result property="friId" column="FRI_ID" />
 		<result property="status_yn" column="STATUS_YN" />
 	</resultMap>
-	<!-- <select id="GetKey" resultMap="mailResultSet" parameterType="MailVo">
-		UPDATE USERINFO SET USER_KEY =#{param2} WHERE user
-	</select>
-	친구 인증키 Y로~
-	<select id="alter_userKey" resultMap="mailResultSet" parameterType="MailVo">	
-	</select>
-	<insert id="regUser" parameterType="MailVO">
-		INSERT INTO FRIEND (USER_ID,FRI_ID) VALUES (#{userId},#{friId})
-	</insert>
-	
-	<insert id="createAuthKey">
-		INSERT INTO FRIEND VALUES(#{userId},#{friId},#{status_yn})
-	</insert>
-	 
-	 <update id="GetKey" parameterType="Map">
- 	 	UPDATE FRIEND SET STATUS_YN = #{param2} WHERE USER_ID= #{param1}
-	 </update>
-	 <update id="alter_userKEY" parameterType="Map">
- 	 	UPDATE FRIEND SET STATUS_YN ='Y' WHERE USER_ID=#{param1} AND STATUS_YN = #{param2}
-	 </update> -->
-<!-- <select id="GetKey" resultMap="mailResultSet" parameterType="MailVo">UPDATE USERINFO SET USER_KEY =#{param2} WHERE user</select> 친구 인증키 Y로~<select id="alter_userKey" resultMap="mailResultSet" parameterType="MailVo"></select> -->
-
+ 
 <insert id="friendemail" parameterType="MailVO">
 	INSERT INTO FRIEND VALUES (#{userNo},#{friId},#{userId},#{status_yn})</insert>
 	
-	<insert id="regUser" parameterType="MailVO">
-	INSERT INTO FRIEND VALUES (#{userNo},#{userId},#{friId},#{status_yn})
-<!-- 	INSERT INTO FRIEND VALUES (#{userNo},#{friId},#{userId},#{status_yn});
- --> 	</insert>
+<insert id="regUser" parameterType="MailVO">
+	INSERT INTO FRIEND VALUES (#{userNo},#{userId},#{friId},#{status_yn})</insert>
  
-	<!-- <insert id="regUser" parameterType="MailVO">
-  	INSERT INTO FRIEND VALUES (#{userNo},#{friId},#{userId},#{status_yn})
- 	</insert> -->
-<!-- <insert id="createAuthKey">INSERT INTO FRIEND VALUES(#{userId},#{friId},#{status_yn})</insert> -->
 
-<insert id="GetKey" parameterType="Map">
-<!-- UPDATE FRIEND SET STATUS_YN = #{param2} WHERE USER_ID= #{param1} -->
-<!-- INSERT INTO FRIEND (USER_ID,FRI_ID,STATUS_YN) VALUES(#{param1},#{friId},#{param2}) -->
-
+<update id="GetKey" parameterType="Map">
+ 
 UPDATE FRIEND SET STATUS_YN = #{param2} WHERE USER_ID= #{param1} 
-</insert>
-
+</update>
 
  <update id="alter_userKEY" parameterType="Map">
   UPDATE FRIEND SET STATUS_YN ='Y' WHERE USER_ID=#{param1}  AND STATUS_YN = #{param2} 
- 
- 
-  <!-- UPDATE FRINED SET STATUS_YN = CASE USER_ID WHEN #{userId} THEN 'Y' ELSE STATUS_YN END,WHERE USER_ID=#{param1} AND STATUS_YN = #{param2}  -->
-</update>
-
+ </update>
 
 </mapper>

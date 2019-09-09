@@ -13,8 +13,8 @@
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<style>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+ <style>
 /* #video1{
 /* margin-bottom:80px;
  */
@@ -27,6 +27,11 @@ margin:0px auto;
 margin-left:80px;
 }
 */
+.vi{
+margin-left:150px ;
+ margin-top:20px;
+ margin -bottom:30px;
+}
 img.fixed{
  
  vertical-align: top;
@@ -122,81 +127,19 @@ h2 span {
 </style>
 </head>
 <body>
-
-<!-- 							  <div class="video1">
-							 <h2>인기 동영상</h2>
- 									<div id="imagesection">
- 
-								Feature
-									<section >
-										<img src="resources/images/video.PNG"width="30px" height="220px">
-										<a href="#" ><img src="resources/images/three-dot.png"width="px" height="30px" class="fixed"></a>
-										 
-									</section>
-
-							</div></div>
- 		  
- 		 
- 		 
-							  <div class="video2">
-							 <h2>최근 동영상</h2>
- 									<div id="imagesection">
- 
-								Feature
-									<section >
-										<img src="resources/images/video.PNG"width="400px" height="220px">
-										<a href="#" ><img src="resources/images/three-dot.png"width="30px" height="30px" class="fixed"></a>
-										 
-									</section>
-
-							</div>
- 									<div id="imagesection">
- 
-								Feature
-									<section>
-										<img src="resources/images/video.PNG"width="400px" height="220px">
-																				<a href="#" ><img src="resources/images/three-dot.png"width="30px" height="30px"class="fixed" ></a>
-										
-										<header>
-											<h3>Nice! What is HTML5 UP?</h3>
-										</header>
-										<p>I started it as a way to both test my responsive tools and sharpen up my coding
-										and design skills a bit.</p>
-									</section>
-</div>
-
-  
-								Feature
-									<div id="imagesection">
-									<section>
-									
-									<img src="resources/images/video.PNG" width="400px" height="220px">
-																			<a href="#" ><img src="resources/images/three-dot.png"width="30px" height="30px"class="fixed"></a>
-									
-										<header>
-											<h3>What's this built with?</h3>
-										</header>
-										<p><strong>Responsive Tools</strong> is a simple set of tools for building responsive
-										sites and apps. All of my templates at are built using these tools.</p>
-									</section>
-									</div>
-
- 							 
-						</div> -->
-
+<jsp:include page="../common/mainBar.jsp"></jsp:include>	
 <div class="container">
-	<div class="row">
+	<%-- <div class="row">
 		<div class="col-md-9 col-center m-auto">
-		<c:forEach var="videoimage" items="${list}">
-			<h2> <span>  <b>인기동영상</b></span> </h2>
+		 <c:forEach var="videoimage" items="${list}"> 
+ 		<h2> <span>  <b>인기동영상</b></span> </h2>
 			<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
-				<!-- Carousel indicators -->
 				<ol class="carousel-indicators">
 					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 					<li data-target="#myCarousel" data-slide-to="1"></li>
 					<li data-target="#myCarousel" data-slide-to="2"></li> 
 				</ol>   
-				<script>
+	  	<!-- <script>
 					$("#mainSome").click(function(){
 						var userNo = $('#mainNo').val();
 						
@@ -214,25 +157,25 @@ h2 span {
 						});
 					});
 					
-				</script>
+				</script> --> 
 				<!-- Wrapper for carousel items -->
-				<div class="carousel-inner">
+				  <div class="carousel-inner">
 					<div class="item carousel-item active"> 
 						<div class="row">
-							<div class="col-sm-4"><div class="img-box"><h1 id="mainNo">${videoimage.userNo}</h1>
-							<a id="mainSome"><img src="resources/images/${videoimage.filepath}" width = "700px"  height="200px" alt=""></a></div></div>
+							<div class="col-sm-4"><div class="img-box"> 
+							<a href="video.vd"><img src="resources/images/${videoimage.filepath}" width = "500px"  height="200px" alt=""></a></div></div>
 							<a href="#" ><img src="resources/images/three-dot.png"width="30px" height="30px"class="fixed" ></a>
 										
 						</div>
 					</div>
 					<div class="item carousel-item">
 						<div class="row">
-							<div class="col-sm-4"><div class="img-box"><img src="resources/images/video22.PNG"  width = "700px"  height="200px"alt=""></div></div>
+							<div class="col-sm-4"><div class="img-box"><img src="resources/images/${videoimage.filepath}"  width = "700px"  height="200px"alt=""></div></div>
 						</div>
 					</div>
 					<div class="item carousel-item">
 						<div class="row">
-							<div class="col-sm-4"><div class="img-box"><img src="resources/images/video22.PNG"  width = "700px"  height="200px" alt=""></div></div>
+							<div class="col-sm-4"><div class="img-box"><img src="resources/images/${videoimage.filepath}"  width = "700px"  height="200px" alt=""></div></div>
 						</div>
 					</div>
 				</div>
@@ -246,7 +189,9 @@ h2 span {
 			</div></c:forEach>
 		</div>
 	</div>
-	<div class="row">
+	   --%>
+	
+	  <div class="row">
 		<div class="col-md-9 col-center m-auto">
 			<h2> <span><a href="video.vd"><b>구독동영상1</b></a></span> </h2>
 			<div id="myCarousel1" class="carousel slide" data-ride="carousel" data-interval="0">
@@ -283,7 +228,6 @@ h2 span {
 						</div>
 					</div>
 				</div>
-				<!-- Carousel controls -->
 				<a class="carousel-control left carousel-control-prev" href="#myCarousel1" data-slide="prev">
 					<i class="fa fa-chevron-left"></i>
 				</a>
@@ -298,13 +242,11 @@ h2 span {
 		<div class="col-md-9 col-center m-auto">
 			<h2> <span>  <b>구독동영상2</b></span> </h2>
 			<div id="myCarousel2" class="carousel slide" data-ride="carousel" data-interval="0">
-				<!-- Carousel indicators -->
 				<ol class="carousel-indicators">
 					<li data-target="#myCarousel2" data-slide-to="0" class="active"></li>
 					<li data-target="#myCarousel2" data-slide-to="1"></li>
 					<li data-target="#myCarousel2" data-slide-to="2"></li> 
 				</ol>   
-				<!-- Wrapper for carousel items -->
 				<div class="carousel-inner">
 					<div class="item carousel-item active"> 
 						<div class="row">
@@ -337,10 +279,20 @@ h2 span {
 				</a>
 				<a class="carousel-control right carousel-control-next" href="#myCarousel2" data-slide="next">
 					<i class="fa fa-chevron-right"></i>
-				</a>
-			</div>
-		</div>
-	</div>
-</div>
+	</a></div></div></div>
+	 <h1>vd</h1>
+	
+	<h2> <span><a href="video.vd"><b>구독동영상1</b></a></span> </h2>
+	<div id="listv">
+	<c:forEach var="videoimage" items="${list}">
+	<div class="vi"> 
+ 							<div id="vd" style ="margin:15px; float:left; border:2px solid #cccaca; "><a href="video.vd"><img src="resources/images/${videoimage.filepath}" width = "180px"  height="130px" alt="">
+							<a href="#" ><img src="resources/images/three-dot.png"width="23px" height="23px"class="fixed" ></a> 
+ 							<h5>${videoimage.vTitle }</h5>
+ 							
+ 							</a>
+							
+					</div>		</div>
+ </c:forEach></div>
 </body>
 </html>

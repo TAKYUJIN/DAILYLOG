@@ -36,7 +36,7 @@ img.fixed{
 	background: #ebebeb;
 }
 h2 {
-	color: #696969;
+	color: #ffffff;
 	font-size: 26px;
 	font-weight: 300;
 	text-align: center;
@@ -52,7 +52,7 @@ h2::after {
     margin: 0 auto;
     height: 1px;
     border-radius: 1px;
-    background: #d4d4d4;
+    background: #ffffff;
     left: 0;
     right: 0;
     bottom: 14px;
@@ -60,7 +60,7 @@ h2::after {
 h2 span {
 	display: inline-block;
 	padding: 0 25px;
-	background:#ebebeb;
+	background:#ffffff;
 	position:relative;
 	z-index:2;
 }
@@ -71,6 +71,7 @@ h2 span {
 .carousel {	
 	margin: 30px auto 50px;
 	padding: 0 68px;
+	
 }
 .carousel .item {
     text-align: center;
@@ -78,20 +79,21 @@ h2 span {
     height: 220px;
 }
  
-/* .carousel .item .img-box {
+  .carousel .item .img-box {
 	background: #fff;
 	padding: 9px;
-	box-shadow: 0 6px 20px -6px rgba(0,0,0,0.4);
-} */
+ 	box-shadow: 0 6px 20px -6px rgba(0,0,0,0);
+ 
+} 
 .carousel .item img {
     margin: 0 auto;
 }
 .carousel .carousel-control {
 	width: 68px;
-	background: none;
-}
+ }
 .carousel .carousel-control i {
     font-size: 28px;
+    background:#ffffff;
     position: absolute;
     top: 50%;
     display: inline-block;
@@ -99,27 +101,135 @@ h2 span {
     z-index: 5;
     left: 0;
     right: 0;
-	color: rgba(0, 0, 0, 0.8);
-    text-shadow: 0 3px 3px #e6e6e6, 0 0 0 #000;
+   text-shadow: 0 3px 3px #555, 0 0 0 #555; 
 }
 .carousel .carousel-indicators {
 	bottom: -40px;
+ 
 }
 .carousel-indicators li, .carousel-indicators li.active {
 	width: 10px;
 	height: 10px;
+	
 	border-radius: 50%;
 	margin: 1px 4px;
-	box-shadow: inset 0 2px 1px rgba(0,0,0,0.2);
-}
+/*   box-shadow: inset 0 2px 1px rgba(0,0,0,0);  
+ */}
 .carousel-indicators li {	
 	background: #999;
-	border-color: transparent;
-}
+/* 	border-color: transparent;
+ */}
 .carousel-indicators li.active {
 	background: #555;
 }
-
+  
+    #btncolor{
+    border:#ffffff ;
+    background:#ffffff;
+    
+    }
+  .form-inline {
+        display: inline-block;
+    }
+	.navbar-header.col {
+		padding: 0 !important;
+	}	
+	.navbar {		
+		background: #fff;
+		padding-left: 16px;
+		padding-right: 16px;
+		/* border-bottom: 1px solid #d6d6d6; */
+		box-shadow: 0 0 4px rgba(0,0,0,.1);
+	}
+	.nav-link img {
+		/* border-radius: 50%; */
+		width: 36px;
+		height: 36px;
+		margin: -8px 0;
+		float: left;
+		margin-right: 10px;
+	}
+	.navbar .navbar-brand {
+		color: #555;
+		padding-left: 0;
+		padding-right: 50px;
+		font-family: 'Merienda One', sans-serif;
+	}
+	.navbar .navbar-brand i {
+		font-size: 20px;
+		margin-right: 5px;
+	}
+	 
+	.navbar .nav-item i {
+		font-size: 18px;
+	}
+	.navbar .dropdown-item i {
+		font-size: 16px;
+		min-width: 22px;
+	}
+	.navbar .nav-item.open > a {
+		background: none !important;
+	}
+	.navbar .dropdown-menu {
+	/* 	border-radius: 1px;
+		border-color: #e5e5e5; */
+		/* box-shadow: 0 2px 8px rgba(0,0,0,.05); */
+	}
+	.navbar .dropdown-menu li a {
+		/* color: #777; */
+		padding: 8px 20px;
+		/* line-height: normal; */
+	}
+	.navbar .dropdown-menu li a:hover, .navbar .dropdown-menu li a:active {
+		color: #333;
+	}	
+	.navbar .dropdown-item .material-icons {
+		font-size: 21px;
+		/* line-height: 16px; */
+		vertical-align: middle;
+		margin-top: -2px;
+	}
+/* 	.navbar .badge {
+		background: #f44336;
+		font-size: 11px;
+/* 		border-radius: 20px;
+ */		position: absolute;
+		min-width: 10px;
+		padding: 4px 6px 0;
+		min-height: 18px;
+		top: 5px;
+	} */
+	/* .navbar ul.nav li a.notifications, .navbar ul.nav li a.messages {
+		position: relative;
+		margin-right: 10px;
+	}
+	.navbar ul.nav li a.messages {
+		margin-right: 20px;
+	}
+	.navbar a.notifications .badge {
+		margin-left: -8px;
+	}
+	.navbar a.messages .badge {
+		margin-left: -4px;
+	}	
+	.navbar .active a, .navbar .active a:hover, .navbar .active a:focus {
+		background: transparent !important;
+	} */
+	@media (min-width: 1200px){
+		.form-inline .input-group {
+			width: 300px;
+			margin-left: 30px;
+		}
+	}
+	@media (max-width: 1199px){
+		.form-inline {
+			display: block;
+			margin-bottom: 10px;
+		}
+		.input-group {
+			width: 100%;
+		}
+	}
 </style>
 </head>
 <body>
@@ -139,16 +249,25 @@ h2 span {
 				<!-- Wrapper for carousel items -->
 				<div class="carousel-inner">
 					<div class="item carousel-item active"> 
-						<div class="row">
-							<div class="col-sm-4"><div class="img-box">
-						<h1>${videoimage.userNo}</h1>
-					 
-								<a href="video.vd"><img src="resources/images/${videoimage.filepath}"  width = "700px"  height="200px" alt=""></a>
-						 
-							</div></div>
-							<a href="#" ><img src="resources/images/three-dot.png"width="30px" height="30px"class="fixed" ></a>
-										
-						</div>
+							<div style ="margin:15px; float:left;">
+								<a href="video.vd"><img src="resources/images/${videoimage.filepath}"  width = "500px"  height="200px" ></a>
+							</div>
+						<div style ="float:left;">
+							<!-- <button type="button" class="friendlist"  data-toggle="dropdown" id="btncolor" >
+								<img src="resources/images/three-dot.png"width="30px" height="30px">
+							</button>  
+							 -->
+							<nav class="navbar  navbar-expand-xl navbar-light">
+								<button type="button" class="friendlist"  data-toggle="dropdown" id="btncolor" >
+								<img src="resources/images/three-dot.png"width="30px" height="30px">
+							</button>
+				
+				<ul class="dropdown-menu">					
+					<li><a href="#" class="dropdown-item">동영상 신고</a></li>
+					<li><a href="#" class="dropdown-item">동영상 차단</a></li>
+				</ul>
+</nav>
+							</div>
 					</div>
 					<div class="item carousel-item">
 						<div class="row">
@@ -184,18 +303,14 @@ h2 span {
 					<div class="item carousel-item active"> 
 						<div class="row">
 							<div class="col-sm-4"><div class="img-box" > <img src="resources/images/video22.PNG" class="img-responsive img-fluid" alt="">
-						    <a href="#" ><img src="resources/images/three-dot.png"width="20px" height="20px"class="fixed" ></a></div></div> 
 							<div class="col-sm-4"><div class="img-box"> <img src="resources/images/video22.PNG" class="img-responsive img-fluid" alt="">
-							 <a href="#" ><img src="resources/images/three-dot.png"width="20px" height="20px"class="fixed" ></a></div></div>
 							<div class="col-sm-4"><div class="img-box"> <img src="resources/images/video22.PNG" class="img-responsive img-fluid" alt="">
-						    <a href="#" ><img src="resources/images/three-dot.png"width="20px" height="20px"class="fixed" ></a></div></div> 
  							
 						</div>
 					</div>
 					<div class="item carousel-item">
 						<div class="row">
 							<div class="col-sm-4"><div class="img-box"><img src="resources/images/video22.PNG" class="img-responsive img-fluid" alt=""></div></div>
-							
 							<div class="col-sm-4"><div class="img-box"><img src="resources/images/video22.PNG" class="img-responsive img-fluid" alt=""></div></div>
 							<div class="col-sm-4"><div class="img-box"><img src="resources/images/video22.PNG" class="img-responsive img-fluid" alt=""></div></div>
 						</div>
@@ -234,12 +349,8 @@ h2 span {
 					<div class="item carousel-item active"> 
 						<div class="row">
 							<div class="col-sm-4"><div class="img-box"><img src="resources/images/video22.PNG"  class="img-responsive img-fluid" alt="">
-							<a href="#" ><img src="resources/images/three-dot.png"width="20px" height="20px"class="fixed" ></a></div></div>
-							
 							<div class="col-sm-4"><div class="img-box"><img src="resources/images/video22.PNG" class="img-responsive img-fluid" alt="">
-							<a href="#" ><img src="resources/images/three-dot.png"width="20px" height="20px"class="fixed" ></a></div></div>
 							<div class="col-sm-4"><div class="img-box"><img src="resources/images/video22.PNG" class="img-responsive img-fluid" alt="">
-							<a href="#" ><img src="resources/images/three-dot.png"width="20px" height="20px"class="fixed" ></a></div></div>
 						</div>
 					</div>
 					<div class="item carousel-item1">
@@ -268,5 +379,19 @@ h2 span {
 	</div>
 </div>
 </form>
+
+
+
+<!-- <nav class="navbar navbar-default navbar-expand-xl navbar-light">
+			<li class="nav-item dropdown">
+				<a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#">Services  </a>
+				<ul class="dropdown-menu">					
+					<li><a href="#" class="dropdown-item">동영상 신고</a></li>
+					<li><a href="#" class="dropdown-item">동영상 차단</a></li>
+				</ul>
+			</li>
+</nav> -->
+	<jsp:include page="../common/footer.jsp"></jsp:include> 
+
 </body>
 </html>

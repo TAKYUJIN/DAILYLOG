@@ -242,6 +242,12 @@
     a:hover { color: black; text-decoration: none; color: black;}
    a:active { color: black; text-decoration: none; color: black;}
    
+   #logo,#f{
+   background:none;
+   border:none;
+	padding:0;
+   }
+   
 </style>
 <script type="text/javascript">
    // Prevent dropdown menu from closing when click inside the form
@@ -253,15 +259,18 @@
 <body>
 <nav class="navbar navbar-default navbar-expand-lg navbar-light">
 
-	<div class="navbar-header d-flex col" >
-		<img src="resources/images/logo.png" style="width:90px; padding-top:10px;">	
+	<div class="navbar-header d-flex col">
+	 <button type="button"  id="logo" onclick="location.href='home.mb'"><img src="resources/images/logo.png" id="logo" style="width:90px; padding-top:10px;">
+	</button>
 	</div>
 	<!-- Collection of nav links, forms, and other content for toggling -->
 	<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
 		<ul class="nav navbar-nav" >
 			<li class="nav-item">
-			 <button type="button" onclick="location.href='home.mb'" class="nav-link" style="padding-right:0px;">Home</button>
-			</li>
+
+<!-- 			 <button type="button" onclick="location.href='home.mb'" class="nav-link" style="padding-right:0px;">Home</button>
+ 
+ -->			</li>
 			<li class="nav-item"><a href="bookmark.mb" class="nav-link" style="padding-right:0px;" onclick="">북마크</a></li>			
 			<li class="nav-item"><a href="subscribe.mb" class="nav-link" style="padding-right:0px;">구독</a></li>	
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">최근 활동</a></li>	
@@ -289,16 +298,14 @@
 			</li>
 			<li class="nav-item">
 				 <!-- onclick="location.href='FriendList.mb'" -->
-			 <button type="button" class="friendlist"  data-toggle="dropdown"  >
-				<img src="resources/images/laugh.png" style="width:20px;">
+			 <button type="button" id="f" id="friendlist" class="btn_global link_login" data-toggle="dropdown"  >
+				<img src="resources/images/laugh.png" style="width:20px; margin:15px;">
 			</button>
 			<ul class="dropdown-menu form-wrapper">					
 					<li>
  						<div class="noti_text" align="center"><p>친구 리스트</p></div>
   <script type="text/javascript">
-var run =false;
-
-$('.friendlist').click(function(){
+$('#friendlist').click(function(){
 /* //	console.log(data);
 	if(run ==true){
 		return;
@@ -397,7 +404,7 @@ $.ajax({
   </form></table></div></div></div></div></div></div></li></ul></li>  
 
  
- 
+  
  
          <li class="nav-item">
          <a <%-- href="notification.mb" --%> data-toggle="dropdown" class="btn_global link_login" onclick="send2();">
@@ -488,6 +495,11 @@ $.ajax({
 		$("#tryMoney").select();
 			
 			
+	});
+	$('.friendlist').click(function(){
+
+	$('#logo').click(function(){
+	location.href="home.mb ";
 	});
 	</script>
 	<script>
