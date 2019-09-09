@@ -172,7 +172,7 @@
         <a href="myPage.me" class="list-group-item list-group-item-action active">
             <i class="fa fa-home"></i> 
         </a>
-        <a href="#" class="list-group-item list-group-item-action">
+        <a href="allim.me" class="list-group-item list-group-item-action">
             <i class="fa fa-camera"></i> 알림
         </a>
         <a href="#" class="list-group-item list-group-item-action">
