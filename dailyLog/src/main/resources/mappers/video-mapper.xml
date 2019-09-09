@@ -52,7 +52,7 @@
 	
 	<!-- 썸네일 정보 insert 쿼리 -->
 	<insert id="insertAttachment" parameterType="Loger">	
-	INSERT INTO ATTACHMENT
+	INSERT INTO ATTACHMENTs
 	VALUES(#{userNo}, AM_NO.NEXTVAL,  #{filepath}, SYSDATE ,  #{enrollNm} , 'NULL'  , '회원')
 	</insert>  
 

@@ -19,8 +19,10 @@ public interface LogerService {
 
 	ArrayList<Calculate> logerLastAccount(Calculate c, Member m);
 
-	//로거채널 개설
+	
+	//로거채널개설
 	int insertcreateChannel(Loger loger);
+
 
 
 }
