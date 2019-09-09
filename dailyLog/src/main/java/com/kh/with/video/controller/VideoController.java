@@ -263,17 +263,16 @@ public class VideoController {
 	@RequestMapping(value="home.mb" ,method=RequestMethod.GET)
 	public ModelAndView videoimagelist(ModelAndView mav)
 	{
-		mav.setViewName("/main/top");
-		
-		System.out.println("videocontroller : " + mav);
-		
+		mav.setViewName("/main/top1");
 		mav.addObject("list", videoservice.videoimagelist());
-		
-		//System.out.println("vid" + videoservice);
-		//System.out.println("mav"+mav);
-		
+		System.out.println("list"+mav);
 		return mav;
 	}
+	
+	
+	
+	
+	
 
 }
 
