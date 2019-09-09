@@ -27,6 +27,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kh.with.common.CommonUtils;
+import com.kh.with.main.model.service.MailSendService;
 import com.kh.with.member.model.exception.LoginException;
 import com.kh.with.member.model.service.MemberService;
 import com.kh.with.member.model.vo.Member;
@@ -41,6 +42,8 @@ public class MemberController {
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	
+	@Autowired
+	private MailSendService mailSender;
 
 	@RequestMapping(value = "loginbutton.me")
 	public String showMemberloginView() {
@@ -124,6 +127,16 @@ public class MemberController {
 
 	}
 
+	
+	@RequestMapping(value = "joinFinal.me", method = RequestMethod.GET)
+	public String key_alterConfirm(@RequestParam("userId") String userId, @RequestParam("status") String key) {
+
+		ms.alter_userKey_service(userId, key); // mailsender의 경우 @Autowired
+
+		return "member/memberJoin";
+	}
+	
+	
 	@RequestMapping("duplicationCheck.me")
 	public ModelAndView duplicationCheck(String userId, ModelAndView mv) {
 

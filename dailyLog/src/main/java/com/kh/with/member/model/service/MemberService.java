@@ -35,6 +35,9 @@ public interface MemberService {
 
 	void mailSendWithUserKey(String userId, String userNm, HttpServletRequest request);
 
+	int alter_userKey_service(String userId, String key);
+
+	
 
 	
 

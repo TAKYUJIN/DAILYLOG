@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.with.main.model.dao.MailDao;
 import com.kh.with.member.model.dao.MemberDao;
+import com.kh.with.member.model.dao.MemberMailDao;
 import com.kh.with.member.model.exception.LoginException;
 import com.kh.with.member.model.vo.Member;
 
@@ -37,6 +38,8 @@ public class MemberServiceImpl implements MemberService {
 	private DataSourceTransactionManager transactionManager;
 	@Autowired
 	private JavaMailSender mailSender;
+	
+
 
 
 	@Override
@@ -123,6 +126,8 @@ public class MemberServiceImpl implements MemberService {
 		if (lowerCheck) {
 			return sb.toString().toLowerCase();
 		}
+		
+		System.out.println(sb.toString());
 		return sb.toString();
 	}
 
@@ -133,28 +138,38 @@ public class MemberServiceImpl implements MemberService {
 	public String getKey(boolean lowerCheck, int size) {
 		this.lowerCheck = lowerCheck;
 		this.size = size;
+		
 		return init();
 	}
 
 
 	@Override
 	public void mailSendWithUserKey(String userId, String userNm, HttpServletRequest request) {
+		System.out.println("메일 왜안오냐");
+		//String id = (String) request.getAttribute(userId);
 		String key = getKey(false, 20);
-		md = (MemberDao) sqlSession.getMapper(MemberDao.class);
+		//System.out.println(userId  + ":::" +id);
+		//System.out.println("key : " + key);
+		
 		md.GetKey(userId, key); 
+		System.out.println(";;;;;;;;");
+		
+		
 		MimeMessage mail = mailSender.createMimeMessage();
-		String htmlStr = "<h2>안녕하세요 MS :p 민수르~ 입니다!</h2><br><br>" 
+		String htmlStr = "<h2>안녕하세요 데일리로그입니다!</h2><br><br>" 
 				+ "<h3>" + userNm + "님</h3>" + "<p>인증하기 버튼을 누르시면 로그인을 하실 수 있습니다 : " 
-				+ "<a href='http://localhost:8001" + request.getContextPath() + "/user/key_alter?userNm="+ userNm +"&user_key="+key+"'>인증하기</a></p>"
+				+ "<a href='http://localhost:8001" + request.getContextPath() + "/joinFinal.me?userId="+ userId +"&status="+key+"'>인증하기</a></p>"
 				+ "(혹시 잘못 전달된 메일이라면 이 이메일을 무시하셔도 됩니다)";
 		try {
-			mail.setSubject("[본인인증] MS :p 민수르님의 인증메일입니다", "utf-8");
+			mail.setSubject("[본인인증] 데일리로그의 인증메일입니다", "utf-8");
 			mail.setText(htmlStr, "utf-8", "html");
 			mail.addRecipient(RecipientType.TO, new InternetAddress(userId));
 			mailSender.send(mail);
 		} catch (MessagingException e) {
 			e.printStackTrace();
 		}
+		
+		System.out.println("durlsms? ");
 
 	}
 
@@ -162,7 +177,7 @@ public class MemberServiceImpl implements MemberService {
 			  
 			  int resultCnt = 0;
 			  
-			  md = sqlSession.getMapper(MemberDao.class); 
+			
 			  resultCnt = md.alter_userKEY(userId, status);
 			  
 			  return resultCnt;

@@ -2,6 +2,8 @@ package com.kh.with.member.model.dao;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpSession;
+
 import org.mybatis.spring.SqlSessionTemplate;
 
 import com.kh.with.member.model.exception.LoginException;
@@ -30,9 +32,13 @@ public interface MemberDao {
 
 	int delete_myPage(SqlSessionTemplate sqlSession, Member m);
 
-	int GetKey(String userId, String key);
+
 
 	int alter_userKEY(String userId, String status);
+
+	//int GetJoinKey(String userId, String key);
+
+	int GetKey(String userId, String key);
 
 
 
