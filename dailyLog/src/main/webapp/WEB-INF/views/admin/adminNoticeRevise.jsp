@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -160,35 +161,37 @@ table.table td .add {
 				<tbody>
 					<tr>
 						<td id="subject"><strong>NO</strong></td>
-						<td><input type="text" placeholder="공지번호" 
-						style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px; width:500px;"></td>
+						<td style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px; width:500px;">
+						<c:out value="${n.bNo}"/>
+						</td>
 
 					</tr>
 					<tr>
 						<td id="subject"><strong>Subject</strong></td>
 						<td><input type="text" placeholder="제목" 
-						style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px; width:500px;" ></td>
+						style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px; width:500px;" >
+						<c:out value="${n.bTitle}"/>
+						</td>
 
 					</tr>
 					<tr>
 						<td id="subject"><strong>Writer</strong></td>
-						<td><input type="text" placeholder="작성자"
-						style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px; width:500px;"></td>
+						<td style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px; width:500px;">
+						<c:set var="name" value="${n.userNo}" />
+							<c:if test="${name =v0 }"/>
+  							  <c:out value="관리자" /></td>
 					</tr>
 					<tr>
 						<td id="subject"><strong>Date</strong></td>
 						<td><input type="text" placeholder="작성일"
-						style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px; width:500px;"></td>
-					</tr>
-					<tr>
-						<td id="subject"><strong>파일첨부</strong></td>
-						<td><input type="file" placeholder="파일첨부"
 						style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px; width:500px;">
-						</td>
+						<c:out value="${n.createDt}"/></td>
 					</tr>
 					<tr>
 						<td colspan="2" align="center"><textarea rows = "20"  cols="150" 
-						style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;"></textarea></td>
+						style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;">
+						<c:out value="${n.bcontent}"/>
+						</textarea></td>
 					</tr>
 				</tbody>
 			</table>

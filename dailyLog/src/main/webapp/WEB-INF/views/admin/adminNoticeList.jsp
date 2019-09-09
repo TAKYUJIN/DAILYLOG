@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,36 +40,25 @@
 						<thead>
 							<tr>
 								<th>No</th>
-								<th>Category</th>
 								<th>Subject</th>
 								<th>Writer</th>
+								<th>views</th>
 								<th>Date</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr onclick="location.href='adminNoticeRevise.ad'">
-								<td>1</td>
-								<td>Thomas Hardy</td>
-								<td>89 Chiaroscuro Rd.</td>
-								<td>Portland</td>
-								<td>97219</td>
-
+							<c:forEach items="${adminNoticeList}" var="n">
+							<!-- <tr onclick="location.href='adminNoticeRevise.ad'"> -->
+							<tr onclick="noticeResult();">
+							 <td><c:out value="${n.bNo}"/></td>			
+								<td><c:out value="${n.bTitle}"/></td>	 	
+							<td><c:set var="name" value="${n.userNo}" />
+							<c:if test="${name =v0 }"/>
+  							  <c:out value="관리자" /></td>
+								<td><c:out value="${n.bcount}"/></td>								
+								<td><c:out value="${n.createDt}"/></td>
 							</tr>
-							<tr">
-								<td>2</td>
-								<td>Maria Anders</td>
-								<td>Obere Str. 57</td>
-								<td>Berlin</td>
-								<td>12209</td>
-
-							</tr>
-							<tr >
-								<td>3</td>
-								<td>Fran Wilson</td>
-								<td>C/ Araquil, 67</td>
-								<td>Madrid</td>
-								<td>28023</td>
-							</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>
@@ -82,6 +72,14 @@
 	</div>
 	<br>
 	<br>
+	<script>
+
+    function noticeResult(){
+    
+       document.location.href='adminNoticeRevise.ad';
+    }
+</script>
+	
 	<jsp:include page="../common/footer.jsp" />
 </body>
 </html>

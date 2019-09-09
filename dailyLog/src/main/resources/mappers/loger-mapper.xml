@@ -31,6 +31,7 @@
   		<result property="nickname" column="NICKNAME"/>
   	</resultMap>
 	
+	<!-- 로거채널개설 쿼리 -->
 	<resultMap type="com.kh.with.loger.model.vo.Loger" id="logerResultSet">
 		<id property="chNo" column="CH_NO"/>
   		<result property="userNo" column="USER_NO"/>

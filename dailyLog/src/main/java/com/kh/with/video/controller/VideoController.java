@@ -238,7 +238,7 @@ public class VideoController {
 
 
 		if(result > 0  && result1 > 0 ) {
-			return "redirect:index.jsp";
+			return "admin/adminNoticeList";
 		}else {
 			model.addAttribute("msg", "동영상 업로드실패");
 			return "common/errorPage";
