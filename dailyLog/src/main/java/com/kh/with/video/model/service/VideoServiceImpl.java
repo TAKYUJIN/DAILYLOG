@@ -71,6 +71,7 @@ public class VideoServiceImpl implements VideoService{
 	@Override
 	public List<Video> videoimagelist(){
 		System.out.println("videoServiceimpl");
+		
 		return vd.videoimagelist();
 	}
 

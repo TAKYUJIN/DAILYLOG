@@ -419,14 +419,14 @@ button[class*="btn"] {border: 0;}
 						<p>게시일 : 2019.09.03</p>
 					</div>
 				</td>
-				<td width="110px" height="60px"></td>
-				<td width="200px" height="60px">
-					<div align="right" style="margin-top:15%;">
-						<nav class="navbar navbar-default navbar-expand-lg navbar-light" style="border:none;">
-							<ul class="nav navbar-nav navbar-right ml-auto" style="width:265px;">			
+				
+				<td width="110px" height="60px">
+					<div style="margin-top:28%; align:right;">
+					<nav class="navbar navbar-default navbar-expand-lg navbar-light" style="border:none;">
+							<ul class="nav navbar-nav navbar-right ml-auto" style="width:130px;">			
 								<li class="nav-item">
 									<a href="#none" data-toggle="dropdown">
-										<img src="resources/images/dollar.png" style="width:15px;">
+										<img src="resources/images/dollar.png" style="width:15px; align:right;">
 									</a>
 									<ul class="dropdown-menu form-wrapper" style="width:280px;">					
 										<li>
@@ -522,6 +522,58 @@ button[class*="btn"] {border: 0;}
 								</li>
 								<li class="nav-item">
 									<a href="#none">
+									<img src="resources/images/share.png" style="width:15px; align:right;">
+									</a>
+									<ul class="dropdown-menu form-wrapper" style="width:280px;">					
+										<li>
+											<div class="form-group" id="sub">
+												<table class="noti_table">
+													<tr><a id="regSub">공유</a></tr><br>
+													<tr><a id="onceSub">일시후원</a></tr><br>
+												</table>
+											</div>
+											<!-- 정기후원 -->
+											<div id="rSub">
+												<div class="noti_text" align="center" style="margin-top:5%;"><b>정기후원</b></div>
+												<div align="left" style="margin-left:10%; margin-right:10%;">
+													<table class="noti_table">
+														<tr><td><small>채널명</small></td></tr>
+														<tr><td><b>채널명</b></td></tr>
+														<tr><td><small>포인트조회</small></td></tr>
+														<tr><td><input type="text" class="form-control" id="rPoint" placehold="포인트를 조회하세요" value="${point} 포인트" readonly></td></tr>
+														<tr>
+															<td>
+																<a href="selectPoint.vd" id="selectPoint" style="width:50px; text-align:center;" class="btn-gradient yellow mini">조회</a>
+																<a href="" id="chargeBtn" style="width:50px; text-align:center;" class="btn-gradient blue mini">충전</a>
+															</td>
+														</tr>
+																											
+														<tr><td><small>후원</small></td></tr>
+														<tr><td><input type="text" class="form-control" id="rPrice" placehold="후원금액을 입력하세요"></td></tr>
+														<tr>
+															<td>
+																<a style="width:50px;text-align:center;" class="btn-gradient yellow mini" id="cancle1">취소</a>
+																<a href="" id="rOk" style="width:50px; text-align:center;" class="btn-gradient blue mini">후원</a>
+															</td>
+														</tr>
+													</table>
+												</div>
+											</div>
+										</li>
+									</ul>		
+								</li>
+								
+								
+							</ul>
+						</nav>
+						</div>
+				</td>
+				<td width="200px" height="60px">
+					<div align="right" style="margin-top:15%;">
+						<nav class="navbar navbar-default navbar-expand-lg navbar-light" style="border:none;">
+							<ul class="nav navbar-nav navbar-right ml-auto" style="width:200px;">			
+								<li class="nav-item">
+									<a href="#none">
 									<img src="resources/images/heart_black.png" style="width:15px;">
 								</a>
 								</li>
@@ -596,7 +648,7 @@ button[class*="btn"] {border: 0;}
 				<!-- 비디오 -->
 				<td colspan="4" height="400px">
 					  <video id='my-video' class='video-js' controls autoplay="autoplay" preload='auto' width='800' height='450'
-						  poster='MY_VIDEO_POSTER.jpg' data-setup='{}' >
+						  poster='resources/images/logo.jpg' data-setup='{}' >
 						  <source src='resources/uploadFiles/oceans.mp4' type='video/mp4'>
 						  <source src='MY_VIDEO.webm' type='video/webm'>
 						  <p class='vjs-no-js'>
