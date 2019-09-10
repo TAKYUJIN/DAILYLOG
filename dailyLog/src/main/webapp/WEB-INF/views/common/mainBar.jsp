@@ -440,7 +440,6 @@ $.ajax({
    </div>
 </nav>
  </body>
-
  <script>
  $(document).ready(function(){
     $('#frilist').show();
@@ -459,8 +458,6 @@ $.ajax({
     
  });
  
- </script>
- <script>
  
  /* $("#notification").click(function(){
 	 $.ajax({
@@ -500,9 +497,10 @@ $.ajax({
 
 	$('#logo').click(function(){
 	location.href="home.mb ";
+	})
 	});
 	</script>
-	<script>
+	<%-- <script> 잠시 주석..나의 알림..
 		$(function(){
 			getConnection2();
 			
@@ -613,5 +611,5 @@ $.ajax({
 			function onClose2(event){
 				alert(event);
 			}
-		</script>
+		</script> --%>
 </html>               

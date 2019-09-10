@@ -3,6 +3,8 @@ package com.kh.with.video.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -41,14 +43,26 @@ import com.kh.with.video.model.vo.Video;
 
 	// 영상 클릭시 동영상 페이지로 이동
 	@RequestMapping(value = "video.vd")
-	public String showVideoView(HttpServletRequest request) {
-		System.out.println("LL" + request.getAttribute("userNo"));
-		int userNo = Integer.parseInt((String) request.getAttribute("userNo"));
-		System.out.println("userNO : " + userNo);
+	public ModelAndView showVideoView(HttpServletRequest request) {
+		
+		int userNo = Integer.parseInt(request.getParameter("no"));
+		System.out.println("LL : " + userNo);
+		
+		List<Video> list = vs.selectVideoInfo(userNo);
+		System.out.println("list : " + list);
+		
+		return new ModelAndView("redirect:/videoMain.vd");
+	}
+
+	@RequestMapping(value = "videoMain.vd")
+	public String showVideo(HttpServletRequest request) {
+		
+		System.out.println("videoMain");
+		
 		
 		return "video/videoMain";
 	}
-
+	
 	// 영상 클릭시 동영상 페이지로 이동
 	@RequestMapping(value = "regular.vd")
 	public String regularView() {

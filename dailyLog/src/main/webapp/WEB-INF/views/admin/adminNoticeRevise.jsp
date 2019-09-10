@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	<% %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,8 +19,6 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <style type="text/css">
 body {
@@ -136,6 +135,8 @@ table.table td .add {
 	padding: 6px 24px;
 	font-color: white;
 	border: none;
+	
+	
 }
 
 .buttonarea {
@@ -143,10 +144,19 @@ table.table td .add {
 	margin-left: 950px;
 	margin-top: 20px;
 }
+#delete{
+	 margin-left:-1050px; 
+}
+#bNo {
+
+	border:none;
+	background:white;
+}
 </style>
 <body>
 
 	<jsp:include page="../common/adminBar.jsp"></jsp:include>
+	
 	<div class="mainpage">
 		<div class="container">
 			<div class="table-wrapper">
@@ -158,50 +168,114 @@ table.table td .add {
 				<thead>
 
 				</thead>
+				
 				<tbody>
+				
 					<tr>
-						<td id="subject"><strong>NO</strong></td>
-						<td style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px; width:500px;">
-						<c:out value="${n.bNo}"/>
+						<td><strong>NO</strong></td> 
+						<td    style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px; width:500px;">
+						<input  disabled id ="bNo" type="text"  value=<c:out value="${result.bNo}" />>
+						<%-- <c:out value="${result.bNo}" /> --%>
 						</td>
 
 					</tr>
 					<tr>
-						<td id="subject"><strong>Subject</strong></td>
-						<td><input type="text" placeholder="제목" 
+						<td><strong>Subject</strong></td>
+						<td><input type="text" placeholder="제목"  id="bTitle" name="bTitle" value=<c:out value="${result.bTitle}" />
 						style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px; width:500px;" >
-						<c:out value="${n.bTitle}"/>
+						<%-- <c:out value="${result.bTitle}" /> --%>
 						</td>
 
 					</tr>
 					<tr>
-						<td id="subject"><strong>Writer</strong></td>
+						<td id="Writer"><strong>Writer</strong></td>
 						<td style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px; width:500px;">
-						<c:set var="name" value="${n.userNo}" />
+						<c:set var="name" value="${result.userNo}" />
 							<c:if test="${name =v0 }"/>
   							  <c:out value="관리자" /></td>
 					</tr>
 					<tr>
-						<td id="subject"><strong>Date</strong></td>
-						<td><input type="text" placeholder="작성일"
-						style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px; width:500px;">
-						<c:out value="${n.createDt}"/></td>
+						<td id="Date" ><strong>Date</strong></td>
+						<td><c:out value="${result.createDt}"/>
+						</td>
 					</tr>
 					<tr>
-						<td colspan="2" align="center"><textarea rows = "20"  cols="150" 
-						style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;">
-						<c:out value="${n.bcontent}"/>
-						</textarea></td>
+						<td colspan="2" align="center">
+						<textarea rows = "20"  cols="150"  wrap="soft"  id="bcontent" name="bcontent" 
+						style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;"><c:out value="${result.bcontent}"/></textarea></td>
 					</tr>
+					
 				</tbody>
 			</table>
 		</div>
 	</div>
 	<div class="buttonarea">
-		<button class="button1" onclick="location.href= #">작성</button>
-		<button class="button1">취소</button>
+		<button class="button1" type= "submit" id ="cancel">취소</button>
+		<button class="button1" type= "submit" id ="NoticeChange">수정</button>
+		<button class="button1" type="submit"  id ="delete">삭제</button>
 	</div>
+
 	<br><br>
+	
+	<!-- 수정 -->
+	<script>
+		$(document).ready(function(){
+			$("#NoticeChange").click(function(){
+				
+				var bTitle = $("#bTitle").val();
+				var bcontent = $("#bcontent").val();
+				var bNo = $("#bNo").val();
+				console.log(bTitle);
+				console.log(bcontent);
+				console.log(bNo);
+				$.ajax({
+					url:"adminNoticeChange.ad",
+					type:"post",
+					data:{bTitle:bTitle,bcontent:bcontent,bNo:bNo},
+						traditional:true,
+					success:function(data){
+						 location.href='adminNoticeList.ad' 
+					},
+					error:function(data){
+						console.log("실패!");
+					}
+				});	
+			});
+		});
+	</script>
+	
+	
+	<!-- 삭제 -->
+	<script>
+		$(document).ready(function(){
+			$("#delete").click(function(){
+
+				var bNo = $("#bNo").val();
+				
+				console.log(bNo);
+				$.ajax({
+					url:"adminNoticeDelete.ad",
+					type:"post",
+					data:{bNo:bNo},
+						traditional:true,
+					success:function(data){
+						 location.href='adminNoticeList.ad' 
+					},
+					error:function(data){
+						console.log("실패!");
+					}
+				});	
+			});
+		});
+	</script>
 	<jsp:include page="../common/footer.jsp" />
+
 </body>
 </html>
+
+
+
+
+
+
+

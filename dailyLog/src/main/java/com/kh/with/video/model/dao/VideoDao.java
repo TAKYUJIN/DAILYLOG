@@ -2,7 +2,7 @@ package com.kh.with.video.model.dao;
 
 
 import java.util.List;
-
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
@@ -32,6 +32,8 @@ public interface VideoDao {
 	
 	//썸네일  insert 메소드
 	int insertAttachment(SqlSessionTemplate sqlSession, Attachment attachment);
+	
+	List<Video> selectVideoInfo(SqlSessionTemplate sqlSession, int userNo);
 
 
 

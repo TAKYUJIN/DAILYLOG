@@ -60,6 +60,11 @@
 		SELECT * FROM VIDEO 
 	</select>
 
+	<select id="selectVideoInfo" parameterType="int" resultMap="videoResultSet">
+		SELECT *
+		FROM VIDEO
+		WHERE USER_NO = #{userNo}
+	</select>
 
 </mapper>
 
