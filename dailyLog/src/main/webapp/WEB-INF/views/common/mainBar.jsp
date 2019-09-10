@@ -36,9 +36,9 @@
    }   
    .navbar {
       background: #fff;
-      padding-left: 10px;
-      padding-right: 10px;
-      border-bottom: 1px solid #dfe3e8;
+        padding-left: 6px;
+      padding-right: 6px; 
+      /* border-bottom: 1px solid #dfe3e8; */
       border-radius: 0;
    }
    .nav-link img {

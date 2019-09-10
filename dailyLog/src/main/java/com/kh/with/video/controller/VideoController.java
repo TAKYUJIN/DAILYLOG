@@ -23,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.with.common.CommonUtils;
+import com.kh.with.main.model.vo.MailVo;
 import com.kh.with.member.model.service.MemberService;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.video.model.service.VideoService;
@@ -31,7 +32,7 @@ import com.kh.with.video.model.vo.Video;
 
 @Controller
 @SessionAttributes("loginUser")
-public class VideoController {
+ public class VideoController {
 	@Inject
 	VideoService videoservice;
 
@@ -274,19 +275,38 @@ public class VideoController {
 	}
 
 	//동영상 이미지 출력
-	@RequestMapping(value="home.mb" ,method=RequestMethod.GET)
-	public ModelAndView videoimagelist(ModelAndView mav)
-	{
-		mav.setViewName("/main/top1");
-		mav.addObject("list", videoservice.videoimagelist());
-		System.out.println("list"+mav);
-		return mav;
-	}
+	 
+	/*
+	 * @RequestMapping(value="home.mb" ,method=RequestMethod.GET) public
+	 * ModelAndView videoimagelist(@ModelAttribute("vl") ModelAndView mav) {
+	 * mav.setViewName("main/main"); mav.addObject("list",
+	 * videoservice.videoimagelist()); System.out.println("list"+mav);
+	 * System.out.println("vl"); return mav; }
+	 */
+	  
+	  @RequestMapping("home.mb")
+	  public String videoimagelist(@ModelAttribute("vl") Video video,Model model)
+	  { 
+		  
+		  System.out.println("video:"+video);
+	   return "main/main"; }
+	/*
+	 * @RequestMapping("guest") public String guest(@RequestParam("vNo")int
+	 * V_NO,@RequestParam("userNo")int USER_NO,
+	 * 
+	 * @RequestParam("vTitle")String V_TITLE,@RequestParam("chNm")String CH_NM,
+	 * 
+	 * @RequestParam("filepath")String FILEPATH ,Model model) {
+	 * 
+	 * 
+	 * Video video=new Video(); video.setvNo(V_NO); video.setUserNo(USER_NO);
+	 * video.setvTitle(V_TITLE); video.setChNm(CH_NM); video.setFilepath(FILEPATH);
+	 * System.out.println("video:"+video);
+	 * 
+	 * return "main/main"; }
+	 */
 	
-	
-	
-	
-	
+	  
 
 }
 
