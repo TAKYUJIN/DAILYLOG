@@ -81,7 +81,7 @@ body {
 						<td><c:out value="${s.supTY}"/></td>
 						<td><c:out value="${s.nickname}"/></td>
 						<td><fmt:formatNumber value="${s.supPrice}" pattern="#,###,###,###" /></td>
-						<td><fmt:formatDate pattern="yyyy-MM-dd" value="${s.supDT}"/></td> 
+						<td><c:out value="${s.supDT}"/></td> 
                     </tr>
                     </c:forEach>
                     

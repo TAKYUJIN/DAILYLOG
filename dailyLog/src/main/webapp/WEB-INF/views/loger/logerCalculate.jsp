@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -277,8 +278,9 @@ button[class*="btn"] {border: 0;}
                         <td><c:out value="${s.nNo}"/></td>
 						<td><c:out value="${s.supTY}"/></td>
 						<td><c:out value="${s.nickname}"/></td>
-						<td><fmt:formatNumber value="${s.supPrice}" pattern="#,###,###,###" /></td>
-						<td><fmt:formatDate pattern="yyyy-MM-dd" value="${s.supDT}"/></td> 
+						<td><fmt:formatNumber value="${s.supPrice}" pattern="#,###,###,###" />
+						</td>
+						<td>${fn:substring(s.supDT,0,10)}</td> 
                     </tr>
                     </c:forEach>
                     
@@ -300,14 +302,13 @@ button[class*="btn"] {border: 0;}
                     <c:forEach items="${cList}" var="c">
                     <tr>
                         <td>${c.nNo}</td>
-						<td><fmt:formatDate pattern="yyyy-MM-dd" value="${c.calSTDT}"/></td>
+						<td><c:out value="${c.calSTDT}"/></td>
 						<td><fmt:formatNumber value="${c.calPrice}" pattern="#,###,###,###" /></td>
 						<td>${c.calTY}</td>
                     </tr>
                     </c:forEach>
                 </tbody>
             </table>
-            
             <div id="pagingArea" align="center">
 			<c:if test="${ pi.currentPage <= 1 }">
 				[이전] &nbsp;
@@ -349,21 +350,18 @@ button[class*="btn"] {border: 0;}
             <div class="calculateBtn">
 			<b><input type="text" class="selectAccount" value="현재 계좌" style="width:70px;"></b>
 			<c:forEach items="${aList}" var="c">
+			<c:if test="${!empty c.account}">
 			<input type="text" class="selectAccount" value="${c.bankNm}" style="width:70px;">
 			<input type="text" class="selectAccount" value="${c.account}" style="width:130px;">
 			<input type="text" class="selectAccount" value="${c.accNm}" style="width:50px;"> 
 			
-			
-			<c:if test="${!empty c.account}">
+
 			<button class="cal_btn btn-gradient yellow mini" id="accountBtn" onclick="accountApi()" style="font-size:13px;">계좌변경</button>
 			<button type="button" class="cal_btn btn-gradient yellow mini" id="calculateBtn" onclick="selectSupport();" style="font-size:13px; margin-top:16px;">정산신청</button>
 			</c:if>
 			<c:if test="${empty c.account}">
-			<button class="btn-gradient yellow mini" id="calculateBtn" onclick="accountApi()" style="font-size:13px; margin-top:16px;">계좌등록</button>
+			<button class="btn-gradient yellow mini" id="calculateBtn" onclick="accountApi()" style="font-size:13px;">계좌인증</button>
 			</c:if>
-			
-			<!-- <input type="button" class="cal_btn" id="accountBtn" value="계좌변경" onclick="accountApi()"> -->
-			<!-- <input type="submit" class="cal_btn" id="calculateBtn" value="정산신청" onclick="accountApi()"> -->
 			</c:forEach>
 		</div>
         </div>

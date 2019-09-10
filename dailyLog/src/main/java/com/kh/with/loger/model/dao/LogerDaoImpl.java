@@ -1,6 +1,7 @@
 package com.kh.with.loger.model.dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
@@ -66,13 +67,20 @@ public class LogerDaoImpl implements LogerDao{
 	//로거 계좌번호 insert
 	@Override
 	public int updateLogerAccount(SqlSessionTemplate sqlSession, Member m) {
-		
-		System.out.println(m.getAccNm());
-		System.out.println(m.getAccount());
-		System.out.println(m.getBankNm());
 		return sqlSession.update("Loger.updateLogerAccount", m);
 	}
-	
+	/*
+	 * @Override public ArrayList<Integer>
+	 * selectLogetSupportPrice(SqlSessionTemplate sqlSession, Support s, Member m) {
+	 * int[] pList = null;
+	 * 
+	 * pList = (ArrayList) sqlSession.selectList("Loger.selectLogetSupportPrice",
+	 * m);
+	 * 
+	 * System.out.println("pList : " + pList);
+	 * 
+	 * return pList; }
+	 */
 	
 	
 	

@@ -32,6 +32,9 @@ public interface LogerService {
 	//로거 계좌 update
 	int updateLogerAccount(Member m);
 
+	//기간별 후원내역 조회 값
+	ArrayList<Integer> selectLogetSupportPrice(Support s, Member m);
+
 	
 
 

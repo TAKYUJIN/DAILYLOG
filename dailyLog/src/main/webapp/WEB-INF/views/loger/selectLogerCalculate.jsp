@@ -23,6 +23,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
 <style type="text/css">
 body {
 	color: #666;
@@ -32,7 +33,7 @@ body {
 
 table.table tr th, table.table tr td {
 	border-color: #e9e9e9;
-	text-align:center;
+	text-align: center;
 }
 
 table.table-striped tbody tr:nth-of-type(odd) {
@@ -104,13 +105,238 @@ table.table-striped tbody tr:nth-of-type(odd) {
 	top: 1px;
 	margin: 0 2px;
 }
+
+#calculateBtn {
+	float: right;
+	/* margin-left:210px; */
+}
+
+#accountBtn {
+	float: right;
+}
+
+.selectAccount {
+	margin-top: 20px;
+	border: none;
+	background: #FFF;
+}
+
+/* button */
+.btn, .btn-two {
+	margin: 9px;
+}
+
+.btn-gradient {
+	margin: 5px;
+}
+
+a[class*="btn"] {
+	text-decoration: none;
+}
+
+input[class*="btn"], button[class*="btn"] {
+	border: 0;
+}
+
+/* Here you can change the button sizes */
+.btn.large, .btn-two.large, .btn-effect.large {
+	font-size: 22px;
+}
+
+.btn.small, .btn-two.small, .btn-gradient.small, .btn-effect.small {
+	font-size: 14px;
+}
+
+.btn.mini, .btn-two.mini, .btn-gradient.mini, .btn-effect.mini {
+	font-size: 12px;
+}
+
+.btn.block, .btn-two.block, .btn-gradient.block, .btn-effect.block {
+	display: block;
+	width: 60%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center !important;
+}
+
+.btn-gradient.large {
+	font-size: 22px;
+}
+
+/* Colors for .btn and .btn-two */
+.btn.blue, .btn-two.blue {
+	background-color: #7fb1bf;
+}
+
+.btn.yellow, .btn-two.yellow {
+	background-color: #f0d264;
+}
+
+.rounded {
+	border-radius: 10px;
+}
+
+/* default button style */
+.btn {
+	position: relative;
+	border: 0;
+	display: inline-block;
+	text-align: center !important;
+	color: white;
+}
+
+.btn:active {
+	top: 4px;
+}
+
+/* color classes for .btn */
+.btn.blue {
+	box-shadow: 0px 4px #74a3b0;
+}
+
+.btn.blue:active {
+	box-shadow: 0 0 #74a3b0;
+	background-color: #709CA8;
+}
+
+.btn.yellow {
+	box-shadow: 0px 4px 0px #D1B757;
+}
+
+.btn.yellow:active {
+	box-shadow: 0 0 #ff4c4b;
+	background-color: #D6BB59;
+}
+
+/* Button two - I have no creativity for names */
+.btn-two {
+	color: white;
+	display: inline-block;
+	border: 1px solid rgba(0, 0, 0, 0.21);
+	border-bottom-color: rgba(0, 0, 0, 0.34);
+	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.34) inset, 0 2px 0 -1px
+		rgba(0, 0, 0, 0.13), 0 3px 0 -1px rgba(0, 0, 0, 0.08), 0 3px 13px -1px
+		rgba(0, 0, 0, 0.21);
+}
+
+.btn-two:active {
+	top: 1px;
+	border-color: rgba(0, 0, 0, 0.34) rgba(0, 0, 0, 0.21)
+		rgba(0, 0, 0, 0.21);
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.89), 0 1px rgba(0, 0, 0, 0.05)
+		inset;
+	position: relative;
+}
+/* 3D Button */
+.btn-3d {
+	position: relative;
+	display: inline-block;
+	font-size: 22px;
+	color: white !important;
+	margin: 20px 10px 10px;
+	border-radius: 6px;
+	text-align: center !important;
+	transition: top .01s linear;
+	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+}
+
+.btn-3d.yellow:hover {
+	background-color: #F0D264;
+}
+
+.btn-3d.blue:hover {
+	background-color: #699DD1;
+}
+
+.btn-3d:active {
+	top: 9px;
+}
+
+/* 3D button colors */
+.btn-3d.yellow {
+	background-color: #F0D264;
+	box-shadow: 0 0 0 1px #F0D264 inset, 0 0 0 2px rgba(255, 255, 255, 0.15)
+		inset, 0 8px 0 0 rgba(196, 172, 83, .7), 0 8px 0 1px rgba(0, 0, 0, .4),
+		0 8px 8px 1px rgba(0, 0, 0, 0.5);
+}
+
+.btn-3d.yellow:active {
+	box-shadow: 0 0 0 1px #F0D264 inset, 0 0 0 2px rgba(255, 255, 255, 0.15)
+		inset, 0 0 0 1px rgba(0, 0, 0, 0.4);
+}
+
+.btn-3d.blue {
+	background-color: #6DA2D9;
+	box-shadow: 0 0 0 1px #6698cb inset, 0 0 0 2px rgba(255, 255, 255, 0.15)
+		inset, 0 8px 0 0 rgba(110, 164, 219, .7), 0 8px 0 1px
+		rgba(0, 0, 0, .4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
+}
+
+.btn-3d.blue:active {
+	box-shadow: 0 0 0 1px #6191C2 inset, 0 0 0 2px rgba(255, 255, 255, 0.15)
+		inset, 0 0 0 1px rgba(0, 0, 0, 0.4);
+}
+/* Gradient buttons */
+.btn-gradient {
+	text-decoration: none;
+	color: white !important;
+	padding: 5px 10px !important; /* css버튼 크기 */
+	display: inline-block;
+	position: relative;
+	border: 1px solid rgba(0, 0, 0, 0.21);
+	border-bottom: 4px solid rgba(0, 0, 0, 0.21);
+	border-radius: 4px;
+	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+}
+
+.btn-gradient.blue {
+	background: rgba(102, 152, 203, 1);
+	background: -moz-linear-gradient(top, rgba(102, 152, 203, 1) 0%,
+		rgba(92, 138, 184, 1) 100%);
+	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(102, 152,
+		203, 1)), color-stop(100%, rgba(92, 138, 184, 1)));
+	background: -webkit-linear-gradient(top, rgba(102, 152, 203, 1) 0%,
+		rgba(92, 138, 184, 1) 100%);
+	background: -o-linear-gradient(top, rgba(102, 152, 203, 1) 0%,
+		rgba(92, 138, 184, 1) 100%);
+	background: -ms-linear-gradient(top, rgba(102, 152, 203, 1) 0%,
+		rgba(92, 138, 184, 1) 100%);
+	background: linear-gradient(to bottom, rgba(102, 152, 203, 1) 0%,
+		rgba(92, 138, 184, 1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6698cb',
+		endColorstr='#5c8ab8', GradientType=0);
+}
+
+.btn-gradient.yellow {
+	background: rgba(240, 210, 100, 1);
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(240, 210, 100, 1)),
+		to(rgba(229, 201, 96, 1)));
+	background: -webkit-linear-gradient(rgba(240, 210, 100, 1) 0%,
+		rgba(229, 201, 96, 1) 100%);
+	background: -moz-linear-gradient(rgba(240, 210, 100, 1) 0%,
+		rgba(229, 201, 96, 1) 100%);
+	background: -o-linear-gradient(rgba(240, 210, 100, 1) 0%,
+		rgba(229, 201, 96, 1) 100%);
+	background: linear-gradient(rgba(240, 210, 100, 1) 0%,
+		rgba(229, 201, 96, 1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0d264',
+		endColorstr='#e5c960', GradientType=0);
+}
+
+.btn-gradient.yellow:active {
+	background: #DBC05B;
+}
+
+.btn-gradient.blue:active {
+	background: #608FBF;
+}
 </style>
 </head>
 <body>
 	<jsp:include page="../common/mainBar.jsp"></jsp:include>
 	<div class="selectSupport">
-		<form action="datepic.lo" method="post" class="selectLogerCalculateForm"
-			float="left;">
+		<form action="" method="post" class="selectLogerCalculateForm" float="left;">
 			<div class="table-wrapper">
 				<table class="table table-striped">
 					<tr>
@@ -122,23 +348,66 @@ table.table-striped tbody tr:nth-of-type(odd) {
 						<hr>
 					</tr>
 					<div style="float: right;">
-						<label>기간</label>&nbsp; <span class="chkbox"> 
-						<input type="button" name="dateType" id="dateType1" value="1개월" /> <label for="dateType1"></label></span> 
-						<span class="chkbox"> <input type="button" name="dateType" id="dateType2" value="2개월"/> 
-						<label for="dateType2"></label></span> 
-						<span class="chkbox"> <input type="button" name="dateType" id="dateType3" value="3개월"/> 
-						<label for="dateType3"></label>
-						</span>
-						<input type="date" id="monthDate" name="monthDate"/>
-					  <input type="date" id="todayDate" name="todayDate"/>
-					  <input type="submit" name="selectDate" id="selectDate" onclick="search();" value="조회">
-					
-					<script>
-					  document.getElementById('todayDate').value = new Date().toISOString().substring(0, 10);
-					</script>
-						
-						<script>
+						<label>기간</label>&nbsp; <span class="chkbox"> <input
+							type="button" name="dateType" id="dateType1" value="1개월"
+							class="btn-gradient yellow mini" style="font-size: 14px;" /> <label
+							for="dateType1"></label></span> <span class="chkbox"> <input
+							type="button" name="dateType" id="dateType2" value="2개월"
+							class="btn-gradient yellow mini" style="font-size: 14px;" /> <label
+							for="dateType2"></label></span> <span class="chkbox"> <input
+							type="button" name="dateType" id="dateType3" value="3개월"
+							class="btn-gradient yellow mini" style="font-size: 14px;" /> <label
+							for="dateType3"></label>
+						</span> <input type="date" id="monthDate" name="monthDate" /> <input
+							type="date" id="todayDate" name="todayDate" /> <input
+							type="button" name="selectDate" id="selectDate" value="조회"
+							class="btn-gradient yellow mini" style="font-size: 14px;">
+					</div>
+					<tr><br></tr>
+					<tr><br></tr>
+					<thead>
+						<tr>
+							<th class="calculate_th">No</th>
+							<th class="calculate_th">구분</th>
+							<th class="calculate_th">후원자</th>
+							<th class="calculate_th">후원금액</th>
+							<th class="calculate_th">후원날짜</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${dateList}" var="s">
+							<tr>
+								<td><c:out value="${s.nNo}" /></td>
+								<td><c:out value="${s.supTY}" /></td>
+								<td><c:out value="${s.nickname}" /></td>
+								<td><fmt:formatNumber value="${s.supPrice}" pattern="#,###,###,###" /></td>
+								<td><fmt:formatDate pattern="yyyy-MM-dd" value="${s.supDT}" /></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+				
+				<button type="button" class="cal_btn btn-gradient yellow mini"
+					id="accountBtn" onclick="logerCalculate();"
+					style="font-size: 13px; margin-top: 16px;">취소</button>
+				<button class="cal_btn btn-gradient yellow mini" id="calculateBtn"
+					style="font-size: 13px; margin-top: 16px;">정산신청</button>
 		
+				
+				
+				
+			</div>
+		</form>
+	</div>
+	<jsp:include page="../common/footer.jsp"></jsp:include>
+</body>
+<script>
+		document.getElementById('todayDate').value = new Date().toISOString().substring(0, 10);
+	
+		$(document).on("click",".class",function() {
+			});
+		
+		$(function(){
 			$("#dateType1").click(function(){
 				
 				var day = new Date();
@@ -147,14 +416,7 @@ table.table-striped tbody tr:nth-of-type(odd) {
 				mon.setMonth(monthOfYear - 1);
 				document.getElementById('monthDate').value = mon.toISOString().substring(0, 10);
 			});
-				/* 
 				
-				mon1.toISOString().substring(0, 10);
-				
-				console.log(mon1);
-				$("#monthDate").val('mon1'); */
-            /* location.href='datepic.lo?mon1='+mon1+'&&day='+day; */
-
 			
 		$("#dateType2").click(function(){
 				
@@ -173,124 +435,88 @@ table.table-striped tbody tr:nth-of-type(odd) {
 			mon.setMonth(monthOfYear - 3);
 			document.getElementById('monthDate').value = mon.toISOString().substring(0, 10);
 		});
-		           
-           /* location.href='datepic.lo?mon3='+mon3+'&&day='+day; */
 
+		 $("#selectDate").click(function(){
+	    		var monthDate =$("#monthDate").val();
+	    		var todayDate = $("#todayDate").val();
+	    		console.log(monthDate);
+	    		console.log(todayDate);
+	    		$.ajax({
+	    			url:"datepic.lo",
+	    			data:{"monthDate":monthDate,"todayDate":todayDate},
+	    			type:"post",
+	    			success:function(data){
+	    				console.log('succ');
+	    				console.log(data);
+	    				var $dateTbody = $(".table-striped tbody");
+	    				/* var $pagingDiv1 = $("#pagingArea div"); */
+	    				$dateTbody.html(""); 
+	    				/* $pagingDiv1.html(""); */
+	    				for(var i = 0; i < data["dateList"].length; i++){
+	    					var $tr = $("<tr>");
+	    					var $nNo = $("<td>").text(data["dateList"][i].nNo);
+	    					var $supTY = $("<td>").text(data["dateList"][i].supTY);
+	    					var $nickname = $("<td>").text(data["dateList"][i].nickname);
+	    					var $supPrice = $("<td>").text(numeral(data["dateList"][i].supPrice).format('0,0')+"원");
+	    					var $supDT = $("<td>").text(data["dateList"][i].supDT);
+	    					var $td = $("<td>");
+	    					var result = $supDT.text().substr(0,10);
+	    					$td.append(result)
+	    					$tr.append($nNo);
+	    					$tr.append($supTY);
+	    					$tr.append($nickname);
+	    					$tr.append($supPrice);
+	    					$tr.append($td);
+	    					$dateTbody.append($tr); 
+	    				}
+	    			},
+	    			error : function(){
+	    				console.log('error');
+	    			}
+	    	})
+		 });
+		 
+		 $("#calculateBtn").click(function(){
+	    		var monthDate =$("#monthDate").val();
+	    		var todayDate = $("#todayDate").val();
+	    		$.ajax({
+	    			url:"logerCalculateApply.lo",
+	    			data:{"monthDate":monthDate,"todayDate":todayDate},
+	    			type:"post",
+	    			success:function(data){
+	    				alert("정산 신청이 완료되었습니다.");
+	    			},
+	    			error : function(){
+	    				console.log("알 수 없는 에러로 정산 신청이 불가능 합니다.");
+	    			}
+	    	})
+		 });
+		 
+		 
+		 function logerCalculate(){
+				location.href="logerCalculate.lo";
+			};
 			
-		
-		function search(){
-			var month = $("#monthDate").val();
-			console.log(month);
-			var day = $("#todayDate").val();
-			console.log(day);
-			/* location.href="datepic.lo?month="+month+"&day="day; */
-		}
-			 
-		</script>
-
-						
-
-						<%-- <span class="dset">
-                   <input type="date" class="datepicker inpType" name="startdate" id="searchStartDate" style="border:1px solid #ccc;" value="${adminBuildEnergyVo.startdate }" >               </span>
-               <span class="demi">~</span>
-               <!-- 종료일 -->
-               <span class="dset">
-                 <input type="date" class="datepicker inpType" name="enddate" id="searchEndDate" style="border:1px solid #ccc;" value="${adminBuildEnergyVo.enddate }" >
-               </span>
-               <span>
-                   	<input type="button" name="selectDate" id="selectDate"  onclick="search();" value="조회"> 
-                   </span>--%>
-
-						<!-- <input type="text" id="datepicker" float="right;">-
-			<input type="text" id="datepicker2" float="right;"> -->
-					</div>
-					<tr>
-						<br>
-					</tr>
-					<tr>
-						<br>
-					</tr>
-					<thead>
-						<tr>
-							<th class="calculate_th">No</th>
-							<th class="calculate_th">구분</th>
-							<th class="calculate_th">후원자</th>
-							<th class="calculate_th">후원금액</th>
-							<th class="calculate_th">후원날짜</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach items="${dateList}" var="s">
-							<tr>
-								<td><c:out value="${s.nNo}" /></td>
-								<td><c:out value="${s.supTY}" /></td>
-								<td><c:out value="${s.nickname}" /></td>
-								<td><fmt:formatNumber value="${s.supPrice}"
-										pattern="#,###,###,###" /></td>
-								<td><fmt:formatDate pattern="yyyy-MM-dd" value="${s.supDT}" /></td>
-							</tr>
-						</c:forEach>
-
-					</tbody>
-				</table>
-
-				<!-- 예비용 페이징 ui -->
-				<div class="text-center">
-					<ul class="pagination justify-content-center">
-						<li class="page-item disabled"><a href="#"><i
-								class="fa fa-long-arrow-left"></i> Previous</a></li>
-						<li class="page-item"><a href="#" class="page-link">1</a></li>
-						<li class="page-item"><a href="#" class="page-link">2</a></li>
-						<li class="page-item active"><a href="#" class="page-link">3</a></li>
-						<li class="page-item"><a href="#" class="page-link">4</a></li>
-						<li class="page-item"><a href="#" class="page-link">5</a></li>
-						<li class="page-item"><a href="#" class="page-link">Next
-								<i class="fa fa-long-arrow-right"></i>
-						</a></li>
-					</ul>
-				</div>
+			$("#calculateBtn").click(function(){
+				var month = $("#monthDate").val();
+				var day = $("#todayDate").val();
 				
-				<button class="cal_btn btn-gradient yellow mini" id="accountBtn" onclick='location.href="logerCalculate.lo"' style="font-size:13px;">취소</button>
-				<button class="cal_btn btn-gradient yellow mini" id="calculateBtn" onclick="" style="font-size:13px; margin-top:16px;">정산신청</button>
+				$.ajax({
+					url:"logerCalculateApply.lo",
+					type:"post",
+					data:{month:month, day:day},
+					success:function(data){
+						alert('됐다구요');
+						 
+					},
+					error:function(){
+						alert('연결 실패!');
+					}
+				})
+			});
+	    		
+	    		});
+</script>
+
 				
-			</div>
-		</form>
-	</div>
-	<jsp:include page="../common/footer.jsp"></jsp:include>
-</body>
-<!-- <script>
-function search(){
-	$(function(){
-		var start =$("input[id='searchStartDate']").val();
-		var end = $("input[id='searchEndDate']").val();
-		$.ajax({
-			url:"orderDate.mp",
-			data:{"start":start,"end":end},
-			type:"post",
-			success:function(data){
-				var $dateTbody = $(".dateBoard tbody");
-				var $pagingDiv1 = $("#pagingArea div");
-				$dateTbody.html(""); 
-				$pagingDiv1.html("");
-				for(var i = 0; i < data["dateList"].length; i++){
-					var $tr = $("<tr class='od'>");
-					var $ono = $("<td>").text(data["dateList"][i].ono);
-					var $oDate = $("<td>").text(data["dateList"][i].oDate);
-					var $pname = $("<td>").text(data["dateList"][i].pname);
-					var $br = $("</br>");
-					var $btn_od = $("<button class='btn_od'>").text("주문상세");
-					var $pstatus = $("<td>").text(data["dateList"][i].pstatus);
-					var ono1 = data["dateList"][i].ono;
-					 $btn_od.attr("onclick",'searchDate('+ono1+')');
-					$tr.append($ono);
-					$tr.append($oDate);
-					$tr.append($pname);
-					$pname.append($br);
-					$pname.append($btn_od);
-					$tr.append($pstatus);
-					$dateTbody.append($tr);
-				}
-
-</script> -->
-
 </html>

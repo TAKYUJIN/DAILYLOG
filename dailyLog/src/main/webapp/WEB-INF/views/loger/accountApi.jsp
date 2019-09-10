@@ -283,7 +283,7 @@ button[class*="btn"] {border: 0;}
 							<option value='238'>대우증권
 							
 						</select> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 예금주 &nbsp; <input type="text"
-							size="10" name="accpnm" id="accpnm" class="accountNm">
+							size="10" name="accpnm" id="accpnm">
 						</div>
 					</td>
 					<td style="width: 200px;">&nbsp;</td>
@@ -297,7 +297,7 @@ button[class*="btn"] {border: 0;}
 					<td>
 						<div style="border:1px solid #ddd; background:#f8f8f8; padding:10px; margin-left:10px; width:440px; height:50px;">
 							계좌번호 &nbsp;<input type="text" size="25"
-							placeholder="'-'를 제외하고 입력하세요." name="accnum" id="accnum" class="account">
+							placeholder="'-'를 제외하고 입력하세요." name="accnum" id="accnum">
 							&nbsp;
 							<input type="checkbox" id="sbm-flag" name="checkacc"
 							style="display:none">
@@ -329,8 +329,8 @@ button[class*="btn"] {border: 0;}
 							} */
 							
 							function logerCalculateApply() {
-								var account = $(".account").val();
-								var accountNm = $(".accountNm").val();
+								var account = $("#accnum").val();
+								var accountNm = $("#accpnm").val();
 								var bankcode = $("#bankcode").val();
 								
 								console.log(account);
@@ -338,11 +338,12 @@ button[class*="btn"] {border: 0;}
 								console.log(bankcode);
 								
 								window.close();
-								window.opener.location.href="logerCalculateApply.lo?account="+account+"&&accountNm="+accountNm+"&&bankcode="+bankcode;
+								window.opener.location.href="logerLastAccount.lo?account="+account+"&&accountNm="+accountNm+"&&bankcode="+bankcode;
 								
 							}
 						</script> 
 						
+					
 					</td>
 					<td>&nbsp;</td>
 				</tr>
@@ -431,16 +432,15 @@ button[class*="btn"] {border: 0;}
 		</table>
 
 	</div>
-
 	<script type="text/javascript">
 		$.support.cors = true;
 		var reqDate = new Date();
 		var year = reqDate.getFullYear() +"";
-		var month = (reqDate.getMonth() + 1) > 10?reqDate.getMonth() + 1 + "":"0" + (reqDate.getMonth() + 1);
-		var date = (reqDate.getDate() > 10?reqDate.getDate() + "":"0" + reqDate.getDate());
+		var month = (reqDate.getMonth() + 1) > 9?reqDate.getMonth() + 1 + "":"0" + (reqDate.getMonth() + 1);
+		var date = (reqDate.getDate() > 9?reqDate.getDate() + "":"0" + reqDate.getDate());
 		var hour = reqDate.getHours() > 9?reqDate.getHours() + "":"0" + reqDate.getHours();
-		var min = reqDate.getMinutes() > 10?reqDate.getMinutes() + "":"0" + reqDate.getMinutes();
-		var sec = reqDate.getSeconds() > 10?reqDate.getSeconds() + "":"0" + reqDate.getSeconds();
+		var min = reqDate.getMinutes() > 9?reqDate.getMinutes() + "":"0" + reqDate.getMinutes();
+		var sec = reqDate.getSeconds() > 9?reqDate.getSeconds() + "":"0" + reqDate.getSeconds();
 		
 		var currentTime = year + month + date + hour + min + sec;
 		console.log(currentTime)

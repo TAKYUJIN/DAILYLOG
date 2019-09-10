@@ -1,13 +1,11 @@
 package com.kh.with.loger.model.vo;
 
-import java.sql.Date;
-
 public class Support {
 	private int nNo;		//게시판번호
 	private int supNo;		//후원번호
 	private int userNo;		//회원번호
 	private int chNo;		//채널번호
-	private Date supDT;		//후원날짜
+	private String supDT;		//후원날짜
 	private int supPrice;	//후원금액
 	private String supTY;	//후원종류
 	private String nickname;
@@ -18,7 +16,8 @@ public class Support {
 
 
 
-	public Support(int nNo, int supNo, int userNo, int chNo, Date supDT, int supPrice, String supTY, String nickname) {
+	public Support(int nNo, int supNo, int userNo, int chNo, String supDT, int supPrice, String supTY,
+			String nickname) {
 		super();
 		this.nNo = nNo;
 		this.supNo = supNo;
@@ -80,13 +79,13 @@ public class Support {
 
 
 
-	public Date getSupDT() {
+	public String getSupDT() {
 		return supDT;
 	}
 
 
 
-	public void setSupDT(Date supDT) {
+	public void setSupDT(String supDT) {
 		this.supDT = supDT;
 	}
 
@@ -134,7 +133,5 @@ public class Support {
 				+ ", supPrice=" + supPrice + ", supTY=" + supTY + ", nickname=" + nickname + "]";
 	}
 
-	
-	
-	
+
 }

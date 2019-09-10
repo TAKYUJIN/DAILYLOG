@@ -64,6 +64,12 @@ public class LogerServiceImpl implements LogerService{
 	public int updateLogerAccount(Member m) {
 		return ld.updateLogerAccount(sqlSession, m);
 	}
+
+
+	@Override
+	public ArrayList<Integer> selectLogetSupportPrice(Support s, Member m) {
+		return ld.selectLogetSupportPrice(sqlSession, s, m);
+	}
 	
 
 
