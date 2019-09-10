@@ -48,8 +48,7 @@
 						</thead>
 						<tbody>
 							<c:forEach items="${adminNoticeList}" var="n">
-							<!-- <tr onclick="location.href='adminNoticeRevise.ad'"> -->
-							<tr onclick="noticeResult();">
+							<tr onclick="noticeResult(${n.bNo});">
 							 <td><c:out value="${n.bNo}"/></td>			
 								<td><c:out value="${n.bTitle}"/></td>	 	
 							<td><c:set var="name" value="${n.userNo}" />
@@ -73,12 +72,12 @@
 	<br>
 	<br>
 	<script>
-
-    function noticeResult(){
-    
-       document.location.href='adminNoticeRevise.ad';
-    }
-</script>
+		function noticeResult(bNo){
+		
+			location.href='adminNoticeRevise.ad?bNo='+bNo;
+			
+		}
+	</script>
 	
 	<jsp:include page="../common/footer.jsp" />
 </body>

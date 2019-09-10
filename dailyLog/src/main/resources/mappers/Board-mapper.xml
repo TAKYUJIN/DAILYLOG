@@ -5,7 +5,7 @@
 
 <mapper namespace="Board">
 
-	<resultMap type="com.kh.with.admin.model.vo.Board"
+	<resultMap type="Board"
 		id="BoardResultSet">
 
 		<id property="bNo" column="B_NO" />
@@ -33,7 +33,47 @@
 	INSERT INTO BOARD
    	VALUES( B_NO.NEXTVAL, #{bTitle}, 0, #{bcontent}, 0, SYSDATE, NULL, DEFAULT)
 	</insert> 
-
+	
+	<!-- 공지사항 select 쿼리  -->
+	<select id ="adminNoticeRevise" parameterType="Board" resultMap="BoardResultSet">
+	SELECT *
+	FROM BOARD
+	WHERE B_NO = #{bNo}
+	</select>
+	<!-- 공지사항 update 쿼리  -->
+	<update id="adminNoticeChange" parameterType="Board">
+	UPDATE BOARD SET BTITLE = #{bTitle}, BCONTENT = #{bcontent} , CREATE_DT = SYSDATE , MODIFY_DT= SYSDATE
+	WHERE B_NO = #{bNo}
+	</update>
+	
+	<!-- 공지사항 삭제 -->
+	<delete id="adminNoticeDelete" parameterType="Board">
+	DELETE FROM BOARD 
+	WHERE B_NO = #{bNo}
+	</delete>
 	
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
