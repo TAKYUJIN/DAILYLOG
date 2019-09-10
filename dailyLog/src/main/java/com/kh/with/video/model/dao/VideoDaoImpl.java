@@ -3,6 +3,7 @@ package com.kh.with.video.model.dao;
 
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -58,6 +59,12 @@ public class VideoDaoImpl implements VideoDao{
 		
 		
 		return sqlSession.insert("Video.insertAttachment",attachment);
+	}
+	
+	@Override
+	public List<Video> selectVideoInfo(SqlSessionTemplate sqlSession, int userNo) {
+		
+		return sqlSession.selectList("Video.selectVideoInfo", userNo);
 	}
 
 

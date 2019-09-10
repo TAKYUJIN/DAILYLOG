@@ -2,6 +2,7 @@ package com.kh.with.video.model.service;
 
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,6 +82,13 @@ public class VideoServiceImpl implements VideoService{
 	public int insertAttachment(Attachment attachment) {
 		
 		return vd.insertAttachment(sqlSession,attachment);
+	}
+
+
+	@Override
+	public List<Video> selectVideoInfo(int userNo) {
+		
+		return vd.selectVideoInfo(sqlSession, userNo);
 	}
 
 
