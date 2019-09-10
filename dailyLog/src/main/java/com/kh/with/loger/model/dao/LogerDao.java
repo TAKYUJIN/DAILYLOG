@@ -29,6 +29,9 @@ public interface LogerDao {
 
 	//로거 계좌번호 update
 	int updateLogerAccount(SqlSessionTemplate sqlSession, Member m);
+
+	//로거 기간별 후원내역 조회 값
+	ArrayList<Integer> selectLogetSupportPrice(SqlSessionTemplate sqlSession, Support s, Member m);
 	
 
 }

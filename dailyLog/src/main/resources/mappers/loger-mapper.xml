@@ -76,7 +76,7 @@
 		ORDER BY RANK ASC
   	</select>	
   	
-  	<select id="logerLastAccount" resultMap="calculateResultSet">
+  	<select id="logerLastAccount" resultMap="logerResultSet2">
   		SELECT *
 		FROM LOGER L
 		JOIN MEMBER M ON(L.USER_NO = M.USER_NO)
@@ -108,6 +108,15 @@
   		UPDATE LOGER SET ACC_NM = #{accNm}, BANK_NM = #{bankNm}, ACCOUNT = #{account}
 		WHERE USER_NO = #{userNo}
   	</update>
+  	
+  	<!-- 로거 기간별 후원 내역 조회의 값만 -->
+  	<select id="selectLogetSupportPrice" resultMap="supportResultSet">
+  		SELECT SUP_PRICE
+		FROM SUPPORT S
+		JOIN MEMBER M ON(S.USER_NO = M.USER_NO)
+		WHERE M.USER_ID = #{userId}
+		AND SUP_DT BETWEEN TO_CHAR(TO_DATE(#{mon},'YYYY-MM-DD')) AND TO_CHAR(TO_DATE(#{day},'YYYY-MM-DD'))
+  	</select>
 
 </mapper>
 
