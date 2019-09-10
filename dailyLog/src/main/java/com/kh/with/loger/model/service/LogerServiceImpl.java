@@ -59,6 +59,14 @@ public class LogerServiceImpl implements LogerService{
 	}
 
 
+	//로거 계좌번호 update
+	@Override
+	public int updateLogerAccount(Member m) {
+		return ld.updateLogerAccount(sqlSession, m);
+	}
+	
+
+
 	
 
 	

@@ -349,14 +349,22 @@ button[class*="btn"] {border: 0;}
             <div class="calculateBtn">
 			<b><input type="text" class="selectAccount" value="현재 계좌" style="width:70px;"></b>
 			<c:forEach items="${aList}" var="c">
-			<input type="text" class="selectAccount" value="${c.bankNm}" style="width:50px;">
+			<input type="text" class="selectAccount" value="${c.bankNm}" style="width:70px;">
 			<input type="text" class="selectAccount" value="${c.account}" style="width:130px;">
 			<input type="text" class="selectAccount" value="${c.accNm}" style="width:50px;"> 
-			</c:forEach>
+			
+			
+			<c:if test="${!empty c.account}">
 			<button class="cal_btn btn-gradient yellow mini" id="accountBtn" onclick="accountApi()" style="font-size:13px;">계좌변경</button>
-			<button class="cal_btn btn-gradient yellow mini" id="calculateBtn" onclick="accountApi()" style="font-size:13px; margin-top:16px;">정산신청</button>
+			<button type="button" class="cal_btn btn-gradient yellow mini" id="calculateBtn" onclick="selectSupport();" style="font-size:13px; margin-top:16px;">정산신청</button>
+			</c:if>
+			<c:if test="${empty c.account}">
+			<button class="btn-gradient yellow mini" id="calculateBtn" onclick="accountApi()" style="font-size:13px; margin-top:16px;">계좌등록</button>
+			</c:if>
+			
 			<!-- <input type="button" class="cal_btn" id="accountBtn" value="계좌변경" onclick="accountApi()"> -->
 			<!-- <input type="submit" class="cal_btn" id="calculateBtn" value="정산신청" onclick="accountApi()"> -->
+			</c:forEach>
 		</div>
         </div>
         </form>
@@ -366,6 +374,9 @@ button[class*="btn"] {border: 0;}
         	window.open('accountApi.lo', "", "width=550, height=350, top=50, left=50");
         }
         
+		function selectSupport(){
+			location.href="selectSupport.lo";
+		}        
         $(function(){
 			//onload function안에
 			$("#boardArea").find("td").mouseenter(function(){

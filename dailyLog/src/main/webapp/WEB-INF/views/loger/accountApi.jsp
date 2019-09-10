@@ -283,7 +283,7 @@ button[class*="btn"] {border: 0;}
 							<option value='238'>대우증권
 							
 						</select> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 예금주 &nbsp; <input type="text"
-							size="10" name="accpnm" id="accpnm">
+							size="10" name="accpnm" id="accpnm" class="accountNm">
 						</div>
 					</td>
 					<td style="width: 200px;">&nbsp;</td>
@@ -297,7 +297,7 @@ button[class*="btn"] {border: 0;}
 					<td>
 						<div style="border:1px solid #ddd; background:#f8f8f8; padding:10px; margin-left:10px; width:440px; height:50px;">
 							계좌번호 &nbsp;<input type="text" size="25"
-							placeholder="'-'를 제외하고 입력하세요." name="accnum" id="accnum">
+							placeholder="'-'를 제외하고 입력하세요." name="accnum" id="accnum" class="account">
 							&nbsp;
 							<input type="checkbox" id="sbm-flag" name="checkacc"
 							style="display:none">
@@ -317,10 +317,10 @@ button[class*="btn"] {border: 0;}
 							
 							<button class="btn-gradient yellow mini" id="confirmacc" onclick="fnSearchAccessToken()" style="font-size:14px;">확인</button>
 							
-							<button class="btn-gradient yellow mini" style="display:none;font-size:14px;" id="changeacc" onclick="location.href='logerCalculateApply.lo'">변경</button>
+							<button class="btn-gradient yellow mini" style="display:none;font-size:14px;" id="changeacc" onclick="logerCalculateApply();">변경</button>
 						</div>
 						
-						<!-- <script>
+						 <script>
 							/* function logerCalculateApply(){
 								var bankNm = $("#bankcodeID option:selected").text();
 								 console.log(bankNm); 
@@ -329,68 +329,19 @@ button[class*="btn"] {border: 0;}
 							} */
 							
 							function logerCalculateApply() {
-								var bank_code_std = $("#bank_code_std").val();
-								var account_num = $("#account_num").val();
-								var account_holder_info = $("#account_holder_info").val();
-								var tran_dtime = $("#tran_dtime").val();
-								var access_token = "Bearer " + $("#access_token").val();
-								var resData = {
-									"bank_code_std" : bank_code_std,
-									"account_num" : account_num,
-									"account_holder_info" : account_holder_info,
-									"tran_dtime" : tran_dtime
-								};
-								$
-										.ajax({
-											url:"logerCalculateApply.lo",
-											type:"POST",
-											data:JSON.stringify(resData),
-											dataType:"json",
-											success : function(data) {
-												console.log(data)
-												/* if (data.account_holder_name == $("#accpnm").val()) {
-
-													$("#sbm-flag").attr("checked", true);
-													$("#sbm-ok").show();
-													$("#sbm-no").hide();
-													var checkacc = "인증됨";
-													var pro_no = $
-													{
-														pro_no
-													}
-													;
-													var bankcode = $('[name=bankcode]').val();
-													var accpnm = $('[name=accpnm]').val();
-													var accnum = $('[name=accnum]').val();
-
-													
-													alert('인증 성공!!!');
-													$("#confirmacc").hide();
-													$("#changeacc").show();
-													$("#sbm-flag").attr("checked", true);
-															$("#sbm-ok").show();
-													$("#sbm-no").hide();
-													$("[name=accpnm]").attr("readonly",
-																	"readonly");
-													$("[name=accnum]").attr("readonly",
-																	"readonly");
-													$("[name=bankcode]").not(":selected")
-																	.attr("disabled", "disabled");
-													
-
-												} else {
-													alert('인증 실패');
-													$("#sbm-flag").attr("checked", false);
-													$("#sbm-ok").hide();
-													$("#sbm-no").show();
-												} */
-											},
-											error : function(data) {
-												alert('error!!!');
-											}
-										});
+								var account = $(".account").val();
+								var accountNm = $(".accountNm").val();
+								var bankcode = $("#bankcode").val();
+								
+								console.log(account);
+								console.log(accountNm);
+								console.log(bankcode);
+								
+								window.close();
+								window.opener.location.href="logerCalculateApply.lo?account="+account+"&&accountNm="+accountNm+"&&bankcode="+bankcode;
+								
 							}
-						</script> -->
+						</script> 
 						
 					</td>
 					<td>&nbsp;</td>

@@ -10,10 +10,14 @@ public class Loger {
 	private String calApply;//정산신청
 	private Date chDT;		//채널생성일자
 	private String chInfo;	//채널정보
+	private String accNm;	//예금주
+	private String bankNm;	//은행명
+	private String account; //계좌번호
 	
 	public Loger() {}
 
-	public Loger(int chNo, int userNo, String chNm, int vNo, String calApply, Date chDT, String chInfo) {
+	public Loger(int chNo, int userNo, String chNm, int vNo, String calApply, Date chDT, String chInfo, String accNm,
+			String bankNm, String account) {
 		super();
 		this.chNo = chNo;
 		this.userNo = userNo;
@@ -22,6 +26,9 @@ public class Loger {
 		this.calApply = calApply;
 		this.chDT = chDT;
 		this.chInfo = chInfo;
+		this.accNm = accNm;
+		this.bankNm = bankNm;
+		this.account = account;
 	}
 
 	public int getChNo() {
@@ -80,10 +87,35 @@ public class Loger {
 		this.chInfo = chInfo;
 	}
 
+	public String getAccNm() {
+		return accNm;
+	}
+
+	public void setAccNm(String accNm) {
+		this.accNm = accNm;
+	}
+
+	public String getBankNm() {
+		return bankNm;
+	}
+
+	public void setBankNm(String bankNm) {
+		this.bankNm = bankNm;
+	}
+
+	public String getAccount() {
+		return account;
+	}
+
+	public void setAccount(String account) {
+		this.account = account;
+	}
+
 	@Override
 	public String toString() {
 		return "Loger [chNo=" + chNo + ", userNo=" + userNo + ", chNm=" + chNm + ", vNo=" + vNo + ", calApply="
-				+ calApply + ", chDT=" + chDT + ", chInfo=" + chInfo + "]";
+				+ calApply + ", chDT=" + chDT + ", chInfo=" + chInfo + ", accNm=" + accNm + ", bankNm=" + bankNm
+				+ ", account=" + account + "]";
 	}
 
 	
