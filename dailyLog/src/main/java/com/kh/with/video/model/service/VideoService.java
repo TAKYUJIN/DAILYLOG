@@ -1,11 +1,12 @@
 package com.kh.with.video.model.service;
 
-import com.kh.with.member.model.vo.Member;
-import com.kh.with.video.model.vo.Attachment;
-import com.kh.with.video.model.vo.Video;
 import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
+
+import com.kh.with.member.model.vo.Member;
+import com.kh.with.video.model.vo.Attachment;
+import com.kh.with.video.model.vo.Video;
 
 public interface VideoService {
 	
@@ -31,6 +32,9 @@ public interface VideoService {
 	
 	//썸네일 insert
 	int insertAttachment(Attachment attachment);
+	
+	//비디오값 불러오기
+	List<Video> selectVideoInfo(int userNo);
 
 
 

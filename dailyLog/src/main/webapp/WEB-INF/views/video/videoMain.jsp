@@ -646,8 +646,8 @@ button[class*="btn"] {border: 0;}
 			</tr>
 			<tr>
 				<!-- 비디오 -->
-				<td colspan="4" height="400px">
-					  <video id='my-video' class='video-js' controls autoplay="autoplay" preload='auto' width='800' height='450'
+				<td colspan="4" height="400px"><!-- autoplay="autoplay" -->
+					  <video id='my-video' class='video-js' controls  preload='auto' width='800' height='450'
 						  poster='resources/images/logo.jpg' data-setup='{}' >
 						  <source src='resources/uploadFiles/oceans.mp4' type='video/mp4'>
 						  <source src='MY_VIDEO.webm' type='video/webm'>
@@ -742,7 +742,6 @@ button[class*="btn"] {border: 0;}
 				});
 			}); */
 
-			 
 			 $('#sub').show();
 			 $('#rSub').hide();
 			 $('#oSub').hide();
