@@ -25,7 +25,10 @@ public interface LogerDao {
 	int insertcreateChannel(SqlSessionTemplate sqlSession, Loger loger);
 
 	//로거 기간별 후원내역 조회
-
 	ArrayList<Support> selectLogerSupportDate(SqlSessionTemplate sqlSession, Support s, Member m);
+
+	//로거 계좌번호 update
+	int updateLogerAccount(SqlSessionTemplate sqlSession, Member m);
+	
 
 }

@@ -26,7 +26,13 @@ public interface LogerService {
 	//로거채널개설
 	int insertcreateChannel(Loger loger);
 
+	//기간별 후원내역 조회
 	ArrayList<Support> selectLogerSupportDate(Support s, Member m);
+
+	//로거 계좌 update
+	int updateLogerAccount(Member m);
+
+	
 
 
 

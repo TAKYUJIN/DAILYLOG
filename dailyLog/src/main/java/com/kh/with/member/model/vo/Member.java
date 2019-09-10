@@ -18,12 +18,15 @@ public class Member implements java.io.Serializable{
 	private String status;
 	private Date mon;	//입력한 날짜
 	private Date day;	//오늘 날짜
+	private String accNm;	//예금주
+	private String bankNm;	//은행명
+	private String account;	//계좌번호
 	
 	public Member() {}
 
 	public Member(int userNo, String userNm, String userId, String userPwd, String nickname, String phone,
 			String gender, String adultYN, String chYN, Date enrollDT, Date leaveDT, int remainPT, String status,
-			Date mon, Date day) {
+			Date mon, Date day, String accNm, String bankNm, String account) {
 		super();
 		this.userNo = userNo;
 		this.userNm = userNm;
@@ -40,6 +43,9 @@ public class Member implements java.io.Serializable{
 		this.status = status;
 		this.mon = mon;
 		this.day = day;
+		this.accNm = accNm;
+		this.bankNm = bankNm;
+		this.account = account;
 	}
 
 	public int getUserNo() {
@@ -162,13 +168,39 @@ public class Member implements java.io.Serializable{
 		this.day = day;
 	}
 
+	public String getAccNm() {
+		return accNm;
+	}
+
+	public void setAccNm(String accNm) {
+		this.accNm = accNm;
+	}
+
+	public String getBankNm() {
+		return bankNm;
+	}
+
+	public void setBankNm(String bankNm) {
+		this.bankNm = bankNm;
+	}
+
+	public String getAccount() {
+		return account;
+	}
+
+	public void setAccount(String account) {
+		this.account = account;
+	}
+
 	@Override
 	public String toString() {
 		return "Member [userNo=" + userNo + ", userNm=" + userNm + ", userId=" + userId + ", userPwd=" + userPwd
 				+ ", nickname=" + nickname + ", phone=" + phone + ", gender=" + gender + ", adultYN=" + adultYN
 				+ ", chYN=" + chYN + ", enrollDT=" + enrollDT + ", leaveDT=" + leaveDT + ", remainPT=" + remainPT
-				+ ", status=" + status + ", mon=" + mon + ", day=" + day + "]";
+				+ ", status=" + status + ", mon=" + mon + ", day=" + day + ", accNm=" + accNm + ", bankNm=" + bankNm
+				+ ", account=" + account + "]";
 	}
+
 
 	
 	

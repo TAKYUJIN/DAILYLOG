@@ -62,6 +62,18 @@ public class LogerDaoImpl implements LogerDao{
 		return dateList;
 		
 	}
+
+	//로거 계좌번호 insert
+	@Override
+	public int updateLogerAccount(SqlSessionTemplate sqlSession, Member m) {
+		
+		System.out.println(m.getAccNm());
+		System.out.println(m.getAccount());
+		System.out.println(m.getBankNm());
+		return sqlSession.update("Loger.updateLogerAccount", m);
+	}
+	
+	
 	
 	
 

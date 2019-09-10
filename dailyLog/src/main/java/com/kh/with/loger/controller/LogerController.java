@@ -81,19 +81,42 @@ public class LogerController {
 
 	//계좌인증 후 후원 내역으로 연결 계좌 내역 저장
 	@RequestMapping(value="logerCalculateApply.lo")
-	public ModelAndView logerCalculateApply(@RequestBody ArrayList<Object> account,Support s, ModelAndView mv, HttpSession session) {	
+	public String logerCalculateApply(@RequestParam(value="account", required=false) String account,
+			 @RequestParam(value="accountNm", required=false) String accNm,  @RequestParam(value="bankcode", required=false) String bankNm,
+			 Support s, Model model, HttpSession session) {	
 		Member m = (Member) session.getAttribute("loginUser");
-		ArrayList<Support> sList = ls.selectLogerSupport(s, m);
-		System.out.println(account.toString());
+		
+		m.setAccount(account);
+		m.setAccNm(accNm);
+		
+		if(bankNm.equals("020")) {
+			m.setBankNm("우리은행");			
+		}else if(bankNm.equals("003")){
+			m.setBankNm("기업은행");
+		}else if(bankNm.equals("004")){
+			m.setBankNm("국민은행");
+		}else if(bankNm.equals("011")){
+			m.setBankNm("농협중앙회");
+		}else if(bankNm.equals("081")){
+			m.setBankNm("하나은행");
+		}else if(bankNm.equals("088")){
+			m.setBankNm("신한은행");
+		}
+		
+		System.out.println(m.getAccount());
+		System.out.println(m.getAccNm());
+		System.out.println(m.getBankNm());
+		
+		int result = ls.updateLogerAccount(m);
+		
 
-		mv.addObject("sList", sList);
-		mv.addObject("s", s);
-
-		return mv;
+		return "selectLogerCalculate.lo";
 	} 
 	//후원 내역 기간 선택 테스트용
-	@RequestMapping(value="lotest.lo")
+	@RequestMapping(value="selectSupport.lo")
 	public String selectLogerCalculate() {
+		System.out.println("하하하?");
+		
 		return "loger/selectLogerCalculate";
 	}
 
