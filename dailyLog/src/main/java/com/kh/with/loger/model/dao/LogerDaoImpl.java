@@ -6,6 +6,7 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.kh.with.admin.model.vo.Board;
 import com.kh.with.loger.model.vo.Calculate;
 import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.loger.model.vo.Support;
@@ -81,6 +82,24 @@ public class LogerDaoImpl implements LogerDao{
 	 * 
 	 * return pList; }
 	 */
+	@Override
+	public ArrayList<Integer> selectLogetSupportPrice(SqlSessionTemplate sqlSession, Support s, Member m) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	//로거스튜디오 메인 select (프로필,채널명, 구독자)
+	@Override
+	public ArrayList<Loger> logerChMain(SqlSessionTemplate sqlSession, int userNo) {
+		
+		ArrayList<Loger> logers = null;
+
+		System.out.println("공지사항 dao까지 왔니?:: " + logers);
+
+		logers = (ArrayList)sqlSession.selectList("Loger.logerChMain", logers);
+
+		return logers;
+	}
 	
 	
 	

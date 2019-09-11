@@ -52,8 +52,8 @@
 	
 	<!-- 썸네일 정보 insert 쿼리 -->
 	<insert id="insertAttachment" parameterType="Loger">	
-	INSERT INTO ATTACHMENTs
-	VALUES(#{userNo}, AM_NO.NEXTVAL,  #{filepath}, SYSDATE ,  #{enrollNm} , 'NULL'  , '회원')
+	INSERT INTO ATTACHMENT
+	VALUES(#{userNo}, AM_NO.NEXTVAL,  #{filepath}, SYSDATE ,  #{enrollNm} , 'NULL'  , '썸네일')
 	</insert>  
 
 	<select id="videoimagelist" parameterType="Video" resultMap="videoResultSet">

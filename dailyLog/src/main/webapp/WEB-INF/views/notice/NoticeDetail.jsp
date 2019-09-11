@@ -141,17 +141,10 @@ table.table td .add {
 
 .buttonarea {
 	width: 180px;
-	margin-left: 950px;
+	margin-left: 1050px;
 	margin-top: 20px;
 }
-#delete{
-	 margin-left:-1050px; 
-}
-#bNo {
 
-	border:none;
-	background:white;
-}
 </style>
 <body>
 
@@ -210,64 +203,15 @@ table.table td .add {
 		</div>
 	</div>
 	<div class="buttonarea">
-		<button class="button1" type= "button" onclick="location.href='adminNoticeList.ad'">확인</button>
-		<button class="button1" type= "submit" id ="NoticeChange">수정</button>
-		<button class="button1" type="submit"  id ="delete">삭제</button>
+		
+		<button class="button1" type= "button" onclick="location.href='noticeList.no'">확인</button>
+
 	</div>
 
 	<br><br>
-	
-	<!-- 수정 -->
-	<script>
-		$(document).ready(function(){
-			$("#NoticeChange").click(function(){
-				
-				var bTitle = $("#bTitle").val();
-				var bcontent = $("#bcontent").val();
-				var bNo = $("#bNo").val();
-				console.log(bTitle);
-				console.log(bcontent);
-				console.log(bNo);
-				$.ajax({
-					url:"adminNoticeChange.ad",
-					type:"post",
-					data:{bTitle:bTitle,bcontent:bcontent,bNo:bNo},
-						traditional:true,
-					success:function(data){
-						 location.href='adminNoticeList.ad' 
-					},
-					error:function(data){
-						console.log("실패!");
-					}
-				});	
-			});
-		});
-	</script>
-	
-	
-	<!-- 삭제 -->
-	<script>
-		$(document).ready(function(){
-			$("#delete").click(function(){
 
-				var bNo = $("#bNo").val();
-				
-				console.log(bNo);
-				$.ajax({
-					url:"adminNoticeDelete.ad",
-					type:"post",
-					data:{bNo:bNo},
-						traditional:true,
-					success:function(data){
-						 location.href='adminNoticeList.ad' 
-					},
-					error:function(data){
-						console.log("실패!");
-					}
-				});	
-			});
-		});
-	</script>
+	
+	
 	<jsp:include page="../common/footer.jsp" />
 
 </body>

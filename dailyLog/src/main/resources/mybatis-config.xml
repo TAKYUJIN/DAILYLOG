@@ -12,6 +12,7 @@
  		<typeAlias type="com.kh.with.video.model.vo.Video" alias="Video" />
 		<typeAlias type="com.kh.with.video.model.vo.Attachment" alias="Attachment" />
 		<typeAlias type="com.kh.with.admin.model.vo.Board" alias="Board" />
+		<typeAlias type="com.kh.with.admin.model.vo.Board" alias="Board" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappers/member-mapper.xml"/>

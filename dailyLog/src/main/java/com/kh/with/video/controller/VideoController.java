@@ -139,7 +139,7 @@ import com.kh.with.video.model.vo.Video;
 		System.out.println("페이지이동의 로그인유저정보 가지고 왔니?:::" + chYN);
 
 		if(chYN.equals("Y")) {
-			return"video/videoBasicInfo";
+			return"video/videoUpload";
 		}else {
 			return "loger/createChannel";
 
@@ -243,8 +243,12 @@ import com.kh.with.video.model.vo.Video;
 		video.setFilepath(filepath);
 		video.setAdInfo(adInfo);
 		video.setChNm(chNm);		
+		
+		System.out.println("컨트롤러video:::" + video);
 
 		int result = vs.insertVideoInfo(video);
+		
+		System.out.println("컨트롤러result:::" + result);
 
 
 		Attachment attachment = new Attachment(); 
@@ -256,7 +260,7 @@ import com.kh.with.video.model.vo.Video;
 
 
 		if(result > 0  && result1 > 0 ) {
-			return "admin/adminNoticeList";
+			return "redirect:index.jsp";
 		}else {
 			model.addAttribute("msg", "동영상 업로드실패");
 			return "common/errorPage";
