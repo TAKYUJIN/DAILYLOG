@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -144,30 +145,14 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>1</td>
-						<td>공지사항입니다</td>
-						<td>2019-09-02</td>
-						<td>123</td>
+				<c:forEach items="${showNoticeList}" var="n">
+					<tr onclick="noticeDetail(${n.bNo});">
+					<td><c:out value="${n.bNo}"/></td>					
+					<td><c:out value="${n.bTitle}"/></td>	
+					<td><c:out value="${n.createDt}"/></td>
+					<td><c:out value="${n.bcount}"/></td>	
 					</tr>
-					<tr>
-						<td>2</td>
-						<td>후원 안내, 저작권 안내</td>
-						<td>2019-09-03</td>
-						<td>333</td>
-					</tr>
-					<tr>
-						<td>3</td>
-						<td>공지사항입니다</td>
-						<td>2019-09-02</td>
-						<td>123</td>
-					</tr>
-					<tr>
-						<td>4</td>
-						<td>후원 안내, 저작권 안내</td>
-						<td>2019-09-03</td>
-						<td>333</td>
-					</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 			<div class="text-center">
@@ -185,6 +170,13 @@
 			</div>
 		</div>
 	</div>
+		<script>
+		function noticeDetail(bNo){
+		
+			location.href='noticeDetail.no?bNo='+bNo;
+			
+		}
+	</script>
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
 </html>       

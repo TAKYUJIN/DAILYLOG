@@ -64,6 +64,12 @@
 	margin-top: 80px;
 	margin-left: -85px;
 }
+#adInfo{
+
+	margin-left:10px;
+
+}
+
 </style>
 
 </head>
@@ -95,11 +101,11 @@
 				<div class="basicInfo">
 					<div class="container">
 						<div class="form-group">
-							<input type="text" class="form-control" id="vTitle" name="vTitle"
+							<input type="text"  id="vTitle" name="vTitle"
 								style="width: 400px" placeholder="동영상제목">
 						</div>
 						<div class="form-group">
-							<textarea class="form-control" rows="3" id="tag" name="tag"
+							<textarea  rows="3" id="tag" name="tag"
 								style="width: 400px" placeholder="태그(예:일상기록,여행,강아지,음식)"></textarea>
 						</div>
 					</div>
@@ -108,9 +114,10 @@
 						name="adultAut" value="N"> 19세 이상 시청가능<br> <br>
 					
 					<br> <input type="checkbox" name="adYn" value="Y">
-					광고여부<br> <a >광고여부 체크시 아래의 문구가 자동으로 기재됩니다<br>
-						본 컨텐츠는 유료제품 추천, 후원, 보증과 같은 유료 광고 내용이 포함되어 있습니다
-					</a> <input type="text" class="form-control" id="adInfo" name="adInfo"
+					광고여부<br> 
+					<a >광고여부 체크시 아래의 문구가 자동으로 기재됩니다<br>
+						본 컨텐츠는 유료제품 추천, 후원, 보증과 같은 유료 광고 내용이 포함되어 있습니다</a> <br>
+					<input type="text"   id="adInfo" name="adInfo"
 						style="width: 400px" placeholder="광고정보"> <br> <br>
 						
 						

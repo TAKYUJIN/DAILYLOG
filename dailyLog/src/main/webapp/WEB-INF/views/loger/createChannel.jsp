@@ -50,13 +50,15 @@
 				<div class="container">
 					
 						<div class="form-group">
-							<label for="usr">채널명</label> <input type="text"
-								class="form-control" id="ch_Nm" style="width: 700px">
+							<label for="usr">채널명</label>
+							<p>채널명을 기재하지 않을경우 닉네임으로 채널명이 개설됩니다 !</p>
+							 <input type="text"
+								class="form-control" id="chNm" name="chNm" style="width: 700px">
 						</div>
 						<br> <br> <br>
 						<div class="form-group">
 							<label for="comment">채널소개</label>
-							<textarea class="form-control" rows="5" id="comment"
+							<textarea class="form-control" rows="5" id="comment" id="chInfo" name="chInfo"
 								style="width: 700px"></textarea>
 
 						</div>

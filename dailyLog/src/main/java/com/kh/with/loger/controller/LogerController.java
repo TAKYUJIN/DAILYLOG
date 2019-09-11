@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.with.admin.model.vo.Board;
 import com.kh.with.loger.model.service.LogerService;
 import com.kh.with.loger.model.vo.Calculate;
 import com.kh.with.loger.model.vo.Loger;
@@ -242,4 +243,24 @@ public class LogerController {
 
 	}
 
+	//로거스튜디오 메인 select (프로필,채널명, 구독자)
+	@RequestMapping(value="logerChMain")
+	public String logerChMain(HttpSession session, HttpServletRequest request, Model model){
+		
+		int userNo = ((Member) request.getSession().getAttribute("loginUser")).getUserNo();
+		
+		Loger loger = new Loger();
+		
+		loger.setUserNo(userNo);
+		
+		System.out.println("loger:::" + loger);
+		
+		ArrayList<Loger> logerChMain = ls.logerChMain(userNo);
+		
+		System.out.println("결과값이 담겼나요?" + logerChMain); 
+		
+		return null;
+		
+		
+	}	
 }

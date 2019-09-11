@@ -21,37 +21,52 @@
 	</resultMap>
 	
 	
-	<!-- 공지사항 select 쿼리 -->
+	<!-- 공지사항(관리자)리스트 select 쿼리 -->
 	<select id="adminNoticeList" resultMap="BoardResultSet">
   		SELECT *
 		FROM BOARD
 		ORDER BY CREATE_DT DESC
   	</select>	
   	
-  	<!-- 공지사항 insert  쿼리 -->
+  	<!-- 공지사항(관리자)작성 insert  쿼리 -->
 	<insert id="noticeWriteAdmin" parameterType="Board">	
 	INSERT INTO BOARD
    	VALUES( B_NO.NEXTVAL, #{bTitle}, 0, #{bcontent}, 0, SYSDATE, NULL, DEFAULT)
 	</insert> 
 	
-	<!-- 공지사항 select 쿼리  -->
+	<!-- 공지사항(관리자)상세내역 select 쿼리  -->
 	<select id ="adminNoticeRevise" parameterType="Board" resultMap="BoardResultSet">
 	SELECT *
 	FROM BOARD
 	WHERE B_NO = #{bNo}
 	</select>
-	<!-- 공지사항 update 쿼리  -->
+	
+	<!-- 공지사항(관리자)수정 update 쿼리  -->
 	<update id="adminNoticeChange" parameterType="Board">
 	UPDATE BOARD SET BTITLE = #{bTitle}, BCONTENT = #{bcontent} , CREATE_DT = SYSDATE , MODIFY_DT= SYSDATE
 	WHERE B_NO = #{bNo}
 	</update>
 	
-	<!-- 공지사항 삭제 -->
+	<!-- 공지사항(관리자) 삭제 -->
 	<delete id="adminNoticeDelete" parameterType="Board">
 	DELETE FROM BOARD 
 	WHERE B_NO = #{bNo}
 	</delete>
 	
+
+	<!-- 공지사항 리스트 ㄴ 쿼리 -->
+	<select id="showNoticeList" resultMap="BoardResultSet">
+  		SELECT *
+		FROM BOARD
+		ORDER BY CREATE_DT DESC
+  	</select>	
+  	
+  	<!-- 공지사항 상세내역 쿼리  -->
+  	<select id ="noticeDetail" parameterType="Board" resultMap="BoardResultSet">
+	SELECT *
+	FROM BOARD
+	WHERE B_NO = #{bNo}
+	</select>
 </mapper>
 
 

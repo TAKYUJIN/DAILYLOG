@@ -143,7 +143,7 @@ public class AdminController {
 		
 		System.out.println("삭제되었나요:" + result);
 		
-		/* mv.setViewName("admin/adminNoticeWrite"); */
+		mv.setViewName("admin/adminNoticeList");
 		
 		return mv;
 		

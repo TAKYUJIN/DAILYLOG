@@ -166,6 +166,11 @@ public class VideoController {
 
 		System.out.println("페이지이동의 로그인유저정보 가지고 왔니?:::" + chYN);
 
+/*
+		if(chYN.equals("Y")) {
+			return"video/videoUpload";
+		}else {
+*/
 		if (chYN.equals("Y")) {
 			return "video/videoBasicInfo";
 		} else {
@@ -267,7 +272,10 @@ public class VideoController {
 		video.setAdInfo(adInfo);
 		video.setChNm(chNm);
 
+
 		int result = vs.insertVideoInfo(video);
+		
+		System.out.println("컨트롤러result:::" + result);
 
 		Attachment attachment = new Attachment();
 		attachment.setEnrollNm(enrollNm);
@@ -276,6 +284,12 @@ public class VideoController {
 
 		int result1 = vs.insertAttachment(attachment);
 
+
+/*
+		if(result > 0  && result1 > 0 ) {
+			return "redirect:index.jsp";
+		}else {
+*/
 		if (result > 0 && result1 > 0) {
 			return "admin/adminNoticeList";
 		} else {
