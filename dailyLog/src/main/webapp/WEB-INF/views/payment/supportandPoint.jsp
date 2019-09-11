@@ -13,6 +13,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- iamport.payment.js -->
+  <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <style type="text/css">
  .bs-example{
         margin-left: 20px; 
@@ -135,19 +137,52 @@
 $(document).ready(function(){
 	$('[data-toggle="tooltip"]').tooltip();
 });
+$("#test").click(function() {
+	var IMP = window.IMP; // 생략해도 괜찮습니다.
+	IMP.init("imp51812845"); // "imp00000000" 대신 발급받은 "가맹점 식별코드"를 사용합니다.
+	IMP.request_pay({
+	    pg : 'html5_inicis',
+	    pay_method : 'card',
+	    m_redirect_url : 'https://www.yourdomain.com/payments/complete'
+	}, function(rsp) {
+	    if ( rsp.success ) {
+	    	jQuery.ajax({
+	            url: "https://www.myservice.com/payments/complete", // 가맹점 서버
+	            method: "POST",
+	            headers: { "Content-Type": "application/json" },
+	            data: {
+	                imp_uid: rsp.imp_uid,
+	                merchant_uid: rsp.merchant_uid
+	            }
+	        }).done(function (data) {
+	          // 가맹점 서버 결제 API 성공시 로직
+	        var msg = '결제가 완료되었습니다.';
+	        msg += '고유ID : ' + rsp.imp_uid;
+	        msg += '상점 거래ID : ' + rsp.merchant_uid;
+	        msg += '결제 금액 : ' + rsp.paid_amount;
+	        msg += '카드 승인번호 : ' + rsp.apply_num;
+	        })
+	    } else {
+	        var msg = '결제에 실패하였습니다.';
+	        msg += '에러내용 : ' + rsp.error_msg;
+	    }
+
+	    alert(msg);
+	});
+	});
 </script>
 </head>
 <body>
 <jsp:include page="../common/mainBar.jsp"/>
 	<div class="bs-example">    
     <div class="list-group">
-        <a href="myPage.me" class="list-group-item list-group-item-action active">
+      <a href="myPage.me" class="list-group-item list-group-item-action">
             <i class="fa fa-home"></i> 
         </a>
-        <a href="#" class="list-group-item list-group-item-action">
+        <a href="allim.me" class="list-group-item list-group-item-action">
             <i class="fa fa-camera"></i> 알림
         </a>
-        <a href="#" class="list-group-item list-group-item-action">
+        <a href="point.me" class="list-group-item list-group-item-action active" >
             <i class="fa fa-music"></i> 후원&포인트 충전
         </a>
         <a href="#" class="list-group-item list-group-item-action">
@@ -155,6 +190,7 @@ $(document).ready(function(){
         </a>
     </div>
 </div>
+<form id="point" action="point.me" method="post">
     <div class="container">
        <h1>
        <a>정기후원</a>
@@ -177,7 +213,7 @@ $(document).ready(function(){
                 <tbody>
                     <tr>
                         <td>1</td>
-                        <td><a href="#"><img src="/examples/images/avatar/1.jpg" class="avatar" alt="Avatar"> Michael Holz</a></td>
+                        <td> Michael Holz</a></td>
 						<td>London</td>
                         <td>Jun 15, 2017</td>                        
 						<td><span class="status text-success">&bull;</span> Delivered</td>
@@ -203,7 +239,7 @@ $(document).ready(function(){
             
             <h1>
        <a>포인트</a>
-       <a href="#">포인트 충전</a>
+       <a type="button" id="test">포인트 충전</a>
        <a href="#">포인트 환불</a>
        </h1>
        <hr>
@@ -221,15 +257,17 @@ $(document).ready(function(){
                     </tr>
                 </thead>
                 <tbody>
+                    <c:forEach items="${supportandPoint}" var="p">
                     <tr>
-                        <td>1</td>
-                        <td><a href="#"><img src="/examples/images/avatar/1.jpg" class="avatar" alt="Avatar"> Michael Holz</a></td>
-						<td>London</td>
-                        <td>Jun 15, 2017</td>                        
-						<td><span class="status text-success">&bull;</span> Delivered</td>
-						<td>$254</td>
-						<td><a href="#" class="view" title="View Details" data-toggle="tooltip"><i class="material-icons">&#xE5C8;</i></a></td>
+                        <td><c:out value="${p.payNo }"/></td>
+                        <td> <c:out value="${p.userNo }"/></a></td>
+						<td><c:out value="${p.payDate }"/></td>
+                        <td><c:out value="${p.payPrice }"/></td>                        
+						<td><c:out value=" pay_method"/>p</td>
+						<td><c:out value="${p.payNo }"/></td>
+						<td>card</td>
                     </tr>
+                    </c:forEach>
 					
                 </tbody>
             </table>
@@ -257,6 +295,7 @@ $(document).ready(function(){
 			</p>
         	
         </div>
+        </form>
         <jsp:include page="../common/footer.jsp"/>
 </body>
 </html>                                		                                                    
