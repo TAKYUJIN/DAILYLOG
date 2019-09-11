@@ -66,10 +66,12 @@ public class LogerServiceImpl implements LogerService{
 	}
 
 
+	
 	@Override
 	public ArrayList<Support> selectLogetSupportPrice(Support s, Member m) {
 		return ld.selectLogetSupportPrice(sqlSession, s, m);
 	}
+	
 
 	//로거스튜디오 메인 select (프로필,채널명, 구독자)
 	@Override

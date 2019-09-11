@@ -87,15 +87,10 @@ public class VideoDaoImpl implements VideoDao {
 		return sqlSession.selectOne("Video.selectRegStatus", map);
 	}
 
-	
-
-
-}
 
 
 
 
-	
 	  @Override public List<Video> selectVideoInfo(SqlSessionTemplate sqlSession,
 	  int userNo) {
 	  
