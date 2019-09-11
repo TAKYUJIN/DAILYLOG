@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Attachment">
+
+	<resultMap type="com.kh.with.video.model.vo.Video"
+		id="videoRSet">
+
+		<id property="vNo" column="V_NO" />
+		<result property="userNo" column="USER_NO" />
+		<result property="vTitle" column="V_TITLE" />
+		<result property="count" column="COUNT" />
+		<result property="chNm" column="CH_NM" />
+		<result property="tag" column="TAG" />
+		<result property="vblYn" column="VBL_YN" />
+		<result property="uploadDt" column="UPLOAD_DT" />
+		<result property="modifyDt" column="MODIFY_DT" />
+		<result property="adultAut" column="ADULT_AUT" />
+		<result property="adYn" column="AD_YN" />
+		<result property="adInfo" column="AD_INFO" />
+		<result property="location" column="LOCATION" />
+		<result property="info" column="INFO" />
+		<result property="filepath" column="FILEPATH" />
+		<result property="openTy" column="OPEN_TY" />
+	</resultMap>
+	
+	
+	
+	<resultMap type="com.kh.with.video.model.vo.Attachment"
+		id="attachmentRSet">
+
+		<id property="userNo" column="USER_NO" />
+		<result property="amNo" column="AM_NO" />
+		<result property="filepath" column="FILEPATH" />
+		<result property="amDt" column="AM_DT" />
+		<result property="enrollNm" column="ENROLL_NM" />
+		<result property="modifyNm" column="MODIFY_NM" />
+		<result property="amTY" column="AM_TY" />
+		<result property="dotimage" column="DOTIMAGE" />
+	</resultMap>
+	
+	
+	<!-- <select id="videoimagelist"  resultMap="attachmentRSet" parameterType="Attachment" >
+		   
+		 SELECT USER_NO,FILEPATH,AM_DT FROM ATTACHMENT 
+	</select> -->
+<select id="videoimagelist"  resultMap="videoRSet,attachmentRSet" parameterType="Attachment" >
+	  SELECT A.USER_NO,A.FILEPATH,A.DOTIMAGE,A.AM_DT,V.V_TITLE,V.CH_NM FROM 
+		ATTACHMENT A JOIN VIDEO V ON(V.USER_NO = A.USER_NO)  
+		 
+	</select>
+
+</mapper>
+

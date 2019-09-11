@@ -1,5 +1,6 @@
 package com.kh.with.video.model.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -27,15 +28,18 @@ public interface VideoService {
 
 
 	//동영상 이미지 출력
-	List<Video> videoimagelist();
+	List<Attachment> videoimagelist();
 
 	
 	//썸네일 insert
 	int insertAttachment(Attachment attachment);
 	
 	//비디오값 불러오기
-	List<Video> selectVideoInfo(int userNo);
+	List<Object> selectVideoInfo(int userNo, int vNo);
 
+	//정기후원 상태 조회
+	int selectRegStatus(int userNo, int chNo);
+	
 
 
 }

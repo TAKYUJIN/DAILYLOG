@@ -5,6 +5,8 @@
 
 <mapper namespace="Loger">
   	
+
+   <!-- 채원이꺼 
   	<resultMap type="Calculate" id="calculateResultSet">
   		<id property="calNo" column="CAL_NO"/>
   		<result property="userNo" column="USER_NO"/>
@@ -20,7 +22,7 @@
   		<result property="nNo" column="RANK"/>
   	</resultMap>
   	
-  	<resultMap type="Loger" id="logerResultSet2">
+  	<resultMap type="Loger" id="logerResultSet">
   		<id property="chNo" column="CH_NO"/>
   		<result property="userNo" column="USER_NO"/>
   		<result property="chNm" column="CH_NM"/>
@@ -31,6 +33,7 @@
   		<result property="accNm" column="ACC_NM"/>
   		<result property="bankNm" column="BANK_NM"/>
   		<result property="account" column="ACCOUNT"/>
+  		<result property="subNum" column="SUBNUM"/>
   	</resultMap>
   	
   	<resultMap type="Support" id="supportResultSet">
@@ -43,23 +46,52 @@
   		<result property="nNo" column="RANK"/>
   		<result property="nickname" column="NICKNAME"/>
   	</resultMap>
-	
-	<!-- 로거채널개설 쿼리 -->
-	<resultMap type="com.kh.with.loger.model.vo.Loger" id="logerResultSet">
-		<id property="chNo" column="CH_NO"/>
-  		<result property="userNo" column="USER_NO"/>
-  		<result property="chNm" column="CH_NM"/>
-  		<result property="vNo" column="V_NO"/>
-  		<result property="calApply" column="CAL_APPLY"/>
-  		<result property="chDT" column="CH_DT"/>
-  		<result property="chInfo" column="CH_INFO"/>
-  		<result property="accNm" column="ACC_NM"/>
-  		<result property="bankNm" column="BANK_NM"/>
-  		<result property="account" column="ACCOUNT"/>
-	</resultMap>
+  
+    끝 -->
+
+  	     <resultMap type="Calculate" id="calculateResultSet">
+        <id property="calNo" column="CAL_NO"/>
+        <result property="userNo" column="USER_NO"/>
+        <result property="chNo" column="CH_NO"/>
+        <result property="calSTDT" column="CAL_STDT"/>
+        <result property="calEDT" column="CAL_EDT"/>
+        <result property="calPrice" column="CAL_PRICE"/>
+        <result property="amountPrice" column="AMOUNT_PRICE"/>
+        <result property="calVAT" column="CAL_VAT"/>
+        <result property="calTY" column="CAL_TY"/>
+        <result property="accNm" column="ACC_NM"/>
+        <result property="bankNm" column="BANK_NM"/>
+        <result property="account" column="ACCOUNT"/>
+        <result property="nNo" column="RANK"/>
+     </resultMap>
+     
+     <resultMap type="Loger" id="logerResultSet">
+        <id property="chNo" column="CH_NO"/>
+        <result property="userNo" column="USER_NO"/>
+        <result property="chNm" column="CH_NM"/>
+        <result property="vNo" column="V_NO"/>
+        <result property="calApply" column="CAL_APPLY"/>
+        <result property="chDT" column="CH_DT"/>
+        <result property="chInfo" column="CH_INFO"/>
+        <result property="accNm" column="ACC_NM"/>
+        <result property="bankNm" column="BANK_NM"/>
+        <result property="account" column="ACCOUNT"/>
+        <result property="subNum" column="SUBNUM"/>
+     </resultMap>
+     
+     <resultMap type="Support" id="supportResultSet">
+        <id property="supNo" column="SUP_NO"/>
+        <result property="userNo" column="USER_NO"/>
+        <result property="chNo" column="CH_NO"/>
+        <result property="supDT" column="SUP_DT"/>
+        <result property="supPrice" column="SUP_PRICE"/>
+        <result property="supTY" column="SUP_TY"/>
+        <result property="nNo" column="RANK"/>
+        <result property="nickname" column="NICKNAME"/>
+     </resultMap>
 	
   	<select id="selectLogerCalculate" resultMap="calculateResultSet">
-  		SELECT RANK, CAL_NO, USER_NO, CH_NO, CAL_STDT, CAL_EDT, CAL_PRICE, CAL_VAT, TOTAL_PRICE, CAL_TY, ACC_NM, BANK_NM, ACCOUNT
+  		SELECT RANK, CAL_NO, USER_NO, CH_NO, CAL_STDT, CAL_EDT, CAL_PRICE, CAL_VAT, AMOUNT_PRICE, CAL_TY, ACC_NM, BANK_NM, ACCOUNT
 		FROM(SELECT ROW_NUMBER() OVER(ORDER BY C.CAL_STDT DESC) RANK, C.*
 		FROM CALCULATE C
 		JOIN MEMBER M ON(C.USER_NO = M.USER_NO)
@@ -76,7 +108,7 @@
 		ORDER BY RANK ASC
   	</select>	
   	
-  	<select id="logerLastAccount" resultMap="logerResultSet2">
+  	<select id="logerLastAccount" resultMap="logerResultSet">
   		SELECT *
 		FROM LOGER L
 		JOIN MEMBER M ON(L.USER_NO = M.USER_NO)
@@ -97,7 +129,7 @@
 		FROM(SELECT ROW_NUMBER() OVER(ORDER BY S.SUP_DT DESC) RANK, M.NICKNAME, S.*
 		FROM SUPPORT S
 		JOIN MEMBER M ON(S.USER_NO = M.USER_NO)
-		WHERE M.USER_ID = #{userId})
+		WHERE S.USER_NO = #{userNo})
 		WHERE SUP_DT BETWEEN TO_CHAR(TO_DATE(#{mon},'YYYY-MM-DD')) AND TO_CHAR(TO_DATE(#{day},'YYYY-MM-DD'))
 		<!-- AND RANK BETWEEN 1 AND 10 -->
 		ORDER BY RANK ASC
@@ -114,7 +146,7 @@
   		SELECT SUP_PRICE
 		FROM SUPPORT S
 		JOIN MEMBER M ON(S.USER_NO = M.USER_NO)
-		WHERE M.USER_ID = #{userId}
+		WHERE S.USER_NO = #{userNo}
 		AND SUP_DT BETWEEN TO_CHAR(TO_DATE(#{mon},'YYYY-MM-DD')) AND TO_CHAR(TO_DATE(#{day},'YYYY-MM-DD'))
   	</select>
 

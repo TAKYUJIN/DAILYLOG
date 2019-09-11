@@ -13,11 +13,12 @@ public class Loger {
 	private String accNm;	//예금주
 	private String bankNm;	//은행명
 	private String account; //계좌번호
+	private int subNum;		//구독자수
 	
 	public Loger() {}
 
 	public Loger(int chNo, int userNo, String chNm, int vNo, String calApply, Date chDT, String chInfo, String accNm,
-			String bankNm, String account) {
+			String bankNm, String account, int subNum) {
 		super();
 		this.chNo = chNo;
 		this.userNo = userNo;
@@ -29,6 +30,7 @@ public class Loger {
 		this.accNm = accNm;
 		this.bankNm = bankNm;
 		this.account = account;
+		this.subNum = subNum;
 	}
 
 	public int getChNo() {
@@ -111,15 +113,22 @@ public class Loger {
 		this.account = account;
 	}
 
+	public int getSubNum() {
+		return subNum;
+	}
+
+	public void setSubNum(int subNum) {
+		this.subNum = subNum;
+	}
+
 	@Override
 	public String toString() {
 		return "Loger [chNo=" + chNo + ", userNo=" + userNo + ", chNm=" + chNm + ", vNo=" + vNo + ", calApply="
 				+ calApply + ", chDT=" + chDT + ", chInfo=" + chInfo + ", accNm=" + accNm + ", bankNm=" + bankNm
-				+ ", account=" + account + "]";
+				+ ", account=" + account + ", subNum=" + subNum + "]";
 	}
 
 	
 	
-	
-	
+
 }

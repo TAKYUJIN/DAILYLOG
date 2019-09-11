@@ -31,11 +31,15 @@ public interface LogerDao {
 	int updateLogerAccount(SqlSessionTemplate sqlSession, Member m);
 
 	//로거 기간별 후원내역 조회 값
+
 	ArrayList<Integer> selectLogetSupportPrice(SqlSessionTemplate sqlSession, Support s, Member m);
 
 	//로거스튜디오 메인 select (프로필,채널명, 구독자)
 	ArrayList<Loger> logerChMain(SqlSessionTemplate sqlSession, int userNo);
 	
+
+	ArrayList<Support> selectLogetSupportPrice(SqlSessionTemplate sqlSession, Support s, Member m);
+
 	
 
 }

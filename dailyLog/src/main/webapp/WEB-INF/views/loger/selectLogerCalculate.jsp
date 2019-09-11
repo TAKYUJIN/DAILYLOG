@@ -374,8 +374,8 @@ input[class*="btn"], button[class*="btn"] {
 							<th class="calculate_th">후원날짜</th>
 						</tr>
 					</thead>
-					<tbody>
-						<c:forEach items="${dateList}" var="s">
+					<tbody id="test">
+						<%-- <c:forEach items="${dateList}" var="s">
 							<tr>
 								<td><c:out value="${s.nNo}" /></td>
 								<td><c:out value="${s.supTY}" /></td>
@@ -383,7 +383,7 @@ input[class*="btn"], button[class*="btn"] {
 								<td><fmt:formatNumber value="${s.supPrice}" pattern="#,###,###,###" /></td>
 								<td><fmt:formatDate pattern="yyyy-MM-dd" value="${s.supDT}" /></td>
 							</tr>
-						</c:forEach>
+						</c:forEach> --%>
 					</tbody>
 				</table>
 				
@@ -439,8 +439,6 @@ input[class*="btn"], button[class*="btn"] {
 		 $("#selectDate").click(function(){
 	    		var monthDate =$("#monthDate").val();
 	    		var todayDate = $("#todayDate").val();
-	    		console.log(monthDate);
-	    		console.log(todayDate);
 	    		$.ajax({
 	    			url:"datepic.lo",
 	    			data:{"monthDate":monthDate,"todayDate":todayDate},
@@ -448,10 +446,9 @@ input[class*="btn"], button[class*="btn"] {
 	    			success:function(data){
 	    				console.log('succ');
 	    				console.log(data);
-	    				var $dateTbody = $(".table-striped tbody");
+	    				var $test = $("#test");
+	    				$test.hide(); 
 	    				/* var $pagingDiv1 = $("#pagingArea div"); */
-	    				$dateTbody.html(""); 
-	    				/* $pagingDiv1.html(""); */
 	    				for(var i = 0; i < data["dateList"].length; i++){
 	    					var $tr = $("<tr>");
 	    					var $nNo = $("<td>").text(data["dateList"][i].nNo);
@@ -487,7 +484,7 @@ input[class*="btn"], button[class*="btn"] {
 	    				alert("정산 신청이 완료되었습니다.");
 	    			},
 	    			error : function(){
-	    				console.log("알 수 없는 에러로 정산 신청이 불가능 합니다.");
+	    				alert("알 수 없는 에러로 정산 신청이 불가능 합니다.");
 	    			}
 	    	})
 		 });
@@ -497,14 +494,15 @@ input[class*="btn"], button[class*="btn"] {
 				location.href="logerCalculate.lo";
 			};
 			
+			
 			$("#calculateBtn").click(function(){
-				var month = $("#monthDate").val();
-				var day = $("#todayDate").val();
+				var monthDate = $("#monthDate").val();
+				var todayDate = $("#todayDate").val();
 				
 				$.ajax({
 					url:"logerCalculateApply.lo",
 					type:"post",
-					data:{month:month, day:day},
+					data:{"monthDate":monthDate, "todayDate":todayDate},
 					success:function(data){
 						alert('됐다구요');
 						 

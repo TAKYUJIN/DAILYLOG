@@ -1,5 +1,6 @@
 package com.kh.with.video.model.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -43,19 +44,56 @@ public class VideoDaoImpl implements VideoDao {
 	SqlSession sqlsession;
 
 	@Override
+  /*
 	public List<Video> videoimagelist() {
 		System.out.println("videodaoimpl");
 		return sqlsession.selectList("Video.videoimagelist");
+  */
+	public List<Attachment> videoimagelist() {
+	System.out.println("videodaoimpl");
+	return sqlsession.selectList("Attachment.videoimagelist");
+	 
+
 	}
 
 	// 썸네일 insert 메소드
 	@Override
 	public int insertAttachment(SqlSessionTemplate sqlSession, Attachment attachment) {
 
-		System.out.println("attachmentdao까지 왔니?" + attachment);
-
-		return sqlSession.insert("Video.insertAttachment", attachment);
+		
+		 System.out.println("attachmentdao까지 왔니?" + attachment); 
+		
+		
+		return sqlSession.insert("Video.insertAttachment",attachment);
 	}
+	
+	@Override
+	public List<Object> selectVideoInfo(SqlSessionTemplate sqlSession, int userNo, int vNo) {
+		
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("userNo", userNo);
+		map.put("vNo", vNo);
+		
+		
+		return sqlSession.selectList("Video.selectVideoInfo", map);
+	}
+	@Override
+	public int selectRegStatus(SqlSessionTemplate sqlSession, int userNo, int chNo) {
+		
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("userNo", userNo);
+		map.put("chNo", chNo);
+		
+		return sqlSession.selectOne("Video.selectRegStatus", map);
+	}
+
+	
+
+
+}
+
+
+
 
 	
 	  @Override public List<Video> selectVideoInfo(SqlSessionTemplate sqlSession,

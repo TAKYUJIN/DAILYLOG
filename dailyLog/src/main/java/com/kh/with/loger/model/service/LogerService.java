@@ -33,7 +33,7 @@ public interface LogerService {
 	int updateLogerAccount(Member m);
 
 	//기간별 후원내역 조회 값
-	ArrayList<Integer> selectLogetSupportPrice(Support s, Member m);
+	ArrayList<Support> selectLogetSupportPrice(Support s, Member m);
 
 	//로거스튜디오 메인 select (프로필,채널명, 구독자)
 	ArrayList<Loger> logerChMain(int userNo);
