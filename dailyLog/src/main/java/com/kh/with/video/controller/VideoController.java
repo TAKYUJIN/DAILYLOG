@@ -43,21 +43,44 @@ import com.kh.with.video.model.vo.Video;
 
 	// 영상 클릭시 동영상 페이지로 이동
 	@RequestMapping(value = "video.vd")
+	//public ModelAndView showVideoView(@Param("userNo") String userNo, HttpServletRequest request)
 	public ModelAndView showVideoView(HttpServletRequest request) {
 		
-		int userNo = Integer.parseInt(request.getParameter("no"));
-		System.out.println("LL : " + userNo);
+		int userNo = Integer.parseInt(request.getParameter("userNo"));
+		int vNo = Integer.parseInt(request.getParameter("vNo"));
 		
-		List<Video> list = vs.selectVideoInfo(userNo);
-		System.out.println("list : " + list);
+		System.out.println("needs : " + userNo + ", " + vNo);
+		 
+		List<Object> list = vs.selectVideoInfo(userNo, vNo);
+		//System.out.println("list : " + list);
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("list", list);
 		
 		return new ModelAndView("redirect:/videoMain.vd");
 	}
-
-	@RequestMapping(value = "videoMain.vd")
-	public String showVideo(HttpServletRequest request) {
+	
+	//비디오 정기후원 상태 조회
+	@RequestMapping(value = "regStatus.vd")
+	public String selectRegStatus(HttpServletRequest request, Model model) {
+		int userNo = Integer.parseInt(request.getParameter("userNo"));
+		int chNo = Integer.parseInt(request.getParameter("chNo"));		
 		
-		System.out.println("videoMain");
+		int status = vs.selectRegStatus(userNo, chNo);
+		System.out.println("status : " + status);
+		model.addAttribute("stauts" + status);
+		
+		return "video/videoMain";
+	}
+	
+	//비디오 메인페이지
+	@RequestMapping(value = "videoMain.vd")
+	public String showVideo(HttpServletRequest request, HttpSession session, Model model) {
+		
+		List<Object> list = (List<Object>) request.getSession().getAttribute("list");
+		System.out.println("videoMain : " + list);
+		
+		model.addAttribute("list");
 		
 		
 		return "video/videoMain";
@@ -111,7 +134,7 @@ import com.kh.with.video.model.vo.Video;
 	// 정기후원
 	@RequestMapping(value = "regSub.vd")
 	@ResponseBody
-	public HashMap<String, Object> regSub(Model model, HttpServletRequest request, HttpSession session) {
+	public String regSub(Model model, HttpServletRequest request, HttpSession session) {
 		int price = Integer.parseInt(request.getParameter("remain"));
 
 		Member m = (Member) session.getAttribute("loginUser");
@@ -121,12 +144,8 @@ import com.kh.with.video.model.vo.Video;
 		System.out.println("result : " + result);
 		// System.out.println("money ::: " + price);
 
-		// model.addAttribute("msg", "정기후원중");
-
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("msg", "정기후원중");
-
-		return map;
+		
+		return "video/videoMain";
 	}
 
 	// 동영상 업로드 페이지 이동

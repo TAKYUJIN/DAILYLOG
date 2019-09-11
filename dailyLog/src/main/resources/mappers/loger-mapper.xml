@@ -20,7 +20,7 @@
   		<result property="nNo" column="RANK"/>
   	</resultMap>
   	
-  	<resultMap type="Loger" id="logerResultSet2">
+  	<resultMap type="Loger" id="logerResultSet">
   		<id property="chNo" column="CH_NO"/>
   		<result property="userNo" column="USER_NO"/>
   		<result property="chNm" column="CH_NM"/>
@@ -31,6 +31,7 @@
   		<result property="accNm" column="ACC_NM"/>
   		<result property="bankNm" column="BANK_NM"/>
   		<result property="account" column="ACCOUNT"/>
+  		<result property="subNum" column="SUBNUM"/>
   	</resultMap>
   	
   	<resultMap type="Support" id="supportResultSet">
@@ -44,19 +45,6 @@
   		<result property="nickname" column="NICKNAME"/>
   	</resultMap>
 	
-	<!-- 로거채널개설 쿼리 -->
-	<resultMap type="com.kh.with.loger.model.vo.Loger" id="logerResultSet">
-		<id property="chNo" column="CH_NO"/>
-  		<result property="userNo" column="USER_NO"/>
-  		<result property="chNm" column="CH_NM"/>
-  		<result property="vNo" column="V_NO"/>
-  		<result property="calApply" column="CAL_APPLY"/>
-  		<result property="chDT" column="CH_DT"/>
-  		<result property="chInfo" column="CH_INFO"/>
-  		<result property="accNm" column="ACC_NM"/>
-  		<result property="bankNm" column="BANK_NM"/>
-  		<result property="account" column="ACCOUNT"/>
-	</resultMap>
 	
   	<select id="selectLogerCalculate" resultMap="calculateResultSet">
   		SELECT RANK, CAL_NO, USER_NO, CH_NO, CAL_STDT, CAL_EDT, CAL_PRICE, CAL_VAT, TOTAL_PRICE, CAL_TY, ACC_NM, BANK_NM, ACCOUNT
@@ -76,7 +64,7 @@
 		ORDER BY RANK ASC
   	</select>	
   	
-  	<select id="logerLastAccount" resultMap="logerResultSet2">
+  	<select id="logerLastAccount" resultMap="logerResultSet">
   		SELECT *
 		FROM LOGER L
 		JOIN MEMBER M ON(L.USER_NO = M.USER_NO)

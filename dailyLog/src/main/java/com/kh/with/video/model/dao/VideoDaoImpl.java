@@ -2,6 +2,7 @@ package com.kh.with.video.model.dao;
 
 
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -62,10 +63,26 @@ public class VideoDaoImpl implements VideoDao{
 	}
 	
 	@Override
-	public List<Video> selectVideoInfo(SqlSessionTemplate sqlSession, int userNo) {
+	public List<Object> selectVideoInfo(SqlSessionTemplate sqlSession, int userNo, int vNo) {
 		
-		return sqlSession.selectList("Video.selectVideoInfo", userNo);
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("userNo", userNo);
+		map.put("vNo", vNo);
+		
+		
+		return sqlSession.selectList("Video.selectVideoInfo", map);
 	}
+	@Override
+	public int selectRegStatus(SqlSessionTemplate sqlSession, int userNo, int chNo) {
+		
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("userNo", userNo);
+		map.put("chNo", chNo);
+		
+		return sqlSession.selectOne("Video.selectRegStatus", map);
+	}
+
+	
 
 
 }
