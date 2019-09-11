@@ -46,9 +46,10 @@ public class VideoDaoImpl implements VideoDao{
 	@Inject
 	SqlSession sqlsession;
 	@Override
-	public List<Video> videoimagelist() {
+	public List<Attachment> videoimagelist() {
 	System.out.println("videodaoimpl");
-	return sqlsession.selectList("Video.videoimagelist");
+	return sqlsession.selectList("Attachment.videoimagelist");
+	 
 	}
 	
 	//썸네일 insert 메소드

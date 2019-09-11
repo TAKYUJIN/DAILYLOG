@@ -27,13 +27,10 @@ img.fixed{
   
  }
  /*  class="carousel-control right carousel-control-next"
-  */body {
-
-	background: #ebebeb;
-}
+  */ 
 h2 {
  background:#fff;
-	color: #696969;
+	 
 	font-size: 26px;
 	font-weight: 300;
 	text-align: center;
@@ -220,8 +217,7 @@ h2 span {
 </style>
 </head>
 <body>
-<jsp:include page="../common/mainBar.jsp"></jsp:include>	
- 
+  
 	<%-- <%-- <div class="row">
 		<div class="col-md-9 col-center m-auto">
 		 <c:forEach var="videoimage" items="${list}"> 
@@ -303,11 +299,10 @@ h2 span {
 							<h5>채널명:${videoimage.chNm }</h5>
 				</a></div></div></div> 
 						<div id="dot" style ="float:left;">
-						
 							<nav class="navbar  navbar-expand-xl navbar-light">
 								<button type="button" class="friendlist"  data-toggle="dropdown" id="btncolor" >
-								<img src="resources/images/three-dot.png"width="20px" height="20px">
-							</button>
+<%-- 								<img src="resources/images/${videoimage.dotimage}"width="20px" height="20px">
+ --%>							</button>
 				
 				<ul class="dropdown-menu">					
 					<li><a href="#" class="dropdown-item">동영상 신고</a></li>

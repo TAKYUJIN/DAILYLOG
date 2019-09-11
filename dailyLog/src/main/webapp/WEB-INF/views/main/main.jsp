@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+ 
 <!DOCTYPE html>
 <html>
 <head>
@@ -187,18 +188,15 @@ h2 span {
 </style>
 </head>
 <body>
-
+ 
  	  <c:if test="${ empty sessionScope.loginUser }">
  	  
- 	       <jsp:include page="../common/guest.jsp"></jsp:include> 
-		<%--  <jsp:include page="../main/top.jsp"></jsp:include>   --%>
-	
-		
-			 <form method="post" action="home.mb">
-			 ${vl.vTitle }
-			  <div class="row">
-		<div class="col-md-9 col-center m-auto">
-			<h2> <span>  <b>구독동영상1</b></span> </h2>
+ 	        <jsp:include page="../common/guest.jsp"></jsp:include>  
+		   <jsp:include page="../main/top.jsp"></jsp:include>  
+	  <%-- <jsp:include page="../main/list.jsp"></jsp:include>   --%>
+ 	  	 
+		  <div class="col-md-9 col-center m-auto">
+			<h2> <span>  <b>인기 동영상</b></span> </h2>
 			<div id="myCarousel1" class="carousel slide" data-ride="carousel" data-interval="0">
 				<ol class="carousel-indicators">
 					<li data-target="#myCarousel2" data-slide-to="0" class="active"></li>
@@ -208,12 +206,11 @@ h2 span {
 				<div class="carousel-inner">
 					<div class="item carousel-item active"> 
 						<div class="row">
-								${vl.vTitle }
 						<c:forEach var="videoimage" items="${list}">
 						<div class="col-sm-2"id="l"><div class="img-box"><div style=" float:left;"> <a href="video.vd">
 						<img src="resources/images/${videoimage.filepath}" width = "102px"  height="130px"  >
-							<h5>제목:${videoimage.vTitle}</h5>
-							<h5>채널명:${videoimage.chNm }</h5>
+							  <h5>제목:${videoimage.userNo}</h5> 
+						<%-- 	 <h5>채널명:${videoimage.chNm }</h5> --%>
 				</a></div></div></div> 
 						<div id="dot" style ="float:left;">
 						
@@ -229,6 +226,11 @@ h2 span {
 						 </div>
 						  </c:forEach> </div></div>
 				 
+				 <c:forEach var="videoimage" items="${list}">
+				 ${videoimage.userNo }
+				 </c:forEach>
+				 
+				 
 					<div class="item carousel-item1">
 						<div class="row"><c:forEach var="videoimage" items="${list}">
  <img src="resources/images/${videoimage.filepath}" class="img-responsive img-fluid"width = "180px"  height="130px" alt=""> 
@@ -237,8 +239,8 @@ h2 span {
 					<div class="item carousel-item2">
 						<div class="row"><c:forEach var="videoimage" items="${list}">
 							<div class="col-sm-2" ><div class="img-box"><img src="resources/images/${videoimage.filepath}"  class="img-responsive img-fluid"width = "180px"  height="130px" alt="">
-							<h5>제목:${videoimage.vTitle}</h5>
-							<h5>채널명:${videoimage.chNm }</h5>
+							<%-- <h5>제목:${videoimage.vTitle}</h5>
+							<h5>채널명:${videoimage.chNm }</h5> --%>
 							
 							</div></div>
 							</c:forEach>
@@ -251,10 +253,10 @@ h2 span {
 				<a class="carousel-control right carousel-control-next" href="#myCarousel1" data-slide="next"style="background:#fff;">
 					<i class="fa fa-chevron-right"></i>
  
- </a></div></div></div> 
+ </a></div></div> 
  <div class="row">
 		<div class="col-md-9 col-center m-auto">
-			<h2> <span>  <b>구독동영상2</b></span> </h2>
+			<h2> <span>  <b>조회수 TOP10 동영상</b></span> </h2>
 			<div id="myCarousel3" class="carousel slide" data-ride="carousel" data-interval="0">
 				<ol class="carousel-indicators">
 					<li data-target="#myCarousel2" data-slide-to="0" class="active"></li>
@@ -264,12 +266,12 @@ h2 span {
 				<div class="carousel-inner">
 					<div class="item carousel-item active"> 
 						<div class="row">
-							
+				 
 						<c:forEach var="videoimage" items="${list}">
 						<div class="col-sm-2"id="l"><div class="img-box"><div style=" float:left;"> <a href="video.vd">
 						<img src="resources/images/${videoimage.filepath}" width = "102px"  height="130px"  >
-							<h5>제목:${videoimage.vTitle}</h5>
-							<h5>채널명:${videoimage.chNm }</h5>
+							<%-- <h5>제목:${videoimage}</h5>
+							<h5>채널명:${videoimage.chNm }</h5> --%>
 				</a></div></div></div> 
 						<div id="dot" style ="float:left;">
 						
@@ -286,15 +288,15 @@ h2 span {
 						  </c:forEach> </div></div>
 				 
 					<div class="item carousel-item1">
-						<div class="row"><c:forEach var="videoimage" items="${list}">
- <img src="resources/images/${videoimage.filepath}" class="img-responsive img-fluid"width = "180px"  height="130px" alt=""> 
+						<div class="row"><c:forEach var="image" items="${list}">
+ <img src="resources/images/${image.filepath}" class="img-responsive img-fluid"width = "180px"  height="130px" alt=""> 
 						</c:forEach></div>
 					</div>
 					<div class="item carousel-item2">
 						<div class="row"><c:forEach var="videoimage" items="${list}">
 							<div class="col-sm-2" ><div class="img-box"><img src="resources/images/${videoimage.filepath}"  class="img-responsive img-fluid"width = "180px"  height="130px" alt="">
-							<h5>제목:${videoimage.vTitle}</h5>
-							<h5>채널명:${videoimage.chNm }</h5>
+							<%-- <h5>제목:${videoimage.vTitle}</h5>
+							<h5>채널명:${videoimage.chNm }</h5> --%>
 							
 							</div></div>
 							</c:forEach>
@@ -308,20 +310,90 @@ h2 span {
 					<i class="fa fa-chevron-right"></i>
  
  </a></div></div></div> 
-			 </form>
+			 </form>   
+		 
 			 
-	 </c:if>
+			 
+			 
+			  
+ 	 </c:if>
+ 	
+ 	 
+ 	 
+ 	
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 
 	<c:if test="${ !empty sessionScope.loginUser }">
 		 
-		<form action="home.mb" method="post">
-		
-<%--   		 <jsp:include page="../common/mainBar.jsp"></jsp:include>	
- --%>		 <jsp:include page="../main/top1.jsp"></jsp:include> 
-	</form>	 
+ 
+  		 <jsp:include page="../common/mainBar.jsp"></jsp:include>	
+		 <jsp:include page="../main/top1.jsp"></jsp:include> 
+ 
+ 
 	</c:if>  
 	
 	<jsp:include page="../common/footer.jsp"></jsp:include> 
-
+ 
 
 </body>
+  <script type="text/javascript">
+ 	 
+ 		
+ 	 /* $(function(){
+ 		 //var list={mv};
+ 		  
+ 		$.ajax({
+ 			url:"home.mb",
+ 			type:"post",
+  			 
+ 		 	success:function(mv){
+ 			console.log(mv);
+ 		  	if(mv.code=="ok"){
+ 		  		values=mv.list;
+ 		  		console.log(values);
+ 		  		
+ 		  	}	
+ 			//console.log(data);
+ 		  		  
+ 				alert("dhdp"); 			 
+ 			},
+ 			error:function(){
+ 				alert("안돼ㅠ");
+ 			}
+ 		 
+ 	
+ 	 });
+ 	
+ 		}); 
+ 	  */
+ 	/*  $.post("home.mb" ,
+ 		    function(list) {
+ 		        alert("result: " + list);
+ 		    }
+ 		); */
+ 	  /*  $(document).ready(function(){
+ 	  		$.ajax({
+ 			url:"home.mb",
+ 		  	 type:"get",
+ 			 dataType : "json",
+			 
+ 		 	success:function(data){
+ 		 		alert(data.filepath);
+ 		 		alert(data);
+ 		 		
+  			},
+ 			error:function(){
+ 				console.log("안돼ㅠ");
+ 			}
+ 		 
+ 	
+ 	 });
+ 	   
+ 		  url:"home.mb";
+ 	   }); */
+ 	 </script> 
 </html>
