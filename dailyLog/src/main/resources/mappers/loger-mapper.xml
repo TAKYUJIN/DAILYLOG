@@ -5,6 +5,50 @@
 
 <mapper namespace="Loger">
   	
+
+   <!-- 채원이꺼 
+  	<resultMap type="Calculate" id="calculateResultSet">
+  		<id property="calNo" column="CAL_NO"/>
+  		<result property="userNo" column="USER_NO"/>
+  		<result property="chNo" column="CH_NO"/>
+  		<result property="calSTDT" column="CAL_STDT"/>
+  		<result property="calEDT" column="CAL_EDT"/>
+  		<result property="calPrice" column="CAL_PRICE"/>
+  		<result property="calVAT" column="CAL_VAT"/>
+  		<result property="calTY" column="CAL_TY"/>
+  		<result property="accNm" column="ACC_NM"/>
+  		<result property="bankNm" column="BANK_NM"/>
+  		<result property="account" column="ACCOUNT"/>
+  		<result property="nNo" column="RANK"/>
+  	</resultMap>
+  	
+  	<resultMap type="Loger" id="logerResultSet">
+  		<id property="chNo" column="CH_NO"/>
+  		<result property="userNo" column="USER_NO"/>
+  		<result property="chNm" column="CH_NM"/>
+  		<result property="vNo" column="V_NO"/>
+  		<result property="calApply" column="CAL_APPLY"/>
+  		<result property="chDT" column="CH_DT"/>
+  		<result property="chInfo" column="CH_INFO"/>
+  		<result property="accNm" column="ACC_NM"/>
+  		<result property="bankNm" column="BANK_NM"/>
+  		<result property="account" column="ACCOUNT"/>
+  		<result property="subNum" column="SUBNUM"/>
+  	</resultMap>
+  	
+  	<resultMap type="Support" id="supportResultSet">
+  		<id property="supNo" column="SUP_NO"/>
+  		<result property="userNo" column="USER_NO"/>
+  		<result property="chNo" column="CH_NO"/>
+  		<result property="supDT" column="SUP_DT"/>
+  		<result property="supPrice" column="SUP_PRICE"/>
+  		<result property="supTY" column="SUP_TY"/>
+  		<result property="nNo" column="RANK"/>
+  		<result property="nickname" column="NICKNAME"/>
+  	</resultMap>
+  
+    끝 -->
+
   	     <resultMap type="Calculate" id="calculateResultSet">
         <id property="calNo" column="CAL_NO"/>
         <result property="userNo" column="USER_NO"/>

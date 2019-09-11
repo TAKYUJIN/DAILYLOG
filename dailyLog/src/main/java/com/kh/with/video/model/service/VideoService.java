@@ -35,8 +35,11 @@ public interface VideoService {
 	int insertAttachment(Attachment attachment);
 	
 	//비디오값 불러오기
-	List<Video> selectVideoInfo(int userNo);
+	List<Object> selectVideoInfo(int userNo, int vNo);
 
+	//정기후원 상태 조회
+	int selectRegStatus(int userNo, int chNo);
+	
 
 
 }

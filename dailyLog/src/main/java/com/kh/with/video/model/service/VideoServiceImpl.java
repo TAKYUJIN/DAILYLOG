@@ -34,8 +34,6 @@ public class VideoServiceImpl implements VideoService{
 		return point;
 	}
 
-
-
 	//		byte[] data = multipartFile.getBytes();
 	//		FileOutputStream fos = new FileOutputStream(SAVE_PATH + "/" + saveFileName);
 	//		fos.write(data);
@@ -52,15 +50,11 @@ public class VideoServiceImpl implements VideoService{
 		return vd.regSub(sqlSession, m);
 	}
 
-
-
-
 	@Override
 	public String upload(MultipartFile file) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 
 	// 업로드할동영상 정보 insert메소드
 	@Override
@@ -69,14 +63,12 @@ public class VideoServiceImpl implements VideoService{
 	return vd.insertVideoInfo(sqlSession,video);
 	}
 
-
 	@Override
 	public List<Attachment> videoimagelist(){
 		System.out.println("videoServiceimpl");
 		
 		return vd.videoimagelist();
 	}
-
 
 	//썸네일 insert 메소드
 	@Override
@@ -85,12 +77,21 @@ public class VideoServiceImpl implements VideoService{
 		return vd.insertAttachment(sqlSession,attachment);
 	}
 
+	@Override
+	public List<Object> selectVideoInfo(int userNo, int vNo) {
+		
+		return vd.selectVideoInfo(sqlSession, userNo, vNo);
+	}
 
 	@Override
-	public List<Video> selectVideoInfo(int userNo) {
+	public int selectRegStatus(int userNo, int chNo) {
 		
-		return vd.selectVideoInfo(sqlSession, userNo);
+		return vd.selectRegStatus(sqlSession, userNo, chNo);
 	}
+
+
+
+
 
 
 }

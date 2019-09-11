@@ -68,10 +68,10 @@ value="jdbc:oracle:thin:@127.0.0.1:1521:xe"/>
     <property name="password" value="gmlwjd9655*" />
     <property name="javaMailProperties">
     <props>
-     		   <prop key="mail.transport.protocol">smtp</prop>
-               <prop key="mail.smtp.auth">true</prop>
-               <prop key="mail.smtp.starttls.enable">true</prop>
-               <prop key="mail.debug">true</prop>
+   		<prop key="mail.transport.protocol">smtp</prop>
+        <prop key="mail.smtp.auth">true</prop>
+        <prop key="mail.smtp.starttls.enable">true</prop>
+        <prop key="mail.debug">true</prop>
     </props>
     </property>
   </bean>

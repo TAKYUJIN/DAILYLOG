@@ -398,7 +398,7 @@ button[class*="btn"] {border: 0;}
 <body>
  	<jsp:include page="../common/mainBar.jsp"></jsp:include>
 	<br><br><br>
-	
+	<%-- <c:forEach items="${list}" --%>
 	<div align="center">
 		<table border="1px">
 			<tr>
@@ -411,12 +411,20 @@ button[class*="btn"] {border: 0;}
 				</td>
 				<td width="220px" height="60px">
 					<div style="margin-left:10%;">
-						<div>
-							<div style="margin-right:10%; display:inline-block;">채널명</div>
-							<div style="display:inline-block;"><button>30만</button></div>
-							<label id="regsubTY" style="color:gray; position:fixed;">${ msg }</label>
-						</div>
-						<p>게시일 : 2019.09.03</p>
+						<div style="margin-right:10%; display:inline-block;">${ list[0].chNm }</div>
+						<div style="display:inline-block;"><button>구독</button></div>
+						<label id="regsubTY" style="color:gray; position:fixed;">
+								정기후원중<input type="text" value="${status }">
+								<input type="text" value="${status==0 }">
+							<c:if test="${ status == 1 }">
+							</c:if>
+							<c:if test="${ status == 0 }">
+								정기후원중아님
+							</c:if>
+						</label>
+						<p>게시일 : ${ list[0].uploadDt }</p>
+						<p>구독자수 : ${ list[0].loger.subNum } </p>
+
 					</div>
 				</td>
 				
@@ -648,7 +656,7 @@ button[class*="btn"] {border: 0;}
 				<!-- 비디오 -->
 				<td colspan="4" height="400px"><!-- autoplay="autoplay" -->
 					  <video id='my-video' class='video-js' controls  preload='auto' width='800' height='450'
-						  poster='resources/images/logo.jpg' data-setup='{}' >
+						  poster='resources/images/logo.png' data-setup='{}' >
 						  <source src='resources/uploadFiles/oceans.mp4' type='video/mp4'>
 						  <source src='MY_VIDEO.webm' type='video/webm'>
 						  <p class='vjs-no-js'>
@@ -665,11 +673,10 @@ button[class*="btn"] {border: 0;}
 				<!-- 영상 제목, 태그 -->
 				<td colspan="4" height="130px">
 					<div style="margin:15px;">
-						<h3>영상제목</h3>
-						<small>조회수 45,000</small><br>
+						<h3>${ list[0].vTitle }</h3>
+						<small>조회수  ${ list[0].count }</small><br>
 						<div>
-							<a href="" style="color:blue;"><small>#태그</small></a>
-							<a href="" style="color:blue;"><small>#태그</small></a>
+							<a href="" style="color:blue;"><small>${ list[0].tag }</small></a>
 						</div>
 					</div>
 				</td>
@@ -725,8 +732,27 @@ button[class*="btn"] {border: 0;}
 				alert("포인트가 부족합니다.");
 			}
 		});
+		
 		//후원 div 
 		 $(document).ready(function(){
+		//정산상태
+		var userNo1 = "<c:out value='${list[0].loger.userNo}'/>";
+		var chNo = "<c:out value='${list[0].loger.chNo}'/>";
+		
+			$.ajax({
+				url:"regStatus.vd",
+				type:"post",
+				data:{userNo:userNo1,
+						chNo:chNo},
+				success:function(data){
+					console.log("성공");
+				},
+				error:function(){
+					console.log("실패");
+				}
+			});
+			
+			
 /* 			//포인트조회
 			 $('#selectPoint').click(function(){
 				$.ajax({

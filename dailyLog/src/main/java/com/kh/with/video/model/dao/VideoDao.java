@@ -34,7 +34,9 @@ public interface VideoDao {
 	//썸네일  insert 메소드
 	int insertAttachment(SqlSessionTemplate sqlSession, Attachment attachment);
 	
-	List<Video> selectVideoInfo(SqlSessionTemplate sqlSession, int userNo);
+	List<Object> selectVideoInfo(SqlSessionTemplate sqlSession, int userNo, int vNo);
+	
+	int selectRegStatus(SqlSessionTemplate sqlSession, int userNo, int chNo);
 
 
 

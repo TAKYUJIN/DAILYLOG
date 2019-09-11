@@ -10,8 +10,10 @@
 		<typeAlias type="com.kh.with.loger.model.vo.Support" alias="Support" />
 		<typeAlias type="com.kh.with.main.model.vo.MailVo" alias="MailVo" />
  		<typeAlias type="com.kh.with.video.model.vo.Video" alias="Video" />
+ 		<typeAlias type="com.kh.with.video.model.vo.Video2" alias="Video2" />
 		<typeAlias type="com.kh.with.video.model.vo.Attachment" alias="Attachment" />
 		<typeAlias type="com.kh.with.admin.model.vo.Board" alias="Board" />
+		<typeAlias type="com.kh.with.reply.model.vo.Reply" alias="Reply" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappers/member-mapper.xml"/>

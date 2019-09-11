@@ -5,9 +5,7 @@
 
 <mapper namespace="Video">
 
-	<resultMap type="com.kh.with.video.model.vo.Video"
-		id="videoResultSet">
-
+	<resultMap type="Video" id="videoResultSet">
 		<id property="vNo" column="V_NO" />
 		<result property="userNo" column="USER_NO" />
 		<result property="vTitle" column="V_TITLE" />
@@ -26,7 +24,48 @@
 		<result property="openTy" column="OPEN_TY" />
 	</resultMap>
 	
+		<resultMap type="Video2" id="videoResultSet2">
+		<id property="vNo" column="V_NO" />
+		<result property="userNo" column="USER_NO" />
+		<result property="vTitle" column="V_TITLE" />
+		<result property="count" column="COUNT" />
+		<result property="chNm" column="CH_NM" />
+		<result property="tag" column="TAG" />
+		<result property="vblYn" column="VBL_YN" />
+		<result property="uploadDt" column="UPLOAD_DT" />
+		<result property="modifyDt" column="MODIFY_DT" />
+		<result property="adultAut" column="ADULT_AUT" />
+		<result property="adYn" column="AD_YN" />
+		<result property="adInfo" column="AD_INFO" />
+		<result property="location" column="LOCATION" />
+		<result property="info" column="INFO" />
+		<result property="filepath" column="FILEPATH" />
+		<result property="openTy" column="OPEN_TY" />
+		<collection property="loger" resultMap="logerResultSet" />
+	</resultMap>
 	
+  	<resultMap type="Loger" id="logerResultSet">
+  		<id property="chNo" column="CH_NO"/>
+  		<result property="userNo" column="USER_NO"/>
+  		<result property="chNm" column="CH_NM"/>
+  		<result property="vNo" column="V_NO"/>
+  		<result property="calApply" column="CAL_APPLY"/>
+  		<result property="chDT" column="CH_DT"/>
+  		<result property="chInfo" column="CH_INFO"/>
+  		<result property="accNm" column="ACC_NM"/>
+  		<result property="bankNm" column="BANK_NM"/>
+  		<result property="account" column="ACCOUNT"/>
+  		<result property="subNum" column="SUBNUM"/>
+  	</resultMap>
+  	
+	<resultMap type="Reply" id="replyResultSet">
+		<id property="repNo" column="REP_NO" />
+		<result property="userNo" column="USER_NO" />
+		<result property="vNo" column="V_NO" />
+		<result property="repDt" column="REP_DT" />
+		<result property="repCt" column="REP_CT" />
+		<result property="repTy" column="REP_TY" />
+	</resultMap>
 	
 	<resultMap type="com.kh.with.video.model.vo.Attachment"
 		id="attachmentResultSet">
@@ -57,10 +96,20 @@
 	</insert>  
 
 
-	<select id="selectVideoInfo" parameterType="int" resultMap="videoResultSet">
-		SELECT *
-		FROM VIDEO
-		WHERE USER_NO = #{userNo}
+	<select id="selectVideoInfo" parameterType="map" resultMap="videoResultSet2">
+		SELECT V.*, L.*
+		FROM VIDEO V
+		JOIN LOGER L ON(V.USER_NO = L.USER_NO)
+		WHERE V.USER_NO = #{userNo}
+		AND V.V_NO = #{vNo}
+	</select>
+	
+	<select id="selectRegStatus" parameterType="map" resultType="int">
+		SELECT R.RS_STATUS
+		FROM REGULAR_SUB R
+		JOIN LOGER L ON(R.USER_NO = L.USER_NO)
+		WHERE R.USER_NO = #{userNo}
+		AND R.CH_NO = #{chNo}
 	</select>
 
 </mapper>
