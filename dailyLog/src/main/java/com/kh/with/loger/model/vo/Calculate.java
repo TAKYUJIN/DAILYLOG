@@ -10,7 +10,7 @@ public class Calculate {
 	private Date calEDT;	//정산완료날짜
 	private int calPrice;	//정산금액
 	private int calVAT;		//수수료
-	private int totalPrice; //총 금액
+	private int amountPrice; //실수령액
 	private String calTY;	//정산상태 대기, 완료
 	private String accNm;	//예금주
 	private String bankNm;	//은행명
@@ -22,7 +22,7 @@ public class Calculate {
 
 
 	public Calculate(int calNo, int userNo, int chNo, Date calSTDT, Date calEDT, int calPrice, int calVAT,
-			int totalPrice, String calTY, String accNm, String bankNm, String account, int nNo) {
+			int amountPrice, String calTY, String accNm, String bankNm, String account, int nNo) {
 		super();
 		this.calNo = calNo;
 		this.userNo = userNo;
@@ -31,7 +31,7 @@ public class Calculate {
 		this.calEDT = calEDT;
 		this.calPrice = calPrice;
 		this.calVAT = calVAT;
-		this.totalPrice = totalPrice;
+		this.amountPrice = amountPrice;
 		this.calTY = calTY;
 		this.accNm = accNm;
 		this.bankNm = bankNm;
@@ -110,13 +110,13 @@ public class Calculate {
 	}
 
 
-	public int getTotalPrice() {
-		return totalPrice;
+	public int getAmountPrice() {
+		return amountPrice;
 	}
 
 
-	public void setTotalPrice(int totalPrice) {
-		this.totalPrice = totalPrice;
+	public void setAmountPrice(int amountPrice) {
+		this.amountPrice = amountPrice;
 	}
 
 
@@ -173,9 +173,9 @@ public class Calculate {
 	@Override
 	public String toString() {
 		return "Calculate [calNo=" + calNo + ", userNo=" + userNo + ", chNo=" + chNo + ", calSTDT=" + calSTDT
-				+ ", calEDT=" + calEDT + ", calPrice=" + calPrice + ", calVAT=" + calVAT + ", totalPrice=" + totalPrice
-				+ ", calTY=" + calTY + ", accNm=" + accNm + ", bankNm=" + bankNm + ", account=" + account + ", nNo="
-				+ nNo + "]";
+				+ ", calEDT=" + calEDT + ", calPrice=" + calPrice + ", calVAT=" + calVAT + ", amountPrice="
+				+ amountPrice + ", calTY=" + calTY + ", accNm=" + accNm + ", bankNm=" + bankNm + ", account=" + account
+				+ ", nNo=" + nNo + "]";
 	}
 
 

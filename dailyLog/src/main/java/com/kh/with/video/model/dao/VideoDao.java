@@ -1,6 +1,7 @@
 package com.kh.with.video.model.dao;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -28,7 +29,7 @@ public interface VideoDao {
 	//int insertVideoInfo(SqlSessionTemplate sqlSession, Model model);
 	
 	
-	List<Video> videoimagelist();
+	List<Attachment> videoimagelist();
 	
 	//썸네일  insert 메소드
 	int insertAttachment(SqlSessionTemplate sqlSession, Attachment attachment);

@@ -1,6 +1,7 @@
 package com.kh.with.video.model.service;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -63,7 +64,7 @@ public class VideoServiceImpl implements VideoService{
 	}
 
 	@Override
-	public List<Video> videoimagelist(){
+	public List<Attachment> videoimagelist(){
 		System.out.println("videoServiceimpl");
 		
 		return vd.videoimagelist();

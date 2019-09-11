@@ -54,11 +54,7 @@ public class LogerDaoImpl implements LogerDao{
 	@Override
 	public ArrayList<Support> selectLogerSupportDate(SqlSessionTemplate sqlSession, Support s, Member m) {
 		ArrayList<Support> dateList = null;
-		System.out.println("온다고?");
-		
 		dateList = (ArrayList)sqlSession.selectList("Loger.selectLogetSupportDate", m);
-		
-		System.out.println("dateList : " + dateList);
 		
 		return dateList;
 		
@@ -69,20 +65,21 @@ public class LogerDaoImpl implements LogerDao{
 	public int updateLogerAccount(SqlSessionTemplate sqlSession, Member m) {
 		return sqlSession.update("Loger.updateLogerAccount", m);
 	}
-	/*
-	 * @Override public ArrayList<Integer>
-	 * selectLogetSupportPrice(SqlSessionTemplate sqlSession, Support s, Member m) {
-	 * int[] pList = null;
-	 * 
-	 * pList = (ArrayList) sqlSession.selectList("Loger.selectLogetSupportPrice",
-	 * m);
-	 * 
-	 * System.out.println("pList : " + pList);
-	 * 
-	 * return pList; }
-	 */
 	
 	
+	//후원기간 조회 후 그 기간에 따른 정산 금액만 select
+	 @Override public ArrayList<Support> selectLogetSupportPrice(SqlSessionTemplate sqlSession, Support s, Member m) {
+	 ArrayList<Support> pList = null;
+	 
+	 pList = (ArrayList) sqlSession.selectList("Loger.selectLogetSupportPrice", m);
+	 
+	 System.out.println("pList : " + pList);
+	 
+	 return pList; 
+	 }
+	 
+	
+	//후원기간 조회 후 정산 총금액 insert
 	
 
 
