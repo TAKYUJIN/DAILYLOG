@@ -133,12 +133,10 @@ public class LogerController {
 		m.setDay(day);
 
 		ArrayList<Support> dateList = ls.selectLogerSupportDate(s, m);
-		System.out.println("리스트가 오는지..." + dateList);
 
 		mv.addObject("dateList", dateList);
 		mv.setViewName("jsonView");
 
-		System.out.println(mv);
 
 		return mv;
 	}
@@ -155,17 +153,37 @@ public class LogerController {
 		m.setMon(mon);
 		m.setDay(day);
 		
-		ArrayList<Integer> pList = ls.selectLogetSupportPrice(s, m);
+		System.out.println(mon);
+		System.out.println(day);
+		
+		ArrayList<Support> pList = ls.selectLogetSupportPrice(s, m);
 		model.addAttribute("pList", pList);
 		
-		int price = 0;
+		System.out.println("pList    " + pList.size());
 		
+		int sum = 0;
+		for(int i =0; i < pList.size(); i++){
+			
+		sum += pList.get(i).getSupPrice();
 		
-		for(int i = 0; i < pList.size(); i++) {
-			price = price + pList.get(i);
 		}
 		
-		System.out.println(price);
+		System.out.println("가격가격    " + sum);
+		
+//		 ArrayList<Integer> price = null;
+//		
+//		
+//		for(int i = 0; i < pList.size(); i++) {
+//			price = pList[i].supPrice;
+//		}
+		
+//		int[] price = new int[pList.size()];
+//	    for (int i=0; i < price.length; i++)
+//	    {
+//	        price[i] = pList[i].supPrice();
+//	    }
+//		
+//		System.out.println(price);
 		
 		
 

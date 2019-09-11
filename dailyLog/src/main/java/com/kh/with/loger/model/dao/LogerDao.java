@@ -31,7 +31,7 @@ public interface LogerDao {
 	int updateLogerAccount(SqlSessionTemplate sqlSession, Member m);
 
 	//로거 기간별 후원내역 조회 값
-	ArrayList<Integer> selectLogetSupportPrice(SqlSessionTemplate sqlSession, Support s, Member m);
+	ArrayList<Support> selectLogetSupportPrice(SqlSessionTemplate sqlSession, Support s, Member m);
 	
 
 }
