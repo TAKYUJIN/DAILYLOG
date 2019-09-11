@@ -20,5 +20,6 @@
     	<mapper resource="mappers/friend-mapper.xml"/>
 		<mapper resource="mappers/video-mapper.xml"/>
 		<mapper resource="mappers/Board-mapper.xml"/>
+		<mapper resource="mappers/attachment-mapper.xml"/>
 	</mappers>
 </configuration>

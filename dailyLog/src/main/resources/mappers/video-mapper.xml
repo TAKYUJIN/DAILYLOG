@@ -56,9 +56,6 @@
 	VALUES(#{userNo}, AM_NO.NEXTVAL,  #{filepath}, SYSDATE ,  #{enrollNm} , 'NULL'  , '회원')
 	</insert>  
 
-	<select id="videoimagelist" parameterType="Video" resultMap="videoResultSet">
-		SELECT * FROM VIDEO 
-	</select>
 
 	<select id="selectVideoInfo" parameterType="int" resultMap="videoResultSet">
 		SELECT *
