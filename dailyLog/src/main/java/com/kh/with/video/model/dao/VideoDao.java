@@ -37,6 +37,8 @@ public interface VideoDao {
 	List<Object> selectVideoInfo(SqlSessionTemplate sqlSession, int userNo, int vNo);
 	
 	int selectRegStatus(SqlSessionTemplate sqlSession, int userNo, int chNo);
+	
+	List<Video> selectVideoInfo(SqlSessionTemplate sqlSession, int userNo);
 
 
 

@@ -79,11 +79,14 @@ public class LogerDaoImpl implements LogerDao{
 	 * 
 	 * return pList; }
 	 */
+	
+	/*
 	@Override
 	public ArrayList<Integer> selectLogetSupportPrice(SqlSessionTemplate sqlSession, Support s, Member m) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	*/
 	
 	//로거스튜디오 메인 select (프로필,채널명, 구독자)
 	@Override
@@ -101,7 +104,8 @@ public class LogerDaoImpl implements LogerDao{
 	
 	
 	//후원기간 조회 후 그 기간에 따른 정산 금액만 select
-	 @Override public ArrayList<Support> selectLogetSupportPrice(SqlSessionTemplate sqlSession, Support s, Member m) {
+	 @Override 
+	 public ArrayList<Support> selectLogetSupportPrice(SqlSessionTemplate sqlSession, Support s, Member m) {
 	 ArrayList<Support> pList = null;
 	 
 	 pList = (ArrayList) sqlSession.selectList("Loger.selectLogetSupportPrice", m);
