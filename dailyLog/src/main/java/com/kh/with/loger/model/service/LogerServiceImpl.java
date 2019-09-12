@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.kh.with.loger.model.dao.LogerDao;
 import com.kh.with.loger.model.vo.Calculate;
 import com.kh.with.loger.model.vo.Loger;
+import com.kh.with.loger.model.vo.Loger2;
 import com.kh.with.loger.model.vo.Support;
 import com.kh.with.member.model.vo.Member;
 
@@ -21,7 +22,7 @@ public class LogerServiceImpl implements LogerService{
 	private LogerDao ld;
 	@Autowired
 	private DataSourceTransactionManager transactionManager; 
-	
+
 
 	//로거 정산내역 조회
 	@Override
@@ -66,28 +67,25 @@ public class LogerServiceImpl implements LogerService{
 	}
 
 
-	
+
 	@Override
 	public ArrayList<Support> selectLogetSupportPrice(Support s, Member m) {
 		return ld.selectLogetSupportPrice(sqlSession, s, m);
 	}
-	
 
-	//로거스튜디오 메인 select (프로필,채널명, 구독자)
+	//로거스튜디오(프로필,채널명,구독자수)
 	@Override
-	public ArrayList<Loger> logerChMain(int userNo) {
-		
-		return ld.logerChMain(sqlSession, userNo);
-		
-		
+	public Loger2 newHomeChannel(int userNo) {
+		return ld.newHomeChannel(sqlSession, userNo);
 	}
-	
 
-
-	
-
-	
 
 
 
 }
+
+
+
+
+
+

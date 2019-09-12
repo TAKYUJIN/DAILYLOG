@@ -6,6 +6,7 @@
 	<typeAliases>
 		<typeAlias type="com.kh.with.member.model.vo.Member" alias="Member" />
 		<typeAlias type="com.kh.with.loger.model.vo.Loger" alias="Loger" />
+		<typeAlias type="com.kh.with.loger.model.vo.Loger2" alias="Loger2" />
 		<typeAlias type="com.kh.with.loger.model.vo.Calculate" alias="Calculate" />
 		<typeAlias type="com.kh.with.loger.model.vo.Support" alias="Support" />
 		<typeAlias type="com.kh.with.main.model.vo.MailVo" alias="MailVo" />
@@ -13,9 +14,6 @@
  		<typeAlias type="com.kh.with.video.model.vo.Video2" alias="Video2" />
 		<typeAlias type="com.kh.with.video.model.vo.Attachment" alias="Attachment" />
 		<typeAlias type="com.kh.with.admin.model.vo.Board" alias="Board" />
-
-		<!-- 채빈언니 위에 보드랑 중복이여서 주석했어요 <typeAlias type="com.kh.with.admin.model.vo.Board" alias="Board" /> -->
-
 		<typeAlias type="com.kh.with.reply.model.vo.Reply" alias="Reply" />
 
 	</typeAliases>
