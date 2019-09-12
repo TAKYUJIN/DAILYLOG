@@ -166,18 +166,13 @@ public class VideoController {
 
 		System.out.println("페이지이동의 로그인유저정보 가지고 왔니?:::" + chYN);
 
-/*
 		if(chYN.equals("Y")) {
 			return"video/videoUpload";
 		}else {
-*/
-		if (chYN.equals("Y")) {
-			return "video/videoBasicInfo";
-		} else {
 			return "loger/createChannel";
 
 		}
-
+		 
 	}
 
 	// 동영상 업로드 insert 메소드
@@ -285,17 +280,14 @@ public class VideoController {
 		int result1 = vs.insertAttachment(attachment);
 
 
-/*
+
 		if(result > 0  && result1 > 0 ) {
 			return "redirect:index.jsp";
 		}else {
-*/
-		if (result > 0 && result1 > 0) {
-			return "admin/adminNoticeList";
-		} else {
 			model.addAttribute("msg", "동영상 업로드실패");
 			return "common/errorPage";
 		}
+
 
 	}
 

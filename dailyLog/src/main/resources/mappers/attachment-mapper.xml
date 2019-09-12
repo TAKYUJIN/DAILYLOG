@@ -55,5 +55,13 @@
 	 
 	</select>
 
+
+<!-- 썸네일 정보 insert 쿼리 -->
+	<insert id="insertAttachment" parameterType="Attachment">	
+	INSERT INTO ATTACHMENT
+	VALUES(#{userNo}, AM_NO.NEXTVAL,  #{filepath},  'NULL' , SYSDATE ,  #{enrollNm} , 'NULL'  , '썸네일')
+	</insert>  
+
+
 </mapper>
 

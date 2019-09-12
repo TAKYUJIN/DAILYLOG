@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 
 import com.kh.with.loger.model.vo.Calculate;
 import com.kh.with.loger.model.vo.Loger;
+import com.kh.with.loger.model.vo.Loger2;
 import com.kh.with.loger.model.vo.Support;
 import com.kh.with.member.model.vo.Member;
 
@@ -34,11 +35,10 @@ public interface LogerDao {
 
 	//ArrayList<Integer> selectLogetSupportPrice(SqlSessionTemplate sqlSession, Support s, Member m);
 
-	//로거스튜디오 메인 select (프로필,채널명, 구독자)
-	ArrayList<Loger> logerChMain(SqlSessionTemplate sqlSession, int userNo);
-	
-
 	ArrayList<Support> selectLogetSupportPrice(SqlSessionTemplate sqlSession, Support s, Member m);
+
+	//로거스튜디오(프로필 ,채널명,구독자수)
+	Loger2 newHomeChannel(SqlSessionTemplate sqlSession, int userNo);
 
 	
 
