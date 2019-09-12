@@ -16,9 +16,9 @@ import com.kh.with.video.model.vo.Video;
 public interface VideoDao {
 	
 	//동영상 페이지 포인트 조회
-	int selectPoint(SqlSessionTemplate sqlSession, Member m);
+	int selectPoint(SqlSessionTemplate sqlSession, int userNo);
 	//정기후원
-	int regSub(SqlSessionTemplate sqlSession, Member m);
+	int regSub(SqlSessionTemplate sqlSession, Map<String, Integer> map);
 	
 
 	//동영상 업로드정보 insert 메소드
@@ -39,7 +39,12 @@ public interface VideoDao {
 	int selectRegStatus(SqlSessionTemplate sqlSession, int userNo, int chNo);
 	
 	List<Video> selectVideoInfo(SqlSessionTemplate sqlSession, int userNo);
- 
+
+	
+	List<Map<String, Object>> selectLogerInfo(SqlSessionTemplate sqlSession, int userNo, int vNo);
+	
+	int insertReg(SqlSessionTemplate sqlSession, Map<String, Integer> map);
+
 
 
 

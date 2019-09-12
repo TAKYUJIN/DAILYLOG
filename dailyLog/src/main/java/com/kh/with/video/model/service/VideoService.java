@@ -2,6 +2,7 @@ package com.kh.with.video.model.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -13,13 +14,13 @@ public interface VideoService {
 	
  
 	//동영상 페이지 포인트 조회
-	int selectPoint(Member m);
+	int selectPoint(int userNo);
 	
 	//동영상 업로드 메소드
 	String upload(MultipartFile file);
 	
 	//정기후원
-	int regSub(Member m);
+	int regSub(Map<String, Integer> map);
 
 	
 	// 업로드할동영상 정보 insert메소드
@@ -40,8 +41,11 @@ public interface VideoService {
 	//정기후원 상태 조회
 	int selectRegStatus(int userNo, int chNo);
 
- 
- 
+
+	List<Map<String, Object>> selectLogerInfo(int userNo, int vNo);
+
+	int insertReg(Map<String, Integer> map);
+
 	
 
 

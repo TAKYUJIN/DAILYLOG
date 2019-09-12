@@ -26,29 +26,18 @@ public class VideoServiceImpl implements VideoService{
 	
 	//동영상 페이지 포인트 조회
 	@Override
-	public int selectPoint(Member m) {
+	public int selectPoint(int userNo) {
+		System.out.println("selectPoint Service in!");
 
-		int point = vd.selectPoint(sqlSession, m);
-
-		System.out.println("point : " + point);
-
-		return point;
+		return vd.selectPoint(sqlSession, userNo);
 	}
-
-	//		byte[] data = multipartFile.getBytes();
-	//		FileOutputStream fos = new FileOutputStream(SAVE_PATH + "/" + saveFileName);
-	//		fos.write(data);
-	//		fos.close();
-
-	//		return result;
-	//	}
 
 	//정기후원
 	@Override
-	public int regSub(Member m) {
+	public int regSub(Map<String, Integer> map) {
 
 
-		return vd.regSub(sqlSession, m);
+		return vd.regSub(sqlSession, map);
 	}
 
 	@Override
@@ -78,6 +67,11 @@ public class VideoServiceImpl implements VideoService{
 		return vd.insertAttachment(sqlSession,attachment);
 	}
 
+//	@Override
+//	public List<Map<String, Object>> selectVideoInfo(int userNo, int vNo) {
+//		
+//		return vd.selectVideoInfo(sqlSession, userNo, vNo);
+//	}
 	@Override
 	public List<Object> selectVideoInfo(int userNo, int vNo) {
 		
@@ -88,6 +82,18 @@ public class VideoServiceImpl implements VideoService{
 	public int selectRegStatus(int userNo, int chNo) {
 		
 		return vd.selectRegStatus(sqlSession, userNo, chNo);
+	}
+
+	@Override
+	public List<Map<String, Object>> selectLogerInfo(int userNo, int vNo) {
+
+		return vd.selectLogerInfo(sqlSession, userNo, vNo);
+	}
+
+	@Override
+	public int insertReg(Map<String, Integer> map) {
+		
+		return vd.insertReg(sqlSession, map);
 	}
 
 

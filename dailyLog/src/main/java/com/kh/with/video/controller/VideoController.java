@@ -1,22 +1,19 @@
 package com.kh.with.video.controller;
 
 import java.io.File;
-
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -44,32 +41,64 @@ public class VideoController {
 	@Autowired
 	private MemberService ms;
 
-	// 영상 클릭시 동영상 페이지로 이동
+	// 썸네일 클릭시 동영상 페이지로 이동
 	@RequestMapping(value = "video.vd")
-	//public ModelAndView showVideoView(@Param("userNo") String userNo, HttpServletRequest request)
-	public ModelAndView showVideoView(HttpServletRequest request) {
-
+	public String showVideoView(HttpServletRequest request, Model model) {
 		
 		int userNo = Integer.parseInt(request.getParameter("userNo"));
 		int vNo = Integer.parseInt(request.getParameter("vNo"));
 		
 		System.out.println("needs : " + userNo + ", " + vNo);
 		 
-		List<Object> list = vs.selectVideoInfo(userNo, vNo);
-		//System.out.println("list : " + list);
 		
-		HttpSession session = request.getSession();
-		session.setAttribute("list", list);
+		List<Object> list1 = vs.selectVideoInfo(userNo, vNo);
+		List<Map<String, Object>> list2 = vs.selectLogerInfo(userNo, vNo);
 		
-    /*
-		int userNo = Integer.parseInt(request.getParameter("no"));
-		System.out.println("LL : " + userNo);
-
-		List<Video> list = vs.selectVideoInfo(userNo);
-		System.out.println("list : " + list); */
-
-
-		return new ModelAndView("redirect:/videoMain.vd");
+		model.addAttribute("list1", list1);
+		model.addAttribute("list2", list2);
+		
+		System.out.println("list1 : " + list1);
+		System.out.println("list2 : " + list2);
+		
+		return "video/videoMain";
+	}
+	
+	// 동영상 페이지 포인트 조회
+	@RequestMapping(value = "selectPoint.vd")
+	@ResponseBody
+	public String selectPoint(HttpServletRequest request) {
+		int userNo = Integer.parseInt(request.getParameter("userNo"));
+		
+		int point = vs.selectPoint(userNo);
+		System.out.println("point : " + point);
+		
+		return Integer.toString(point);
+	}
+	
+	//정기후원
+	@RequestMapping(value = "regSub.vd")
+	@ResponseBody
+	public String regSub(HttpServletRequest request) {
+		int chNo = Integer.parseInt(request.getParameter("chNo"));
+		int userNo = Integer.parseInt(request.getParameter("userNo"));
+		int price = Integer.parseInt(request.getParameter("price"));
+		int remain = Integer.parseInt(request.getParameter("remain"));
+		
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("userNo", userNo);
+		map.put("chNo", chNo);
+		map.put("price", price);
+		map.put("remain", remain);
+		
+		//포인트차감
+		int result = vs.regSub(map);
+		
+		//정기후원내역 insert, status = 1
+		int status = vs.insertReg(map);
+		
+		System.out.println("result : " + result + ", status : " + status);
+		
+		return "정기후원중";
 	}
 	
 	//비디오 정기후원 상태 조회
@@ -82,18 +111,6 @@ public class VideoController {
 		System.out.println("status : " + status);
 		model.addAttribute("stauts" + status);
 		
-		return "video/videoMain";
-	}
-	
-	//비디오 메인페이지
-	@RequestMapping(value = "videoMain.vd")
-  public String showVideo(HttpServletRequest request, HttpSession session, Model model) {
-		
-		List<Object> list = (List<Object>) request.getSession().getAttribute("list");
-		System.out.println("videoMain : " + list);
-		
-		model.addAttribute("list");
-
 		return "video/videoMain";
 	}
 
@@ -127,36 +144,7 @@ public class VideoController {
 		return "video/videoMain";
 	}
 
-	// 동영상 페이지 포인트 조회
-	@RequestMapping(value = "selectPoint.vd")
-	public String selectPoint(HttpSession session, Model model) {
-		System.out.println("selectPoint in !");
 
-		Member m = (Member) session.getAttribute("loginUser");
-
-		int point = vs.selectPoint(m);
-
-		model.addAttribute("point", point);
-
-		return "video/videoMain";
-	}
-
-	// 정기후원
-	@RequestMapping(value = "regSub.vd")
-	@ResponseBody
-	public String regSub(Model model, HttpServletRequest request, HttpSession session) {
-		int price = Integer.parseInt(request.getParameter("remain"));
-
-		Member m = (Member) session.getAttribute("loginUser");
-		m.setRemainPT(price);
-
-		int result = vs.regSub(m);
-		System.out.println("result : " + result);
-		// System.out.println("money ::: " + price);
-
-		
-		return "video/videoMain";
-	}
 
 	// 동영상 업로드 페이지 이동
 	@RequestMapping(value = "videoUpload.vd")

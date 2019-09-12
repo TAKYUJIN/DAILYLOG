@@ -24,26 +24,6 @@
 		<result property="openTy" column="OPEN_TY" />
 	</resultMap>
 	
-		<resultMap type="Video2" id="videoResultSet2">
-		<id property="vNo" column="V_NO" />
-		<result property="userNo" column="USER_NO" />
-		<result property="vTitle" column="V_TITLE" />
-		<result property="count" column="COUNT" />
-		<result property="chNm" column="CH_NM" />
-		<result property="tag" column="TAG" />
-		<result property="vblYn" column="VBL_YN" />
-		<result property="uploadDt" column="UPLOAD_DT" />
-		<result property="modifyDt" column="MODIFY_DT" />
-		<result property="adultAut" column="ADULT_AUT" />
-		<result property="adYn" column="AD_YN" />
-		<result property="adInfo" column="AD_INFO" />
-		<result property="location" column="LOCATION" />
-		<result property="info" column="INFO" />
-		<result property="filepath" column="FILEPATH" />
-		<result property="openTy" column="OPEN_TY" />
-		<collection property="loger" resultMap="logerResultSet" />
-	</resultMap>
-	
   	<resultMap type="Loger" id="logerResultSet">
   		<id property="chNo" column="CH_NO"/>
   		<result property="userNo" column="USER_NO"/>
@@ -79,7 +59,18 @@
 		<result property="amTY" column="AM_TY" />
 	</resultMap>
 	
-	
+	     <resultMap type="Support" id="supportResultSet">
+        <id property="supNo" column="SUP_NO"/>
+        <result property="userNo" column="USER_NO"/>
+        <result property="chNo" column="CH_NO"/>
+        <result property="supSTDT" column="SUP_STDT"/>
+        <result property="supPrice" column="SUP_PRICE"/>
+        <result property="supTY" column="SUP_TY"/>
+        <result property="nNo" column="RANK"/>
+        <result property="nickname" column="NICKNAME"/>
+        <result property="regEDT" column="REG_EDT"/>
+        <result property="regStatus" column="REG_STATUS"/>
+     </resultMap>
 
 	<!-- 업로드할 동영상 정보 insert 쿼리 -->
  	<insert id="insertVideoInfo" parameterType="Video">	 	
@@ -91,15 +82,22 @@
 	
 	
 
-
-	<select id="selectVideoInfo" parameterType="map" resultMap="videoResultSet2">
-		SELECT V.*, L.*
-		FROM VIDEO V
-		JOIN LOGER L ON(V.USER_NO = L.USER_NO)
-		WHERE V.USER_NO = #{userNo}
-		AND V.V_NO = #{vNo}
+	<!-- 동영상페이지 비디오 정보 -->
+	<select id="selectVideoInfo" parameterType="map" resultMap="videoResultSet">
+		SELECT *
+		FROM VIDEO
+		WHERE USER_NO = #{userNo}
+		AND V_NO = #{vNo}
+	</select>
+	<!-- 동영상페이지 로거 정보 -->
+	<select id="selectLogerInfo" parameterType="map" resultMap="logerResultSet">
+		SELECT *
+		FROM LOGER
+		WHERE USER_NO = #{userNo}
+		AND V_NO = #{vNo}
 	</select>
 	
+	<!-- 동영상페이지  -->
 	<select id="selectRegStatus" parameterType="map" resultType="int">
 		SELECT R.RS_STATUS
 		FROM REGULAR_SUB R
@@ -107,6 +105,11 @@
 		WHERE R.USER_NO = #{userNo}
 		AND R.CH_NO = #{chNo}
 	</select>
+	
+	<insert id="insertReg" parameterType="map">
+		INSERT INTO SUPPORT
+		VALUES(SUP_NO.NEXTVAL, #{userNo}, #{chNo}, SYSDATE, #{price}, '정기', NULL, 1)
+	</insert>
 
 </mapper>
 

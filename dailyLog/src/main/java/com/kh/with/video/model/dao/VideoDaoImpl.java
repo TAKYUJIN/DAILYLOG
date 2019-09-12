@@ -19,16 +19,16 @@ public class VideoDaoImpl implements VideoDao {
 
 	// 동영상 페이지 포인트 조회
 	@Override
-	public int selectPoint(SqlSessionTemplate sqlSession, Member m) {
-
-		return sqlSession.selectOne("Member.selectPoint", m);
+	public int selectPoint(SqlSessionTemplate sqlSession, int userNo) {
+		System.out.println("selectPoint dao!");
+		return sqlSession.selectOne("Member.selectPoint", userNo);
 	}
 
 	// 동영상정기후원
 	@Override
-	public int regSub(SqlSessionTemplate sqlSession, Member m) {
+	public int regSub(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
 
-		return sqlSession.update("Member.regSub", m);
+		return sqlSession.update("Member.regSub", map);
 	}
 
 	// 동영상 업로드정보 insert 메소드
@@ -80,13 +80,21 @@ public class VideoDaoImpl implements VideoDao {
 	}
   */
 	
+//	@Override
+//	public List<Map<String, Object>> selectVideoInfo(SqlSessionTemplate sqlSession, int userNo, int vNo) {
+//		
+//		Map<String, Integer> map = new HashMap<String, Integer>();
+//		map.put("userNo", userNo);
+//		map.put("vNo", vNo);
+//		
+//		return sqlSession.selectList("Video.selectVideoInfo", map);
+//	}
 	@Override
 	public List<Object> selectVideoInfo(SqlSessionTemplate sqlSession, int userNo, int vNo) {
 		
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("userNo", userNo);
 		map.put("vNo", vNo);
-		
 		
 		return sqlSession.selectList("Video.selectVideoInfo", map);
 	}
@@ -107,8 +115,23 @@ public class VideoDaoImpl implements VideoDao {
 	  @Override public List<Video> selectVideoInfo(SqlSessionTemplate sqlSession,
 	  int userNo) {
 	  
-	  return sqlSession.selectList("Video.selectVideoInfo", userNo); 
+		  return sqlSession.selectList("Video.selectVideoInfo", userNo); 
 	  }
+
+	@Override
+	public List<Map<String, Object>> selectLogerInfo(SqlSessionTemplate sqlSession, int userNo, int vNo) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("userNo", userNo);
+		map.put("vNo", vNo);
+		
+		return sqlSession.selectList("Video.selectLogerInfo", map);
+	}
+
+	@Override
+	public int insertReg(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
+
+		return sqlSession.insert("Video.insertReg", map);
+	}
 	  
 	 
 }
