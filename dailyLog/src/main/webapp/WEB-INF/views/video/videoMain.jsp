@@ -14,8 +14,11 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
-
+body{
+	background:white;
+}
 	.chImg {
 		width:60px; 
 		height:60px;
@@ -102,7 +105,6 @@
 		width: 47%;
 		text-decoration: none;
     }	
-
 	.navbar .navbar-right .dropdown-toggle::after {
 		display: none;
 	}
@@ -129,7 +131,6 @@
 			display: block;
 		}
 	}
-
 	
 	a:link { color: black; text-decoration: none; color: black;}
 	a:visited { color: black; text-decoration: none; color: black;}
@@ -199,7 +200,6 @@ pre .bt  {color: #f8f8f2;} /* <> */
 pre .anc {color: #f92672;} /* anchor tag */
 pre .att {color: #a6a926;} /* attribute */
 pre .val {color: #e6db74;} /* value */
-
 .btn-container, .container {
 	background-color: white;
 	border-radius: 4px;
@@ -219,7 +219,6 @@ pre .val {color: #e6db74;} /* value */
 a[class*="btn"] {text-decoration: none;}
 input[class*="btn"], 
 button[class*="btn"] {border: 0;}
-
 /* Here you can change the button sizes */
 .btn.large, 
 .btn-two.large, 
@@ -255,15 +254,12 @@ button[class*="btn"] {border: 0;}
   padding: 15px 45px; 
   font-size: 22px;
 }
-
 /* Colors for .btn and .btn-two */
 .btn.blue, .btn-two.blue     {background-color: #7fb1bf;}
 .btn.yellow, .btn-two.yellow {background-color: #f0d264;}
-
 .rounded {
   border-radius: 10px;
 }
-
 /* default button style */
 .btn {
 	position: relative;
@@ -276,13 +272,11 @@ button[class*="btn"] {border: 0;}
 .btn:active {
 	top: 4px;	
 }
-
 /* color classes for .btn */
 .btn.blue {box-shadow: 0px 4px #74a3b0;}
 .btn.blue:active {box-shadow: 0 0 #74a3b0; background-color: #709CA8;}
 .btn.yellow {box-shadow:0px 4px 0px #D1B757;}
 .btn.yellow:active {box-shadow: 0 0 #ff4c4b; background-color: #D6BB59;}
-
 /* Button two - I have no creativity for names */
 .btn-two {
 	color: white;	
@@ -320,7 +314,6 @@ button[class*="btn"] {border: 0;}
 .btn-3d:active {
 	top: 9px;
 }
-
 /* 3D button colors */
 .btn-3d.yellow {
 	background-color: #F0D264;
@@ -379,9 +372,9 @@ button[class*="btn"] {border: 0;}
 	background: linear-gradient(rgba(240,210,100,1) 0%, rgba(229,201,96,1) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0d264', endColorstr='#e5c960', GradientType=0 );
 }
-
 .btn-gradient.yellow:active {background: #DBC05B;}
 .btn-gradient.blue:active 	{background: #608FBF;}	
+
 
 </style>
 <script type="text/javascript">
@@ -396,7 +389,7 @@ button[class*="btn"] {border: 0;}
   <script src='https://vjs.zencdn.net/7.6.0/video.js'></script>
 </head>
 <body>
- 	<jsp:include page="../common/mainBar.jsp"></jsp:include>
+ 	<%-- <jsp:include page="../common/mainBar.jsp"></jsp:include> --%>
 	<br><br><br>
 	<%-- <c:forEach items="${list}" --%>
 	<div align="center">
@@ -411,19 +404,18 @@ button[class*="btn"] {border: 0;}
 				</td>
 				<td width="220px" height="60px">
 					<div style="margin-left:10%;">
-						<div style="margin-right:10%; display:inline-block;">${ list[0].chNm }</div>
+						<div style="margin-right:10%; display:inline-block;">${ list1[0].chNm }</div>
 						<div style="display:inline-block;"><button>구독</button></div>
 						<label id="regsubTY" style="color:gray; position:fixed;">
-								정기후원중<input type="text" value="${status }">
-								<input type="text" value="${status==0 }">
 							<c:if test="${ status == 1 }">
+								정기후원중
 							</c:if>
 							<c:if test="${ status == 0 }">
 								정기후원중아님
 							</c:if>
 						</label>
-						<p>게시일 : ${ list[0].uploadDt }</p>
-						<p>구독자수 : ${ list[0].loger.subNum } </p>
+						<p>게시일 : ${ list1[0].uploadDt }</p>
+						<p>구독자수 : ${ list2[0].subNum } </p>
 
 					</div>
 				</td>
@@ -450,12 +442,12 @@ button[class*="btn"] {border: 0;}
 												<div align="left" style="margin-left:10%; margin-right:10%;">
 													<table class="noti_table">
 														<tr><td><small>채널명</small></td></tr>
-														<tr><td><b>채널명</b></td></tr>
+														<tr><td><b>${ list1[0].chNm }</b></td></tr>
 														<tr><td><small>포인트조회</small></td></tr>
-														<tr><td><input type="text" class="form-control" id="rPoint" placehold="포인트를 조회하세요" value="${point} 포인트" readonly></td></tr>
+														<tr><td><input type="text" class="form-control" id="rPoint" placehold="포인트를 조회하세요" readonly></td></tr>
 														<tr>
 															<td>
-																<a href="selectPoint.vd" id="selectPoint" style="width:50px; text-align:center;" class="btn-gradient yellow mini">조회</a>
+																<input type="button" id="selectPoint" style="width:50px; text-align:center;" class="btn-gradient yellow mini" value="조회">
 																<a href="" id="chargeBtn" style="width:50px; text-align:center;" class="btn-gradient blue mini">충전</a>
 															</td>
 														</tr>
@@ -465,7 +457,8 @@ button[class*="btn"] {border: 0;}
 														<tr>
 															<td>
 																<a style="width:50px;text-align:center;" class="btn-gradient yellow mini" id="cancle1">취소</a>
-																<a href="" id="rOk" style="width:50px; text-align:center;" class="btn-gradient blue mini">후원</a>
+																<input type="button" id="rOk" style="width:50px; text-align:center;" class="btn-gradient blue mini" value="후원"/>
+																
 															</td>
 														</tr>
 													</table>
@@ -475,30 +468,10 @@ button[class*="btn"] {border: 0;}
 											<div id="oSub">
 												<div class="noti_text" align="center" style="margin-top:5%;"><b>일시후원</b></div>
 												<div align="left" style="margin-left:10%; margin-right:10%;">
-													<table class="noti_table">
-														<tr><td><small>채널명</small></td></tr>
-														<tr><td><b>채널명</b></td></tr>
-														<tr><td><small>포인트조회</small></td></tr>
-														<tr><td><input type="text" class="form-control" id="point" placehold="포인트를 조회하세요" value="${point} 포인트" readonly></td></tr>
-														<tr>
-															<td>
-																<a href="selectPoint.vd" id="selectPoint" style="width:50px; text-align:center;" class="btn-gradient yellow mini">조회</a>
-																<a id="chargeBtn" style="width:50px; text-align:center;" class="btn-gradient blue mini">충전</a>
-															</td>
-														</tr>
-																											
-														<tr><td><small>후원</small></td></tr>
-														<tr><td><input type="text" class="form-control" id="price" placehold="후원금액을 입력하세요"></td></tr>
-														<tr>
-															<td>
-																<a style="width:50px;text-align:center;" class="btn-gradient yellow mini" id="cancle2">취소</a>
-																<a href="" id="subComplete" style="width:50px; text-align:center;" class="btn-gradient blue mini">후원</a>
-															</td>
-														</tr>
-													</table>
+													
 												</div>
 											</div>
-											<!-- 경고창 -->
+											<!-- 포인트 충전 경고창 -->
 											<div id="caution">
 												<div class="noti_text" align="center" style="margin-top:5%;">
 													<img src="resources/images/caution.png" style="width:30px; margin:5%;"><br>
@@ -539,33 +512,6 @@ button[class*="btn"] {border: 0;}
 													<tr><a id="regSub">공유</a></tr><br>
 													<tr><a id="onceSub">일시후원</a></tr><br>
 												</table>
-											</div>
-											<!-- 정기후원 -->
-											<div id="rSub">
-												<div class="noti_text" align="center" style="margin-top:5%;"><b>정기후원</b></div>
-												<div align="left" style="margin-left:10%; margin-right:10%;">
-													<table class="noti_table">
-														<tr><td><small>채널명</small></td></tr>
-														<tr><td><b>채널명</b></td></tr>
-														<tr><td><small>포인트조회</small></td></tr>
-														<tr><td><input type="text" class="form-control" id="rPoint" placehold="포인트를 조회하세요" value="${point} 포인트" readonly></td></tr>
-														<tr>
-															<td>
-																<a href="selectPoint.vd" id="selectPoint" style="width:50px; text-align:center;" class="btn-gradient yellow mini">조회</a>
-																<a href="" id="chargeBtn" style="width:50px; text-align:center;" class="btn-gradient blue mini">충전</a>
-															</td>
-														</tr>
-																											
-														<tr><td><small>후원</small></td></tr>
-														<tr><td><input type="text" class="form-control" id="rPrice" placehold="후원금액을 입력하세요"></td></tr>
-														<tr>
-															<td>
-																<a style="width:50px;text-align:center;" class="btn-gradient yellow mini" id="cancle1">취소</a>
-																<a href="" id="rOk" style="width:50px; text-align:center;" class="btn-gradient blue mini">후원</a>
-															</td>
-														</tr>
-													</table>
-												</div>
 											</div>
 										</li>
 									</ul>		
@@ -616,9 +562,9 @@ button[class*="btn"] {border: 0;}
 												<div align="left" style="margin-left:10%; margin-right:10%;">
 													<table class="noti_table">
 														<tr><td><small>채널명</small></td></tr>
-														<tr><td><b>채널명</b></td></tr>
+														<tr><td><b>${ list1[0].chNm }</b></td></tr>
 														<tr><td><small>포인트조회</small></td></tr>
-														<tr><td><input type="text" class="form-control" id="rPoint" placehold="포인트를 조회하세요" value="${point} 포인트" readonly></td></tr>
+														<tr><td><input type="text" class="form-control" id="rPoint" placehold="포인트를 조회하세요" readonly></td></tr>
 														<tr>
 															<td>
 																<a href="selectPoint.vd" id="selectPoint" style="width:50px; text-align:center;" class="btn-gradient yellow mini">조회</a>
@@ -631,7 +577,7 @@ button[class*="btn"] {border: 0;}
 														<tr>
 															<td>
 																<a style="width:50px;text-align:center;" class="btn-gradient yellow mini" id="cancle1">취소</a>
-																<a href="" id="rOk" style="width:50px; text-align:center;" class="btn-gradient blue mini">후원</a>
+																<a id="rOk" style="width:50px; text-align:center;" class="btn-gradient blue mini">후원</a>
 															</td>
 														</tr>
 													</table>
@@ -657,7 +603,7 @@ button[class*="btn"] {border: 0;}
 				<td colspan="4" height="400px"><!-- autoplay="autoplay" -->
 					  <video id='my-video' class='video-js' controls  preload='auto' width='800' height='450'
 						  poster='resources/images/logo.png' data-setup='{}' >
-						  <source src='resources/uploadFiles/oceans.mp4' type='video/mp4'>
+						  <source src='resources/uploadFiles/${ list1[0].filepath}' type='video/mp4'>
 						  <source src='MY_VIDEO.webm' type='video/webm'>
 						  <p class='vjs-no-js'>
 						      To view this video please enable JavaScript, and consider upgrading to a web browser that
@@ -673,10 +619,10 @@ button[class*="btn"] {border: 0;}
 				<!-- 영상 제목, 태그 -->
 				<td colspan="4" height="130px">
 					<div style="margin:15px;">
-						<h3>${ list[0].vTitle }</h3>
-						<small>조회수  ${ list[0].count }</small><br>
+						<h3>${ list1[0].vTitle }</h3>
+						<small>조회수  ${ list1[0].count }</small><br>
 						<div>
-							<a href="" style="color:blue;"><small>${ list[0].tag }</small></a>
+							<a href="" style="color:blue;"><small>${ list1[0].tag }</small></a>
 						</div>
 					</div>
 				</td>
@@ -707,6 +653,8 @@ button[class*="btn"] {border: 0;}
 		}
 		//후원금액
 		$('#rOk').click(function(){
+			var userNo = "<c:out value='${list2[0].userNo}'/>";
+			var chNo = "<c:out value='${list2[0].chNo}'/>";
 			var point = $('#rPoint').val();
 			var price = $('#rPrice').val();
 			
@@ -714,30 +662,53 @@ button[class*="btn"] {border: 0;}
 			
 			if(parseInt(price) <= parseInt(point)){
 				var remain = parseInt(point) - parseInt(price);
-				console.log(remain);
+				
+				console.log(remain + ", " + price + ", " + chNo + ", " + userNo);
+				
 				$.ajax({
 					url:"regSub.vd",
 					type:"post",
-					data:{remain:remain},
+					data:{userNo:userNo, 
+						  remain:remain, 
+						  price:price, 
+						  chNo:chNo},
 					success:function(data){
-						
-						 $('#regsubTY').text(data.msg);
-						 //alert("dd");
+						console.log("성공");
+						console.log(typeof(data));
+						console.log(data);
+						$('#regsubTY').val(data);
 					},
 					error:function(){
-						alert('reg실패!');
+						console.log('실패');
 					}
 				});
 			}else {
 				alert("포인트가 부족합니다.");
 			}
 		});
-		
+		//포인트조회
+		 $('#selectPoint').click(function(){
+			var userNo = "<c:out value='${list2[0].userNo}'/>";
+
+			$.ajax({
+				url:"selectPoint.vd",
+				type:"post",
+				data:{userNo:userNo},
+				success:function(data){
+					
+					console.log("success" +data);
+					$('#rPoint').val(data + " 포인트");
+				},
+				error:function(){
+					console.log('실패!');
+				}					
+			});
+		});  
 		//후원 div 
 		 $(document).ready(function(){
-		//정산상태
-		var userNo1 = "<c:out value='${list[0].loger.userNo}'/>";
-		var chNo = "<c:out value='${list[0].loger.chNo}'/>";
+/* 		//정산상태
+		var userNo1 = "<c:out value='${list2[0].userNo}'/>";
+		var chNo = "<c:out value='${list2[0].chNo}'/>";
 		
 			$.ajax({
 				url:"regStatus.vd",
@@ -750,24 +721,8 @@ button[class*="btn"] {border: 0;}
 				error:function(){
 					console.log("실패");
 				}
-			});
-			
-			
-/* 			//포인트조회
-			 $('#selectPoint').click(function(){
-				$.ajax({
-					url:"selectPoint.vd",
-					type:"post",
-					success:function(data){
-						console.log("reg성공!");
-						
-					},
-					error:function(){
-						alert('실패!');
-					}					
-				});
 			}); */
-
+			
 			 $('#sub').show();
 			 $('#rSub').hide();
 			 $('#oSub').hide();
@@ -847,7 +802,6 @@ button[class*="btn"] {border: 0;}
 			 });
 		 });
 	</script>
-<input hidden value="${model }" id="dfd">
 
 	<br><br>
 	<jsp:include page="../common/footer.jsp"></jsp:include> 

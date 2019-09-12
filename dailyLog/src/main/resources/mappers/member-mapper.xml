@@ -79,10 +79,10 @@
   
 
 	<!-- 동영상 페이지 포인트 조회 -->
-	<select id="selectPoint" parameterType="Member" resultType="int">
+	<select id="selectPoint" parameterType="map" resultType="int">
 		SELECT REMAIN_PT
 		FROM MEMBER
-		WHERE USER_ID = #{userId}
+		WHERE USER_NO = #{userNo}
 		AND STATUS = 0
 	</select>
   
@@ -101,8 +101,8 @@
 	<!-- 포인트 후원금액 차감 -->
 	<update id="regSub" parameterType="Member">
 		UPDATE MEMBER
-		SET REMAIN_PT = ${remainPT}
-		WHERE USER_ID = #{userId}
+		SET REMAIN_PT = #{remain}
+		WHERE USER_NO = #{userNo}
 		AND STATUS = 0
 	</update>
 

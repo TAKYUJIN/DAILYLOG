@@ -1,137 +1,122 @@
 package com.kh.with.loger.model.vo;
 
-public class Support {
+import java.sql.Date;
+
+public class Support implements java.io.Serializable{
 	private int nNo;		//게시판번호
+	private String nickname;
 	private int supNo;		//후원번호
 	private int userNo;		//회원번호
 	private int chNo;		//채널번호
-	private String supDT;		//후원날짜
+	private Date supSTDT;	//후원신텅날짜
 	private int supPrice;	//후원금액
 	private String supTY;	//후원종류
-	private String nickname;
-	
-	
+	private Date regEDT;	//정기후원완료날짜
+	private int regStatus;	//정기후원상태
 	
 	public Support() {}
 
-
-
-	public Support(int nNo, int supNo, int userNo, int chNo, String supDT, int supPrice, String supTY,
-			String nickname) {
+	public Support(int nNo, String nickname, int supNo, int userNo, int chNo, Date supSTDT, int supPrice, String supTY,
+			Date regEDT, int regStatus) {
 		super();
 		this.nNo = nNo;
+		this.nickname = nickname;
 		this.supNo = supNo;
 		this.userNo = userNo;
 		this.chNo = chNo;
-		this.supDT = supDT;
+		this.supSTDT = supSTDT;
 		this.supPrice = supPrice;
 		this.supTY = supTY;
-		this.nickname = nickname;
+		this.regEDT = regEDT;
+		this.regStatus = regStatus;
 	}
-
-
 
 	public int getnNo() {
 		return nNo;
 	}
 
-
-
 	public void setnNo(int nNo) {
 		this.nNo = nNo;
 	}
-
-
-
-	public int getSupNo() {
-		return supNo;
-	}
-
-
-
-	public void setSupNo(int supNo) {
-		this.supNo = supNo;
-	}
-
-
-
-	public int getUserNo() {
-		return userNo;
-	}
-
-
-
-	public void setUserNo(int userNo) {
-		this.userNo = userNo;
-	}
-
-
-
-	public int getChNo() {
-		return chNo;
-	}
-
-
-
-	public void setChNo(int chNo) {
-		this.chNo = chNo;
-	}
-
-
-
-	public String getSupDT() {
-		return supDT;
-	}
-
-
-
-	public void setSupDT(String supDT) {
-		this.supDT = supDT;
-	}
-
-
-
-	public int getSupPrice() {
-		return supPrice;
-	}
-
-
-
-	public void setSupPrice(int supPrice) {
-		this.supPrice = supPrice;
-	}
-
-
-
-	public String getSupTY() {
-		return supTY;
-	}
-
-
-
-	public void setSupTY(String supTY) {
-		this.supTY = supTY;
-	}
-
-
 
 	public String getNickname() {
 		return nickname;
 	}
 
-
-
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
 
+	public int getSupNo() {
+		return supNo;
+	}
 
+	public void setSupNo(int supNo) {
+		this.supNo = supNo;
+	}
+
+	public int getUserNo() {
+		return userNo;
+	}
+
+	public void setUserNo(int userNo) {
+		this.userNo = userNo;
+	}
+
+	public int getChNo() {
+		return chNo;
+	}
+
+	public void setChNo(int chNo) {
+		this.chNo = chNo;
+	}
+
+	public Date getSupSTDT() {
+		return supSTDT;
+	}
+
+	public void setSupSTDT(Date supSTDT) {
+		this.supSTDT = supSTDT;
+	}
+
+	public int getSupPrice() {
+		return supPrice;
+	}
+
+	public void setSupPrice(int supPrice) {
+		this.supPrice = supPrice;
+	}
+
+	public String getSupTY() {
+		return supTY;
+	}
+
+	public void setSupTY(String supTY) {
+		this.supTY = supTY;
+	}
+
+	public Date getRegEDT() {
+		return regEDT;
+	}
+
+	public void setRegEDT(Date regEDT) {
+		this.regEDT = regEDT;
+	}
+
+	public int getRegStatus() {
+		return regStatus;
+	}
+
+	public void setRegStatus(int regStatus) {
+		this.regStatus = regStatus;
+	}
 
 	@Override
 	public String toString() {
-		return "Support [nNo=" + nNo + ", supNo=" + supNo + ", userNo=" + userNo + ", chNo=" + chNo + ", supDT=" + supDT
-				+ ", supPrice=" + supPrice + ", supTY=" + supTY + ", nickname=" + nickname + "]";
+		return "Support [nNo=" + nNo + ", nickname=" + nickname + ", supNo=" + supNo + ", userNo=" + userNo + ", chNo="
+				+ chNo + ", supSTDT=" + supSTDT + ", supPrice=" + supPrice + ", supTY=" + supTY + ", regEDT=" + regEDT
+				+ ", regStatus=" + regStatus + "]";
 	}
 
-
+	
 }
