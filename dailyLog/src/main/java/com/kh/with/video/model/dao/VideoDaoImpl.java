@@ -64,7 +64,7 @@ public class VideoDaoImpl implements VideoDao {
 		 System.out.println("attachmentdao까지 왔니?" + attachment); 
 		
 		
-		return sqlSession.insert("Video.insertAttachment",attachment);
+		return sqlSession.insert("Attachment.insertAttachment",attachment);
 	}
 	
 	@Override
