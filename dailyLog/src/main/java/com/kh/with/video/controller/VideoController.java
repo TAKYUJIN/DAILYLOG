@@ -154,18 +154,13 @@ public class VideoController {
 
 		System.out.println("페이지이동의 로그인유저정보 가지고 왔니?:::" + chYN);
 
-/*
 		if(chYN.equals("Y")) {
 			return"video/videoUpload";
 		}else {
-*/
-		if (chYN.equals("Y")) {
-			return "video/videoBasicInfo";
-		} else {
 			return "loger/createChannel";
 
 		}
-
+		 
 	}
 
 	// 동영상 업로드 insert 메소드
@@ -273,17 +268,14 @@ public class VideoController {
 		int result1 = vs.insertAttachment(attachment);
 
 
-/*
+
 		if(result > 0  && result1 > 0 ) {
 			return "redirect:index.jsp";
 		}else {
-*/
-		if (result > 0 && result1 > 0) {
-			return "admin/adminNoticeList";
-		} else {
 			model.addAttribute("msg", "동영상 업로드실패");
 			return "common/errorPage";
 		}
+
 
 	}
 
@@ -330,19 +322,7 @@ public class VideoController {
 	 * 
 	 * return "main/main"; }
 	 */
-	/*
-	 * public String selectLogerCalculate(Calculate c, Support s, Model model,
-	 * HttpSession session) { Member m = (Member) session.getAttribute("loginUser");
-	 * // 로거 정산내역 조회 ArrayList<Calculate> cList = ls.selectLogerCalculate(c, m); //
-	 * 로거 후원내역 조회 ArrayList<Support> sList = ls.selectLogerSupport(s, m); // 로거 마지막
-	 * 계좌 조회 ArrayList<Calculate> aList = ls.logerLastAccount(c, m);
-	 * 
-	 * model.addAttribute("sList", sList); model.addAttribute("cList", cList);
-	 * model.addAttribute("aList", aList); model.addAttribute("s", s);
-	 * model.addAttribute("c", c);
-	 * 
-	 * return "loger/logerCalculate"; }
-	 */
+ 
 
 	/*
 	 * @RequestMapping("home.mb") public String videoimagelist(@ModelAttribute("vl")
@@ -365,8 +345,7 @@ public class VideoController {
 		 * return "main/main"; }
 		 */
 	
-	
-	
+ 
 	
 	
 	
@@ -376,10 +355,11 @@ public class VideoController {
 	 * mav.addObject("list", videoservice.videoimagelist());
 	 * System.out.println(mav); return mav; }
 	 */
+	
 	 @RequestMapping(value="home.mb",method=RequestMethod.GET)
-		public ModelAndView mainlist(ModelAndView mav) {
-			 mav.setViewName("main/main");
-			 mav.addObject("list", videoservice.videoimagelist());
+		public ModelAndView mainlist( ModelAndView mav ) {
+ 			 mav.setViewName("main/main");
+			 mav.addObject("list", videoservice.videoimagelist( ));
 			 System.out.println(mav);
 			 return mav;
 		 }

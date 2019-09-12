@@ -28,8 +28,8 @@ public interface VideoService {
 
 
 
-	//동영상 이미지 출력
-	List<Attachment> videoimagelist();
+	//메인 썸네일 출력
+	List<Attachment> videoimagelist( );
 
 	
 	//썸네일 insert
@@ -41,9 +41,11 @@ public interface VideoService {
 	//정기후원 상태 조회
 	int selectRegStatus(int userNo, int chNo);
 
+
 	List<Map<String, Object>> selectLogerInfo(int userNo, int vNo);
 
 	int insertReg(Map<String, Integer> map);
+
 	
 
 

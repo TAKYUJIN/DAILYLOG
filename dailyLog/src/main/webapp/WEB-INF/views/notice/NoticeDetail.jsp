@@ -176,7 +176,7 @@ table.table td .add {
 						<td><strong>Subject</strong></td>
 						<td><input type="text" placeholder="제목"  id="bTitle" name="bTitle" value=<c:out value="${result.bTitle}" />
 						style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px; width:500px;" >
-						<%-- <c:out value="${result.bTitle}" /> --%>
+				
 						</td>
 
 					</tr>

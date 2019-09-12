@@ -29,7 +29,7 @@ public interface VideoDao {
 	//int insertVideoInfo(SqlSessionTemplate sqlSession, Model model);
 	
 	
-	List<Attachment> videoimagelist();
+	List<Attachment> videoimagelist( );
 	
 	//썸네일  insert 메소드
 	int insertAttachment(SqlSessionTemplate sqlSession, Attachment attachment);
@@ -39,6 +39,7 @@ public interface VideoDao {
 	int selectRegStatus(SqlSessionTemplate sqlSession, int userNo, int chNo);
 	
 	List<Video> selectVideoInfo(SqlSessionTemplate sqlSession, int userNo);
+
 	
 	List<Map<String, Object>> selectLogerInfo(SqlSessionTemplate sqlSession, int userNo, int vNo);
 	

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.kh.with.admin.model.vo.Board;
 import com.kh.with.loger.model.vo.Calculate;
 import com.kh.with.loger.model.vo.Loger;
+import com.kh.with.loger.model.vo.Loger2;
 import com.kh.with.loger.model.vo.Support;
 import com.kh.with.member.model.vo.Member;
 
@@ -88,18 +89,8 @@ public class LogerDaoImpl implements LogerDao{
 	}
 	*/
 	
-	//로거스튜디오 메인 select (프로필,채널명, 구독자)
-	@Override
-	public ArrayList<Loger> logerChMain(SqlSessionTemplate sqlSession, int userNo) {
-		
-		ArrayList<Loger> logers = null;
 
-		System.out.println("공지사항 dao까지 왔니?:: " + logers);
-
-		logers = (ArrayList)sqlSession.selectList("Loger.logerChMain", logers);
-
-		return logers;
-	}
+	 
 
 	
 	
@@ -115,6 +106,20 @@ public class LogerDaoImpl implements LogerDao{
 	 return pList; 
 	 }
 	 
+	 //로거스튜디오(프로필, 채널명,구독자수)
+	@Override
+	public Loger2 newHomeChannel(SqlSessionTemplate sqlSession, int userNo) {
+		
+		Loger2 l = new Loger2();
+		l.setUserNo(userNo);
+		
+		
+		Loger2 result = sqlSession.selectOne("Loger.newHomeChannel",l);
+
+		
+		return result;
+	}
+
 	
 	//후원기간 조회 후 정산 총금액 insert
 	

@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.kh.with.loger.model.vo.Calculate;
 import com.kh.with.loger.model.vo.Loger;
+import com.kh.with.loger.model.vo.Loger2;
 import com.kh.with.loger.model.vo.Support;
 import com.kh.with.member.model.vo.Member;
 
@@ -35,8 +36,10 @@ public interface LogerService {
 	//기간별 후원내역 조회 값
 	ArrayList<Support> selectLogetSupportPrice(Support s, Member m);
 
-	//로거스튜디오 메인 select (프로필,채널명, 구독자)
-	ArrayList<Loger> logerChMain(int userNo);
+	//로거스튜디오 (프로필 ,채널명,구독자수먼)
+	Loger2 newHomeChannel(int userNo);
+
+
 
 	
 

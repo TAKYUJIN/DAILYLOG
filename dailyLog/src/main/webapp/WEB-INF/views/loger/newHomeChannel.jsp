@@ -1,5 +1,6 @@
  <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -181,11 +182,11 @@ body {
 				<img class="imInfoPic" src="resources/images/user.png">
 				<div class="textInfo">
 					<p style="widht: 200px; margin-left: 130px; margin-top: -50px;">
-						<strong>채널명</strong>
+						<strong><c:out value="${result.chNm}"/></strong>
 					</p>
 				</div>
 				<button id="subscribebtn" class="btn btn-primary">구독</button>
-				<p style="widht: 200px; margin-left: 130px; margin-top: -10px;">구독자:5명</p>
+				<p style="widht: 200px; margin-left: 130px; margin-top: -10px;"><c:out value="${result.subNum}"/>명</p>
 			</div>
 
 			<div class="row" style="margin-left: 30px;">

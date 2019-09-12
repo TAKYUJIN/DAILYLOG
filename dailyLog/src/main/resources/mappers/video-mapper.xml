@@ -75,16 +75,12 @@
 	<!-- 업로드할 동영상 정보 insert 쿼리 -->
  	<insert id="insertVideoInfo" parameterType="Video">	 	
 	INSERT INTO VIDEO
-	VALUES(V_NO.NEXTVAL, #{userNo}, #{vTitle}, 0, #{chNm}, #{tag},'N', SYSDATE, NULL,'Y','Y',#{adInfo},
+	VALUES(V_NO.NEXTVAL, #{userNo}, #{vTitle}, 0, #{chNm}, #{tag},'N', SYSDATE, NULL,'Y',#{adYn}  ,#{adInfo},
 	NULL, NULL, #{filepath}, #{openTy})
  	
 	</insert>
 	
-	<!-- 썸네일 정보 insert 쿼리 -->
-	<insert id="insertAttachment" parameterType="Loger">	
-	INSERT INTO ATTACHMENT
-	VALUES(#{userNo}, AM_NO.NEXTVAL,  #{filepath}, SYSDATE ,  #{enrollNm} , 'NULL'  , '썸네일')
-	</insert>  
+	
 
 	<!-- 동영상페이지 비디오 정보 -->
 	<select id="selectVideoInfo" parameterType="map" resultMap="videoResultSet">

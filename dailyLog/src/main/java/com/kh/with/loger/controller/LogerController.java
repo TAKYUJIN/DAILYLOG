@@ -20,6 +20,7 @@ import com.kh.with.admin.model.vo.Board;
 import com.kh.with.loger.model.service.LogerService;
 import com.kh.with.loger.model.vo.Calculate;
 import com.kh.with.loger.model.vo.Loger;
+import com.kh.with.loger.model.vo.Loger2;
 import com.kh.with.loger.model.vo.Support;
 import com.kh.with.member.model.vo.Member;
 
@@ -191,10 +192,32 @@ public class LogerController {
 		return "loger/logerCalculate";
 	}
 
-	// 로거스튜디오 이동
+	// 로거스튜디오 이동(로거스튜디오 ,프로필사진, 채널명, 구독자수)
 	@RequestMapping(value = "newHomeChannel.lo")
-	public String newHomeChannel() {
-		return "loger/newHomeChannel";
+		public ModelAndView  newHomeChannel(ModelAndView mv,HttpSession session, 
+				HttpServletRequest request, Model model){
+			
+			int userNo = ((Member) request.getSession().getAttribute("loginUser")).getUserNo();
+	
+			System.out.println("loger:::" + userNo);
+			
+			Loger2 result = ls.newHomeChannel(userNo);
+			
+			System.out.println("상세내역이 보여지나요?" + result);
+			
+			mv.addObject("result", result); 
+			
+			mv.setViewName("loger/newHomeChannel"); 
+
+
+			return mv; 
+
+		
+		
+		
+		
+		
+		/* return "loger/newHomeChannel"; */
 	}
 
 	// 로거스튜디오내 동영상으로 이동
@@ -243,24 +266,28 @@ public class LogerController {
 
 	}
 
-	//로거스튜디오 메인 select (프로필,채널명, 구독자)
-	@RequestMapping(value="logerChMain")
-	public String logerChMain(HttpSession session, HttpServletRequest request, Model model){
-		
-		int userNo = ((Member) request.getSession().getAttribute("loginUser")).getUserNo();
-		
-		Loger loger = new Loger();
-		
-		loger.setUserNo(userNo);
-		
-		System.out.println("loger:::" + loger);
-		
-		ArrayList<Loger> logerChMain = ls.logerChMain(userNo);
-		
-		System.out.println("결과값이 담겼나요?" + logerChMain); 
-		
-		return null;
-		
-		
-	}	
+	/*
+	 * //로거스튜디오 메인 select (프로필,채널명, 구독자)
+	 * 
+	 * @RequestMapping(value="logerChMain") public String logerChMain(HttpSession
+	 * session, HttpServletRequest request, Model model){
+	 * 
+	 * int userNo = ((Member)
+	 * request.getSession().getAttribute("loginUser")).getUserNo();
+	 * 
+	 * Loger loger = new Loger();
+	 * 
+	 * loger.setUserNo(userNo);
+	 * 
+	 * System.out.println("loger:::" + loger);
+	 * 
+	 * ArrayList<Loger> logerChMain = ls.logerChMain(loger);
+	 * 
+	 * System.out.println("결과값이 담겼나요?" + logerChMain);
+	 * 
+	 * return null;
+	 * 
+	 * 
+	 * }
+	 */
 }
