@@ -347,7 +347,7 @@ $.ajax({
 
 </script>                                  
  
- <div class="page-wrapper">
+<%--  <div class="page-wrapper">
   <form action="List.mb" method="post" id="frm">
     <div class="container-fluid" id="frilist">
         <div class="col-lg-8"><!--게시판 넓이 -->
@@ -401,9 +401,9 @@ $.ajax({
         <input type="submit" value="메일 보내기" class="btn btn-warning">
         <input type="reset" value="취소" class="btn btn-default" id="reset">
       </div>
-  </form></table></div></div></div></div></div></div></li></ul></li>  
-
- 
+  </form></table></div></div></div></div></div></div> 
+ --%>
+ </li></ul></li> 
   
  
          <li class="nav-item">

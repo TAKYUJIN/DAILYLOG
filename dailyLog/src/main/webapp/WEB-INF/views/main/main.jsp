@@ -27,7 +27,7 @@ img.fixed{
  }
  /*  class="carousel-control right carousel-control-next"
   */body {
-	background: #ebebeb;
+	/*  background: #ebebeb; */
 }
 h2 {
  background:#fff;
@@ -192,7 +192,7 @@ h2 span {
  	  <c:if test="${ empty sessionScope.loginUser }">
  	  
  	        <jsp:include page="../common/guest.jsp"></jsp:include>  
-		   <jsp:include page="../main/top.jsp"></jsp:include>  
+		 <%--   <jsp:include page="../main/top.jsp"></jsp:include>  --%> 
 	  <%-- <jsp:include page="../main/list.jsp"></jsp:include>   --%>
  	  	 
 		  <div class="col-md-9 col-center m-auto">

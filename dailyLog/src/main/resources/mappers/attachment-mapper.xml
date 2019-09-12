@@ -26,8 +26,6 @@
 		<result property="openTy" column="OPEN_TY" />
 	</resultMap>
 	
-	
-	
 	<resultMap type="com.kh.with.video.model.vo.Attachment"
 		id="attachmentRSet">
 
@@ -38,18 +36,23 @@
 		<result property="enrollNm" column="ENROLL_NM" />
 		<result property="modifyNm" column="MODIFY_NM" />
 		<result property="amTY" column="AM_TY" />
-		<result property="dotimage" column="DOTIMAGE" />
+		 <result property="dotimage" column="DOTIMAGE" />
 	</resultMap>
 	
 	
 	<!-- <select id="videoimagelist"  resultMap="attachmentRSet" parameterType="Attachment" >
-		   
+		    SELECT A.USER_NO,A.FILEPATH,A.AM_DT,V.V_TITLE,V.CH_NM 
+	  FROM ATTACHMENT A ,VIDEO V
+	  
+	  WHERE V.USER_NO = A.USER_NO
 		 SELECT USER_NO,FILEPATH,AM_DT FROM ATTACHMENT 
 	</select> -->
-<select id="videoimagelist"  resultMap="videoRSet,attachmentRSet" parameterType="Attachment" >
-	  SELECT A.USER_NO,A.FILEPATH,A.DOTIMAGE,A.AM_DT,V.V_TITLE,V.CH_NM FROM 
-		ATTACHMENT A JOIN VIDEO V ON(V.USER_NO = A.USER_NO)  
-		 
+<select id="videoimagelist"  resultMap="videoRSet"  parameterType="map" >
+	
+	  SELECT A.USER_NO,A.FILEPATH,A.AM_DT,A.DOTIMAGE,V.V_TITLE,V.CH_NM 
+	  FROM ATTACHMENT A 
+	  JOIN VIDEO V ON(V.USER_NO = A.USER_NO) 
+	 
 	</select>
 
 </mapper>

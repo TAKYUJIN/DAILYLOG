@@ -4,12 +4,15 @@ import java.text.DateFormat;
 import java.util.List;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.with.member.model.vo.Member;
 import com.kh.with.video.model.service.VideoService;
 import com.kh.with.video.model.vo.Attachment;
 
@@ -25,17 +28,11 @@ public class HomeController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/")
-	   public ModelAndView home(Locale locale,ModelAndView mv) {
+	   public ModelAndView home(Locale locale,HttpServletRequest request,ModelAndView mv) {
 		logger.info("Welcome home! The client locale is {}.", locale);
-		
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		
-		  List<Attachment> list= videoservice.videoimagelist();
-
 		   mv = new ModelAndView();
 		  mv.setViewName("main/main");
-		  mv.addObject("list", list);
 		  return mv; 
 	  
 	}

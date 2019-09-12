@@ -29,7 +29,7 @@ img.fixed{
  /*  class="carousel-control right carousel-control-next"
   */ 
 h2 {
- background:#fff;
+background:none;
 	 
 	font-size: 26px;
 	font-weight: 300;
@@ -51,7 +51,7 @@ h2::after {
     left: 0;
     right: 0;
     bottom: 14px;
-     background:#fff;
+    background:none;
 }
 h2 span {
 
@@ -60,41 +60,41 @@ h2 span {
 	/* background:#ebebeb; */
 	position:relative;
 	z-index:2;
-	 background:#fff;
+	background:none;
 }
 .col-center {
 	margin: 0 auto;
 	float: none !important;
-	 background:#fff;
+	background:none;
 }
 .carousel {	
 	margin: 30px auto 50px;
 	padding: 0 68px; 
- background:#fff;
+background:none;
 }
 .carousel .item {
     text-align: center;
    overflow: hidden;
     height: 220px;
-     background:#fff;}
+   background:none;}
  .carousel-control{
- background:#fff;
+background:none;
  }
   .carousel .item .img-box {
 
-	background: #fff;
+	background:none;
 	padding: 9px;
 	/* box-shadow: 0 6px 20px -6px rgba(0,0,0,0.4); */
 
 } 
 .carousel .item img {
     margin: 0 auto;
-    background:#fff;
+  background:none;
 }
 .carousel .carousel-control {
 
 	width: 68px;
-	 background:#fff;
+	background:none;
 
 }
 .carousel .carousel-control i {
@@ -113,7 +113,7 @@ h2 span {
 }
 .carousel .carousel-indicators {
 	bottom: -40px;
-	background:#fff;
+	background:none;
 }
 .carousel-indicators li, .carousel-indicators li.active {
 	width: 10px;
@@ -121,7 +121,7 @@ h2 span {
 	border-radius: 50%;
 	margin: 1px 4px;
 	box-shadow: inset 0 2px 1px rgba(0,0,0,0.2);
-	background:#fff;
+background:none;
 }
 .carousel-indicators li {	
 	background: #999;
@@ -206,7 +206,7 @@ h2 span {
 		margin-top: -2px;
 	} 
 	
-	.friendlist{
+	.main{
 	background:none;
 	border:1px none;
 	}
@@ -214,6 +214,16 @@ h2 span {
 	 width:150px;
 	 margin-right:-25px;
 	 } 
+	 
+	   #report{
+	 background-color:#fff;
+	 width:650px;
+	 height:250px;
+	 /* margin-left:600px;
+	  */position:fixed;
+	  left:600px;
+	  top:50%;
+	 }  
 </style>
 </head>
 <body>
@@ -295,20 +305,22 @@ h2 span {
 						<c:forEach var="videoimage" items="${list}">
 						<div class="col-sm-2"id="l"><div class="img-box"><div style=" float:left;"> <a href="" id="video">
 						<img src="resources/images/${videoimage.filepath}" width = "102px"  height="130px"  >
-							<h5>제목:${videoimage.vTitle}</h5>
+							 <h5>제목:${videoimage.vTitle}</h5>
 							<h5>채널명:${videoimage.chNm }</h5>
-				</a></div></div></div> 
+ 				</a></div></div></div> 
 						<div id="dot" style ="float:left;">
 							<nav class="navbar  navbar-expand-xl navbar-light">
-								<button type="button" class="friendlist"  data-toggle="dropdown" id="btncolor" >
-<%-- 								<img src="resources/images/${videoimage.dotimage}"width="20px" height="20px">
- --%>							</button>
+								<button type="button" class="main"  data-toggle="dropdown" id="btncolor" >
+ 								<img src="resources/images/three-dot.png"width="20px" height="20px">
+  							</button>
 				
 				<ul class="dropdown-menu">					
-					<li><a href="#" class="dropdown-item">동영상 신고</a></li>
-					<li><a href="#" class="dropdown-item">동영상 차단</a></li>
+					<li><a href="#" class="dropdown-item1">동영상 신고</a></li>
+					<li><a href="#" class="dropdown-item2">동영상 차단</a></li>
 				</ul></nav>
 						 </div>
+						 
+					
 						  </c:forEach> </div></div>
 				 
 					<div class="item carousel-item1">
@@ -317,10 +329,10 @@ h2 span {
 						</c:forEach></div>
 					</div>
 					<div class="item carousel-item2">
-						<div class="row"><c:forEach var="videoimage" items="${list}">
+			  		<div class="row"><c:forEach var="videoimage" items="${list}">
 							<div class="col-sm-2" ><div class="img-box"><img src="resources/images/${videoimage.filepath}"  class="img-responsive img-fluid"width = "180px"  height="130px" alt="">
-							<h5>제목:${videoimage.vTitle}</h5>
-							<h5>채널명:${videoimage.chNm }</h5>
+						  <h5>제목:${videoimage.vTitle}</h5>
+							<h5>채널명:${videoimage.chNm }</h5>    
 							
 							</div></div>
 							</c:forEach>
@@ -333,7 +345,8 @@ h2 span {
 				<a class="carousel-control right carousel-control-next" href="#myCarousel1" data-slide="next"style="background:#fff;">
 					<i class="fa fa-chevron-right"></i>
  
- </a></div></div></div> 
+ </a></div></div> </div> 
+ 
  <div class="row">
 		<div class="col-md-9 col-center m-auto">
 			<h2> <span>  <b>구독동영상2</b></span> </h2>
@@ -350,19 +363,19 @@ h2 span {
 						<c:forEach var="videoimage" items="${list}">
 						<div class="col-sm-2"id="l"><div class="img-box"><div style=" float:left;"> <a href="video.vd">
 						<img src="resources/images/${videoimage.filepath}" width = "102px"  height="130px"  >
-							<h5>제목:${videoimage.vTitle}</h5>
-							<h5>채널명:${videoimage.chNm }</h5>
+							  <h5>제목:${videoimage.vTitle}</h5>
+							<h5>채널명:${videoimage.chNm }</h5>  
 				</a></div></div></div> 
 						<div id="dot" style ="float:left;">
 						
 							<nav class="navbar  navbar-expand-xl navbar-light">
-								<button type="button" class="friendlist"  data-toggle="dropdown" id="btncolor" >
+								<button type="button" class="main"  data-toggle="dropdown" id="btncolor" >
 								<img src="resources/images/three-dot.png"width="20px" height="20px">
 							</button>
 				
 				<ul class="dropdown-menu">					
-					<li><a href="#" class="dropdown-item">동영상 신고</a></li>
-					<li><a href="#" class="dropdown-item">동영상 차단</a></li>
+					 <li><a href="#" class="dropdown-item1">동영상 신고</a></li>
+					<li><a href="#" class="dropdown-item2">동영상 차단</a></li>
 				</ul></nav>
 						 </div>
 						  </c:forEach> </div></div>
@@ -375,8 +388,8 @@ h2 span {
 					<div class="item carousel-item2">
 						<div class="row"><c:forEach var="videoimage" items="${list}">
 							<div class="col-sm-2" ><div class="img-box"><img src="resources/images/${videoimage.filepath}"  class="img-responsive img-fluid"width = "180px"  height="130px" alt="">
-							<h5>제목:${videoimage.vTitle}</h5>
-							<h5>채널명:${videoimage.chNm }</h5>
+						  <h5>제목:${videoimage.vTitle}</h5>
+							<h5>채널명:${videoimage.chNm }</h5>  
 							
 							</div></div>
 							</c:forEach>
@@ -388,8 +401,49 @@ h2 span {
 				</a>
 				<a class="carousel-control right carousel-control-next" href="#myCarousel3" data-slide="next"style="background:#fff;">
 					<i class="fa fa-chevron-right"></i>
- </a></div></div></div> 
+ </a></div></div>
+ 	
  
+ </div> 
+ <div id="report">
+        			<div class="col-lg-8"><!--게시판 넓이 -->
+        			    <div class="panel panel-default" >
+           				  <div class="panel-body">
+                    <table class="table table-hover">
+         <h4>동영상 신고</h4>
+        <form action="report.rp" method="post">
+ 			<input type="hidden" id="userId" name="userId" value="{loginUser}"/>
+ 			<input type="hidden" id="rety" name="rety" value="메인"/>
+ 			
+			<!-- 신고사유 -->
+			<div class="form-group">
+				<label for="rewhy">신고 사유</label>
+					<input type="text" class="form-control" id="rewhy" name="rewhy" placeholder="동영상 신고 사유">
+			 
+			</div>
+      <div align="center">
+        <input type="submit" value="완료" class="btn btn-warning">
+        <input type="reset" value="취소" class="btn btn-default" id="reset">
+      </div>		</form></table> </div></div></div></div>
+      
+      
+      
+    <!--   
+        <button onclick="fnMove('1')">div1로 이동</button>
+    <button onclick="fnMove('2')">div2로 이동</button>
+    <button onclick="fnMove('3')">div3로 이동</button>
+    <div id="div1">div1</div>
+    <div id="div2">div2</div>
+    <div id="div3">div3</div> -->
+<!-- <script>
+    function fnMove(seq){
+        var offset = $("#div" + seq).offset();
+        $('html, body').animate({scrollTop : offset.top}, 1000);
+    }
+</script> -->
+
+
+
 <script type="text/javascript">
 	function  showVideo(){
 	
@@ -409,6 +463,20 @@ h2 span {
 		
 		return false;
 	});
+	
+	
+	 $(document).ready(function(){
+		 
+		    $('#report').hide();  
+		    $('.dropdown-item1').click(function(){
+		       $('#report').show();
+		    });
+		    $('#reset').click(function(){
+		       $('#report').hide();
+		    });
+		    
+		 });
+		 
 
 </script>
 </body>
