@@ -2,6 +2,7 @@ package com.kh.with.video.model.service;
 
 
 import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Map;
 
@@ -64,10 +65,10 @@ public class VideoServiceImpl implements VideoService{
 	}
 
 	@Override
-	public List<Attachment> videoimagelist(){
+	public List<Attachment> videoimagelist( ){
 		System.out.println("videoServiceimpl");
 		
-		return vd.videoimagelist();
+		return vd.videoimagelist( );
 	}
 
 	//썸네일 insert 메소드

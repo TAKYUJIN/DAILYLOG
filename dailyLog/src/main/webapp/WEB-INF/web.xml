@@ -77,7 +77,15 @@
 			<param-value>/WEB-INF/config/video-servlet.xml</param-value>
 		</init-param>
 	</servlet>
-
+<servlet>
+		<servlet-name>report</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/config/video-servlet.xml</param-value>
+		</init-param>
+	</servlet>
+	
 	<servlet-mapping>
 		<servlet-name>member</servlet-name>
 		<url-pattern>*.me</url-pattern>
@@ -107,6 +115,12 @@
 		<servlet-name>video</servlet-name>
 		<url-pattern>*.vd</url-pattern>
 	</servlet-mapping>
+	
+		<servlet-mapping>
+		<servlet-name>report</servlet-name>
+		<url-pattern>*.rp</url-pattern>
+	</servlet-mapping>
+	
 	
 	<!-- 등록되어 있는 인코딩 필터를 사용하기 위해서 작성 -->
 	<filter>

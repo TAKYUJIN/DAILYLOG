@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Report">
+
+	<resultMap type="Report"
+		id="ReportResultSet">
+		<id property="reno" column="RE_NO" />
+	    <result property="userNo" column="USER_NO"/>
+		<result property="chno" column="CH_NO" />
+        <result property="retarget" column="RE_TARGET"/>
+        <result property="redt" column="RE_DT"/>
+        <result property="rewhy" column="RE_WHY"/>
+        <result property="rety" column="RE_TY"/>
+        <result property="vno" column="V_NO"/>
+        <result property="repno" column="REP_NO"/>
+     </resultMap>
+	<!-- 메인 동영상 신고 -->
+ 	<insert id="mainreport" parameterType="Report">
+	INSERT INTO REPORT
+	VALUES(RE_NO.NEXTVAL,#{param1},#{userNo},SYSDATE,#{rewhy},'메인',#{vno},NULL,#{chno})
+	</insert>  
+	
+	
+	
+	</mapper>
