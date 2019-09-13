@@ -19,6 +19,7 @@ public interface VideoDao {
 	int selectPoint(SqlSessionTemplate sqlSession, int userNo);
 	//정기후원
 	int regSub(SqlSessionTemplate sqlSession, Map<String, Integer> map);
+	int onceSub(SqlSessionTemplate sqlSession, Map<String, Integer> map);
 	
 
 	//동영상 업로드정보 insert 메소드
@@ -34,17 +35,15 @@ public interface VideoDao {
 	//썸네일  insert 메소드
 	int insertAttachment(SqlSessionTemplate sqlSession, Attachment attachment);
 	
-	List<Object> selectVideoInfo(SqlSessionTemplate sqlSession, int userNo, int vNo);
+	List<Object> selectVideoInfo(SqlSessionTemplate sqlSession, Map<String, Integer> map);
+	
+	List<Map<String, Object>> selectLogerInfo(SqlSessionTemplate sqlSession, Map<String, Integer> map);
 	
 	int selectRegStatus(SqlSessionTemplate sqlSession, int userNo, int chNo);
 	
-	List<Video> selectVideoInfo(SqlSessionTemplate sqlSession, int userNo);
-
-	
-	List<Map<String, Object>> selectLogerInfo(SqlSessionTemplate sqlSession, int userNo, int vNo);
-	
 	int insertReg(SqlSessionTemplate sqlSession, Map<String, Integer> map);
 
+	int insertOnce(SqlSessionTemplate sqlSession, Map<String, Integer> map);
 
 
 
