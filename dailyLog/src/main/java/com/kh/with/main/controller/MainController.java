@@ -227,5 +227,11 @@ public class MainController {
 //		
 //		return map;
 //	}
+	//최근영상이동
+		@RequestMapping(value="newAction.mb")
+		public String selectnewAction() {
+			
+			return "main/newAction";
+		}
 	
 }
