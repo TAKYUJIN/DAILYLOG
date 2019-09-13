@@ -3,6 +3,7 @@ package com.kh.with.video.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -24,6 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.with.common.CommonUtils;
+import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.member.model.service.MemberService;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.video.model.service.VideoService;
@@ -41,18 +43,29 @@ public class VideoController {
 	@Autowired
 	private MemberService ms;
 
+
 	// 썸네일 클릭시 동영상 페이지로 이동
 	@RequestMapping(value = "video.vd")
-	public String showVideoView(HttpServletRequest request, Model model) {
+	public String showVideoView(HttpServletRequest request, Model model, HttpSession session) {
+		Member m = (Member) session.getAttribute("loginUser");
+		int loginUser = m.getUserNo();
 		
+		//썸네일 userNo, vNo
 		int userNo = Integer.parseInt(request.getParameter("userNo"));
 		int vNo = Integer.parseInt(request.getParameter("vNo"));
+
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("userNo", userNo);
+		map.put("vNo", vNo);
 		
 		System.out.println("needs : " + userNo + ", " + vNo);
 		 
+		List<Object> list1 = vs.selectVideoInfo(map);
+		List<Map<String, Object>> list2 = vs.selectLogerInfo(map);
 		
-		List<Object> list1 = vs.selectVideoInfo(userNo, vNo);
-		List<Map<String, Object>> list2 = vs.selectLogerInfo(userNo, vNo);
+		
+		System.out.println("list2 : " + list2.toString().substring(13,14));
+		//int status = vs.selectRegStatus(loginUser, list1.get(1));
 		
 		model.addAttribute("list1", list1);
 		model.addAttribute("list2", list2);
@@ -62,7 +75,18 @@ public class VideoController {
 		
 		return "video/videoMain";
 	}
-	
+	//비디오 정기후원 상태 조회
+	@RequestMapping(value = "regStatus.vd")
+	public String selectRegStatus(HttpServletRequest request, Model model) {
+		int userNo = Integer.parseInt(request.getParameter("userNo"));
+		int chNo = Integer.parseInt(request.getParameter("chNo"));		
+		
+		int status = vs.selectRegStatus(userNo, chNo);
+		System.out.println("status : " + status);
+		model.addAttribute("stauts" + status);
+		
+		return "video/videoMain";
+	}
 	// 동영상 페이지 포인트 조회
 	@RequestMapping(value = "selectPoint.vd")
 	@ResponseBody
@@ -78,9 +102,11 @@ public class VideoController {
 	//정기후원
 	@RequestMapping(value = "regSub.vd")
 	@ResponseBody
-	public String regSub(HttpServletRequest request) {
+	public int regSub(HttpServletRequest request, HttpSession session) {
+		Member m = (Member) session.getAttribute("loginUser");
+
 		int chNo = Integer.parseInt(request.getParameter("chNo"));
-		int userNo = Integer.parseInt(request.getParameter("userNo"));
+		int userNo = m.getUserNo();
 		int price = Integer.parseInt(request.getParameter("price"));
 		int remain = Integer.parseInt(request.getParameter("remain"));
 		
@@ -98,22 +124,49 @@ public class VideoController {
 		
 		System.out.println("result : " + result + ", status : " + status);
 		
-		return "정기후원중";
+		
+		return result;
 	}
 	
-	//비디오 정기후원 상태 조회
-	@RequestMapping(value = "regStatus.vd")
-	public String selectRegStatus(HttpServletRequest request, Model model) {
-		int userNo = Integer.parseInt(request.getParameter("userNo"));
-		int chNo = Integer.parseInt(request.getParameter("chNo"));		
+	//일시후원
+	@RequestMapping(value = "onceSub.vd")
+	@ResponseBody
+	public int onceSub(HttpServletRequest request, HttpSession session) {
+		Member m = (Member) session.getAttribute("loginUser");
+
+		int chNo = Integer.parseInt(request.getParameter("chNo"));
+		int userNo = m.getUserNo();
+		int price = Integer.parseInt(request.getParameter("price"));
+		int remain = Integer.parseInt(request.getParameter("remain"));
 		
-		int status = vs.selectRegStatus(userNo, chNo);
-		System.out.println("status : " + status);
-		model.addAttribute("stauts" + status);
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("userNo", userNo);
+		map.put("chNo", chNo);
+		map.put("price", price);
+		map.put("remain", remain);
 		
-		return "video/videoMain";
+		//포인트차감
+		int result = vs.onceSub(map);
+		
+		//정기후원내역 insert, status = 1
+		int status = vs.insertOnce(map);
+		
+		System.out.println("result : " + result + ", status : " + status);
+		
+		
+		return result;
 	}
 
+	// 영상 클릭시 동영상 페이지로 이동
+	@RequestMapping(value = "imgCheck.vd")
+	public String imgCheck() {
+
+		// ms.imgCheck();
+
+		return "video/videoMain";
+	}
+	
+	
 	// 영상 클릭시 동영상 페이지로 이동
 	@RequestMapping(value = "regular.vd")
 	public String regularView() {
@@ -135,14 +188,7 @@ public class VideoController {
 		return "video/test22";
 	}
 
-	// 영상 클릭시 동영상 페이지로 이동
-	@RequestMapping(value = "imgCheck.vd")
-	public String imgCheck() {
 
-		// ms.imgCheck();
-
-		return "video/videoMain";
-	}
 
 
 

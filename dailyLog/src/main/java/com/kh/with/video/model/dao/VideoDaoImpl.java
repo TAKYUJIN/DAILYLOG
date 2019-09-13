@@ -30,7 +30,13 @@ public class VideoDaoImpl implements VideoDao {
 
 		return sqlSession.update("Member.regSub", map);
 	}
-
+	@Override
+	public int onceSub(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
+		
+		return sqlSession.update("Member.onceSub", map);
+	}
+	
+	
 	// 동영상 업로드정보 insert 메소드
 	@Override
 	public int insertVideoInfo(SqlSessionTemplate sqlSession, Video video) {
@@ -44,6 +50,7 @@ public class VideoDaoImpl implements VideoDao {
 	SqlSession sqlsession;
 
 	@Override
+
   /*
 	public List<Video> videoimagelist() {
 		System.out.println("videodaoimpl");
@@ -53,6 +60,7 @@ public class VideoDaoImpl implements VideoDao {
 		System.out.println("videodaoimpl");
 		return sqlsession.selectList("Attachment.videoimagelist");
 		 
+
 
 		}
 
@@ -66,38 +74,19 @@ public class VideoDaoImpl implements VideoDao {
 		
 		return sqlSession.insert("Attachment.insertAttachment",attachment);
 	}
-  
-  /*
-  // 썸네일 insert 메소드
-	@Override
-	public int insertAttachment(SqlSessionTemplate sqlSession, Attachment attachment) {
-
-		
-		 System.out.println("attachmentdao까지 왔니?" + attachment); 
-		
-		
-		return sqlSession.insert("Video.insertAttachment",attachment);
-	}
-  */
 	
-//	@Override
-//	public List<Map<String, Object>> selectVideoInfo(SqlSessionTemplate sqlSession, int userNo, int vNo) {
-//		
-//		Map<String, Integer> map = new HashMap<String, Integer>();
-//		map.put("userNo", userNo);
-//		map.put("vNo", vNo);
-//		
-//		return sqlSession.selectList("Video.selectVideoInfo", map);
-//	}
 	@Override
-	public List<Object> selectVideoInfo(SqlSessionTemplate sqlSession, int userNo, int vNo) {
-		
-		Map<String, Integer> map = new HashMap<String, Integer>();
-		map.put("userNo", userNo);
-		map.put("vNo", vNo);
+	public List<Object> selectVideoInfo(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
 		
 		return sqlSession.selectList("Video.selectVideoInfo", map);
 	}
+
+	@Override
+	public List<Map<String, Object>> selectLogerInfo(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
+		
+		return sqlSession.selectList("Video.selectLogerInfo", map);
+	}
+	
 	@Override
 	public int selectRegStatus(SqlSessionTemplate sqlSession, int userNo, int chNo) {
 		
@@ -109,29 +98,15 @@ public class VideoDaoImpl implements VideoDao {
 	}
 
 
-
-
-
-	  @Override public List<Video> selectVideoInfo(SqlSessionTemplate sqlSession,
-	  int userNo) {
-	  
-		  return sqlSession.selectList("Video.selectVideoInfo", userNo); 
-	  }
-
-	@Override
-	public List<Map<String, Object>> selectLogerInfo(SqlSessionTemplate sqlSession, int userNo, int vNo) {
-		Map<String, Integer> map = new HashMap<String, Integer>();
-		map.put("userNo", userNo);
-		map.put("vNo", vNo);
-		
-		return sqlSession.selectList("Video.selectLogerInfo", map);
-	}
-
 	@Override
 	public int insertReg(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
 
 		return sqlSession.insert("Video.insertReg", map);
 	}
-	  
+	@Override
+	public int insertOnce(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
+		
+		return sqlSession.insert("Video.insertOnce", map);
+	}
 	 
 }

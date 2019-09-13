@@ -2,7 +2,7 @@ package com.kh.with.loger.model.vo;
 
 import java.sql.Date;
 
-public class Loger {
+public class Loger implements java.io.Serializable{
 	private int chNo;		//채널번호
 	private int userNo;		//회원번호
 	private String chNm;		//채널명
