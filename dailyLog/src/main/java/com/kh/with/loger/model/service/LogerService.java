@@ -8,6 +8,7 @@ import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.loger.model.vo.Loger2;
 import com.kh.with.loger.model.vo.Support;
 import com.kh.with.member.model.vo.Member;
+import com.kh.with.report.model.vo.Report;
 
 public interface LogerService {
 //	ArrayList<Calculate> selectLogerCalculate(Member m);
@@ -38,6 +39,13 @@ public interface LogerService {
 
 	//로거스튜디오 (프로필 ,채널명,구독자수먼)
 	Loger2 newHomeChannel(int userNo);
+
+	//로거 신고내역
+	ArrayList<Report> reportlist(Report report, Member m);
+
+	ArrayList<Report> ccount(Report report, Member m);
+
+	ArrayList<Report> recount(Report report, Member m);
 
 
 

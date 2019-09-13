@@ -10,6 +10,7 @@ import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.loger.model.vo.Loger2;
 import com.kh.with.loger.model.vo.Support;
 import com.kh.with.member.model.vo.Member;
+import com.kh.with.report.model.vo.Report;
 
 public interface LogerDao {
 
@@ -39,6 +40,12 @@ public interface LogerDao {
 
 	//로거스튜디오(프로필 ,채널명,구독자수)
 	Loger2 newHomeChannel(SqlSessionTemplate sqlSession, int userNo);
+
+	ArrayList<Report> reportlist(SqlSessionTemplate sqlSession,Report report, Member m);
+
+	ArrayList<Report> ccount(SqlSessionTemplate sqlSession, Report report, Member m);
+
+	ArrayList<Report> recount(SqlSessionTemplate sqlSession, Report report, Member m);
 
 	
 

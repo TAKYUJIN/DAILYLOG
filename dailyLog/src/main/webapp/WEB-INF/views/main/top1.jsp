@@ -193,17 +193,21 @@ background:none;
  
 	.navbar .dropdown-menu li a {
 		/* color: #777; */
-		/* padding: 8px 20px; */
-		/* line-height: normal; */
+		 /*  padding: 8px 20px;  
+		  line-height: normal; */  
+		 width:200px;
+		 height:30px;
 	}
 	.navbar .dropdown-menu li a:hover, .navbar .dropdown-menu li a:active {
-		color: #333;
+		 
+	 
 	}	
 	.navbar .dropdown-item .material-icons {
 		font-size: 21px;
 		/* line-height: 16px; */
 		vertical-align: middle;
 		margin-top: -2px;
+		 
 	} 
 	
 	.main{
@@ -220,24 +224,28 @@ background:none;
 	 width:650px;
 	 height:250px;
 	 /* margin-left:600px;
-	  */position:fixed;
+	  */
+	 /*  position:fixed; */
 	  left:600px;
 	  top:50%;
 	 }  
+	 #v1{ 
+	 margin-left:10%;
+	 }
+	 .report{
+	 margin-left:15%;
+	 margin-top:7px;
+	 }
+	 
+	  .dropdown-item2{
+	 background-color:#fff;
+	 border:none;
+	 } 
 </style>
 </head>
 <body>
   
-	<%-- <%-- <div class="row">
-		<div class="col-md-9 col-center m-auto">
-		 <c:forEach var="videoimage" items="${list}"> 
- 		<h2> <span>  <b>인기동영상</b></span> </h2>
-			<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
-				<ol class="carousel-indicators">
-					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-					<li data-target="#myCarousel" data-slide-to="1"></li>
-					<li data-target="#myCarousel" data-slide-to="2"></li> 
-				</ol>   
+	<%-- 
 	  	<!-- <script>
 					$("#mainSome").click(function(){
 						var userNo = $('#mainNo').val();
@@ -257,39 +265,9 @@ background:none;
 					});
 					
 				</script> --> 
-				<!-- Wrapper for carousel items -->
-				  <div class="carousel-inner">
-					<div class="item carousel-item active"> 
-						<div class="row">
-							<div class="col-sm-4"><div class="img-box"> 
-							<a href="video.vd"><img src="resources/images/${videoimage.filepath}" width = "500px"  height="200px" alt=""></a></div></div>
-							<a href="#" ><img src="resources/images/three-dot.png"width="30px" height="30px"class="fixed" ></a>
-										
-						</div>
-					</div>
-					<div class="item carousel-item">
-						<div class="row">
-							<div class="col-sm-4"><div class="img-box"><img src="resources/images/${videoimage.filepath}"  width = "700px"  height="200px"alt=""></div></div>
-						</div>
-					</div>
-					<div class="item carousel-item">
-						<div class="row">
-							<div class="col-sm-4"><div class="img-box"><img src="resources/images/${videoimage.filepath}"  width = "700px"  height="200px" alt=""></div></div>
-						</div>
-					</div>
-				</div>
-				<!-- Carousel controls -->
-				<a class="carousel-control left carousel-control-prev" href="#myCarousel" data-slide="prev">
-					<i class="fa fa-chevron-left"></i>
-				</a>
-				<a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
-					<i class="fa fa-chevron-right"></i>
-				</a>
-			</div></c:forEach>
-		</div>
-	</div>
+		 
 	   --%>
-	 <div class="row">
+	<%--  <div class="row">
 		<div class="col-md-9 col-center m-auto">
 			<h2> <span>  <b>구독동영상1</b></span> </h2>
 			<div id="myCarousel1" class="carousel slide" data-ride="carousel" data-interval="0">
@@ -299,19 +277,22 @@ background:none;
 					<li data-target="#myCarousel2" data-slide-to="2"></li> 
 				</ol>   
 				<div class="carousel-inner">
-					<div class="item carousel-item active"> 
 						<div class="row">
-							
 						<c:forEach var="videoimage" items="${list}">
+					<div class="item carousel-item active"> 
+							
 						<div class="col-sm-2"id="l"><div class="img-box"><div style=" float:left;"> <a href="" id="video">
 						<img src="resources/images/${videoimage.filepath}" width = "102px"  height="130px"  >
 							 <h5>제목:${videoimage.vTitle}</h5>
 							<h5>채널명:${videoimage.chNm }</h5>
+							 
  				</a></div></div></div> 
+ 				
 						<div id="dot" style ="float:left;">
 							<nav class="navbar  navbar-expand-xl navbar-light">
 								<button type="button" class="main"  data-toggle="dropdown" id="btncolor" >
  								<img src="resources/images/three-dot.png"width="20px" height="20px">
+ 								 
   							</button>
 				
 				<ul class="dropdown-menu">					
@@ -319,15 +300,21 @@ background:none;
 					<li><a href="#" class="dropdown-item2">동영상 차단</a></li>
 				</ul></nav>
 						 </div>
-						 
-					
-						  </c:forEach> </div></div>
+						  </div>
+						  </c:forEach>
+						  
+						  </div>	</div>		  	
+						  	
+						  
 				 
 					<div class="item carousel-item1">
-						<div class="row"><c:forEach var="videoimage" items="${list}"><a href="video.vd">
+						<div class="row"><c:forEach var="videoimage" items="${list}">
+						<div class="col-sm-2" ><div class="img-box">
+						<a href="video.vd">
  <img src="resources/images/${videoimage.filepath}" class="img-responsive img-fluid"width = "180px"  height="130px" alt=""> </a>
-						</c:forEach></div>
-					</div>
+						 </div></div></c:forEach></div></div>
+					
+					
 					<div class="item carousel-item2">
 			  		<div class="row"><c:forEach var="videoimage" items="${list}">
 							<div class="col-sm-2" ><div class="img-box"><img src="resources/images/${videoimage.filepath}"  class="img-responsive img-fluid"width = "180px"  height="130px" alt="">
@@ -338,14 +325,19 @@ background:none;
 							</c:forEach>
 						</div>
 					</div>
-				</div>
+					
+					
+				 
  				<a class="carousel-control left carousel-control-prev" href="#myCarousel1" data-slide="prev" style="background:#fff;">
 					<i class="fa fa-chevron-left"></i>
 				</a>
 				<a class="carousel-control right carousel-control-next" href="#myCarousel1" data-slide="next"style="background:#fff;">
 					<i class="fa fa-chevron-right"></i>
  
- </a></div></div> </div> 
+ </a></div></div></div> 
+ 
+ 
+ <hr>
  
  <div class="row">
 		<div class="col-md-9 col-center m-auto">
@@ -359,8 +351,8 @@ background:none;
 				<div class="carousel-inner">
 					<div class="item carousel-item active"> 
 						<div class="row">
-							
 						<c:forEach var="videoimage" items="${list}">
+							
 						<div class="col-sm-2"id="l"><div class="img-box"><div style=" float:left;"> <a href="video.vd">
 						<img src="resources/images/${videoimage.filepath}" width = "102px"  height="130px"  >
 							  <h5>제목:${videoimage.vTitle}</h5>
@@ -377,9 +369,8 @@ background:none;
 					 <li><a href="#" class="dropdown-item1">동영상 신고</a></li>
 					<li><a href="#" class="dropdown-item2">동영상 차단</a></li>
 				</ul></nav>
-						 </div>
-						  </c:forEach> </div></div>
-				 
+						</div></c:forEach> </div>
+						
 					<div class="item carousel-item1">
 						<div class="row"><c:forEach var="videoimage" items="${list}">
  <img src="resources/images/${videoimage.filepath}" class="img-responsive img-fluid"width = "180px"  height="130px" alt=""> 
@@ -395,24 +386,24 @@ background:none;
 							</c:forEach>
 						</div>
 					</div>
-				</div>
+				 
  				<a class="carousel-control left carousel-control-prev" href="#myCarousel3" data-slide="prev" style="background:#fff;">
 					<i class="fa fa-chevron-left"></i>
 				</a>
 				<a class="carousel-control right carousel-control-next" href="#myCarousel3" data-slide="next"style="background:#fff;">
 					<i class="fa fa-chevron-right"></i>
- </a></div></div>
+ </a></div></div></div></div></div> --%>
  	
  
- </div> 
- <div id="report">
+ 
+ <%-- 		<div id="report">
         			<div class="col-lg-8"><!--게시판 넓이 -->
         			    <div class="panel panel-default" >
            				  <div class="panel-body">
                     <table class="table table-hover">
          <h4>동영상 신고</h4>
         <form action="report.rp" method="post">
- 			<input type="hidden" id="userId" name="userId" value="{loginUser}"/>
+ 			<input type="hidden" id="userId" name="userId" value="${loginUser.userNm}"/>
  			<input type="hidden" id="rety" name="rety" value="메인"/>
  			
 			<!-- 신고사유 -->
@@ -424,10 +415,93 @@ background:none;
       <div align="center">
         <input type="submit" value="완료" class="btn btn-warning">
         <input type="reset" value="취소" class="btn btn-default" id="reset">
-      </div>		</form></table> </div></div></div></div>
+      </div>		</form></table> </div></div></div></div> --%>
       
-      
-      
+    	<div class="row" id="v1"> <h2> <span>  <b>구독동영상1</b></span> </h2>
+						<c:forEach var="videoimage" items="${list}">
+							
+						<div class="col-sm-2"id="l"><div class="img-box"><div style=" float:left;"> <a href="video.vd">
+						<img src="resources/images/${videoimage.filepath}" width = "102px"  height="130px"  >
+							  <h5>제목:${videoimage.vTitle}</h5>
+							<%--  <c:out value="${videoimage.vTitle}" /> > --%>
+							<h5>채널명:${videoimage.chNm }</h5> 
+							<input type="hidden"  id="target" value="${videoimage.vNo}"/> 
+				</a></div></div>
+				
+				</div> 
+						<div id="dot" style ="float:left;">
+							<nav class="navbar  navbar-expand-xl navbar-light">
+								<button type="button" class="main"  data-toggle="dropdown" id="btncolor" >
+								<img src="resources/images/three-dot.png"width="20px" height="20px">
+							</button>
+				
+				<ul class="dropdown-menu" >					
+					 <li> <a  id="vr" class="dropdown-item1">동영상 신고 </a>
+				
+					  
+					 <form action="report.rp" method="post" >
+					  <input type="hidden" id="userNo" name="userNo"  value="${loginUser.userNo}"/>
+					  <input type="hidden"  id="retarget" name="retarget" value="${videoimage.userNo}"/>
+					<input type="text" class="form-control" id="rewhy" name="rewhy" placeholder="동영상 신고 사유">
+ 					  <input type="hidden" id="rety" name="rety" value="메인"/>
+					 <input type="hidden"  id="vNo" name="vNo" value="${videoimage.vNo}"/>
+					  <input type="hidden"  id="chNm" name="chNm" value="${videoimage.chNm}"/>
+				 	
+				     <div class="report"> 
+				    <input type="submit" value="완료" class="btn btn-info">
+        			<input type="reset" value="취소" class="btn btn-default"></div>
+				</form> 
+				 </li>
+ 
+					<li>
+					<form action="blockch.rp" method="post" >
+					
+					  <input type="hidden" id="userNo" name="userNo"  value="${loginUser.userNo}"/>
+					  <input type="hidden" id="chNm" name="chNm"  value="${videoimage.chNm}"/>
+					 <input type="submit" class="dropdown-item2"  value="동영상 채널 차단"> 
+					 </form>
+					</li>
+				</ul>
+				
+				</nav>
+				</div>
+      				</c:forEach> 
+						</div>
+						<%-- 
+ 						 <div id="v11">  
+					<form action="report.rp" method="post"  >
+					<c:forEach var="videoimage" items="${list}">
+					 <input type="text"  id="vNo" value="${videoimage.vNo}"/>
+					  <input type="hidden"  id="userNo" value="${videoimage.userNo}"/>
+					   <input type="hidden"  id="chNm" value="${videoimage.chNm}"/>
+					   <input type="text" id="userId" name="userId" value="${loginUser.userNm}"/>
+ 						<input type="hidden" id="rety" name="rety" value="메인"/>
+					<label for="rewhy">신고 사유</label>
+					<input type="text" class="form-control" id="rewhy" name="rewhy" placeholder="동영상 신고 사유">
+					</c:forEach>
+					</form> 
+			 	 </div>   --%>
+						
+						  <<%-- div id="report" style="display:none;">
+        			<div class="col-lg-8"><!--게시판 넓이 -->
+        			    <div class="panel panel-default" >
+           				  <div class="panel-body">
+                    <table class="table table-hover">
+         <h4>동영상 신고</h4>
+        <form action="report.rp" method="post">
+        <input type="text"  name="v11" value="${videoimage.vNo}"/>
+ 			<input type="hidden" id="userId" name="userId" value="${loginUser.userNm}"/>
+ 			<input type="hidden" id="rety" name="rety" value="메인"/>
+ 			
+			<!-- 신고사유 -->
+			<div class="form-group">
+				<label for="rewhy">신고 사유</label>
+					<input type="text" class="form-control" id="rewhy" name="rewhy" placeholder="동영상 신고 사유">
+			</div>
+      <div align="center">
+        <input type="submit" value="완료" class="btn btn-warning">
+        <input type="reset" value="취소" class="btn btn-default" id="reset">
+      </div> </form></table> </div></div></div></div> --%>
     <!--   
         <button onclick="fnMove('1')">div1로 이동</button>
     <button onclick="fnMove('2')">div2로 이동</button>
@@ -445,6 +519,7 @@ background:none;
 
 
 <script type="text/javascript">
+ 
 	function  showVideo(){
 	
 		var url="/home.mb";
@@ -465,8 +540,8 @@ background:none;
 	});
 	
 	
-	 $(document).ready(function(){
-		 
+/* 	 $(document).ready(function(){
+		 $('#main').hide(); 
 		    $('#report').hide();  
 		    $('.dropdown-item1').click(function(){
 		       $('#report').show();
@@ -475,9 +550,31 @@ background:none;
 		       $('#report').hide();
 		    });
 		    
-		 });
+		 }); */
+	 
+/* 		 $('#v10').hide(); 		
+$(document).ready(function(){
+	 $('#dot').click(function(){
 		 
-
+		 $('#v10').hide(); 
+		 $('#vb').show();
+		 $('#vr').show();
+	 });
+	 $('.dropdown-item1').click(function(){
+		 
+		 $('#v10').show(); 
+		 $('#vb').hide();
+		 $('#vr').hide();
+	 });
+	  $('#reset').click(function(){
+		  $('#v10').hide(); 
+			 $('#vb').show();
+			 $('#vr').show();
+	       
+	    });
+}); */
+ 
 </script>
+ 
 </body>
 </html>

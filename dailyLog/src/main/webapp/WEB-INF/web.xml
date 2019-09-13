@@ -121,6 +121,7 @@
 		<url-pattern>*.rp</url-pattern>
 	</servlet-mapping>
 	
+	 
 	
 	<!-- 등록되어 있는 인코딩 필터를 사용하기 위해서 작성 -->
 	<filter>

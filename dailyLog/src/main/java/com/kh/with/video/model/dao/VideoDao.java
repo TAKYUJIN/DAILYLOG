@@ -29,7 +29,7 @@ public interface VideoDao {
 	//int insertVideoInfo(SqlSessionTemplate sqlSession, Model model);
 	
 	
-	List<Attachment> videoimagelist( );
+	List<Attachment> videoimagelist(Member m);
 	
 	//썸네일  insert 메소드
 	int insertAttachment(SqlSessionTemplate sqlSession, Attachment attachment);

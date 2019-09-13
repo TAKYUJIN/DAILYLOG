@@ -54,10 +54,10 @@ public class VideoServiceImpl implements VideoService{
 	}
 
 	@Override
-	public List<Attachment> videoimagelist( ){
+	public List<Attachment> videoimagelist(Member m){
 		System.out.println("videoServiceimpl");
 		
-		return vd.videoimagelist( );
+		return vd.videoimagelist(m);
 	}
 
 	//썸네일 insert 메소드
