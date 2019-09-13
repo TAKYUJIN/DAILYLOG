@@ -39,6 +39,11 @@ public class VideoServiceImpl implements VideoService{
 
 		return vd.regSub(sqlSession, map);
 	}
+	@Override
+	public int onceSub(Map<String, Integer> map) {
+		
+		return vd.onceSub(sqlSession, map);
+	}
 
 	@Override
 	public String upload(MultipartFile file) {
@@ -50,7 +55,7 @@ public class VideoServiceImpl implements VideoService{
 	@Override
 	public int insertVideoInfo(Video video ) {
 		
-	return vd.insertVideoInfo(sqlSession,video);
+		return vd.insertVideoInfo(sqlSession,video);
 	}
 
 	@Override
@@ -67,33 +72,33 @@ public class VideoServiceImpl implements VideoService{
 		return vd.insertAttachment(sqlSession,attachment);
 	}
 
-//	@Override
-//	public List<Map<String, Object>> selectVideoInfo(int userNo, int vNo) {
-//		
-//		return vd.selectVideoInfo(sqlSession, userNo, vNo);
-//	}
 	@Override
-	public List<Object> selectVideoInfo(int userNo, int vNo) {
+	public List<Object> selectVideoInfo(Map<String, Integer> map) {
 		
-		return vd.selectVideoInfo(sqlSession, userNo, vNo);
+		return vd.selectVideoInfo(sqlSession, map);
 	}
-
+	@Override
+	public List<Map<String, Object>> selectLogerInfo(Map<String, Integer> map) {
+		
+		return vd.selectLogerInfo(sqlSession, map);
+	}
+	
 	@Override
 	public int selectRegStatus(int userNo, int chNo) {
 		
 		return vd.selectRegStatus(sqlSession, userNo, chNo);
 	}
 
-	@Override
-	public List<Map<String, Object>> selectLogerInfo(int userNo, int vNo) {
-
-		return vd.selectLogerInfo(sqlSession, userNo, vNo);
-	}
 
 	@Override
 	public int insertReg(Map<String, Integer> map) {
 		
 		return vd.insertReg(sqlSession, map);
+	}
+	@Override
+	public int insertOnce(Map<String, Integer> map) {
+		
+		return vd.insertOnce(sqlSession, map);
 	}
 
 

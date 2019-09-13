@@ -106,9 +106,15 @@
 		AND R.CH_NO = #{chNo}
 	</select>
 	
+	<!-- 동영상페이지 후원 내역 추가 -->
 	<insert id="insertReg" parameterType="map">
 		INSERT INTO SUPPORT
 		VALUES(SUP_NO.NEXTVAL, #{userNo}, #{chNo}, SYSDATE, #{price}, '정기', NULL, 1)
+	</insert>
+
+	<insert id="insertOnce" parameterType="map">
+		INSERT INTO SUPPORT
+		VALUES(SUP_NO.NEXTVAL, #{userNo}, #{chNo}, SYSDATE, #{price}, DEFAULT, NULL, 1)
 	</insert>
 
 </mapper>

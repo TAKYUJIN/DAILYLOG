@@ -21,12 +21,9 @@ public interface VideoService {
 	
 	//정기후원
 	int regSub(Map<String, Integer> map);
-
 	
 	// 업로드할동영상 정보 insert메소드
 	int insertVideoInfo(Video video);
-
-
 
 	//메인 썸네일 출력
 	List<Attachment> videoimagelist( );
@@ -36,15 +33,19 @@ public interface VideoService {
 	int insertAttachment(Attachment attachment);
 	
 	//비디오값 불러오기
-	List<Object> selectVideoInfo(int userNo, int vNo);
+	List<Object> selectVideoInfo(Map<String, Integer> map);
+
+	List<Map<String, Object>> selectLogerInfo(Map<String, Integer> map);
 
 	//정기후원 상태 조회
 	int selectRegStatus(int userNo, int chNo);
 
-
-	List<Map<String, Object>> selectLogerInfo(int userNo, int vNo);
-
 	int insertReg(Map<String, Integer> map);
+
+	int onceSub(Map<String, Integer> map);
+
+	int insertOnce(Map<String, Integer> map);
+
 
 	
 

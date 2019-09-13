@@ -406,16 +406,19 @@ button[class*="btn"] {border: 0;}
 					<div style="margin-left:10%;">
 						<div style="margin-right:10%; display:inline-block;">${ list1[0].chNm }</div>
 						<div style="display:inline-block;"><button>구독</button></div>
-						<label id="regsubTY" style="color:gray; position:fixed;">
-							<c:if test="${ status == 1 }">
-								정기후원중
-							</c:if>
-							<c:if test="${ status == 0 }">
-								정기후원중아님
-							</c:if>
-						</label>
-						<p>게시일 : ${ list1[0].uploadDt }</p>
-						<p>구독자수 : ${ list2[0].subNum } </p>
+						<div style="display:inline-block; margin-left:5%;">
+							<label id="regsubTY" style="color:gray; position:fixed;">
+								<c:if test="${ status == 1 }">
+									정기후원중
+								</c:if>
+								<c:if test="${ status == 0 }">
+									정기후원중아님
+								</c:if>
+							</label>
+						</div>
+						<br>
+						<small>구독자수 <b> ${ list2[0].subNum } </b><br></small>
+						<small>게시일 : ${ list1[0].uploadDt }</samll>
 
 					</div>
 				</td>
@@ -468,7 +471,28 @@ button[class*="btn"] {border: 0;}
 											<div id="oSub">
 												<div class="noti_text" align="center" style="margin-top:5%;"><b>일시후원</b></div>
 												<div align="left" style="margin-left:10%; margin-right:10%;">
-													
+													<table class="noti_table">
+														<tr><td><small>채널명</small></td></tr>
+														<tr><td><b>${ list1[0].chNm }</b></td></tr>
+														<tr><td><small>포인트조회</small></td></tr>
+														<tr><td><input type="text" class="form-control" id="oPoint" placehold="포인트를 조회하세요" readonly></td></tr>
+														<tr>
+															<td>
+																<input type="button" id="selectPoint2" style="width:50px; text-align:center;" class="btn-gradient yellow mini" value="조회">
+																<a href="" id="chargeBtn" style="width:50px; text-align:center;" class="btn-gradient blue mini">충전</a>
+															</td>
+														</tr>
+																											
+														<tr><td><small>후원</small></td></tr>
+														<tr><td><input type="text" class="form-control" id="oPrice" placehold="후원금액을 입력하세요"></td></tr>
+														<tr>
+															<td>
+																<a style="width:50px;text-align:center;" class="btn-gradient yellow mini" id="cancle2">취소</a>
+																<input type="button" id="oOk" style="width:50px; text-align:center;" class="btn-gradient blue mini" value="후원"/>
+																
+															</td>
+														</tr>
+													</table>
 												</div>
 											</div>
 											<!-- 포인트 충전 경고창 -->
@@ -528,7 +552,7 @@ button[class*="btn"] {border: 0;}
 							<ul class="nav navbar-nav navbar-right ml-auto" style="width:200px;">			
 								<li class="nav-item">
 									<a href="#none">
-									<img src="resources/images/heart_black.png" style="width:15px;">
+									<img src="resources/images/heart_black.png" style="width:15px;" onclick="selectLike()">
 								</a>
 								</li>
 								
@@ -639,21 +663,43 @@ button[class*="btn"] {border: 0;}
 	<script>
 		//좋아요 조회
 		function selectLike(){
-			$.ajax({
-				url:"imgCheck.vd",
-				type:"post",
-				success:function(data){
-					console.log("성공!");
-					
-				},
-				error:function(){
-					console.log("실패!");
-				}
-			});
-		}
-		//후원금액
-		$('#rOk').click(function(){
+			var chNo = "<c:out value='${list2[0].chNo}'/>";
 			var userNo = "<c:out value='${list2[0].userNo}'/>";
+			var state = 0;
+			
+			if(state == 0){
+				document.img2.src = "resources/images/heart_red.png";
+				state = 1;
+				$.ajax({
+					url:"imgCheck.vd",
+					type:"post",
+					data:{chNo:chNo, userNo:userNo},
+					success:function(data){
+						console.log("성공!");
+						
+					},
+					error:function(){
+						console.log("실패!");
+					}
+				});
+			}else {
+				document.img2.src = "resources/images/heart_black.png";
+				state = 0;
+				$.ajax({
+					url:"imgCheck.vd",
+					type:"post",
+					success:function(data){
+						console.log("성공!");
+						
+					},
+					error:function(){
+						console.log("실패!");
+					}
+				});
+			}
+		}
+		//정기후원금액
+		$('#rOk').click(function(){
 			var chNo = "<c:out value='${list2[0].chNo}'/>";
 			var point = $('#rPoint').val();
 			var price = $('#rPrice').val();
@@ -663,20 +709,55 @@ button[class*="btn"] {border: 0;}
 			if(parseInt(price) <= parseInt(point)){
 				var remain = parseInt(point) - parseInt(price);
 				
-				console.log(remain + ", " + price + ", " + chNo + ", " + userNo);
+				console.log(remain + ", " + price + ", " + chNo);
 				
 				$.ajax({
 					url:"regSub.vd",
 					type:"post",
-					data:{userNo:userNo, 
-						  remain:remain, 
+					data:{remain:remain, 
 						  price:price, 
 						  chNo:chNo},
 					success:function(data){
 						console.log("성공");
 						console.log(typeof(data));
 						console.log(data);
-						$('#regsubTY').val(data);
+						var hi = "정기후원증"
+						if(data == 1 ){
+							$('#regsubTY').text("정기후원증");
+						}else {
+							console.log("result = 0");
+						}
+						
+					},
+					error:function(){
+						console.log('실패');
+					}
+				});
+			}else {
+				alert("포인트가 부족합니다.");
+			}
+		});
+		//일시후원금액
+		$('#oOk').click(function(){
+			var chNo = "<c:out value='${list2[0].chNo}'/>";
+			var point = $('#oPoint').val();
+			var price = $('#oPrice').val();
+			
+			//console.log(parseInt(point) - parseInt(price));
+			
+			if(parseInt(price) <= parseInt(point)){
+				var remain = parseInt(point) - parseInt(price);
+				
+				console.log(remain + ", " + price + ", " + chNo);
+				
+				$.ajax({
+					url:"onceSub.vd",
+					type:"post",
+					data:{remain:remain, 
+						  price:price, 
+						  chNo:chNo},
+					success:function(data){
+						alert("<c:out value='${list2[0].chNm}'/>님에게 " + price + "원 후원하였습니다.");						
 					},
 					error:function(){
 						console.log('실패');
@@ -704,6 +785,23 @@ button[class*="btn"] {border: 0;}
 				}					
 			});
 		});  
+		 $('#selectPoint2').click(function(){
+				var userNo = "<c:out value='${list2[0].userNo}'/>";
+
+				$.ajax({
+					url:"selectPoint.vd",
+					type:"post",
+					data:{userNo:userNo},
+					success:function(data){
+						
+						console.log("success" +data);
+						$('#oPoint').val(data + " 포인트");
+					},
+					error:function(){
+						console.log('실패!');
+					}					
+				});
+			}); 
 		//후원 div 
 		 $(document).ready(function(){
 /* 		//정산상태
