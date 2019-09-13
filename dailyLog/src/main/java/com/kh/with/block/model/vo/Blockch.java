@@ -1,32 +1,32 @@
 package com.kh.with.block.model.vo;
 
 public class Blockch implements java.io.Serializable{
-	private int userno;
-	private int chno;
+	private int userNo;
+	private String chNm;
 	public Blockch() {
 	}
-	public int getUserno() {
-		return userno;
-	}
-	public void setUserno(int userno) {
-		this.userno = userno;
-	}
-	public int getChno() {
-		return chno;
-	}
-	public void setChno(int chno) {
-		this.chno = chno;
-	}
-	public Blockch(int userno, int chno) {
+	public Blockch(int userNo, String chNm) {
 		super();
-		this.userno = userno;
-		this.chno = chno;
+		this.userNo = userNo;
+		this.chNm = chNm;
+	}
+	public int getUserNo() {
+		return userNo;
+	}
+	public void setUserNo(int userNo) {
+		this.userNo = userNo;
+	}
+	public String getChNm() {
+		return chNm;
+	}
+	public void setChNm(String chNm) {
+		this.chNm = chNm;
 	}
 	@Override
 	public String toString() {
-		return "Blockch [userno=" + userno + ", chno=" + chno + "]";
+		return "Blockch [userNo=" + userNo + ", chNm=" + chNm + "]";
 	}
-	
-	
+ 
+	 
 	
 }

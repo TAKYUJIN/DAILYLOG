@@ -1,7 +1,6 @@
 package com.kh.with.loger.controller;
 
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,13 +15,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.kh.with.admin.model.vo.Board;
 import com.kh.with.loger.model.service.LogerService;
 import com.kh.with.loger.model.vo.Calculate;
 import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.loger.model.vo.Loger2;
 import com.kh.with.loger.model.vo.Support;
 import com.kh.with.member.model.vo.Member;
+import com.kh.with.report.model.vo.Report;
 
 @Controller
 public class LogerController {
@@ -263,8 +262,9 @@ public class LogerController {
 			model.addAttribute("msg", "채널개설 실패");
 			return "common/errorPage";
 		}
-
 	}
+
+ 
 
 	/*
 	 * //로거스튜디오 메인 select (프로필,채널명, 구독자)
@@ -290,4 +290,29 @@ public class LogerController {
 	 * 
 	 * }
 	 */
+	//로거 신고내역
+	@RequestMapping(value="logerdeclarationlist.lo")
+	public String declarationlist(Report report,Model model,HttpSession session)
+	{
+		Member m = (Member) session.getAttribute("loginUser");
+		System.out.println("controller m:"+m);
+		
+		ArrayList<Report> reportlist =ls.reportlist(report,m);
+		System.out.println("controller reportlist1:"+reportlist);
+		
+		ArrayList<Report> ccount =ls.ccount(report,m);
+		ArrayList<Report> recount =ls.recount(report,m);
+		
+		
+		model.addAttribute("reportlist", reportlist);
+		model.addAttribute("ccount", ccount);
+		model.addAttribute("recount", recount);
+		
+		System.out.println("controller reportlist2:"+reportlist);
+		return "loger/declarationlist";
+		
+		
+	}
+	
+	
 }

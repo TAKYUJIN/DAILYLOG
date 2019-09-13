@@ -99,15 +99,10 @@ public class MainController {
 	  @RequestMapping(value = "mailSending.mb",method=RequestMethod.GET)
 	  public String mailSending(MailVo MailVo,Model model,HttpServletRequest request) {
 		  String userId = request.getParameter("userId");
-		 System.out.println("userId"+userId); 
-		 System.out.println("controller1");
-	  System.out.println("MailVo"+ MailVo);
 	  
 	  reg_service.userReg_service(MailVo);
-	  System.out.println("controller2");
 	  
 	  mailSender.mailSendWithUserKey(MailVo.getFriId(),MailVo.getUserId(), request);
-	  System.out.println("friId:"+MailVo.getFriId());
 	  
 	  return "forward:/List.mb"; }
 	  

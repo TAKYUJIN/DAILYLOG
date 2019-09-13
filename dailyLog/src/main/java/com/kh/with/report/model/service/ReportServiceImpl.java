@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kh.with.member.model.vo.Member;
 import com.kh.with.report.model.dao.ReportDao;
 import com.kh.with.report.model.vo.Report;
 
@@ -20,14 +21,19 @@ public class ReportServiceImpl implements ReportService {
 	
 	private ReportDao rd;
 	@Override
+	public int mainreport(Report report) {
+		// TODO Auto-generated method stub
+		return rd.mainreport(sqlSession, report);
+	}
+	 
 	
 	 //메인 동영상 신고
 
-	public Object mainreport(int userNo, HttpSession session) {
+	/*public Object mainreport(Map param) {
 
-		
-		return rd.mainreport(sqlSession,userNo,session);
-	}
+		System.out.println("service:"+param);
+		return rd.mainreport(sqlSession,param);
+	}*/
 	
 	 
 

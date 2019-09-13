@@ -334,22 +334,6 @@ public class VideoController {
 		return "result";
 	}
 
-	// 동영상 이미지 출력
-
-	/*
-	 * @RequestMapping(value="/" ,method=RequestMethod.GET) public ModelAndView
-	 * videoimagelist(@ModelAttribute("vl") ModelAndView mav) {
-	 * mav.setViewName("main/main"); mav.addObject("list",
-	 * videoservice.videoimagelist()); System.out.println("list"+mav);
-	 * System.out.println("vl"); return mav; }
-	 */
-	/*
-	 * @GetMapping("/") public String imagelist(Model model) { List<Video> list=
-	 * videoservice.videoimagelist(); model.addAttribute("list",list);
-	 * 
-	 * System.out.println("vl"); return "main/top"; }
-	 */
-
 	// 메인 썸네일
 	/*
 	 * @RequestMapping(value="home.mb") public String mainlist(Attachment a,Model
@@ -391,9 +375,6 @@ public class VideoController {
 		 * return "main/main"; }
 		 */
 	
- 
-	
-	
 	
 	/*
 	 * @RequestMapping(value="logo.mb",method=RequestMethod.GET) public ModelAndView
@@ -403,9 +384,10 @@ public class VideoController {
 	 */
 	
 	 @RequestMapping(value="home.mb",method=RequestMethod.GET)
-		public ModelAndView mainlist( ModelAndView mav ) {
- 			 mav.setViewName("main/main");
-			 mav.addObject("list", videoservice.videoimagelist( ));
+		public ModelAndView mainlist( HttpSession session,ModelAndView mav ) {
+		 	Member m = (Member) session.getAttribute("loginUser");
+			 mav.setViewName("main/main");
+			 mav.addObject("list", videoservice.videoimagelist(m));
 			 System.out.println(mav);
 			 return mav;
 		 }

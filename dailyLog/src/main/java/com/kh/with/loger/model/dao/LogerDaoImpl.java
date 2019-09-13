@@ -12,6 +12,7 @@ import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.loger.model.vo.Loger2;
 import com.kh.with.loger.model.vo.Support;
 import com.kh.with.member.model.vo.Member;
+import com.kh.with.report.model.vo.Report;
 
 @Repository
 public class LogerDaoImpl implements LogerDao{
@@ -124,7 +125,25 @@ public class LogerDaoImpl implements LogerDao{
 	//후원기간 조회 후 정산 총금액 insert
 	
 
-
+	//로거 신고내역
+	@Override
+	public ArrayList<Report> reportlist(SqlSessionTemplate sqlSession,Report report, Member m) {
+		ArrayList<Report> reportlist=null;
+		reportlist =(ArrayList)sqlSession.selectList("Loger.reportlist",m);
+		return reportlist;
+	}
+	@Override
+	public ArrayList<Report> ccount(SqlSessionTemplate sqlSession, Report report, Member m) {
+		ArrayList<Report> ccount=null;
+		ccount =(ArrayList)sqlSession.selectList("Loger.ccount",m);
+		return ccount;
+	}
+	@Override
+	public ArrayList<Report> recount(SqlSessionTemplate sqlSession, Report report, Member m) {
+		ArrayList<Report> recount=null;
+		recount =(ArrayList)sqlSession.selectList("Loger.recount",m);
+		return recount;
+	}
 
 }
 	

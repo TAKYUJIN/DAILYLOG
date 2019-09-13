@@ -13,6 +13,7 @@ import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.loger.model.vo.Loger2;
 import com.kh.with.loger.model.vo.Support;
 import com.kh.with.member.model.vo.Member;
+import com.kh.with.report.model.vo.Report;
 
 @Service
 public class LogerServiceImpl implements LogerService{
@@ -77,6 +78,29 @@ public class LogerServiceImpl implements LogerService{
 	@Override
 	public Loger2 newHomeChannel(int userNo) {
 		return ld.newHomeChannel(sqlSession, userNo);
+	}
+
+	//로거 신고내역
+	@Override
+	public ArrayList<Report> reportlist(Report report, Member m) {
+		System.out.println("service"+m);
+		System.out.println("service report:"+report);
+		
+		return ld.reportlist(sqlSession,report, m);
+	}
+
+
+	@Override
+	public ArrayList<Report> ccount(Report report, Member m) {
+		// TODO Auto-generated method stub
+		return ld.ccount(sqlSession,report, m);
+	}
+
+
+	@Override
+	public ArrayList<Report> recount(Report report, Member m) {
+		// TODO Auto-generated method stub
+		return ld.recount(sqlSession,report, m);
 	}
 
 

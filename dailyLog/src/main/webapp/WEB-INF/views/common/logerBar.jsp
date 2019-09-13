@@ -266,7 +266,8 @@
 <body>
 <nav class="navbar navbar-default navbar-expand-lg navbar-light">
 	<div class="navbar-header d-flex col" >
-		<img src="resources/images/logo.png" style="width:90px; padding-top:10px;">	
+		<a href="home.mb"><img src="resources/images/logo.png" style="width:90px; padding-top:10px;">	
+	</a>
 	</div>
 	<!-- Collection of nav links, forms, and other content for toggling -->
 	<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
@@ -277,7 +278,7 @@
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">분석</a></li>	
 			<li class="nav-item"><a href="logerCalculate.lo" class="nav-link" style="padding-right:0px;">정산</a></li>	
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">댓글</a></li>
-			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">신고기록</a></li>
+			<li class="nav-item"><a href="logerdeclarationlist.lo" class="nav-link" style="padding-right:0px;">신고기록</a></li>
 		</ul>
 		<form class="navbar-form form-inline" style="width:240px;">
 			<div class="input-group search-box">								

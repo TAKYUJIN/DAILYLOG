@@ -1,18 +1,23 @@
 package com.kh.with.report.model.dao;
 
-import javax.servlet.http.HttpSession;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
+import com.kh.with.report.model.vo.Report;
 @Repository
 public class ReportDaoImpl implements ReportDao{
 
-	 //메인 동영상 신고
-	 
 	@Override
-	public Object mainreport(SqlSessionTemplate sqlSession,int userNo, HttpSession session) {
-		System.out.println("reportdaoimpl");
-		return sqlSession.selectList("Report.mainreport");
+	public int mainreport(SqlSessionTemplate sqlSession, Report report) {
+		 System.out.println("reportdao:"+report);
+		return sqlSession.insert("Report.mainreport",report);
 	}
 
+	 //메인 동영상 신고
+	 
+	/*
+	 * @Override public Object mainreport(SqlSessionTemplate sqlSession,Map param) {
+	 * System.out.println("param"+param); return
+	 * sqlSession.selectList("Report.mainreport"); }
+	 */
 }

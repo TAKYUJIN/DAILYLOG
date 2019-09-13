@@ -26,7 +26,7 @@ public interface VideoService {
 	int insertVideoInfo(Video video);
 
 	//메인 썸네일 출력
-	List<Attachment> videoimagelist( );
+	List<Attachment> videoimagelist( Member m);
 
 	
 	//썸네일 insert

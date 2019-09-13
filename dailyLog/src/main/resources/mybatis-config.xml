@@ -13,10 +13,8 @@
  		<typeAlias type="com.kh.with.video.model.vo.Video" alias="Video" />
 		<typeAlias type="com.kh.with.video.model.vo.Attachment" alias="Attachment" />
 		<typeAlias type="com.kh.with.admin.model.vo.Board" alias="Board" />
-
 		<typeAlias type="com.kh.with.report.model.vo.Report" alias="Report" />
 		<typeAlias type="com.kh.with.block.model.vo.Blockch" alias="Blockch" />
-
 		<typeAlias type="com.kh.with.reply.model.vo.Reply" alias="Reply" />
 
 	</typeAliases>
@@ -29,7 +27,6 @@
 		<mapper resource="mappers/Board-mapper.xml"/>
 		<mapper resource="mappers/attachment-mapper.xml"/>
 		<mapper resource="mappers/report-mapper.xml"/>
-		<mapper resource="mappers/blockch-mapper.xml"/>
 		
 		
 		
