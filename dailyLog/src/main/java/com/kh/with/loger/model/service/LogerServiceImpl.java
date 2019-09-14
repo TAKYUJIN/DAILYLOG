@@ -1,6 +1,7 @@
 package com.kh.with.loger.model.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,26 +82,27 @@ public class LogerServiceImpl implements LogerService{
 	}
 
 	//로거 신고내역
+	
+	  @Override public ArrayList<Report> reportlist(Report report, Member m) {
+	  System.out.println("serviceimplre1"+report);
+	  System.out.println("serviceimplre2"+ m); System.out.println("serviceimplre3"+
+	  ld.reportlist(sqlSession,report, m)); return ld.reportlist(sqlSession,report,
+	 m); }
+	 
+
+
 	@Override
-	public ArrayList<Report> reportlist(Report report, Member m) {
-		System.out.println("service"+m);
-		System.out.println("service report:"+report);
+	public List<Object> ccount(Report report,Member m) {
+		System.out.println("serviceimplc2"+ m);
+		return ld.ccount(sqlSession, m,report);
+	}
+
+
+	@Override 
+	public List<Object> recount(Report report,Member m) {
+		System.out.println("serviceimplr2"+ m);
 		
-		return ld.reportlist(sqlSession,report, m);
-	}
-
-
-	@Override
-	public ArrayList<Report> ccount(Report report, Member m) {
-		// TODO Auto-generated method stub
-		return ld.ccount(sqlSession,report, m);
-	}
-
-
-	@Override
-	public ArrayList<Report> recount(Report report, Member m) {
-		// TODO Auto-generated method stub
-		return ld.recount(sqlSession,report, m);
+		return ld.recount(sqlSession, m,report);
 	}
 
 

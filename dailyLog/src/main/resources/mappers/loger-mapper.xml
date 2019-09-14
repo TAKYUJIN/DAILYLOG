@@ -79,7 +79,19 @@
          <result property="ccount" column="C_COUNT"/>
         <result property="filepath" column="FILEPATH"/>
      </resultMap>
-     
+       <resultMap type="Report" id="Report2ResultSet"> 
+	    <id property="reno" column="RE_NO"/>
+		<result property="userNo" column="USER_NO" />
+		<result property="chNm" column="CH_NM" />
+        <result property="retarget" column="RE_TARGET"/>
+        <result property="redt" column="RE_DT"/>
+        <result property="rewhy" column="RE_WHY"/>
+        <result property="rety" column="RE_TY"/>
+        <result property="repno" column="REP_NO"/>
+         <result property="vcount" column="COUNT"/>
+         <result property="recount" column="RE_COUNT"/>
+         <result property="ccount" column="C_COUNT"/>
+     </resultMap>
      
      
      
@@ -158,37 +170,27 @@
 
 	</select> 
 	
-	<!-- <select id="reportlist" resultMap="ReportResultSet">
-	SELECT R.CH_NM,R.RE_NO,FILEPATH,V_TITLE,R.RE_WHY,V.COUNT,R.RE_DT
+ 
+	  <select id="reportlist" resultMap="ReportResultSet">
+ 	SELECT *
 	FROM REPORT R
 	JOIN ATTACHMENT A ON(R.RE_TARGET=A.USER_NO)
 	JOIN VIDEO V ON (A.USER_NO=V.USER_NO)
-	WHERE R.RE_TARGET =#{userNo}
-	</select>
-	 -->
-	<select id="reportlist" resultMap="ReportResultSet">
-	SELECT *
-	FROM REPORT R
-	JOIN ATTACHMENT A ON(R.RE_TARGET=A.USER_NO)
-	JOIN VIDEO V ON (A.USER_NO=V.USER_NO)
-	WHERE R.RE_TARGET =#{userNo}
-	</select>
+	WHERE R.RE_TARGET =#{userNo}  
+	 
+	</select>  
 	
-	<select id="ccount" resultMap="ReportResultSet">
-	SELECT COUNT(RE_COUNT)
+	<select id="ccount" resultMap="Report2ResultSet">
+	SELECT COUNT(R.RE_COUNT)
 	FROM REPORT R
-	JOIN ATTACHMENT A ON(R.RE_TARGET=A.USER_NO)
-	JOIN VIDEO V ON (A.USER_NO=V.USER_NO)
-	WHERE R.RE_TARGET =#{userNo}
+	WHERE RE_TARGET =#{userNo}
 	AND RE_COUNT>=3
 	</select>
 	
-	<select id="recount" resultMap="ReportResultSet">
-	SELECT  SUM(RE_COUNT)
+	<select id="recount" resultMap="Report2ResultSet">
+	SELECT SUM(R.RE_COUNT)
 	FROM REPORT R
-	JOIN ATTACHMENT A ON(R.RE_TARGET=A.USER_NO)
-	JOIN VIDEO V ON (A.USER_NO=V.USER_NO)
-	WHERE R.RE_TARGET =#{userNo}
+	WHERE RE_TARGET =#{userNo}
 	</select>
 	
 </mapper>

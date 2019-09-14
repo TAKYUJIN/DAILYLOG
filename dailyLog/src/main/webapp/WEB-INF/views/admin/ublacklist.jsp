@@ -164,22 +164,17 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
+	<jsp:include page="../common/adminBar.jsp"></jsp:include>
+
     <div class="container">
         <div class="table-wrapper">			
             <div class="table-title">
                 <div class="row">
                   
 					<div class="col-sm-4">
-						<h2 ><b>채널 블랙 리스트 </b> </h2>
+						<h2 ><b>회원 블랙 리스트 </b> </h2>
 					</div>
-                    <!-- <div class="col-sm-4">
-                        <div class="search-box">
-							<div class="input-group">
-								<span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
-								<input type="text" class="form-control" placeholder="Search&hellip;">
-							</div>
-                        </div>
-                    </div> -->
+                 
                 </div>
             </div>
             <table class="table table-bordered">
@@ -264,7 +259,8 @@ $(document).ready(function(){
                 </ul>
             </div>  
         </div>
-    </div>     
+    </div>
+     <jsp:include page="../common/footer.jsp" />     
 </body>
 
 </html>

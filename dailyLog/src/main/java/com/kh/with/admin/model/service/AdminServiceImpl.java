@@ -1,6 +1,7 @@
 package com.kh.with.admin.model.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.with.admin.model.dao.AdminDao;
 import com.kh.with.admin.model.vo.Board;
+import com.kh.with.report.model.vo.Report;
 
 
 
@@ -60,6 +62,27 @@ public class AdminServiceImpl implements AdminService {
 	public int adminNoticeDelete(int bNo) {
 		
 		return ad.adminNoticeDelete(sqlSession, bNo);
+	}
+
+	@Override
+	public List<Object> videoreportlist(Report report) {
+
+		
+		System.out.println("report"+report);
+		return ad.videoreportlist(sqlSession,report);
+	}
+
+	@Override
+	public List<Object> ublacklist(Report report) {
+ 		return ad.ublacklist(sqlSession,report);
+ 		
+	}
+
+	@Override
+	public List<Object> cblacklist(Report report) {
+		// TODO Auto-generated method stub
+		return ad.cblacklist(sqlSession,report);
+ 		
 	}
 
 

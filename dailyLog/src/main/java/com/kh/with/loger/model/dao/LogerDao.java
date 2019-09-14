@@ -41,12 +41,15 @@ public interface LogerDao {
 	//로거스튜디오(프로필 ,채널명,구독자수)
 	Loger2 newHomeChannel(SqlSessionTemplate sqlSession, int userNo);
 
+	//로거 신고 기록
 	ArrayList<Report> reportlist(SqlSessionTemplate sqlSession,Report report, Member m);
+	//로거 신고
 
-	ArrayList<Report> ccount(SqlSessionTemplate sqlSession, Report report, Member m);
+	List<Object> recount(SqlSessionTemplate sqlSession,Member m,Report report);
+ 	//로거 경고
+	List<Object> ccount(SqlSessionTemplate sqlSession,Member m, Report report);
 
-	ArrayList<Report> recount(SqlSessionTemplate sqlSession, Report report, Member m);
-
+ 
 	
 
 }

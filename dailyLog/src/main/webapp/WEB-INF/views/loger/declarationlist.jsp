@@ -184,13 +184,13 @@
 					
 						<h2 ><b>신고내역 </b> </h2><br>
 						<div id="re">
-						   ${recount}
+						  
 					 <c:forEach var="list" items="${recount}">	
-					  <b>현재 신고 횟수:<span style="color:red">${list.recount}
+					  <b>현재 신고 횟수:<span style="color:red">${recount}
 					 </span></b></c:forEach>
 					 
 					  <c:forEach var="list" items="${ccount}">
-						<b>현재 경고 횟수:<span style="color:red">${list.recount}</span></b>
+						<b>현재 경고 횟수:<span style="color:red">${ccount}</span></b>
 						</c:forEach>
 						 
 						

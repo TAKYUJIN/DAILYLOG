@@ -1,7 +1,9 @@
 package com.kh.with.loger.model.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
@@ -126,24 +128,27 @@ public class LogerDaoImpl implements LogerDao{
 	
 
 	//로거 신고내역
+	
+	  @Override public ArrayList<Report> reportlist(SqlSessionTemplate
+	  sqlSession,Report report, Member m)
+	  { ArrayList<Report> reportlist=
+	  (ArrayList)sqlSession.selectList("Loger.reportlist",m);
+	  
+	  return reportlist; }
+	 
 	@Override
-	public ArrayList<Report> reportlist(SqlSessionTemplate sqlSession,Report report, Member m) {
-		ArrayList<Report> reportlist=null;
-		reportlist =(ArrayList)sqlSession.selectList("Loger.reportlist",m);
-		return reportlist;
+	public List<Object> recount(SqlSessionTemplate sqlSession, Member m,Report report) {
+	 
+		
+		return sqlSession.selectList("Loger.recount",m);
 	}
 	@Override
-	public ArrayList<Report> ccount(SqlSessionTemplate sqlSession, Report report, Member m) {
-		ArrayList<Report> ccount=null;
-		ccount =(ArrayList)sqlSession.selectList("Loger.ccount",m);
-		return ccount;
+	public List<Object> ccount(SqlSessionTemplate sqlSession, Member m,Report report) {
+		 
+	 
+		return sqlSession.selectList("Loger.ccount",m);
 	}
-	@Override
-	public ArrayList<Report> recount(SqlSessionTemplate sqlSession, Report report, Member m) {
-		ArrayList<Report> recount=null;
-		recount =(ArrayList)sqlSession.selectList("Loger.recount",m);
-		return recount;
-	}
-
+ 
+	 
 }
 	

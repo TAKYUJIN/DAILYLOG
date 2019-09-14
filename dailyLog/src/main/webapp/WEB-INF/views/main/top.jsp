@@ -540,23 +540,15 @@ h2 span {
 	background:none;
 	border:1px none;
 	}
-	 #l{
-	 width:150px;
-	 margin-right:-25px;
-	 } 
+	 
+	 
+	 
 </style>
 </head>
 <body>
-	<%-- <%-- <div class="row">
-		<div class="col-md-9 col-center m-auto">
-		 <c:forEach var="videoimage" items="${list}"> 
- 		<h2> <span>  <b>인기동영상</b></span> </h2>
-			<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
-				<ol class="carousel-indicators">
-					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-					<li data-target="#myCarousel" data-slide-to="1"></li>
-					<li data-target="#myCarousel" data-slide-to="2"></li> 
-				</ol>   
+  <jsp:include page="../common/guest.jsp"></jsp:include>  
+ 
+	<%-- <%--  
 	  	<!-- <script>
 					$("#mainSome").click(function(){
 						var userNo = $('#mainNo').val();
@@ -576,41 +568,11 @@ h2 span {
 					});
 					
 				</script> --> 
-				<!-- Wrapper for carousel items -->
-				  <div class="carousel-inner">
-					<div class="item carousel-item active"> 
-						<div class="row">
-							<div class="col-sm-4"><div class="img-box"> 
-							<a href="video.vd"><img src="resources/images/${videoimage.filepath}" width = "500px"  height="200px" alt=""></a></div></div>
-							<a href="#" ><img src="resources/images/three-dot.png"width="30px" height="30px"class="fixed" ></a>
-										
-						</div>
-					</div>
-					<div class="item carousel-item">
-						<div class="row">
-							<div class="col-sm-4"><div class="img-box"><img src="resources/images/${videoimage.filepath}"  width = "700px"  height="200px"alt=""></div></div>
-						</div>
-					</div>
-					<div class="item carousel-item">
-						<div class="row">
-							<div class="col-sm-4"><div class="img-box"><img src="resources/images/${videoimage.filepath}"  width = "700px"  height="200px" alt=""></div></div>
-						</div>
-					</div>
-				</div>
-				<!-- Carousel controls -->
-				<a class="carousel-control left carousel-control-prev" href="#myCarousel" data-slide="prev">
-					<i class="fa fa-chevron-left"></i>
-				</a>
-				<a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
-					<i class="fa fa-chevron-right"></i>
-				</a>
-			</div></c:forEach>
-		</div>
-	</div>
+			 
 	   --%>
 	 <div class="row">
 		<div class="col-md-9 col-center m-auto">
-			<h2> <span>  <b>구독동영상1</b></span> </h2>
+			<h2> <span>  <b>인기 동영상-조회수</b></span> </h2>
 			<div id="myCarousel1" class="carousel slide" data-ride="carousel" data-interval="0">
 				<ol class="carousel-indicators">
 					<li data-target="#myCarousel2" data-slide-to="0" class="active"></li>
@@ -622,23 +584,12 @@ h2 span {
 						<div class="row">
 							
 						<c:forEach var="videoimage" items="${list}">
-						<div class="col-sm-2"id="l"><div class="img-box"><div style=" float:left;"> <a href="video.vd">
+						<div class="col-sm-2  "><div class="img-box"><div style=" float:left;"> <a href="video.vd">
 						<img src="resources/images/${videoimage.filepath}" width = "102px"  height="130px"  >
 							<h5>제목:${videoimage.vTitle}</h5>
 							<h5>채널명:${videoimage.chNm }</h5>
 				</a></div></div></div> 
-						<div id="dot" style ="float:left;">
-						
-							<nav class="navbar  navbar-expand-xl navbar-light">
-								<button type="button" class="friendlist"  data-toggle="dropdown" id="btncolor" >
-								<img src="resources/images/three-dot.png"width="20px" height="20px">
-							</button>
-				
-				<ul class="dropdown-menu">					
-					<li><a href="#" class="dropdown-item">동영상 신고</a></li>
-					<li><a href="#" class="dropdown-item">동영상 차단</a></li>
-				</ul></nav>
-						 </div>
+						 
 						  </c:forEach> </div></div>
 				 
 					<div class="item carousel-item1">
@@ -666,7 +617,7 @@ h2 span {
  </a></div></div></div> 
  <div class="row">
 		<div class="col-md-9 col-center m-auto">
-			<h2> <span>  <b>구독동영상2</b></span> </h2>
+			<h2> <span>  <b>인기 동영상-즐겨찾기</b></span> </h2>
 			<div id="myCarousel3" class="carousel slide" data-ride="carousel" data-interval="0">
 				<ol class="carousel-indicators">
 					<li data-target="#myCarousel2" data-slide-to="0" class="active"></li>
@@ -678,23 +629,12 @@ h2 span {
 						<div class="row">
 							
 						<c:forEach var="videoimage" items="${list}">
-						<div class="col-sm-2"id="l"><div class="img-box"><div style=" float:left;"> <a href="video.vd">
+						<div class="col-sm-2"  ><div class="img-box"><div style=" float:left;"> <a href="video.vd">
 						<img src="resources/images/${videoimage.filepath}" width = "102px"  height="130px"  >
 							<h5>제목:${videoimage.vTitle}</h5>
 							<h5>채널명:${videoimage.chNm }</h5>
 				</a></div></div></div> 
-						<div id="dot" style ="float:left;">
-						
-							<nav class="navbar  navbar-expand-xl navbar-light">
-								<button type="button" class="friendlist"  data-toggle="dropdown" id="btncolor" >
-								<img src="resources/images/three-dot.png"width="20px" height="20px">
-							</button>
-				
-				<ul class="dropdown-menu">					
-					<li><a href="#" class="dropdown-item">동영상 신고</a></li>
-					<li><a href="#" class="dropdown-item">동영상 차단</a></li>
-				</ul></nav>
-						 </div>
+						 
 						  </c:forEach> </div></div>
 				 
 					<div class="item carousel-item1">
@@ -721,9 +661,98 @@ h2 span {
  
  </a></div></div></div> 
  
+  <div class="row">
+		<div class="col-md-9 col-center m-auto">
+			<h2> <span>  <b>인기 동영상-댓글</b></span> </h2>
+			<div id="myCarousel3" class="carousel slide" data-ride="carousel" data-interval="0">
+				<ol class="carousel-indicators">
+					<li data-target="#myCarousel2" data-slide-to="0" class="active"></li>
+					<li data-target="#myCarousel2" data-slide-to="1"></li>
+					<li data-target="#myCarousel2" data-slide-to="2"></li> 
+				</ol>   
+				<div class="carousel-inner">
+					<div class="item carousel-item active"> 
+						<div class="row">
+							
+						<c:forEach var="videoimage" items="${list}">
+						<div class="col-sm-2" ><div class="img-box"><div style=" float:left;"> <a href="video.vd">
+						<img src="resources/images/${videoimage.filepath}" width = "102px"  height="130px"  >
+							<h5>제목:${videoimage.vTitle}</h5>
+							<h5>채널명:${videoimage.chNm }</h5>
+				</a></div></div></div> 
+						 
+						  </c:forEach> </div></div>
+				 
+					<div class="item carousel-item1">
+						<div class="row"><c:forEach var="videoimage" items="${list}">
+ <img src="resources/images/${videoimage.filepath}" class="img-responsive img-fluid"width = "180px"  height="130px" alt=""> 
+						</c:forEach></div>
+					</div>
+					<div class="item carousel-item2">
+						<div class="row"><c:forEach var="videoimage" items="${list}">
+							<div class="col-sm-2" ><div class="img-box"><img src="resources/images/${videoimage.filepath}"  class="img-responsive img-fluid"width = "180px"  height="130px" alt="">
+							<h5>제목:${videoimage.vTitle}</h5>
+							<h5>채널명:${videoimage.chNm }</h5>
+							
+							</div></div>
+							</c:forEach>
+						</div>
+					</div>
+				</div>
+ 				<a class="carousel-control left carousel-control-prev" href="#myCarousel3" data-slide="prev" style="background:#fff;">
+					<i class="fa fa-chevron-left"></i>
+				</a>
+				<a class="carousel-control right carousel-control-next" href="#myCarousel3" data-slide="next"style="background:#fff;">
+					<i class="fa fa-chevron-right"></i>
  
+ </a></div></div></div> 
  
+  <div class="row">
+		<div class="col-md-9 col-center m-auto">
+			<h2> <span>  <b>최근 업로드된 동영상</b></span> </h2>
+			<div id="myCarousel3" class="carousel slide" data-ride="carousel" data-interval="0">
+				<ol class="carousel-indicators">
+					<li data-target="#myCarousel2" data-slide-to="0" class="active"></li>
+					<li data-target="#myCarousel2" data-slide-to="1"></li>
+					<li data-target="#myCarousel2" data-slide-to="2"></li> 
+				</ol>   
+				<div class="carousel-inner">
+					<div class="item carousel-item active"> 
+						<div class="row">
+							
+						<c:forEach var="videoimage" items="${list}">
+						<div class="col-sm-2" ><div class="img-box"><div style=" float:left;"> <a href="video.vd">
+						<img src="resources/images/${videoimage.filepath}" width = "102px"  height="130px"  >
+							<h5>제목:${videoimage.vTitle}</h5>
+							<h5>채널명:${videoimage.chNm }</h5>
+				</a></div></div></div> 
+					 
+						  </c:forEach> </div></div>
+				 
+					<div class="item carousel-item1">
+						<div class="row"><c:forEach var="videoimage" items="${list}">
+ <img src="resources/images/${videoimage.filepath}" class="img-responsive img-fluid"width = "180px"  height="130px" alt=""> 
+						</c:forEach></div>
+					</div>
+					<div class="item carousel-item2">
+						<div class="row"><c:forEach var="videoimage" items="${list}">
+							<div class="col-sm-2" ><div class="img-box"><img src="resources/images/${videoimage.filepath}"  class="img-responsive img-fluid"width = "180px"  height="130px" alt="">
+							<h5>제목:${videoimage.vTitle}</h5>
+							<h5>채널명:${videoimage.chNm }</h5>
+							
+							</div></div>
+							</c:forEach>
+						</div>
+					</div>
+				</div>
+ 				<a class="carousel-control left carousel-control-prev" href="#myCarousel3" data-slide="prev" style="background:#fff;">
+					<i class="fa fa-chevron-left"></i>
+				</a>
+				<a class="carousel-control right carousel-control-next" href="#myCarousel3" data-slide="next"style="background:#fff;">
+					<i class="fa fa-chevron-right"></i>
  
+ </a></div></div></div> 
+  
  
 </body>
 </html>

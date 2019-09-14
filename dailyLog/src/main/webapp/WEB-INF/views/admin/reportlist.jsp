@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -164,6 +166,7 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
+	<jsp:include page="../common/adminBar.jsp"></jsp:include>
     <div class="container">
         <div class="table-wrapper">			
             <div class="table-title">
@@ -173,14 +176,7 @@ $(document).ready(function(){
 						<h2 ><b>신고내역 </b> </h2><br>
 						<h5>채널신고관리</h5>
 					</div>
-                    <!-- <div class="col-sm-4">
-                        <div class="search-box">
-							<div class="input-group">
-								<span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
-								<input type="text" class="form-control" placeholder="Search&hellip;">
-							</div>
-                        </div>
-                    </div> -->
+                 
                 </div>
             </div>
             <table class="table table-bordered">
@@ -210,7 +206,7 @@ $(document).ready(function(){
 													<td>3</td>
 													<td>신고1</td>
 													<td>신고인3</td>
-						<!--  -->				 <td>2019-08-13</td>
+					 			 <td>2019-08-13</td>
 								 
 											 
     </tr>
@@ -227,6 +223,72 @@ $(document).ready(function(){
                     <li class="page-item"><a href="#" class="page-link">>></a></li>
                 </ul>
             </div>  <br><br>
+             <div class="table-title">
+                <div class="row">
+                  
+					<div class="col-sm-4">
+						<h5>동영상 신고 관리</h5>
+					</div>
+                </div>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>신고번호</th>
+     					 <th>신고내용 </th>
+     					 <th>동영상 번호 </th>
+      				     <th>신고인<i class="fa fa-sort"></i></th>
+      				     <th>신고일<i class="fa fa-sort"></i></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+ 				 	<!-- 
+													<td>1</td>
+													<td>신고1</td>
+													<td>신고인1</td>
+													<td>2019-08-13</td>
+												</tr>
+												<tr>
+													<td>2</td>
+													<td>신고1</td>
+													<td>신고인2</td>
+													<td>2019-08-13</td>
+												</tr>
+												<tr>
+													<td>3</td>
+													<td>신고1</td>
+													<td>신고인3</td>
+					 							 <td>2019-08-13</td>
+								  -->
+								  <c:forEach var="v" items="${videoreportlist }" >
+								  
+								  <tr>
+													<td>${v.reno}</td>
+													<td>${v.rewhy}</td>
+													<td>${v.vNo}</td>
+													<td>${v.userNo}</td>
+					 							 <td>${v.redt}</td>
+								  
+								  </c:forEach>
+								  
+											 
+    </tr>
+                </tbody>
+            </table>
+              <div class="clearfix">
+                 <ul class="pagination">
+                    <li class="page-item disabled"><a href="#"><<</a></li>
+                    <li class="page-item"><a href="#" class="page-link">1</a></li>
+                    <li class="page-item"><a href="#" class="page-link">2</a></li>
+                    <li class="page-item active"><a href="#" class="page-link">3</a></li>
+                    <li class="page-item"><a href="#" class="page-link">4</a></li>
+                    <li class="page-item"><a href="#" class="page-link">5</a></li>
+                    <li class="page-item"><a href="#" class="page-link">>></a></li>
+                </ul>
+            </div>  
+     
+    
              <div class="table-title">
                 <div class="row">
                   
@@ -280,7 +342,9 @@ $(document).ready(function(){
                 </ul>
             </div>  
         </div>
-    </div>     
+    </div> 
+    <jsp:include page="../common/footer.jsp" />
+        
 </body>
 
 </html>

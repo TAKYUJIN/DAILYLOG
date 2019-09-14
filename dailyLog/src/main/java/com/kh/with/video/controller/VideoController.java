@@ -386,12 +386,19 @@ public class VideoController {
 	 @RequestMapping(value="home.mb",method=RequestMethod.GET)
 		public ModelAndView mainlist( HttpSession session,ModelAndView mav ) {
 		 	Member m = (Member) session.getAttribute("loginUser");
-			 mav.setViewName("main/main");
+			 mav.setViewName("main/top1");
 			 mav.addObject("list", videoservice.videoimagelist(m));
 			 System.out.println(mav);
 			 return mav;
-		 }
-		
+	 }
+	 @RequestMapping(value="guest.mb",method=RequestMethod.GET)
+		public ModelAndView guest( HttpSession session,ModelAndView mav ) {
+		 	Member m = (Member) session.getAttribute("loginUser");
+			 mav.setViewName("main/top");
+			 mav.addObject("list", videoservice.videoimagelist(m));
+			 System.out.println(mav);
+			 return mav;
+	 }	
 	
 	
 }

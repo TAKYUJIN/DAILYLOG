@@ -273,11 +273,11 @@
 			<li class="nav-item"><a href="adminNoticeList.ad" class="nav-link" style="padding-right:0px;">공지사항</a></li>
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">회원관리</a></li>
 			<li class="nav-item dropdown">
-				<a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#" style="padding-right:0px;">신고관리 <b class="caret"></b></a>
+				<a data-toggle="dropdown" class="nav-link dropdown-toggle" href="reportmanage.ad" style="padding-right:0px;">신고관리 <b class="caret"></b></a>
 				<ul class="dropdown-menu">					
-					<li><a href="#" class="dropdown-item">신고내역</a></li>
-					<li><a href="#" class="dropdown-item">회원블랙리스트</a></li>
-					<li><a href="#" class="dropdown-item">채널블랙리스트</a></li>
+					<li><a href="reportlist.ad" class="dropdown-item">신고내역</a></li>
+					<li><a href="ublacklist.ad" class="dropdown-item">회원블랙리스트</a></li>
+					<li><a href="cblacklist.ad" class="dropdown-item">채널블랙리스트</a></li>
 				</ul>
 			</li>					
 			<li class="nav-item"><a href="channelManage.ad" class="nav-link" style="padding-right:0px;">채널관리</a></li>	

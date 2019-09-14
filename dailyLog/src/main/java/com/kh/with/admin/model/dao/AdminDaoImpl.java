@@ -1,11 +1,13 @@
 package com.kh.with.admin.model.dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.with.admin.model.vo.Board;
+import com.kh.with.report.model.vo.Report;
 
 
 
@@ -71,6 +73,25 @@ public class AdminDaoImpl implements AdminDao {
 
 
 		return  sqlSession.delete("Board.adminNoticeDelete",bNo);
+	}
+
+	@Override
+	public List<Object> videoreportlist(SqlSessionTemplate sqlSession,Report report) {
+ 
+		System.out.println("report"+report);
+		return sqlSession.selectList("Report.videoreportlist");
+	}
+
+	@Override
+	public List<Object> ublacklist(SqlSessionTemplate sqlSession, Report report) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList( "Report.ublacklist");
+	}
+
+	@Override
+	public List<Object> cblacklist(SqlSessionTemplate sqlSession, Report report) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList( "Report.cblacklist");
 	}
 
 
