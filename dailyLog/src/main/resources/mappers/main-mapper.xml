@@ -2,38 +2,37 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-<mapper namespace="Member">
-	
-	<resultMap type="com.kh.with.member.model.vo.Member"
-		id="memberResultSet">
-		
-		<id property="userNo" column="USER_NO" />
-		<result property="userNm" column="USER_NM" />
-		<result property="userId" column="USER_ID" />
-		<result property="userPwd" column="USER_PWD" />
-		<result property="nickname" column="NICKNAME" />
-		<result property="phone" column="PHONE" />
-		<result property="gender" column="GENDER" />
-		<result property="adultYN" column="ADULT_YN" />
-		<result property="chYN" column="CH_YN" />
-		<result property="enrollDT" column="ENROLL_DT" />
-		<result property="leaveDT" column="LEAVE_DT" />
-		<result property="remainPT" column="REMAIN_PT" />
-		<result property="status" column="STATUS" />
+
+<mapper namespace="VideoLike">
+
+	<resultMap type="VideoLike" id="videoLikeResultSet">
+
+		<id property="likeNo" column="LIKE_NO" />
+		<result property="userNo" column="USER_NO" />
+		<result property="vNo" column="V_NO" />
+		<result property="chNo" column="CH_NO" />
+		<result property="vTY" column="V_TY" />
+		<result property="vTitle" column="V_TITLE" />
+		<result property="uploadDT" column="UPLOAD_DT" />
+		<result property="filepath" column="FILEPATH" />
 	</resultMap>
 
-	
-	<!-- 로그인 정보 조회용 쿼리 -->
-	<select id="loginCheck" resultMap="memberResultSet" parameterType="Member">
-		SELECT * 
-		FROM MEMBER 
-		WHERE USER_ID = #{userId, jdbcType=VARCHAR} 
-		AND USER_PWD = #{userPwd, jdbcType=VARCHAR} 
-		AND STATUS = 0
+
+	<!-- 북마크 조회 -->
+	<select id="selectBookmark" resultMap="videoLikeResultSet">
+		SELECT RANK, LIKE_NO,
+		USER_NO, V_NO, CH_NO, V_DT, V_TY, V_TITLE, UPLOAD_DT, FILEPATH
+		FROM (SELECT ROW_NUMBER() OVER(ORDER BY VL.V_DT DESC) RANK, VL.*, V_TITLE,
+		UPLOAD_DT, A.FILEPATH
+		FROM VIDEO_LIKE VL
+		JOIN MEMBER M ON(VL.USER_NO = M.USER_NO)
+		JOIN VIDEO V ON(VL.V_NO = V.V_NO)
+		JOIN ATTACHMENT A ON(V.V_NO = A.V_NO)
+		WHERE VL.USER_NO = #{userNo})
+		ORDER BY RANK ASC
 	</select>
-	
-	 
-	
+
+
+
 </mapper>
 

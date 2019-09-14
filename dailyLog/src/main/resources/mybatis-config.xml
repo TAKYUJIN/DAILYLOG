@@ -16,10 +16,12 @@
 		<typeAlias type="com.kh.with.report.model.vo.Report" alias="Report" />
 		<typeAlias type="com.kh.with.block.model.vo.Blockch" alias="Blockch" />
 		<typeAlias type="com.kh.with.reply.model.vo.Reply" alias="Reply" />
-
+		<typeAlias type="com.kh.with.main.model.vo.VideoLike" alias="VideoLike" />
+	
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappers/member-mapper.xml"/>
+		<mapper resource="mappers/main-mapper.xml"/>
 		<mapper resource="mappers/loger-mapper.xml"/>
 		<mapper resource="mappers/mail-mapper.xml"/>
     	<mapper resource="mappers/friend-mapper.xml"/>

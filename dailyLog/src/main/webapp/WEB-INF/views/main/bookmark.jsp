@@ -53,8 +53,22 @@ body {
                 </div>
 
 	<table id="bookmarkArea">
+		<c:forEach items="${bList}" var="b">
 		<tr>
-			<td>
+			<%-- <!-- 비디오 -->
+				<td colspan="4" height="400px"><!-- autoplay="autoplay" -->
+					  <video id='my-video' class='video-js' controls preload='auto' width='200' height='150'
+						  poster='resources/images/logo.png' data-setup='{}' >
+						  <source src='resources/uploadFiles/${ list1[0].filepath}' type='video/mp4'>
+						  <source src='MY_VIDEO.webm' type='video/webm'>
+						  <p class='vjs-no-js'>
+						      To view this video please enable JavaScript, and consider upgrading to a web browser that
+						  <a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
+						  </p>
+					  </video>
+				</td>
+				 --%>
+				<td>
 				<video width="200px;" height="150px;" controls loop>
 					<source src="" type="">
 					<source src="nature.ogg" type="">
@@ -62,6 +76,9 @@ body {
 			<input type="text" value="동영상제목" class="video_td" id="videoTitle">
 			<input type="text" value="업데이트 2019.08.13" class="video_td" id="videoDate">
 			</td>
+			</c:forEach>
+			
+			
 			<td>
 				<video width="200px;" height="150px;" controls loop>
 					<source src="" type="">
