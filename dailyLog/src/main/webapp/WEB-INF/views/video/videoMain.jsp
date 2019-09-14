@@ -552,19 +552,19 @@ button[class*="btn"] {border: 0;}
 							<ul class="nav navbar-nav navbar-right ml-auto" style="width:200px;">			
 								<li class="nav-item">
 									<a href="#none">
-									<img src="resources/images/heart_black.png" style="width:15px;" onclick="selectLike()">
+									<img src="resources/images/heart_black.png" id="like" style="width:15px;" onclick="selectLike()">
 								</a>
 								</li>
 								
 								<li class="nav-item">
 									<a href="#none">
-									<img src="resources/images/broken.png" style="width:15px;">
+									<img src="resources/images/broken.png" id="hate" style="width:15px;" onclick="selectHate()">
 								</a>
 								</li>
 								
 								<li class="nav-item">
 								<a href="#none" data-toggle="dropdown">
-									<img src="resources/images/bookmark.png" style="width:15px;">
+									<img src="resources/images/bookmark.png" id="bookmark" style="width:15px;" onclick="selectBookmark()">
 								</a>
 								</li>
 								<li class="nav-item">
@@ -661,35 +661,110 @@ button[class*="btn"] {border: 0;}
 	</div>
 	
 	<script>
+			var state = 0;
 		//좋아요 조회
 		function selectLike(){
 			var chNo = "<c:out value='${list2[0].chNo}'/>";
-			var userNo = "<c:out value='${list2[0].userNo}'/>";
-			var state = 0;
-			
+			var vNo = "<c:out value='${list1[0].vNo}'/>";
+			console.log(chNo + "::" + vNo);
 			if(state == 0){
-				document.img2.src = "resources/images/heart_red.png";
+				document.getElementById('like').src = "resources/images/heart_red.png";
 				state = 1;
 				$.ajax({
-					url:"imgCheck.vd",
+					url:"insertLike.vd",
 					type:"post",
-					data:{chNo:chNo, userNo:userNo},
+					data:{chNo:chNo, vNo:vNo},
 					success:function(data){
-						console.log("성공!");
-						
+						console.log("insert성공!");
+						//state = data;
 					},
 					error:function(){
 						console.log("실패!");
 					}
 				});
 			}else {
-				document.img2.src = "resources/images/heart_black.png";
+				document.getElementById('like').src = "resources/images/heart_black.png";
 				state = 0;
 				$.ajax({
-					url:"imgCheck.vd",
+					url:"deleteLike.vd",
 					type:"post",
+					data:{chNo:chNo, vNo:vNo},
 					success:function(data){
-						console.log("성공!");
+						console.log("delete성공!");
+						
+					},
+					error:function(){
+						console.log("실패!");
+					}
+				});
+			}
+		}
+		//싫어요 조회
+		function selectHate(){
+			var chNo = "<c:out value='${list2[0].chNo}'/>";
+			var vNo = "<c:out value='${list1[0].vNo}'/>";
+			console.log(chNo + "::" + vNo);
+			if(state == 0){
+				document.getElementById('hate').src = "resources/images/broken_color.png";
+				state = 1;
+				$.ajax({
+					url:"insertHate.vd",
+					type:"post",
+					data:{chNo:chNo, vNo:vNo},
+					success:function(data){
+						console.log("insert성공!");
+						//state = data;
+					},
+					error:function(){
+						console.log("실패!");
+					}
+				});
+			}else {
+				document.getElementById('hate').src = "resources/images/broken_black.png";
+				state = 0;
+				$.ajax({
+					url:"deleteHate.vd",
+					type:"post",
+					data:{chNo:chNo, vNo:vNo},
+					success:function(data){
+						console.log("delete성공!");
+						
+					},
+					error:function(){
+						console.log("실패!");
+					}
+				});
+			}
+		}
+		//북마크 조회
+		function selectBookmark(){
+			var chNo = "<c:out value='${list2[0].chNo}'/>";
+			var vNo = "<c:out value='${list1[0].vNo}'/>";
+			console.log(chNo + "::" + vNo);
+			if(state == 0){
+				document.getElementById('bookmark').src = "resources/images/bookmark_color.png";
+				state = 1;
+				$.ajax({
+					url:"insertBookmark.vd",
+					type:"post",
+					data:{chNo:chNo, vNo:vNo},
+					success:function(data){
+						console.log("insert성공!");
+						//state = data;
+					},
+					error:function(){
+						console.log("실패!");
+					}
+				});
+			}else {
+				document.getElementById('bookmark').src = "resources/images/bookmark.png";
+				state = 0;
+				$.ajax({
+					url:"deleteBookmark.vd",
+					type:"post",
+					data:{chNo:chNo, vNo:vNo},
+					success:function(data){
+						console.log("delete성공!");
 						
 					},
 					error:function(){

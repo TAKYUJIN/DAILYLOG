@@ -108,5 +108,40 @@ public class VideoDaoImpl implements VideoDao {
 		
 		return sqlSession.insert("Video.insertOnce", map);
 	}
-	 
+	
+	@Override
+	public int insertLike(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
+		
+		return sqlSession.insert("Video.insertLike", map);
+	}
+	
+	@Override
+	public int deleteLike(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
+		
+		return sqlSession.delete("Video.deleteLike", map);
+	}
+	
+	@Override
+	public int insertHate(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
+		
+		return sqlSession.insert("Video.insertHate", map);
+	}
+	
+	@Override
+	public int deleteHate(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
+		
+		return sqlSession.delete("Video.deleteHate", map);
+	}
+	
+	@Override
+	public int insertBookmark(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
+		
+		return sqlSession.insert("Video.insertBookmark", map);
+	}
+	
+	@Override
+	public int deleteBookmark(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
+		
+		return sqlSession.delete("Video.deleteBookmark", map);
+	}
 }
