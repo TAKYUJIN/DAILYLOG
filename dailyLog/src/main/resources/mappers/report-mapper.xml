@@ -31,4 +31,25 @@
 	VALUES(#{userNo},#{chNm})
 	</insert> 
 	
+	<select id="videoreportlist" resultMap="ReportResultSet">
+	SELECT * 
+	FROM REPORT
+	WHERE RE_TY='동영상'
+	
+	</select>
+	<select id="ublacklist" resultMap="ReportResultSet">
+	SELECT SUM(R.RE_COUNT)
+	FROM REPORT R
+	WHERE RE_TY='동영상'
+	 
+	</select>
+	<select id="cblacklist" resultMap="ReportResultSet">
+	SELECT SUM(R.RE_COUNT)
+	FROM REPORT R
+	WHERE RE_TY='채널'
+	</select>	
+	
+	
+	
+	
 	</mapper>

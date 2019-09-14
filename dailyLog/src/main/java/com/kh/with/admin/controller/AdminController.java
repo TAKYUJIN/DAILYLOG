@@ -1,6 +1,7 @@
 package com.kh.with.admin.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -13,8 +14,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.with.admin.model.service.AdminService;
 import com.kh.with.admin.model.vo.Board;
-import com.kh.with.loger.model.vo.Calculate;
 import com.kh.with.member.model.vo.Member;
+import com.kh.with.report.model.vo.Report;
 
 @Controller
 public class AdminController {
@@ -175,7 +176,39 @@ public class AdminController {
 		return "admin/adminChattingComplete";
 
 	}
+	
+	//관리자 신고관리
+	@RequestMapping(value = "reportmanage.ad")
+	public String reportmanage() {
+		return "admin/reportmanage";
+	}
+	//관리자 신고내역
+	@RequestMapping(value = "reportlist.ad")
+	public String reportlist(HttpServletRequest request,Model model,HttpSession session) {
 
+			Report report =new Report();
+			List<Object> videoreportlist = as.videoreportlist(report);
+			System.out.println("videoreportlist"+videoreportlist);
+			
+			
+			model.addAttribute("videoreportlist", videoreportlist);
+
+		return "admin/reportlist";
+	}
+	//관리자  회원 블랙 리스트
+	@RequestMapping(value = "ublacklist.ad")
+	public String ublacklist() {
+		Report report =new Report();
+		List<Object> ublacklist = as.ublacklist(report);
+		return "admin/ublacklist";
+	}
+	//관리자  채널 블랙 리스트
+	@RequestMapping(value = "cblacklist.ad")
+	public String cblacklist() {
+		Report report =new Report();
+		List<Object> cblacklist = as.cblacklist(report);
+		return "admin/cblacklist";
+	}
 }
 
 

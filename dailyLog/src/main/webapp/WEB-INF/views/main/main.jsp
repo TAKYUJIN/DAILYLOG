@@ -190,12 +190,13 @@ h2 span {
 <body>
  
  	  <c:if test="${ empty sessionScope.loginUser }">
- 	  
- 	        <jsp:include page="../common/guest.jsp"></jsp:include>  
-		 <%--   <jsp:include page="../main/top.jsp"></jsp:include>  --%> 
-	  <%-- <jsp:include page="../main/list.jsp"></jsp:include>   --%>
- 	  	 
-		  <div class="col-md-9 col-center m-auto">
+  	  
+ 	    <jsp:include page="/guest.mb"></jsp:include> 
+ 	    
+ 		<%--    <jsp:include page="../main/top.jsp"></jsp:include>  
+	  <jsp:include page="../main/list.jsp"></jsp:include>  
+  	  	 --%> 
+		  <%-- <div class="col-md-9 col-center m-auto">
 			<h2> <span>  <b>인기 동영상</b></span> </h2>
 			<div id="myCarousel1" class="carousel slide" data-ride="carousel" data-interval="0">
 				<ol class="carousel-indicators">
@@ -210,7 +211,7 @@ h2 span {
 						<div class="col-sm-2"id="l"><div class="img-box"><div style=" float:left;"> <a href="video.vd">
 						<img src="resources/images/${videoimage.filepath}" width = "102px"  height="130px"  >
 							  <h5>제목:${videoimage.userNo}</h5> 
-						<%-- 	 <h5>채널명:${videoimage.chNm }</h5> --%>
+							 <h5>채널명:${videoimage.chNm }</h5>
 				</a></div></div></div> 
 						<div id="dot" style ="float:left;">
 						
@@ -239,8 +240,8 @@ h2 span {
 					<div class="item carousel-item2">
 						<div class="row"><c:forEach var="videoimage" items="${list}">
 							<div class="col-sm-2" ><div class="img-box"><img src="resources/images/${videoimage.filepath}"  class="img-responsive img-fluid"width = "180px"  height="130px" alt="">
-							<%-- <h5>제목:${videoimage.vTitle}</h5>
-							<h5>채널명:${videoimage.chNm }</h5> --%>
+							<h5>제목:${videoimage.vTitle}</h5>
+							<h5>채널명:${videoimage.chNm }</h5>
 							
 							</div></div>
 							</c:forEach>
@@ -270,8 +271,8 @@ h2 span {
 						<c:forEach var="videoimage" items="${list}">
 						<div class="col-sm-2"id="l"><div class="img-box"><div style=" float:left;"> <a href="video.vd">
 						<img src="resources/images/${videoimage.filepath}" width = "102px"  height="130px"  >
-							<%-- <h5>제목:${videoimage}</h5>
-							<h5>채널명:${videoimage.chNm }</h5> --%>
+							<h5>제목:${videoimage}</h5>
+							<h5>채널명:${videoimage.chNm }</h5>
 				</a></div></div></div> 
 						<div id="dot" style ="float:left;">
 						
@@ -295,8 +296,8 @@ h2 span {
 					<div class="item carousel-item2">
 						<div class="row"><c:forEach var="videoimage" items="${list}">
 							<div class="col-sm-2" ><div class="img-box"><img src="resources/images/${videoimage.filepath}"  class="img-responsive img-fluid"width = "180px"  height="130px" alt="">
-							<%-- <h5>제목:${videoimage.vTitle}</h5>
-							<h5>채널명:${videoimage.chNm }</h5> --%>
+							<h5>제목:${videoimage.vTitle}</h5>
+							<h5>채널명:${videoimage.chNm }</h5>
 							
 							</div></div>
 							</c:forEach>
@@ -311,31 +312,24 @@ h2 span {
  
  </a></div></div></div> 
 			 </form>   
-		 
-			 
-			 
-			 
-			  
  	 </c:if>
- 	
+ 	 --%>
  	 
  	 
  	
  	 
  	 
- 	 
+ 	 </c:if>
  	 
  	 
  	 
 	<c:if test="${ !empty sessionScope.loginUser }">
 		 
  
-  		 <jsp:include page="../common/mainBar.jsp"></jsp:include>	
-		 <jsp:include page="../main/top1.jsp"></jsp:include> 
+		 <jsp:include page="/home.mb"></jsp:include> 
  
  
 	</c:if>  
-	
 	<jsp:include page="../common/footer.jsp"></jsp:include> 
  
 

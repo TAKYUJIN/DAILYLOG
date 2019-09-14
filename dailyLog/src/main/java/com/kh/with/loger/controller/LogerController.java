@@ -2,6 +2,7 @@ package com.kh.with.loger.controller;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -295,20 +296,22 @@ public class LogerController {
 	public String declarationlist(Report report,Model model,HttpSession session)
 	{
 		Member m = (Member) session.getAttribute("loginUser");
-		System.out.println("controller m:"+m);
 		
-		ArrayList<Report> reportlist =ls.reportlist(report,m);
-		System.out.println("controller reportlist1:"+reportlist);
+		List<Object> ccount =ls.ccount(report,m);
+		System.out.println("controller ccount1:"+ccount);
+		 
+	 ArrayList<Report> reportlist =ls.reportlist(report,m);
 		
-		ArrayList<Report> ccount =ls.ccount(report,m);
-		ArrayList<Report> recount =ls.recount(report,m);
+		List<Object> recount =ls.recount(report,m);
+		System.out.println("controller recount1:"+recount);
 		
-		
-		model.addAttribute("reportlist", reportlist);
+		 model.addAttribute("reportlist", reportlist);
 		model.addAttribute("ccount", ccount);
 		model.addAttribute("recount", recount);
 		
-		System.out.println("controller reportlist2:"+reportlist);
+		System.out.println("ccount2:"+ccount);
+
+		System.out.println("recount2:"+recount);
 		return "loger/declarationlist";
 		
 		

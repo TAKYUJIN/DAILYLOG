@@ -43,12 +43,11 @@ public interface LogerService {
 	//로거 신고내역
 	ArrayList<Report> reportlist(Report report, Member m);
 
-	ArrayList<Report> ccount(Report report, Member m);
+	List<Object> recount(Report report,Member m);
 
-	ArrayList<Report> recount(Report report, Member m);
+	List<Object> ccount(Report report, Member m);
 
-
-
+ 
 	
 
 

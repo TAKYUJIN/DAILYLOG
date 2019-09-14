@@ -1,10 +1,12 @@
 package com.kh.with.admin.model.dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
 import com.kh.with.admin.model.vo.Board;
+import com.kh.with.report.model.vo.Report;
 
 public interface AdminDao {
 
@@ -22,6 +24,12 @@ public interface AdminDao {
 
 	//공지사항 삭제
 	int adminNoticeDelete(SqlSessionTemplate sqlSession, int bNo);
+
+	List<Object> videoreportlist(SqlSessionTemplate sqlSession,Report report);
+
+	List<Object> ublacklist(SqlSessionTemplate sqlSession, Report report);
+
+	List<Object> cblacklist(SqlSessionTemplate sqlSession, Report report);
 
 	
 
