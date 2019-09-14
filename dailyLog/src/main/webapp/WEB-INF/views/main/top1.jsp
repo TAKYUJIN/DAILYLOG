@@ -432,7 +432,8 @@ background:none;
     	<br>
 						<c:forEach var="videoimage" items="${list}">
 							
-						<div class="col-sm-2"id="l"><div class="img-box"><div style=" float:left;"> <a href="video.vd">
+						<div class="col-sm-2"id="l"><div class="img-box"><div style=" float:left;">
+						<a href="video.vd?userNo=${videoimage.userNo}&vNo=${videoimage.vNo}">
 						<img src="resources/images/${videoimage.filepath}" width = "102px"  height="130px"  >
 							  <h5>제목:${videoimage.vTitle}</h5>
 							<%--  <c:out value="${videoimage.vTitle}" /> > --%>
@@ -594,16 +595,16 @@ background:none;
 		
 	}
 	
-	$('#video').click(function(){
-		var userNo = "<c:out value='${list[0].userNo}'/>";
-		var vNo = "<c:out value='${list[0].vNo}'/>";
+/* 	$('#video').click(function(){
+		var userNo = "<c:out value='${videoimage.userNo}'/>";
+		var vNo = "<c:out value='${videoimage.vNo}'/>";
 		
-		//console.log(no+" cc");
+		console.log(userNo + ":::" + vNo);
 		//$('#video').load("video.vd",{no:no});
-		location.href="video.vd?userNo="+userNo+"&vNo="+vNo;
+		location.href='video.vd?userNo='+userNo+'&vNo='+vNo;
 		
 		return false;
-	});
+	}); */
 	
 	
 /* 	 $(document).ready(function(){

@@ -46,7 +46,17 @@ public interface VideoService {
 
 	int insertOnce(Map<String, Integer> map);
 
+	int insertLike(Map<String, Integer> map);
 
+	int deleteLike(Map<String, Integer> map);
+
+	int insertHate(Map<String, Integer> map);
+
+	int deleteHate(Map<String, Integer> map);
+
+	int insertBookmark(Map<String, Integer> map);
+
+	int deleteBookmark(Map<String, Integer> map);
 	
 
 

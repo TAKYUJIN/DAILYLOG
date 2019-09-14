@@ -157,15 +157,133 @@ public class VideoController {
 		return result;
 	}
 
-	// 영상 클릭시 동영상 페이지로 이동
-	@RequestMapping(value = "imgCheck.vd")
-	public String imgCheck() {
-
-		// ms.imgCheck();
-
-		return "video/videoMain";
+	//좋아요
+	@RequestMapping(value = "insertLike.vd")
+	@ResponseBody
+	public String insertLike(HttpSession session, HttpServletRequest request) {
+		Member loginUser = (Member) session.getAttribute("loginUser");
+		
+		int chNo = Integer.parseInt(request.getParameter("chNo"));
+		System.out.println(chNo);
+		int userNo = loginUser.getUserNo();
+		System.out.println(userNo);
+		int vNo = Integer.parseInt(request.getParameter("vNo"));
+		System.out.println(vNo);
+		System.out.println(userNo + "::" + vNo + "::" + chNo);
+		
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("userNo", userNo);
+		map.put("vNo", vNo);
+		map.put("chNo", chNo);
+		
+		int result = vs.insertLike(map);
+		System.out.println("result imgCheck : " + result);
+		return Integer.toString(result);
 	}
 	
+	//
+	@RequestMapping(value = "deleteLike.vd")
+	@ResponseBody
+	public String deleteLike(HttpSession session, HttpServletRequest request) {
+		Member loginUser = (Member) session.getAttribute("loginUser");
+		
+		int userNo = loginUser.getUserNo();
+		int vNo = Integer.parseInt(request.getParameter("vNo"));
+		int chNo = Integer.parseInt(request.getParameter("chNo"));
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("userNo", userNo);
+		map.put("vNo", vNo);
+		map.put("chNo", chNo);
+		
+		int result = vs.deleteLike(map);
+		System.out.println("result imgCheck : " + result);
+		return Integer.toString(result);
+	}
+	
+	//싫어요 insert
+	@RequestMapping(value = "insertHate.vd")
+	@ResponseBody
+	public String insertHate(HttpSession session, HttpServletRequest request) {
+		Member loginUser = (Member) session.getAttribute("loginUser");
+		
+		int chNo = Integer.parseInt(request.getParameter("chNo"));
+		System.out.println(chNo);
+		int userNo = loginUser.getUserNo();
+		System.out.println(userNo);
+		int vNo = Integer.parseInt(request.getParameter("vNo"));
+		System.out.println(vNo);
+		System.out.println(userNo + "::" + vNo + "::" + chNo);
+		
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("userNo", userNo);
+		map.put("vNo", vNo);
+		map.put("chNo", chNo);
+		
+		int result = vs.insertHate(map);
+		System.out.println("result imgCheck : " + result);
+		return Integer.toString(result);
+	}
+	
+	//싫어요 delete
+	@RequestMapping(value = "deleteHate.vd")
+	@ResponseBody
+	public String deleteHate(HttpSession session, HttpServletRequest request) {
+		Member loginUser = (Member) session.getAttribute("loginUser");
+		
+		int userNo = loginUser.getUserNo();
+		int vNo = Integer.parseInt(request.getParameter("vNo"));
+		int chNo = Integer.parseInt(request.getParameter("chNo"));
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("userNo", userNo);
+		map.put("vNo", vNo);
+		map.put("chNo", chNo);
+		
+		int result = vs.deleteHate(map);
+		System.out.println("result imgCheck : " + result);
+		return Integer.toString(result);
+	}
+	//북마크 insert
+	@RequestMapping(value = "insertBookmark.vd")
+	@ResponseBody
+	public String insertBookmark(HttpSession session, HttpServletRequest request) {
+		Member loginUser = (Member) session.getAttribute("loginUser");
+		
+		int chNo = Integer.parseInt(request.getParameter("chNo"));
+		System.out.println(chNo);
+		int userNo = loginUser.getUserNo();
+		System.out.println(userNo);
+		int vNo = Integer.parseInt(request.getParameter("vNo"));
+		System.out.println(vNo);
+		System.out.println(userNo + "::" + vNo + "::" + chNo);
+		
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("userNo", userNo);
+		map.put("vNo", vNo);
+		map.put("chNo", chNo);
+		
+		int result = vs.insertBookmark(map);
+		System.out.println("result imgCheck : " + result);
+		return Integer.toString(result);
+	}
+	
+	//북마크 delete
+	@RequestMapping(value = "deleteBookmark.vd")
+	@ResponseBody
+	public String deleteBookmark(HttpSession session, HttpServletRequest request) {
+		Member loginUser = (Member) session.getAttribute("loginUser");
+		
+		int userNo = loginUser.getUserNo();
+		int vNo = Integer.parseInt(request.getParameter("vNo"));
+		int chNo = Integer.parseInt(request.getParameter("chNo"));
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("userNo", userNo);
+		map.put("vNo", vNo);
+		map.put("chNo", chNo);
+		
+		int result = vs.deleteBookmark(map);
+		System.out.println("result imgCheck : " + result);
+		return Integer.toString(result);
+	}
 	
 	// 영상 클릭시 동영상 페이지로 이동
 	@RequestMapping(value = "regular.vd")

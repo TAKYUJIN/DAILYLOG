@@ -44,9 +44,17 @@ public interface VideoDao {
 	int insertReg(SqlSessionTemplate sqlSession, Map<String, Integer> map);
 
 	int insertOnce(SqlSessionTemplate sqlSession, Map<String, Integer> map);
-
-
-
 	
+	int insertLike(SqlSessionTemplate sqlSession, Map<String, Integer> map);
+	
+	int deleteLike(SqlSessionTemplate sqlSession, Map<String, Integer> map);
+	
+	int insertHate(SqlSessionTemplate sqlSession, Map<String, Integer> map);
+
+	int deleteHate(SqlSessionTemplate sqlSession, Map<String, Integer> map);
+
+	int insertBookmark(SqlSessionTemplate sqlSession, Map<String, Integer> map);
+
+	int deleteBookmark(SqlSessionTemplate sqlSession, Map<String, Integer> map);
 
 }

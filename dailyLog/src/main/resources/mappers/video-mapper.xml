@@ -116,6 +116,46 @@
 		INSERT INTO SUPPORT
 		VALUES(SUP_NO.NEXTVAL, #{userNo}, #{chNo}, SYSDATE, #{price}, DEFAULT, NULL, 1)
 	</insert>
+	
+	<insert id="insertLike" parameterType="map">
+		INSERT INTO VIDEO_LIKE
+		VALUES(LIKE_NO.NEXTVAL, #{userNo}, #{vNo}, #{chNo}, '좋아요')
+	</insert>
+	
+	<delete id="deleteLike">
+		DELETE FROM VIDEO_LIKE
+		WHERE USER_NO = #{userNo}
+		AND V_NO = #{vNo}
+		AND CH_NO = #{chNo}
+		AND V_TY = '좋아요'
+	</delete>
+	
+	<insert id="insertHate" parameterType="map">
+		INSERT INTO VIDEO_LIKE
+		VALUES(LIKE_NO.NEXTVAL, #{userNo}, #{vNo}, #{chNo}, '싫어요')
+	</insert>
+	
+	<delete id="deleteHate">
+		DELETE FROM VIDEO_LIKE
+		WHERE USER_NO = #{userNo}
+		AND V_NO = #{vNo}
+		AND CH_NO = #{chNo}
+		AND V_TY = '싫어요'
+	</delete>
 
+	<insert id="insertBookmark" parameterType="map">
+		INSERT INTO VIDEO_LIKE
+		VALUES(LIKE_NO.NEXTVAL, #{userNo}, #{vNo}, #{chNo}, '북마크')
+	</insert>
+	
+	<delete id="deleteBookmark">
+		DELETE FROM VIDEO_LIKE
+		WHERE USER_NO = #{userNo}
+		AND V_NO = #{vNo}
+		AND CH_NO = #{chNo}
+		AND V_TY = '북마크'
+	</delete>
+	
+	
 </mapper>
 

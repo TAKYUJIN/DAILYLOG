@@ -101,11 +101,40 @@ public class VideoServiceImpl implements VideoService{
 		return vd.insertOnce(sqlSession, map);
 	}
 
+	@Override
+	public int insertLike(Map<String, Integer> map) {
+		
+		return vd.insertLike(sqlSession, map);
+	}
 
-
-
-
-
+	@Override
+	public int deleteLike(Map<String, Integer> map) {
+		
+		return vd.deleteLike(sqlSession, map);
+	}
+	
+	@Override
+	public int insertHate(Map<String, Integer> map) {
+		
+		return vd.insertHate(sqlSession, map);
+	}
+	
+	@Override
+	public int deleteHate(Map<String, Integer> map) {
+		
+		return vd.deleteHate(sqlSession, map);
+	}
+	@Override
+	public int insertBookmark(Map<String, Integer> map) {
+		
+		return vd.insertBookmark(sqlSession, map);
+	}
+	
+	@Override
+	public int deleteBookmark(Map<String, Integer> map) {
+		
+		return vd.deleteBookmark(sqlSession, map);
+	}
 }
 
 
