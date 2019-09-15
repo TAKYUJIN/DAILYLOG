@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.with.admin.model.service.AdminService;
 import com.kh.with.admin.model.vo.Board;
+import com.kh.with.admin.model.vo.Calculate;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.report.model.vo.Report;
 
@@ -25,7 +26,16 @@ public class AdminController {
 
 	// 관리자 정산 페이지 이동
 	@RequestMapping(value = "adminCalculate.ad")
-	public String selectAdminCalculate() {
+	public String selectAdminCalculate(Calculate c, Model model) {
+
+		ArrayList<Calculate> cList = as.selectAdminCalculate();
+
+		model.addAttribute("cList", cList);
+		model.addAttribute("c", c);
+		
+		System.out.println(cList);
+		
+		
 		return "admin/adminCalculate";
 	}
 
