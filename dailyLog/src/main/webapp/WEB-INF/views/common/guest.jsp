@@ -269,7 +269,7 @@
 <nav class="navbar navbar-default navbar-expand-lg navbar-light">
 
 	<div class="navbar-header d-flex col" >
-		<img src="resources/images/logo.png" style="width:90px; padding-top:10px;">	
+		<a href="logout.me"><img src="resources/images/logo.png" style="width:90px; padding-top:10px;"></a>
 	</div>
 	<!-- Collection of nav links, forms, and other content for toggling -->
 	<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
