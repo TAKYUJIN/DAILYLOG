@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.kh.with.admin.model.vo.Board;
 import com.kh.with.admin.model.vo.Calculate;
 import com.kh.with.report.model.vo.Report;
+import com.kh.with.report.model.vo.Report2;
 
 
 
@@ -79,19 +80,28 @@ public class AdminDaoImpl implements AdminDao {
 	@Override
 	public List<Object> videoreportlist(SqlSessionTemplate sqlSession,Report report) {
  
-		System.out.println("report"+report);
+		System.out.println("report1"+report);
 		return sqlSession.selectList("Report.videoreportlist");
+	}
+	@Override
+	public List<Object> chreportlist(SqlSessionTemplate sqlSession, Report report) {
+		return  sqlSession.selectList("Report.chreportlist");
+	}
+	@Override
+	public List<Object> repreportlist(SqlSessionTemplate sqlSession, Report report) {
+		return sqlSession.selectList("Report.repreportlist");
+
 	}
 
 	@Override
-	public List<Object> ublacklist(SqlSessionTemplate sqlSession, Report report) {
-		// TODO Auto-generated method stub
+	public List<Object> ublacklist(SqlSessionTemplate sqlSession, Report2 report) {
+		System.out.println("report2"+report);
 		return sqlSession.selectList( "Report.ublacklist");
 	}
 
 	@Override
-	public List<Object> cblacklist(SqlSessionTemplate sqlSession, Report report) {
-		// TODO Auto-generated method stub
+	public List<Object> cblacklist(SqlSessionTemplate sqlSession, Report2 report) {
+		System.out.println("report3"+report);
 		return sqlSession.selectList( "Report.cblacklist");
 	}
 

@@ -182,34 +182,25 @@ $(document).ready(function(){
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>신고번호</th>
-     					 <th>신고내용 </th>
+                        <th>신고 번호</th>
+     					 <th>신고 내용 </th>
+     					 <th>채널 명<i ></i></th>
       				     <th>신고인<i class="fa fa-sort"></i></th>
       				     <th>신고일<i class="fa fa-sort"></i></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody> 
+ 				 <c:forEach items="${chreportlist}" var="v">
                     <tr>
- 				 
-													<td>1</td>
-													<td>신고1</td>
-													<td>신고인1</td>
-													<td>2019-08-13</td>
+													<td>${v.reno}</td>
+													<td>
+													<a href="videoreportdetail.ad?reno=${v.reno}">${v.rewhy}</a>
+													</td>
+													<td>${v.chNm}</td>
+													<td>${v.userNo}</td>
+					 							 <td>${v.redt}</td>
 												</tr>
-												<tr>
-													<td>2</td>
-													<td>신고1</td>
-													<td>신고인2</td>
-													<td>2019-08-13</td>
-												</tr>
-												<tr>
-													<td>3</td>
-													<td>신고1</td>
-													<td>신고인3</td>
-					 			 <td>2019-08-13</td>
-								 
-											 
-    </tr>
+													 </c:forEach>	
                 </tbody>
             </table>
               <div class="clearfix">
@@ -231,49 +222,36 @@ $(document).ready(function(){
 					</div>
                 </div>
             </div>
-            <table class="table table-bordered">
+            
+            <table id="utable" class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>신고번호</th>
-     					 <th>신고내용 </th>
+                        <th>신고 번호</th>
+     					 <th>신고 내용 </th>
      					 <th>동영상 번호 </th>
       				     <th>신고인<i class="fa fa-sort"></i></th>
       				     <th>신고일<i class="fa fa-sort"></i></th>
                     </tr>
                 </thead>
+                
                 <tbody>
-                    <tr>
- 				 	<!-- 
-													<td>1</td>
-													<td>신고1</td>
-													<td>신고인1</td>
-													<td>2019-08-13</td>
-												</tr>
-												<tr>
-													<td>2</td>
-													<td>신고1</td>
-													<td>신고인2</td>
-													<td>2019-08-13</td>
-												</tr>
-												<tr>
-													<td>3</td>
-													<td>신고1</td>
-													<td>신고인3</td>
-					 							 <td>2019-08-13</td>
-								  -->
-								  <c:forEach var="v" items="${videoreportlist }" >
-								  
-								  <tr>
-													<td>${v.reno}</td>
-													<td>${v.rewhy}</td>
+								 <c:forEach items="${videoreportlist}" var="v"   >
+								  <tr id="ureport">
+								 					<td>${v.reno}</td>
+													<td>
+													<a href="videoreportdetail.ad?reno=${v.reno}">${v.rewhy}</a>
+													
+													</td>
 													<td>${v.vNo}</td>
 													<td>${v.userNo}</td>
 					 							 <td>${v.redt}</td>
+								
+								</tr>
+								 </c:forEach>
 								  
-								  </c:forEach>
 								  
 											 
-    </tr>
+ 
                 </tbody>
             </table>
               <div class="clearfix">
@@ -299,32 +277,28 @@ $(document).ready(function(){
             </div>
             <table class="table table-bordered">
                 <thead>
-                    <tr>
-                        <th>신고번호</th>
-     					 <th>신고내용 </th>
+                <tr>
+                                        <th>신고 번호</th>
+     					 <th>신고 내용 </th>
+     					 <th>댓글 번호</th>
       				     <th>신고인<i class="fa fa-sort"></i></th>
       				     <th>신고일<i class="fa fa-sort"></i></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
- 				 
-													<td>1</td>
-													<td>신고1</td>
-													<td>신고인1</td>
-													<td>2019-08-13</td>
+                    <tr><c:forEach items="${repreportlist}" var="v"   >
+                   <td>${v.reno}</td>
+													<td>
+													<a href="videoreportdetail.ad?reno=${v.reno}">${v.rewhy}</a>
+													
+													</td>
+													<td>${v.repno}</td>
+													<td>${v.vNo}</td>
+													<td>${v.userNo}</td>
+					 							 <td>${v.redt}</td>
+      				     </c:forEach>
 												</tr>
-												<tr>
-													<td>2</td>
-													<td>신고1</td>
-													<td>신고인2</td>
-													<td>2019-08-13</td>
-												</tr>
-												<tr>
-													<td>3</td>
-													<td>신고1</td>
-													<td>신고인3</td>
-					 							 <td>2019-08-13</td>
+												 
 								 
 											 
     </tr>
@@ -343,9 +317,27 @@ $(document).ready(function(){
             </div>  
         </div>
     </div> 
+<div id="d"></div>
+
     <jsp:include page="../common/footer.jsp" />
         
 </body>
 
+<script>
+
+/* $("#ureport").click(function(){
+	var str = ""
+	var tdArr = new Array();	 
+	var tr = $(this);
+	var td = tr.children();
+	
+	td.each(function(i){
+		tdArr.push(td.eq(i).text());
+	});
+	
+	console.log(tdArr);
+ 
+}); */
+</script>
 </html>
  

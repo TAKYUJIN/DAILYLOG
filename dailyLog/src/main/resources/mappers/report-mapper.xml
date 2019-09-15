@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Report">
 
-	<resultMap type="Report" id="ReportResultSet"> 
+	  <resultMap type="Report" id="ReportResultSet"> 
 	    <id property="reno" column="RE_NO"/>
 		<result property="userNo" column="USER_NO" />
 		<result property="chNm" column="CH_NM" />
@@ -15,41 +15,117 @@
         <result property="vNo" column="V_NO"/>
         <result property="repno" column="REP_NO"/>
           <result property="recount" column="RE_COUNT"/>
-     </resultMap>
-     <resultMap type="Blockch" id="BlockchResultSet"> 
-		<id property="userNo" column="USER_NO" />
+     </resultMap> 
+     
+     
+     <resultMap type="com.kh.with.report.model.vo.Report2" id="Report2ResultSet"> 
+	    <id property="reno" column="RE_NO"/>
+		<result property="userNo" column="USER_NO" />
+		<result property="userNm" column="USER_NM" />
+			<result property="userId" column="USER_ID" />
 		<result property="chNm" column="CH_NM" />
+		<result property="status" column="STATUS" />
+		
+        <result property="retarget" column="RE_TARGET"/>
+        <result property="redt" column="RE_DT"/>
+        <result property="rewhy" column="RE_WHY"/>
+        <result property="rety" column="RE_TY"/>
+        <result property="vNo" column="V_NO"/>
+        <result property="repno" column="REP_NO"/>
+        <result property="vTitle" column="V_TITLE"/>
+         <result property="vcount" column="COUNT"/>
+         <result property="recount" column="RE_COUNT"/>
+         <result property="ccount" column="C_COUNT"/>
+        <result property="filepath" column="FILEPATH"/>
      </resultMap>
+     
+     
+     
+     <!-- <resultMap type="Blockvi" id="BlockchResultSet"> 
+		<id property="userNo" column="USER_NO" />
+		<result property="vNo" column="V_NO" />
+     </resultMap> -->
 	<!-- 메인 동영상 신고 -->
  	<insert id="mainreport" parameterType="Report">
 	INSERT INTO REPORT 
-	VALUES(RE_NO.NEXTVAL,#{userNo},#{retarget},SYSDATE,#{rewhy},#{rety},#{vNo},0,#{chNm},1,0)
+	VALUES(RE_NO.NEXTVAL,#{userNo},#{retarget},SYSDATE,#{rewhy},#{rety},#{vNo},0,#{chNm},0,0)
 	</insert>  
 	
-	<insert id="mainblockch" parameterType="Blockch">
-	INSERT INTO BLOCK_CH 
-	VALUES(#{userNo},#{chNm})
-	</insert> 
+	<!-- <insert id="mainblockvi" parameterType="Blockvi">
+	INSERT INTO BLOK_VIDEO
+	VALUES(#{userNo},#{vNo})
+	</insert>  -->
 	
 	<select id="videoreportlist" resultMap="ReportResultSet">
 	SELECT * 
 	FROM REPORT
 	WHERE RE_TY='동영상'
-	
 	</select>
-	<select id="ublacklist" resultMap="ReportResultSet">
-	SELECT SUM(R.RE_COUNT)
-	FROM REPORT R
-	WHERE RE_TY='동영상'
-	 
-	</select>
-	<select id="cblacklist" resultMap="ReportResultSet">
-	SELECT SUM(R.RE_COUNT)
-	FROM REPORT R
+	<select id="chreportlist" resultMap="ReportResultSet">
+	SELECT * 
+	FROM REPORT
 	WHERE RE_TY='채널'
+	</select>
+	<select id="repreportlist" resultMap="ReportResultSet">
+	SELECT * 
+	FROM REPORT
+	WHERE RE_TY='댓글'
+	</select>
+	
+	
+	
+	<select id="ublacklist" resultMap="Report2ResultSet">
+	 SELECT  V_NO,USER_ID,M.USER_NO,STATUS,RE_COUNT,FLOOR(C_COUNT/3) AS C_COUNT 
+     FROM REPORT R
+     JOIN MEMBER M
+     ON(M.USER_NO=R.RE_TARGET)
+	 WHERE  RE_TY='동영상' AND RE_COUNT>=3
+	</select>
+	<select id="cblacklist" resultMap="Report2ResultSet">
+SELECT  CH_NM,USER_ID ,M.USER_NO,STATUS,RE_COUNT,FLOOR(C_COUNT/3) AS C_COUNT 
+     FROM REPORT R
+     JOIN MEMBER M
+     ON(M.USER_NO=R.RE_TARGET)
+	 WHERE  RE_TY='채널' AND RE_COUNT>=3
+
 	</select>	
 	
+	<select id="videoreportdetail" resultMap="Report2ResultSet">
+ 		SELECT 	R.RE_NO,V.V_NO,V.V_TITLE,M.USER_NM,R.RE_COUNT,R.RE_DT,R.RE_WHY
+		 FROM REPORT R
+		 JOIN MEMBER M ON
+         (R.USER_NO=M.USER_NO)
+		 JOIN VIDEO V ON(V.V_NO =R.V_NO)
+		 WHERE RE_NO=#{reno} 
+		
+	</select>
+	<select id="chreportdetail" resultMap="Report2ResultSet">
+ 		SELECT 	R.RE_NO,V.V_NO,V.V_TITLE,M.USER_NM,R.RE_COUNT,R.RE_DT,R.RE_WHY
+		 FROM REPORT R
+		 JOIN MEMBER M ON
+         (R.USER_NO=M.USER_NO)
+		 JOIN VIDEO V ON(V.V_NO =R.V_NO)
+		 WHERE RE_NO=#{reno} 
+		   
+	</select>
+	<select id="repreportdetail" resultMap="Report2ResultSet">
+ 		SELECT 	R.RE_NO,V.V_NO,V.V_TITLE,M.USER_NM,R.RE_COUNT,R.RE_DT,R.RE_WHY
+		 FROM REPORT R
+		 JOIN MEMBER M ON
+         (R.USER_NO=M.USER_NO)
+		 JOIN VIDEO V ON(V.V_NO =R.V_NO)
+		 WHERE RE_NO=#{reno} 
+		
+	</select>
 	
 	
+	
+	<update id="videoreportdetail2"  parameterType="com.kh.with.report.model.vo.Report2">
+		UPDATE REPORT
+		SET RE_COUNT=RE_COUNT+1,
+		C_COUNT=C_COUNT +1
+        WHERE RE_NO=#{reno}
+	
+	</update>
 	
 	</mapper>

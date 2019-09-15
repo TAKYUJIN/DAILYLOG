@@ -48,6 +48,8 @@ public interface LogerDao {
 	List<Object> recount(SqlSessionTemplate sqlSession,Member m,Report report);
  	//로거 경고
 	List<Object> ccount(SqlSessionTemplate sqlSession,Member m, Report report);
+	//로거 채널 정지
+	int cstop(SqlSessionTemplate sqlSession, Loger r);
 
  
 	

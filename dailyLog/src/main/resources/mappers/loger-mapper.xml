@@ -193,6 +193,12 @@
 	WHERE RE_TARGET =#{userNo}
 	</select>
 	
+	<update id="cstop" parameterType="Loger">
+	UPDATE LOGER SET STATUS =1
+	WHERE USER_NO=#{userNo}
+	</update>
+	
+	
 </mapper>
 
 

@@ -193,10 +193,10 @@ background:none;
  
 	.navbar .dropdown-menu li a {
 		/* color: #777; */
-		 /*  padding: 8px 20px;  
-		  line-height: normal; */  
-		 width:200px;
-		 height:30px;
+		   padding: 4px 10px;  
+		  line-height: normal;    
+		 width:100%;
+		 height:100%;
 	}
 	.navbar .dropdown-menu li a:hover, .navbar .dropdown-menu li a:active {
 		 
@@ -241,6 +241,9 @@ background:none;
 	 background-color:#fff;
 	 border:none;
 	 } 
+	  #video{
+	 padding:10px;
+	 }
 </style>
 </head>
 <body>
@@ -289,33 +292,30 @@ background:none;
 								<img src="resources/images/three-dot.png"width="20px" height="20px">
 							</button>
 				
-				<ul class="dropdown-menu" >					
-					 <li> <a  id="vr" class="dropdown-item1">동영상 신고 </a>
-				
-					  
+			<ul class="dropdown-menu" >	
+							 <li > <a id="vr1" class="dropdown-item2" href="javascript:video();">동영상 신고</a>	
+					 <li >  
+					  <div  id="video"> 
 					 <form action="report.rp" method="post" >
 					  <input type="hidden" id="userNo" name="userNo"  value="${loginUser.userNo}"/>
 					  <input type="hidden"  id="retarget" name="retarget" value="${videoimage.userNo}"/>
-					<input type="text" class="form-control" id="rewhy" name="rewhy" placeholder="동영상 신고 사유">
+					   <li> <input type="radio" id="rewhy" name="rewhy"  value="성적인 콘텐츠">성적인 콘텐츠</li>
+					    <li><input type="radio" id="rewhy" name="rewhy"  value="폭력적 또는 혐오스러운 콘텐츠">폭력적 또는 혐오스러운 콘텐츠</li>
+					      <li><input type="radio"id="rewhy" name="rewhy"  value="증오 또는 악의적인 콘텐츠">증오 또는 악의적인 콘텐츠</li>
+					   <li><input type="radio" id="rewhy" name="rewhy"  value="유해하거나 위험한행위 ">유해하거나 위험한행위</li>
+					    <li> <input type="radio"id="rewhy" name="rewhy"  value="스팸 또는 사용자를 현혹하는 콘텐츠">스팸 또는 사용자를 현혹하는 콘텐츠</li>
+					    <li> <input type="text" class="form-control" id="rewhy" name="rewhy" placeholder="기타"></li >
  					  <input type="hidden" id="rety" name="rety" value="동영상"/>
 					 <input type="hidden"  id="vNo" name="vNo" value="${videoimage.vNo}"/>
-					  <input type="hidden"  id="chNm" name="chNm" value="${videoimage.chNm}"/>
-				 	
-				     <div class="report"> 
+					  <input type="hidden"  id="chNm" name="chNm" value="${videoimage.chNm}" > 
 				    <input type="submit" value="완료" class="btn btn-info">
-        			<input type="reset" value="취소" class="btn btn-default"></div>
-				</form> 
-				 </li>
- 
-					<li>
-					<form action="blockch.rp" method="post" >
-					
+        			<input type="reset" value="취소" class="btn btn-default"> 	</form> </div></li>
+					<li><div  id="blockvi">
+					<form action="blockvi.rp" method="post" >
 					  <input type="hidden" id="userNo" name="userNo"  value="${loginUser.userNo}"/>
-					  <input type="hidden" id="chNm" name="chNm"  value="${videoimage.chNm}"/>
-					 <input type="submit" class="dropdown-item2"  value="동영상 채널 차단"> 
-					 </form>
-					</li>
-				</ul>
+					  <input type="hidden" id="vNo" name="vNo"  value="${videoimage.vNo}"/>
+					 <input type="submit" class="dropdown-item2"  value="동영상 채널 차단">
+					 </form> </div>		</li>	</ul>
 				
 				</nav>
 				</div>
@@ -325,7 +325,6 @@ background:none;
 	   	<div class="row" id="v1"> <h2> <span>  <b>최근 본 동영상</b></span> </h2>
 	   	<br>
 						<c:forEach var="videoimage" items="${list}">
-							
 						<div class="col-sm-2"id="l"><div class="img-box"><div style=" float:left;"> <a href="video.vd">
 						<img src="resources/images/${videoimage.filepath}" width = "102px"  height="130px"  >
 							  <h5>제목:${videoimage.vTitle}</h5>
@@ -341,33 +340,30 @@ background:none;
 								<img src="resources/images/three-dot.png"width="20px" height="20px">
 							</button>
 				
-				<ul class="dropdown-menu" >					
-					 <li> <a  id="vr" class="dropdown-item1">동영상 신고 </a>
-				
-					  
+			<ul class="dropdown-menu" >	
+							 <li > <a id="vr1" class="dropdown-item2" href="javascript:video();">동영상 신고</a>	
+					 <li >  
+					  <div  id="video"> 
 					 <form action="report.rp" method="post" >
 					  <input type="hidden" id="userNo" name="userNo"  value="${loginUser.userNo}"/>
 					  <input type="hidden"  id="retarget" name="retarget" value="${videoimage.userNo}"/>
-					<input type="text" class="form-control" id="rewhy" name="rewhy" placeholder="동영상 신고 사유">
+					   <li> <input type="radio" id="rewhy" name="rewhy"  value="성적인 콘텐츠" checked>성적인 콘텐츠</li>
+					    <li><input type="radio" id="rewhy" name="rewhy"  value="폭력적 또는 혐오스러운 콘텐츠">폭력적 또는 혐오스러운 콘텐츠</li>
+					      <li><input type="radio"id="rewhy" name="rewhy"  value="증오 또는 악의적인 콘텐츠">증오 또는 악의적인 콘텐츠</li>
+					   <li><input type="radio" id="rewhy" name="rewhy"  value="유해하거나 위험한행위 ">유해하거나 위험한행위</li>
+					    <li> <input type="radio"id="rewhy" name="rewhy"  value="스팸 또는 사용자를 현혹하는 콘텐츠">스팸 또는 사용자를 현혹하는 콘텐츠</li>
+					    <li> <input type="text" class="form-control" id="rewhy" name="rewhy" placeholder="기타"></li >
  					  <input type="hidden" id="rety" name="rety" value="동영상"/>
 					 <input type="hidden"  id="vNo" name="vNo" value="${videoimage.vNo}"/>
-					  <input type="hidden"  id="chNm" name="chNm" value="${videoimage.chNm}"/>
-				 	
-				     <div class="report"> 
+					  <input type="hidden"  id="chNm" name="chNm" value="${videoimage.chNm}" > 
 				    <input type="submit" value="완료" class="btn btn-info">
-        			<input type="reset" value="취소" class="btn btn-default"></div>
-				</form> 
-				 </li>
- 
-					<li>
+        			<input type="reset" value="취소" class="btn btn-default"> 	</form> </div></li>
+					<li><div  id="blockch">
 					<form action="blockch.rp" method="post" >
-					
 					  <input type="hidden" id="userNo" name="userNo"  value="${loginUser.userNo}"/>
 					  <input type="hidden" id="chNm" name="chNm"  value="${videoimage.chNm}"/>
-					 <input type="submit" class="dropdown-item2"  value="동영상 채널 차단"> 
-					 </form>
-					</li>
-				</ul>
+					 <input type="submit" class="dropdown-item2"  value="동영상 채널 차단">
+					 </form> </div>		</li>	</ul>
 				
 				</nav>
 				</div>
@@ -393,33 +389,30 @@ background:none;
 								<img src="resources/images/three-dot.png"width="20px" height="20px">
 							</button>
 				
-				<ul class="dropdown-menu" >					
-					 <li> <a  id="vr" class="dropdown-item1">동영상 신고 </a>
-				
-					  
+				<ul class="dropdown-menu" >	
+							 <li > <a id="vr1" class="dropdown-item2" href="javascript:video();">동영상 신고</a>	
+					 <li >  
+					  <div  id="video"> 
 					 <form action="report.rp" method="post" >
 					  <input type="hidden" id="userNo" name="userNo"  value="${loginUser.userNo}"/>
 					  <input type="hidden"  id="retarget" name="retarget" value="${videoimage.userNo}"/>
-					<input type="text" class="form-control" id="rewhy" name="rewhy" placeholder="동영상 신고 사유">
+					   <li> <input type="radio" id="rewhy" name="rewhy"  value="성적인 콘텐츠" checked>성적인 콘텐츠</li>
+					    <li><input type="radio" id="rewhy" name="rewhy"  value="폭력적 또는 혐오스러운 콘텐츠">폭력적 또는 혐오스러운 콘텐츠</li>
+					      <li><input type="radio"id="rewhy" name="rewhy"  value="증오 또는 악의적인 콘텐츠">증오 또는 악의적인 콘텐츠</li>
+					   <li><input type="radio" id="rewhy" name="rewhy"  value="유해하거나 위험한행위 ">유해하거나 위험한행위</li>
+					    <li> <input type="radio"id="rewhy" name="rewhy"  value="스팸 또는 사용자를 현혹하는 콘텐츠">스팸 또는 사용자를 현혹하는 콘텐츠</li>
+					    <li> <input type="text" class="form-control" id="rewhy" name="rewhy" placeholder="기타"></li >
  					  <input type="hidden" id="rety" name="rety" value="동영상"/>
 					 <input type="hidden"  id="vNo" name="vNo" value="${videoimage.vNo}"/>
-					  <input type="hidden"  id="chNm" name="chNm" value="${videoimage.chNm}"/>
-				 	
-				     <div class="report"> 
+					  <input type="hidden"  id="chNm" name="chNm" value="${videoimage.chNm}" > 
 				    <input type="submit" value="완료" class="btn btn-info">
-        			<input type="reset" value="취소" class="btn btn-default"></div>
-				</form> 
-				 </li>
- 
-					<li>
+        			<input type="reset" value="취소" class="btn btn-default"> 	</form> </div></li>
+					<li><div  id="blockch">
 					<form action="blockch.rp" method="post" >
-					
 					  <input type="hidden" id="userNo" name="userNo"  value="${loginUser.userNo}"/>
 					  <input type="hidden" id="chNm" name="chNm"  value="${videoimage.chNm}"/>
-					 <input type="submit" class="dropdown-item2"  value="동영상 채널 차단"> 
-					 </form>
-					</li>
-				</ul>
+					 <input type="submit" class="dropdown-item2"  value="동영상 채널 차단">
+					 </form> </div>		</li>	</ul>
 				
 				</nav>
 				</div>
@@ -447,35 +440,30 @@ background:none;
 								<button type="button" class="main"  data-toggle="dropdown" id="btncolor" >
 								<img src="resources/images/three-dot.png"width="20px" height="20px">
 							</button>
-				
-				<ul class="dropdown-menu" >					
-					 <li> <a  id="vr" class="dropdown-item1">동영상 신고 </a>
-				
-					  
+			<ul class="dropdown-menu" >	
+							 <li > <a id="vr1" class="dropdown-item2" href="javascript:video();">동영상 신고</a>	
+					 <li >  
+					  <div  id="video">  
 					 <form action="report.rp" method="post" >
 					  <input type="hidden" id="userNo" name="userNo"  value="${loginUser.userNo}"/>
 					  <input type="hidden"  id="retarget" name="retarget" value="${videoimage.userNo}"/>
-					<input type="text" class="form-control" id="rewhy" name="rewhy" placeholder="동영상 신고 사유">
+					   <li> <input type="radio" id="rewhy" name="rewhy"  value="성적인 콘텐츠" checked>성적인 콘텐츠</li>
+					    <li><input type="radio" id="rewhy" name="rewhy"  value="폭력적 또는 혐오스러운 콘텐츠">폭력적 또는 혐오스러운 콘텐츠</li>
+					      <li><input type="radio"id="rewhy" name="rewhy"  value="증오 또는 악의적인 콘텐츠">증오 또는 악의적인 콘텐츠</li>
+					   <li><input type="radio" id="rewhy" name="rewhy"  value="유해하거나 위험한행위 ">유해하거나 위험한행위</li>
+					    <li> <input type="radio"id="rewhy" name="rewhy"  value="스팸 또는 사용자를 현혹하는 콘텐츠">스팸 또는 사용자를 현혹하는 콘텐츠</li>
+					    <li> <input type="text" class="form-control" id="rewhy" name="rewhy" placeholder="기타"></li >
  					  <input type="hidden" id="rety" name="rety" value="동영상"/>
 					 <input type="hidden"  id="vNo" name="vNo" value="${videoimage.vNo}"/>
-					  <input type="hidden"  id="chNm" name="chNm" value="${videoimage.chNm}"/>
-				 	
-				     <div class="report"> 
+					  <input type="hidden"  id="chNm" name="chNm" value="${videoimage.chNm}" > 
 				    <input type="submit" value="완료" class="btn btn-info">
-        			<input type="reset" value="취소" class="btn btn-default"></div>
-				</form> 
-				 </li>
- 
-					<li>
+        			<input type="reset" value="취소" class="btn btn-default"> 	</form> </div></li>
+					<li><div  id="blockch">
 					<form action="blockch.rp" method="post" >
-					
 					  <input type="hidden" id="userNo" name="userNo"  value="${loginUser.userNo}"/>
 					  <input type="hidden" id="chNm" name="chNm"  value="${videoimage.chNm}"/>
-					 <input type="submit" class="dropdown-item2"  value="동영상 채널 차단"> 
-					 </form>
-					</li>
-				</ul>
-				
+					 <input type="submit" class="dropdown-item2"  value="동영상 채널 차단">
+					 </form> </div>		</li>	</ul>
 				</nav>
 				</div>
       				</c:forEach> 
@@ -502,38 +490,89 @@ background:none;
 								<img src="resources/images/three-dot.png"width="20px" height="20px">
 							</button>
 				
-				<ul class="dropdown-menu" >					
-					 <li> <a  id="vr" class="dropdown-item1">동영상 신고 </a>
-				
-					  
+				<ul class="dropdown-menu" >	
+							 <li > <a id="vr1" class="dropdown-item2" href="javascript:video();">동영상 신고</a>	
+					 <li >  
+					  <div  id="video"> 
 					 <form action="report.rp" method="post" >
 					  <input type="hidden" id="userNo" name="userNo"  value="${loginUser.userNo}"/>
 					  <input type="hidden"  id="retarget" name="retarget" value="${videoimage.userNo}"/>
-					<input type="text" class="form-control" id="rewhy" name="rewhy" placeholder="동영상 신고 사유">
+					   <li> <input type="radio" id="rewhy" name="rewhy"  value="성적인 콘텐츠" checked>성적인 콘텐츠</li>
+					    <li><input type="radio" id="rewhy" name="rewhy"  value="폭력적 또는 혐오스러운 콘텐츠">폭력적 또는 혐오스러운 콘텐츠</li>
+					      <li><input type="radio"id="rewhy" name="rewhy"  value="증오 또는 악의적인 콘텐츠">증오 또는 악의적인 콘텐츠</li>
+					   <li><input type="radio" id="rewhy" name="rewhy"  value="유해하거나 위험한행위 ">유해하거나 위험한행위</li>
+					    <li> <input type="radio"id="rewhy" name="rewhy"  value="스팸 또는 사용자를 현혹하는 콘텐츠">스팸 또는 사용자를 현혹하는 콘텐츠</li>
+					    <li> <input type="text" class="form-control" id="rewhy" name="rewhy" placeholder="기타"></li >
  					  <input type="hidden" id="rety" name="rety" value="동영상"/>
 					 <input type="hidden"  id="vNo" name="vNo" value="${videoimage.vNo}"/>
-					  <input type="hidden"  id="chNm" name="chNm" value="${videoimage.chNm}"/>
-				 	
-				     <div class="report"> 
+					  <input type="hidden"  id="chNm" name="chNm" value="${videoimage.chNm}" > 
 				    <input type="submit" value="완료" class="btn btn-info">
-        			<input type="reset" value="취소" class="btn btn-default"></div>
-				</form> 
-				 </li>
- 
-					<li>
+        			<input type="reset" value="취소" class="btn btn-default"> 	</form> </div></li>
+					<li><div  id="blockch">
 					<form action="blockch.rp" method="post" >
-					
 					  <input type="hidden" id="userNo" name="userNo"  value="${loginUser.userNo}"/>
 					  <input type="hidden" id="chNm" name="chNm"  value="${videoimage.chNm}"/>
-					 <input type="submit" class="dropdown-item2"  value="동영상 채널 차단"> 
-					 </form>
-					</li>
-				</ul>
+					 <input type="submit" class="dropdown-item2"  value="동영상 채널 차단">
+					 </form> </div>		</li>	</ul>
 				
 				</nav>
 				</div>
       				</c:forEach> 
 				 </div>
+				 
+				 
+				 
+				 
+				 
+				 
+				 
+	  	<div class="row" id="v1"> <h2> <span>  <b>인기동영상</b></span> </h2><br>
+						<c:forEach var="videoimage" items="${list}">
+						<div class="col-sm-2"id="l"><div class="img-box"><div style=" float:left;"> <a href="video.vd">
+						<img src="resources/images/${videoimage.filepath}" width = "102px"  height="130px"  >
+							  <h5>제목:${videoimage.vTitle}</h5>
+							<%--  <c:out value="${videoimage.vTitle}" /> > --%>
+							<h5>채널명:${videoimage.chNm }</h5> 
+							<input type="hidden"  id="target" value="${videoimage.vNo}"/> 	</a></div></div></div> 
+			
+						<div id="dot" style ="float:left;">
+							<nav class="navbar  navbar-expand-xl navbar-light">
+								<button type="button" class="main"  data-toggle="dropdown" id="btncolor" >
+								<img src="resources/images/three-dot.png"width="20px" height="20px"></button>
+				
+				<ul class="dropdown-menu" >	
+							 <li > <a id="vr1" class="dropdown-item2" href="javascript:video();">동영상 신고</a>	
+					 <li >  
+					  <div  id="video">동영상 신고 
+					 <form action="report.rp" method="post" >
+					  <input type="hidden" id="userNo" name="userNo"  value="${loginUser.userNo}"/>
+					  <input type="hidden"  id="retarget" name="retarget" value="${videoimage.userNo}"/>
+					   <li> <input type="radio" id="rewhy" name="rewhy"  value="성적인 콘텐츠" checked>성적인 콘텐츠</li>
+					    <li><input type="radio" id="rewhy" name="rewhy"  value="폭력적 또는 혐오스러운 콘텐츠">폭력적 또는 혐오스러운 콘텐츠</li>
+					      <li><input type="radio"id="rewhy" name="rewhy"  value="증오 또는 악의적인 콘텐츠">증오 또는 악의적인 콘텐츠</li>
+					   <li><input type="radio" id="rewhy" name="rewhy"  value="유해하거나 위험한행위 ">유해하거나 위험한행위</li>
+					    <li> <input type="radio"id="rewhy" name="rewhy"  value="스팸 또는 사용자를 현혹하는 콘텐츠">스팸 또는 사용자를 현혹하는 콘텐츠</li>
+					    <li> <input type="text" class="form-control" id="rewhy" name="rewhy" placeholder="기타"></li >
+ 					  <input type="hidden" id="rety" name="rety" value="동영상"/>
+					 <input type="hidden"  id="vNo" name="vNo" value="${videoimage.vNo}"/>
+					  <input type="hidden"  id="chNm" name="chNm" value="${videoimage.chNm}" > 
+				    <input type="submit" value="완료" class="btn btn-info">
+        			<input type="reset" value="취소" class="btn btn-default"> 	</form> </div></li>
+					<li><div  id="blockch">
+					<form action="blockch.rp" method="post" >
+					  <input type="hidden" id="userNo" name="userNo"  value="${loginUser.userNo}"/>
+					  <input type="hidden" id="chNm" name="chNm"  value="${videoimage.chNm}"/>
+					 <input type="submit" class="dropdown-item2"  value="동영상 채널 차단">
+					 </form> </div>		</li>	</ul>	</nav>	</div>		</c:forEach> 	</div>			 
+				 
+				 
+				 
+				 
+				 
+				 
+				 
+				 
+				 
 						<%-- 
  						 <div id="v11">  
 					<form action="report.rp" method="post"  >
@@ -586,7 +625,26 @@ background:none;
 
 
 <script type="text/javascript">
- 
+/* $(document).ready(function(){
+    $('.video').hide();
+    $('#video').hide();
+    
+    $('#vr1').click(function(){
+       $('#dropdown-item2').hide();
+       $('#vr1').hide();
+       $('#blockch').hide();
+       $('#video').show();
+      
+     });
+    $('.dropdown-item2').click(function(){
+       $('#dropdown-item2').show();
+       $('#myDiv').hide();
+       $('#blockch').hide();
+       $('#vr1').hide();
+       
+    });
+    
+ }); */
 	function  showVideo(){
 	
 		var url="/home.mb";

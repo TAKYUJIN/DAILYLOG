@@ -12,6 +12,7 @@ import com.kh.with.admin.model.dao.AdminDao;
 import com.kh.with.admin.model.vo.Board;
 import com.kh.with.admin.model.vo.Calculate;
 import com.kh.with.report.model.vo.Report;
+import com.kh.with.report.model.vo.Report2;
 
 
 
@@ -74,22 +75,37 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public List<Object> ublacklist(Report report) {
+	public List<Object> ublacklist(Report2 report) {
+		System.out.println("report1"+report);
  		return ad.ublacklist(sqlSession,report);
  		
 	}
 
 	@Override
-	public List<Object> cblacklist(Report report) {
+	public List<Object> cblacklist(Report2 report) {
+		System.out.println("report2"+report);
 		// TODO Auto-generated method stub
 		return ad.cblacklist(sqlSession,report);
  		
 	}
 
+
+	@Override
+	public List<Object> chreportlist(Report report) {
+		// TODO Auto-generated method stub
+		return ad.chreportlist(sqlSession,report);
+	}
+
+	@Override
+	public List<Object> repreportlist(Report report) {
+		// TODO Auto-generated method stub
+		return ad.repreportlist(sqlSession,report);
+
 	//관리자 정산 페이지
 	@Override
 	public ArrayList<Calculate> selectAdminCalculate() {
 		return ad.selectAdminCalculate(sqlSession);
+
 	}
 
 

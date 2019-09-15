@@ -105,6 +105,13 @@ public class LogerServiceImpl implements LogerService{
 		return ld.recount(sqlSession, m,report);
 	}
 
+	//로거 채널 정지
+	@Override
+	public int cstop(Loger r) {
+		// TODO Auto-generated method stub
+		return ld.cstop(sqlSession, r);
+	}
+
 
 
 

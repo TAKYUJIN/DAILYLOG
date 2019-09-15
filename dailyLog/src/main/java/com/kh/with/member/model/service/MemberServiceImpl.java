@@ -185,6 +185,18 @@ public class MemberServiceImpl implements MemberService {
 
 
 
+		@Override
+		public int ustop(Member m) {
+		 
+			return md.ustop(sqlSession,m);
+		}
+
+
+
+	 
+
+
+
 
 	
 }

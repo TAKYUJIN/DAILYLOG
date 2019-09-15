@@ -9,21 +9,27 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.with.admin.model.service.AdminService;
 import com.kh.with.admin.model.vo.Board;
 import com.kh.with.admin.model.vo.Calculate;
 import com.kh.with.member.model.vo.Member;
+import com.kh.with.report.model.service.ReportService;
 import com.kh.with.report.model.vo.Report;
+import com.kh.with.report.model.vo.Report2;
 
 @Controller
 public class AdminController {
 
 	@Autowired
 	private AdminService as;
-
+	@Autowired
+	private ReportService rs;
 	// 관리자 정산 페이지 이동
 	@RequestMapping(value = "adminCalculate.ad")
 	public String selectAdminCalculate(Calculate c, Model model) {
@@ -199,26 +205,106 @@ public class AdminController {
 			Report report =new Report();
 			List<Object> videoreportlist = as.videoreportlist(report);
 			System.out.println("videoreportlist"+videoreportlist);
-			
+			List<Object> chreportlist=as.chreportlist(report);
+			  List<Object> repreportlist=as.repreportlist(report);
 			
 			model.addAttribute("videoreportlist", videoreportlist);
-
+			model.addAttribute("chreportlist", chreportlist);
+			model.addAttribute("repreportlist", repreportlist);
 		return "admin/reportlist";
 	}
 	//관리자  회원 블랙 리스트
 	@RequestMapping(value = "ublacklist.ad")
-	public String ublacklist() {
-		Report report =new Report();
+	public String ublacklist(HttpServletRequest request,Model model,HttpSession session) {
+		Report2 report =new Report2();
 		List<Object> ublacklist = as.ublacklist(report);
+		System.out.println("ublacklist"+ublacklist);
+		model.addAttribute("ublacklist",ublacklist);
 		return "admin/ublacklist";
 	}
 	//관리자  채널 블랙 리스트
 	@RequestMapping(value = "cblacklist.ad")
-	public String cblacklist() {
-		Report report =new Report();
+	public String cblacklist(HttpServletRequest request,Model model,HttpSession session) {
+		Report2 report =new Report2();
 		List<Object> cblacklist = as.cblacklist(report);
+		System.out.println("cblacklist"+cblacklist);
+		model.addAttribute("cblacklist",cblacklist);
 		return "admin/cblacklist";
 	}
+	
+	//관리자 동영상,채널,댓글 신고 내역
+	 @RequestMapping(value="videoreportdetail.ad",method=RequestMethod.GET)
+	 public String videoreportdetail(@ModelAttribute Report2 report,@RequestParam("reno") int reno,Model model,HttpSession session,HttpServletRequest request ) {
+		 
+		  List<Report> videoreportdetail=rs.videoreportdetail(reno);
+		  List<Report> chreportdetail=rs.chreportdetail(reno);
+		  List<Report> repreportdetail=rs.repreportdetail(reno);
+		  
+		model.addAttribute("videoreportdetail", videoreportdetail);
+		model.addAttribute("chreportdetail", chreportdetail);
+		model.addAttribute("repreportdetail", repreportdetail);
+		System.out.println("model"+model);
+		System.out.println("repreportdetail"+repreportdetail);
+		return "admin/videoreportdetail";
+	 }
+	 
+	 
+	 
+	 
+	 
+	 
+	//관리자 동영상 신고 상세내역 ->신고처리
+	 
+	 @RequestMapping(value="videoreportdetail2.ad",method=RequestMethod.GET)
+	  public String videoreportdetail2(@ModelAttribute Report2 report,
+			  Model model,HttpSession session,HttpServletRequest request 
+	 ) {
+	  
+	   int reno =Integer.parseInt(request.getParameter("reno"));
+	   System.out.println("reno1"+reno);
+	   int vNo =Integer.parseInt(request.getParameter("vNo")); 
+	   String vTitle= request.getParameter("vTitle"); 
+	   String userNm=request.getParameter("userNm");
+	  int recount=Integer.parseInt(request.getParameter("recount")); 
+	  String redt=request.getParameter("redt"); 
+	  String rewhy =request.getParameter("rewhy");
+	  
+	  
+	  
+	  report.setReno(reno);
+	  report.setvNo(vNo);
+	  report.setvTitle(vTitle); 
+	  report.setUserNm(userNm);
+	  report.setRecount(recount); 
+	  report.setRedt(redt); 
+	  report.setRewhy(rewhy);
+	  
+	 int result=rs.videoreportupdate(report);
+	  
+	 if(result>0) {
+		  return "redirect:/videoreportdetail.ad"; 
+		  }	else { 
+			  return "redirect:/videoreportdetail.ad";
+		  }
+	  }
+	 
+/* 	 @RequestMapping(value="videoreportdetail2.ad",method=RequestMethod.POST)
+ 	 public String videoreportupdate( @ModelAttribute Report2 report) {
+ 		int videoreportupdate =rs.videoreportupdate(report);
+ 		
+ 		if(videoreportupdate>0) {
+ 			  
+ 			  return "redirect:/videoreportdetail.ad"; }else 
+ 			  { return "common/errorPage";
+ 			  
+ 			  }
+ 			  
+ 	 }
+*/
+	 
+
+	 
+
 }
 
 

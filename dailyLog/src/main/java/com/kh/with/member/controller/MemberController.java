@@ -266,4 +266,18 @@ public class MemberController {
 			System.out.println("탈퇴인가요 ?");
 			return "forward:logout.me";
 		}
+		
+		
+		//회원 중지
+		@RequestMapping(value="ustop.me", method = RequestMethod.GET )
+		public String ustop(@ModelAttribute Member m,Model model,HttpServletRequest request,
+				@RequestParam(name="userId", required=false)String userId,HttpSession session) {
+			  userId=request.getParameter("userId");
+			System.out.println("userId"+userId);
+			m.setUserId(userId);
+			ms.ustop(m);
+			
+			return "redirect:/ublacklist.ad";
+		}
+		
 }
