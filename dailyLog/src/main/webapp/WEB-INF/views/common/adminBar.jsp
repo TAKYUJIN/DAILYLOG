@@ -265,7 +265,7 @@
 <body>
 <nav class="navbar navbar-default navbar-expand-lg navbar-light">
 	<div class="navbar-header d-flex col" >
-		<img src="resources/images/logo.png" style="width:90px; padding-top:10px;">	
+		<img src="resources/images/logo.png" style="width:90px; padding-top:10px;">
 	</div>
 	<!-- Collection of nav links, forms, and other content for toggling -->
 	<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
@@ -287,7 +287,12 @@
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">문의내역</a></li>
 		</ul>
 		
-		<ul class="nav navbar-nav navbar-right ml-auto">			
+		<ul class="nav navbar-nav navbar-right ml-auto">	
+			<li class="nav-item">
+				<a href="logout.me" class="btn_global link_login" >
+				<img src="resources/images/exit.png" style="width:20px;">
+			</a>
+			</li>		
 			<li class="nav-item dropdown">
 				<a data-toggle="dropdown" class="btn_global link_login dropdown-toggle" href="adminChatting.ad">
 				<img src="resources/images/admin.png" style="width:25px;"></a>

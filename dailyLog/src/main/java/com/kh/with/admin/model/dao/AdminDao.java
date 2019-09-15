@@ -6,6 +6,7 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 
 import com.kh.with.admin.model.vo.Board;
+import com.kh.with.admin.model.vo.Calculate;
 import com.kh.with.report.model.vo.Report;
 import com.kh.with.report.model.vo.Report2;
 
@@ -36,6 +37,9 @@ public interface AdminDao {
 	//채널 블랙
 	List<Object> cblacklist(SqlSessionTemplate sqlSession, Report2 report);
 
+
+	//관리자 정산페이지 조회
+	ArrayList<Calculate> selectAdminCalculate(SqlSessionTemplate sqlSession);
 
 	
 

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.with.admin.model.dao.AdminDao;
 import com.kh.with.admin.model.vo.Board;
+import com.kh.with.admin.model.vo.Calculate;
 import com.kh.with.report.model.vo.Report;
 import com.kh.with.report.model.vo.Report2;
 
@@ -88,6 +89,7 @@ public class AdminServiceImpl implements AdminService {
  		
 	}
 
+
 	@Override
 	public List<Object> chreportlist(Report report) {
 		// TODO Auto-generated method stub
@@ -98,6 +100,12 @@ public class AdminServiceImpl implements AdminService {
 	public List<Object> repreportlist(Report report) {
 		// TODO Auto-generated method stub
 		return ad.repreportlist(sqlSession,report);
+
+	//관리자 정산 페이지
+	@Override
+	public ArrayList<Calculate> selectAdminCalculate() {
+		return ad.selectAdminCalculate(sqlSession);
+
 	}
 
 
