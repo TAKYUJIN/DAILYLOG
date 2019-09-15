@@ -47,6 +47,9 @@ public interface LogerService {
 
 	List<Object> ccount(Report report, Member m);
 
+	//로거 채널 정지
+	int cstop(Loger r);
+
  
 	
 

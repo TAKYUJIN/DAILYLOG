@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    
 <!DOCTYPE HTML>
 <html>
 	<head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Elements Reference - Massively by HTML5 UP</title>
+				 
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -143,6 +146,10 @@
         margin-top: 10px;
         font-size: 13px;
     }
+    #submit{
+   border:none;
+    background:none;
+    }
 </style>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -165,23 +172,13 @@ $(document).ready(function(){
 </head>
 <body>
 	<jsp:include page="../common/adminBar.jsp"></jsp:include>
-
     <div class="container">
         <div class="table-wrapper">			
             <div class="table-title">
                 <div class="row">
-                  
 					<div class="col-sm-4">
 						<h2 ><b>채널 블랙 리스트 </b> </h2>
 					</div>
-                    <!-- <div class="col-sm-4">
-                        <div class="search-box">
-							<div class="input-group">
-								<span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
-								<input type="text" class="form-control" placeholder="Search&hellip;">
-							</div>
-                        </div>
-                    </div> -->
                 </div>
             </div>
             <table class="table table-bordered">
@@ -189,69 +186,51 @@ $(document).ready(function(){
                     <tr>
                         <th>번호</th>
                         <th>아이디 <i class="fa fa-sort"></i></th>
-                        <th>누적 회원 신고 횟수</th>
-						<th>누적 회원 경고 횟수</th>
+                        <th>채널 신고 횟수</th>
+						<th>채널 경고 횟수</th>
                         <th>유무</th>
 						<th>중지/블랙 리스트</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody> 
+                    <c:forEach var="v" items="${cblacklist}" >
                     <tr>
                         <td>1</td>
-                   		<td>user1@email.com</td>
-						<td>5</td>
-					    <td>1</td>
-						<td>경고</td>
-	 					<td><ul class="actions small"></ul>
-						<a href="#" class="button primary small">중지</a> 
-					    <a href="#" class="button small">블랙</a> </td>
-                       <!--  <td>
-							<a href="#" class="stop" title="중지" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
-                            <a href="#" class="black" title="블랙" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                            <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                        </td>   -->
+                   		<td>${v.userId}</td>
+                   		
+						<td>${v.recount}</td>
+					    <td>${v.ccount}</td>
+					    <td>
+					    <c:choose> 
+					    <c:when test="${v.ccount >=3}">
+						<b style="color:red;">중지</b>
+						</c:when>
+						 <c:when test="${v.ccount >=5}">
+						 <b  style="color:red;">영구 정지</b>
+						 </c:when>
+						<c:otherwise>
+						<b style="color:red;">경고</b>
+						</c:otherwise>
+						</c:choose>
+             </td>
+	 					<td><div style="float:left;">
+	 					<form action="cstop.lo" method="get" >
+	 					<input type="hidden" id="userNo" name="userNo" value="${v.userNo}">
+	 					 <input type="submit" id="submit"  value="중지">
+	 					</form>
+	 					</div>
+	 					
+	 					<form action="cblock.bl" method="get" >
+	 					<input type="hidden" id="chNm" name="chNm" value="${v.chNm}">
+					    <input type="hidden" id="userNo" name="userNo" value="${v.userNo}">
+	 					 <input type="submit" id="submit" value="블랙">
+	 					</form>
+	 					<!-- <a href="ustop.me" class="button primary small"  >중지</a>
+	 					 --><!-- <a href="ublock.bl"  class="button small" >블랙</a> -->
+					     </td>
+					     </tr>
                     <tr>
-                        <td>2</td>
-              			<td>user2@email.com</td>
-						<td>5</td>
-					    <td>1</td>
-						<td>중지</td>
-	 					<td><ul class="actions small"></ul>
-						<a href="#" class="button primary small">중지</a> 
-					    <a href="#" class="button small">블랙</a> </td>
-                   
-                    </tr>
-                    <tr>
-                        <td>3</td>
-              			<td>user3@email.com</td>
-						<td>5</td>
-					    <td>1</td>
-						<td>중지</td>
-	 					<td><ul class="actions small"></ul>
-						<a href="#" class="button primary small">중지</a> 
-					    <a href="#" class="button small">블랙</a> </td>
-                         
-                    </tr>
-                    <tr>
-                        <td>4</td>
-              			<td>user4@email.com</td>
-						<td>5</td>
-					    <td>1</td>
-						<td>중지</td>
-	 					<td><ul class="actions small"></ul>
-						<a href="#" class="button primary small">중지</a> 
-					    <a href="#" class="button small">블랙</a> </td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-              			<td>user5@email.com</td>
-						<td>5</td>
-					    <td>1</td>
-						<td>중지</td>
-	 					<td><ul class="actions small"></ul>
-						<a href="#" class="button primary small">중지</a> 
-					    <a href="#" class="button small">블랙</a> </td>
-                    </tr>        
+                    </c:forEach>
                 </tbody>
             </table>
               <div class="clearfix">

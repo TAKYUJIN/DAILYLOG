@@ -125,6 +125,15 @@ public class MemberDaoImpl implements MemberDao{
 
 
 
+	@Override
+	public int ustop(SqlSessionTemplate sqlSession, Member m) {
+		System.out.println("m"+m);
+		
+		return sqlSession.update("Member.ustop",m);
+	}
+
+
+
 	
 
 }

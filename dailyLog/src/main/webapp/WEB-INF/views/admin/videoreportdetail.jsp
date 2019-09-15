@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -18,7 +19,7 @@
 	}
     .form-control {
 		border-color: #eee;
-        min-height: 41px;
+         height: 70%;
 		box-shadow: none !important;
 	}
     .form-control:focus {
@@ -28,7 +29,8 @@
         border-radius: 3px;
     }
 	.signup-form {
-		width: 500px;
+		width: 70%;
+		
 		margin: 0 auto;
 		padding: 30px 0;
 	}
@@ -38,8 +40,10 @@
 		display: inline-block;
 		padding: 0 30px 10px 0;
 		border-bottom: 3px solid #5cd3b4;
+		height: 70%;
     }
     .signup-form form {
+    height: 70%;
 		color: #999;
 		border-radius: 3px;
     	margin-bottom: 15px;
@@ -52,22 +56,22 @@
 	}
 	.signup-form label {
 		font-weight: normal;
-		font-size: 13px;
-	}
+		font-size: 18px;
+	} 
     .signup-form input[type="checkbox"] {
 		margin-top: 2px;
 	}
     .signup-form .btn {        
-        font-size: 16px;
+        font-size: 13px;
         font-weight: bold;
-		background: #5cd3b4;
+		/* background: #5cd3b4; */
 		border: none;
 		margin-top: 20px;
-		min-width: 140px;
+		margin-left: 20px;
+		min-width: 80px;
     }
 	.signup-form .btn:hover, .signup-form .btn:focus {
-		background: #41cba9;
-        outline: none !important;
+	 
 	}
     .signup-form a {
 		color: #5cd3b4;
@@ -85,41 +89,39 @@
 	}
 </style>
 </head>
+<body>
+	<jsp:include page="../common/adminBar.jsp"></jsp:include>
  <div class="signup-form">
-    <form action="/examples/actions/confirmation.php" method="post" class="form-horizontal">
-		<div class="col-xs-8 col-xs-offset-4">
-			<h3>신고 관리 상세 </h3>
-		</div>		
-        <div class="form-group">
-			<label class="control-label col-xs-4">회원번호</label>
-			<div class="col-xs-8">
-                <input type="text" class="form-control" name="text" required="required">
-            </div>        	
-        </div>
+<!--     <form action="/examples/actions/confirmation.php" method="post" class="form-horizontal">
+ -->
+ <form action="videoreportdetail2.ad" method="get">
+<c:forEach items="${videoreportdetail}" var="de">
+			<h3><b>동영상 신고 관리 상세 </b></h3><br>
 		<div class="form-group">
-			<label class="control-label col-xs-4">아이디</label>
-			<div class="col-xs-8">
-                <input type="text" class="form-control"name="text" required="required">
-            </div>        	
-        </div>
-		<div class="form-group">
-			<label class="control-label col-xs-4">휴대폰</label>
-			<div class="col-xs-8">
-                <input type="text" class="form-control" name="text"required="required">
-            </div>        	
-        </div>
-		<div class="form-group">
-			<label class="control-label col-xs-4">채널명</label>
-			<div class="col-xs-8">
-                <input type="text" class="form-control" name="text"required="required">
-            </div>        	
-        </div>
-		<div class="form-group">
-			<div class="col-xs-8 col-xs-offset-4">
- 				<button type="submit" class="btn btn-primary btn-lg">확인</button>
+			<label>신고 번호:${de.reno}  </label><br><br>
+			<input type="hidden" id="reno" name="reno" value="${de.reno}">
+			<label>신고 동영상 번호:${de.vNo}  </label><br><br>
+			<input type="hidden" id="vNo" name="vNo" value="${de.vNo}">
+			<label>신고 동영상 제목:${de.vTitle} </label><br><br>
+			<input type="hidden" id="vTitle" name="vTitle" value="${de.vTitle}">
+			<label>신고인 아이디:${de.userNm}</label><br><br>
+			<input type="hidden" id="userNm" name="userNm" value="${de.userNm}">
+			<label>신고일:${de.redt} </label><br><br>
+			<input type="hidden" id="redt" name="redt" value="${de.redt}">
+			<label>신고 사유:${de.rewhy}</label><br><br>
+			<input type="hidden" id="rewhy" name="rewhy" value="${de.rewhy}">
+			<input type="hidden" id="recount" name="recount" value="${de.recount}">
+			 <br>
+             
+			<div class="col-xs-8 col-xs-offset-4"><br><br><br>
+ 		    <input type="submit" class="btn btn-link" value="신고">
+ 		   
+ 		    <button type="button" class="btn btn-primary" onclick="location.href='reportlist.ad'">취소</button>
+ 		    <br><br>  
+ 		    
 			</div>  
-		</div>		      
-    </form>
- </div>
+	</div></c:forEach></form></div>
+    <jsp:include page="../common/footer.jsp" />
+
 </body>
 </html>                            

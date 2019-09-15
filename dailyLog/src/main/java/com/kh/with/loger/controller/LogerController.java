@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -298,24 +299,34 @@ public class LogerController {
 		Member m = (Member) session.getAttribute("loginUser");
 		
 		List<Object> ccount =ls.ccount(report,m);
-		System.out.println("controller ccount1:"+ccount);
-		 
 	 ArrayList<Report> reportlist =ls.reportlist(report,m);
 		
 		List<Object> recount =ls.recount(report,m);
-		System.out.println("controller recount1:"+recount);
-		
 		 model.addAttribute("reportlist", reportlist);
 		model.addAttribute("ccount", ccount);
 		model.addAttribute("recount", recount);
-		
-		System.out.println("ccount2:"+ccount);
-
-		System.out.println("recount2:"+recount);
 		return "loger/declarationlist";
 		
-		
 	}
+	 //채널 정지
+	@RequestMapping(value="cstop.lo", method = RequestMethod.GET )
+	public String cstop(@ModelAttribute Loger r,Model model,HttpServletRequest request,
+			@RequestParam(name="userNo", required=false)int userNo,HttpSession session) {
 	
-	
+		userNo=Integer.parseInt(request.getParameter("userNo"));
+		r.setUserNo(userNo);
+		ls.cstop(r);
+		
+		return "redirect:/cblacklist.ad";
+		
+	}		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 }

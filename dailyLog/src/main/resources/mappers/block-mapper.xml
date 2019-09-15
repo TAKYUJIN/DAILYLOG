@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Block">
+
+	<resultMap type="Blockvi"
+		id="BlockchResultSet">
+		<id property="userno" column="USER_NO" />
+		<result property="chno" column="CH_NO" />
+	</resultMap>
+	
+	<insert id="mainblockvi" parameterType="Blockvi">
+	INSERT INTO BLOK_VIDEO
+	VALUES(#{userNo},#{vNo})
+	</insert> 
+	
+	<insert id="ublock" parameterType="Blockvi">
+	INSERT INTO BLOK_VIDEO
+	VALUES(#{userNo},#{vNo})
+	</insert>
+	
+	
+	<insert id="cblock" parameterType="Blockch">
+	INSERT INTO BLOK_CH
+	VALUES(#{userNo},#{chNm})
+	</insert>
+	
+	
+	</mapper>
+	
+	
+	
+	
+	
+	
+	

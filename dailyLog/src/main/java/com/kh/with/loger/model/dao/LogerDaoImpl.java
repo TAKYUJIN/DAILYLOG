@@ -148,6 +148,12 @@ public class LogerDaoImpl implements LogerDao{
 	 
 		return sqlSession.selectList("Loger.ccount",m);
 	}
+	@Override
+	public int cstop(SqlSessionTemplate sqlSession, Loger r) {
+
+		return sqlSession.update("Loger.cstop",r);
+	}
+	 
  
 	 
 }

@@ -40,6 +40,8 @@ public interface MemberDao {
 
 	int GetKey(String userId, String key);
 
+	int ustop(SqlSessionTemplate sqlSession, Member m);
+
 
 
 

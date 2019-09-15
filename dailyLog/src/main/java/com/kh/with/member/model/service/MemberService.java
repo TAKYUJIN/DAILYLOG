@@ -36,6 +36,8 @@ public interface MemberService {
 	void mailSendWithUserKey(String userId, String userNm, HttpServletRequest request);
 
 	int alter_userKey_service(String userId, String key);
+	//회원 계정 중지
+	int ustop(Member m);
 
 	
 
