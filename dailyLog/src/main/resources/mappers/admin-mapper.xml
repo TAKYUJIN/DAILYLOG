@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Calculate2">
+
+     <resultMap type="Calculate2" id="calculateResultSet">
+        <id property="calNo" column="CAL_NO"/>
+        <result property="userNo" column="USER_NO"/>
+        <result property="chNo" column="CH_NO"/>
+        <result property="calSTDT" column="CAL_STDT"/>
+        <result property="calEDT" column="CAL_EDT"/>
+        <result property="calPrice" column="CAL_PRICE"/>
+        <result property="calVAT" column="CAL_VAT"/>
+        <result property="amountPrice" column="AMOUNT_PRICE"/>
+        <result property="calTY" column="CAL_TY"/>
+        <result property="accNm" column="ACC_NM"/>
+        <result property="bankNm" column="BANK_NM"/>
+        <result property="account" column="ACCOUNT"/>
+        <result property="nNo" column="RANK"/>
+        <result property="userId" column="USER_ID"/>
+        <result property="userNm" column="USER_NM"/>
+     </resultMap>
+     
+     
+	
+  	<select id="selectAdminCalculate" resultMap="calculateResultSet">
+  		SELECT RANK, CAL_NO, USER_NO, CH_NO, CAL_STDT, CAL_EDT, CAL_PRICE, CAL_VAT, AMOUNT_PRICE, CAL_TY, ACC_NM, BANK_NM, ACCOUNT, USER_ID, USER_NM
+		FROM(SELECT ROW_NUMBER() OVER(ORDER BY C.CAL_STDT DESC) RANK, C.*, USER_ID, USER_NM
+		FROM CALCULATE C
+		JOIN MEMBER M ON(C.USER_NO = M.USER_NO))
+		ORDER BY RANK ASC
+  	</select>	
+  	
+	
+</mapper>
+
+
+
+
+
+
+
+
+

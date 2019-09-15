@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.with.admin.model.vo.Board;
+import com.kh.with.admin.model.vo.Calculate;
 import com.kh.with.report.model.vo.Report;
 
 
@@ -92,6 +93,17 @@ public class AdminDaoImpl implements AdminDao {
 	public List<Object> cblacklist(SqlSessionTemplate sqlSession, Report report) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList( "Report.cblacklist");
+	}
+
+	//관리자 정산 페이지 조회
+	@Override
+	public ArrayList<Calculate> selectAdminCalculate(SqlSessionTemplate sqlSession) {
+		ArrayList<Calculate> list = null;
+
+		list = (ArrayList)sqlSession.selectList("Calculate2.selectAdminCalculate");
+
+		System.out.println(list);
+		return list;
 	}
 
 

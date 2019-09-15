@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.kh.with.admin.model.vo.Board;
+import com.kh.with.admin.model.vo.Calculate;
 import com.kh.with.report.model.vo.Report;
 
 
@@ -37,6 +38,10 @@ public interface AdminService {
 
 
 	List<Object> cblacklist(Report report);
+
+
+	//관리자 정산 페이지
+	ArrayList<Calculate> selectAdminCalculate();
 
 
 
