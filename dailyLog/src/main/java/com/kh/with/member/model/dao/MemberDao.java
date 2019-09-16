@@ -34,13 +34,15 @@ public interface MemberDao {
 
 
 
-	int alter_userKEY(String userId, String status);
+	//int alter_userKEY(String userId, String status);
 
 	//int GetJoinKey(String userId, String key);
 
-	int GetKey(String userId, String key);
+	int GetKey(Member m);
 
 	int ustop(SqlSessionTemplate sqlSession, Member m);
+
+	int alter_userKey(String userId, String status);
 
 
 

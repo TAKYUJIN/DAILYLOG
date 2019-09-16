@@ -144,26 +144,27 @@ public class MemberServiceImpl implements MemberService {
 
 
 	@Override
-	public void mailSendWithUserKey(String userId, String userNm, HttpServletRequest request) {
+	public void mailSendWithUserKey(Member m, HttpServletRequest request) {
 		System.out.println("메일 왜안오냐");
 		//String id = (String) request.getAttribute(userId);
 		String key = getKey(false, 20);
 		//System.out.println(userId  + ":::" +id);
 		//System.out.println("key : " + key);
+		m.setStatus(key);
 		
-		md.GetKey(userId, key); 
+		md.GetKey(m); 
 		System.out.println(";;;;;;;;");
 		
 		
 		MimeMessage mail = mailSender.createMimeMessage();
 		String htmlStr = "<h2>안녕하세요 데일리로그입니다!</h2><br><br>" 
-				+ "<h3>" + userNm + "님</h3>" + "<p>인증하기 버튼을 누르시면 로그인을 하실 수 있습니다 : " 
-				+ "<a href='http://localhost:8001" + request.getContextPath() + "/joinFinal.me?userId="+ userId +"&status="+key+"'>인증하기</a></p>"
+				+ "<h3>" + m.getUserNm() + "님</h3>" + "<p>가입하기 버튼을 누르시면 로그인을 하실 수 있습니다 : " 
+				+ "<a href='http://localhost:8001" + request.getContextPath() + "/joinFinal.me?userNm="+ m.getUserNm() +"&userId="+m.getUserId()+ "&status="+m.getStatus()+"'>가입하기</a></p>"
 				+ "(혹시 잘못 전달된 메일이라면 이 이메일을 무시하셔도 됩니다)";
 		try {
 			mail.setSubject("[본인인증] 데일리로그의 인증메일입니다", "utf-8");
 			mail.setText(htmlStr, "utf-8", "html");
-			mail.addRecipient(RecipientType.TO, new InternetAddress(userId));
+			mail.addRecipient(RecipientType.TO, new InternetAddress(m.getUserId()));
 			mailSender.send(mail);
 		} catch (MessagingException e) {
 			e.printStackTrace();
@@ -173,15 +174,7 @@ public class MemberServiceImpl implements MemberService {
 
 	}
 
-		public int alter_userKey_service(String userId, String status) {
-			  
-			  int resultCnt = 0;
-			  
-			
-			  resultCnt = md.alter_userKEY(userId, status);
-			  
-			  return resultCnt;
-			  }
+		
 
 
 
@@ -189,6 +182,17 @@ public class MemberServiceImpl implements MemberService {
 		public int ustop(Member m) {
 		 
 			return md.ustop(sqlSession,m);
+		}
+
+
+
+		@Override
+		public int alter_userKey_service(String userId, String status) {
+			int resultCnt = 0;
+			
+			resultCnt = md.alter_userKey(userId, status);
+			
+			return resultCnt;
 		}
 
 

@@ -75,11 +75,19 @@ public class MemberController {
 			model.addAttribute("loginUser", loginUser);
 			System.out.println(loginUser.getUserNm());
 			
-			if(loginUser.getUserNm().equals("관리자")) {
-				return "main/adminMain";
+			
+			if(loginUser.getStatus().equals("0")) {
+				if(loginUser.getUserNm().equals("관리자")) {
+					return "main/adminMain";
+				}else {
+					return "redirect:index.jsp";
+				}
 			}else {
-				return "redirect:index.jsp";
+				return "member/emailChk";
 			}
+			
+			
+			
 			
 
 		} catch (LoginException e) {
@@ -111,7 +119,7 @@ public class MemberController {
 			ms.insertMember(m);
 			System.out.println("컨트롤러 회원가입 ");
 			
-			ms.mailSendWithUserKey(m.getUserId(), m.getUserNm(), request);
+			ms.mailSendWithUserKey(m, request);
 			
 			System.out.println("email 인즈");
 			
@@ -129,11 +137,11 @@ public class MemberController {
 
 	
 	@RequestMapping(value = "joinFinal.me", method = RequestMethod.GET)
-	public String key_alterConfirm(@RequestParam("userId") String userId, @RequestParam("status") String key) {
+	public String key_alterConfirm(@RequestParam("userNm") String userNm, @RequestParam("userId") String userId, @RequestParam("status") String status) {
 
-		ms.alter_userKey_service(userId, key); // mailsender의 경우 @Autowired
+		ms.alter_userKey_service(userId, status);
 
-		return "member/memberJoin";
+		return "member/login2";
 	}
 	
 	
