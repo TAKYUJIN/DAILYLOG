@@ -33,10 +33,16 @@ public interface LogerDao {
 	int updateLogerAccount(SqlSessionTemplate sqlSession, Member m);
 
 	//로거 기간별 후원내역 조회 값
+	ArrayList<Support> selectLogerSupportPrice(SqlSessionTemplate sqlSession, Support s, Member m);
 
-	//ArrayList<Integer> selectLogetSupportPrice(SqlSessionTemplate sqlSession, Support s, Member m);
+	//기간별 후원내역 조회 후 정산내역으로 insert
+	int insertLogerCalculate(SqlSessionTemplate sqlSession, Calculate c);
 
-	ArrayList<Support> selectLogetSupportPrice(SqlSessionTemplate sqlSession, Support s, Member m);
+	//로거 정보 가져오기
+	ArrayList<Loger> selectLogerInfo(SqlSessionTemplate sqlSession, Member m);
+
+	//후원내역 정산유무 update
+	int updateSupportCalculate(SqlSessionTemplate sqlSession, Member m);
 
 	//로거스튜디오(프로필 ,채널명,구독자수)
 	Loger2 newHomeChannel(SqlSessionTemplate sqlSession, int userNo);
@@ -50,7 +56,7 @@ public interface LogerDao {
 	//로거 채널 정지
 	int cstop(SqlSessionTemplate sqlSession, Loger r);
 
-	
+
  
 	
 

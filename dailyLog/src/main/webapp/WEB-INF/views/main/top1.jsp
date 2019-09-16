@@ -277,7 +277,8 @@ background:none;
 	  	<div class="row" id="v1"> <h2> <span>  <b>인기동영상</b></span> </h2><br>
 						<c:forEach var="videoimage" items="${list}">
 							
-						<div class="col-sm-2"id="l"><div class="img-box"><div style=" float:left;"> <a href="video.vd">
+						<div class="col-sm-2"id="l"><div class="img-box"><div style=" float:left;">
+						<a href="video.vd?userNo=${videoimage.userNo}&vNo=${videoimage.vNo}">
 						<img src="resources/images/${videoimage.filepath}" width = "102px"  height="130px"  >
 							  <h5>제목:${videoimage.vTitle}</h5>
 							<%--  <c:out value="${videoimage.vTitle}" /> > --%>
@@ -325,7 +326,8 @@ background:none;
 	   	<div class="row" id="v1"> <h2> <span>  <b>최근 본 동영상</b></span> </h2>
 	   	<br>
 						<c:forEach var="videoimage" items="${list}">
-						<div class="col-sm-2"id="l"><div class="img-box"><div style=" float:left;"> <a href="video.vd">
+						<div class="col-sm-2"id="l"><div class="img-box"><div style=" float:left;"> 
+						<a href="video.vd?userNo=${videoimage.userNo}&vNo=${videoimage.vNo}">
 						<img src="resources/images/${videoimage.filepath}" width = "102px"  height="130px"  >
 							  <h5>제목:${videoimage.vTitle}</h5>
 							<%--  <c:out value="${videoimage.vTitle}" /> > --%>
@@ -374,7 +376,8 @@ background:none;
       	<br>
 						<c:forEach var="videoimage" items="${list}">
 							
-						<div class="col-sm-2"id="l"><div class="img-box"><div style=" float:left;"> <a href="video.vd">
+						<div class="col-sm-2"id="l"><div class="img-box"><div style=" float:left;"> 
+						<a href="video.vd?userNo=${videoimage.userNo}&vNo=${videoimage.vNo}">
 						<img src="resources/images/${videoimage.filepath}" width = "102px"  height="130px"  >
 							  <h5>제목:${videoimage.vTitle}</h5>
 							<%--  <c:out value="${videoimage.vTitle}" /> > --%>
@@ -421,7 +424,7 @@ background:none;
       
       <br><br><br><br>
       
-    	<div class="row" id="v1"> <h2> <span>  <b>구독동영상1</b></span> </h2>
+    	<div class="row" id="v1"> <h2> <span>  <b>구독동영상11</b></span> </h2>
     	<br>
 						<c:forEach var="videoimage" items="${list}">
 							
@@ -475,7 +478,8 @@ background:none;
 						<br>
 						<c:forEach var="videoimage" items="${list}">
 							
-						<div class="col-sm-2"id="l"><div class="img-box"><div style=" float:left;"> <a href="video.vd">
+						<div class="col-sm-2"id="l"><div class="img-box"><div style=" float:left;">
+						<a href="video.vd?userNo=${videoimage.userNo}&vNo=${videoimage.vNo}">
 						<img src="resources/images/${videoimage.filepath}" width = "102px"  height="130px"  >
 							  <h5>제목:${videoimage.vTitle}</h5>
 							<%--  <c:out value="${videoimage.vTitle}" /> > --%>
@@ -528,7 +532,8 @@ background:none;
 				 
 	  	<div class="row" id="v1"> <h2> <span>  <b>인기동영상</b></span> </h2><br>
 						<c:forEach var="videoimage" items="${list}">
-						<div class="col-sm-2"id="l"><div class="img-box"><div style=" float:left;"> <a href="video.vd">
+						<div class="col-sm-2"id="l"><div class="img-box"><div style=" float:left;"> 
+						<a href="video.vd?userNo=${videoimage.userNo}&vNo=${videoimage.vNo}">
 						<img src="resources/images/${videoimage.filepath}" width = "102px"  height="130px"  >
 							  <h5>제목:${videoimage.vTitle}</h5>
 							<%--  <c:out value="${videoimage.vTitle}" /> > --%>

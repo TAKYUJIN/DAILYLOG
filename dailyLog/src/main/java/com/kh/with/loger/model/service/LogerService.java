@@ -35,7 +35,16 @@ public interface LogerService {
 	int updateLogerAccount(Member m);
 
 	//기간별 후원내역 조회 값
-	ArrayList<Support> selectLogetSupportPrice(Support s, Member m);
+	ArrayList<Support> selectLogerSupportPrice(Support s, Member m);
+
+	//기간별 후원내역 조회 후 정산내역으로 insert
+	int insertLogerCalculate(Calculate c);
+	
+	//로거 정보 가져오기
+	ArrayList<Loger> selectLogerInfo(Member m);
+	
+	//후원내역에 정산유무
+	int updateSupportCalculate(Member m);
 
 	//로거스튜디오 (프로필 ,채널명,구독자수먼)
 	Loger2 newHomeChannel(int userNo);
@@ -47,7 +56,7 @@ public interface LogerService {
 	//로거 채널 정지
 	int cstop(Loger r);
 
-;
+
 
  
 	

@@ -69,10 +69,32 @@ public class LogerServiceImpl implements LogerService{
 	}
 
 
-
+	//기간별 후원내역 값 조회
 	@Override
-	public ArrayList<Support> selectLogetSupportPrice(Support s, Member m) {
-		return ld.selectLogetSupportPrice(sqlSession, s, m);
+	public ArrayList<Support> selectLogerSupportPrice(Support s, Member m) {
+		return ld.selectLogerSupportPrice(sqlSession, s, m);
+	}
+
+	//기간별 후원내역 조회 후 정산내역으로 insert
+	@Override
+	public int insertLogerCalculate(Calculate c) {
+		
+		int result = ld.insertLogerCalculate(sqlSession, c);
+		
+		return result;
+		
+	}
+	
+	//로거 정보 가져오기
+	@Override
+	public ArrayList<Loger> selectLogerInfo(Member m) {
+		return ld.selectLogerInfo(sqlSession, m);
+	}
+
+	//후원내역 정산유무 update
+	@Override
+	public int updateSupportCalculate(Member m) {
+		return ld.updateSupportCalculate(sqlSession, m);
 	}
 
 	//로거스튜디오(프로필,채널명,구독자수)
@@ -103,6 +125,7 @@ public class LogerServiceImpl implements LogerService{
 		// TODO Auto-generated method stub
 		return ld.cstop(sqlSession, r);
 	}
+
 
 
 

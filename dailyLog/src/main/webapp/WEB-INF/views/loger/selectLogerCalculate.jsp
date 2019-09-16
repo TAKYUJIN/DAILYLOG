@@ -338,7 +338,7 @@ input[class*="btn"], button[class*="btn"] {
 	<div class="selectSupport">
 		<form action="" method="post" class="selectLogerCalculateForm" float="left;">
 			<div class="table-wrapper">
-				<table class="table table-striped">
+				<table class="table table-striped" id="logerTable">
 					<tr>
 						<h4>
 							<b>후원내역</b>
@@ -374,22 +374,21 @@ input[class*="btn"], button[class*="btn"] {
 							<th class="calculate_th">후원날짜</th>
 						</tr>
 					</thead>
-					<tbody id="test">
-						<%-- <c:forEach items="${dateList}" var="s">
+					<tbody class="test">
+						 <c:forEach items="${dateList}" var="s">
 							<tr>
 								<td><c:out value="${s.nNo}" /></td>
 								<td><c:out value="${s.supTY}" /></td>
 								<td><c:out value="${s.nickname}" /></td>
 								<td><fmt:formatNumber value="${s.supPrice}" pattern="#,###,###,###" /></td>
-								<td><fmt:formatDate pattern="yyyy-MM-dd" value="${s.supDT}" /></td>
+								<td><fmt:formatDate pattern="yyyy-MM-dd" value="${s.supSTDT}" /></td>
 							</tr>
-						</c:forEach> --%>
+						</c:forEach>
 					</tbody>
 				</table>
 				
 				<button type="button" class="cal_btn btn-gradient yellow mini"
-					id="accountBtn" onclick="logerCalculate();"
-					style="font-size: 13px; margin-top: 16px;">취소</button>
+					id="accountBtn" onclick="logerCalculate();" style="font-size: 13px; margin-top: 16px;">취소</button>
 				<button class="cal_btn btn-gradient yellow mini" id="calculateBtn"
 					style="font-size: 13px; margin-top: 16px;">정산신청</button>
 		
@@ -402,6 +401,7 @@ input[class*="btn"], button[class*="btn"] {
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
 <script>
+	
 		document.getElementById('todayDate').value = new Date().toISOString().substring(0, 10);
 	
 		$(document).on("click",".class",function() {
@@ -446,26 +446,33 @@ input[class*="btn"], button[class*="btn"] {
 	    			success:function(data){
 	    				console.log('succ');
 	    				console.log(data);
-	    				var $test = $("#test");
-	    				$test.hide(); 
+	    				var $logerTable = $("#logerTable tbody");
+	    				var $test = $(".test");
+	    				/* $logerTable.hide(); */
+	    				/* $logerTable.html(""); */
+	    				$test.hide();
+	    				/* $logerTable[0].html("");
+	    				console.log($logerTable);
+	    				console.log($test); */
+	    				/* $test.html(""); */
 	    				/* var $pagingDiv1 = $("#pagingArea div"); */
-	    				for(var i = 0; i < data["dateList"].length; i++){
+	    				 for(var i = 0; i < data["dateList"].length; i++){ 
 	    					var $tr = $("<tr>");
 	    					var $nNo = $("<td>").text(data["dateList"][i].nNo);
 	    					var $supTY = $("<td>").text(data["dateList"][i].supTY);
 	    					var $nickname = $("<td>").text(data["dateList"][i].nickname);
 	    					var $supPrice = $("<td>").text(numeral(data["dateList"][i].supPrice).format('0,0')+"원");
-	    					var $supDT = $("<td>").text(data["dateList"][i].supDT);
+	    					var $supSTDT = $("<td>").text(data["dateList"][i].supSTDT);
 	    					var $td = $("<td>");
-	    					var result = $supDT.text().substr(0,10);
+	    					var result = $supSTDT.text().substr(0,10);
 	    					$td.append(result)
 	    					$tr.append($nNo);
 	    					$tr.append($supTY);
 	    					$tr.append($nickname);
 	    					$tr.append($supPrice);
 	    					$tr.append($td);
-	    					$dateTbody.append($tr); 
-	    				}
+	    					$logerTable.append($tr); 
+	    				 } 
 	    			},
 	    			error : function(){
 	    				console.log('error');
@@ -473,9 +480,17 @@ input[class*="btn"], button[class*="btn"] {
 	    	})
 		 });
 		 
+		 
+		 function logerCalculate(){
+				location.href="logerCalculate.lo";
+			};
+		 
 		 $("#calculateBtn").click(function(){
 	    		var monthDate =$("#monthDate").val();
 	    		var todayDate = $("#todayDate").val();
+	    		
+	    		location.href="logerCalculateApply.lo?monthDate="+monthDate+"&&todayDate="+todayDate;
+	    		/* 
 	    		$.ajax({
 	    			url:"logerCalculateApply.lo",
 	    			data:{"monthDate":monthDate,"todayDate":todayDate},
@@ -486,35 +501,9 @@ input[class*="btn"], button[class*="btn"] {
 	    			error : function(){
 	    				alert("알 수 없는 에러로 정산 신청이 불가능 합니다.");
 	    			}
-	    	})
+	    	}) */
 		 });
-		 
-		 
-		 function logerCalculate(){
-				location.href="logerCalculate.lo";
-			};
 			
-			
-			$("#calculateBtn").click(function(){
-				var monthDate = $("#monthDate").val();
-				var todayDate = $("#todayDate").val();
-				
-				$.ajax({
-					url:"logerCalculateApply.lo",
-					type:"post",
-					data:{"monthDate":monthDate, "todayDate":todayDate},
-					success:function(data){
-						alert('됐다구요');
-						 
-					},
-					error:function(){
-						alert('연결 실패!');
-					}
-				})
-			});
-	    		
-	    		});
-</script>
-
-				
+		});
+</script>				
 </html>

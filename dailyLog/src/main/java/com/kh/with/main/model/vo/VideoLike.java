@@ -8,12 +8,13 @@ public class VideoLike {
 	private String vTY;
 	private String vTitle;
 	private String uploadDT;
-	private String filepath; // 파일경로
+	private String filepath; // 썸네일 파일경로
+	private String vfilepath; // 동영상 파일경로
 	
 	public VideoLike() {}
 
 	public VideoLike(int likeNo, int userNo, int vNo, int chNo, String vTY, String vTitle, String uploadDT,
-			String filepath) {
+			String filepath, String vfilepath) {
 		super();
 		this.likeNo = likeNo;
 		this.userNo = userNo;
@@ -23,6 +24,7 @@ public class VideoLike {
 		this.vTitle = vTitle;
 		this.uploadDT = uploadDT;
 		this.filepath = filepath;
+		this.vfilepath = vfilepath;
 	}
 
 	public int getLikeNo() {
@@ -89,10 +91,19 @@ public class VideoLike {
 		this.filepath = filepath;
 	}
 
+	public String getVfilepath() {
+		return vfilepath;
+	}
+
+	public void setVfilepath(String vfilepath) {
+		this.vfilepath = vfilepath;
+	}
+
 	@Override
 	public String toString() {
 		return "VideoLike [likeNo=" + likeNo + ", userNo=" + userNo + ", vNo=" + vNo + ", chNo=" + chNo + ", vTY=" + vTY
-				+ ", vTitle=" + vTitle + ", uploadDT=" + uploadDT + ", filepath=" + filepath + "]";
+				+ ", vTitle=" + vTitle + ", uploadDT=" + uploadDT + ", filepath=" + filepath + ", vfilepath="
+				+ vfilepath + "]";
 	}
 
 	
