@@ -73,22 +73,32 @@
 	</select>
 	
 	
-	
+	<!-- 관리자 회원 블랙 리스트 -->
 	<select id="ublacklist" resultMap="Report2ResultSet">
-	 SELECT  V_NO,USER_ID,M.USER_NO,STATUS,RE_COUNT,FLOOR(C_COUNT/3) AS C_COUNT 
+	 SELECT  REP_NO,USER_ID,M.USER_NO,STATUS,RE_COUNT,FLOOR(C_COUNT/3) AS C_COUNT, RE_TY 
+     FROM REPORT R
+     JOIN MEMBER M
+     ON(M.USER_NO=R.RE_TARGET)
+	 WHERE  RE_TY='댓글' AND RE_COUNT>=3
+	</select>
+	<!-- 관리자 채널 블랙 리스트 -->
+	<select id="cblacklist" resultMap="Report2ResultSet">
+SELECT  CH_NM,USER_ID ,M.USER_NO,STATUS,RE_COUNT,FLOOR(C_COUNT/3) AS C_COUNT , RE_TY
+     FROM REPORT R
+     JOIN MEMBER M
+     ON(M.USER_NO=R.RE_TARGET)
+	 WHERE  RE_TY='채널' AND RE_COUNT>=3
+	</select>	
+	<!-- 관리자 동영상 블랙 리스트 -->
+	<select id="vblacklist" resultMap="Report2ResultSet">
+SELECT  V_NO,USER_ID ,M.USER_NO,STATUS,RE_COUNT,FLOOR(C_COUNT/3) AS C_COUNT , RE_TY
      FROM REPORT R
      JOIN MEMBER M
      ON(M.USER_NO=R.RE_TARGET)
 	 WHERE  RE_TY='동영상' AND RE_COUNT>=3
 	</select>
-	<select id="cblacklist" resultMap="Report2ResultSet">
-SELECT  CH_NM,USER_ID ,M.USER_NO,STATUS,RE_COUNT,FLOOR(C_COUNT/3) AS C_COUNT 
-     FROM REPORT R
-     JOIN MEMBER M
-     ON(M.USER_NO=R.RE_TARGET)
-	 WHERE  RE_TY='채널' AND RE_COUNT>=3
-
-	</select>	
+	
+	
 	
 	<select id="videoreportdetail" resultMap="Report2ResultSet">
  		SELECT 	R.RE_NO,V.V_NO,V.V_TITLE,M.USER_NM,R.RE_COUNT,R.RE_DT,R.RE_WHY

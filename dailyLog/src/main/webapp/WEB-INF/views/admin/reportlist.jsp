@@ -243,7 +243,7 @@ $(document).ready(function(){
 													
 													</td>
 													<td>${v.vNo}</td>
-													<td>${v.userNo}</td>
+													 <td>${v.userNo}</td>  
 					 							 <td>${v.redt}</td>
 								
 								</tr>
@@ -293,7 +293,6 @@ $(document).ready(function(){
 													
 													</td>
 													<td>${v.repno}</td>
-													<td>${v.vNo}</td>
 													<td>${v.userNo}</td>
 					 							 <td>${v.redt}</td>
       				     </c:forEach>

@@ -13,6 +13,7 @@ public class Loger implements java.io.Serializable{
 	private String bankNm;	//은행명
 	private String account; //계좌번호
 	private int subNum;		//구독자수
+
 	private int status;
 	
 	public Loger() {}
@@ -127,6 +128,7 @@ public class Loger implements java.io.Serializable{
 				+ ", chInfo=" + chInfo + ", accNm=" + accNm + ", bankNm=" + bankNm + ", account=" + account
 				+ ", subNum=" + subNum + ", status=" + status + "]";
 	}
+
 
 	
 

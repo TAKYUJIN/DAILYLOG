@@ -310,13 +310,11 @@ public class LogerController {
 	{
 		Member m = (Member) session.getAttribute("loginUser");
 		
-		List<Object> ccount =ls.ccount(report,m);
+		// ArrayList<Report> reportcount =ls.reportcount(report,m);
 	 ArrayList<Report> reportlist =ls.reportlist(report,m);
-		
-		List<Object> recount =ls.recount(report,m);
 		 model.addAttribute("reportlist", reportlist);
-		model.addAttribute("ccount", ccount);
-		model.addAttribute("recount", recount);
+		// model.addAttribute("reportcount", reportcount);
+		// System.out.println("reportcount"+reportcount);
 		return "loger/declarationlist";
 		
 	}

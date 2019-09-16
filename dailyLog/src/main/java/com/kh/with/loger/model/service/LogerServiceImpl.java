@@ -106,26 +106,18 @@ public class LogerServiceImpl implements LogerService{
 	//로거 신고내역
 	
 	  @Override public ArrayList<Report> reportlist(Report report, Member m) {
-	  System.out.println("serviceimplre1"+report);
-	  System.out.println("serviceimplre2"+ m); System.out.println("serviceimplre3"+
-	  ld.reportlist(sqlSession,report, m)); return ld.reportlist(sqlSession,report,
-	 m); }
+	  
+	  return ld.reportlist(sqlSession,report,m); }
 	 
 
+		@Override
+		public ArrayList<Report> reportcount(Report report, Member m) {
+		 
+			return ld.reportcount(sqlSession,report,m); 
+		}
 
-	@Override
-	public List<Object> ccount(Report report,Member m) {
-		System.out.println("serviceimplc2"+ m);
-		return ld.ccount(sqlSession, m,report);
-	}
 
-
-	@Override 
-	public List<Object> recount(Report report,Member m) {
-		System.out.println("serviceimplr2"+ m);
-		
-		return ld.recount(sqlSession, m,report);
-	}
+	 
 
 	//로거 채널 정지
 	@Override
@@ -133,7 +125,6 @@ public class LogerServiceImpl implements LogerService{
 		// TODO Auto-generated method stub
 		return ld.cstop(sqlSession, r);
 	}
-
 
 
 

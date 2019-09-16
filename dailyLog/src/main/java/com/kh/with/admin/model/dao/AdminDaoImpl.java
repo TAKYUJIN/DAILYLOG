@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.with.admin.model.vo.Board;
 import com.kh.with.admin.model.vo.Calculate;
+import com.kh.with.member.model.vo.Member;
 import com.kh.with.report.model.vo.Report;
 import com.kh.with.report.model.vo.Report2;
 
@@ -92,19 +93,33 @@ public class AdminDaoImpl implements AdminDao {
 		return sqlSession.selectList("Report.repreportlist");
 
 	}
-
+	 //관리자 회원 블랙 리스트  
 	@Override
 	public List<Object> ublacklist(SqlSessionTemplate sqlSession, Report2 report) {
 		System.out.println("report2"+report);
 		return sqlSession.selectList( "Report.ublacklist");
 	}
-
+	 //관리자 채널 블랙 리스트  
 	@Override
 	public List<Object> cblacklist(SqlSessionTemplate sqlSession, Report2 report) {
 		System.out.println("report3"+report);
 		return sqlSession.selectList( "Report.cblacklist");
 	}
+	 //관리자 동영상 블랙 리스트  
+	@Override
+	public List<Object> vblacklist(SqlSessionTemplate sqlSession, Report2 report) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList( "Report.vblacklist");
 
+	}
+	
+	@Override
+	public int ublackstatus(SqlSessionTemplate sqlSession, Member m) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("Report.ublackstatus",m);
+	}
+
+	
 	//관리자 정산 페이지 조회
 	@Override
 	public ArrayList<Calculate> selectAdminCalculate(SqlSessionTemplate sqlSession) {
@@ -116,7 +131,8 @@ public class AdminDaoImpl implements AdminDao {
 		return list;
 	}
 
-
+	
+	
 }
 
 

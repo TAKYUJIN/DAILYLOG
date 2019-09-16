@@ -20,6 +20,7 @@
 	body{
 		font-family: 'Varela Round', sans-serif;
 		margin: 10px;
+		    height:100%;
 	}
 .where {
   display: block;
@@ -27,6 +28,7 @@
   font-size: 11px;
   color: #000;
   text-decoration: none;
+      height:100%;
  /*  font-family: verdana;
   font-style: italic; */
 }
@@ -178,8 +180,8 @@
                  <div class="panel-body">
                     <table class="table table-hover">
          <h4>친구요청 보내기</h4>
-        <form action="mailSending.mb" method="get">
- 			<input type="hidden" id="userId" name="userId" value="userId"/>
+        <form action="mailSending.mb" method="get"> <c:forEach var="user" items="${user}">
+ 			<input type="hidden" id="userId" name="userId" value="${user.userId }"/>
  			<input type="hidden" id=status_yn name="status_yn" value="Y"/>
  			
 			<!-- 아이디 -->
@@ -191,7 +193,7 @@
       <div align="center">
         <input type="submit" value="메일 보내기" class="btn btn-warning">
         <input type="reset" value="취소" class="btn btn-default" id="reset">
-      </div>
+      </div></c:forEach>
   </form></table></div></div></div></div></div></div>
 	 
 </nav>

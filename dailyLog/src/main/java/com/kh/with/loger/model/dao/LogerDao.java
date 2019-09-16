@@ -49,14 +49,12 @@ public interface LogerDao {
 
 	//로거 신고 기록
 	ArrayList<Report> reportlist(SqlSessionTemplate sqlSession,Report report, Member m);
-	//로거 신고
+	//로거 신고//로거 경고
+	ArrayList<Report> reportcount(SqlSessionTemplate sqlSession, Report report, Member m);
 
-	List<Object> recount(SqlSessionTemplate sqlSession,Member m,Report report);
- 	//로거 경고
-	List<Object> ccount(SqlSessionTemplate sqlSession,Member m, Report report);
+ 	
 	//로거 채널 정지
 	int cstop(SqlSessionTemplate sqlSession, Loger r);
-
 
 
  

@@ -5,6 +5,86 @@
 
 <mapper namespace="Loger">
 
+<!-- 혹시 몰라서 나중에 지우셔도 돼요 
+     <resultMap type="Calculate" id="calculateResultSet">
+        <id property="calNo" column="CAL_NO"/>
+        <result property="userNo" column="USER_NO"/>
+        <result property="chNo" column="CH_NO"/>
+        <result property="calSTDT" column="CAL_STDT"/>
+        <result property="calEDT" column="CAL_EDT"/>
+        <result property="calPrice" column="CAL_PRICE"/>
+        <result property="amountPrice" column="AMOUNT_PRICE"/>
+        <result property="calVAT" column="CAL_VAT"/>
+        <result property="calTY" column="CAL_TY"/>
+        <result property="accNm" column="ACC_NM"/>
+        <result property="bankNm" column="BANK_NM"/>
+        <result property="account" column="ACCOUNT"/>
+        <result property="nNo" column="RANK"/>
+        
+     </resultMap>
+     
+     <resultMap type="Loger" id="logerResultSet">
+        <id property="chNo" column="CH_NO"/>
+        <result property="userNo" column="USER_NO"/>
+        <result property="chNm" column="CH_NM"/>
+        <result property="vNo" column="V_NO"/>
+        <result property="calApply" column="CAL_APPLY"/>
+        <result property="chDT" column="CH_DT"/>
+        <result property="chInfo" column="CH_INFO"/>
+        <result property="accNm" column="ACC_NM"/>
+        <result property="bankNm" column="BANK_NM"/>
+        <result property="account" column="ACCOUNT"/>
+        <result property="subNum" column="SUBNUM"/>
+        <result property="status" column="STATUS"/>
+     </resultMap>
+
+     <resultMap type="Support" id="supportResultSet">
+        <id property="supNo" column="SUP_NO"/>
+        <result property="userNo" column="USER_NO"/>
+        <result property="chNo" column="CH_NO"/>
+        <result property="supSTDT" column="SUP_STDT"/>
+        <result property="supPrice" column="SUP_PRICE"/>
+        <result property="supTY" column="SUP_TY"/>
+        <result property="nNo" column="RANK"/>
+        <result property="nickname" column="NICKNAME"/>
+        <result property="regEDT" column="REG_EDT"/>
+        <result property="regStatus" column="REG_STATUS"/>
+     </resultMap>
+     
+         <resultMap type="Loger2" id="logerResultSet2">
+        <id property="chNo" column="CH_NO"/>
+        <result property="userNo" column="USER_NO"/>
+        <result property="chNm" column="CH_NM"/>
+        <result property="vNo" column="V_NO"/>
+        <result property="calApply" column="CAL_APPLY"/>
+        <result property="chDT" column="CH_DT"/>
+        <result property="chInfo" column="CH_INFO"/>
+        <result property="accNm" column="ACC_NM"/>
+        <result property="bankNm" column="BANK_NM"/>
+        <result property="account" column="ACCOUNT"/>
+        <result property="subNum" column="SUBNUM"/>
+        <result property="enrollNm" column="ENROLL_NM"/>
+     </resultMap>
+     
+     <resultMap type="Report" id="ReportResultSet"> 
+	    <id property="reno" column="RE_NO"/>
+		<result property="userNo" column="USER_NO" />
+		<result property="chNm" column="CH_NM" />
+        <result property="retarget" column="RE_TARGET"/>
+        <result property="redt" column="RE_DT"/>
+        <result property="rewhy" column="RE_WHY"/>
+        <result property="rety" column="RE_TY"/>
+        <result property="vNo" column="V_NO"/>
+        <result property="repno" column="REP_NO"/>
+        <result property="vTitle" column="V_TITLE"/>
+         <result property="vcount" column="COUNT"/>
+         <result property="recount" column="RE_COUNT"/>
+         <result property="ccount" column="C_COUNT"/>
+        <result property="filepath" column="FILEPATH"/>
+     </resultMap>
+       <resultMap type="Report2" id="Report2ResultSet"> 
+	    <id property="reno" column="RE_NO"/>
+-->
 	<resultMap type="Calculate" id="calculateResultSet">
 		<id property="calNo" column="CAL_NO" />
 		<result property="userNo" column="USER_NO" />
@@ -156,8 +236,9 @@
 		FROM SUPPORT S
 		JOIN MEMBER M ON(S.USER_NO = M.USER_NO)
 		WHERE S.USER_NO = #{userNo}
-		AND SUP_STDT BETWEEN TO_CHAR(TO_DATE(#{mon},'YYYY-MM-DD')) AND TO_CHAR(TO_DATE(#{day},'YYYY-MM-DD'))
-	</select>
+		AND SUP_DT BETWEEN TO_CHAR(TO_DATE(#{mon},'YYYY-MM-DD')) AND TO_CHAR(TO_DATE(#{day},'YYYY-MM-DD'))
+  	</select>
+
 
 	<!-- 로거 정보 -->
 	<select id="selectLogerInfo" resultMap="logerResultSet">
@@ -203,8 +284,19 @@
 
 
 	</select>
+  
+    <select id="reportlist" resultMap="ReportResultSet">
+ 	SELECT RE_NO,V_TITLE,RE_WHY,RE_COUNT,FLOOR(C_COUNT/3) AS C_COUNT, RE_TY,R.CH_NM,RE_DT,A.FILEPATH
+	FROM REPORT R
+	JOIN ATTACHMENT A ON(R.RE_TARGET=A.USER_NO)
+	JOIN VIDEO V ON (A.USER_NO=V.USER_NO)
+	 WHERE (RE_TY='동영상' OR  RE_TY='채널')
+	AND 
+	R.RE_TARGET =#{userNo}  
+	 
+	</select>  
 
-
+  <!--
 	<select id="reportlist" resultMap="ReportResultSet">
 		SELECT *
 		FROM REPORT R
@@ -212,7 +304,8 @@
 		JOIN VIDEO V ON (A.USER_NO=V.USER_NO)
 		WHERE R.RE_TARGET =#{userNo}
 
-	</select>
+	</select> -->
+
 
 	<select id="ccount" resultMap="Report2ResultSet">
 		SELECT COUNT(R.RE_COUNT)
@@ -232,6 +325,25 @@
 		WHERE USER_NO=#{userNo}
 	</update>
 
+	
+   <update id="cblockstatus" parameterType="Loger">
+	UPDATE LOGER SET STATUS =1
+	WHERE USER_NO=#{userNo}
+	</update>
+	<update id="vblockstatus" parameterType="Loger">
+	UPDATE LOGER SET STATUS =1
+	WHERE USER_NO=#{userNo}
+	</update>
+	 
+	<select id="reportcount " resultMap="ReportResultSet">
+	 SELECT  REP_NO,M.USER_NO,RE_COUNT,FLOOR(C_COUNT/3) AS C_COUNT, RE_TY 
+     FROM REPORT R
+     JOIN MEMBER M
+     ON(M.USER_NO=R.RE_TARGET)
+	 WHERE (RE_TY='동영상' OR  RE_TY='채널')
+     AND RE_TARGET=#{userNo}
+	</select>
+	
 
 </mapper>
 

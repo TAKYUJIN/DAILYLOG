@@ -13,17 +13,21 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.with.admin.model.service.AdminService;
 import com.kh.with.admin.model.vo.Board;
 import com.kh.with.admin.model.vo.Calculate;
+import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.report.model.service.ReportService;
 import com.kh.with.report.model.vo.Report;
 import com.kh.with.report.model.vo.Report2;
 
 @Controller
+@SessionAttributes("loginUser")
+
 public class AdminController {
 
 	@Autowired
@@ -215,11 +219,15 @@ public class AdminController {
 	}
 	//관리자  회원 블랙 리스트
 	@RequestMapping(value = "ublacklist.ad")
-	public String ublacklist(HttpServletRequest request,Model model,HttpSession session) {
+	public String ublacklist(HttpServletRequest request,Model model,HttpSession session
+			) {
 		Report2 report =new Report2();
 		List<Object> ublacklist = as.ublacklist(report);
+		
 		System.out.println("ublacklist"+ublacklist);
+		
 		model.addAttribute("ublacklist",ublacklist);
+	 
 		return "admin/ublacklist";
 	}
 	//관리자  채널 블랙 리스트
@@ -227,8 +235,10 @@ public class AdminController {
 	public String cblacklist(HttpServletRequest request,Model model,HttpSession session) {
 		Report2 report =new Report2();
 		List<Object> cblacklist = as.cblacklist(report);
+		List<Object> vblacklist = as.vblacklist(report);
 		System.out.println("cblacklist"+cblacklist);
 		model.addAttribute("cblacklist",cblacklist);
+		model.addAttribute("vblacklist",vblacklist);
 		return "admin/cblacklist";
 	}
 	
@@ -255,30 +265,30 @@ public class AdminController {
 	 
 	//관리자 동영상 신고 상세내역 ->신고처리
 	 
-	 @RequestMapping(value="videoreportdetail2.ad",method=RequestMethod.GET)
-	  public String videoreportdetail2(@ModelAttribute Report2 report,
+	 @RequestMapping(value="videoreportdetail2.ad",method=RequestMethod.POST)
+	  public String videoreportdetail2(
 			  Model model,HttpSession session,HttpServletRequest request 
 	 ) {
 	  
 	   int reno =Integer.parseInt(request.getParameter("reno"));
 	   System.out.println("reno1"+reno);
-	   int vNo =Integer.parseInt(request.getParameter("vNo")); 
+	   /*int vNo =Integer.parseInt(request.getParameter("vNo")); 
 	   String vTitle= request.getParameter("vTitle"); 
-	   String userNm=request.getParameter("userNm");
+	   String userNm=request.getParameter("userNm");*/
 	  int recount=Integer.parseInt(request.getParameter("recount")); 
-	  String redt=request.getParameter("redt"); 
-	  String rewhy =request.getParameter("rewhy");
+	 /*String redt=request.getParameter("redt"); 
+	  String rewhy =request.getParameter("rewhy");*/
 	  
-	  
+	  Report2 report=new Report2();
 	  
 	  report.setReno(reno);
-	  report.setvNo(vNo);
+	  report.setRecount(recount); 
+/*	  report.setvNo(vNo);
 	  report.setvTitle(vTitle); 
 	  report.setUserNm(userNm);
-	  report.setRecount(recount); 
 	  report.setRedt(redt); 
 	  report.setRewhy(rewhy);
-	  
+	*/  
 	 int result=rs.videoreportupdate(report);
 	  
 	 if(result>0) {

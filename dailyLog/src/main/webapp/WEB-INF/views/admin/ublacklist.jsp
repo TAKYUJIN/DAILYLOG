@@ -192,7 +192,7 @@ $(document).ready(function(){
 						<th>중지/블랙 리스트</th>
                     </tr>
                 </thead>
-                <tbody> 
+                <tbody>
                     <c:forEach var="v" items="${ublacklist}" >
                     <tr>
                         <td>1</td>
@@ -216,17 +216,16 @@ $(document).ready(function(){
 	 					<td><div style="float:left;">
 	 					<form action="ustop.me" method="get" >
 	 					<input type="hidden" id="userId" name="userId" value="${v.userId}">
+	 					 <input type="hidden" id="userNo" name="userNo" value="${v.userNo}">
 	 					 <input type="submit" id="submit"  value="중지">
 	 					</form>
 	 					</div>
 	 					
 	 					<form action="ublock.bl" method="get" >
-	 					<input type="hidden" id="vNo" name="vNo" value="${v.vNo}">
+	 					<input type="hidden" id="repno" name="repno" value="${v.repno}">
 					    <input type="hidden" id="userNo" name="userNo" value="${v.userNo}">
 	 					 <input type="submit" id="submit" value="블랙">
 	 					</form>
-	 					<!-- <a href="ustop.me" class="button primary small"  >중지</a>
-	 					 --><!-- <a href="ublock.bl"  class="button small" >블랙</a> -->
 					     </td>
 					     </tr>
                     <tr>

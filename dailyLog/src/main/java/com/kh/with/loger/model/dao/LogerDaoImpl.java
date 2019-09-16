@@ -131,26 +131,18 @@ public class LogerDaoImpl implements LogerDao{
 	  (ArrayList)sqlSession.selectList("Loger.reportlist",m);
 	  
 	  return reportlist; }
-	 
-	@Override
-	public List<Object> recount(SqlSessionTemplate sqlSession, Member m,Report report) {
-	 
-		
-		return sqlSession.selectList("Loger.recount",m);
-	}
-	@Override
-	public List<Object> ccount(SqlSessionTemplate sqlSession, Member m,Report report) {
+	 //로거 신고,경고 count
+		@Override
+		public ArrayList<Report> reportcount(SqlSessionTemplate sqlSession, Report report, Member m) {
+			ArrayList<Report> reportcount=(ArrayList)sqlSession.selectList("Loger.reportcount",m);
+			return reportcount;
+		}
 		 
-	 
-		return sqlSession.selectList("Loger.ccount",m);
-	}
 	@Override
 	public int cstop(SqlSessionTemplate sqlSession, Loger r) {
 
 		return sqlSession.update("Loger.cstop",r);
 	}
-	
-	
-	
+
 }
 	
