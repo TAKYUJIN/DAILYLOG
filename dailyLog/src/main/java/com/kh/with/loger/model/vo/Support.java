@@ -8,16 +8,16 @@ public class Support implements java.io.Serializable{
 	private int supNo;		//후원번호
 	private int userNo;		//회원번호
 	private int chNo;		//채널번호
-	private Date supSTDT;	//후원신텅날짜
+	private String supSTDT;	//후원신텅날짜
 	private int supPrice;	//후원금액
 	private String supTY;	//후원종류
-	private Date regEDT;	//정기후원완료날짜
+	private String regEDT;	//정기후원완료날짜
 	private int regStatus;	//정기후원상태
 	
 	public Support() {}
 
-	public Support(int nNo, String nickname, int supNo, int userNo, int chNo, Date supSTDT, int supPrice, String supTY,
-			Date regEDT, int regStatus) {
+	public Support(int nNo, String nickname, int supNo, int userNo, int chNo, String supSTDT, int supPrice,
+			String supTY, String regEDT, int regStatus) {
 		super();
 		this.nNo = nNo;
 		this.nickname = nickname;
@@ -71,11 +71,11 @@ public class Support implements java.io.Serializable{
 		this.chNo = chNo;
 	}
 
-	public Date getSupSTDT() {
+	public String getSupSTDT() {
 		return supSTDT;
 	}
 
-	public void setSupSTDT(Date supSTDT) {
+	public void setSupSTDT(String supSTDT) {
 		this.supSTDT = supSTDT;
 	}
 
@@ -95,11 +95,11 @@ public class Support implements java.io.Serializable{
 		this.supTY = supTY;
 	}
 
-	public Date getRegEDT() {
+	public String getRegEDT() {
 		return regEDT;
 	}
 
-	public void setRegEDT(Date regEDT) {
+	public void setRegEDT(String regEDT) {
 		this.regEDT = regEDT;
 	}
 
@@ -118,5 +118,6 @@ public class Support implements java.io.Serializable{
 				+ ", regStatus=" + regStatus + "]";
 	}
 
+	
 	
 }

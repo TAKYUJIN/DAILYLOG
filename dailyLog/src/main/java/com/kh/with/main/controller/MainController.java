@@ -17,8 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.kh.with.loger.model.vo.Calculate;
-import com.kh.with.loger.model.vo.Support;
 import com.kh.with.main.model.service.BoardService;
 import com.kh.with.main.model.service.MailSendService;
 import com.kh.with.main.model.service.MainService;
@@ -48,16 +46,34 @@ public class MainController {
 	 BoardService service;
 	// 북마크페이지로 이동
 	@RequestMapping(value="bookmark.mb")
-	public String selectBookmark(Model model, HttpSession session, VideoLike vl) {
+	public String showBoomark(Model model, HttpSession session, VideoLike vl) {
 		Member m = (Member) session.getAttribute("loginUser");
 		// 북마크 조회
-		ArrayList<VideoLike> bList = ms.selectBookmark(m);
+		ArrayList<VideoLike> bList = ms.showBookmark(m);
 
 		model.addAttribute("bList", bList);		
 		
 		return "main/bookmark";
 	}
-
+	
+	//북마크 동영상 제목으로 검색
+	@RequestMapping(value="selectBookmark.mb")
+	public String selectBookmark(Model model, HttpSession session, VideoLike vl, @RequestParam(value="title", required=true) String title) {
+		Member m = (Member) session.getAttribute("loginUser");
+		
+		int userNo = m.getUserNo();
+		vl.setUserNo(userNo);
+		vl.setvTitle(title);
+		
+		ArrayList<VideoLike> list = ms.selectBookmark(vl);
+		
+		model.addAttribute("list", list);
+		
+		
+		
+		return "main/selectBookmark";
+	}
+	
 	// 구독페이지로 이동
 	@RequestMapping(value="subscribe.mb")
 

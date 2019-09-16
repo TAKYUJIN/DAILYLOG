@@ -15,15 +15,16 @@
 		<result property="vTitle" column="V_TITLE" />
 		<result property="uploadDT" column="UPLOAD_DT" />
 		<result property="filepath" column="FILEPATH" />
+		<result property="vfilepath" column="VFILEPATH" />
 	</resultMap>
-
+	
 
 	<!-- 북마크 조회 -->
-	<select id="selectBookmark" resultMap="videoLikeResultSet">
+	<select id="showBookmark" resultMap="videoLikeResultSet">
 		SELECT RANK, LIKE_NO,
-		USER_NO, V_NO, CH_NO, V_DT, V_TY, V_TITLE, UPLOAD_DT, FILEPATH
+		USER_NO, V_NO, CH_NO, V_DT, V_TY, V_TITLE, UPLOAD_DT, FILEPATH, VFILEPATH
 		FROM (SELECT ROW_NUMBER() OVER(ORDER BY VL.V_DT DESC) RANK, VL.*, V_TITLE,
-		UPLOAD_DT, A.FILEPATH
+		UPLOAD_DT, A.FILEPATH, V.FILEPATH VFILEPATH
 		FROM VIDEO_LIKE VL
 		JOIN MEMBER M ON(VL.USER_NO = M.USER_NO)
 		JOIN VIDEO V ON(VL.V_NO = V.V_NO)
@@ -32,7 +33,19 @@
 		ORDER BY RANK ASC
 	</select>
 
-
+	<!-- 검색한 제목의 북마크 조회 -->
+	<select id="selectBookmark" resultMap="videoLikeResultSet">
+		SELECT RANK, LIKE_NO, USER_NO, V_NO, CH_NO, V_DT, V_TY, V_TITLE, UPLOAD_DT, FILEPATH, VFILEPATH
+		FROM (SELECT ROW_NUMBER() OVER(ORDER BY VL.V_DT DESC) RANK,	VL.*, V_TITLE,
+		UPLOAD_DT, A.FILEPATH, V.FILEPATH VFILEPATH
+		FROM VIDEO_LIKE VL
+		JOIN MEMBER M ON(VL.USER_NO = M.USER_NO)
+		JOIN VIDEO V ON(VL.V_NO = V.V_NO)
+		JOIN ATTACHMENT A ON(V.V_NO = A.V_NO)
+		WHERE VL.USER_NO = #{userNo}
+		AND V_TITLE LIKE '%' || #{vTitle} || '%')
+		ORDER BY RANK ASC
+	</select>
 
 </mapper>
 

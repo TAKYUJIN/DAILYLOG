@@ -280,7 +280,7 @@ button[class*="btn"] {border: 0;}
 						<td><c:out value="${s.nickname}"/></td>
 						<td><fmt:formatNumber value="${s.supPrice}" pattern="#,###,###,###" />
 						</td>
-						<td>${fn:substring(s.supDT,0,10)}</td> 
+						<td>${fn:substring(s.supSTDT,0,10)}</td> 
                     </tr>
                     </c:forEach>
                     
@@ -368,6 +368,10 @@ button[class*="btn"] {border: 0;}
         </form>
     </div>  
     <script>
+    var message = '${msg}';
+	var returnUrl = '${url}';
+	alert(msg);
+    
         function accountApi(){
         	window.open('accountApi.lo', "", "width=550, height=350, top=50, left=50");
         }
