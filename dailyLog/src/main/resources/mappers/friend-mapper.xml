@@ -11,11 +11,38 @@
 		<result property="friId" column="FRI_ID" />
 		<result property="status_yn" column="STATUS_YN" />
 	</resultMap>
+	
+	<resultMap type="com.kh.with.member.model.vo.Member"
+		id="memberResultSet">
+
+		<id property="userNo" column="USER_NO" />
+		<result property="userNm" column="USER_NM" />
+		<result property="userId" column="USER_ID" />
+		<result property="userPwd" column="USER_PWD" />
+		<result property="nickname" column="NICKNAME" />
+		<result property="phone" column="PHONE" />
+		<result property="gender" column="GENDER" />
+		<result property="adultYN" column="ADULT_YN" />
+		<result property="chYN" column="CH_YN" />
+		<result property="enrollDT" column="ENROLL_DT" />
+		<result property="leaveDT" column="LEAVE_DT" />
+		<result property="remainPT" column="REMAIN_PT" />
+		<result property="status" column="STATUS" />
+	</resultMap>
+	
 	<select id="FriendList" resultMap="FriendListResultSet" parameterType="com.kh.with.main.model.vo.MailVo">
 	
 		SELECT DISTINCT USER_ID,FRI_ID FROM FRIEND WHERE STATUS_YN='Y'
 	
 	</select>
+	 
+	 <select id="user" resultMap="memberResultSet" parameterType="com.kh.with.member.model.vo.Member">
+	
+		SELECT * FROM MEMBER
+		WHERE USER_ID=#{userId}
+	
+	</select>
+	 
 	 
 
 </mapper>

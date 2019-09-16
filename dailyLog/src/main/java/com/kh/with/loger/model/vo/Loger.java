@@ -14,11 +14,12 @@ public class Loger implements java.io.Serializable{
 	private String bankNm;	//은행명
 	private String account; //계좌번호
 	private int subNum;		//구독자수
+	private int status; //status
 	
 	public Loger() {}
 
 	public Loger(int chNo, int userNo, String chNm, int vNo, String calApply, Date chDT, String chInfo, String accNm,
-			String bankNm, String account, int subNum) {
+			String bankNm, String account, int subNum, int status) {
 		super();
 		this.chNo = chNo;
 		this.userNo = userNo;
@@ -31,6 +32,7 @@ public class Loger implements java.io.Serializable{
 		this.bankNm = bankNm;
 		this.account = account;
 		this.subNum = subNum;
+		this.status = status;
 	}
 
 	public int getChNo() {
@@ -121,14 +123,21 @@ public class Loger implements java.io.Serializable{
 		this.subNum = subNum;
 	}
 
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
 	@Override
 	public String toString() {
 		return "Loger [chNo=" + chNo + ", userNo=" + userNo + ", chNm=" + chNm + ", vNo=" + vNo + ", calApply="
 				+ calApply + ", chDT=" + chDT + ", chInfo=" + chInfo + ", accNm=" + accNm + ", bankNm=" + bankNm
-				+ ", account=" + account + ", subNum=" + subNum + "]";
+				+ ", account=" + account + ", subNum=" + subNum + ", status=" + status + "]";
 	}
-
-	
+ 
 	
 
 }

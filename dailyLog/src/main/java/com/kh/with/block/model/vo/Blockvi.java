@@ -3,6 +3,7 @@ package com.kh.with.block.model.vo;
 public class Blockvi implements java.io.Serializable{
 	private int userNo;
 	private int vNo;
+ 
 	public Blockvi() {
 	}
 	public Blockvi(int userNo, int vNo) {

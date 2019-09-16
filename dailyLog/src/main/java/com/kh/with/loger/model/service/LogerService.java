@@ -42,13 +42,12 @@ public interface LogerService {
 
 	//로거 신고내역
 	ArrayList<Report> reportlist(Report report, Member m);
-
-	List<Object> recount(Report report,Member m);
-
-	List<Object> ccount(Report report, Member m);
+	ArrayList<Report> reportcount(Report report, Member m);
 
 	//로거 채널 정지
 	int cstop(Loger r);
+
+;
 
  
 	

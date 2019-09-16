@@ -19,6 +19,7 @@
         <result property="bankNm" column="BANK_NM"/>
         <result property="account" column="ACCOUNT"/>
         <result property="nNo" column="RANK"/>
+        
      </resultMap>
      
      <resultMap type="Loger" id="logerResultSet">
@@ -33,6 +34,7 @@
         <result property="bankNm" column="BANK_NM"/>
         <result property="account" column="ACCOUNT"/>
         <result property="subNum" column="SUBNUM"/>
+        <result property="status" column="STATUS"/>
      </resultMap>
 
      <resultMap type="Support" id="supportResultSet">
@@ -79,7 +81,7 @@
          <result property="ccount" column="C_COUNT"/>
         <result property="filepath" column="FILEPATH"/>
      </resultMap>
-       <resultMap type="Report" id="Report2ResultSet"> 
+       <resultMap type="Report2" id="Report2ResultSet"> 
 	    <id property="reno" column="RE_NO"/>
 		<result property="userNo" column="USER_NO" />
 		<result property="chNm" column="CH_NM" />
@@ -172,11 +174,13 @@
 	
  
 	  <select id="reportlist" resultMap="ReportResultSet">
- 	SELECT *
+ 	SELECT RE_NO,V_TITLE,RE_WHY,RE_COUNT,FLOOR(C_COUNT/3) AS C_COUNT, RE_TY,R.CH_NM,RE_DT,A.FILEPATH
 	FROM REPORT R
 	JOIN ATTACHMENT A ON(R.RE_TARGET=A.USER_NO)
 	JOIN VIDEO V ON (A.USER_NO=V.USER_NO)
-	WHERE R.RE_TARGET =#{userNo}  
+	 WHERE (RE_TY='동영상' OR  RE_TY='채널')
+	AND 
+	R.RE_TARGET =#{userNo}  
 	 
 	</select>  
 	
@@ -197,6 +201,24 @@
 	UPDATE LOGER SET STATUS =1
 	WHERE USER_NO=#{userNo}
 	</update>
+	
+   <update id="cblockstatus" parameterType="Loger">
+	UPDATE LOGER SET STATUS =1
+	WHERE USER_NO=#{userNo}
+	</update>
+	<update id="vblockstatus" parameterType="Loger">
+	UPDATE LOGER SET STATUS =1
+	WHERE USER_NO=#{userNo}
+	</update>
+	 
+	<select id="reportcount " resultMap="ReportResultSet">
+	 SELECT  REP_NO,M.USER_NO,RE_COUNT,FLOOR(C_COUNT/3) AS C_COUNT, RE_TY 
+     FROM REPORT R
+     JOIN MEMBER M
+     ON(M.USER_NO=R.RE_TARGET)
+	 WHERE (RE_TY='동영상' OR  RE_TY='채널')
+     AND RE_TARGET=#{userNo}
+	</select>
 	
 	
 </mapper>

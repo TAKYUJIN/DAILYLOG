@@ -94,7 +94,7 @@
  <div class="signup-form">
 <!--     <form action="/examples/actions/confirmation.php" method="post" class="form-horizontal">
  -->
- <form action="videoreportdetail2.ad" method="get">
+ <form action="videoreportdetail2.ad" method="post">
 <c:forEach items="${videoreportdetail}" var="de">
 			<h3><b>동영상 신고 관리 상세 </b></h3><br>
 		<div class="form-group">

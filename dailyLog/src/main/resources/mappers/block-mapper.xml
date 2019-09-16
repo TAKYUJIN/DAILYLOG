@@ -4,27 +4,61 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Block">
 
-	<resultMap type="Blockvi"
-		id="BlockchResultSet">
-		<id property="userno" column="USER_NO" />
-		<result property="chno" column="CH_NO" />
+	<resultMap type="Blockvi" id="BlockviResultSet">
+		<id property="userNo" column="USER_NO" />
+		<result property="vNo" column="V_NO" />
 	</resultMap>
 	
+	<resultMap type="Blockch" id="BlockchResultSet">
+		<id property="userNo" column="USER_NO" />
+		<result property="chNm" column="CH_NM" />
+	</resultMap>
+	
+	<resultMap type="Blockrep" id="BlockrepResultSet">
+		<id property="userNo" column="USER_NO" />
+		<result property="repno" column="REP_NO" />
+	</resultMap>
+	
+	    <resultMap type="Loger" id="logerResultSet">
+        <id property="chNo" column="CH_NO"/>
+        <result property="userNo" column="USER_NO"/>
+        <result property="chNm" column="CH_NM"/>
+        <result property="vNo" column="V_NO"/>
+        <result property="calApply" column="CAL_APPLY"/>
+        <result property="chDT" column="CH_DT"/>
+        <result property="chInfo" column="CH_INFO"/>
+        <result property="accNm" column="ACC_NM"/>
+        <result property="bankNm" column="BANK_NM"/>
+        <result property="account" column="ACCOUNT"/>
+        <result property="subNum" column="SUBNUM"/>
+        <result property="status" column="STATUS"/>
+     </resultMap>
+	
+	
+	
+	
 	<insert id="mainblockvi" parameterType="Blockvi">
-	INSERT INTO BLOK_VIDEO
+	INSERT INTO BLOCK_VIDEO
 	VALUES(#{userNo},#{vNo})
 	</insert> 
 	
-	<insert id="ublock" parameterType="Blockvi">
-	INSERT INTO BLOK_VIDEO
+	<insert id="vblock" parameterType="Blockvi">
+	INSERT INTO BLOCK_VIDEO
 	VALUES(#{userNo},#{vNo})
 	</insert>
 	
 	
 	<insert id="cblock" parameterType="Blockch">
-	INSERT INTO BLOK_CH
+	INSERT INTO BLOCK_CH
 	VALUES(#{userNo},#{chNm})
 	</insert>
+	
+	<insert id="ublock" parameterType="Blockrep">
+	INSERT INTO BLOCK_REP
+	VALUES(#{userNo},#{repno})
+	</insert>
+	
+	
 	
 	
 	</mapper>

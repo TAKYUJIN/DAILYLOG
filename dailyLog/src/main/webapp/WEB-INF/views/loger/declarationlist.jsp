@@ -146,13 +146,13 @@
         font-size: 13px;
     }
     .reno{
-    width:80px;
+    width:100px;
     }.filepath{
     width:350px;
     height: 30px;
     }
     .rewhy{
-        width:400px;
+        width:550px;
          padding: 200px;
          font-family: 'Roboto', sans-serif;
     }
@@ -163,6 +163,7 @@
    .redt{
      width:280px;
    }
+   
 </style>
 	</head>
 	<body>
@@ -204,18 +205,21 @@
                 <thead>
                     <tr>
                         <th class="reno" >신고번호</th>
+                        <th class="reno">구분 </th>
                          <th class="filepath">신고동영상 </th>
      					 <th class="rewhy" align=center>신고사유 </th>
       				     <th class="redt" align=center>신고일<i class="fa fa-sort"></i></th>
+      				     <th class="reno" align=center>신고횟수 </th>
+      				     <th class="reno" align=center>경고횟수 </th>
                     </tr>
                 </thead>
-                
                 <tbody>
                 <c:forEach var="list" items="${reportlist}">
                 <tr>
                     
  				  						
 													<td>${list.reno}</td>
+													<td>${list.rety}</td>
 													<td><div style=" float:left; margin-right:40px;"><img src="resources/images/${list.filepath}" width = "102px"  height="100px"  >
 													</div> 
 													 <h5><b>동영상 제목:</b> ${list.vTitle}</h5>
@@ -225,7 +229,8 @@
 													</td>
 													<td valign=middle align=center> <h4> ${list.rewhy} </h4></td>
 													<td valign=middle align=center><h4> ${list.redt}</h4></td>
-												
+												<td><span style="color:red">${list.recount}</span></td>
+												<td><span style="color:red">${list.ccount}</span></td>
 										 
 								 
 								 			 

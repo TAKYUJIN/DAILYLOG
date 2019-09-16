@@ -177,15 +177,16 @@ $(document).ready(function(){
             <div class="table-title">
                 <div class="row">
 					<div class="col-sm-4">
-						<h2 ><b>채널 블랙 리스트 </b> </h2>
+						<h2><b>채널 블랙 리스트 </b> </h2>
 					</div>
                 </div>
-            </div>
+            </div><h4><b>채널 </b> </h4>
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>번호</th>
+                        <th>회원 번호</th>
                         <th>아이디 <i class="fa fa-sort"></i></th>
+                        <th>구분</th>
                         <th>채널 신고 횟수</th>
 						<th>채널 경고 횟수</th>
                         <th>유무</th>
@@ -195,9 +196,9 @@ $(document).ready(function(){
                 <tbody> 
                     <c:forEach var="v" items="${cblacklist}" >
                     <tr>
-                        <td>1</td>
+                        <td>${v.userNo}</td>
                    		<td>${v.userId}</td>
-                   		
+                   		<td>${v.rety}</td>
 						<td>${v.recount}</td>
 					    <td>${v.ccount}</td>
 					    <td>
@@ -243,7 +244,73 @@ $(document).ready(function(){
                     <li class="page-item"><a href="#" class="page-link">5</a></li>
                     <li class="page-item"><a href="#" class="page-link">>></a></li>
                 </ul>
-            </div>  
+            </div>
+            
+           <h4><b>동영상 </b> </h4>
+             <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>회원 번호</th>
+                        <th>아이디 <i class="fa fa-sort"></i></th>
+                        <th>구분</th>
+                        <th>채널 신고 횟수</th>
+						<th>채널 경고 횟수</th>
+                        <th>유무</th>
+						<th>중지/블랙 리스트</th>
+                    </tr>
+                </thead>
+                <tbody> 
+                    <c:forEach var="v" items="${vblacklist}" >
+                    <tr>
+                        <td>${v.userNo}</td>
+                   		<td>${v.userId}</td>
+                   		<td>${v.rety}</td>
+						<td>${v.recount}</td>
+					    <td>${v.ccount}</td>
+					    <td>
+					    <c:choose> 
+					    <c:when test="${v.ccount >=3}">
+						<b style="color:red;">중지</b>
+						</c:when>
+						 <c:when test="${v.ccount >=5}">
+						 <b  style="color:red;">영구 정지</b>
+						 </c:when>
+						<c:otherwise>
+						<b style="color:red;">경고</b>
+						</c:otherwise>
+						</c:choose>
+             </td>
+	 					<td><div style="float:left;">
+	 					<form action="cstop.lo" method="get" >
+	 					<input type="hidden" id="userNo" name="userNo" value="${v.userNo}">
+	 					 <input type="submit" id="submit"  value="중지">
+	 					</form>
+	 					</div>
+	 					
+	 					<form action="vblock.bl" method="get" >
+	 					<input type="hidden" id="vNo" name="vNo" value="${v.vNo}">
+					    <input type="hidden" id="userNo" name="userNo" value="${v.userNo}">
+	 					 <input type="submit" id="submit" value="블랙">
+	 					</form>
+	 					<!-- <a href="ustop.me" class="button primary small"  >중지</a>
+	 					 --><!-- <a href="ublock.bl"  class="button small" >블랙</a> -->
+					     </td>
+					     </tr>
+                    <tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+              <div class="clearfix">
+                 <ul class="pagination">
+                    <li class="page-item disabled"><a href="#"><<</a></li>
+                    <li class="page-item"><a href="#" class="page-link">1</a></li>
+                    <li class="page-item"><a href="#" class="page-link">2</a></li>
+                    <li class="page-item active"><a href="#" class="page-link">3</a></li>
+                    <li class="page-item"><a href="#" class="page-link">4</a></li>
+                    <li class="page-item"><a href="#" class="page-link">5</a></li>
+                    <li class="page-item"><a href="#" class="page-link">>></a></li>
+                </ul>
+            </div>    
         </div>
     </div>
      <jsp:include page="../common/footer.jsp" />     

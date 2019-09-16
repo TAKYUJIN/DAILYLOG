@@ -12,14 +12,14 @@
 	 <c:set var="contextPath" value="${ pageContext.servletContext.contextPath }" scope="application"/>
 	 
 	  
-   <jsp:forward page="WEB-INF/views/main/main.jsp"></jsp:forward>    
+     <%-- <jsp:forward page="WEB-INF/views/main/main.jsp"></jsp:forward>    --%>
 	 
- 	 <%-- <c:if test="${ empty sessionScope.loginUser }">
+ 	    <c:if test="${ empty sessionScope.loginUser }">
 		 <jsp:forward page="guest.mb"></jsp:forward>  
 	 </c:if>
 	 
 	 <c:if test="${ !empty sessionScope.loginUser }">
  		<jsp:forward page="home.mb"></jsp:forward>  
-	</c:if>  --%>
+	</c:if>   
 </body>
 </html>

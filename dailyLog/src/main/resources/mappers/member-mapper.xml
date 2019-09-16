@@ -147,7 +147,10 @@
 	WHERE USER_ID=#{userId}
 	</update>
 	
-	
+	<update id="ublockstatus" parameterType="Member">
+	UPDATE MEMBER SET STATUS =1
+	WHERE USER_NO =#{userNo}
+	</update>
 	
 </mapper>
 

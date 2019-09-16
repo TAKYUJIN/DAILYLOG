@@ -40,6 +40,7 @@
       padding-right: 6px; 
       /* border-bottom: 1px solid #dfe3e8; */
       border-radius: 0;
+    
    }
    .nav-link img {
       border-radius: 50%;
@@ -53,6 +54,7 @@
       padding-left: 0;
       font-size: 20px; /* 로고부분 폰트사이즈 */
       padding-right: 50px;
+         height:100%;
    }
    .navbar .navbar-brand b {
       font-weight: bold;
@@ -97,11 +99,13 @@
       padding-bottom: 6px;
       vertical-align: middle;
       border: none;
+       
    }   
    .navbar .nav .btn-primary:hover, .navbar .nav .btn-primary:focus {      
       color: #fff;
       outline: none;
       background: #31bfb1;
+      
    }
    .navbar .navbar-right li:first-child a {
       padding-right: 20px;
@@ -171,6 +175,7 @@
       line-height: 34px;
       width: 47%;
       text-decoration: none;
+    
     }   
 
    .navbar .form-wrapper .form-footer {
@@ -242,7 +247,7 @@
     a:hover { color: black; text-decoration: none; color: black;}
    a:active { color: black; text-decoration: none; color: black;}
    
-   #logo,#f{
+   #logo,#friendlist{
    background:none;
    border:none;
 	padding:0;
@@ -278,7 +283,7 @@
 			<li class="nav-item"><a href="newHomeChannel.lo" class="nav-link" style="padding-right:0px;" onclick="">로거 스튜디오</a></li>
 			<li class="nav-item"><a href="lotest.lo" class="nav-link" style="padding-right:0px;">알림 예시</a></li>
 		</ul>
-		<form class="navbar-form form-inline" style="width:240px;">
+		<form class="navbar-form form-inline" style="width:240px; ">
 			<div class="input-group search-box">								
 				<input type="text" id="search" class="form-control" placeholder="검색">
 				<span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
@@ -297,8 +302,8 @@
 			</a>
 			</li>
 			<li class="nav-item">
-				 <!-- onclick="location.href='FriendList.mb'" -->
-			 <button type="button" id="f" id="friendlist" class="btn_global link_login" data-toggle="dropdown"  >
+				 
+			 <button  type="button" id="friendlist" class="btn_global link_login" >
 				<img src="resources/images/laugh.png" style="width:20px; margin:15px;">
 			</button>
 			<ul class="dropdown-menu form-wrapper">					
@@ -306,40 +311,8 @@
  						<div class="noti_text" align="center"><p>친구 리스트</p></div>
   <script type="text/javascript">
 $('#friendlist').click(function(){
-/* //	console.log(data);
-	if(run ==true){
-		return;
-	}
-	run =true;
-$.ajax({
-	url:"FriendList.mb",
-	type:"post",
-	//dataType : "xml",
-    // data:$("#frm").serialize(),
-	// data :{'friId':friId},
- 	success:function(data){
-  		  $(data).find("FriendList").each(function() {
- 		 
-          //  table +="<td>"+$(this).find("firId").text()+"</td>";
- 		/* for(var i=0; i<data.length; i++){
-              $('.b').append(data[i] + "<br>");
-          } */
- /*          $('.b').text(data);
- 		 
- 		  });
-           
-        console.log(data);
- 		run=false;
-	 
-	},
-	error:function(){
-		alert("안돼ㅠ");
-	}
-});
-	 */
-	 
-	 var popUrl = "List.mb";	//팝업창에 출력될 페이지 URL
-	 var popOption = "width=370, height=500, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
+	 var popUrl = "List.mb";	 
+	 var popOption = "width=370, height=500, resizable=no, scrollbars=no, status=no;";   
 			window.open(popUrl,"",popOption);
 	 
 });
@@ -441,7 +414,7 @@ $.ajax({
 </nav>
  </body>
  <script>
- $(document).ready(function(){
+ /* $(document).ready(function(){
     $('#frilist').show();
     $('#myDiv').hide();
     
@@ -456,7 +429,7 @@ $.ajax({
        
     });
     
- });
+ }); */
  
  
  /* $("#notification").click(function(){
@@ -493,12 +466,7 @@ $.ajax({
 			
 			
 	});
-	$('.friendlist').click(function(){
-
-	$('#logo').click(function(){
-	location.href="home.mb ";
-	})
-	});
+ 
 	</script>
 	<%-- <script> 잠시 주석..나의 알림..
 		$(function(){
