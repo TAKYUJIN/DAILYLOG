@@ -14,11 +14,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 <style>
-body{
-	background:white;
-}
 	.chImg {
 		width:60px; 
 		height:60px;
@@ -137,244 +134,159 @@ body{
  	a:hover { color: black; text-decoration: none; color: black;}
 	a:active { color: black; text-decoration: none; color: black;}
 	
-/* button */
-body {
-	margin: 0;
-	background: #eaedf1;
-	font-family: 'Lato', sans-serif;
+/***************************/
+     .social-btn .btn {
+		color: #fff;
+        margin: 10px 0 0 30px;
+		font-size: 15px;
+        width: 55px;
+        height: 55px;
+        line-height: 38px;
+        border-radius: 50%;
+		font-weight: normal;
+        text-align: center;
+		border: none;
+		transition: all 0.4s;
+    }	
+	.social-btn .btn:first-child {
+		margin-left: 0;
+	}
+	.social-btn .btn:hover {
+		opacity: 0.8;
+	}
+	.social-btn .btn-primary {
+		background: #507cc0;
+	}
+	.social-btn .btn-info {
+		background: #64ccf1;
+	}
+	.social-btn .btn-danger {
+		background: #df4930;
+	}
+	.social-btn .btn i {
+		font-size: 20px;
+	} 
+	
+ /*   .form-control {
+		font-size: 16px;
+		transition: all 0.4s;
+		box-shadow: none;
+	}
+	.form-control:focus {
+        border-color: #5cb85c;
+    }
+    .form-control, .btn {
+        border-radius: 50px;
+		outline: none !important;
+    }
+	.signin-form {
+		width: 400px;
+    	margin: 0 auto;
+		padding: 30px 0;
+	}
+    .signin-form form {
+		border-radius: 5px;
+    	margin-bottom: 20px;
+        background: #fff;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        padding: 40px;
+    }
+	.signin-form a {
+		color: #5cb85c;
+	}    
+	.signin-form h2 {
+		text-align: center;
+		font-size: 34px;
+		margin: 10px 0 15px;
+	}
+	.signin-form .hint-text {
+		color: #999;
+		text-align: center;
+		margin-bottom: 20px;
+	}
+	.signin-form .form-group {
+		margin-bottom: 20px;
+	}
+    .signin-form .btn {        
+        font-size: 18px;
+		line-height: 26px;        
+        font-weight: bold;
+		text-align: center;
+    }
+    .signin-form .small {
+        font-size: 13px;
+    }
+	.signup-btn {
+		text-align: center;
+		border-color: #5cb85c;
+		transition: all 0.4s;
+	}
+	.signup-btn:hover {
+		background: #5cb85c;
+		opacity: 0.8;
+	}
+    .or-seperator {
+        margin: 50px 0 15px;
+        text-align: center;
+        border-top: 1px solid #e0e0e0;
+    }
+    .or-seperator b {
+        padding: 0 10px;
+		width: 40px;
+		height: 40px;
+		font-size: 16px;
+		text-align: center;
+		line-height: 40px;
+		background: #fff;
+		display: inline-block;
+        border: 1px solid #e0e0e0;
+		border-radius: 50%;
+        position: relative;
+        top: -22px;
+        z-index: 1;
+    }
+    .social-btn .btn {
+		color: #fff;
+        margin: 10px 0 0 30px;
+		font-size: 15px;
+        width: 55px;
+        height: 55px;
+        line-height: 38px;
+        border-radius: 50%;
+		font-weight: normal;
+        text-align: center;
+		border: none;
+		transition: all 0.4s;
+    }	
+	.social-btn .btn:first-child {
+		margin-left: 0;
+	}
+	.social-btn .btn:hover {
+		opacity: 0.8;
+	}
+	.social-btn .btn-primary {
+		background: #33CC00;
+	}
+	.social-btn .btn-info {
+		background: #FFDD59;
+	}
+	.social-btn .btn-danger {
+		background: #df4930;
+	}
+	.social-btn .btn-primary:hover {
+	opacity: 0.1;
 }
-.header {
-	background: white;
-	padding: 30px;
-	text-align: center !important;
-}
-.header h1 {
-	font-weight: 300;
-	display: inline;
-}
-h2 {
-	color: #89867e;
-	text-align: center !important;
-	font-weight: 300;
-}
-.color {
-	width: 350px;
-	margin: 0 auto;
-}
-.color li {
-	margin: 0 15px 0 0;
-	width: 30px;
-	height: 30px;
-	display: inline-block;
-	border-radius: 100%;
-}
-.color .yellow {background: #f0d264;}
-.color .blue   {background: #6698cb;}
-.content, 
-.content-gradient, 
-.content-3d {
-  margin: 40px auto;
-}
-.content {
-  width: 80%;
-  max-width: 700px;
-}
-.content-3d {
-  width: 50%;
-  max-width: 300px;
-}
-pre {
-	width: 100%;
-	padding: 30px;
-	background-color: rgba(0, 0, 0, 0.72);
-	color: #f8f8f2;
-	border-radius: 0 0 4px 4px;
-	margin-top: 20px;
-  white-space: pre-wrap; /* css-3 */
-  white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
-  white-space: -pre-wrap; /* Opera 4-6 */
-  white-space: -o-pre-wrap; /* Opera 7 */
-  word-wrap: break-word; /* Internet Explorer 5.5+ */
-}
-pre .bt  {color: #f8f8f2;} /* <> */
-pre .anc {color: #f92672;} /* anchor tag */
-pre .att {color: #a6a926;} /* attribute */
-pre .val {color: #e6db74;} /* value */
-.btn-container, .container {
-	background-color: white;
-	border-radius: 4px;
-	text-align: center !important;
-	margin-bottom: 40px;
-}
-.container h2 {
-	padding-top: 30px;
-	font-weight: 300;
-}
-.btn, .btn-two {
-	margin: 9px;
-}
-.btn-gradient {
-	margin: 5px;
-}
-a[class*="btn"] {text-decoration: none;}
-input[class*="btn"], 
-button[class*="btn"] {border: 0;}
-/* Here you can change the button sizes */
-.btn.large, 
-.btn-two.large, 
-.btn-effect.large {
-  padding: 20px 40px; 
-  font-size: 22px;
-}
-.btn.small, 
-.btn-two.small, 
-.btn-gradient.small, 
-.btn-effect.small {
-  padding: 8px 18px;  
-  font-size: 14px;
-}
-.btn.mini, 
-.btn-two.mini, 
-.btn-gradient.mini, 
-.btn-effect.mini {
-  padding: 4px 12px;  
-  font-size: 12px;
-}
-.btn.block, 
-.btn-two.block, 
-.btn-gradient.block, 
-.btn-effect.block {
-  display: block;
-  width: 60%;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center !important;
-}
-.btn-gradient.large {
-  padding: 15px 45px; 
-  font-size: 22px;
-}
-/* Colors for .btn and .btn-two */
-.btn.blue, .btn-two.blue     {background-color: #7fb1bf;}
-.btn.yellow, .btn-two.yellow {background-color: #f0d264;}
-.rounded {
-  border-radius: 10px;
-}
-/* default button style */
-.btn {
-	position: relative;
-	border: 0;
-	padding: 15px 25px;
-	display: inline-block;
-	text-align: center !important;
-	color: white;
-}
-.btn:active {
-	top: 4px;	
-}
-/* color classes for .btn */
-.btn.blue {box-shadow: 0px 4px #74a3b0;}
-.btn.blue:active {box-shadow: 0 0 #74a3b0; background-color: #709CA8;}
-.btn.yellow {box-shadow:0px 4px 0px #D1B757;}
-.btn.yellow:active {box-shadow: 0 0 #ff4c4b; background-color: #D6BB59;}
-/* Button two - I have no creativity for names */
-.btn-two {
-	color: white;	
-	padding: 15px 25px;
-	display: inline-block;
-	border: 1px solid rgba(0,0,0,0.21);
-	border-bottom-color: rgba(0,0,0,0.34);
-	text-shadow:0 1px 0 rgba(0,0,0,0.15);
-	box-shadow: 0 1px 0 rgba(255,255,255,0.34) inset, 
-				      0 2px 0 -1px rgba(0,0,0,0.13), 
-				      0 3px 0 -1px rgba(0,0,0,0.08), 
-				      0 3px 13px -1px rgba(0,0,0,0.21);
-}
-.btn-two:active {
-	top: 1px;
-	border-color: rgba(0,0,0,0.34) rgba(0,0,0,0.21) rgba(0,0,0,0.21);
-	box-shadow: 0 1px 0 rgba(255,255,255,0.89),0 1px rgba(0,0,0,0.05) inset;
-	position: relative;
-}
-/* 3D Button */
-.btn-3d {
-	position: relative;
-	display: inline-block;
-	font-size: 22px;
-	padding: 20px 60px;
-	color: white !important;
-	margin: 20px 10px 10px;
-	border-radius: 6px;
-	text-align: center !important;
-	transition: top .01s linear;
-	text-shadow: 0 1px 0 rgba(0,0,0,0.15);
-}
-.btn-3d.yellow:hover {background-color: #F0D264;}
-.btn-3d.blue:hover   {background-color: #699DD1;}
-.btn-3d:active {
-	top: 9px;
-}
-/* 3D button colors */
-.btn-3d.yellow {
-	background-color: #F0D264;
-	box-shadow: 0 0 0 1px #F0D264 inset,
-				0 0 0 2px rgba(255,255,255,0.15) inset,
-				0 8px 0 0 rgba(196, 172, 83, .7),
-				0 8px 0 1px rgba(0,0,0,.4),
-				0 8px 8px 1px rgba(0,0,0,0.5);
-}
-.btn-3d.yellow:active {
-	box-shadow: 0 0 0 1px #F0D264 inset,
-				0 0 0 2px rgba(255,255,255,0.15) inset,
-				0 0 0 1px rgba(0,0,0,0.4);
-}
-.btn-3d.blue {
-	background-color: #6DA2D9;
-	box-shadow: 0 0 0 1px #6698cb inset,
-				0 0 0 2px rgba(255,255,255,0.15) inset,
-				0 8px 0 0 rgba(110, 164, 219, .7),
-				0 8px 0 1px rgba(0,0,0,.4),
-				0 8px 8px 1px rgba(0,0,0,0.5);
-}
-.btn-3d.blue:active {
-	box-shadow: 0 0 0 1px #6191C2 inset,
-				0 0 0 2px rgba(255,255,255,0.15) inset,
-				0 0 0 1px rgba(0,0,0,0.4);
-}
-/* Gradient buttons */
-.btn-gradient {
-	text-decoration: none;
-	color: white !important;
-	padding: 10px 30px !important;
-	display: inline-block;
-	position: relative;
-	border: 1px solid rgba(0,0,0,0.21);
-	border-bottom: 4px solid rgba(0,0,0,0.21);
-	border-radius: 4px;
-	text-shadow: 0 1px 0 rgba(0,0,0,0.15);
-}
-.btn-gradient.blue {
-	background: rgba(102,152,203,1);
-	background: -moz-linear-gradient(top, rgba(102,152,203,1) 0%, rgba(92,138,184,1) 100%);
-	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(102,152,203,1)), color-stop(100%, rgba(92,138,184,1)));
-	background: -webkit-linear-gradient(top, rgba(102,152,203,1) 0%, rgba(92,138,184,1) 100%);
-	background: -o-linear-gradient(top, rgba(102,152,203,1) 0%, rgba(92,138,184,1) 100%);
-	background: -ms-linear-gradient(top, rgba(102,152,203,1) 0%, rgba(92,138,184,1) 100%);
-	background: linear-gradient(to bottom, rgba(102,152,203,1) 0%, rgba(92,138,184,1) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6698cb', endColorstr='#5c8ab8', GradientType=0 );
-}
-.btn-gradient.yellow {
-	background: rgba(240,210,100,1);
-	background: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(240,210,100,1)), to(rgba(229,201,96,1)));
-	background: -webkit-linear-gradient(rgba(240,210,100,1) 0%, rgba(229,201,96,1) 100%);
-	background: -moz-linear-gradient(rgba(240,210,100,1) 0%, rgba(229,201,96,1) 100%);
-	background: -o-linear-gradient(rgba(240,210,100,1) 0%, rgba(229,201,96,1) 100%);
-	background: linear-gradient(rgba(240,210,100,1) 0%, rgba(229,201,96,1) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0d264', endColorstr='#e5c960', GradientType=0 );
-}
-.btn-gradient.yellow:active {background: #DBC05B;}
-.btn-gradient.blue:active 	{background: #608FBF;}	
 
+.social-btn .btn-info:hover {
+	opacity: 0.1;
+}
+
+.social-btn .btn-danger:hover {
+	opacity: 0.1;
+}
+	.social-btn .btn i {
+		font-size: 20px;
+	} */
 
 </style>
 <script type="text/javascript">
@@ -389,7 +301,7 @@ button[class*="btn"] {border: 0;}
   <script src='https://vjs.zencdn.net/7.6.0/video.js'></script>
 </head>
 <body>
- 	<%-- <jsp:include page="../common/mainBar.jsp"></jsp:include> --%>
+ 	<jsp:include page="../common/mainBar.jsp"></jsp:include>
 	<br><br><br>
 	<%-- <c:forEach items="${list}" --%>
 	<div align="center">
@@ -423,15 +335,20 @@ button[class*="btn"] {border: 0;}
 					</div>
 				</td>
 				
-				<td width="110px" height="60px">
+				<td width="80px" height="60px">
 					<div style="margin-top:28%; align:right;">
-					<nav class="navbar navbar-default navbar-expand-lg navbar-light" style="border:none;">
-							<ul class="nav navbar-nav navbar-right ml-auto" style="width:130px;">			
+
+					</div>
+				</td>
+				<td width="240px" height="60px">
+					<div align="right" style="margin-top:15%;">
+						<nav class="navbar navbar-default navbar-expand-lg navbar-light" style="border:none;">
+							<ul class="nav navbar-nav navbar-right ml-auto" style="width:300px;">			
 								<li class="nav-item">
-									<a href="#none" data-toggle="dropdown">
+									<a href="#none" data-toggle="dropdown" id="subtitle">
 										<img src="resources/images/dollar.png" style="width:15px; align:right;">
 									</a>
-									<ul class="dropdown-menu form-wrapper" style="width:280px;">					
+									<ul class="dropdown-menu form-wrapper" style="width:350px;">					
 										<li>
 											<div class="form-group" id="sub">
 												<table class="noti_table">
@@ -527,31 +444,6 @@ button[class*="btn"] {border: 0;}
 								</li>
 								<li class="nav-item">
 									<a href="#none">
-									<img src="resources/images/share.png" style="width:15px; align:right;">
-									</a>
-									<ul class="dropdown-menu form-wrapper" style="width:280px;">					
-										<li>
-											<div class="form-group" id="sub">
-												<table class="noti_table">
-													<tr><a id="regSub">공유</a></tr><br>
-													<tr><a id="onceSub">일시후원</a></tr><br>
-												</table>
-											</div>
-										</li>
-									</ul>		
-								</li>
-								
-								
-							</ul>
-						</nav>
-						</div>
-				</td>
-				<td width="200px" height="60px">
-					<div align="right" style="margin-top:15%;">
-						<nav class="navbar navbar-default navbar-expand-lg navbar-light" style="border:none;">
-							<ul class="nav navbar-nav navbar-right ml-auto" style="width:200px;">			
-								<li class="nav-item">
-									<a href="#none">
 									<img src="resources/images/heart_black.png" id="like" style="width:15px;" onclick="selectLike()">
 								</a>
 								</li>
@@ -563,62 +455,105 @@ button[class*="btn"] {border: 0;}
 								</li>
 								
 								<li class="nav-item">
-								<a href="#none" data-toggle="dropdown">
+								<a href="#none">
 									<img src="resources/images/bookmark.png" id="bookmark" style="width:15px;" onclick="selectBookmark()">
 								</a>
 								</li>
-								<li class="nav-item">
-									<a href="myPage.me" class="btn_global link_login" onclick="account();">
-									<img src="resources/images/more.png" style="width:15px;">
+								<li class="nav-item" >
+									<a href="#none" data-toggle="dropdown" id="threeMore">
+									<img src="resources/images/more.png"  style="width:15px; align:right;">
 									</a>
 									<ul class="dropdown-menu form-wrapper" style="width:280px;">					
 										<li>
-											<div class="form-group" id="sub">
-												<table class="noti_table">
-													<tr><a id="regSub">신고</a></tr><br>
-													<tr><a id="onceSub">차단</a></tr><br>
-													<tr><a id="share">공유</a></tr><br>
+											<div class="form-group" id="more">
+												<table class="noti_table" align="center">
+													<tr><td><a id="report">신고</a></td></tr>
+													<tr><td><a id="block">차단</a></td></tr>
+													<tr><td><a id="share">공유</a></td></tr>
 												</table>
 											</div>
-											<!-- 신고&차단 -->
-											<div id="rSub">
-												<div class="noti_text" align="center" style="margin-top:5%;"><b>정기후원</b></div>
+											<!-- 신고 -->
+											<div id="report1">
+												<div class="noti_text" align="center" style="margin-top:5%;"><b>동영상신고</b></div>
 												<div align="left" style="margin-left:10%; margin-right:10%;">
 													<table class="noti_table">
-														<tr><td><small>채널명</small></td></tr>
-														<tr><td><b>${ list1[0].chNm }</b></td></tr>
-														<tr><td><small>포인트조회</small></td></tr>
-														<tr><td><input type="text" class="form-control" id="rPoint" placehold="포인트를 조회하세요" readonly></td></tr>
+														<tr><td>
+															<div class="checks" style="display:inline-block;">
+										                      <div style="display:inline-block;"><input type="radio" id="more1" value="성적인 콘텐츠" name="more" onclick="check_onle(this)"></div>
+										                      <div style="display:inline-block;"><label for="more1">성적인 콘텐츠</label></div><br>
+										                      <div style="display:inline-block;"><input type="radio" id="more2" value="폭력적 또는 혐오스러운 콘텐츠" name="more" onclick="check_onle(this)"></div> 
+										                      <div style="display:inline-block;"><label for="more2">폭력적 또는 혐오스러운 콘텐츠</label></div><br>
+										                      <div style="display:inline-block;"><input type="radio" value="증오 또는 악의적인 콘텐츠" id="more3" name="more" onclick="check_onle(this)"></div> 
+										                      <div style="display:inline-block;"><label for="more3">증오 또는 악의적인 콘텐츠</label></div><br>
+										                      <div style="display:inline-block;"><input type="radio" id="more4" value="유해한 위험 행위" name="more" onclick="check_onle(this)"></div>
+										                      <div style="display:inline-block;"><label for="more1">유해한 위험 행위</label></div><br>
+										                      <div style="display:inline-block;"><input type="radio" id="more5" value="아동 학대" name="more" onclick="check_onle(this)"></div> 
+										                      <div style="display:inline-block;"><label for="more2">아동 학대</label></div><br>
+										                      <div style="display:inline-block;"><input type="radio" value="테러 조장" id="more6" name="more" onclick="check_onle(this)"></div> 
+										                      <div style="display:inline-block;"><label for="more3">테러 조장</label></div><br>
+										                      <div style="display:inline-block;"><input type="radio" id="more7" value="스팸 또는 사용자 현혹 콘텐츠" name="more" onclick="check_onle(this)"></div>
+										                      <div style="display:inline-block;"><label for="more1">스팸 또는 사용자 현혹 콘텐츠</label></div><br>
+										                      <div style="display:inline-block;"><input type="radio" id="more8" value="권리 침해" name="more" onclick="check_onle(this)"></div> 
+										                      <div style="display:inline-block;"><label for="more2">권리 침해</label></div><br>
+										                      <div style="display:inline-block;"><input type="radio" value="자막 문제" id="more9" name="more" onclick="check_onle(this)"></div> 
+										                      <div style="display:inline-block;"><label for="more3">자막 문제</label></div><br>
+										                      <small>Daily log<br> 커뮤니티 가이드를 위반한 계정을 제재를 받게 되며 심각하거나 반복적인 위반 행위에 대해서는 계정 해지 조치가 취해질 수 있습니다. <a href="" style="color:red;">채널 신고하기</a></small>	
+										                    </div>
+														</td></tr>
 														<tr>
 															<td>
-																<a href="selectPoint.vd" id="selectPoint" style="width:50px; text-align:center;" class="btn-gradient yellow mini">조회</a>
-																<a href="" id="chargeBtn" style="width:50px; text-align:center;" class="btn-gradient blue mini">충전</a>
-															</td>
-														</tr>
-																											
-														<tr><td><small>후원</small></td></tr>
-														<tr><td><input type="text" class="form-control" id="rPrice" placehold="후원금액을 입력하세요"></td></tr>
-														<tr>
-															<td>
-																<a style="width:50px;text-align:center;" class="btn-gradient yellow mini" id="cancle1">취소</a>
-																<a id="rOk" style="width:50px; text-align:center;" class="btn-gradient blue mini">후원</a>
+																<a style="width:50px;text-align:center;display:inline-block;" class="btn btn-join btn-lg btn-block" id="cancle4">취소</a>
+																<a id="rOk" style="width:50px; display:inline-block;text-align:center;" class="btn btn-join btn-lg btn-block">다음</a>
 															</td>
 														</tr>
 													</table>
 												</div>
 											</div>
-											
+											<!-- 차단 -->
+											<div id="block1">
+												<div class="noti_text" align="center" style="margin-top:5%;">
+													<img src="resources/images/caution.png" style="width:30px; margin:5%;"><br>
+												</div>
+												<div align="center" style="margin-left:10%; margin-right:10%; text-align:center">
+													<table class="noti_table">
+														<tr><td><b>채널 차단에 관한 공지</b></td></tr>
+														<tr>
+															<td>
+																<small>앞으로 <b>${ list1[0].chNm }</b>채널에 대한 영상을<br> 추천 받지 않게 됩니다.</small>
+															</td>
+														</tr>
+														<tr><td style="color:red;"><small><b>*자세한 내용은 공지사항을 참고해 주세요</b></small></td></tr>
+														<tr>
+															<td>
+																<a style="width:50px;text-align:center;" class="btn-gradient yellow small" id="cancle5">취소</a>
+																<a id="cau_ok" style="width:50px; text-align:center;" class="btn-gradient blue small">확인</a>
+															</td>
+														</tr>
+													</table>
+												</div>
+											</div>
+											<!-- 공유 -->
+											<div id="share1">
+															<div class="social-btn text-center">
+				<a href="#" class="btn btn-primary btn-lg" title="Facebook"><i
+					class="fa fa-naver" style="font-weight: 900">N</i></a> <a href="#"
+					class="btn btn-info btn-lg" title="Twitter"><i
+					class="fa fa-kakaotalk" style="font-weight: 900">K</i></a> <a href="#"
+					class="btn btn-danger btn-lg" title="Google"><i
+					class="fa fa-google"></i></a>
+			</div>
+												  		<!-- <div class="social-btn text-center">
+			<a href="#" class="btn btn-primary btn-lg" title="Facebook"><i class="fa fa-facebook"></i></a>
+			<a href="#" class="btn btn-info btn-lg" title="Twitter"><i class="fa fa-twitter"></i></a>
+			<a href="#" class="btn btn-danger btn-lg" title="Google"><i class="fa fa-google"></i></a>
+		</div> -->
+											</div>
 										</li>
 									</ul>
 								</li>
 							</ul>
 						</nav>
-						
-<!-- 					
-						<img src="resources/images/heart_red.png" style="width:15px">
-						<img src="resources/images/broken_color.png" style="width:15px">
-						<img src="resources/images/bookmark_color.png" style="width:15px">
- -->
+					
 					</div>
 				</td>
 			</tr>
@@ -651,7 +586,7 @@ button[class*="btn"] {border: 0;}
 					</div>
 				</td>
 			</tr>
-			<tr>				
+			<tr>
 				<!-- 더보기 -->
 				<td colspan="4" height="130px">
 					더보기
@@ -661,7 +596,16 @@ button[class*="btn"] {border: 0;}
 	</div>
 	
 	<script>
-			var state = 0;
+	    function oneCheckbox(a){
+	        var obj = document.getElementsById("more");
+	
+	        for(var i=0; i<obj.length; i++){
+	            if(obj[i] != a){ obj[i].checked = false;}
+	        }
+	    }
+
+	    
+		var state = 0;
 		//좋아요 조회
 		function selectLike(){
 			var chNo = "<c:out value='${list2[0].chNo}'/>";
@@ -877,8 +821,6 @@ button[class*="btn"] {border: 0;}
 					}					
 				});
 			}); 
-		//후원 div 
-		 $(document).ready(function(){
 /* 		//정산상태
 		var userNo1 = "<c:out value='${list2[0].userNo}'/>";
 		var chNo = "<c:out value='${list2[0].chNo}'/>";
@@ -895,12 +837,16 @@ button[class*="btn"] {border: 0;}
 					console.log("실패");
 				}
 			}); */
-			
-			 $('#sub').show();
-			 $('#rSub').hide();
-			 $('#oSub').hide();
-			 $('#caution').hide();
-			 $('#charge').hide();
+		//후원 div 
+		 $(document).ready(function(){
+			$('#subtitle').click(function(){
+				 $('#sub').show();
+				 $('#rSub').hide();
+				 $('#oSub').hide();
+				 $('#caution').hide();
+				 $('#charge').hide();
+				 //return false;
+			});
 			 //정기후원
 			 $('#regSub').click(function(){
 				 $('#sub').hide();
@@ -971,6 +917,50 @@ button[class*="btn"] {border: 0;}
 				 $('#oSub').hide();
 				 $('#caution').hide();
 				 $('#charge').show();
+				 return false;
+			 });
+			 $('#threeMore').click(function(){
+				 $('#more').show();
+				 $('#report1').hide();
+				 $('#block1').hide();
+				 $('#share1').hide();
+				 //return false;
+			 });
+			 //$('#report1').hide();
+
+			 $('#report').click(function(){
+				 $('#more').hide();
+				 $('#report1').show();
+				 $('#block1').hide();
+				 $('#share1').hide();
+				 return false;
+			 });
+			 $('#block').click(function(){
+				 $('#more').hide();
+				 $('#report1').hide();
+				 $('#block1').show();
+				 $('#share1').hide();
+				 return false;
+			 });
+			 $('#share').click(function(){
+				 $('#more').hide();
+				 $('#report1').hide();
+				 $('#block1').hide();
+				 $('#share1').show();
+				 return false;
+			 });
+			 $('#cancle4').click(function(){
+				 $('#more').show();
+				 $('#report1').hide();
+				 $('#block1').hide();
+				 $('#share1').hide();
+				 return false;
+			 });
+			 $('#cancle5').click(function(){
+				 $('#more').show();
+				 $('#report1').hide();
+				 $('#block1').hide();
+				 $('#share1').hide();
 				 return false;
 			 });
 		 });
