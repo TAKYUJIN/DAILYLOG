@@ -100,6 +100,7 @@ public class AdminServiceImpl implements AdminService {
 	public List<Object> repreportlist(Report report) {
 		// TODO Auto-generated method stub
 		return ad.repreportlist(sqlSession,report);
+	}
 
 	//관리자 정산 페이지
 	@Override
