@@ -7,7 +7,6 @@ public class Loger2 {
 	private int userNo;		//회원번호
 	private String chNm;		//채널명
 	private int vNo;		//동영상번호
-	private String calApply;//정산신청
 	private Date chDT;		//채널생성일자
 	private String chInfo;	//채널정보
 	private String accNm;	//예금주
@@ -18,14 +17,13 @@ public class Loger2 {
 	
 	public Loger2() {}
 
-	public Loger2(int chNo, int userNo, String chNm, int vNo, String calApply, Date chDT, String chInfo, String accNm,
+	public Loger2(int chNo, int userNo, String chNm, int vNo, Date chDT, String chInfo, String accNm,
 			String bankNm, String account, int subNum, String enrollNm) {
 		super();
 		this.chNo = chNo;
 		this.userNo = userNo;
 		this.chNm = chNm;
 		this.vNo = vNo;
-		this.calApply = calApply;
 		this.chDT = chDT;
 		this.chInfo = chInfo;
 		this.accNm = accNm;
@@ -67,13 +65,6 @@ public class Loger2 {
 		this.vNo = vNo;
 	}
 
-	public String getCalApply() {
-		return calApply;
-	}
-
-	public void setCalApply(String calApply) {
-		this.calApply = calApply;
-	}
 
 	public Date getChDT() {
 		return chDT;
@@ -133,9 +124,9 @@ public class Loger2 {
 
 	@Override
 	public String toString() {
-		return "Loger2 [chNo=" + chNo + ", userNo=" + userNo + ", chNm=" + chNm + ", vNo=" + vNo + ", calApply="
-				+ calApply + ", chDT=" + chDT + ", chInfo=" + chInfo + ", accNm=" + accNm + ", bankNm=" + bankNm
-				+ ", account=" + account + ", subNum=" + subNum + ", enrollNm=" + enrollNm + "]";
+		return "Loger2 [chNo=" + chNo + ", userNo=" + userNo + ", chNm=" + chNm + ", vNo=" + vNo + ", chDT=" + chDT
+				+ ", chInfo=" + chInfo + ", accNm=" + accNm + ", bankNm=" + bankNm + ", account=" + account
+				+ ", subNum=" + subNum + ", enrollNm=" + enrollNm + "]";
 	}
 
 	

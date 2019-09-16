@@ -65,49 +65,46 @@ public class LogerDaoImpl implements LogerDao{
 		
 	}
 
-	//로거 계좌번호 insert
+	//로거 계좌번호 update
 	@Override
 	public int updateLogerAccount(SqlSessionTemplate sqlSession, Member m) {
 		return sqlSession.update("Loger.updateLogerAccount", m);
 	}
-
-	/*
-	 * @Override public ArrayList<Integer>
-	 * selectLogetSupportPrice(SqlSessionTemplate sqlSession, Support s, Member m) {
-	 * int[] pList = null;
-	 * 
-	 * pList = (ArrayList) sqlSession.selectList("Loger.selectLogetSupportPrice",
-	 * m);
-	 * 
-	 * System.out.println("pList : " + pList);
-	 * 
-	 * return pList; }
-	 */
-	
-	/*
-	@Override
-	public ArrayList<Integer> selectLogetSupportPrice(SqlSessionTemplate sqlSession, Support s, Member m) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	*/
-	
-
-	 
-
-	
 	
 	//후원기간 조회 후 그 기간에 따른 정산 금액만 select
 	 @Override 
-	 public ArrayList<Support> selectLogetSupportPrice(SqlSessionTemplate sqlSession, Support s, Member m) {
+	 public ArrayList<Support> selectLogerSupportPrice(SqlSessionTemplate sqlSession, Support s, Member m) {
 	 ArrayList<Support> pList = null;
 	 
-	 pList = (ArrayList) sqlSession.selectList("Loger.selectLogetSupportPrice", m);
+	 pList = (ArrayList) sqlSession.selectList("Loger.selectLogerSupportPrice", m);
 	 
 	 System.out.println("pList : " + pList);
 	 
 	 return pList; 
 	 }
+	 
+	 //기간별 후원내역 조회 후 정산내역으로 insert
+	 @Override
+	 public int insertLogerCalculate(SqlSessionTemplate sqlSession, Calculate c) {
+		 return sqlSession.insert("Loger.insertLogerCalculate", c);
+	 }
+
+	 //로거 정보 가져오기
+	 @Override
+	 public ArrayList<Loger> selectLogerInfo(SqlSessionTemplate sqlSession, Member m) {
+		 ArrayList<Loger> loger = null;
+		 loger = (ArrayList) sqlSession.selectList("Loger.selectLogerInfo", m);
+		
+		 return loger;
+	 }
+	 
+	 //후원내역 정산유무 update
+	 @Override
+	 public int updateSupportCalculate(SqlSessionTemplate sqlSession, Member m) {
+		 System.out.println("오니?");
+		 return sqlSession.update("Loger.updateSupportCalculate", m);
+	 }
+	 
 	 
 	 //로거스튜디오(프로필, 채널명,구독자수)
 	@Override
@@ -124,7 +121,6 @@ public class LogerDaoImpl implements LogerDao{
 	}
 
 	
-	//후원기간 조회 후 정산 총금액 insert
 	
 
 	//로거 신고내역
@@ -153,8 +149,8 @@ public class LogerDaoImpl implements LogerDao{
 
 		return sqlSession.update("Loger.cstop",r);
 	}
-	 
- 
-	 
+	
+	
+	
 }
 	

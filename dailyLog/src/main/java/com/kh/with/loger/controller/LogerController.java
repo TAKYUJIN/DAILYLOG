@@ -113,7 +113,7 @@ public class LogerController {
 
 		int result = ls.updateLogerAccount(m);
 
-		return "/loger/selectSupport.lo";
+		return "loger/selectLogerCalculate";
 	}
 
 	// 후원 내역 기간 선택 테스트용
@@ -139,6 +139,8 @@ public class LogerController {
 
 		mv.addObject("dateList", dateList);
 		mv.setViewName("jsonView");
+		
+		System.out.println(dateList);
 
 
 		return mv;
@@ -148,7 +150,7 @@ public class LogerController {
 	@RequestMapping(value="logerCalculateApply.lo")
 	public String selectLogerCalculateApply(HttpSession session, HttpServletRequest request,
 			@RequestParam(value = "monthDate", required = false) Date mon,
-			@RequestParam(value = "todayDate", required = false) Date day, Support s, Model model,
+			@RequestParam(value = "todayDate", required = false) Date day, Support s, Calculate c, Model model,
 			HttpServletResponse response) {
 		
 		response.setContentType("text/html;charset=UTF-8");
@@ -156,39 +158,49 @@ public class LogerController {
 		m.setMon(mon);
 		m.setDay(day);
 		
-		System.out.println(mon);
-		System.out.println(day);
+		//기간별 후원내역 조회의 총 금액
+		ArrayList<Support> pList = ls.selectLogerSupportPrice(s, m);
 		
-		ArrayList<Support> pList = ls.selectLogetSupportPrice(s, m);
-		model.addAttribute("pList", pList);
+		//loger정보 가져오기
+		ArrayList<Loger> loger = ls.selectLogerInfo(m);
 		
-		System.out.println("pList    " + pList.size());
-		
-		int sum = 0;
+		int calPrice = 0;
 		for(int i =0; i < pList.size(); i++){
 			
-		sum += pList.get(i).getSupPrice();
+			calPrice += pList.get(i).getSupPrice();
 		
 		}
+				
+		int calVAT = (int) (calPrice * 0.3);	//수수료
+		int amountPrice = (int) (calPrice * 0.7);	//실수령액
+		int userNo = m.getUserNo();
+		int chNo = loger.get(0).getChNo();
+		String accNm = loger.get(0).getAccNm();
+		String bankNm = loger.get(0).getBankNm();
+		String account = loger.get(0).getAccount();
 		
-		System.out.println("가격가격    " + sum);
+		c.setUserNo(userNo);
+		c.setCalPrice(calPrice);
+		c.setCalVAT(calVAT);
+		c.setAmountPrice(amountPrice);
+		c.setAccNm(accNm);
+		c.setBankNm(bankNm);
+		c.setAccount(account);
+		c.setChNo(chNo);
 		
-//		 ArrayList<Integer> price = null;
-//		
-//		
-//		for(int i = 0; i < pList.size(); i++) {
-//			price = pList[i].supPrice;
-//		}
+		System.out.println("왜안나와");
 		
-//		int[] price = new int[pList.size()];
-//	    for (int i=0; i < price.length; i++)
-//	    {
-//	        price[i] = pList[i].supPrice();
-//	    }
-//		
-//		System.out.println(price);
+		//정산내역 insert
+		int result = ls.insertLogerCalculate(c);
 		
+		//후원내역에 정산유무 update
+		int result2 = ls.updateSupportCalculate(m);
+		System.out.println(result2);
 		
+		if(result > 0 && result2 > 0) {
+			model.addAttribute("msg", "정산 신청이 완료되셨습니다.");
+			model.addAttribute("url", "logerCalculate.jsp");
+		}
 
 		return "loger/logerCalculate";
 	}
