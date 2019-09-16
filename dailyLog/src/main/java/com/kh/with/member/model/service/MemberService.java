@@ -33,11 +33,13 @@ public interface MemberService {
 	//mypage 탈퇴
 	int delete_myPage(Member m) throws Exception;
 
-	void mailSendWithUserKey(String userId, String userNm, HttpServletRequest request);
+	void mailSendWithUserKey(Member m, HttpServletRequest request);
 
-	int alter_userKey_service(String userId, String key);
+	//int alter_userKey_service(String userId, String key);
 	//회원 계정 중지
 	int ustop(Member m);
+
+	int alter_userKey_service(String userId, String status);
 
 	
 

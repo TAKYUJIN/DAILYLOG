@@ -106,22 +106,23 @@ public class MemberDaoImpl implements MemberDao{
 
 
 	@Override
-	public int GetKey(String userId, String key) {
+	public int GetKey(Member m) {
 		
 		System.out.println("md.getKey() ... ");
 			
 		
-		return sqlSession.update("Member.GetKey", key);
+		return sqlSession.update("Member.joinGetKey", m);
+
 	}
-
-
 
 	@Override
-	public int alter_userKEY(String userId, String status) {
-		System.out.println("md.alter_userKey ...");
+	public int alter_userKey(String userId, String status) {
 		
-		return sqlSession.update("Member.alter_userKey", status);
+		
+		return sqlSession.update("Member.alter_userKey", userId);
 	}
+
+	
 
 
 
@@ -131,6 +132,10 @@ public class MemberDaoImpl implements MemberDao{
 		
 		return sqlSession.update("Member.ustop",m);
 	}
+
+
+
+
 
 
 
