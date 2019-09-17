@@ -21,7 +21,7 @@ import com.kh.with.main.model.vo.MailVo;
 public class MailSendService {
 	 
 	
-	  @Autowired 
+	/*  @Autowired 
 	  private JavaMailSender mailSender;
 	  
 	  @Autowired 
@@ -51,50 +51,21 @@ public class MailSendService {
 	  userDao.GetKey(userId, status_yn); 
 	  MimeMessage mail = mailSender.createMimeMessage(); 
 	  String content = request.getParameter("content");
-	 // MimeMessageHelper messageHelper = new MimeMessageHelper(mail,true, "UTF-8");  
-		/*
-		 * String contents = content +
-		 * "<img src=\"https://s3.ap-northeast-2.amazonaws.com/opentutorials-user-file/module/1590/3428.jpg\">"
-		 * ; messageHelper.setText(contents, true);
-		 */
-		 
-		   
-	 
-			  String htmlStr =
+			  String htmlStr =*/
 				/*
 				 * "<img src= 'resources\images\logo.png\' style='width:90px; padding-top:10px;\'>"
-				 */   "<h2>안녕하세요 :Daily Log 입니다</h2><br><br>" + "<h3>" + friId +
-			  "님 친구 요청이 도착 하였습니다.</h3>" + "<p>요청보기 버튼을 누르시면 친구 요청을 보실 수 있습니다 : " +
+	 			 */   
+	/*"<h2>안녕하세요 :Daily Log 입니다</h2><br><br>" + "<h3>" + friId +
+			  "님 친구 요청이 도착 하였습니다.</h3>" + "<p>친구 수락을 누르시면 친구 수락이 완료 됩니다 : " +
 			  "<a href='http://localhost:8001" + request.getContextPath() +
 			  "/frimail.mb?userId="+ userId
-			  +"&status_yn="+status_yn+"'><button style='background:blue;'>요청 보기</button></a></p>" +
+			  +"&status_yn="+status_yn+"'><button style='background:#000080;font-size:2em; border-radius:0.5em; padding:5px 20px; width:150px;height:150px;'>요청 보기</button></a></p>" +
 			  "(혹시 잘못 전달된 메일이라면 이 이메일을 무시하셔도 됩니다)"; try {
 			  mail.setSubject("[친구추가] :친구추가 메일 입니다", "utf-8"); mail.setText(htmlStr,
 			  "utf-8", "html"); mail.addRecipient(RecipientType.TO, new
 			  InternetAddress(friId)); mailSender.send(mail); } catch (MessagingException
 			 e) { e.printStackTrace(); }
 			  
-			/*  String htmlStr1 =
-			  
-			  
-			 * "<img src='resources/images/logo.png' style='width:90px; padding-top:10px;'>"
-			 * 
-			 * +"<h1>안녕하세요 :Daily Log 입니다</h1><br><br>" + "<h3>" + friId +
-			 * "님 친구 요청이 도착 하였습니다.</h3>" + "<p>친구 추가 버튼을 누르시면 친구 추가가 완료됩니다. : " +
-			 * "<a href='http://localhost:8001" + request.getContextPath() +
-			 * "/frimail.mb?userId="+ userId +"&status_yn="+
-			 * status_yn+"'><button style='background:blue;'>친구 추가</button></a></p>" +
-			 * "(혹시 잘못 전달된 메일이라면 이 이메일을 무시하셔도 됩니다)"; try {
-			 * mail.setSubject("[친구추가] :친구추가 메일 입니다", "utf-8"); mail.setText(htmlStr,
-			 * "utf-8", "html"); mail.addRecipient(RecipientType.TO, new
-			 * InternetAddress(friId)); mailSender.send(mail); } catch (MessagingException
-			 * e) { e.printStackTrace(); }
-			 */ 
-			  
-	   
-	  
-	  
-	  
 	  }
 	  
 	  public int alter_userKey_service(String userId, String status_yn) {
@@ -106,6 +77,64 @@ public class MailSendService {
 	  
 	  return resultCnt; }
 	 
+	 
+	*/
+	
+	@Autowired 
+	  private JavaMailSender mailSender;
+	  
+	  @Autowired 
+	  private SqlSessionTemplate sqlSession; 
+	  private MailDao userDao;
+	  
+	  private String init() { Random ran =new Random(); 
+	  StringBuffer sb=new StringBuffer(); int num=0;
+	  
+	  do { num=ran.nextInt(75)+48; if((num >=48 && num <= 57) || (num >=65 && num <=90)||(num >=97 && num<=122)) {
+	  
+	  sb.append((char)num); }else { continue; } }while(sb.length()<size);
+	  if(lowerCheck) { return sb.toString().toLowerCase(); }return sb.toString();
+	  
+	  }
+	  
+	  private boolean lowerCheck; private int size; public String getKey(boolean
+	  lowerCheck,int size) {
+	  
+	  this.lowerCheck=lowerCheck; this.size=size; return init(); }
+	  
+	  public void mailSendWithUserKey(String friId,String userId,HttpServletRequest request) {
+		  
+		  System.out.println("mailSendWithUserKey"+userId);
+	  String status_yn = getKey(false, 20); 
+	  userDao = sqlSession.getMapper(MailDao.class); 
+	  userDao.GetKey(friId, status_yn); 
+	  MimeMessage mail = mailSender.createMimeMessage(); 
+	  String content = request.getParameter("content");
+			  String htmlStr =
+				/*
+				 * "<img src= 'resources\images\logo.png\' style='width:90px; padding-top:10px;\'>"
+				 */   "<h2>안녕하세요 :Daily Log 입니다</h2><br><br>" + "<h3>" + friId +
+			  "님 친구 요청이 도착 하였습니다.</h3>" + "<p>친구 수락을 누르시면 친구 수락이 완료 됩니다 : " +
+			  "<a href='http://localhost:8001" + request.getContextPath() +
+			  "/frimail.mb?userId="+ friId
+			  +"&status_yn="+status_yn+"'><br><button style='background:#000080;color:#fff; border-radius:0.5em; padding:5px 20px; width:190px;height:50px;'>친구 수락</button></a></p>" +
+			  "(혹시 잘못 전달된 메일이라면 이 이메일을 무시하셔도 됩니다)"; try {
+			  mail.setSubject("[친구추가] :친구추가 메일 입니다", "utf-8"); mail.setText(htmlStr,
+			  "utf-8", "html"); mail.addRecipient(RecipientType.TO, new
+			  InternetAddress(friId)); mailSender.send(mail); } catch (MessagingException
+			 e) { e.printStackTrace(); }
+			  
+	  }
+	  
+	  public int alter_userKey_service(String userId, String status_yn) {
+	  
+	  int resultCnt = 0;
+	  
+	  userDao = sqlSession.getMapper(MailDao.class); 
+	  resultCnt = userDao.alter_userKEY(userId, status_yn);
+	  
+	  return resultCnt; }
+
 	 
 	
 	/*

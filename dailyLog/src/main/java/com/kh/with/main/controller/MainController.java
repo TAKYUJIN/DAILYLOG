@@ -95,7 +95,8 @@ public class MainController {
 	// 메일 보내기
  
 	
-	  @RequestMapping(value = "mailSending.mb",method=RequestMethod.GET)
+	  
+	@RequestMapping(value = "mailSending.mb",method=RequestMethod.GET)
 	  public String mailSending(MailVo MailVo,Model model,HttpServletRequest request) {
 		  String userId = request.getParameter("userId");
 		  
@@ -116,7 +117,10 @@ public class MainController {
 	  
 	  return "friends/emailConfirm"; 
 	  }
-
+	
+	
+	
+	
 	  @RequestMapping(value = "List.mb", method = RequestMethod.GET) 
 	  public String friendlist(Model model,Member m,HttpSession session) throws Exception{
 		   m = (Member) session.getAttribute("loginUser");

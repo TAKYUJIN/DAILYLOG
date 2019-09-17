@@ -283,6 +283,7 @@
      ON(M.USER_NO=R.RE_TARGET)
     WHERE (RE_TY='동영상' OR  RE_TY='채널')
      AND RE_TARGET=#{userNo}
+
 	</select>
 	
 	<!-- 로거 동영상 출력 -->
@@ -297,6 +298,7 @@
 	
 	</select>
 	
+
 
 
 </mapper>

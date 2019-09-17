@@ -32,7 +32,8 @@
 	
 	<select id="FriendList" resultMap="FriendListResultSet" parameterType="com.kh.with.main.model.vo.MailVo">
 	
-		SELECT DISTINCT USER_ID,FRI_ID FROM FRIEND WHERE STATUS_YN='Y'
+		 SELECT DISTINCT USER_ID, FRI_ID FROM FRIEND WHERE STATUS_YN='Y'
+     AND USER_ID=#{userId}
 	
 	</select>
 	 
