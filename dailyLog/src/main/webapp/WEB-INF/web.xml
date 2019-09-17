@@ -97,7 +97,16 @@
 		</init-param>
 	 </servlet>
 	
-	
+	<servlet>
+	<servlet-name>chat</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/config/chat-servlet.xml</param-value>
+		</init-param>
+	 </servlet>
+	 
+	 
 	<servlet-mapping>
 		<servlet-name>member</servlet-name>
 		<url-pattern>*.me</url-pattern>
@@ -136,6 +145,11 @@
 	 <servlet-mapping>
 		<servlet-name>block</servlet-name>
 		<url-pattern>*.bl</url-pattern>
+	</servlet-mapping>
+	
+	 <servlet-mapping>
+		<servlet-name>chat</servlet-name>
+		<url-pattern>*.ch</url-pattern>
 	</servlet-mapping>
 	
 	<!-- 등록되어 있는 인코딩 필터를 사용하기 위해서 작성 -->

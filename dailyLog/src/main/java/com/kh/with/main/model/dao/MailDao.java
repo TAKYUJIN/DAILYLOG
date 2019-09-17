@@ -12,8 +12,8 @@ import com.kh.with.main.model.vo.MailVo;
   public interface MailDao {
 	//친구메일 보내기~  
   int regUser(MailVo mailVo) throws SQLException;
-  int GetKey(String userId, String status_yn); //int alter_userKEY(String friId,
-  int alter_userKEY(String userId, String status_yn);
+  int GetKey(String friId, String status_yn); //int alter_userKEY(String friId,
+  int alter_userKEY(String friId, String status_yn);
   int friendemail(MailVo mailVo);
   
   //친구 리스트 

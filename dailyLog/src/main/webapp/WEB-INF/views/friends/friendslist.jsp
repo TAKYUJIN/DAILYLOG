@@ -138,41 +138,40 @@
 		<img src="resources/images/logo.png" style="width:90px; padding-top:10px;">	
 	</div><br><br>
   <div class="page-wrapper">
-  <form action="List.mb" method="get"  >
+  
     <div class="container-fluid" id="frilist">
-        <div class="col-lg-8"><!--게시판 넓이 -->
+        <div class="col-lg-8"><!--게시판 넓이 --><form action="FriendChat.mb" >
             <div class="panel panel-default" >
                  <div class="panel-body">
             <!--  <div class="checks etrans" > -->
                     <table class="table table-hover">
-                        <thead>
+                        <thead> 
                             <tr>
                                 <td>친구  아이디</td>
                             </tr>
                         </thead>
                             <tbody>
+                           
                              <c:forEach var="MailVo" items="${list}">
                              <tr>
                              <td><input type="checkbox" name="list" id="ex_chk3" value="${MailVo.friId}">
  			   
- 				 ${MailVo.friId}
+ 		     		 ${MailVo.friId}
  				   </td> 
- 				 
-                             </tr> </c:forEach>
-                        </tbody>
-                    </table>
-					<%-- <c:forEach var="l" items="${paramValues['list'] }">
-					<c:out value="${l}"/>	
-					 --%>					
-                     <input type="submit" onclick="location.href='FriendChat.mb'" value="채팅" />  
-                           <!-- <button type="button" onclick="location.href='FriendChat.mb'" >채팅</button>
-                            -->
-                            <%-- </c:forEach> --%> 
-                    </div> 
-  					 </div>
-                </div>
-  <button class="ui olive button" id="addfri">친구 추가</button>
-                </div></form>
+ 				 		</tr>
+ 				 		</c:forEach>
+ 				 		</tbody>
+ 				 		</table>
+                  </div>
+                  
+                  </div>
+ 				 		<input type="submit" class="btn btn-default"  style="float: right;"value="채팅" />
+                  </form>
+                  </div>
+  <button   class="btn btn-info" id="addfri" >친구 추가</button>
+                </div >
+                
+                
      <div class="container-fluid" id="myDiv">
         <div class="col-lg-8"><!--게시판 넓이 -->
             <div class="panel panel-default" >
