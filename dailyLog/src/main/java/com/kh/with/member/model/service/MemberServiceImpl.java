@@ -72,6 +72,12 @@ public class MemberServiceImpl implements MemberService {
 		int result = md.nickCheck(nickname);
 		return result;
 	}
+	
+	@Override
+	public int phoneCheck(String phone) {
+		int result = md.phoneCheck(phone);
+		return result;
+	}
 
 	@Override
 	public int update_myPage(Member m) throws LoginException {
@@ -194,6 +200,10 @@ public class MemberServiceImpl implements MemberService {
 			
 			return resultCnt;
 		}
+
+
+
+		
 
 
 

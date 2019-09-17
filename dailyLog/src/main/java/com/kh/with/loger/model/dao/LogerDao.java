@@ -11,6 +11,7 @@ import com.kh.with.loger.model.vo.Loger2;
 import com.kh.with.loger.model.vo.Support;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.report.model.vo.Report;
+import com.kh.with.video.model.vo.Video;
 
 public interface LogerDao {
 
@@ -55,6 +56,9 @@ public interface LogerDao {
  	
 	//로거 채널 정지
 	int cstop(SqlSessionTemplate sqlSession, Loger r);
+
+	//로거 동영상 출력
+	ArrayList<Video> showLogerVideo(SqlSessionTemplate sqlSession, Member m);
 
 
  

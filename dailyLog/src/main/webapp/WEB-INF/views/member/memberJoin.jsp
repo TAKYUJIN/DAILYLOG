@@ -11,6 +11,7 @@
 	$(function() {
 		var idx = false;
 		var ndx = false;
+		var pdx = false;
 
 		$("#ckId").click(function() {
 			$.ajax({
@@ -57,7 +58,35 @@
 				}
 			});
 		});
-
+		
+		$("#ckPn").click(function() {
+			$.ajax({
+				url : "phoneCheck.me",
+				type : "GET",
+				data : {
+					"phone" : $("#phone").val()
+				},
+				success : function(data) {
+					if (data == 0 && $.trim($("#phone").val()) != '') {
+						pdx = true;
+						alert("사용가능한 휴대폰번호입니.");
+						$("#ckPn").hide();
+						$("#sendPn").show();
+						
+						
+						$("#joinBtn").removeAttr("disabled");
+					} else {
+						alert("이미 가입되어 있는 폰임  ")
+						$("#joinBtn").attr("disabled", "disabled");
+					}
+				},
+				error : function() {
+					alert("서버에러 ");
+				}
+			});
+		});
+		
+		
 		$("#joinForm").submit(
 				function() {
 					if ($("#userPwd").val() !== $("#userPwd2").val()) {
@@ -82,6 +111,9 @@
 						return false;
 					} else if (ndx == false) {
 						alert("닉네임  중복체크를 해주세요 ");
+						return false;
+					} else if (pdx == false) {
+						alert("휴대폰 버노   중복체크를 해주세요 ");
 						return false;
 					} else {
 						$("#joinForm").submit();
@@ -264,10 +296,7 @@ body {
 						</div>
 					</div>
 				</div>
-				<div class="form-group">
-					<input type="tel" class="form-control" name="phone"
-						placeholder="Phone" required="required">
-				</div>
+				
 				<div class="form-group">
 					<div class="row">
 						<div class="col-xs-3">
@@ -283,12 +312,36 @@ body {
 							남
 						</div>
 					</div>
+					</div>
 
+					
+					<div class="form-group">
+					<div class="row">
+						<div class="col-xs-9">
+							<input type="tel" class="form-control" name="phone"
+								id="phone" placeholder="Phone" required="required">
+						</div>
+						<div class="col-xs-3">
+							<button id="ckPn"
+								style="height: 35px; border-radius: 5px; background: #192466; color: white; border: solid 1px;"
+								name="btncheck">중복확인</button>
+								<button id="sendPn"
+								style="height: 35px; border-radius: 5px; background: #192466; color: white; border: solid 1px; "
+								name="btncheck" hidden>문자전송</button>
+						</div>
+						
+					</div>
+				</div>
+				
+				
+	
 					<br>
 					<br>
+					<div class="form-group">
 					<button type="submit" id="joinBtn"
 						class="btn btn-join btn-lg btn-block" onclick="joinfiBtn();">가입하기
 					</button>
+					
 				</div>
 
 

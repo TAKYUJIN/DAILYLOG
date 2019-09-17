@@ -20,25 +20,29 @@
 
 <style type="text/css">
    body{
+   	color:#13334A;
       font-family: 'Varela Round', sans-serif;
+      background:linear-gradient(rgb(237, 234, 215) 0%, rgb(221, 208, 218) 85%);
    }
    .form-control {
       box-shadow: none;      
       font-weight: normal;
       font-size: 12px; /* 검색부분 폰트사이즈 */
+      color:#DDD0DA;
    }
    .form-control:focus {
-      border-color: #33cabb;
+      border-color: #EDEAD7;
       box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      color:#DDD0DA;
    }
    .navbar-header.col {
       padding: 0 !important;
    }   
    .navbar {
-      background: #fff;
+      background: #EDEAD7;
         padding-left: 6px;
       padding-right: 6px; 
-      /* border-bottom: 1px solid #dfe3e8; */
+      border-bottom: 1px solid #EDEAD7;
       border-radius: 0;
     
    }
@@ -67,14 +71,16 @@
       position: relative;
    }
    .navbar .nav li a {
-      color: #888;
+      color: #434738; /*상단바 글자색*/
    }
    .search-box {
         position: relative;
+        color:#DDD0DA;
     }   
     .search-box input {
         padding-right: 35px;
-      border-color: #dfe3e8;
+        color:#DDD0DA;
+      border-color: #DDD0DA;
         border-radius: 4px !important;
       box-shadow: none
     }
@@ -87,9 +93,10 @@
         z-index: 9;
         padding: 7px;
       height: 100%;
+      color:#DDD0DA;
     }
     .search-box i {
-        color: #a0a5b1;
+        color: #DDD0DA;
       font-size: 19px;
     }
    .navbar .nav .btn-primary, .navbar .nav .btn-primary:active {
@@ -252,7 +259,9 @@
    border:none;
 	padding:0;
    }
-   
+   #searchId {
+   	color:#DDD0DA;
+   }
 </style>
 <script type="text/javascript">
    // Prevent dropdown menu from closing when click inside the form
@@ -265,7 +274,7 @@
 <nav class="navbar navbar-default navbar-expand-lg navbar-light">
 
 	<div class="navbar-header d-flex col">
-	 <button type="button"  id="logo" onclick="location.href='home.mb'"><img src="resources/images/logo.png" id="logo" style="width:90px; padding-top:10px;">
+	 <button type="button"  id="logo" onclick="location.href='home.mb'"><input type="text" value="DailyLog" id="logo" style="width:90px; padding-top:5px; font-size:22px;">
 	</button>
 	</div>
 	<!-- Collection of nav links, forms, and other content for toggling -->
@@ -285,7 +294,7 @@
 		</ul>
 		<form class="navbar-form form-inline" style="width:240px; ">
 			<div class="input-group search-box">								
-				<input type="text" id="search" class="form-control" placeholder="검색">
+				<input type="text" id="searchId" class="form-control" placeholder="검색" >
 				<span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
 			</div>
 		</form>

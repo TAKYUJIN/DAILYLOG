@@ -45,6 +45,8 @@ public interface AdminDao {
 	//블랙 회원 status
 	int ublackstatus(SqlSessionTemplate sqlSession, Member m);
 
+	int updateCalculateApply(SqlSessionTemplate sqlSession, int calNo);
+
 	
 
 	

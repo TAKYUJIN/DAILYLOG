@@ -6,10 +6,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+
 .footer-bs {
-   background-color: #3c3d41;
+   /* background-color: #3c3d41; */
    padding: 60px 40px;
-   color: rgba(255,255,255,1.00);
+   color: #13334A;
    margin-bottom: 20px;
    border-bottom-right-radius: 0px;
    border-top-left-radius: 0px;

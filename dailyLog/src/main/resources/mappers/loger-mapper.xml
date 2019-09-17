@@ -5,183 +5,203 @@
 
 <mapper namespace="Loger">
 
-   <resultMap type="Calculate" id="calculateResultSet">
-      <id property="calNo" column="CAL_NO" />
-      <result property="userNo" column="USER_NO" />
-      <result property="chNo" column="CH_NO" />
-      <result property="calSTDT" column="CAL_STDT" />
-      <result property="calEDT" column="CAL_EDT" />
-      <result property="calPrice" column="CAL_PRICE" />
-      <result property="amountPrice" column="AMOUNT_PRICE" />
-      <result property="calVAT" column="CAL_VAT" />
-      <result property="calTY" column="CAL_TY" />
-      <result property="accNm" column="ACC_NM" />
-      <result property="bankNm" column="BANK_NM" />
-      <result property="account" column="ACCOUNT" />
-      <result property="nNo" column="RANK" />
-   </resultMap>
+	<resultMap type="Calculate" id="calculateResultSet">
+		<id property="calNo" column="CAL_NO" />
+		<result property="userNo" column="USER_NO" />
+		<result property="chNo" column="CH_NO" />
+		<result property="calSTDT" column="CAL_STDT" />
+		<result property="calEDT" column="CAL_EDT" />
+		<result property="calPrice" column="CAL_PRICE" />
+		<result property="amountPrice" column="AMOUNT_PRICE" />
+		<result property="calVAT" column="CAL_VAT" />
+		<result property="calTY" column="CAL_TY" />
+		<result property="accNm" column="ACC_NM" />
+		<result property="bankNm" column="BANK_NM" />
+		<result property="account" column="ACCOUNT" />
+		<result property="nNo" column="RANK" />
+	</resultMap>
 
-   <resultMap type="Loger" id="logerResultSet">
-      <id property="chNo" column="CH_NO" />
-      <result property="userNo" column="USER_NO" />
-      <result property="chNm" column="CH_NM" />
-      <result property="vNo" column="V_NO" />
-      <result property="chDT" column="CH_DT" />
-      <result property="chInfo" column="CH_INFO" />
-      <result property="accNm" column="ACC_NM" />
-      <result property="bankNm" column="BANK_NM" />
-      <result property="account" column="ACCOUNT" />
-      <result property="subNum" column="SUBNUM" />
-      <result property="status" column="STATUS" />
-   </resultMap>
+	<resultMap type="Loger" id="logerResultSet">
+		<id property="chNo" column="CH_NO" />
+		<result property="userNo" column="USER_NO" />
+		<result property="chNm" column="CH_NM" />
+		<result property="vNo" column="V_NO" />
+		<result property="chDT" column="CH_DT" />
+		<result property="chInfo" column="CH_INFO" />
+		<result property="accNm" column="ACC_NM" />
+		<result property="bankNm" column="BANK_NM" />
+		<result property="account" column="ACCOUNT" />
+		<result property="subNum" column="SUBNUM" />
+		<result property="status" column="STATUS" />
+	</resultMap>
 
-   <resultMap type="Support" id="supportResultSet">
-      <id property="supNo" column="SUP_NO" />
-      <result property="userNo" column="USER_NO" />
-      <result property="chNo" column="CH_NO" />
-      <result property="supSTDT" column="SUP_STDT" />
-      <result property="supPrice" column="SUP_PRICE" />
-      <result property="supTY" column="SUP_TY" />
-      <result property="nNo" column="RANK" />
-      <result property="nickname" column="NICKNAME" />
-      <result property="regEDT" column="REG_EDT" />
-      <result property="regStatus" column="REG_STATUS" />
-      <result property="calStatus" column="CAL_STATUS" />
-   </resultMap>
+	<resultMap type="Support" id="supportResultSet">
+		<id property="supNo" column="SUP_NO" />
+		<result property="userNo" column="USER_NO" />
+		<result property="chNo" column="CH_NO" />
+		<result property="supSTDT" column="SUP_STDT" />
+		<result property="supPrice" column="SUP_PRICE" />
+		<result property="supTY" column="SUP_TY" />
+		<result property="nNo" column="RANK" />
+		<result property="nickname" column="NICKNAME" />
+		<result property="regEDT" column="REG_EDT" />
+		<result property="regStatus" column="REG_STATUS" />
+		<result property="calStatus" column="CAL_STATUS" />
+	</resultMap>
 
-   <resultMap type="Loger2" id="logerResultSet2">
-      <id property="chNo" column="CH_NO" />
-      <result property="userNo" column="USER_NO" />
-      <result property="chNm" column="CH_NM" />
-      <result property="vNo" column="V_NO" />
-      <result property="chDT" column="CH_DT" />
-      <result property="chInfo" column="CH_INFO" />
-      <result property="accNm" column="ACC_NM" />
-      <result property="bankNm" column="BANK_NM" />
-      <result property="account" column="ACCOUNT" />
-      <result property="subNum" column="SUBNUM" />
-      <result property="enrollNm" column="ENROLL_NM" />
-   </resultMap>
+	<resultMap type="Loger2" id="logerResultSet2">
+		<id property="chNo" column="CH_NO" />
+		<result property="userNo" column="USER_NO" />
+		<result property="chNm" column="CH_NM" />
+		<result property="vNo" column="V_NO" />
+		<result property="chDT" column="CH_DT" />
+		<result property="chInfo" column="CH_INFO" />
+		<result property="accNm" column="ACC_NM" />
+		<result property="bankNm" column="BANK_NM" />
+		<result property="account" column="ACCOUNT" />
+		<result property="subNum" column="SUBNUM" />
+		<result property="enrollNm" column="ENROLL_NM" />
+	</resultMap>
 
-   <resultMap type="Report" id="ReportResultSet">
-      <id property="reno" column="RE_NO" />
-      <result property="userNo" column="USER_NO" />
-      <result property="chNm" column="CH_NM" />
-      <result property="retarget" column="RE_TARGET" />
-      <result property="redt" column="RE_DT" />
-      <result property="rewhy" column="RE_WHY" />
-      <result property="rety" column="RE_TY" />
-      <result property="vNo" column="V_NO" />
-      <result property="repno" column="REP_NO" />
-      <result property="vTitle" column="V_TITLE" />
-      <result property="vcount" column="COUNT" />
-      <result property="recount" column="RE_COUNT" />
-      <result property="ccount" column="C_COUNT" />
-      <result property="filepath" column="FILEPATH" />
-   </resultMap>
-   <resultMap type="Report" id="Report2ResultSet">
-      <id property="reno" column="RE_NO" />
-      <result property="userNo" column="USER_NO" />
-      <result property="chNm" column="CH_NM" />
-      <result property="retarget" column="RE_TARGET" />
-      <result property="redt" column="RE_DT" />
-      <result property="rewhy" column="RE_WHY" />
-      <result property="rety" column="RE_TY" />
-      <result property="repno" column="REP_NO" />
-      <result property="vcount" column="COUNT" />
-      <result property="recount" column="RE_COUNT" />
-      <result property="ccount" column="C_COUNT" />
-   </resultMap>
+	<resultMap type="Report" id="ReportResultSet">
+		<id property="reno" column="RE_NO" />
+		<result property="userNo" column="USER_NO" />
+		<result property="chNm" column="CH_NM" />
+		<result property="retarget" column="RE_TARGET" />
+		<result property="redt" column="RE_DT" />
+		<result property="rewhy" column="RE_WHY" />
+		<result property="rety" column="RE_TY" />
+		<result property="vNo" column="V_NO" />
+		<result property="repno" column="REP_NO" />
+		<result property="vTitle" column="V_TITLE" />
+		<result property="vcount" column="COUNT" />
+		<result property="recount" column="RE_COUNT" />
+		<result property="ccount" column="C_COUNT" />
+		<result property="filepath" column="FILEPATH" />
+	</resultMap>
+	<resultMap type="Report" id="Report2ResultSet">
+		<id property="reno" column="RE_NO" />
+		<result property="userNo" column="USER_NO" />
+		<result property="chNm" column="CH_NM" />
+		<result property="retarget" column="RE_TARGET" />
+		<result property="redt" column="RE_DT" />
+		<result property="rewhy" column="RE_WHY" />
+		<result property="rety" column="RE_TY" />
+		<result property="repno" column="REP_NO" />
+		<result property="vcount" column="COUNT" />
+		<result property="recount" column="RE_COUNT" />
+		<result property="ccount" column="C_COUNT" />
+	</resultMap>
+
+	<resultMap type="Video" id="VideoResultSet">
+		<id property="vNo" column="V_NO" />
+		<result property="userNo" column="USER_NO" />
+		<result property="vTitle" column="V_TITLE" />
+		<result property="count" column="COUNT" />
+		<result property="chNm" column="CH_NM" />
+		<result property="tag" column="TAG" />
+		<result property="vblYn" column="VBL_YN" />
+		<result property="uploadDt" column="UPLOAD_DT" />
+		<result property="modifyDt" column="MODIFY_DT" />
+		<result property="adultAut" column="ADULT_AUT" />
+		<result property="adYn" column="AD_YN" />
+		<result property="adInfo" column="AD_INFO" />
+		<result property="location" column="LOCATION" />
+		<result property="info" column="INFO" />
+		<result property="filepath" column="FILEPATH" />
+		<result property="openTy" column="OPEN_TY" />
+		<result property="nNo" column="RANK" />
+		<result property="afilepath" column="AFILEPATH" />
+	</resultMap>
 
 
+	<!-- 정산페이지 조회 -->
+	<select id="selectLogerCalculate" resultMap="calculateResultSet">
+		SELECT RANK, CAL_NO, USER_NO, CH_NO, CAL_STDT, CAL_EDT, CAL_PRICE, CAL_VAT,
+		AMOUNT_PRICE, CAL_TY, ACC_NM, BANK_NM, ACCOUNT
+		FROM(SELECT ROW_NUMBER()
+		OVER(ORDER BY C.CAL_STDT DESC) RANK, C.*
+		FROM CALCULATE C
+		JOIN MEMBER M
+		ON(C.USER_NO = M.USER_NO)
+		WHERE M.USER_ID = #{userId})
+		ORDER BY RANK ASC
+	</select>
 
-   <!-- 정산페이지 조회 -->
-   <select id="selectLogerCalculate" resultMap="calculateResultSet">
-      SELECT RANK, CAL_NO, USER_NO, CH_NO, CAL_STDT, CAL_EDT, CAL_PRICE, CAL_VAT,
-      AMOUNT_PRICE, CAL_TY, ACC_NM, BANK_NM, ACCOUNT
-      FROM(SELECT ROW_NUMBER()
-      OVER(ORDER BY C.CAL_STDT DESC) RANK, C.*
-      FROM CALCULATE C
-      JOIN MEMBER M
-      ON(C.USER_NO = M.USER_NO)
-      WHERE M.USER_ID = #{userId})
-      ORDER BY RANK ASC
-   </select>
+	<select id="selectLogerSupport" resultMap="supportResultSet">
+		SELECT RANK, NICKNAME, SUP_NO, USER_NO, CH_NO, SUP_STDT, SUP_PRICE, SUP_TY
+		FROM(SELECT ROW_NUMBER() OVER(ORDER BY S.SUP_STDT DESC) RANK,
+		M.NICKNAME, S.*
+		FROM SUPPORT S
+		JOIN MEMBER M ON(S.USER_NO = M.USER_NO)
+		WHERE M.USER_ID = #{userId})
+		ORDER BY RANK ASC
+	</select>
 
-   <select id="selectLogerSupport" resultMap="supportResultSet">
-      SELECT RANK, NICKNAME, SUP_NO, USER_NO, CH_NO, SUP_STDT, SUP_PRICE, SUP_TY
-      FROM(SELECT ROW_NUMBER() OVER(ORDER BY S.SUP_STDT DESC) RANK,
-      M.NICKNAME, S.*
-      FROM SUPPORT S
-      JOIN MEMBER M ON(S.USER_NO = M.USER_NO)
-      WHERE M.USER_ID = #{userId})
-      ORDER BY RANK ASC
-   </select>
+	<!-- 로거 마지막 계좌 select -->
+	<select id="logerLastAccount" resultMap="logerResultSet">
+		SELECT *
+		FROM LOGER L
+		JOIN MEMBER M ON(L.USER_NO = M.USER_NO)
+		WHERE M.USER_ID =
+		#{userId}
+	</select>
 
-   <!-- 로거 마지막 계좌 select -->
-   <select id="logerLastAccount" resultMap="logerResultSet">
-      SELECT *
-      FROM LOGER L
-      JOIN MEMBER M ON(L.USER_NO = M.USER_NO)
-      WHERE M.USER_ID =
-      #{userId}
-   </select>
-
-   <!-- 로거 기간별 후원 내역 조회 -->
-   <select id="selectLogetSupportDate" resultMap="supportResultSet">
-      SELECT RANK, NICKNAME, SUP_NO, USER_NO, CH_NO, SUP_STDT, SUP_PRICE, SUP_TY, CAL_STATUS
-      FROM(SELECT ROW_NUMBER() OVER(ORDER BY S.SUP_STDT DESC) RANK,
-      M.NICKNAME, S.*
-      FROM SUPPORT S
-      JOIN MEMBER M ON(S.USER_NO = M.USER_NO)
-      WHERE S.USER_NO = #{userNo}
+	<!-- 로거 기간별 후원 내역 조회 -->
+	<select id="selectLogetSupportDate" resultMap="supportResultSet">
+		SELECT RANK, NICKNAME, SUP_NO, USER_NO, CH_NO, SUP_STDT, SUP_PRICE, SUP_TY, CAL_STATUS
+		FROM(SELECT ROW_NUMBER() OVER(ORDER BY S.SUP_STDT DESC) RANK,
+		M.NICKNAME, S.*
+		FROM SUPPORT S
+		JOIN MEMBER M ON(S.USER_NO = M.USER_NO)
+		WHERE S.USER_NO = #{userNo}
         AND CAL_STATUS = 0)
-      WHERE SUP_STDT BETWEEN
-      TO_CHAR(TO_DATE(#{mon},'YYYY-MM-DD')) AND
-      TO_CHAR(TO_DATE(#{day},'YYYY-MM-DD'))
-      <!-- AND RANK BETWEEN 1 AND 10 -->
-      ORDER BY RANK ASC
-   </select>
+		WHERE SUP_STDT BETWEEN
+		TO_CHAR(TO_DATE(#{mon},'YYYY-MM-DD')) AND
+		TO_CHAR(TO_DATE(#{day},'YYYY-MM-DD'))
+		<!-- AND RANK BETWEEN 1 AND 10 -->
+		ORDER BY RANK ASC
+	</select>
 
-   <!-- 로거 계좌 update -->
-   <update id="updateLogerAccount" parameterType="Loger">
-      UPDATE LOGER SET ACC_NM = #{accNm}, BANK_NM = #{bankNm}, ACCOUNT =
-      #{account}
-      WHERE USER_NO = #{userNo}
-   </update>
+	<!-- 로거 계좌 update -->
+	<update id="updateLogerAccount" parameterType="Loger">
+		UPDATE LOGER SET ACC_NM = #{accNm}, BANK_NM = #{bankNm}, ACCOUNT =
+		#{account}
+		WHERE USER_NO = #{userNo}
+	</update>
 
-   <!-- 로거 기간별 후원 내역 조회의 값만 -->
-   <select id="selectLogerSupportPrice"
-      resultMap="supportResultSet">
-      SELECT *
-      FROM SUPPORT S
-      JOIN MEMBER M ON(S.USER_NO = M.USER_NO)
-      WHERE S.USER_NO = #{userNo}
-      AND SUP_DT BETWEEN TO_CHAR(TO_DATE(#{mon},'YYYY-MM-DD')) AND TO_CHAR(TO_DATE(#{day},'YYYY-MM-DD'))
-     </select>
+	<!-- 로거 기간별 후원 내역 조회의 값만 -->
+	<select id="selectLogerSupportPrice"
+		resultMap="supportResultSet">
+		SELECT *
+		FROM SUPPORT S
+		JOIN MEMBER M ON(S.USER_NO = M.USER_NO)
+		WHERE S.USER_NO = #{userNo}
+		AND SUP_STDT BETWEEN TO_CHAR(TO_DATE(#{mon},'YYYY-MM-DD')) AND TO_CHAR(TO_DATE(#{day},'YYYY-MM-DD'))
+  	</select>
 
 
-   <!-- 로거 정보 -->
-   <select id="selectLogerInfo" resultMap="logerResultSet">
-      SELECT *
-      FROM LOGER L
-      JOIN
-      MEMBER M ON(L.USER_NO = M.USER_NO)
-      WHERE L.USER_NO = #{userNo}
-   </select>
+	<!-- 로거 정보 -->
+	<select id="selectLogerInfo" resultMap="logerResultSet">
+		SELECT *
+		FROM LOGER L
+		JOIN
+		MEMBER M ON(L.USER_NO = M.USER_NO)
+		WHERE L.USER_NO = #{userNo}
+	</select>
 
-   <!-- 기간별 후원내역 검색 후 정산내역 insert -->
-   <insert id="insertLogerCalculate" parameterType="Calculate">
-      INSERT INTO
-      CALCULATE
-      VALUES(CAL_NO.NEXTVAL, #{userNo}, #{chNo}, SYSDATE, NULL,
-      #{calPrice}, #{calVAT}, #{amountPrice},
-      DEFAULT, #{accNm}, #{bankNm}, #{account})
-   </insert>
+	<!-- 기간별 후원내역 검색 후 정산내역 insert -->
+	<insert id="insertLogerCalculate" parameterType="Calculate">
+		INSERT INTO
+		CALCULATE
+		VALUES(CAL_NO.NEXTVAL, #{userNo}, #{chNo}, SYSDATE, NULL,
+		#{calPrice}, #{calVAT}, #{amountPrice},
+		DEFAULT, #{accNm}, #{bankNm}, #{account})
+	</insert>
 
-   <!-- 후원내역 정산유무 update -->
-   <update id="updateSupportCalculate" parameterType="Support">
-      UPDATE SUPPORT SET CAL_STATUS = 1
+	<!-- 후원내역 정산유무 update -->
+	<update id="updateSupportCalculate" parameterType="Support">
+		UPDATE SUPPORT SET CAL_STATUS = 1
         WHERE USER_NO = #{userNo}
       AND SUP_STDT BETWEEN TO_CHAR(TO_DATE(#{mon},'YYYY-MM-DD')) AND TO_CHAR(TO_DATE(#{day},'YYYY-MM-DD'))
    </update>
@@ -263,7 +283,20 @@
      ON(M.USER_NO=R.RE_TARGET)
     WHERE (RE_TY='동영상' OR  RE_TY='채널')
      AND RE_TARGET=#{userNo}
-   </select>
-   
+	</select>
+	
+	<!-- 로거 동영상 출력 -->
+	<select id="showLogerVideo" resultMap="VideoResultSet">
+	SELECT RANK, AFILEPATH, V_NO, USER_NO, V_TITLE, COUNT, CH_NM, TAG, VBL_YN, UPLOAD_DT, MODIFY_DT, ADULT_AUT, AD_YN, AD_INFO, LOCATION, INFO, FILEPATH, OPEN_TY
+		FROM (SELECT ROW_NUMBER() OVER(ORDER BY V.UPLOAD_DT DESC) RANK,	V.*, A.FILEPATH AFILEPATH
+		FROM VIDEO V
+		JOIN MEMBER M ON(V.USER_NO = M.USER_NO)
+		JOIN ATTACHMENT A ON(V.V_NO = A.V_NO)
+		WHERE V.USER_NO = #{userNo})
+		ORDER BY RANK ASC
+	
+	</select>
+	
+
 
 </mapper>

@@ -24,6 +24,9 @@ public interface MemberService {
 	//닉네임 중복 체크
 	int nickCheck(String nickname);
 	
+	//phone 
+	int phoneCheck(String phone);
+	
 	//mypage 들어가기
 	ArrayList<Member> selectMyPage(Member m);
 	
@@ -40,6 +43,8 @@ public interface MemberService {
 	int ustop(Member m);
 
 	int alter_userKey_service(String userId, String status);
+
+	
 
 	
 

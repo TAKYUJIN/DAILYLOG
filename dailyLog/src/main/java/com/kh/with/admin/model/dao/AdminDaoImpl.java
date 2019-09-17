@@ -131,6 +131,12 @@ public class AdminDaoImpl implements AdminDao {
 		return list;
 	}
 
+	@Override
+	public int updateCalculateApply(SqlSessionTemplate sqlSession, int calNo) {
+		
+		return sqlSession.update("Calculate2.updateCalculateApply", calNo);
+	}
+
 	
 	
 }
