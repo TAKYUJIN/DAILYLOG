@@ -53,6 +53,14 @@ public class MemberDaoImpl implements MemberDao{
 		System.out.println("dao_nickCheck() ... ");
 		return result;
 	}
+	
+	//phone 중복 
+	@Override
+	public int phoneCheck(String phone) {
+		int result = sqlSession.selectOne("Member.phoneCheck", phone);
+		System.out.println("dao_phoneCheck() ... ");
+		return result;
+	}
 
    
 	 
@@ -133,6 +141,9 @@ public class MemberDaoImpl implements MemberDao{
 		return sqlSession.update("Member.ustop",m);
 	}
 
+
+
+	
 
 
 

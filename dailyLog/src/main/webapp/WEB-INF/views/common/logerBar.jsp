@@ -16,6 +16,10 @@
 <style type="text/css">
 	body{
 		font-family: 'Varela Round', sans-serif;
+		background:linear-gradient(rgb(227, 207, 205) 0%, rgb(154, 176, 191) 95%);
+	}
+	nav {
+		background:#E3CFCD;
 	}
 	.form-control {
 		box-shadow: none;		
@@ -30,10 +34,10 @@
 		padding: 0 !important;
 	}	
 	.navbar {
-		background: #fff;
+		background: #E3CFCD; /* 상단바 배경색 */
 		padding-left: 10px;
 		padding-right: 10px;
-		border-bottom: 1px solid #dfe3e8; /* 상단바 밑 라인 색 #dfe3e8 */
+		border-bottom: 1px solid #E3CFCD; /* 상단바 밑 라인 색 #dfe3e8 */
 		border-radius: 0;
 	}
 	.nav-link img {
@@ -68,7 +72,7 @@
     }	
     .search-box input {
         padding-right: 35px;
-		border-color: #dfe3e8; /* 검색 테두리 색 #dfe3e8 */
+		border-color: #E3CFCD; /* 검색 테두리 색 #dfe3e8 */
         border-radius: 4px !important;
 		box-shadow: none
     }
@@ -83,7 +87,7 @@
 		height: 100%;
     }
     .search-box i {
-        color: #a0a5b1; /* 검색창 돋보기 색 #a0a5b1 */
+        color: #E3CFCD; /* 검색창 돋보기 색 #a0a5b1 */
 		font-size: 19px;
     }
 	.navbar .nav .btn-primary, .navbar .nav .btn-primary:active {

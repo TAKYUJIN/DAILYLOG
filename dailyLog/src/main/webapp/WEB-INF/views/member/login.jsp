@@ -193,7 +193,7 @@
 					style="background: #192466; border-color: #192466">Sign in</button>
 			</div>
 			<div class="text-center small">
-				<a href="#">Forgot Id / </a> <a href="#">Password Reset </a>
+				<a href="findId.me">Forgot Id / </a> <a href="#">Password Reset </a>
 			</div>
 			<div class="text-center small" style="color: White Smoke">
 				Don't have an account? <a href="memberJoinView.me"

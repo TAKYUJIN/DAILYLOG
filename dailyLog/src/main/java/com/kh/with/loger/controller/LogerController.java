@@ -22,8 +22,10 @@ import com.kh.with.loger.model.vo.Calculate;
 import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.loger.model.vo.Loger2;
 import com.kh.with.loger.model.vo.Support;
+import com.kh.with.main.model.vo.VideoLike;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.report.model.vo.Report;
+import com.kh.with.video.model.vo.Video;
 
 @Controller
 public class LogerController {
@@ -31,13 +33,19 @@ public class LogerController {
 	private LogerService ls;
 
 	// 로거 동영상 페이지로 이동
-	@RequestMapping(value = "logerVideo.lo")
-	public String selectLogerVideo() {
+	@RequestMapping(value="logerVideo.lo")
+	public String selectLogerVideo(Model model, HttpSession session, Video v) {
+		Member m = (Member) session.getAttribute("loginUser");
+
+		ArrayList<Video> vList = ls.showLogerVideo(m);
+
+		model.addAttribute("vList", vList);	
+		
+		
 		return "loger/searchLogerVideo";
 	}
 
 	// 로거 동영상 수정 페이지로 이동
-
 	@RequestMapping(value = "updateLogerVideo.lo")
 	public String updateLogerVideo() {
 		return "loger/updateLogerVideo";
@@ -89,7 +97,6 @@ public class LogerController {
 			@RequestParam(value = "bankcode", required = false) String bankNm, Support s, Model model,
 			HttpSession session) {
 		Member m = (Member) session.getAttribute("loginUser");
-		System.out.println("오닝?");
 		m.setAccount(account);
 		m.setAccNm(accNm);
 
@@ -107,17 +114,13 @@ public class LogerController {
 			m.setBankNm("신한은행");
 		}
 
-		System.out.println(m.getAccount());
-		System.out.println(m.getAccNm());
-		System.out.println(m.getBankNm());
-
 		int result = ls.updateLogerAccount(m);
 
 		return "loger/selectLogerCalculate";
 	}
 
 	// 후원 내역 기간 선택 테스트용
-	@RequestMapping(value = "selectSupport.lo")
+	@RequestMapping(value="selectSupport.lo")
 	public String selectLogerCalculate() {
 
 		return "loger/selectLogerCalculate";
@@ -139,13 +142,11 @@ public class LogerController {
 
 		mv.addObject("dateList", dateList);
 		mv.setViewName("jsonView");
-		
-		System.out.println(dateList);
-
 
 		return mv;
 	}
 
+	
 	// 후원 내역 기간 선택 후 정산 신청
 	@RequestMapping(value="logerCalculateApply.lo")
 	public String selectLogerCalculateApply(HttpSession session, HttpServletRequest request,
@@ -188,8 +189,6 @@ public class LogerController {
 		c.setAccount(account);
 		c.setChNo(chNo);
 		
-		System.out.println("왜안나와");
-		
 		//정산내역 insert
 		int result = ls.insertLogerCalculate(c);
 		
@@ -197,12 +196,11 @@ public class LogerController {
 		int result2 = ls.updateSupportCalculate(m);
 		System.out.println(result2);
 		
-		if(result > 0 && result2 > 0) {
+		if (result > 0 && result2 > 0) {
 			model.addAttribute("msg", "정산 신청이 완료되셨습니다.");
-			model.addAttribute("url", "logerCalculate.jsp");
-		}
+		} 
 
-		return "loger/logerCalculate";
+		return "forward:/logerCalculate.lo";
 	}
 
 	// 로거스튜디오 이동(로거스튜디오 ,프로필사진, 채널명, 구독자수)

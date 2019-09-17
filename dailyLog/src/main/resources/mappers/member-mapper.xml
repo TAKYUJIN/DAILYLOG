@@ -133,6 +133,15 @@
    			]]>
 	</select>
 	
+	<!-- phone  중복 확인 -->
+	<select id="phoneCheck" resultType="int">
+   	<![CDATA[
+   			SELECT COUNT(*) 
+   			FROM MEMBER
+   			WHERE PHONE = #{phone}
+   			]]>
+	</select>
+	
 	
 	
 	<update id="alter_userKey" parameterType="Map">

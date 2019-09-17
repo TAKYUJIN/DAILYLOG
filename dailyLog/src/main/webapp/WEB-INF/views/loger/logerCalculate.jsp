@@ -22,12 +22,16 @@
         background: #f5f5f5;
 		font-family: 'Roboto', sans-serif;
 	}
+	
+	div {
+	}
     table.table tr th, table.table tr td {
         border-color: #e9e9e9;
         text-align:center;
+        
     }
     table.table-striped tbody tr:nth-of-type(odd) {
-    	background-color: #fcfcfc;
+    	background-color: #fcfcfc; 
     	width:700px;
 	/* text-align:center; */
 		margin-bottom:100px;
@@ -51,7 +55,7 @@
 	text-align:center;
 }
     .table-wrapper {
-        background: #fff;
+        /* background: #fff; */
         padding: 20px;
         margin: 30px 0;
         /* box-shadow: 0 1px 1px rgba(0,0,0,.05); */
@@ -369,8 +373,10 @@ button[class*="btn"] {border: 0;}
     </div>  
     <script>
     var message = '${msg}';
-	var returnUrl = '${url}';
-	alert(msg);
+    if(message == "정산 신청이 완료되셨습니다."){
+		alert(message);
+    	
+    }
     
         function accountApi(){
         	window.open('accountApi.lo', "", "width=550, height=350, top=50, left=50");

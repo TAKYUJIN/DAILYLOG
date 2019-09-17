@@ -37,7 +37,7 @@ public interface VideoDao {
 	
 	List<Object> selectVideoInfo(SqlSessionTemplate sqlSession, Map<String, Integer> map);
 	
-	List<Map<String, Object>> selectLogerInfo(SqlSessionTemplate sqlSession, Map<String, Integer> map);
+	List<Object> selectLogerInfo(SqlSessionTemplate sqlSession, Map<String, Integer> map);
 	
 	int selectRegStatus(SqlSessionTemplate sqlSession, int userNo, int chNo);
 	
@@ -45,16 +45,20 @@ public interface VideoDao {
 
 	int insertOnce(SqlSessionTemplate sqlSession, Map<String, Integer> map);
 	
-	int insertLike(SqlSessionTemplate sqlSession, Map<String, Integer> map);
-	
+	//좋아요
+	int insertLike(SqlSessionTemplate sqlSession, Map<String, Integer> map);	
 	int deleteLike(SqlSessionTemplate sqlSession, Map<String, Integer> map);
 	
+	//싫어요
 	int insertHate(SqlSessionTemplate sqlSession, Map<String, Integer> map);
-
 	int deleteHate(SqlSessionTemplate sqlSession, Map<String, Integer> map);
 
+	//북마크
 	int insertBookmark(SqlSessionTemplate sqlSession, Map<String, Integer> map);
-
 	int deleteBookmark(SqlSessionTemplate sqlSession, Map<String, Integer> map);
+	
+	//신고
+	int report(SqlSessionTemplate sqlSession, Map<String, Object> map);
+	int block(SqlSessionTemplate sqlSession, Map<String, Object> map);
 
 }

@@ -35,7 +35,7 @@ public interface VideoService {
 	//비디오값 불러오기
 	List<Object> selectVideoInfo(Map<String, Integer> map);
 
-	List<Map<String, Object>> selectLogerInfo(Map<String, Integer> map);
+	List<Object> selectLogerInfo(Map<String, Integer> map);
 
 	//정기후원 상태 조회
 	int selectRegStatus(int userNo, int chNo);
@@ -46,18 +46,21 @@ public interface VideoService {
 
 	int insertOnce(Map<String, Integer> map);
 
+	//좋아요
 	int insertLike(Map<String, Integer> map);
-
 	int deleteLike(Map<String, Integer> map);
 
+	//싫어요
 	int insertHate(Map<String, Integer> map);
-
 	int deleteHate(Map<String, Integer> map);
 
+	//북마크
 	int insertBookmark(Map<String, Integer> map);
-
 	int deleteBookmark(Map<String, Integer> map);
-	
+
+	//신고
+	int report(Map<String, Object> map);
+	int block(Map<String, Object> map);
 
 
 }
