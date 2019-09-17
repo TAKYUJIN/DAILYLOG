@@ -29,13 +29,13 @@
   		<result property="userNo" column="USER_NO"/>
   		<result property="chNm" column="CH_NM"/>
   		<result property="vNo" column="V_NO"/>
-  		<result property="calApply" column="CAL_APPLY"/>
   		<result property="chDT" column="CH_DT"/>
   		<result property="chInfo" column="CH_INFO"/>
   		<result property="accNm" column="ACC_NM"/>
   		<result property="bankNm" column="BANK_NM"/>
   		<result property="account" column="ACCOUNT"/>
   		<result property="subNum" column="SUBNUM"/>
+  		<result property="status" column="STATUS"/>
   	</resultMap>
   	
 	<resultMap type="Reply" id="replyResultSet">
@@ -47,9 +47,7 @@
 		<result property="repTy" column="REP_TY" />
 	</resultMap>
 	
-	<resultMap type="com.kh.with.video.model.vo.Attachment"
-		id="attachmentResultSet">
-
+	<resultMap type="Attachment" id="attachmentResultSet">
 		<id property="userNo" column="USER_NO" />
 		<result property="amNo" column="AM_NO" />
 		<result property="filepath" column="FILEPATH" />
@@ -71,6 +69,20 @@
         <result property="regEDT" column="REG_EDT"/>
         <result property="regStatus" column="REG_STATUS"/>
      </resultMap>
+     
+	  <resultMap type="Report" id="ReportResultSet"> 
+	    <id property="reno" column="RE_NO"/>
+		<result property="userNo" column="USER_NO" />
+        <result property="retarget" column="RE_TARGET"/>
+        <result property="redt" column="RE_DT"/>
+        <result property="rewhy" column="RE_WHY"/>
+        <result property="rety" column="RE_TY"/>
+        <result property="vNo" column="V_NO"/>
+        <result property="repno" column="REP_NO"/>
+		<result property="chNm" column="CH_NM" />
+        <result property="recount" column="RE_COUNT"/>
+		<result property="ccount" column="C_COUNT"/>
+     </resultMap>  
 
 	<!-- 업로드할 동영상 정보 insert 쿼리 -->
  	<insert id="insertVideoInfo" parameterType="Video">	 	
@@ -119,7 +131,7 @@
 	
 	<insert id="insertLike" parameterType="map">
 		INSERT INTO VIDEO_LIKE
-		VALUES(LIKE_NO.NEXTVAL, #{userNo}, #{vNo}, #{chNo}, '좋아요')
+		VALUES(LIKE_NO.NEXTVAL, #{userNo}, #{vNo}, #{chNo}, SYSDATE, '좋아요')
 	</insert>
 	
 	<delete id="deleteLike">
@@ -132,7 +144,7 @@
 	
 	<insert id="insertHate" parameterType="map">
 		INSERT INTO VIDEO_LIKE
-		VALUES(LIKE_NO.NEXTVAL, #{userNo}, #{vNo}, #{chNo}, '싫어요')
+		VALUES(LIKE_NO.NEXTVAL, #{userNo}, #{vNo}, #{chNo}, SYSDATE, '싫어요')
 	</insert>
 	
 	<delete id="deleteHate">
@@ -145,7 +157,7 @@
 
 	<insert id="insertBookmark" parameterType="map">
 		INSERT INTO VIDEO_LIKE
-		VALUES(LIKE_NO.NEXTVAL, #{userNo}, #{vNo}, #{chNo}, '북마크')
+		VALUES(LIKE_NO.NEXTVAL, #{userNo}, #{vNo}, #{chNo}, SYSDATE, '북마크')
 	</insert>
 	
 	<delete id="deleteBookmark">
@@ -156,6 +168,15 @@
 		AND V_TY = '북마크'
 	</delete>
 	
-	
+	<insert id="insertReport" parameterType="map">
+		INSERT INTO REPORT
+		VALUES(RE_NO.NEXTVAL, #{loginUser}, #{userNo}, SYSDATE, #{check}, '동영상', #{vNo}, null, #{chNm}, 0, 0)
+	</insert>
+
+	<insert id="insertBlock" parameterType="map">
+		INSERT INTO BLOCK_VIDEO
+		VALUES(#{loginUser}, #{chNo}, #{vNo})
+	</insert>
+		
 </mapper>
 

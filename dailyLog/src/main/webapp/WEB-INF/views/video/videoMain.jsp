@@ -19,7 +19,7 @@
 	.chImg {
 		width:60px; 
 		height:60px;
-		border:1px dashed gray;
+		/* border:1px dashed gray; */
 		border-radius: 50%;
 		/* vertical-align: middle; */
 	}
@@ -29,7 +29,7 @@
       font-size: 12px; /* 검색부분 폰트사이즈 */
    }
    .form-control:focus {
-      border-color: #33cabb;
+      border-color: #33CC00;
       box-shadow: 0 0 8px rgba(0,0,0,0.1);
    }
 	.navbar .nav li {
@@ -136,157 +136,49 @@
 	
 /***************************/
      .social-btn .btn {
-		color: #fff;
-        margin: 10px 0 0 30px;
-		font-size: 15px;
-        width: 55px;
-        height: 55px;
-        line-height: 38px;
-        border-radius: 50%;
-		font-weight: normal;
-        text-align: center;
-		border: none;
-		transition: all 0.4s;
+		color: #fff !important;
+        margin-left:30px !important;
+        margin-top: 10px !important;
+		font-size: 15px !important;
+        width: 45px !important;
+        height: 45px !important;
+        line-height: 38px !important;
+        border-radius: 50% !important;
+		font-weight: normal !important;
+        text-align: center !important;
+		border: none !important;
+		transition: all 0.4s !important;
     }	
 	.social-btn .btn:first-child {
-		margin-left: 0;
+		margin-left: 0 !important;
 	}
 	.social-btn .btn:hover {
-		opacity: 0.8;
+		opacity: 0.8 !important;
 	}
 	.social-btn .btn-primary {
-		background: #507cc0;
-	}
-	.social-btn .btn-info {
-		background: #64ccf1;
-	}
-	.social-btn .btn-danger {
-		background: #df4930;
-	}
-	.social-btn .btn i {
-		font-size: 20px;
-	} 
-	
- /*   .form-control {
-		font-size: 16px;
-		transition: all 0.4s;
-		box-shadow: none;
-	}
-	.form-control:focus {
-        border-color: #5cb85c;
-    }
-    .form-control, .btn {
-        border-radius: 50px;
-		outline: none !important;
-    }
-	.signin-form {
-		width: 400px;
-    	margin: 0 auto;
-		padding: 30px 0;
-	}
-    .signin-form form {
-		border-radius: 5px;
-    	margin-bottom: 20px;
-        background: #fff;
-        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-        padding: 40px;
-    }
-	.signin-form a {
-		color: #5cb85c;
-	}    
-	.signin-form h2 {
-		text-align: center;
-		font-size: 34px;
-		margin: 10px 0 15px;
-	}
-	.signin-form .hint-text {
-		color: #999;
-		text-align: center;
-		margin-bottom: 20px;
-	}
-	.signin-form .form-group {
-		margin-bottom: 20px;
-	}
-    .signin-form .btn {        
-        font-size: 18px;
-		line-height: 26px;        
-        font-weight: bold;
-		text-align: center;
-    }
-    .signin-form .small {
-        font-size: 13px;
-    }
-	.signup-btn {
-		text-align: center;
-		border-color: #5cb85c;
-		transition: all 0.4s;
-	}
-	.signup-btn:hover {
-		background: #5cb85c;
-		opacity: 0.8;
-	}
-    .or-seperator {
-        margin: 50px 0 15px;
-        text-align: center;
-        border-top: 1px solid #e0e0e0;
-    }
-    .or-seperator b {
-        padding: 0 10px;
-		width: 40px;
-		height: 40px;
-		font-size: 16px;
-		text-align: center;
-		line-height: 40px;
-		background: #fff;
-		display: inline-block;
-        border: 1px solid #e0e0e0;
-		border-radius: 50%;
-        position: relative;
-        top: -22px;
-        z-index: 1;
-    }
-    .social-btn .btn {
-		color: #fff;
-        margin: 10px 0 0 30px;
-		font-size: 15px;
-        width: 55px;
-        height: 55px;
-        line-height: 38px;
-        border-radius: 50%;
-		font-weight: normal;
-        text-align: center;
-		border: none;
-		transition: all 0.4s;
-    }	
-	.social-btn .btn:first-child {
-		margin-left: 0;
-	}
-	.social-btn .btn:hover {
-		opacity: 0.8;
-	}
-	.social-btn .btn-primary {
-		background: #33CC00;
+		background: #33CC00 !important;
 	}
 	.social-btn .btn-info {
 		background: #FFDD59;
 	}
 	.social-btn .btn-danger {
-		background: #df4930;
+		background: #3B5998;
 	}
 	.social-btn .btn-primary:hover {
-	opacity: 0.1;
-}
-
-.social-btn .btn-info:hover {
-	opacity: 0.1;
-}
-
-.social-btn .btn-danger:hover {
-	opacity: 0.1;
-}
+		opacity: 0.1 !important;
+	}
+	
+	.social-btn .btn-info:hover {
+		opacity: 0.1 !important;
+	}
+	
+	.social-btn .btn-danger:hover {
+		opacity: 0.1 !important;
+	}
 	.social-btn .btn i {
 		font-size: 20px;
-	} */
+	} 
+
 
 </style>
 <script type="text/javascript">
@@ -299,13 +191,21 @@
   <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
   <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
   <script src='https://vjs.zencdn.net/7.6.0/video.js'></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+ 	 <meta property="fb:app_id" content="488886948633143" />
+ 	  <meta property="og:type"          content="website" />
+		  <meta property="og:title"         content="일상 영상 공유 플랫폼 Daily Log - WITH" />
+		  <meta property="og:url"           content="http://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:8001/with/video.vd?userNo=${list1[0].userNo}&vNo=${list1[0].vNo}" />
+		  <meta property="og:description"   content="영상 플랫폼 Daily Log" />
+		  <meta property="og:image"         content="http://127.0.0.1:8001/with/resources/images/logo.png" />
+	
 </head>
 <body>
  	<jsp:include page="../common/mainBar.jsp"></jsp:include>
-	<br><br><br>
+	<br>
 	<%-- <c:forEach items="${list}" --%>
 	<div align="center">
-		<table border="1px">
+		<table >
 			<tr>
 				<!-- 채널소개, 좋아요 등 -->
 				<td width="60px" height="60px">
@@ -348,16 +248,16 @@
 									<a href="#none" data-toggle="dropdown" id="subtitle">
 										<img src="resources/images/dollar.png" style="width:15px; align:right;">
 									</a>
-									<ul class="dropdown-menu form-wrapper" style="width:350px;">					
+									<ul class="dropdown-menu form-wrapper" style="width:280px;">					
 										<li>
 											<div class="form-group" id="sub">
 												<table class="noti_table">
-													<tr><a id="regSub">정기후원</a></tr><br>
-													<tr><a id="onceSub">일시후원</a></tr><br>
+													<tr><a  style="color:gray;font-weight: 900;"id="regSub">정기후원</a></tr><br>
+													<tr><a  style="color:gray;font-weight: 900;"id="onceSub">일시후원</a></tr><br>
 												</table>
 											</div>
 											<!-- 정기후원 -->
-											<div id="rSub">
+											<div id="rSub" style="">
 												<div class="noti_text" align="center" style="margin-top:5%;"><b>정기후원</b></div>
 												<div align="left" style="margin-left:10%; margin-right:10%;">
 													<table class="noti_table">
@@ -479,23 +379,23 @@
 													<table class="noti_table">
 														<tr><td>
 															<div class="checks" style="display:inline-block;">
-										                      <div style="display:inline-block;"><input type="radio" id="more1" value="성적인 콘텐츠" name="more" onclick="check_onle(this)"></div>
+										                      <div style="display:inline-block;"><input type="radio" id="more1" value="성적인 콘텐츠" name="more" onclick="oneCheckbox(this)"></div>
 										                      <div style="display:inline-block;"><label for="more1">성적인 콘텐츠</label></div><br>
-										                      <div style="display:inline-block;"><input type="radio" id="more2" value="폭력적 또는 혐오스러운 콘텐츠" name="more" onclick="check_onle(this)"></div> 
+										                      <div style="display:inline-block;"><input type="radio" id="more2" value="폭력적 또는 혐오스러운 콘텐츠" name="more" onclick="oneCheckbox(this)"></div> 
 										                      <div style="display:inline-block;"><label for="more2">폭력적 또는 혐오스러운 콘텐츠</label></div><br>
-										                      <div style="display:inline-block;"><input type="radio" value="증오 또는 악의적인 콘텐츠" id="more3" name="more" onclick="check_onle(this)"></div> 
+										                      <div style="display:inline-block;"><input type="radio" value="증오 또는 악의적인 콘텐츠" id="more3" name="more" onclick="oneCheckbox(this)"></div> 
 										                      <div style="display:inline-block;"><label for="more3">증오 또는 악의적인 콘텐츠</label></div><br>
-										                      <div style="display:inline-block;"><input type="radio" id="more4" value="유해한 위험 행위" name="more" onclick="check_onle(this)"></div>
+										                      <div style="display:inline-block;"><input type="radio" id="more4" value="유해한 위험 행위" name="more" onclick="oneCheckbox(this)"></div>
 										                      <div style="display:inline-block;"><label for="more1">유해한 위험 행위</label></div><br>
-										                      <div style="display:inline-block;"><input type="radio" id="more5" value="아동 학대" name="more" onclick="check_onle(this)"></div> 
+										                      <div style="display:inline-block;"><input type="radio" id="more5" value="아동 학대" name="more" onclick="oneCheckbox(this)"></div> 
 										                      <div style="display:inline-block;"><label for="more2">아동 학대</label></div><br>
-										                      <div style="display:inline-block;"><input type="radio" value="테러 조장" id="more6" name="more" onclick="check_onle(this)"></div> 
+										                      <div style="display:inline-block;"><input type="radio" value="테러 조장" id="more6" name="more" onclick="oneCheckbox(this)"></div> 
 										                      <div style="display:inline-block;"><label for="more3">테러 조장</label></div><br>
-										                      <div style="display:inline-block;"><input type="radio" id="more7" value="스팸 또는 사용자 현혹 콘텐츠" name="more" onclick="check_onle(this)"></div>
+										                      <div style="display:inline-block;"><input type="radio" id="more7" value="스팸 또는 사용자 현혹 콘텐츠" name="more" onclick="oneCheckbox(this)"></div>
 										                      <div style="display:inline-block;"><label for="more1">스팸 또는 사용자 현혹 콘텐츠</label></div><br>
-										                      <div style="display:inline-block;"><input type="radio" id="more8" value="권리 침해" name="more" onclick="check_onle(this)"></div> 
+										                      <div style="display:inline-block;"><input type="radio" id="more8" value="권리 침해" name="more" onclick="oneCheckbox(this)"></div> 
 										                      <div style="display:inline-block;"><label for="more2">권리 침해</label></div><br>
-										                      <div style="display:inline-block;"><input type="radio" value="자막 문제" id="more9" name="more" onclick="check_onle(this)"></div> 
+										                      <div style="display:inline-block;"><input type="radio" value="자막 문제" id="more9" name="more" onclick="oneCheckbox(this)"></div> 
 										                      <div style="display:inline-block;"><label for="more3">자막 문제</label></div><br>
 										                      <small>Daily log<br> 커뮤니티 가이드를 위반한 계정을 제재를 받게 되며 심각하거나 반복적인 위반 행위에 대해서는 계정 해지 조치가 취해질 수 있습니다. <a href="" style="color:red;">채널 신고하기</a></small>	
 										                    </div>
@@ -503,7 +403,7 @@
 														<tr>
 															<td>
 																<a style="width:50px;text-align:center;display:inline-block;" class="btn btn-join btn-lg btn-block" id="cancle4">취소</a>
-																<a id="rOk" style="width:50px; display:inline-block;text-align:center;" class="btn btn-join btn-lg btn-block">다음</a>
+																<a id="reportNext" style="width:50px; display:inline-block;text-align:center;" class="btn btn-join btn-lg btn-block">다음</a>
 															</td>
 														</tr>
 													</table>
@@ -526,7 +426,7 @@
 														<tr>
 															<td>
 																<a style="width:50px;text-align:center;" class="btn-gradient yellow small" id="cancle5">취소</a>
-																<a id="cau_ok" style="width:50px; text-align:center;" class="btn-gradient blue small">확인</a>
+																<a id="blockOk" style="width:50px; text-align:center;" class="btn-gradient blue small">확인</a>
 															</td>
 														</tr>
 													</table>
@@ -534,19 +434,21 @@
 											</div>
 											<!-- 공유 -->
 											<div id="share1">
-															<div class="social-btn text-center">
-				<a href="#" class="btn btn-primary btn-lg" title="Facebook"><i
-					class="fa fa-naver" style="font-weight: 900">N</i></a> <a href="#"
-					class="btn btn-info btn-lg" title="Twitter"><i
-					class="fa fa-kakaotalk" style="font-weight: 900">K</i></a> <a href="#"
-					class="btn btn-danger btn-lg" title="Google"><i
-					class="fa fa-google"></i></a>
-			</div>
-												  		<!-- <div class="social-btn text-center">
-			<a href="#" class="btn btn-primary btn-lg" title="Facebook"><i class="fa fa-facebook"></i></a>
-			<a href="#" class="btn btn-info btn-lg" title="Twitter"><i class="fa fa-twitter"></i></a>
-			<a href="#" class="btn btn-danger btn-lg" title="Google"><i class="fa fa-google"></i></a>
-		</div> -->
+												<div class="social-btn text-center">
+													<a href="#" class="btn btn-primary btn-lg" title="Facebook" style="padding-top:5px !important;">
+														<i class="fa fa-naver" style="font-weight: 900">N</i>
+													</a> 
+													<a href="#" class="btn btn-info btn-lg" title="Twitter" style="padding-top:5px !important;">
+														<i class="fa fa-kakaotalk" style="font-weight: 900">K</i>
+													</a><!--  --> 
+													<a href="http://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:8001/with/video.vd?userNo=${list1[0].userNo}&vNo=${list1[0].vNo}" class="btn btn-danger btn-lg" title="Facebook" style="padding-top:5px !important;">
+														<i class="fa facebook" style="font-weight: 900">F</i>
+													</a>
+												</div>
+												<br>
+												<input type="botton" onclick="copyUrl(value)" id="clipboard" style="width:200px;" 
+													value="http://127.0.0.1:8001/with/video.vd?userNo=${list1[0].userNo}&vNo=${list1[0].vNo}" readonly>
+												<br><br>
 											</div>
 										</li>
 									</ul>
@@ -560,7 +462,7 @@
 			<tr>
 				<!-- 비디오 -->
 				<td colspan="4" height="400px"><!-- autoplay="autoplay" -->
-					  <video id='my-video' class='video-js' controls  preload='auto' width='800' height='450'
+					  <video id='my-video' class='video-js' controls  preload='auto' width='600' height='400'
 						  poster='resources/images/logo.png' data-setup='{}' >
 						  <source src='resources/uploadFiles/${ list1[0].filepath}' type='video/mp4'>
 						  <source src='MY_VIDEO.webm' type='video/webm'>
@@ -577,33 +479,119 @@
 			<tr>
 				<!-- 영상 제목, 태그 -->
 				<td colspan="4" height="130px">
-					<div style="margin:15px;">
+					<div style="margin:20px;">
 						<h3>${ list1[0].vTitle }</h3>
 						<small>조회수  ${ list1[0].count }</small><br>
 						<div>
 							<a href="" style="color:blue;"><small>${ list1[0].tag }</small></a>
 						</div>
 					</div>
+					<hr>
 				</td>
 			</tr>
 			<tr>
 				<!-- 더보기 -->
 				<td colspan="4" height="130px">
 					더보기
+					<a href="age.vd">본인인증</a>
+					<a href="age2.vd">본인인증222</a>
 				</td>
 			</tr>
 		</table>
 	</div>
-	
 	<script>
+	   
+	(function(d, s, id) {
+	    var js, fjs = d.getElementsByTagName(s)[0];
+	    if (d.getElementById(id)) return;
+	    js = d.createElement(s); js.id = id;
+	    js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+	    fjs.parentNode.insertBefore(js, fjs);
+	  }(document, 'script', 'facebook-jssdk'));
+
+		function copyUrl(value){
+			var textArea = document.createElement("textArea");
+			document.body.appendChild(textArea);
+			textArea.value = 'http://127.0.0.1:8001/with/video.vd?userNo=${list1[0].userNo}&vNo=${list1[0].vNo}';
+			textArea.select();
+			
+			document.execCommand('copy');
+			document.body.removeChild(textArea);
+			
+		}
+	
 	    function oneCheckbox(a){
-	        var obj = document.getElementsById("more");
+	        var obj = document.getElementsByName("more");
 	
 	        for(var i=0; i<obj.length; i++){
 	            if(obj[i] != a){ obj[i].checked = false;}
+	            //console.log(obj[i].value + "::" + a.value);
 	        }
+	        
+	        var check = a.value;
+	        return check;
 	    }
-
+	  //신고
+		$('#reportNext').click(function(){
+			var lists = [];
+			$("input[name='more']:checked").each(function(i){   //jQuery로 for문 돌면서 check 된값 배열에 담는다
+		  		lists.push($(this).val());
+		 	});
+			
+			console.log(lists);
+			
+			var check = lists[0];
+	        var userNo = "<c:out value='${list2[0].userNo}'/>";
+	        var vNo = "<c:out value='${list1[0].vNo}'/>";
+	        var chNm = "<c:out value='${list2[0].chNm}'/>";
+			
+	        console.log(check + ", " + userNo + ", " + vNo + ", " + chNm);
+	        $.ajax({
+	        	url:"report.vd",
+				type:"post",
+				data:{check:check, 
+					  userNo:userNo,
+					  vNo:vNo,
+					  chNm:chNm},
+				success:function(data){
+					console.log("성공!");
+					if(data == 1){
+						alert("신고가 정상접수 되었습니다.");
+					}else {
+						alert("신고 접수 실패하였습니다.");
+					}
+				},
+				error:function(){
+					console.log("실패!");
+				}
+	        });
+	        
+		});
+		$('#blockOk').click(function(){
+	        var chNo = "<c:out value='${list2[0].chNo}'/>";
+	        var vNo = "<c:out value='${list1[0].vNo}'/>";
+			
+	        console.log(chNo + ", " + vNo);
+	        $.ajax({
+	        	url:"block.vd",
+				type:"post",
+				data:{chNo:chNo,
+					  vNo:vNo},
+				success:function(data){
+					console.log("성공!");
+					if(data = 1){
+						alert("차단되었습니다.");
+					}else{
+						alert("차단 실패했습니다.");
+					}
+					//state = data;
+				},
+				error:function(){
+					console.log("실패!");
+				}
+	        });
+	        
+		});
 	    
 		var state = 0;
 		//좋아요 조회
@@ -963,6 +951,24 @@
 				 $('#share1').hide();
 				 return false;
 			 });
+/* 			 var copyLink = new ClipboardJS("#btnCopy");
+				
+				copyLink.on("success", function(){
+					alert("클립보드에 복사되었습니다.");
+					
+					window.getSelection().removeAllRanges();
+					
+				}); */
+/* 				function copyUrl(var){
+					var textArea = document.createElement("textArea");
+					document.body.appendChild(textArea);
+					textArea.value=val;
+					textArea.select();
+					
+					document.execCommand('copy');
+					document.body.removeChild(textArea);
+					console.log('copied on clipboard');
+				} */
 		 });
 	</script>
 

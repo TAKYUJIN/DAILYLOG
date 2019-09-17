@@ -78,7 +78,7 @@ public class VideoServiceImpl implements VideoService{
 		return vd.selectVideoInfo(sqlSession, map);
 	}
 	@Override
-	public List<Map<String, Object>> selectLogerInfo(Map<String, Integer> map) {
+	public List<Object> selectLogerInfo(Map<String, Integer> map) {
 		
 		return vd.selectLogerInfo(sqlSession, map);
 	}
@@ -135,6 +135,18 @@ public class VideoServiceImpl implements VideoService{
 		
 		return vd.deleteBookmark(sqlSession, map);
 	}
+	
+	@Override
+	public int report(Map<String, Object> map) {
+		
+		return vd.report(sqlSession, map);
+	}
+	@Override
+	public int block(Map<String, Object> map) {
+		
+		return vd.block(sqlSession, map);
+	}
+	
 }
 
 

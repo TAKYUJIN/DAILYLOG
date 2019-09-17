@@ -82,7 +82,7 @@ public class VideoDaoImpl implements VideoDao {
 	}
 
 	@Override
-	public List<Map<String, Object>> selectLogerInfo(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
+	public List<Object> selectLogerInfo(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
 		
 		return sqlSession.selectList("Video.selectLogerInfo", map);
 	}
@@ -144,4 +144,16 @@ public class VideoDaoImpl implements VideoDao {
 		
 		return sqlSession.delete("Video.deleteBookmark", map);
 	}
+	
+	@Override
+	public int report(SqlSessionTemplate sqlSession, Map<String, Object> map) {
+		
+		return sqlSession.insert("Video.insertReport", map);
+	}
+	@Override
+	public int block(SqlSessionTemplate sqlSession, Map<String, Object> map) {
+		
+		return sqlSession.insert("Video.insertBlock", map);
+	}
+	
 }

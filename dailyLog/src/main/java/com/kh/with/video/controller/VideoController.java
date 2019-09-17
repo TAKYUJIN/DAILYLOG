@@ -61,10 +61,10 @@ public class VideoController {
 		System.out.println("needs : " + userNo + ", " + vNo);
 		 
 		List<Object> list1 = vs.selectVideoInfo(map);
-		List<Map<String, Object>> list2 = vs.selectLogerInfo(map);
+		List<Object> list2 = vs.selectLogerInfo(map);
 		
 		
-		System.out.println("list2 : " + list2.toString().substring(13,14));
+		//System.out.println("list2 : " + list2.toString().substring(13,14));
 		//int status = vs.selectRegStatus(loginUser, list1.get(1));
 		
 		model.addAttribute("list1", list1);
@@ -242,6 +242,7 @@ public class VideoController {
 		System.out.println("result imgCheck : " + result);
 		return Integer.toString(result);
 	}
+	
 	//북마크 insert
 	@RequestMapping(value = "insertBookmark.vd")
 	@ResponseBody
@@ -283,6 +284,61 @@ public class VideoController {
 		int result = vs.deleteBookmark(map);
 		System.out.println("result imgCheck : " + result);
 		return Integer.toString(result);
+	}
+	
+	//report
+	@RequestMapping(value = "report.vd")
+	@ResponseBody
+	public String report(HttpSession session, HttpServletRequest request) {
+		Member m = (Member) session.getAttribute("loginUser");
+		int loginUser = m.getUserNo();
+		int userNo = Integer.parseInt(request.getParameter("userNo"));
+		int vNo = Integer.parseInt(request.getParameter("vNo"));
+		String check = request.getParameter("check");
+		String chNm = request.getParameter("chNm");
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("userNo", userNo);
+		map.put("loginUser", loginUser);
+		map.put("check", check);
+		map.put("vNo", vNo);
+		map.put("chNm", chNm);
+		
+		int result = vs.report(map);
+		System.out.println("result : " + result);
+		return Integer.toString(result);
+	}
+	
+	//block
+	@RequestMapping(value = "block.vd")
+	@ResponseBody
+	public String block(HttpSession session, HttpServletRequest request) {
+		Member m = (Member) session.getAttribute("loginUser");
+		int loginUser = m.getUserNo();
+		int vNo = Integer.parseInt(request.getParameter("vNo"));
+		int chNo = Integer.parseInt(request.getParameter("chNo"));
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("loginUser", loginUser);
+		map.put("vNo", vNo);
+		map.put("chNo", chNo);
+		
+		int result = vs.block(map);
+		System.out.println("result : " + result);
+		return Integer.toString(result);
+	}
+	
+	// 영상 클릭시 동영상 페이지로 이동
+	@RequestMapping(value = "age.vd")
+	public String age() {
+
+		return "video/age";
+	}
+	// 영상 클릭시 동영상 페이지로 이동
+	@RequestMapping(value = "age2.vd")
+	public String age2() {
+
+		return "video/age2";
 	}
 	
 	// 영상 클릭시 동영상 페이지로 이동
