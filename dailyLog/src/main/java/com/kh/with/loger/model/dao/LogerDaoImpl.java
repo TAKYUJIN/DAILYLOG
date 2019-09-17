@@ -15,6 +15,7 @@ import com.kh.with.loger.model.vo.Loger2;
 import com.kh.with.loger.model.vo.Support;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.report.model.vo.Report;
+import com.kh.with.video.model.vo.Video;
 
 @Repository
 public class LogerDaoImpl implements LogerDao{
@@ -142,6 +143,16 @@ public class LogerDaoImpl implements LogerDao{
 	public int cstop(SqlSessionTemplate sqlSession, Loger r) {
 
 		return sqlSession.update("Loger.cstop",r);
+	}
+	
+	//로거 동영상 출력
+	@Override
+	public ArrayList<Video> showLogerVideo(SqlSessionTemplate sqlSession, Member m) {
+		ArrayList<Video> vList = null;
+		
+		vList = (ArrayList) sqlSession.selectList("Loger.showLogerVideo", m);
+		
+		return vList;
 	}
 
 }

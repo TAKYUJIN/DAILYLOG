@@ -33,6 +33,11 @@
 		ORDER BY RANK ASC
   	</select>	
   	
+  	<update id="updateCalculateApply" parameterType="int">
+  		UPDATE CALCULATE SET CAL_EDT = SYSDATE, CAL_TY = '완료'
+  		WHERE CAL_NO = #{calNo}
+  	
+  	</update>
 	
 </mapper>
 
