@@ -203,85 +203,85 @@
 	<update id="updateSupportCalculate" parameterType="Support">
 		UPDATE SUPPORT SET CAL_STATUS = 1
         WHERE USER_NO = #{userNo}
-		AND SUP_STDT BETWEEN TO_CHAR(TO_DATE(#{mon},'YYYY-MM-DD')) AND TO_CHAR(TO_DATE(#{day},'YYYY-MM-DD'))
-	</update>
+      AND SUP_STDT BETWEEN TO_CHAR(TO_DATE(#{mon},'YYYY-MM-DD')) AND TO_CHAR(TO_DATE(#{day},'YYYY-MM-DD'))
+   </update>
 
-	<!-- 로거채널개설 insert 쿼리 -->
-	<insert id="insertcreateChannel" parameterType="Loger">
-		INSERT INTO LOGER
-		VALUES (CH_NO.NEXTVAL, #{userNo}, #{chNm} , 0 , SYSDATE , #{chInfo}, Null,
-		Null, Null, 0)
+   <!-- 로거채널개설 insert 쿼리 -->
+   <insert id="insertcreateChannel" parameterType="Loger">
+      INSERT INTO LOGER
+      VALUES (CH_NO.NEXTVAL, #{userNo}, #{chNm} , 0 , SYSDATE , #{chInfo}, Null,
+      Null, Null, 0)
 
-	</insert>
-
-
-	<!--로거스튜디오 메인 select (프로필,채널명, 구독자) -->
-	<select id="newHomeChannel" resultMap="logerResultSet2">
-		SELECT *
-		FROM LOGER L
-		JOIN ATTACHMENT A
-		ON (L.USER_NO = A.USER_NO)
-		WHERE A.USER_NO = #{userNo}
+   </insert>
 
 
-	</select>
+   <!--로거스튜디오 메인 select (프로필,채널명, 구독자) -->
+   <select id="newHomeChannel" resultMap="logerResultSet2">
+      SELECT *
+      FROM LOGER L
+      JOIN ATTACHMENT A
+      ON (L.USER_NO = A.USER_NO)
+      WHERE A.USER_NO = #{userNo}
+
+
+   </select>
   
     <select id="reportlist" resultMap="ReportResultSet">
- 	SELECT RE_NO,V_TITLE,RE_WHY,RE_COUNT,FLOOR(C_COUNT/3) AS C_COUNT, RE_TY,R.CH_NM,RE_DT,A.FILEPATH
-	FROM REPORT R
-	JOIN ATTACHMENT A ON(R.RE_TARGET=A.USER_NO)
-	JOIN VIDEO V ON (A.USER_NO=V.USER_NO)
-	 WHERE (RE_TY='동영상' OR  RE_TY='채널')
-	AND 
-	R.RE_TARGET =#{userNo}  
-	 
-	</select>  
+    SELECT RE_NO,V_TITLE,RE_WHY,RE_COUNT,FLOOR(C_COUNT/3) AS C_COUNT, RE_TY,R.CH_NM,RE_DT,A.FILEPATH
+   FROM REPORT R
+   JOIN ATTACHMENT A ON(R.RE_TARGET=A.USER_NO)
+   JOIN VIDEO V ON (A.USER_NO=V.USER_NO)
+    WHERE (RE_TY='동영상' OR  RE_TY='채널')
+   AND 
+   R.RE_TARGET =#{userNo}  
+    
+   </select>  
 
   <!--
-	<select id="reportlist" resultMap="ReportResultSet">
-		SELECT *
-		FROM REPORT R
-		JOIN ATTACHMENT A ON(R.RE_TARGET=A.USER_NO)
-		JOIN VIDEO V ON (A.USER_NO=V.USER_NO)
-		WHERE R.RE_TARGET =#{userNo}
+   <select id="reportlist" resultMap="ReportResultSet">
+      SELECT *
+      FROM REPORT R
+      JOIN ATTACHMENT A ON(R.RE_TARGET=A.USER_NO)
+      JOIN VIDEO V ON (A.USER_NO=V.USER_NO)
+      WHERE R.RE_TARGET =#{userNo}
 
-	</select> -->
+   </select> -->
 
 
-	<select id="ccount" resultMap="Report2ResultSet">
-		SELECT COUNT(R.RE_COUNT)
-		FROM REPORT R
-		WHERE RE_TARGET =#{userNo}
-		AND RE_COUNT>=3
-	</select>
+   <select id="ccount" resultMap="Report2ResultSet">
+      SELECT COUNT(R.RE_COUNT)
+      FROM REPORT R
+      WHERE RE_TARGET =#{userNo}
+      AND RE_COUNT>=3
+   </select>
 
-	<select id="recount" resultMap="Report2ResultSet">
-		SELECT SUM(R.RE_COUNT)
-		FROM REPORT R
-		WHERE RE_TARGET =#{userNo}
-	</select>
+   <select id="recount" resultMap="Report2ResultSet">
+      SELECT SUM(R.RE_COUNT)
+      FROM REPORT R
+      WHERE RE_TARGET =#{userNo}
+   </select>
 
-	<update id="cstop" parameterType="Loger">
-		UPDATE LOGER SET STATUS =1
-		WHERE USER_NO=#{userNo}
-	</update>
+   <update id="cstop" parameterType="Loger">
+      UPDATE LOGER SET STATUS =1
+      WHERE USER_NO=#{userNo}
+   </update>
 
-	
+   
    <update id="cblockstatus" parameterType="Loger">
-	UPDATE LOGER SET STATUS =1
-	WHERE USER_NO=#{userNo}
-	</update>
-	<update id="vblockstatus" parameterType="Loger">
-	UPDATE LOGER SET STATUS =1
-	WHERE USER_NO=#{userNo}
-	</update>
-	 
-	<select id="reportcount " resultMap="ReportResultSet">
-	 SELECT  REP_NO,M.USER_NO,RE_COUNT,FLOOR(C_COUNT/3) AS C_COUNT, RE_TY 
+   UPDATE LOGER SET STATUS =1
+   WHERE USER_NO=#{userNo}
+   </update>
+   <update id="vblockstatus" parameterType="Loger">
+   UPDATE LOGER SET STATUS =1
+   WHERE USER_NO=#{userNo}
+   </update>
+    
+   <select id="reportcount " resultMap="ReportResultSet">
+    SELECT  REP_NO,M.USER_NO,RE_COUNT,FLOOR(C_COUNT/3) AS C_COUNT, RE_TY 
      FROM REPORT R
      JOIN MEMBER M
      ON(M.USER_NO=R.RE_TARGET)
-	 WHERE (RE_TY='동영상' OR  RE_TY='채널')
+    WHERE (RE_TY='동영상' OR  RE_TY='채널')
      AND RE_TARGET=#{userNo}
 	</select>
 	
@@ -298,13 +298,5 @@
 	</select>
 	
 
+
 </mapper>
-
-
-
-
-
-
-
-
-

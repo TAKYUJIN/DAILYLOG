@@ -13,13 +13,12 @@ public class Loger implements java.io.Serializable{
 	private String bankNm;	//은행명
 	private String account; //계좌번호
 	private int subNum;		//구독자수
-
 	private int status;
 	
 	public Loger() {}
 
-	public Loger(int chNo, int userNo, String chNm, int vNo, Date chDT, String chInfo, String accNm,
-			String bankNm, String account, int subNum, int status) {
+	public Loger(int chNo, int userNo, String chNm, int vNo, Date chDT, String chInfo, String accNm, String bankNm,
+			String account, int subNum, int status) {
 		super();
 		this.chNo = chNo;
 		this.userNo = userNo;
@@ -129,6 +128,7 @@ public class Loger implements java.io.Serializable{
 				+ ", subNum=" + subNum + ", status=" + status + "]";
 	}
 
+	
 
 	
 
