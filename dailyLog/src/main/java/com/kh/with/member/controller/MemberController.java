@@ -38,20 +38,28 @@ public class MemberController {
 
 	@Autowired
 	private MemberService ms;
-
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
-	
 	@Autowired
 	private MailSendService mailSender;
 
+	//로그인 페이지로 이동 
 	@RequestMapping(value = "loginbutton.me")
 	public String showMemberloginView() {
 
 		return "member/login";
 
 	}
+	
+	//아이디 찾기 페이지로 이동 
+	@RequestMapping(value = "findId.me")
+	public String showFindId() {
 
+		return "member/findId";
+
+	}
+
+	// 로그아웃 
 	@RequestMapping("logout.me")
 	public String logout(SessionStatus status) {
 
@@ -60,12 +68,14 @@ public class MemberController {
 		return "redirect:index.jsp";
 	}
 
+	//회원가입 페이지로 이동 
 	@RequestMapping(value = "memberJoinView.me")
 	public String showMemberJoinView() {
 
 		return "member/memberJoin";
 	}
 
+	// 회원 로그인 
 	@RequestMapping(value = "login.me")
 	public String loginCheck(Member m, Model model) {
 
@@ -97,6 +107,7 @@ public class MemberController {
 
 	}
 
+	// 회원가입 
 	@RequestMapping(value = "insert.me", method= {RequestMethod.GET, RequestMethod.POST})
 	public String insertMember(Model model, Member m, HttpServletRequest request) {
 
@@ -208,6 +219,21 @@ public class MemberController {
 		return Integer.toString(result);
 
 	}
+	
+	//phone 중복확인 
+		@RequestMapping(value="phoneCheck.me", method=RequestMethod.GET)
+		@ResponseBody
+		public String phoneCheck(HttpServletRequest request) {
+
+			String phone = request.getParameter("phone");
+			int result = ms.phoneCheck(phone);
+
+			return Integer.toString(result);
+
+		}
+		
+	//문자전송
+		
 
 	// 마이페이지 이동
 		@RequestMapping(value = "myPage.me")

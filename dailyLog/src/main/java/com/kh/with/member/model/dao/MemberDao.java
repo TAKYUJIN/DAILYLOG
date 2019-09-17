@@ -44,6 +44,8 @@ public interface MemberDao {
 
 	int alter_userKey(String userId, String status);
 
+	int phoneCheck(String phone);
+
 
 
 
