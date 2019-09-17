@@ -139,20 +139,29 @@
 		opacity: 0.7;
 	}	
 </style>
+<script>
+function fncalculate() {
+	var lists = new Array();
+	$("input[name='check']:checked").each(function(i){
+		lists.push($(this).val());
+	});
+	
+	var frm = document.f1;
+	$("input[name='chk_list']").val(lists);
+	//frm.chk_list.value = lists;
+
+	frm.action = "calculateApply.ad";
+	frm.submit();
+}
+</script>
 </head>
 <body>
 <jsp:include page="../common/adminBar.jsp"></jsp:include>
     <div class="selectSupport">
-    <form action="" method="" class="selectLogerCalculateForm" float="left;">
+    <form name="f1" action="" method="post" class="selectLogerCalculateForm" float="left;">
+    <input type="hidden" name="chk_list"/>
         <div class="table-wrapper">
-            <table class="table table-striped">
-            <!-- <tr><h4><b>정산관리</b></h4></tr>
-				<select id="searchCalculate" style="width:150px; margin-left:350px;">
-					    <option value="">회원명</option>
-					    <option value="">정산유무</option>
-					    <option value="">정산신청일</option>
-					</select>&nbsp;<input type="text">
-					&nbsp;<button type="submit" value="">조회</button> -->
+            <table class="table table-striped" id="adminTable">
 			<tr><hr></tr>
         <h4><b>정산관리</b></h4>
 			<div id="searchAdminCalBtn">
@@ -173,18 +182,18 @@
 						</div>
                     </div>
                     <div class="col-sm-1">
-                    <button type="submit" value="" id="selectBtn">조회</button>
+                    <button type="button" value="" id="selectBtn">조회</button>
 <!-- 						<button type="button" class="btn btn-primary"><i class="fa fa-search"></i></button> -->
 					</div>
                 </div>
 			</div>
-				<button type="button" class="btn_bookmark" style="float:right;" onclick="location.href='deleteBoard.do?idx=<%-- ${} --%>'">&nbsp;취소&nbsp;</button> 
-				<button type="button" class="btn_bookmark" style="float:right;" onclick="location.href='updateLogerVideo.jsp'">&nbsp;정산&nbsp;</button></div>
+				<button type="button" class="btnReset" style="float:right;" onclick="location.href='deleteBoard.do?idx=<%-- ${} --%>'">&nbsp;취소&nbsp;</button> 
+				<button type="button" class="btnCalculate" style="float:right;" onclick="fncalculate();">&nbsp;정산&nbsp;</button></div>
 			<tr><br></tr>
 			<tr><br></tr>
                 <thead>
                     <tr>
-                    	<th class="calculate_th"><input type="checkbox" id="checkCal"></th>
+                    	<th class="calculate_th"><input type="checkbox" id="check_all"></th>
                         <th class="calculate_th">회원번호</th>
 						<th class="calculate_th">ID</th>
 						<th class="calculate_th">회원명</th>
@@ -198,25 +207,151 @@
 						<th class="calculate_th">정산완료일</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="admin">
                 <c:forEach items="${cList}" var="c">
                     <tr>
-                    	<td><input type="checkbox" id="checkCal"></td>
-                        <td>${c.userNo}</td>
-						<td>${c.userId}</td>
-						<td>${c.userNm}</td>
-						<td>${c.calSTDT}</td>
-						<td>${c.calPrice}</td>
-						<td>${c.calVAT}</td>
-						<td>${c.amountPrice}</td>
-						<td>${c.bankNm}</td>
-						<td>${c.account}</td>
-						<td>${c.calTY}</td>
-						<td>${c.calEDT}</td>
+                    
+                    	<td><input type="checkbox" class="inputCheck" name="check" value="${c.calNo}"></td>
+                        <td><c:out value="${c.userNo}"/></td>
+						<td><c:out value="${c.userId}"/></td>
+						<td><c:out value="${c.userNm}"/></td>
+						<td><c:out value="${c.calSTDT}"/></td>
+						<td><c:out value="${c.calPrice}"/></td>
+						<td><c:out value="${c.calVAT}"/></td>
+						<td><c:out value="${c.amountPrice}"/></td>
+						<td><c:out value="${c.bankNm}"/></td>
+						<td><c:out value="${c.account}"/></td>
+						<td><c:out value="${c.calTY}"/></td>
+						<td><c:out value="${c.calEDT}"/></td>
                     </tr>
                     </c:forEach>
                 </tbody>
             </table>
+            
+            <script>
+            
+            $(function(){
+                $("#check_all").click(function(){
+                    var chk = $(this).is(":checked");//.attr('checked');
+                    
+                    if(chk) {
+                    	$(".inputCheck").prop('checked', true);
+                    }
+                    else{  
+                    	$(".inputCheck").prop('checked', false);
+                    }
+                });
+            });
+
+            /* $(".btn_calculate").click(function(){
+            	var calNo = new Array();
+            	var calcnt = 0;
+            	var chkbox = $(".input_check").parent().siblings().eq(0).text();
+            	
+            	
+            	for(i = 0; i < chkbox.length; i++) {
+            	    if (chkbox[i].checked == true){
+            	    	calNo[calcnt] = chkbox[i].value;
+            	    	calcnt++;
+            	    }
+            	}
+            	console.log(calNo);
+
+            	$("#array").val(calNo);
+            	
+            	
+            	
+            }); */
+            /* $(function(){
+            	$(".btnCalculate").click(function(){
+		            $(".inputCheck:checked").each(function(){
+		            	var calNo = new Array();
+		            	calNo = $(this).parent().siblings().eq(0).text();
+		            	console.log(calNo);
+		            	
+		            	location.href='calculateApply.ad?calNo='+calNo;
+		            	
+		            });
+            		
+            	});
+            });  */
+            
+            /* $(document).ready(function(){
+    			$(".btnCalculate").click(function(){
+    				var lists = new Array();
+    				$("input[name='check']:checked").each(function(i){
+    					lists.push($(this).val());
+    					
+    					location.href='calculateApply.ad?calNo='+calNo;
+        				});
+    		 */		
+    				/* 	$.ajax({
+        					url:"calculateApply.ad",
+        					type:"post",
+        					traditional : true,
+        					data:{"lists":lists},
+        					success:function(data){
+        					console.log("성공!");
+        					/* var $adminTable = $("#adminTable #admin");
+        					$adminTable.html(""); */
+        					
+        					/*  for(var i = 0; i < data["cList"].length; i++){ 
+        	    					var $tr = $("<tr>");
+        	    					var $nNo = $("<td>").text(data["cList"][i].nNo);
+        	    					var $supTY = $("<td>").text(data["cList"][i].supTY);
+        	    					var $nickname = $("<td>").text(data["cList"][i].nickname);
+        	    					var $supPrice = $("<td>").text(numeral(data["cList"][i].supPrice).format('0,0')+"원");
+        	    					var $supSTDT = $("<td>").text(data["cList"][i].supSTDT);
+        	    					var $td = $("<td>");
+        	    					var result = $supSTDT.text().substr(0,10);
+        	    					$td.append(result)
+        	    					$tr.append($nNo);
+        	    					$tr.append($supTY);
+        	    					$tr.append($nickname);
+        	    					$tr.append($supPrice);
+        	    					$tr.append($td);
+        	    					$logerTable.append($tr); 
+        	    					
+        	    					
+        	    					<td><input type="checkbox" class="inputCheck" name="check" value="${c.calNo}"></td>
+        	                        <td><c:out value="${c.userNo}"/></td>
+        							<td><c:out value="${c.userId}"/></td>
+        							<td><c:out value="${c.userNm}"/></td>
+        							<td><c:out value="${c.calSTDT}"/></td>
+        							<td><c:out value="${c.calPrice}"/></td>
+        							<td><c:out value="${c.calVAT}"/></td>
+        							<td><c:out value="${c.amountPrice}"/></td>
+        							<td><c:out value="${c.bankNm}"/></td>
+        							<td><c:out value="${c.account}"/></td>
+        							<td><c:out value="${c.calTY}"/></td>
+        							<td><c:out value="${c.calEDT}"/></td>
+        	    				
+        	    					
+        	    					
+        	    				 }  */
+        					/* },
+        					error:function(data){
+        						console.log("실패!");
+        					} */
+    			
+
+    				
+    			/* 	$.ajax({
+    					url:"insertVideoInfo.vd",
+    					type:"post",
+    					data:{titleName:titleName,videoTag:videoTag,model:model,filepath:filepath,fileName:fileName,adInfo:adInfo,
+    						file2:file2,'allView':lists},
+    						traditional:true,
+    					success:function(data){
+    						console.log("성공!");
+    					},
+    					error:function(data){
+    						console.log("실패!");
+    					}
+    				}); */
+
+            
+            </script>
             
             <!-- 예비용 페이징 ui -->
             <div class="text-center">

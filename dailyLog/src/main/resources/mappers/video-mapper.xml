@@ -29,7 +29,6 @@
   		<result property="userNo" column="USER_NO"/>
   		<result property="chNm" column="CH_NM"/>
   		<result property="vNo" column="V_NO"/>
-  		<result property="calApply" column="CAL_APPLY"/>
   		<result property="chDT" column="CH_DT"/>
   		<result property="chInfo" column="CH_INFO"/>
   		<result property="accNm" column="ACC_NM"/>

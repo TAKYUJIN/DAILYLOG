@@ -42,13 +42,15 @@ public interface AdminService {
 	List<Object> cblacklist(Report2 report);
 	List<Object> vblacklist(Report2 report);
 	
+	int ublackstatus(Member m);
 
 
 	//관리자 정산 페이지
 	ArrayList<Calculate> selectAdminCalculate();
 
 
-	int ublackstatus(Member m);
+	int updateCalculateApply(int cal);
+	
 
 
 

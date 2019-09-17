@@ -123,7 +123,13 @@ public class AdminServiceImpl implements AdminService {
 		return ad.ublackstatus(sqlSession,m);
 	}
 
+	//관리자 정산 대기->완료
+	@Override
+	public int updateCalculateApply(int calNo) {
+		return ad.updateCalculateApply(sqlSession, calNo);
+	}
 
+	
 	
 
 

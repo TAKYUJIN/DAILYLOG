@@ -15,6 +15,7 @@ import com.kh.with.loger.model.vo.Loger2;
 import com.kh.with.loger.model.vo.Support;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.report.model.vo.Report;
+import com.kh.with.video.model.vo.Video;
 
 @Service
 public class LogerServiceImpl implements LogerService{
@@ -124,6 +125,13 @@ public class LogerServiceImpl implements LogerService{
 	public int cstop(Loger r) {
 		// TODO Auto-generated method stub
 		return ld.cstop(sqlSession, r);
+	}
+
+	
+	//로거 동영상 출력
+	@Override
+	public ArrayList<Video> showLogerVideo(Member m) {
+		return ld.showLogerVideo(sqlSession, m);
 	}
 
 

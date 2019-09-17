@@ -13,11 +13,12 @@ public class Support implements java.io.Serializable{
 	private String supTY;	//후원종류
 	private String regEDT;	//정기후원완료날짜
 	private int regStatus;	//정기후원상태
+	private int calStatus;	//정산유무
 	
 	public Support() {}
 
 	public Support(int nNo, String nickname, int supNo, int userNo, int chNo, String supSTDT, int supPrice,
-			String supTY, String regEDT, int regStatus) {
+			String supTY, String regEDT, int regStatus, int calStatus) {
 		super();
 		this.nNo = nNo;
 		this.nickname = nickname;
@@ -29,6 +30,7 @@ public class Support implements java.io.Serializable{
 		this.supTY = supTY;
 		this.regEDT = regEDT;
 		this.regStatus = regStatus;
+		this.calStatus = calStatus;
 	}
 
 	public int getnNo() {
@@ -111,13 +113,22 @@ public class Support implements java.io.Serializable{
 		this.regStatus = regStatus;
 	}
 
+	public int getCalStatus() {
+		return calStatus;
+	}
+
+	public void setCalStatus(int calStatus) {
+		this.calStatus = calStatus;
+	}
+
 	@Override
 	public String toString() {
 		return "Support [nNo=" + nNo + ", nickname=" + nickname + ", supNo=" + supNo + ", userNo=" + userNo + ", chNo="
 				+ chNo + ", supSTDT=" + supSTDT + ", supPrice=" + supPrice + ", supTY=" + supTY + ", regEDT=" + regEDT
-				+ ", regStatus=" + regStatus + "]";
+				+ ", regStatus=" + regStatus + ", calStatus=" + calStatus + "]";
 	}
 
+	
 	
 	
 }
