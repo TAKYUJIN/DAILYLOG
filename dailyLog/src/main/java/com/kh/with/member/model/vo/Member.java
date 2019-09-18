@@ -10,6 +10,7 @@ public class Member implements java.io.Serializable{
 	private String nickname;
 	private String phone;
 	private String gender;
+	private String birth;
 	private String adultYN;
 	private String chYN;
 	private Date enrollDT;
@@ -25,8 +26,8 @@ public class Member implements java.io.Serializable{
 	public Member() {}
 
 	public Member(int userNo, String userNm, String userId, String userPwd, String nickname, String phone,
-			String gender, String adultYN, String chYN, Date enrollDT, Date leaveDT, int remainPT, String status,
-			Date mon, Date day, String accNm, String bankNm, String account) {
+			String gender, String birth, String adultYN, String chYN, Date enrollDT, Date leaveDT, int remainPT,
+			String status, Date mon, Date day, String accNm, String bankNm, String account) {
 		super();
 		this.userNo = userNo;
 		this.userNm = userNm;
@@ -35,6 +36,7 @@ public class Member implements java.io.Serializable{
 		this.nickname = nickname;
 		this.phone = phone;
 		this.gender = gender;
+		this.birth = birth;
 		this.adultYN = adultYN;
 		this.chYN = chYN;
 		this.enrollDT = enrollDT;
@@ -102,6 +104,14 @@ public class Member implements java.io.Serializable{
 
 	public void setGender(String gender) {
 		this.gender = gender;
+	}
+
+	public String getBirth() {
+		return birth;
+	}
+
+	public void setBirth(String birth) {
+		this.birth = birth;
 	}
 
 	public String getAdultYN() {
@@ -195,12 +205,11 @@ public class Member implements java.io.Serializable{
 	@Override
 	public String toString() {
 		return "Member [userNo=" + userNo + ", userNm=" + userNm + ", userId=" + userId + ", userPwd=" + userPwd
-				+ ", nickname=" + nickname + ", phone=" + phone + ", gender=" + gender + ", adultYN=" + adultYN
-				+ ", chYN=" + chYN + ", enrollDT=" + enrollDT + ", leaveDT=" + leaveDT + ", remainPT=" + remainPT
-				+ ", status=" + status + ", mon=" + mon + ", day=" + day + ", accNm=" + accNm + ", bankNm=" + bankNm
-				+ ", account=" + account + "]";
+				+ ", nickname=" + nickname + ", phone=" + phone + ", gender=" + gender + ", birth=" + birth
+				+ ", adultYN=" + adultYN + ", chYN=" + chYN + ", enrollDT=" + enrollDT + ", leaveDT=" + leaveDT
+				+ ", remainPT=" + remainPT + ", status=" + status + ", mon=" + mon + ", day=" + day + ", accNm=" + accNm
+				+ ", bankNm=" + bankNm + ", account=" + account + "]";
 	}
-
 
 	
 	

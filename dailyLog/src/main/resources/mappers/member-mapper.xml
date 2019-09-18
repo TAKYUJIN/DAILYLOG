@@ -15,6 +15,7 @@
 		<result property="nickname" column="NICKNAME" />
 		<result property="phone" column="PHONE" />
 		<result property="gender" column="GENDER" />
+		<result property="birth" column="BIRTH" />
 		<result property="adultYN" column="ADULT_YN" />
 		<result property="chYN" column="CH_YN" />
 		<result property="enrollDT" column="ENROLL_DT" />
@@ -28,7 +29,7 @@
 		INSERT INTO MEMBER
 		VALUES(USER_NO.NEXTVAL, #{userNm}, #{userId}, #{userPwd},
 		#{nickname},
-		#{phone}, #{gender}, DEFAULT, DEFAULT, SYSDATE, NULL, 0, DEFAULT)
+		#{phone}, #{gender}, #{birth}, DEFAULT, DEFAULT, SYSDATE, NULL, 0, DEFAULT)
 	</insert>
 	
 	<update id="joinGetKey" parameterType="Map">
