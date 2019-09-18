@@ -10,7 +10,7 @@
 .footer-bs {
    /* background-color: #3c3d41; */
    padding: 60px 40px;
-   color: #13334A;
+   color: #525252;
    margin-bottom: 20px;
    border-bottom-right-radius: 0px;
    border-top-left-radius: 0px;
@@ -23,23 +23,24 @@
 .footer-bs .footer-brand p { font-size:12px; color:rgba(255,255,255,0.70); }
 
 .footer-bs .footer-nav ul.pages { list-style:none; padding:0px; }
-.footer-bs .footer-nav ul.pages li { padding:5px 0px;}
+.footer-bs .footer-nav ul.pages li { padding:5px 0px; color: #525252;}
 .footer-bs .footer-nav ul.pages a { 
-color:rgba(255,255,255,1.00); font-weight:bold; text-transform:uppercase; }
+color: #525252; font-weight:bold; text-transform:uppercase; }
 .footer-bs .footer-nav ul.pages a:hover { 
-color:rgba(255,255,255,0.80); text-decoration:none; }
+color: #525252; text-decoration:none; }
 .footer-bs .footer-nav h4 {
    font-size: 11px;
    text-transform: uppercase;
    letter-spacing: 3px;
    margin-bottom:10px;
+   color: #525252;
 }
 
 .footer-bs .footer-nav ul.list { list-style:none; padding:0px; }
-.footer-bs .footer-nav ul.list li { padding:5px 0px;}
-.footer-bs .footer-nav ul.list a { color:rgba(255,255,255,0.80); }
+.footer-bs .footer-nav ul.list li { padding:5px 0px; color: #525252;}
+.footer-bs .footer-nav ul.list a { color: #525252; }
 .footer-bs .footer-nav ul.list a:hover { 
-color:rgba(255,255,255,0.60); text-decoration:none; }
+color: #525252; text-decoration:none; }
 
 .footer-bs .footer-social ul { list-style:none; padding:0px; }
 .footer-bs .footer-social h4 {
@@ -48,8 +49,8 @@ color:rgba(255,255,255,0.60); text-decoration:none; }
    letter-spacing: 3px;
 }
 .footer-bs .footer-social li { padding:5px 4px;}
-.footer-bs .footer-social a { color:rgba(255,255,255,1.00);}
-.footer-bs .footer-social a:hover { color:rgba(255,255,255,0.80); text-decoration:none; }
+.footer-bs .footer-social a { color: #525252;}
+.footer-bs .footer-social a:hover { color: #525252; text-decoration:none; }
 
 .footer-bs .footer-ns h4 {
    font-size: 11px;
@@ -57,7 +58,7 @@ color:rgba(255,255,255,0.60); text-decoration:none; }
    letter-spacing: 3px;
    margin-bottom:10px;
 }
-.footer-bs .footer-ns p { font-size:12px; color:rgba(255,255,255,0.70); }
+.footer-bs .footer-ns p { font-size:12px; color: #525252; }
 
 @media (min-width: 768px) {
    .footer-bs .footer-nav, .footer-bs .footer-social, .footer-bs .footer-ns { 
@@ -75,7 +76,7 @@ div.Footer {   width:100%; height:20px;   margin:0px; padding:0px;   text-align:
            <div class="col-md-3 footer-brand animated fadeInLeft">
                <h2>DailyLog</h2>
                 <br><br><br><br><br><br>
-<p>Copyright ©WITH Corp. All rights reserved.</p>
+<p style="color: #525252;">Copyright ©WITH Corp. All rights reserved.</p>
             </div>
            <div class="col-md-4 footer-nav animated fadeInUp">
                <h4>GUIDE</h4> 
