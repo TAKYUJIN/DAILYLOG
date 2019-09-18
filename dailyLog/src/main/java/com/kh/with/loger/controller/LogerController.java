@@ -139,7 +139,7 @@ public class LogerController {
 		m.setDay(day);
 
 		ArrayList<Support> dateList = ls.selectLogerSupportDate(s, m);
-
+		
 		mv.addObject("dateList", dateList);
 		mv.setViewName("jsonView");
 

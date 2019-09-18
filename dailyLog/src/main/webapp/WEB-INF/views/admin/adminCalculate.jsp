@@ -16,11 +16,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <style type="text/css">
-    body {
-        color: #666;
-        background: #f5f5f5;
-		font-family: 'Roboto', sans-serif;
-	}
     table.table tr th, table.table tr td {
         border-color: #e9e9e9;
         text-align:center;

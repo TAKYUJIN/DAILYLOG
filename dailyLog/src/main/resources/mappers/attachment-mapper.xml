@@ -36,7 +36,6 @@
 		<result property="enrollNm" column="ENROLL_NM" />
 		<result property="modifyNm" column="MODIFY_NM" />
 		<result property="amTY" column="AM_TY" />
-		 <result property="dotimage" column="DOTIMAGE" />
 	</resultMap>
 	
 	

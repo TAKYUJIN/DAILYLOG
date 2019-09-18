@@ -17,13 +17,13 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
 <style>
 body {
-	background: #FFF;
+	color:#525252;
 }
-
 .bookmarkForm {
-	width: 800px;
-	text-align: center;
-	margin-left: 50px;
+	width:60%;
+	margin:0 auto;
+	font-size:16px;
+	font-weight:bold;
 }
 
 #bookmarkArea {
@@ -34,22 +34,25 @@ body {
 }
 
 #searchArea {
-	margin-top: 50px;
-	width: 150px;
-	text-align: right;
+	margin-top:50px;
+	width:25%;
+	text-align:right;
 }
 
 .video_td {
-	border: none;
-	background: #FFF;
+	border:none;
+	background-color:transparent;
+	align:left;
+	margin-bottom:10px;
 }
+input:focus {outline:none;}
 </style>
 </head>
 <body>
 	<jsp:include page="../common/mainBar.jsp"></jsp:include>
 
 	<form action="selectBookmark.mb" method="post" class="bookmarkForm">
-		<div id="searchArea" style="float: right;">
+		<div id="searchArea" style="float:right;">
 
 				<div class="input-group search-box">
 					<input type="text" id="searchTitle" class="form-control" placeholder="북마크 검색">
@@ -70,14 +73,15 @@ body {
 					<c:if test="${i%j eq 0}">
 						<tr>
 					</c:if>
-					<td><video id='my-video' class='video-js' width="200px;"
-							height="150px;" controls loop poster='resources/images/${b.filepath}' data-setup='{}'>
+					<td><video id='my-video' class='video-js' width="300px;"
+							height="200px;" controls loop poster='resources/images/${b.filepath}' data-setup='{}'
+							onclick="location.href='video.vd?userNo=${b.userNo}&vNo=${b.vNo}'">
 							<source src="resources/images/${b.filepath}" type="">
 							 <source src='resources/uploadFiles/${b.vfilepath}' type='video/mp4'>
 							<!--  <source src='MY_VIDEO.webm' type='video/webm'> -->
 						</video><br> 
-						<input type="text" value="${b.vTitle}" class="video_td" id="videoTitle"> 
-						<input type="text" value="업데이트  ${fn:substring(b.uploadDT,0,10)}" class="video_td" id="videoDate"></td>
+						<input type="text" value="${b.vTitle}" class="video_td" id="videoTitle" readonly onfocus="this.blur();"> 
+						<input type="text" value="업데이트  ${fn:substring(b.uploadDT,0,10)}" class="video_td" id="videoDate" readonly onfocus="this.blur();"></td>
 					<c:if test="${i%j eq j-1}">
 						</tr>
 					</c:if>

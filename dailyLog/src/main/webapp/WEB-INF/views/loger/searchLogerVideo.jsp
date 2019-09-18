@@ -14,24 +14,18 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style type="text/css">
-    body {
-        color: #666;
-        background: #f5f5f5;
-		font-family: 'Roboto', sans-serif;
-	}
 	.table-wrapper {
-		width: 800px;
-        background: #fff;
+		width:80%;
         padding: 20px;
         margin: 30px 0;
         box-shadow: 0 1px 1px rgba(0,0,0,.05);
     }
     .selectVideo {
-		width:800px;
+		width:80%;
 		margin-left:30px;
 	}
     .searchLogerVideoForm {
-		width:800px;
+		width:80%;
 		margin-top:50px;
 		text-align:left;
 	}
@@ -67,7 +61,6 @@
         border-color: #e9e9e9;
     }
     table.table-striped tbody tr:nth-of-type(odd) {
-    	background-color: #fcfcfc;
 	}
     table.table th i {
         font-size: 13px;
@@ -102,7 +95,7 @@
         top: 3px;
     }    
     table.table .form-control {
-    	width:800px;
+    	width:80%;
         height: 32px;
         line-height: 32px;
         box-shadow: none;
