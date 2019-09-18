@@ -189,7 +189,11 @@ public class VideoDaoImpl implements VideoDao {
 		return sqlSession.insert("Video.insertBlock", map);
 	}
 
-
+	@Override
+	public int selectAge(SqlSessionTemplate sqlSession, int loginUser) {
+		
+		return sqlSession.selectOne("Member.selectAge", loginUser);
+	}
 
 	
 }
