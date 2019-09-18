@@ -250,14 +250,14 @@
 									</a>
 									<ul class="dropdown-menu form-wrapper" style="width:280px;">					
 										<li>
-											<div class="form-group" id="sub">
+											<div class="form-group" id="sub" style="border:1px solid #A8B7BC;">
 												<table class="noti_table">
-													<tr><a  style="color:gray;font-weight: 900;"id="regSub">정기후원</a></tr><br>
+													<tr><a  style="color:gray;font-weight:900;"id="regSub">정기후원</a></tr><br>
 													<tr><a  style="color:gray;font-weight: 900;"id="onceSub">일시후원</a></tr><br>
 												</table>
 											</div>
 											<!-- 정기후원 -->
-											<div id="rSub" style="">
+											<div id="rSub" style="border:1px solid #A8B7BC;">
 												<div class="noti_text" align="center" style="margin-top:5%;"><b>정기후원</b></div>
 												<div align="left" style="margin-left:10%; margin-right:10%;">
 													<table class="noti_table">

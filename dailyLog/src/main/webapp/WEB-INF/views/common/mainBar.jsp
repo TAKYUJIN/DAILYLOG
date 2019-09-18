@@ -20,7 +20,7 @@
 
 <style type="text/css">
    body{
-   	color:#13334A;
+   	color:#525252;
       font-family: 'Varela Round', sans-serif;
       background:linear-gradient(rgb(237, 234, 215) 0%, rgb(221, 208, 218) 85%);
    }
@@ -73,18 +73,17 @@
    .navbar .nav li a {
       color: #434738; /*상단바 글자색*/
    }
-   .search-box {
+   	.search-box {
         position: relative;
-        color:#DDD0DA;
-    }   
+        margin-top:5px;
+    }	
     .search-box input {
         padding-right: 35px;
-        color:#DDD0DA;
-      border-color: #DDD0DA;
+		border-color: #E3CFCD; /* 검색 테두리 색 #dfe3e8 */
         border-radius: 4px !important;
-      box-shadow: none
+		box-shadow: none
     }
-   .search-box .input-group-addon {
+	.search-box .input-group-addon {
         min-width: 35px;
         border: none;
         background: transparent;
@@ -92,12 +91,11 @@
         right: 0;
         z-index: 9;
         padding: 7px;
-      height: 100%;
-      color:#DDD0DA;
+		height: 100%;
     }
     .search-box i {
-        color: #DDD0DA;
-      font-size: 19px;
+        color: #E3CFCD; /* 검색창 돋보기 색 #a0a5b1 */
+		font-size: 19px;
     }
    .navbar .nav .btn-primary, .navbar .nav .btn-primary:active {
       color: #fff;
@@ -254,6 +252,11 @@
     a:hover { color: black; text-decoration: none; color: black;}
    a:active { color: black; text-decoration: none; color: black;}
    
+   #logo {
+   	color:black;
+   	padding-top:5px; 
+   }
+   
    #logo,#friendlist{
    background:none;
    border:none;
@@ -274,7 +277,7 @@
 <nav class="navbar navbar-default navbar-expand-lg navbar-light">
 
 	<div class="navbar-header d-flex col">
-	 <button type="button"  id="logo" onclick="location.href='home.mb'"><input type="text" value="DailyLog" id="logo" style="width:90px; padding-top:5px; font-size:22px;">
+	 <button type="button"  id="logo" onclick="location.href='home.mb'"><a value="DailyLog" id="logo" style="width:90px; font-size:22px;">DailyLog</a>
 	</button>
 	</div>
 	<!-- Collection of nav links, forms, and other content for toggling -->

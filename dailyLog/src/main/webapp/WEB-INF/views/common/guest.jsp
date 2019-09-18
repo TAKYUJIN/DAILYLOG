@@ -16,66 +16,71 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style type="text/css">
-
-	body{
-		font-family: 'Varela Round', sans-serif;
-	}
-	.form-control {
-		box-shadow: none;		
-		font-weight: normal;
-		font-size: 12px; /* 검색부분 폰트사이즈 */
-	}
-	.form-control:focus {
-		border-color: #33cabb;
-		box-shadow: 0 0 8px rgba(0,0,0,0.1);
-	}
-	.navbar-header.col {
-		padding: 0 !important;
-	}	
-	.navbar {
-		background: #fff;
-		padding-left: 10px;
-		padding-right: 10px;
-		border-bottom: 1px solid #dfe3e8;
-		border-radius: 0;
-	}
-	.nav-link img {
-		border-radius: 50%;
-		width: 36px;
-		height: 36px;
-		margin: -8px 0;
-		float: left;
-		margin-right: 10px;
-	}
-	.navbar .navbar-brand, .navbar .navbar-brand:hover, .navbar .navbar-brand:focus {
-		padding-left: 0;
-		font-size: 20px; /* 로고부분 폰트사이즈 */
-		padding-right: 50px;
-	}
-	.navbar .navbar-brand b {
-		font-weight: bold;
-		color: #33cabb;		
-	}
-	.navbar .form-inline {
+body{
+   	color:#525252;
+      font-family: 'Varela Round', sans-serif;
+      background:linear-gradient(rgb(237, 234, 215) 0%, rgb(221, 208, 218) 85%);
+   }
+   .form-control {
+      box-shadow: none;      
+      font-weight: normal;
+      font-size: 12px; /* 검색부분 폰트사이즈 */
+      color:#DDD0DA;
+   }
+   .form-control:focus {
+      border-color: #EDEAD7;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      color:#DDD0DA;
+   }
+   .navbar-header.col {
+      padding: 0 !important;
+   }   
+   .navbar {
+      background: #EDEAD7;
+        padding-left: 6px;
+      padding-right: 6px; 
+      border-bottom: 1px solid #EDEAD7;
+      border-radius: 0;
+    
+   }
+   .nav-link img {
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      margin: -8px 0;
+      float: left;
+      margin-right: 10px;
+   }
+   .navbar .navbar-brand, .navbar .navbar-brand:hover, .navbar .navbar-brand:focus {
+      padding-left: 0;
+      font-size: 20px; /* 로고부분 폰트사이즈 */
+      padding-right: 50px;
+         height:100%;
+   }
+   .navbar .navbar-brand b {
+      font-weight: bold;
+      color: #33cabb;      
+   }
+   .navbar .form-inline {
         display: inline-block;
     }
-	.navbar .nav li {
-		position: relative;
-	}
-	.navbar .nav li a {
-		color: #888;
-	}
-	.search-box {
+   .navbar .nav li {
+      position: relative;
+   }
+   .navbar .nav li a {
+      color: #434738; /*상단바 글자색*/
+   }
+   	.search-box {
         position: relative;
+        margin-top:5px;
     }	
     .search-box input {
         padding-right: 35px;
-		border-color: #dfe3e8;
+		border-color: #E3CFCD; /* 검색 테두리 색 #dfe3e8 */
         border-radius: 4px !important;
 		box-shadow: none
     }
 	.search-box .input-group-addon {
-
         min-width: 35px;
         border: none;
         background: transparent;
@@ -83,13 +88,21 @@
         right: 0;
         z-index: 9;
         padding: 7px;
-
 		height: 100%;
     }
     .search-box i {
-        color: #a0a5b1;
+        color: #E3CFCD; /* 검색창 돋보기 색 #a0a5b1 */
 		font-size: 19px;
     }
+   .navbar .nav .btn-primary, .navbar .nav .btn-primary:active {
+      color: #fff;
+      background: #33cabb;
+      padding-top: 8px;
+      padding-bottom: 6px;
+      vertical-align: middle;
+      border: none;
+       
+   }   
 	.navbar .nav .btn-primary, .navbar .nav .btn-primary:active {
 		color: #fff;
 		background: #192466; /* 버튼 색  #FBC52C 노랑  #192466 남*/
@@ -251,7 +264,10 @@
 			display: block;
 		}
 	}
-	
+	#logo {
+   	color:black;
+   	padding-top:5px; 
+   }
 	#navbarCollapse a {
 		font-size:12px;
 	}
@@ -269,7 +285,7 @@
 <nav class="navbar navbar-default navbar-expand-lg navbar-light">
 
 	<div class="navbar-header d-flex col" >
-		<a href="logout.me"><img src="resources/images/logo.png" style="width:90px; padding-top:10px;"></a>
+		<a href="logout.me" value="DailyLog" id="logo" style="width:90px; font-size:22px;">DailyLog</a>
 	</div>
 	<!-- Collection of nav links, forms, and other content for toggling -->
 	<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">

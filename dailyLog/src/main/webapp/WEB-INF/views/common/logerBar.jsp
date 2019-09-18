@@ -16,7 +16,7 @@
 <style type="text/css">
 	body{
 		font-family: 'Varela Round', sans-serif;
-		background:linear-gradient(rgb(227, 207, 205) 0%, rgb(154, 176, 191) 95%);
+		background:linear-gradient(rgb(237, 234, 215) 0%, rgb(221, 208, 218) 85%);
 	}
 	nav {
 		background:#E3CFCD;
@@ -25,20 +25,22 @@
 		box-shadow: none;		
 		font-weight: normal;
 		font-size: 12px; /* 검색부분 폰트사이즈 */
+		color: #525252;
 	}
 	.form-control:focus {
-		border-color: #33cabb;
+		border-color: #EDEAD7;
 		box-shadow: 0 0 8px rgba(0,0,0,0.1);
 	}
 	.navbar-header.col {
 		padding: 0 !important;
 	}	
 	.navbar {
-		background: #E3CFCD; /* 상단바 배경색 */
+		background: #EDEAD7; /* 상단바 배경색 */
 		padding-left: 10px;
 		padding-right: 10px;
-		border-bottom: 1px solid #E3CFCD; /* 상단바 밑 라인 색 #dfe3e8 */
+		border-bottom: 1px solid #EDEAD7; /* 상단바 밑 라인 색 #dfe3e8 */
 		border-radius: 0;
+		color: #525252;
 	}
 	.nav-link img {
 		border-radius: 50%;
@@ -47,6 +49,7 @@
 		margin: -8px 0;
 		float: left;
 		margin-right: 10px;
+		color: #525252;
 	}
 	.navbar .navbar-brand, .navbar .navbar-brand:hover, .navbar .navbar-brand:focus {
 		padding-left: 0;
@@ -108,6 +111,7 @@
 	}
 	.navbar .nav-item i {
 		font-size: 18px;
+		color: #525252;
 	}
 	.navbar .dropdown-item i {
 		font-size: 16px;
@@ -259,6 +263,10 @@
  	a:hover { color: black; text-decoration: none; color: black;}
 	a:active { color: black; text-decoration: none; color: black;}
 	
+	#logo {
+   	color:black;
+   	padding-top:5px; 
+   }
 </style>
 <script type="text/javascript">
 	// Prevent dropdown menu from closing when click inside the form
@@ -270,8 +278,7 @@
 <body>
 <nav class="navbar navbar-default navbar-expand-lg navbar-light">
 	<div class="navbar-header d-flex col" >
-		<a href="home.mb"><img src="resources/images/logo.png" style="width:90px; padding-top:10px;">	
-	</a>
+		<a href="home.mb" value="DailyLog" id="logo" style="width:90px; font-size:22px;">DailyLog</a>
 	</div>
 	<!-- Collection of nav links, forms, and other content for toggling -->
 	<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">

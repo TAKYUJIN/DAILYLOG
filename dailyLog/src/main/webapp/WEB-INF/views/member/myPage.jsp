@@ -7,8 +7,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://fonts.googleapis.com/css?family=Roboto:400,700"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
 <title>Bootstrap Sign up Form Horizontal</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -61,6 +60,10 @@
 	});
 </script>
 <style type="text/css">
+
+body{
+      font-family: 'Varela Round', sans-serif;
+   }
  .bs-example{
         margin-left: 20px; 
         margin-top : 10%;
@@ -73,6 +76,7 @@
 }
 
 .form-control {
+	font-family: 'Varela Round', sans-serif;
 	border-color: #eee;
 	min-height: 41px;
 	min-width: 100px;
@@ -88,6 +92,7 @@
 }
 
 .signup-form {
+	font-family: 'Varela Round', sans-serif;
 	width: 800px;
 	margin-top : -21%;
 	margin-left: 30%;
@@ -104,10 +109,9 @@
 }
 
 .signup-form form {
-	color: #999;
+	color: #525252;
 	border-radius: 3px;
 	margin-bottom: 15px;
-	background: #fff;
 	padding: 30px;
 }
 
@@ -195,7 +199,7 @@
 			</div>
 			<input type="file" class="pro" id="pro">
 			<div class="form-group">
-				<label class="control-label col-xs-4">User ID</label>
+				<label class="control-label col-xs-4" style="font-size:16px; font-family: 'Varela Round', sans-serif;"><b>User ID</b></label>
 				<div class="col-xs-6">
 					<input type="email" class="form-control" id="userId" name="userId"
 						required="required" readonly value="${memberList.userId}">
@@ -241,8 +245,8 @@
 
 			<div class="form-group">
 				<div class="col-xs-8 col-xs-offset-4">
-					<button type="submit" class="btn btn-primary btn-lg">수정완료</button>
-					<button type="reset" class="btn btn-primary btn-lg">취소</button>
+					<button type="submit" class="btn btn-primary btn-lg" style="background:#A8B7BC;">수정완료</button>
+					<button type="reset" class="btn btn-primary btn-lg" style="background:#13334A;">취소</button>
 				</div>
 			</div>
 		</form>
