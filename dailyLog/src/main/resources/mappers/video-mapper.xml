@@ -118,7 +118,7 @@
 	
 	<insert id="insertLike" parameterType="map">
 		INSERT INTO VIDEO_LIKE
-		VALUES(LIKE_NO.NEXTVAL, #{userNo}, #{vNo}, #{chNo}, '좋아요')
+		VALUES(LIKE_NO.NEXTVAL, #{userNo}, #{vNo}, #{chNo}, SYSDATE, '좋아요')
 	</insert>
 	
 	<delete id="deleteLike">
@@ -131,7 +131,7 @@
 	
 	<insert id="insertHate" parameterType="map">
 		INSERT INTO VIDEO_LIKE
-		VALUES(LIKE_NO.NEXTVAL, #{userNo}, #{vNo}, #{chNo}, '싫어요')
+		VALUES(LIKE_NO.NEXTVAL, #{userNo}, #{vNo}, #{chNo}, SYSDATE, '싫어요')
 	</insert>
 	
 	<delete id="deleteHate">
@@ -144,7 +144,7 @@
 
 	<insert id="insertBookmark" parameterType="map">
 		INSERT INTO VIDEO_LIKE
-		VALUES(LIKE_NO.NEXTVAL, #{userNo}, #{vNo}, #{chNo}, '북마크')
+		VALUES(LIKE_NO.NEXTVAL, #{userNo}, #{vNo}, #{chNo}, SYSDATE, '북마크')
 	</insert>
 	
 	<delete id="deleteBookmark">

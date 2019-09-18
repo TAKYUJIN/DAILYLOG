@@ -314,7 +314,11 @@ body {
 					</div>
 					</div>
 
-					
+				<div class="form-group">
+					<input type="text" class="form-control" name="birth"
+						id="birth" placeholder="Birth  ex) 961231" required="required">
+				</div>
+						
 					<div class="form-group">
 					<div class="row">
 						<div class="col-xs-9">

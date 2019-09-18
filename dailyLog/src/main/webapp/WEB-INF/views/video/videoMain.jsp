@@ -16,6 +16,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 <style>
+	body{
+		color:#525252 !important;
+	}
 	.chImg {
 		width:60px; 
 		height:60px;
@@ -90,7 +93,7 @@
 		margin-bottom: 15px;
 		font-size: 13px;
 	}
-	.navbar .form-wrapper , .navbar .form-wrapper .btn:hover {
+	.navbar .form-wrapper , .navbar .form-wrapper  {
 		color: #fff;
         margin: 0;
 		padding: 0 !important;
@@ -152,7 +155,7 @@
 	.social-btn .btn:first-child {
 		margin-left: 0 !important;
 	}
-	.social-btn .btn:hover {
+	.social-btn :hover {
 		opacity: 0.8 !important;
 	}
 	.social-btn .btn-primary {
@@ -178,7 +181,13 @@
 	.social-btn .btn i {
 		font-size: 20px;
 	} 
-
+	.btn{
+		background:#13334A;
+		color:white !important;
+	}
+.btn:hover {
+	opacity:0.7;
+}
 
 </style>
 <script type="text/javascript">
@@ -217,7 +226,9 @@
 				<td width="220px" height="60px">
 					<div style="margin-left:10%;">
 						<div style="margin-right:10%; display:inline-block;">${ list1[0].chNm }</div>
-						<div style="display:inline-block;"><button>구독</button></div>
+						<div style="display:inline-block;">
+							<button class="btn"><b>구독</b></button>
+						</div>
 						<div style="display:inline-block; margin-left:5%;">
 							<label id="regsubTY" style="color:gray; position:fixed;">
 								<c:if test="${ status == 1 }">
@@ -242,22 +253,22 @@
 				</td>
 				<td width="240px" height="60px">
 					<div align="right" style="margin-top:15%;">
-						<nav class="navbar navbar-default navbar-expand-lg navbar-light" style="border:none;">
+						<nav class="navbar navbar-default navbar-expand-lg navbar-light">
 							<ul class="nav navbar-nav navbar-right ml-auto" style="width:300px;">			
-								<li class="nav-item">
+								<li class="nav-item" stlye="border:1px solid #A8B7BC;">
 									<a href="#none" data-toggle="dropdown" id="subtitle">
-										<img src="resources/images/dollar.png" style="width:15px; align:right;">
+										<img src="resources/images/diamond.png" style="width:18px; align:right;">
 									</a>
-									<ul class="dropdown-menu form-wrapper" style="width:280px;">					
+									<ul class="dropdown-menu form-wrapper" style="width:280px;border:1px solid #A8B7BC;">					
 										<li>
-											<div class="form-group" id="sub" style="border:1px solid #A8B7BC;">
+											<div class="form-group" id="sub">
 												<table class="noti_table">
-													<tr><a  style="color:gray;font-weight:900;"id="regSub">정기후원</a></tr><br>
-													<tr><a  style="color:gray;font-weight: 900;"id="onceSub">일시후원</a></tr><br>
+													<tr><a id="regSub">정기후원</a></tr><br>
+													<tr><a id="onceSub">일시후원</a></tr><br>
 												</table>
 											</div>
 											<!-- 정기후원 -->
-											<div id="rSub" style="border:1px solid #A8B7BC;">
+											<div id="rSub">
 												<div class="noti_text" align="center" style="margin-top:5%;"><b>정기후원</b></div>
 												<div align="left" style="margin-left:10%; margin-right:10%;">
 													<table class="noti_table">
@@ -267,8 +278,8 @@
 														<tr><td><input type="text" class="form-control" id="rPoint" placehold="포인트를 조회하세요" readonly></td></tr>
 														<tr>
 															<td>
-																<input type="button" id="selectPoint" style="width:50px; text-align:center;" class="btn-gradient yellow mini" value="조회">
-																<a href="" id="chargeBtn" style="width:50px; text-align:center;" class="btn-gradient blue mini">충전</a>
+																<button id="selectPoint" style="width:75px;margin-right:2% !important;background:#A8B7BC;margin-top:5%;margin-bottom:5%;" class="btn">조회</button>
+																<button id="chargeBtn" style="width:75px; text-align:center;margin-top:5%;margin-bottom:5%;" class="btn">충전</button><br>
 															</td>
 														</tr>
 																											
@@ -276,9 +287,9 @@
 														<tr><td><input type="text" class="form-control" id="rPrice" placehold="후원금액을 입력하세요"></td></tr>
 														<tr>
 															<td>
-																<a style="width:50px;text-align:center;" class="btn-gradient yellow mini" id="cancle1">취소</a>
-																<input type="button" id="rOk" style="width:50px; text-align:center;" class="btn-gradient blue mini" value="후원"/>
-																
+																<button style="width:75px;margin-right:2% !important;text-align:center;background:#A8B7BC;margin-top:5%;margin-bottom:5%;" class="btn" id="cancle1">취소</button>
+																<button id="rOk" style="width:75px; text-align:center;margin-top:5%;margin-bottom:5%;" class="btn">후원</button>
+																<br><br>
 															</td>
 														</tr>
 													</table>
@@ -295,8 +306,8 @@
 														<tr><td><input type="text" class="form-control" id="oPoint" placehold="포인트를 조회하세요" readonly></td></tr>
 														<tr>
 															<td>
-																<input type="button" id="selectPoint2" style="width:50px; text-align:center;" class="btn-gradient yellow mini" value="조회">
-																<a href="" id="chargeBtn" style="width:50px; text-align:center;" class="btn-gradient blue mini">충전</a>
+																<button id="selectPoint2" style="width:75px;margin-right:2% !important;background:#A8B7BC;margin-top:5%;margin-bottom:5%;" class="btn">조회</button>
+																<button id="chargeBtn" style="width:75px;margin-right:2% !important;margin-top:5%;margin-bottom:5%;" class="btn">충전</button>
 															</td>
 														</tr>
 																											
@@ -304,9 +315,9 @@
 														<tr><td><input type="text" class="form-control" id="oPrice" placehold="후원금액을 입력하세요"></td></tr>
 														<tr>
 															<td>
-																<a style="width:50px;text-align:center;" class="btn-gradient yellow mini" id="cancle2">취소</a>
-																<input type="button" id="oOk" style="width:50px; text-align:center;" class="btn-gradient blue mini" value="후원"/>
-																
+																<button style="width:75px;margin-right:2% !important;background:#A8B7BC;margin-top:5%;margin-bottom:5%;" class="btn" id="cancle2">취소</button>
+																<button id="oOk" style="width:75px;margin-right:2% !important;margin-top:5%;margin-bottom:5%;" class="btn">후원</button>
+																<br><br>
 															</td>
 														</tr>
 													</table>
@@ -328,8 +339,8 @@
 														<tr><td style="color:red;"><small><b>*자세한 내용은 공지사항을 참고해 주세요</b></small></td></tr>
 														<tr>
 															<td>
-																<a style="width:50px;text-align:center;" class="btn-gradient yellow small" id="cancle3">취소</a>
-																<a id="cau_ok" style="width:50px; text-align:center;" class="btn-gradient blue small">확인</a>
+																<button style="background:#A8B7BC;text-align:center;" class="btn" id="cancle3">취소</button>
+																<button id="cau_ok" style=" text-align:center;" class="btn">확인</button>
 															</td>
 														</tr>
 													</table>
@@ -344,26 +355,26 @@
 								</li>
 								<li class="nav-item">
 									<a href="#none">
-									<img src="resources/images/heart_black.png" id="like" style="width:15px;" onclick="selectLike()">
+									<img src="resources/images/heart_black.png" id="like" style="width:18px;" onclick="selectLike()">
 								</a>
 								</li>
 								
 								<li class="nav-item">
 									<a href="#none">
-									<img src="resources/images/broken.png" id="hate" style="width:15px;" onclick="selectHate()">
+									<img src="resources/images/broken.png" id="hate" style="width:18px;" onclick="selectHate()">
 								</a>
 								</li>
 								
 								<li class="nav-item">
 								<a href="#none">
-									<img src="resources/images/bookmark.png" id="bookmark" style="width:15px;" onclick="selectBookmark()">
+									<img src="resources/images/bookmark.png" id="bookmark" style="width:18px;" onclick="selectBookmark()">
 								</a>
 								</li>
 								<li class="nav-item" >
 									<a href="#none" data-toggle="dropdown" id="threeMore">
-									<img src="resources/images/more.png"  style="width:15px; align:right;">
+									<img src="resources/images/more.png"  style="width:18px; align:right;">
 									</a>
-									<ul class="dropdown-menu form-wrapper" style="width:280px;">					
+									<ul class="dropdown-menu form-wrapper" style="width:280px;border:1px solid #A8B7BC;">					
 										<li>
 											<div class="form-group" id="more">
 												<table class="noti_table" align="center">
@@ -374,7 +385,7 @@
 											</div>
 											<!-- 신고 -->
 											<div id="report1">
-												<div class="noti_text" align="center" style="margin-top:5%;"><b>동영상신고</b></div>
+												<div class="noti_text" align="center" style="margin-top:5%; width:350px;"><b>동영상신고</b></div>
 												<div align="left" style="margin-left:10%; margin-right:10%;">
 													<table class="noti_table">
 														<tr><td>
@@ -402,8 +413,8 @@
 														</td></tr>
 														<tr>
 															<td>
-																<a style="width:50px;text-align:center;display:inline-block;" class="btn btn-join btn-lg btn-block" id="cancle4">취소</a>
-																<a id="reportNext" style="width:50px; display:inline-block;text-align:center;" class="btn btn-join btn-lg btn-block">다음</a>
+																<button style="background:#A8B7BC;display:inline-block;width:100px;margin-right:5% !important;" class="btn" id="cancle4">취소</button>
+																<button id="reportNext" style="width:100px;display:inline-block;" class="btn">다음</button><br><br>
 															</td>
 														</tr>
 													</table>
@@ -425,8 +436,8 @@
 														<tr><td style="color:red;"><small><b>*자세한 내용은 공지사항을 참고해 주세요</b></small></td></tr>
 														<tr>
 															<td>
-																<a style="width:50px;text-align:center;" class="btn-gradient yellow small" id="cancle5">취소</a>
-																<a id="blockOk" style="width:50px; text-align:center;" class="btn-gradient blue small">확인</a>
+																<button class="btn" style="width:100px;margin-right:5% !important;background:#A8B7BC;" id="cancle5">취소</button>
+																<button id="blockOk" style="width:100px;"class="btn">확인</button><br><br>
 															</td>
 														</tr>
 													</table>
@@ -483,7 +494,7 @@
 						<h3>${ list1[0].vTitle }</h3>
 						<small>조회수  ${ list1[0].count }</small><br>
 						<div>
-							<a href="" style="color:blue;"><small>${ list1[0].tag }</small></a>
+							<a href="" style="color: #525252;"><small>${ list1[0].tag }</small></a>
 						</div>
 					</div>
 					<hr>
@@ -652,7 +663,7 @@
 					}
 				});
 			}else {
-				document.getElementById('hate').src = "resources/images/broken_black.png";
+				document.getElementById('hate').src = "resources/images/broken.png";
 				state = 0;
 				$.ajax({
 					url:"deleteHate.vd",
