@@ -64,6 +64,9 @@ public interface VideoDao {
 	int report(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	int block(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	List<Attachment> videolike(Member m);
+	List<Attachment> videoimagelist(SqlSessionTemplate sqlSession);
+	List<Attachment> videopop(SqlSessionTemplate sqlSession);
+	List<Attachment> videonew(SqlSessionTemplate sqlSession);
 	
 
 }

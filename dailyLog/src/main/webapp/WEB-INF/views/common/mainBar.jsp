@@ -308,16 +308,14 @@
 
 		<form class="navbar-form form-inline" action="search.mb" method="get">
 			<div class="input-group search-box">		
-			 					
-<!--
-		<form class="navbar-form form-inline" style="width:250px; ">
-			<div class="input-group search-box">								
--->
-				<input type="text" id="searchId" class="form-control" placeholder="검색" >
-				 
+				<input type="text" id="search" name="search"  class="form-control" placeholder="검색" >
 				  <span  class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span> 
-			 
-				 
+			<!-- 	 <select class="form-control form-control-sm" name="searchType" id="searchType">
+					<option value="title">제목</option>
+					<option value="Content">본문</option>
+					<option value="reg_id">작성자</option>
+
+				</select> -->
 			</div>
 		</form>
 		<ul class="nav navbar-nav navbar-right ml-auto" style="width:310px;">			

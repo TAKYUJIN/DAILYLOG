@@ -1,6 +1,7 @@
 package com.kh.with.main.model.dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
@@ -29,6 +30,27 @@ public class MainDaoImpl implements MainDao{
 		list = (ArrayList)sqlSession.selectList("VideoLike.selectBookmark", vl);
 		return list;
 	}
+
+	@Override
+	public List<Video> searchch(SqlSessionTemplate sqlSession, String search) {
+		 
+		
+		return sqlSession.selectList("Video.searchch",search);
+	}
+
+	@Override
+	public List<Video> searchtitle(SqlSessionTemplate sqlSession, String search) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("Video.searchtitle",search);
+	}
+
+	@Override
+	public List<Video> searchtag(SqlSessionTemplate sqlSession, String search) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("Video.searchtag",search);
+	}
+
+ 
 
 
 }

@@ -19,12 +19,15 @@ public class Video implements java.io.Serializable {
 	private String info; //추가장소정보
 	private String filepath; // 파일경로
 	private String openTy; //공개여부
+	private String searchId;
+	
 	
 	public Video () {}
 
+
 	public Video(int vNo, int userNo, String vTitle, int count, String chNm, String tag, String vblYn, Date uploadDt,
 			Date modifyDt, String adultAut, String adYn, String adInfo, String location, String info, String filepath,
-			String openTy) {
+			String openTy, String searchId) {
 		super();
 		this.vNo = vNo;
 		this.userNo = userNo;
@@ -42,142 +45,187 @@ public class Video implements java.io.Serializable {
 		this.info = info;
 		this.filepath = filepath;
 		this.openTy = openTy;
+		this.searchId = searchId;
 	}
+
 
 	public int getvNo() {
 		return vNo;
 	}
 
+
 	public void setvNo(int vNo) {
 		this.vNo = vNo;
 	}
+
 
 	public int getUserNo() {
 		return userNo;
 	}
 
+
 	public void setUserNo(int userNo) {
 		this.userNo = userNo;
 	}
+
 
 	public String getvTitle() {
 		return vTitle;
 	}
 
+
 	public void setvTitle(String vTitle) {
 		this.vTitle = vTitle;
 	}
+
 
 	public int getCount() {
 		return count;
 	}
 
+
 	public void setCount(int count) {
 		this.count = count;
 	}
+
 
 	public String getChNm() {
 		return chNm;
 	}
 
+
 	public void setChNm(String chNm) {
 		this.chNm = chNm;
 	}
+
 
 	public String getTag() {
 		return tag;
 	}
 
+
 	public void setTag(String tag) {
 		this.tag = tag;
 	}
+
 
 	public String getVblYn() {
 		return vblYn;
 	}
 
+
 	public void setVblYn(String vblYn) {
 		this.vblYn = vblYn;
 	}
+
 
 	public Date getUploadDt() {
 		return uploadDt;
 	}
 
+
 	public void setUploadDt(Date uploadDt) {
 		this.uploadDt = uploadDt;
 	}
+
 
 	public Date getModifyDt() {
 		return modifyDt;
 	}
 
+
 	public void setModifyDt(Date modifyDt) {
 		this.modifyDt = modifyDt;
 	}
+
 
 	public String getAdultAut() {
 		return adultAut;
 	}
 
+
 	public void setAdultAut(String adultAut) {
 		this.adultAut = adultAut;
 	}
+
 
 	public String getAdYn() {
 		return adYn;
 	}
 
+
 	public void setAdYn(String adYn) {
 		this.adYn = adYn;
 	}
+
 
 	public String getAdInfo() {
 		return adInfo;
 	}
 
+
 	public void setAdInfo(String adInfo) {
 		this.adInfo = adInfo;
 	}
+
 
 	public String getLocation() {
 		return location;
 	}
 
+
 	public void setLocation(String location) {
 		this.location = location;
 	}
+
 
 	public String getInfo() {
 		return info;
 	}
 
+
 	public void setInfo(String info) {
 		this.info = info;
 	}
+
 
 	public String getFilepath() {
 		return filepath;
 	}
 
+
 	public void setFilepath(String filepath) {
 		this.filepath = filepath;
 	}
+
 
 	public String getOpenTy() {
 		return openTy;
 	}
 
+
 	public void setOpenTy(String openTy) {
 		this.openTy = openTy;
 	}
+
+
+	public String getSearchId() {
+		return searchId;
+	}
+
+
+	public void setSearchId(String searchId) {
+		this.searchId = searchId;
+	}
+
 
 	@Override
 	public String toString() {
 		return "Video [vNo=" + vNo + ", userNo=" + userNo + ", vTitle=" + vTitle + ", count=" + count + ", chNm=" + chNm
 				+ ", tag=" + tag + ", vblYn=" + vblYn + ", uploadDt=" + uploadDt + ", modifyDt=" + modifyDt
 				+ ", adultAut=" + adultAut + ", adYn=" + adYn + ", adInfo=" + adInfo + ", location=" + location
-				+ ", info=" + info + ", filepath=" + filepath + ", openTy=" + openTy + "]";
+				+ ", info=" + info + ", filepath=" + filepath + ", openTy=" + openTy + ", searchId=" + searchId + "]";
 	}
 
+	 
 }

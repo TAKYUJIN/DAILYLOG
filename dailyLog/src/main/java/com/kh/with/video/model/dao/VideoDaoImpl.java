@@ -57,37 +57,37 @@ public class VideoDaoImpl implements VideoDao {
 		return sqlsession.selectList("Video.videoimagelist");
   */
 	public List<Attachment> videoimagelist(Member m) {
-		System.out.println("videodaoimpl");
-		return sqlsession.selectList("Attachment.videoimagelist");
+		System.out.println("m"+m);
+		return sqlsession.selectList("Attachment.videoimagelist",m);
 		}
 
 	@Override
 	public List<Attachment> videopop(Member m) {
 		// TODO Auto-generated method stub
-		return sqlsession.selectList("Attachment.videopop");
+		return sqlsession.selectList("Attachment.videopop",m);
 	}
 
 	@Override
 	public List<Attachment> videonew(Member m) {
 		// TODO Auto-generated method stub
-		return sqlsession.selectList("Attachment.videonew");
+		return sqlsession.selectList("Attachment.videonew",m);
 	}
 
 	@Override
 	public List<Attachment> videobook(Member m) {
 		// TODO Auto-generated method stub
-		return sqlsession.selectList("Attachment.videobook");
+		return sqlsession.selectList("Attachment.videobook",m);
 	}
 
 	@Override
 	public List<Attachment> videosub(Member m) {
 		// TODO Auto-generated method stub
-		return sqlsession.selectList("Attachment.videosub");
+		return sqlsession.selectList("Attachment.videosub",m);
 	}
 	@Override
 	public List<Attachment> videolike(Member m) {
 		// TODO Auto-generated method stub
-		return sqlsession.selectList("Attachment.videolike");
+		return sqlsession.selectList("Attachment.videolike",m);
 	}
 
 	
@@ -187,6 +187,24 @@ public class VideoDaoImpl implements VideoDao {
 	public int block(SqlSessionTemplate sqlSession, Map<String, Object> map) {
 		
 		return sqlSession.insert("Video.insertBlock", map);
+	}
+
+	@Override
+	public List<Attachment> videoimagelist(SqlSessionTemplate sqlSession) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("Attachment.videoimagelist1");
+	}
+
+	@Override
+	public List<Attachment> videopop(SqlSessionTemplate sqlSession) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("Attachment.videopop1");
+	}
+
+	@Override
+	public List<Attachment> videonew(SqlSessionTemplate sqlSession) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("Attachment.videonew1");
 	}
 
 

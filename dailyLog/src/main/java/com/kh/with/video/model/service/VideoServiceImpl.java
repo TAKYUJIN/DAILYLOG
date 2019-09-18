@@ -178,6 +178,24 @@ public class VideoServiceImpl implements VideoService{
 		return vd.block(sqlSession, map);
 	}
 
+	@Override
+	public List<Attachment> videoimagelist() {
+		// TODO Auto-generated method stub
+		return vd.videoimagelist(sqlSession);
+	}
+
+	@Override
+	public List<Attachment> videopop() {
+		// TODO Auto-generated method stub
+		return vd.videopop(sqlSession);
+	}
+
+	@Override
+	public List<Attachment> videonew() {
+		// TODO Auto-generated method stub
+		return vd.videonew(sqlSession);
+	}
+
 	
 
 
