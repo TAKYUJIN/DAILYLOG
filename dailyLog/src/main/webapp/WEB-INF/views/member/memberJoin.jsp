@@ -135,6 +135,7 @@ body {
 	font-family: 'Roboto', sans-serif;
 }
 
+
 .form-control {
 	height: 40px;
 	box-shadow: none;
@@ -190,7 +191,7 @@ body {
 	color: #999;
 	border-radius: 3px;
 	margin-bottom: 15px;
-	background: white;
+	
 	padding: 30px;
 }
 
@@ -237,7 +238,7 @@ body {
 
 .btn-join {
 	color: #fff;
-	background-color: #192466;
+	background-color: #13334A;
 	border-color: #4cae4c;
 }
 </style>
@@ -270,7 +271,7 @@ body {
 						</div>
 						<div class="col-xs-3">
 							<button
-								style="height: 35px; border-radius: 5px; background: #192466; color: white; border: solid 1px;"
+								style="height: 35px; border-radius: 5px; background: #13334A; color: white; border: solid 1px;"
 								name="btncheck" id="ckId">중복확인</button>
 						</div>
 					</div>
@@ -291,7 +292,7 @@ body {
 						</div>
 						<div class="col-xs-3">
 							<button id="ckNn"
-								style="height: 35px; border-radius: 5px; background: #192466; color: white; border: solid 1px;"
+								style="height: 35px; border-radius: 5px; background: #13334A; color: white; border: solid 1px;"
 								name="btncheck">중복확인</button>
 						</div>
 					</div>
@@ -323,10 +324,10 @@ body {
 						</div>
 						<div class="col-xs-3">
 							<button id="ckPn"
-								style="height: 35px; border-radius: 5px; background: #192466; color: white; border: solid 1px;"
+								style="height: 35px; border-radius: 5px; background: #13334A; color: white; border: solid 1px;"
 								name="btncheck">중복확인</button>
 								<button id="sendPn"
-								style="height: 35px; border-radius: 5px; background: #192466; color: white; border: solid 1px; "
+								style="height: 35px; border-radius: 5px; background: #13334A; color: white; border: solid 1px; "
 								name="btncheck" hidden>문자전송</button>
 						</div>
 						

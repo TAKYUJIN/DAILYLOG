@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <style>
 .form-horizontal1 {
-	width: 1024px; /* 전체 폼 사이즈임 */ !
+	width: 1600px; /* 전체 폼 사이즈임 */ !
 	important margin-top: 50px;
 	margin-bottom: 50px;
 }
@@ -40,7 +40,7 @@
 
 .signin-form form {
 	margin-bottom: 20px;
-	background: #fff;
+	/*background: #fff;*/
 	padding: 40px;
 }
 
@@ -48,9 +48,9 @@
 	color: #192466;
 }
 
-.signin-form h2 {
+.signin-form h1 {
 	text-align: center;
-	font-size: 34px;
+	font-size: 47px;
 	margin: 10px 0 15px;
 }
 
@@ -112,9 +112,9 @@
 	color: #fff;
 	margin: 10px 0 0 30px;
 	font-size: 15px;
-	width: 55px;
-	height: 55px;
-	line-height: 38px;
+	width: 75px;
+	height: 75px;
+	line-height: 58px;
 	border-radius: 50%;
 	font-weight: normal;
 	text-align: center;
@@ -166,8 +166,12 @@
 		<jsp:include page="/WEB-INF/views/common/guest.jsp"></jsp:include>
 	<div class="signin-form">
 		<form action="login.me" method="post">
-			<h2>LOGO</h2>
+			
+			<img src="resources/images/newlogo.png" style="border-radius: 50%">
+			
+			<br>
 			<p class="hint-text">Sign in with your social media account</p>
+			<br>
 			<div class="social-btn text-center">
 				<a href="#" class="btn btn-primary btn-lg" title="Facebook"><i
 					class="fa fa-naver" style="font-weight: 900">N</i></a> <a href="#"
@@ -176,26 +180,28 @@
 					class="btn btn-danger btn-lg" title="Google"><i
 					class="fa fa-google"></i></a>
 			</div>
+			<br>
 			<div class="or-seperator">
 				<b>or</b>
 			</div>
+			<br>
 			<div class="formlogin-group">
 				<input type="text" class="form-control input-lg" name="userId"
-					placeholder="Email" required="required">
+					placeholder="Email" required="required" style="color:#525252;">
 			</div>
 			<div class="formlogin-group">
 				<input type="password" class="form-control input-lg" name="userPwd"
-					placeholder="Password" required="required">
+					placeholder="Password" required="required" style="color:#525252;">
 			</div>
 			<div class="formlogin-group">
 				<button 
 					class="btn btn-success btn-lg btn-block signup-btn"
-					style="background: #192466; border-color: #192466">Sign in</button>
+					style="background: #13334A; border-color: #192466">Sign in</button>
 			</div>
 			<div class="text-center small">
 				<a href="findId.me">Forgot Id / </a> <a href="#">Password Reset </a>
 			</div>
-			<div class="text-center small" style="color: White Smoke">
+			<div class="text-center small" style="color:#525252;">
 				Don't have an account? <a href="memberJoinView.me"
 					style="color: #192466">Sign up</a>
 			</div>

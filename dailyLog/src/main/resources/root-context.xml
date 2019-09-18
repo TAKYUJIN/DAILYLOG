@@ -24,7 +24,7 @@
 		<property name="driverClassName"
 			value="oracle.jdbc.driver.OracleDriver" />
 		<property name="url"
-value="jdbc:oracle:thin:@127.0.0.1:1521:xe"/>
+value="jdbc:oracle:thin:@127.0.0.1:32769:xe"/>
 
 		<property name="username" value="dailylog" />
 		<property name="password" value="dailylog" />
@@ -64,8 +64,8 @@ value="jdbc:oracle:thin:@127.0.0.1:1521:xe"/>
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
     <property name="host" value="smtp.gmail.com" />
     <property name="port" value="587" />
-    <property name="username" value="heejung9655@gmail.com" />
-    <property name="password" value="gmlwjd9655*" />
+    <property name="username" value="with.dailylog@gmail.com"/>
+    <property name="password" value="xkrdbwls"/>
     <property name="javaMailProperties">
     <props>
    		<prop key="mail.transport.protocol">smtp</prop>
