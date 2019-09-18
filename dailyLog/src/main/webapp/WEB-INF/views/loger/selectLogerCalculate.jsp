@@ -25,42 +25,37 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
 <style type="text/css">
-body {
-	color: #666;
-	background: #f5f5f5;
-	font-family: 'Roboto', sans-serif;
-}
 
 table.table tr th, table.table tr td {
-	border-color: #e9e9e9;
-	text-align: center;
+	border-color:#A8B7BC;
+        text-align:center;
+        margin:0 auto;
 }
 
 table.table-striped tbody tr:nth-of-type(odd) {
-	background-color: #fcfcfc;
-	width: 900px;
+	background:none;
+	border-color:#A8B7BC;
+    width:100%;
+    margin:0 auto;
 	/* text-align:center; */
-	margin-bottom: 100px;
+	margin-bottom:100px;
 }
 
 .selectSupport {
-	width: 900px;
-	margin-left: 30px;
+	width:90%;
+	margin-left:30px;
 }
 
 .selectLogerCalculateForm {
-	margin-top: 50px;
-	margin-left: auto;
-	margin-right: auto;
-	margin-bottom: 50px;
-	width: 900px;
+	margin-top:50px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom:50px;
+	width:90%;
 }
 
 .table-wrapper {
-	background: #fff;
 	padding: 20px;
-	margin: 30px 0;
-	box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
 }
 
 .pagination {
@@ -106,10 +101,29 @@ table.table-striped tbody tr:nth-of-type(odd) {
 	margin: 0 2px;
 }
 
-#calculateBtn {
+.allBtn {
 	float: right;
-	/* margin-left:210px; */
+	width:100px;
+	margin-top:50px;
+	border:1px solid #13334A;
+	border-radius:5px;
+	margin-left:5px;
+	background:#13334A;
+	padding:8px;
+	color:#FFF;
 }
+
+.btn-gradient {
+	width:70px;
+	margin-bottom:10px;
+	border:1px solid #13334A;
+	border-radius:5px;
+	margin-left:5px;
+	background:#13334A;
+	padding:3px;
+	color:#FFF;
+}
+
 
 #accountBtn {
 	float: right;
@@ -121,216 +135,8 @@ table.table-striped tbody tr:nth-of-type(odd) {
 	background: #FFF;
 }
 
-/* button */
-.btn, .btn-two {
-	margin: 9px;
-}
 
-.btn-gradient {
-	margin: 5px;
-}
 
-a[class*="btn"] {
-	text-decoration: none;
-}
-
-input[class*="btn"], button[class*="btn"] {
-	border: 0;
-}
-
-/* Here you can change the button sizes */
-.btn.large, .btn-two.large, .btn-effect.large {
-	font-size: 22px;
-}
-
-.btn.small, .btn-two.small, .btn-gradient.small, .btn-effect.small {
-	font-size: 14px;
-}
-
-.btn.mini, .btn-two.mini, .btn-gradient.mini, .btn-effect.mini {
-	font-size: 12px;
-}
-
-.btn.block, .btn-two.block, .btn-gradient.block, .btn-effect.block {
-	display: block;
-	width: 60%;
-	margin-left: auto;
-	margin-right: auto;
-	text-align: center !important;
-}
-
-.btn-gradient.large {
-	font-size: 22px;
-}
-
-/* Colors for .btn and .btn-two */
-.btn.blue, .btn-two.blue {
-	background-color: #7fb1bf;
-}
-
-.btn.yellow, .btn-two.yellow {
-	background-color: #f0d264;
-}
-
-.rounded {
-	border-radius: 10px;
-}
-
-/* default button style */
-.btn {
-	position: relative;
-	border: 0;
-	display: inline-block;
-	text-align: center !important;
-	color: white;
-}
-
-.btn:active {
-	top: 4px;
-}
-
-/* color classes for .btn */
-.btn.blue {
-	box-shadow: 0px 4px #74a3b0;
-}
-
-.btn.blue:active {
-	box-shadow: 0 0 #74a3b0;
-	background-color: #709CA8;
-}
-
-.btn.yellow {
-	box-shadow: 0px 4px 0px #D1B757;
-}
-
-.btn.yellow:active {
-	box-shadow: 0 0 #ff4c4b;
-	background-color: #D6BB59;
-}
-
-/* Button two - I have no creativity for names */
-.btn-two {
-	color: white;
-	display: inline-block;
-	border: 1px solid rgba(0, 0, 0, 0.21);
-	border-bottom-color: rgba(0, 0, 0, 0.34);
-	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
-	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.34) inset, 0 2px 0 -1px
-		rgba(0, 0, 0, 0.13), 0 3px 0 -1px rgba(0, 0, 0, 0.08), 0 3px 13px -1px
-		rgba(0, 0, 0, 0.21);
-}
-
-.btn-two:active {
-	top: 1px;
-	border-color: rgba(0, 0, 0, 0.34) rgba(0, 0, 0, 0.21)
-		rgba(0, 0, 0, 0.21);
-	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.89), 0 1px rgba(0, 0, 0, 0.05)
-		inset;
-	position: relative;
-}
-/* 3D Button */
-.btn-3d {
-	position: relative;
-	display: inline-block;
-	font-size: 22px;
-	color: white !important;
-	margin: 20px 10px 10px;
-	border-radius: 6px;
-	text-align: center !important;
-	transition: top .01s linear;
-	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
-}
-
-.btn-3d.yellow:hover {
-	background-color: #F0D264;
-}
-
-.btn-3d.blue:hover {
-	background-color: #699DD1;
-}
-
-.btn-3d:active {
-	top: 9px;
-}
-
-/* 3D button colors */
-.btn-3d.yellow {
-	background-color: #F0D264;
-	box-shadow: 0 0 0 1px #F0D264 inset, 0 0 0 2px rgba(255, 255, 255, 0.15)
-		inset, 0 8px 0 0 rgba(196, 172, 83, .7), 0 8px 0 1px rgba(0, 0, 0, .4),
-		0 8px 8px 1px rgba(0, 0, 0, 0.5);
-}
-
-.btn-3d.yellow:active {
-	box-shadow: 0 0 0 1px #F0D264 inset, 0 0 0 2px rgba(255, 255, 255, 0.15)
-		inset, 0 0 0 1px rgba(0, 0, 0, 0.4);
-}
-
-.btn-3d.blue {
-	background-color: #6DA2D9;
-	box-shadow: 0 0 0 1px #6698cb inset, 0 0 0 2px rgba(255, 255, 255, 0.15)
-		inset, 0 8px 0 0 rgba(110, 164, 219, .7), 0 8px 0 1px
-		rgba(0, 0, 0, .4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
-}
-
-.btn-3d.blue:active {
-	box-shadow: 0 0 0 1px #6191C2 inset, 0 0 0 2px rgba(255, 255, 255, 0.15)
-		inset, 0 0 0 1px rgba(0, 0, 0, 0.4);
-}
-/* Gradient buttons */
-.btn-gradient {
-	text-decoration: none;
-	color: white !important;
-	padding: 5px 10px !important; /* css버튼 크기 */
-	display: inline-block;
-	position: relative;
-	border: 1px solid rgba(0, 0, 0, 0.21);
-	border-bottom: 4px solid rgba(0, 0, 0, 0.21);
-	border-radius: 4px;
-	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
-}
-
-.btn-gradient.blue {
-	background: rgba(102, 152, 203, 1);
-	background: -moz-linear-gradient(top, rgba(102, 152, 203, 1) 0%,
-		rgba(92, 138, 184, 1) 100%);
-	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(102, 152,
-		203, 1)), color-stop(100%, rgba(92, 138, 184, 1)));
-	background: -webkit-linear-gradient(top, rgba(102, 152, 203, 1) 0%,
-		rgba(92, 138, 184, 1) 100%);
-	background: -o-linear-gradient(top, rgba(102, 152, 203, 1) 0%,
-		rgba(92, 138, 184, 1) 100%);
-	background: -ms-linear-gradient(top, rgba(102, 152, 203, 1) 0%,
-		rgba(92, 138, 184, 1) 100%);
-	background: linear-gradient(to bottom, rgba(102, 152, 203, 1) 0%,
-		rgba(92, 138, 184, 1) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6698cb',
-		endColorstr='#5c8ab8', GradientType=0);
-}
-
-.btn-gradient.yellow {
-	background: rgba(240, 210, 100, 1);
-	background: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(240, 210, 100, 1)),
-		to(rgba(229, 201, 96, 1)));
-	background: -webkit-linear-gradient(rgba(240, 210, 100, 1) 0%,
-		rgba(229, 201, 96, 1) 100%);
-	background: -moz-linear-gradient(rgba(240, 210, 100, 1) 0%,
-		rgba(229, 201, 96, 1) 100%);
-	background: -o-linear-gradient(rgba(240, 210, 100, 1) 0%,
-		rgba(229, 201, 96, 1) 100%);
-	background: linear-gradient(rgba(240, 210, 100, 1) 0%,
-		rgba(229, 201, 96, 1) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0d264',
-		endColorstr='#e5c960', GradientType=0);
-}
-
-.btn-gradient.yellow:active {
-	background: #DBC05B;
-}
-
-.btn-gradient.blue:active {
-	background: #608FBF;
-}
 </style>
 </head>
 <body>
@@ -340,12 +146,10 @@ input[class*="btn"], button[class*="btn"] {
 			<div class="table-wrapper">
 				<table class="table table-striped" id="logerTable">
 					<tr>
-						<h4>
-							<b>후원내역</b>
-						</h4>
+						<h4><b>후원내역</b></h4>
 					</tr>
 					<tr>
-						<hr>
+						<hr style="border-color:#A8B7BC; background:#A8B7BC; color:#A8B7BC;">
 					</tr>
 					<div style="float: right;">
 						<label>기간</label>&nbsp; <span class="chkbox"> <input
@@ -387,8 +191,8 @@ input[class*="btn"], button[class*="btn"] {
 					</tbody>
 				</table>
 				
-				<button type="button" class="cal_btn btn-gradient yellow mini" id="accountBtn" onclick="logerCalculate();" style="font-size: 13px; margin-top: 16px;">취소</button>
-				<button type="button" class="cal_btn btn-gradient yellow mini" id="calculateBtn" style="font-size: 13px; margin-top: 16px;">정산신청</button>
+				<button type="button" class="allBtn" id="accountBtn" onclick="logerCalculate();" style="font-size: 13px; margin-top: 16px;">취소</button>
+				<button type="button" class="allBtn" id="calculateBtn" style="font-size: 13px; margin-top: 16px;">정산신청</button>
 		
 				
 				

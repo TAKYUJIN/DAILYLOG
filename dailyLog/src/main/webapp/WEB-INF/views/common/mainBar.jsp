@@ -29,6 +29,7 @@
       font-weight: normal;
       font-size: 12px; /* 검색부분 폰트사이즈 */
       color:#DDD0DA;
+      font-size:14px;
    }
    .form-control:focus {
       border-color: #EDEAD7;
@@ -44,6 +45,7 @@
       padding-right: 6px; 
       border-bottom: 1px solid #EDEAD7;
       border-radius: 0;
+      
     
    }
    .nav-link img {
@@ -69,9 +71,11 @@
     }
    .navbar .nav li {
       position: relative;
+      
    }
    .navbar .nav li a {
       color: #434738; /*상단바 글자색*/
+      
    }
    	.search-box {
         position: relative;
@@ -190,6 +194,7 @@
    }
    .navbar .form-wrapper .form-footer a:hover{
       text-decoration: underline;
+      
    }
    .navbar .form-wrapper .checkbox-inline input {
       margin-top: 3px;
@@ -244,7 +249,8 @@
    }
    
    #navbarCollapse a {
-      font-size:12px;
+      font-size:14px;
+      margin-top:5px;
    }
    
    a:link { color: black; text-decoration: none; color: black;}
@@ -255,6 +261,7 @@
    #logo {
    	color:black;
    	padding-top:5px; 
+   	margin-top:5px;
    }
    
    #logo,#friendlist{
@@ -264,6 +271,10 @@
    }
    #searchId {
    	color:#DDD0DA;
+   }
+   
+   #navbarCollapse {
+   	font-size:15px;
    }
 </style>
 <script type="text/javascript">
@@ -276,9 +287,8 @@
 <body>
 <nav class="navbar navbar-default navbar-expand-lg navbar-light">
 
-	<div class="navbar-header d-flex col">
-	 <button type="button"  id="logo" onclick="location.href='home.mb'"><a value="DailyLog" id="logo" style="width:90px; font-size:22px;">DailyLog</a>
-	</button>
+	<div class="navbar-header d-flex col" style="margin-top:13px;">
+	 <a value="DailyLog" id="logo" style="width:110px; font-size:22px;">DailyLog</a>
 	</div>
 	<!-- Collection of nav links, forms, and other content for toggling -->
 	<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
@@ -295,28 +305,28 @@
 			<li class="nav-item"><a href="newHomeChannel.lo" class="nav-link" style="padding-right:0px;" onclick="">로거 스튜디오</a></li>
 			<li class="nav-item"><a href="lotest.lo" class="nav-link" style="padding-right:0px;">알림 예시</a></li>
 		</ul>
-		<form class="navbar-form form-inline" style="width:240px; ">
+		<form class="navbar-form form-inline" style="width:250px; ">
 			<div class="input-group search-box">								
 				<input type="text" id="searchId" class="form-control" placeholder="검색" >
 				<span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
 			</div>
 		</form>
-		<ul class="nav navbar-nav navbar-right ml-auto" style="width:265px;">			
+		<ul class="nav navbar-nav navbar-right ml-auto" style="width:310px;">			
 			<li class="nav-item">
 				<a href="logout.me" class="btn_global link_login" >
-				<img src="resources/images/exit.png" style="width:20px;">
+				<img src="resources/images/exit.png" style="width:25px;">
 			</a>
 			</li>
 			
 			<li class="nav-item">
 				<a href="videoUpload.vd" class="btn_global link_login">
-				<img src="resources/images/film.png" style="width:20px;">
+				<img src="resources/images/film.png" style="width:25px;">
 			</a>
 			</li>
 			<li class="nav-item">
 				 
 			 <button  type="button" id="friendlist" class="btn_global link_login" >
-				<img src="resources/images/laugh.png" style="width:20px; margin:15px;">
+				<img src="resources/images/laugh.png" style="width:25px; margin:15px;">
 			</button>
 			<ul class="dropdown-menu form-wrapper">					
 					<li>
@@ -393,7 +403,7 @@ $('#friendlist').click(function(){
  
          <li class="nav-item">
          <a <%-- href="notification.mb" --%> data-toggle="dropdown" class="btn_global link_login" onclick="send2();">
-            <img src="resources/images/bell.png" style="width:20px;">
+            <img src="resources/images/bell.png" style="width:25px;">
          </a>
             <ul class="dropdown-menu form-wrapper">               
                <li>
@@ -418,7 +428,7 @@ $('#friendlist').click(function(){
          </li>
          <li class="nav-item">
             <a href="myPage.me" class="btn_global link_login" onclick="account();">
-            <img src="resources/images/management.png" style="width:20px;">
+            <img src="resources/images/management.png" style="width:25px;">
          </a>
          </li>
       </ul>
