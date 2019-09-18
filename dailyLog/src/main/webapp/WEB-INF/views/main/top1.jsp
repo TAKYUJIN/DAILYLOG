@@ -216,7 +216,7 @@ background:none;
 	}
 	 #l{
 	 width:150px;
-	 margin-right:-25px;
+	 margin-right: 15px;
 	 } 
 	 
 	   #report{
@@ -273,22 +273,22 @@ background:none;
 		 
 	   --%>
 	   
-	   
+	  
 	  	<div class="row" id="v1"> <h2> <span>  <b>인기동영상</b></span> </h2><br>
-						<c:forEach var="videoimage" items="${list}">
+						<c:forEach var="videoimage" items="${list}"  begin="0" end="4">
 							
-						<div class="col-sm-2"id="l"><div class="img-box"><div style=" float:left;">
+						<div class="col-sm-2"id="l"><div class="img-box"><div style=" float:left; margin:30px;">
 						<a href="video.vd?userNo=${videoimage.userNo}&vNo=${videoimage.vNo}">
-						<img src="resources/images/${videoimage.filepath}" width = "102px"  height="130px"  >
+						<img src="resources/images/${videoimage.filepath}" width = "150px"  height="130px"  >
 							  <h5>제목:${videoimage.vTitle}</h5>
-							<%--  <c:out value="${videoimage.vTitle}" /> > --%>
+							 
 							<h5>채널명:${videoimage.chNm }</h5> 
 							<input type="hidden"  id="target" value="${videoimage.vNo}"/> 
 				</a></div></div>
 				
 				</div> 
-						<div id="dot" style ="float:left;">
-							<nav class="navbar  navbar-expand-xl navbar-light">
+						<div id="dot" style ="float:left; margin:15px; height:5px;">
+							<nav >
 								<button type="button" class="main"  data-toggle="dropdown" id="btncolor" >
 								<img src="resources/images/three-dot.png"width="20px" height="20px">
 							</button>
@@ -325,7 +325,7 @@ background:none;
 	   
 	   	<div class="row" id="v1"> <h2> <span>  <b>최근 본 동영상</b></span> </h2>
 	   	<br>
-						<c:forEach var="videoimage" items="${list}">
+						<c:forEach var="videoimage" items="${list}" begin="0" end="4">
 						<div class="col-sm-2"id="l"><div class="img-box"><div style=" float:left;"> 
 						<a href="video.vd?userNo=${videoimage.userNo}&vNo=${videoimage.vNo}">
 						<img src="resources/images/${videoimage.filepath}" width = "102px"  height="130px"  >
@@ -374,7 +374,7 @@ background:none;
       <br><br><br><br>
       	<div class="row" id="v1"> <h2> <span>  <b>즐겨찾기한 동영상</b></span> </h2>
       	<br>
-						<c:forEach var="videoimage" items="${list}">
+						<c:forEach var="videoimage" items="${list}" begin="0" end="4">
 							
 						<div class="col-sm-2"id="l"><div class="img-box"><div style=" float:left;"> 
 						<a href="video.vd?userNo=${videoimage.userNo}&vNo=${videoimage.vNo}">
@@ -426,7 +426,7 @@ background:none;
       
     	<div class="row" id="v1"> <h2> <span>  <b>구독동영상11</b></span> </h2>
     	<br>
-						<c:forEach var="videoimage" items="${list}">
+						<c:forEach var="videoimage" items="${list}" begin="0" end="4">
 							
 						<div class="col-sm-2"id="l"><div class="img-box"><div style=" float:left;">
 						<a href="video.vd?userNo=${videoimage.userNo}&vNo=${videoimage.vNo}">
@@ -476,7 +476,7 @@ background:none;
 						
 						<div class="row" id="v1"> <h2> <span>  <b>구독동영상2</b></span> </h2>
 						<br>
-						<c:forEach var="videoimage" items="${list}">
+						<c:forEach var="videoimage" items="${list}" begin="0" end="4">
 							
 						<div class="col-sm-2"id="l"><div class="img-box"><div style=" float:left;">
 						<a href="video.vd?userNo=${videoimage.userNo}&vNo=${videoimage.vNo}">
@@ -531,7 +531,7 @@ background:none;
 				 
 				 
 	  	<div class="row" id="v1"> <h2> <span>  <b>인기동영상</b></span> </h2><br>
-						<c:forEach var="videoimage" items="${list}">
+						<c:forEach var="videoimage" items="${list}" begin="0" end="4">
 						<div class="col-sm-2"id="l"><div class="img-box"><div style=" float:left;"> 
 						<a href="video.vd?userNo=${videoimage.userNo}&vNo=${videoimage.vNo}">
 						<img src="resources/images/${videoimage.filepath}" width = "102px"  height="130px"  >

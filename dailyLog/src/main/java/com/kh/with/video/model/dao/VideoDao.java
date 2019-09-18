@@ -31,7 +31,10 @@ public interface VideoDao {
 	
 	
 	List<Attachment> videoimagelist(Member m);
-	
+	List<Attachment> videopop(Member m);
+	List<Attachment> videonew(Member m);
+	List<Attachment> videobook(Member m);
+	List<Attachment> videosub(Member m);
 	//썸네일  insert 메소드
 	int insertAttachment(SqlSessionTemplate sqlSession, Attachment attachment);
 	
@@ -60,5 +63,7 @@ public interface VideoDao {
 	//신고
 	int report(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	int block(SqlSessionTemplate sqlSession, Map<String, Object> map);
+	List<Attachment> videolike(Member m);
+	
 
 }
