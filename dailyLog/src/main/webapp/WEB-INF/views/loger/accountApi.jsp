@@ -16,183 +16,26 @@
  	font-family: 'Roboto', sans-serif;
  }
 
-
-
-/* button */
-
-.btn, .btn-two {
-   margin: 9px;
-}
-.btn-gradient {
-   margin: 5px;
-}
-a[class*="btn"] {text-decoration: none;}
-input[class*="btn"], 
-button[class*="btn"] {border: 0;}
-
-/* Here you can change the button sizes */
-.btn.large, 
-.btn-two.large, 
-.btn-effect.large {
-  padding: 20px 40px; 
-  font-size: 22px;
-}
-.btn.small, 
-.btn-two.small, 
-.btn-gradient.small, 
-.btn-effect.small {
-  padding: 8px 18px;  
-  font-size: 14px;
-}
-.btn.mini, 
-.btn-two.mini, 
-.btn-gradient.mini, 
-.btn-effect.mini {
-  padding: 4px 12px;  
-  font-size: 12px;
-}
-.btn.block, 
-.btn-two.block, 
-.btn-gradient.block, 
-.btn-effect.block {
-  display: block;
-  width: 60%;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center !important;
-}
-.btn-gradient.large {
-  padding: 15px 45px; 
-  font-size: 22px;
+.accountBtn1 {
+	width:90px;
+	border:1px solid #A8B7BC;
+	border-radius:5px;
+	background:#A8B7BC;
+	padding:5px;
+	color:#FFF;
+	margin-left:5px;
+	margin-top:5px;
 }
 
-/* Colors for .btn and .btn-two */
-.btn.blue, .btn-two.blue     {background-color: #192466;}
-.btn.yellow, .btn-two.yellow {background-color: #f0d264;}
-
-.rounded {
-  border-radius: 10px;
+.accountBtn2 {
+	width:100px;
+	border:1px solid #13334A;
+	border-radius:5px;
+	background:#13334A;
+	padding:8px;
+	color:#FFF;
+	margin-left:10px;
 }
-
-/* default button style */
-.btn {
-   position: relative;
-   border: 0;
-   padding: 15px 25px;
-   display: inline-block;
-   text-align: center !important;
-   color: white;
-}
-.btn:active {
-   top: 4px;   
-}
-
-/* color classes for .btn */
-.btn.blue {box-shadow: 0px 4px #192466;}
-.btn.blue:active {box-shadow: 0 0 #192466; background-color: #192466;}
-.btn.yellow {box-shadow:0px 4px 0px #D1B757;}
-.btn.yellow:active {box-shadow: 0 0 #ff4c4b; background-color: #D6BB59;}
-
-/* Button two - I have no creativity for names */
-.btn-two {
-   color: white;   
-   padding: 15px 25px;
-   display: inline-block;
-   border: 1px solid rgba(0,0,0,0.21);
-   border-bottom-color: rgba(0,0,0,0.34);
-   text-shadow:0 1px 0 rgba(0,0,0,0.15);
-   box-shadow: 0 1px 0 rgba(255,255,255,0.34) inset, 
-                  0 2px 0 -1px rgba(0,0,0,0.13), 
-                  0 3px 0 -1px rgba(0,0,0,0.08), 
-                  0 3px 13px -1px rgba(0,0,0,0.21);
-}
-.btn-two:active {
-   top: 1px;
-   border-color: rgba(0,0,0,0.34) rgba(0,0,0,0.21) rgba(0,0,0,0.21);
-   box-shadow: 0 1px 0 rgba(255,255,255,0.89),0 1px rgba(0,0,0,0.05) inset;
-   position: relative;
-}
-/* 3D Button */
-.btn-3d {
-   position: relative;
-   display: inline-block;
-   font-size: 22px;
-   padding: 20px 60px;
-   color: white !important;
-   margin: 20px 10px 10px;
-   border-radius: 6px;
-   text-align: center !important;
-   transition: top .01s linear;
-   text-shadow: 0 1px 0 rgba(0,0,0,0.15);
-}
-.btn-3d.yellow:hover {background-color: #F0D264;}
-.btn-3d.blue:hover   {background-color: #192466;}
-.btn-3d:active {
-   top: 9px;
-}
-
-/* 3D button colors */
-.btn-3d.yellow {
-   background-color: #F0D264;
-   box-shadow: 0 0 0 1px #F0D264 inset,
-            0 0 0 2px rgba(255,255,255,0.15) inset,
-            0 8px 0 0 rgba(196, 172, 83, .7),
-            0 8px 0 1px rgba(0,0,0,.4),
-            0 8px 8px 1px rgba(0,0,0,0.5);
-}
-.btn-3d.yellow:active {
-   box-shadow: 0 0 0 1px #F0D264 inset,
-            0 0 0 2px rgba(255,255,255,0.15) inset,
-            0 0 0 1px rgba(0,0,0,0.4);
-}
-.btn-3d.blue {
-   background-color: #192466;
-   box-shadow: 0 0 0 1px #6698cb inset,
-            0 0 0 2px rgba(255,255,255,0.15) inset,
-            0 8px 0 0 rgba(110, 164, 219, .7),
-            0 8px 0 1px rgba(0,0,0,.4),
-            0 8px 8px 1px rgba(0,0,0,0.5);
-}
-.btn-3d.blue:active {
-   box-shadow: 0 0 0 1px #192466 inset,
-            0 0 0 2px rgba(255,255,255,0.15) inset,
-            0 0 0 1px rgba(0,0,0,0.4);
-}
-/* Gradient buttons */
-.btn-gradient {
-   text-decoration: none;
-   color: white !important;
-   padding: 7px 15px !important;
-   display: inline-block;
-   position: relative;
-   border: 1px solid rgba(0,0,0,0.21);
-   border-bottom: 4px solid rgba(0,0,0,0.21);
-   border-radius: 4px;
-   text-shadow: 0 1px 0 rgba(0,0,0,0.15);
-}
-.btn-gradient.blue {
-   background: rgba(102,152,203,1);
-   background: -moz-linear-gradient(top, rgba(102,152,203,1) 0%, rgba(92,138,184,1) 100%);
-   background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(102,152,203,1)), color-stop(100%, rgba(92,138,184,1)));
-   background: -webkit-linear-gradient(top, rgba(102,152,203,1) 0%, rgba(92,138,184,1) 100%);
-   background: -o-linear-gradient(top, rgba(102,152,203,1) 0%, rgba(92,138,184,1) 100%);
-   background: -ms-linear-gradient(top, rgba(102,152,203,1) 0%, rgba(92,138,184,1) 100%);
-   background: linear-gradient(to bottom, rgba(102,152,203,1) 0%, rgba(92,138,184,1) 100%);
-   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6698cb', endColorstr='#5c8ab8', GradientType=0 );
-}
-.btn-gradient.yellow {
-   background: rgba(240,210,100,1);
-   background: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(240,210,100,1)), to(rgba(229,201,96,1)));
-   background: -webkit-linear-gradient(rgba(240,210,100,1) 0%, rgba(229,201,96,1) 100%);
-   background: -moz-linear-gradient(rgba(240,210,100,1) 0%, rgba(229,201,96,1) 100%);
-   background: -o-linear-gradient(rgba(240,210,100,1) 0%, rgba(229,201,96,1) 100%);
-   background: linear-gradient(rgba(240,210,100,1) 0%, rgba(229,201,96,1) 100%);
-   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0d264', endColorstr='#e5c960', GradientType=0 );
-}
-
-.btn-gradient.yellow:active {background: #DBC05B;}
-.btn-gradient.blue:active    {background: #192466;}   
-
 
 </style>
 
@@ -305,8 +148,8 @@ button[class*="btn"] {border: 0;}
 							style="background:#FBC52C;color:white;border-radius:3px;padding:3px;font-size:15px; margin-left:10px;">미인증</label>
 							<label id="sbm-ok"
 							style="background:#192466;color:white;border-radius:3px;padding:3px;display:none;font-size:15px; margin-left:10px;">인증됨</label> -->
-							<button class="btn-gradient yellow mini" id="sbm-no" style="font-size:14px;">미인증</button>
-							<button class="btn-gradient blue mini" id="sbm-ok" style="display:none; font-size:14px;">인증</button>
+							<button class="accountBtn1" id="sbm-no" style="font-size:14px;">미인증</button>
+							<button class="accountBtn2" id="sbm-ok" style="display:none; font-size:14px;">인증</button>
 						</div>
 						<div align="center">
 						<br>
@@ -315,9 +158,9 @@ button[class*="btn"] {border: 0;}
 							<!-- <button class="btn btn-primary btn-xs" style="display:none"
 							id="changeacc" onclick="">변경하기</button> -->
 							
-							<button class="btn-gradient yellow mini" id="confirmacc" onclick="fnSearchAccessToken()" style="font-size:14px;">확인</button>
+							<button class="accountBtn1" id="confirmacc" onclick="fnSearchAccessToken()" style="font-size:14px;">확인</button>
 							
-							<button class="btn-gradient yellow mini" style="display:none;font-size:14px;" id="changeacc" onclick="logerCalculateApply();">변경</button>
+							<button class="accountBtn1" style="display:none;font-size:14px;" id="changeacc" onclick="logerCalculateApply();">변경</button>
 						</div>
 						
 						 <script>
@@ -518,7 +361,7 @@ button[class*="btn"] {border: 0;}
 								var accnum = $('[name=accnum]').val();
 
 								
-								alert('인증 성공!!!');
+								alert('인증되셨습니다.');
 								$("#confirmacc").hide();
 								$("#changeacc").show();
 								$("#sbm-flag").attr("checked", true);
