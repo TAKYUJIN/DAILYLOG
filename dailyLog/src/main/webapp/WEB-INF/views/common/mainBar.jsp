@@ -295,10 +295,14 @@
 			<li class="nav-item"><a href="newHomeChannel.lo" class="nav-link" style="padding-right:0px;" onclick="">로거 스튜디오</a></li>
 			<li class="nav-item"><a href="lotest.lo" class="nav-link" style="padding-right:0px;">알림 예시</a></li>
 		</ul>
-		<form class="navbar-form form-inline" style="width:240px; ">
-			<div class="input-group search-box">								
+		<form class="navbar-form form-inline" action="search.mb" method="get">
+			<div class="input-group search-box">		
+			 					
 				<input type="text" id="searchId" class="form-control" placeholder="검색" >
-				<span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
+				 
+				  <span  class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span> 
+			 
+				 
 			</div>
 		</form>
 		<ul class="nav navbar-nav navbar-right ml-auto" style="width:265px;">			

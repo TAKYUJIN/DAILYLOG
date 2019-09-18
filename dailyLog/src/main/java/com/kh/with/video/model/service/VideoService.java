@@ -27,8 +27,14 @@ public interface VideoService {
 
 	//메인 썸네일 출력
 	List<Attachment> videoimagelist( Member m);
+	List<Attachment> videopop(Member m);
 
-	
+	List<Attachment> videonew(Member m);
+
+	List<Attachment> videobook(Member m);
+
+	List<Attachment> videosub(Member m);
+	List<Attachment> videolike(Member m);
 	//썸네일 insert
 	int insertAttachment(Attachment attachment);
 	
@@ -61,6 +67,12 @@ public interface VideoService {
 	//신고
 	int report(Map<String, Object> map);
 	int block(Map<String, Object> map);
+
+	
+	
+	
+
+	
 
 
 }

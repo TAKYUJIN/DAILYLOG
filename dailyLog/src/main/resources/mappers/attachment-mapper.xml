@@ -49,11 +49,60 @@
 	</select> -->
 <select id="videoimagelist"  resultMap="videoRSet"  parameterType="map" >
 	
-	  SELECT A.USER_NO,A.FILEPATH,A.AM_DT,A.DOTIMAGE,V.V_NO,V.V_TITLE,V.CH_NM 
+	  SELECT A.USER_NO,A.FILEPATH,A.AM_DT,V.V_NO,V.V_TITLE,V.CH_NM 
 	  FROM ATTACHMENT A 
 	  JOIN VIDEO V ON(V.USER_NO = A.USER_NO) 
 	 
 	</select>
+
+
+<select id="videopop"  resultMap="videoRSet"  parameterType="map" >
+	
+	  SELECT A.USER_NO,A.FILEPATH,A.AM_DT,V.V_NO,V.V_TITLE,V.CH_NM,V.COUNT 
+	  FROM ATTACHMENT A 
+	  JOIN VIDEO V ON(V.USER_NO = A.USER_NO) 
+	 
+	</select>
+	
+	
+	<select id="videonew"  resultMap="videoRSet"  parameterType="map" >
+	
+	  SELECT A.USER_NO,A.FILEPATH,A.AM_DT,V.V_NO,V.V_TITLE,V.CH_NM 
+	  FROM ATTACHMENT A 
+	  JOIN VIDEO V ON(V.USER_NO = A.USER_NO) 
+	 ORDER BY AM_DT DESC
+	</select>
+	
+	<select id="videobook"  resultMap="videoRSet"  parameterType="map" >
+	
+	  SELECT A.USER_NO,A.FILEPATH,A.AM_DT,V.V_NO,V.V_TITLE,V.CH_NM 
+	  FROM ATTACHMENT A 
+	  JOIN VIDEO V ON(V.USER_NO = A.USER_NO) 
+	 
+	</select>
+	
+	
+	<select id="videolike"  resultMap="videoRSet"  parameterType="map" >
+	
+	  SELECT A.USER_NO,A.FILEPATH,A.AM_DT,V.V_NO,V.V_TITLE,V.CH_NM 
+	  FROM ATTACHMENT A 
+	  JOIN VIDEO V ON(V.USER_NO = A.USER_NO) 
+	 
+	</select>
+
+
+<select id="videosub"  resultMap="videoRSet"  parameterType="map" >
+	
+	  SELECT A.USER_NO,A.FILEPATH,A.AM_DT,V.V_NO,V.V_TITLE,V.CH_NM 
+	  FROM ATTACHMENT A 
+	  JOIN VIDEO V ON(V.USER_NO = A.USER_NO) 
+	 
+	</select>
+
+
+
+
+
 
 
 <!-- 썸네일 정보 insert 쿼리 -->

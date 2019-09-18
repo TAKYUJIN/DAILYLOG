@@ -59,11 +59,44 @@ public class VideoDaoImpl implements VideoDao {
 	public List<Attachment> videoimagelist(Member m) {
 		System.out.println("videodaoimpl");
 		return sqlsession.selectList("Attachment.videoimagelist");
-		 
-
-
 		}
 
+	@Override
+	public List<Attachment> videopop(Member m) {
+		// TODO Auto-generated method stub
+		return sqlsession.selectList("Attachment.videopop");
+	}
+
+	@Override
+	public List<Attachment> videonew(Member m) {
+		// TODO Auto-generated method stub
+		return sqlsession.selectList("Attachment.videonew");
+	}
+
+	@Override
+	public List<Attachment> videobook(Member m) {
+		// TODO Auto-generated method stub
+		return sqlsession.selectList("Attachment.videobook");
+	}
+
+	@Override
+	public List<Attachment> videosub(Member m) {
+		// TODO Auto-generated method stub
+		return sqlsession.selectList("Attachment.videosub");
+	}
+	@Override
+	public List<Attachment> videolike(Member m) {
+		// TODO Auto-generated method stub
+		return sqlsession.selectList("Attachment.videolike");
+	}
+
+	
+	
+	
+	
+	
+	
+	
 	// 썸네일 insert 메소드
 	@Override
 	public int insertAttachment(SqlSessionTemplate sqlSession, Attachment attachment) {
@@ -155,5 +188,8 @@ public class VideoDaoImpl implements VideoDao {
 		
 		return sqlSession.insert("Video.insertBlock", map);
 	}
+
+
+
 	
 }

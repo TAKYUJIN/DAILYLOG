@@ -180,4 +180,15 @@ public class MainController {
 
 			return "index.jsp";
 		}
+		
+		
+		
+		
+		//검색
+		@RequestMapping(value="search.mb")
+
+		public String search() {
+
+			return "main/search";
+		}
 }

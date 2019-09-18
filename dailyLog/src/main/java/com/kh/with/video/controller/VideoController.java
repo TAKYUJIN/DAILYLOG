@@ -562,6 +562,11 @@ public class VideoController {
 		 	Member m = (Member) session.getAttribute("loginUser");
 			 mav.setViewName("main/top1");
 			 mav.addObject("list", videoservice.videoimagelist(m));
+			 mav.addObject("videopop", videoservice.videopop(m));
+			 mav.addObject("videonew", videoservice.videonew(m));
+			 mav.addObject("videobook", videoservice.videobook(m));
+			 mav.addObject("videosub", videoservice.videosub(m));
+			 mav.addObject("videolike", videoservice.videolike(m));
 			 System.out.println(mav);
 			 return mav;
 	 }

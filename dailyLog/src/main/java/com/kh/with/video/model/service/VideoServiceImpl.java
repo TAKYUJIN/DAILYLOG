@@ -64,6 +64,37 @@ public class VideoServiceImpl implements VideoService{
 		
 		return vd.videoimagelist(m);
 	}
+	
+	@Override
+	public List<Attachment> videopop(Member m) {
+		// TODO Auto-generated method stub
+		return vd.videopop(m);
+	}
+
+	@Override
+	public List<Attachment> videonew(Member m) {
+		// TODO Auto-generated method stub
+		return vd.videonew(m);
+	}
+
+	@Override
+	public List<Attachment> videobook(Member m) {
+		// TODO Auto-generated method stub
+		return vd.videobook(m);
+	}
+
+	@Override
+	public List<Attachment> videosub(Member m) {
+		// TODO Auto-generated method stub
+		return vd.videosub(m);
+	}
+	
+	@Override
+	public List<Attachment> videolike(Member m) {
+		// TODO Auto-generated method stub
+		return vd.videolike(m);
+	}
+	
 
 	//썸네일 insert 메소드
 	@Override
@@ -146,6 +177,10 @@ public class VideoServiceImpl implements VideoService{
 		
 		return vd.block(sqlSession, map);
 	}
+
+	
+
+
 	
 }
 
