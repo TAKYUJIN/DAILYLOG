@@ -308,8 +308,9 @@
  	<jsp:include page="../common/mainBar.jsp"></jsp:include>
 	<br>
 	<%-- <c:forEach items="${list}" --%>
-	<div align="center">
-		<table border="1px">
+	<div style=" margin-left:10%;">
+	<div style="align:center; display:inline-block;">
+		<table>
 			<tr>
 				<!-- 채널소개, 좋아요 등 -->
 				<td width="60px" height="60px">
@@ -595,18 +596,7 @@
 						</c:if>	
 					</c:if>
 				</td>
-
-				<!-- 댓글 -->
-				<td rowspan="3" width="400px">
-					<div style="align:top;">
-						<a href="#none" data-toggle="dropdown" id="runtimeChat">
-							<img src="resources/images/chat.png" style="width:30px; align:right;">
-						</a>
-					</div>
-					<div>
-					
-					</div>
-				</td>
+			<!-- 댓글 -->
 			</tr>
 			<tr>
 				<!-- 영상 제목, 태그 -->
@@ -618,7 +608,9 @@
 							<a href="" style="color: #525252;"><small>${ list1[0].tag }</small></a>
 						</div>
 					</div>
-					<hr>
+					<div style="margin-right:8%;">
+						<hr style="border-color:#A8B7BC; height:30px;">
+					</div>
 				</td>
 			</tr>
 			<tr>
@@ -630,6 +622,47 @@
 				</td>
 			</tr>
 		</table>
+	</div>
+	<!-- <div style="border-left:1px solid #A8B7BC;height:500px;"></div> -->  
+	<div style="display:inline-block; margin-left:3%; margin-bottom:10%;">
+		<!-- 댓글 -->
+		<table border="1px">
+			<thead>
+				<tr>
+					<td>
+						<div style="align:top;">
+							<a href="#none" data-toggle="dropdown" id="runtimeChat">
+								<img src="resources/images/chat.png" style="width:30px; align:right;">
+							</a>
+						</div>						
+					</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td rowspan="3" width="45px" height="45px">
+						프로필
+					</td>
+					<td style="padding:5%; width:300px;">내용</td>
+					<td>신고/삭제(본인만)</td>
+				</tr>
+					<td>날짜</td>
+					<td></td>
+				<tr>
+					<td>좋아요 싫어요 더보기</td>
+					<td></td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td height="50"><!-- 프로필 --></td>
+					<td height="50"><!-- 텍스트 --></td>
+					<td height="50"><!-- 작성 --></td>
+				</tr>
+			</tfoot>
+					<!-- 실시간 & 정렬 -->
+		</table>
+	</div>
 	</div>
 	<!-- Modal HTML -->
 	<div id="myModal" class="modal fade">
@@ -982,6 +1015,7 @@
 			}); */
 		//후원 div 
 		 $(document).ready(function(){
+			 
 			$('#subtitle').click(function(){
 				 $('#sub').show();
 				 $('#rSub').hide();

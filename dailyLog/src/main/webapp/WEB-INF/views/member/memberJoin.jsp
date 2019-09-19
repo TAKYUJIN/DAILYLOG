@@ -99,18 +99,19 @@
 			console.log(action);
 			
 			$.ajax({
-				url : "sendsms.me",
+
+				url : "smssend.me",
 				dataType:"text",
-				type : "POST",
-				data : {rphone:rphone, sphone1:sphone1, sphone2:sphone2, sphone3:sphone3, msg:msg, action:action
-				
-				},
+				type:"post",
+				data:{rphone:rphone, sphone1:sphone1, sphone2:sphone2, sphone3:sphone3, msg:msg, action:action},
 				success : function(data) {
-					if (data == 0 && $.trim($("#phone").val()) != '') {
+					console.log(data);
+					//if (data == 0 && $.trim($("#phone").val()) != '') {
 						alert("인증번호가 발송되었습니다 ");
-					} else {
-						
-					}
+					//} else {
+						//alert("tlfvo");
+					//}
+
 				},
 				error : function() {
 					alert("서버에러 ");
@@ -367,6 +368,7 @@ body {
 								name="btncheck" hidden>문자전송</button>
 						</div>
 
+
 					</div>
 				</div>
 				<div class="form-group" id="showsms" hidden>
@@ -386,6 +388,7 @@ body {
 						</div>
 					</div>
 				</div>
+
 
 
 				<br>

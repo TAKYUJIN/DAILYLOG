@@ -1,8 +1,6 @@
 package com.kh.with.video.model.service;
 
 
-import java.util.ArrayList;
-
 import java.util.List;
 import java.util.Map;
 
@@ -11,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.video.model.dao.VideoDao;
 import com.kh.with.video.model.vo.Attachment;
@@ -104,12 +103,12 @@ public class VideoServiceImpl implements VideoService{
 	}
 
 	@Override
-	public List<Object> selectVideoInfo(Map<String, Integer> map) {
+	public List<Video> selectVideoInfo(Map<String, Integer> map) {
 		
 		return vd.selectVideoInfo(sqlSession, map);
 	}
 	@Override
-	public List<Object> selectLogerInfo(Map<String, Integer> map) {
+	public List<Loger> selectLogerInfo(Map<String, Integer> map) {
 		
 		return vd.selectLogerInfo(sqlSession, map);
 	}

@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <style>
 	body {
-		background:white !important;
+		color:#525252 !important;
 	}
 	.container {
 		margin: 0 auto;
@@ -54,7 +54,6 @@
 					height: 2.25em;
 					line-height: 2.175em;
 					font-size: 5em;
-					color: #fff;
 				}
 
 			ul.special li:hover {

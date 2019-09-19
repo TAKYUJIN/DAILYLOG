@@ -13,8 +13,15 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <style>
+	tr {
+		background:none !important;
+	}
+	
+	tr :hover {
+		opacity: 0.8 !important;
+	}
 	.table-wrapper {
-        background: #fff;
+       /*  background: #fff; */
         padding: 20px 25px;
         margin: 30px auto;
 		border-radius: 3px;
@@ -22,23 +29,24 @@
     }
 	.table-wrapper .btn {
 		float: right;
-		color: #333;
-    	background-color: #fff;
+		color: white;	/*버튼글씨*/
+    	background-color: #13334A;
 		border-radius: 3px;
 		border: none;
 		outline: none !important;
 		margin-left: 10px;
 	}
 	.table-wrapper .btn:hover {
-        color: #333;
-		background: #f2f2f2;
+        color: white;
+        opacity:0.8;
+		/* background: #f2f2f2; */
 	}
 	.table-wrapper .btn.btn-primary {
-		color: #fff;
-		background: #03A9F4;
+		/* color: #fff; */
+		/* background: #03A9F4; */
 	}
 	.table-wrapper .btn.btn-primary:hover {
-		background: #03a3e7;
+		/* background: #03a3e7; */
 	}
 	.table-title .btn {		
 		font-size: 13px;
@@ -55,7 +63,6 @@
 	}
 	.table-title {
 		color:gray;
-		background: white;		
 		padding: 16px 25px;
 		margin: -20px -25px 10px;
 		border-radius: 3px 3px 0 0;
@@ -122,10 +129,10 @@
 		width: 80px;
 	}
     table.table-striped tbody tr:nth-of-type(odd) {
-    	background-color: #fcfcfc;
+    	/* background-color: #fcfcfc; */
 	}
 	table.table-striped.table-hover tbody tr:hover {
-		background: #f5f5f5;
+		/* background: #f5f5f5; */
 	}
     table.table th i {
         font-size: 13px;
@@ -194,13 +201,13 @@
         padding: 0 6px;
     }
     .pagination li a:hover {
-        color: #666;
+        color: red; 
     }	
     .pagination li.active a {
-        background: #03A9F4;
+        /* background: #03A9F4; */
     }
     .pagination li.active a:hover {        
-        background: #0397d6;
+        /* background: #0397d6; */
     }
 	.pagination li.disabled i {
         color: #ccc;
@@ -264,7 +271,7 @@
                     </div>
                 </div>
 			</div>
-            <table class="table table-striped table-hover">
+            <table class="table table-striped table-hover" style="background:none;">
                 <thead>
                     <tr>
                         <th></th>
@@ -295,33 +302,7 @@
 						<td>$1,260</td>
 						<td><a href="#" class="view" title="View Details" data-toggle="tooltip"><i class="material-icons">&#xE5C8;</i></a></td>
                     </tr>
-					<tr>
-                        <td>3</td>
-                        <td><a href="#"><img src="resources/images/man.jpg" class="avatar" alt="Avatar"> Antonio Moreno</a></td>
-						<td>Berlin</td>
-                        <td>Jul 04, 2017</td>
-                        <td><span class="status text-danger">&bull;</span> Cancelled</td>
-						<td>$350</td>
-						<td><a href="#" class="view" title="View Details" data-toggle="tooltip"><i class="material-icons">&#xE5C8;</i></a></td>                        
-                    </tr>
-					<tr>
-                        <td>4</td>
-                        <td><a href="#"><img src="resources/images/man.jpg" class="avatar" alt="Avatar"> Mary Saveley</a></td>
-						<td>New York</td>
-                        <td>Jul 16, 2017</td>						
-						<td><span class="status text-warning">&bull;</span> Pending</td>
-						<td>$1,572</td>
-						<td><a href="#" class="view" title="View Details" data-toggle="tooltip"><i class="material-icons">&#xE5C8;</i></a></td>
-                    </tr>
-					<tr>
-                        <td>5</td>
-                        <td><a href="#"><img src="resources/images/man.jpg" class="avatar" alt="Avatar"> Martin Sommer</a></td>
-						<td>Paris</td>
-                        <td>Aug 04, 2017</td>
-						<td><span class="status text-success">&bull;</span> Delivered</td>
-						<td>$580</td>
-						<td><a href="#" class="view" title="View Details" data-toggle="tooltip"><i class="material-icons">&#xE5C8;</i></a></td>
-                    </tr>
+
                 </tbody>
             </table>
 			<div class="clearfix">

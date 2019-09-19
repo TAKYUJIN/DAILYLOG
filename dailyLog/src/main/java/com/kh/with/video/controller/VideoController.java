@@ -61,12 +61,14 @@ public class VideoController {
 		System.out.println("needs : " + userNo + ", " + vNo);
 		
 		//정보 select
-		List<Object> list1 = vs.selectVideoInfo(map);
-		List<Object> list2 = vs.selectLogerInfo(map);
+		List<Video> list1 = vs.selectVideoInfo(map);
+		List<Loger> list2 = vs.selectLogerInfo(map);
 		
 		System.out.println("list1 : " + list1);
 		System.out.println("list2 : " + list2);
-
+		
+		System.out.println((list2.get(0)).getChNo());
+		
 		//맴버 나이
 		int age = vs.selectAge(loginUser);
 		

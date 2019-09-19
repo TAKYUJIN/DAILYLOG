@@ -1,11 +1,11 @@
 package com.kh.with.video.model.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.video.model.vo.Attachment;
 import com.kh.with.video.model.vo.Video;
@@ -39,9 +39,9 @@ public interface VideoService {
 	int insertAttachment(Attachment attachment);
 	
 	//비디오값 불러오기
-	List<Object> selectVideoInfo(Map<String, Integer> map);
+	List<Video> selectVideoInfo(Map<String, Integer> map);
 
-	List<Object> selectLogerInfo(Map<String, Integer> map);
+	List<Loger> selectLogerInfo(Map<String, Integer> map);
 
 	//정기후원 상태 조회
 	int selectRegStatus(int userNo, int chNo);
