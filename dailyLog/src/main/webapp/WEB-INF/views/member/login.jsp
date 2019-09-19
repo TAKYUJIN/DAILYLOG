@@ -167,9 +167,9 @@
 	<div class="signin-form">
 		<form action="login.me" method="post">
 			
-			<img src="resources/images/newlogo.png" style="border-radius: 50%">
+			<img src="resources/images/newlogo3.png" style="border-radius: 55%; margin-left:30px;">
 			
-			<br>
+			<br><br>
 			<p class="hint-text">Sign in with your social media account</p>
 			<br>
 			<div class="social-btn text-center">
