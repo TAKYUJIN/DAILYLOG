@@ -165,10 +165,10 @@
                   </div>
                   
                   </div>
- 				 		<input type="submit" class="btn btn-default"  style="float: right;"value="채팅" />
+ 				 		<input type="submit" class="btn btn-default"  style="background:#A8B7BC; color:#fff; float: right;"value="채팅" />
                   </form>
                   </div>
-  <button   class="btn btn-info" id="addfri" >친구 추가</button>
+  <button    id="addfri" class="btn btn-default" style="background:#13334A; color:#fff;" >친구 추가</button>
                 </div >
                 
                 
@@ -190,8 +190,8 @@
 				<div class="check_font" id="id_check"></div>
 			</div>
       <div align="center">
-        <input type="submit" value="메일 보내기" class="btn btn-warning">
-        <input type="reset" value="취소" class="btn btn-default" id="reset">
+        <input type="submit" value="메일 보내기"  class="btn btn-default" style="background:#13334A; color:#fff;">
+        <input type="reset" value="취소" class="btn btn-default" id="reset" style="background:#A8B7BC; color:#fff;">
       </div></c:forEach>
   </form></table></div></div></div></div></div></div>
 	 

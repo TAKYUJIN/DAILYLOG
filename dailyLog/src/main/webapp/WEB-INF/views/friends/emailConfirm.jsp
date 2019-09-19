@@ -100,33 +100,45 @@
 		margin: 100px auto;
 	}
 </style>
-</head>
+</head>   
 <body>
+      		 <jsp:include page="../common/guest.jsp"></jsp:include>	
 <div class="text-center">
 	<!-- Button HTML (to Trigger Modal) -->
-	<a href="#myModal" class="trigger-btn" data-toggle="modal">Click to Open Confirm Modal</a>
+	<h2><a href="#myModal" class="trigger-btn" data-toggle="modal">daily log 친구 요청 입니다~</a>
+</h2>
 </div>
 
 <!-- Modal HTML -->
 <div id="myModal" class="modal fade">
 	<div class="modal-dialog modal-confirm">
-		<div class="modal-content">
+		<div class="modal-content"> <form action="frireject.mb" method="get">
+		<c:forEach var="l" items="${friId}" > 
 			<div class="modal-header">
-				<div class="icon-box">
-					<i class="material-icons">&#xE5CD;</i>
-				</div>				
-				<h4 class="modal-title">Are you sure?</h4>	
+				 
+				<img src="resources/images/newlogo3.png" style="border-radius: 55%; margin-left:30px;">
+								
+				<h1 class="modal-title">환영합니다 <%=request.getAttribute("userId") %>님!
+				</h1>	
+			  
+						 
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 			</div>
 			<div class="modal-body">
-				<p>Do you really want to delete these records? This process cannot be undone.</p>
+				<h4> <p>${friId}님의 <br>친구 요청을 수락 하시겠습니까? </p></h4> 
 			</div>
+			<input type="hidden" id="friId" name="friId" value="${friId}"/>
+			<input type="hidden"  id="userId" name="userId" value="${userId}"/>
+		  
 			<div class="modal-footer">
-				<button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
-				<button type="button" class="btn btn-danger">Delete</button>
+				<button type="button" class="btn btn-primary btn-lg"style="background:#13334A;" onclick="location.href='loginbutton.me'">친구 수락</button>
+				<input type="submit" class="btn btn-primary btn-lg" style="background:#A8B7BC; color:#fff;" value="친구 거절">
 			</div>
+			 </c:forEach></form>
 		</div>
 	</div>
-</div>     
+</div> 
+      		 <jsp:include page="../common/footer.jsp"></jsp:include>	
+    
 </body>
 </html>                                                        

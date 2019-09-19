@@ -9,6 +9,7 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Service;
 
 import com.kh.with.main.model.dao.MainDao;
+import com.kh.with.main.model.vo.MailVo;
 import com.kh.with.main.model.vo.Subscribe;
 import com.kh.with.main.model.vo.SubscribeVideo;
 import com.kh.with.main.model.vo.Video;
@@ -65,6 +66,12 @@ public class MainServiceImpl implements MainService{
 	public ArrayList<SubscribeVideo> subscribeVideoList(Subscribe subscribe) {
 		
 		return md.subscribeVideoList(sqlSession, subscribe);
+	}
+
+	@Override
+	public int frireject(MailVo mailVo) {
+		 
+		return md.subscribeVideoList(sqlSession, mailVo);
 	}
 
 }

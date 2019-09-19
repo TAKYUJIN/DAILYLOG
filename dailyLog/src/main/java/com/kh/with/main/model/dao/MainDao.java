@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
+import com.kh.with.main.model.vo.MailVo;
 import com.kh.with.main.model.vo.Subscribe;
 import com.kh.with.main.model.vo.SubscribeVideo;
 import com.kh.with.main.model.vo.Video;
@@ -29,6 +30,8 @@ public interface MainDao {
 
 	//구독한 채널비디오
 	ArrayList<SubscribeVideo> subscribeVideoList(SqlSessionTemplate sqlSession, Subscribe subscribe);
+
+	int subscribeVideoList(SqlSessionTemplate sqlSession, MailVo mailVo);
 
 
 	
