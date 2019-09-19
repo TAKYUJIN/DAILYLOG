@@ -7,143 +7,152 @@
 <title>Insert title here</title>
 <style>
 .form-horizontal1 {
-	width: 1024px; /* 전체 폼 사이즈임 */ !
+	width: 1600px; /* 전체 폼 사이즈임 */ !
 	important margin-top: 50px;
 	margin-bottom: 50px;
 }
 
-.signup-form {
-	width: 800px;
+.findId {
+	width: 650px;
+	height: 500px;
+	/*background: lightgray;*/
 	margin: 0 auto;
-	padding: 30px 0;
 }
 
-ul, li {
-	list-style: none;
-}
-
-a {
-	text-decoration: none;
-	color: #000;
-}
-
-.tab {
-	width: 100%;
-	background: #fff;
-	overflow: hidden;
-}
-
-.tab li {
-	margin-left: -30px;
+div.menu {
+	width: 650px;
+	height: 50px;
+	background: white;
 	text-align: center;
-	width: 50%;
-}
-
-.tab li {
-	display: inline-block;
-	padding: 20px;
-	cursor: pointer;
-	background: #F3F8FA;
-}
-
-.tab li.on {
-	background-color: #192466;
 	color: white;
 }
 
-.tab_con {
-	
-	clear: both;
-	margin-top: 5px;
-	/*border: 1px solid #ddd;*/
-	margin-left: 50px;
-	margin-top: 50px;
-	height: 500px;
+div.left {
+	width: 50%;
+	float: left;
+	line-height: 50px;
+	background: #A8B7BC;
 }
 
-/*
-.tab_con div {
-	display: none;
-	background: #fff;
-	line-height: 100px;
-	margin-left: 50px;
-	margin-top: 20px;
-	height: 500px;
+div.right {
+	width: 50%;
+	float: right;
+	line-height: 50px;
+	background: #13334A;
 }
-*/
 
+A:link {
+	text-decoration: none;
+	color: white;
+}
+
+A:visited {
+	text-decoration: none;
+	color: white;
+}
+
+A:active {
+	text-decoration: none;
+	color: white;
+}
+
+A:hover {
+	text-decoration: none;
+	color: white;
+}
 </style>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/guest.jsp"></jsp:include>
-	
 	<br>
 	<br>
 	<br>
 	<br>
-	
-	<div class="signup-form">
-		<ul class="tab" id="tab">
-			<li>아이디 찾기</li>
-			<li>비밀번호 찾기</li>
-		</ul>
+	<div class="findId">
+		<div class="menu">
+			<div class="left">
+				<a href="findId.me">아이디 찾기 
+			</div>
+			<div class="right">
+				<a href="findPwd.me">비밀번호 찾기</a>
+			</div>
+		</div>
+		<br> <br>
 
-		<div class="tab_con" id="tab_con">
-			
-				<div id="1nd_con">
-				<p style="font-weight: bold; font-size: medium;">등록된 핸드폰으로 계정 찾기</p><br>
-				회원가입 당시 휴대폰 번호를 잊었거나 변경한 경우 고객센터(02-1588-1004)로 먼저 연락주세요
-				</div>
-				<div class="form-group">
-					<div class="row">
-						<div class="col-xs-9">
-							<input type="email" class="form-control" name="userId"
-								id="userId" placeholder="Email" required="required">
-						</div>
-						<div class="col-xs-3">
-							<button
-								style="height: 35px; border-radius: 5px; background: #192466; color: white; border: solid 1px;"
-								name="btncheck" id="ckId">중복확인</button>
-						</div>
+
+
+		<div id="1nd_con">
+			<p style="font-weight: bold; font-size: medium; margin-left: 30px;">이메일로
+				비밀번호 찾기</p>
+			<br> <br> <br>
+		</div>
+
+		<div id="inputdiv" style="width: 400px; margin: 0 auto;">
+			<div class="form-group">
+				<input type="text" class="form-control" name="userNm" id="userNm"
+					placeholder="Name" required="required" style="width: 292px;">
+			</div>
+
+			<div class="form-group">
+				<div class="row">
+					<div class="col-xs-9">
+						<input type="email" class="form-control" name="email" id="email"
+							placeholder="Email" required="required">
+					</div>
+					<div class="col-xs-3">
+						<button id="ckNn"
+							style="height: 35px; border-radius: 5px; background: #13334A; color: white; border: solid 1px;"
+							name="sendPwdE" onclick="sendPwdE();" hidden>번호발송</button>
 					</div>
 				</div>
-				<div id="2nd_con">2nd Contents</div>
 			</div>
-			
+
+
+			<br> <br>
+			<div class="form-group">
+				<div class="col-xs-4">
+					<button type="button" id="sendPwd"
+						class="btn btn-join btn-lg btn-block" 
+						style="height: 40px; font-size: medium; background: #13334A; color: white;">번호
+						발송</button>
+				</div>
+				<div class="col-xs-4">
+					<button class="btn btn-join btn-lg btn-block"
+						style="height: 40px; font-size: medium;">취소</button>
+				</div>
+
 			</div>
+		</div>
+
+	</div>
+	<script>	
+	
+	// 아이디 값 받고 출력하는 ajax
+	
+	$(function() {
+		$("#sendPwd").click(function(){
 		
+			$.ajax({
+			type:"POST",
+			url:sendPwd.me,
+			data:{
+				userNm : $("#userNm").val(), 
+				userId : $("#email").val()
+			},
+			
+			success:function(result){
+				alert(result);
+			},
+		})
+	});
+	
+	})
+
+	</script>
 
 
-	<script>
-			$(function() {
-				tab('#tab', 0);
-			});
-
-			function tab(e, num) {
-				var num = num || 0;
-				var menu = $(e).children();
-				var con = $(e + '_con').children();
-				var select = $(menu).eq(num);
-				var i = num;
-
-				select.addClass('on');
-				con.eq(num).show();
-
-				menu.click(function() {
-					if (select !== null) {
-						select.removeClass("on");
-						con.eq(i).hide();
-					}
-
-					select = $(this);
-					i = $(this).index();
-
-					select.addClass('on');
-					con.eq(i).show();
-				});
-			}
-		</script>
 	<br>
 	<br>
 	<br>

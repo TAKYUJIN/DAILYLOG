@@ -45,6 +45,7 @@ public interface MemberService {
 	int alter_userKey_service(String userId, String status);
 
 	
+	
 
 	
 
