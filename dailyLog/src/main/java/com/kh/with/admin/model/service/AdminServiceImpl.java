@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.kh.with.admin.model.dao.AdminDao;
 import com.kh.with.admin.model.vo.Board;
 import com.kh.with.admin.model.vo.Calculate;
+import com.kh.with.admin.model.vo.UserBoard;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.report.model.vo.Report;
 import com.kh.with.report.model.vo.Report2;
@@ -127,6 +128,18 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public int updateCalculateApply(int calNo) {
 		return ad.updateCalculateApply(sqlSession, calNo);
+	}
+	//회원관리페이지
+	@Override
+	public ArrayList<UserBoard> selectAdminUser(UserBoard user) {
+		// TODO Auto-generated method stub
+		return ad.selectAdminUser(sqlSession,user);
+	}
+
+	@Override
+	public ArrayList<UserBoard> selectDetail(UserBoard user) {
+		// TODO Auto-generated method stub
+		return ad.selectDetail(sqlSession, user);
 	}
 
 	

@@ -23,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.kh.with.admin.model.service.AdminService;
 import com.kh.with.admin.model.vo.Board;
 import com.kh.with.admin.model.vo.Calculate;
+import com.kh.with.admin.model.vo.UserBoard;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.report.model.service.ReportService;
 import com.kh.with.report.model.vo.Report;
@@ -37,6 +38,31 @@ public class AdminController {
 	private AdminService as;
 	@Autowired
 	private ReportService rs;
+	//관리자 회원관리 페이지
+		@RequestMapping(value="adminUser.ad")
+		public String selectAdminUser(UserBoard user , Model model) {
+			ArrayList<UserBoard>  userlist = as.selectAdminUser(user);
+			
+			model.addAttribute("userlist", userlist);
+			model.addAttribute("UserBoard", user);
+			
+			System.out.println("list ;;;;"+userlist);
+			
+			return "admin/adminUserlist";
+		}
+		
+		//관리자  회원상세보기
+		@RequestMapping(value="adminUserDetail.ad")
+		public String selectDetail(UserBoard user, Model model) {
+			ArrayList<UserBoard> user1 =as.selectDetail(user);
+			
+			model.addAttribute("user1", user1);
+			model.addAttribute("UserBoard", user);
+			
+			System.out.println("list ;;;;"+user1);
+			
+			return "admin/UserDetail";
+		}
 
 	// 관리자 정산 페이지 이동
 	@RequestMapping(value = "adminCalculate.ad")
