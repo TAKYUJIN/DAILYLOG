@@ -178,7 +178,11 @@ public class VideoServiceImpl implements VideoService{
 		return vd.block(sqlSession, map);
 	}
 
-	
+	@Override
+	public int selectAge(int loginUser) {
+		
+		return vd.selectAge(sqlSession, loginUser);
+	}
 
 
 	

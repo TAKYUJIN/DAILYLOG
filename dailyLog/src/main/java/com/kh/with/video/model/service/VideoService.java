@@ -68,6 +68,8 @@ public interface VideoService {
 	int report(Map<String, Object> map);
 	int block(Map<String, Object> map);
 
+	int selectAge(int loginUser);
+
 	
 	
 	

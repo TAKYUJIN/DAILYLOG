@@ -65,5 +65,7 @@ public interface VideoDao {
 	int block(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	List<Attachment> videolike(Member m);
 	
+	int selectAge(SqlSessionTemplate sqlSession, int loginUser);
+	
 
 }
