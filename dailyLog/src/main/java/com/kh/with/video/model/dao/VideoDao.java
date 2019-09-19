@@ -1,14 +1,12 @@
 package com.kh.with.video.model.dao;
 
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
-
-
+import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.video.model.vo.Attachment;
 import com.kh.with.video.model.vo.Video;
@@ -38,9 +36,9 @@ public interface VideoDao {
 	//썸네일  insert 메소드
 	int insertAttachment(SqlSessionTemplate sqlSession, Attachment attachment);
 	
-	List<Object> selectVideoInfo(SqlSessionTemplate sqlSession, Map<String, Integer> map);
+	List<Video> selectVideoInfo(SqlSessionTemplate sqlSession, Map<String, Integer> map);
 	
-	List<Object> selectLogerInfo(SqlSessionTemplate sqlSession, Map<String, Integer> map);
+	List<Loger> selectLogerInfo(SqlSessionTemplate sqlSession, Map<String, Integer> map);
 	
 	int selectRegStatus(SqlSessionTemplate sqlSession, int userNo, int chNo);
 	

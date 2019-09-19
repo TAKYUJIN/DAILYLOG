@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.video.model.vo.Attachment;
 import com.kh.with.video.model.vo.Video;
@@ -109,13 +110,13 @@ public class VideoDaoImpl implements VideoDao {
 	}
 	
 	@Override
-	public List<Object> selectVideoInfo(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
+	public List<Video> selectVideoInfo(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
 		
 		return sqlSession.selectList("Video.selectVideoInfo", map);
 	}
 
 	@Override
-	public List<Object> selectLogerInfo(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
+	public List<Loger> selectLogerInfo(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
 		
 		return sqlSession.selectList("Video.selectLogerInfo", map);
 	}

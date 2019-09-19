@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>WITH</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
@@ -12,6 +12,8 @@
 		var idx = false;
 		var ndx = false;
 		var pdx = false;
+		
+		
 
 		$("#ckId").click(function() {
 			$.ajax({
@@ -72,13 +74,42 @@
 						alert("사용가능한 휴대폰번호입니.");
 						$("#ckPn").hide();
 						$("#sendPn").show();
-						
+						$("#showsms").show();
 						
 						$("#joinBtn").removeAttr("disabled");
 					} else {
 						alert("이미 가입되어 있는 폰임  ")
 						$("#joinBtn").attr("disabled", "disabled");
 					}
+				},
+				error : function() {
+					alert("서버에러 ");
+				}
+			});
+		});
+		
+		$("#sendPn").click(function() {
+			var rphone = $('#phone').val();
+			var msg = 0000;
+			var sphone1 = $("#sphone1").val();
+			var sphone2 = $("#sphone2").val();
+			var sphone3 = $("#sphone3").val();
+			var action = $("#action").val();
+			console.log(rphone);
+			console.log(action);
+			
+			$.ajax({
+				url : "smssend.me",
+				dataType:"text",
+				type:"post",
+				data:{rphone:rphone, sphone1:sphone1, sphone2:sphone2, sphone3:sphone3, msg:msg, action:action},
+				success : function(data) {
+					console.log(data);
+					//if (data == 0 && $.trim($("#phone").val()) != '') {
+						alert("인증번호가 발송되었습니다 ");
+					//} else {
+						//alert("tlfvo");
+					//}
 				},
 				error : function() {
 					alert("서버에러 ");
@@ -137,7 +168,6 @@ body {
 	font-family: 'Roboto', sans-serif;
 }
 
-
 .form-control {
 	height: 40px;
 	box-shadow: none;
@@ -193,7 +223,6 @@ body {
 	color: #999;
 	border-radius: 3px;
 	margin-bottom: 15px;
-	
 	padding: 30px;
 }
 
@@ -299,7 +328,7 @@ body {
 						</div>
 					</div>
 				</div>
-				
+
 				<div class="form-group">
 					<div class="row">
 						<div class="col-xs-3">
@@ -315,47 +344,63 @@ body {
 							남
 						</div>
 					</div>
-					</div>
+				</div>
 
 				<div class="form-group">
-					<input type="text" class="form-control" name="birth"
-						id="birth" placeholder="Birth  ex) 961231" required="required">
+					<input type="text" class="form-control" name="birth" id="birth"
+						placeholder="Birth  ex) 961231" required="required">
 				</div>
-						
-					<div class="form-group">
+
+				<div class="form-group">
 					<div class="row">
 						<div class="col-xs-9">
-							<input type="tel" class="form-control" name="phone"
-								id="phone" placeholder="Phone" required="required">
+							<input type="tel" class="form-control" name="phone" id="phone"
+								placeholder="Phone" required="required">
 						</div>
 						<div class="col-xs-3">
 							<button id="ckPn"
 								style="height: 35px; border-radius: 5px; background: #13334A; color: white; border: solid 1px;"
 								name="btncheck">중복확인</button>
-								<button id="sendPn"
-								style="height: 35px; border-radius: 5px; background: #13334A; color: white; border: solid 1px; "
+							<button id="sendPn"
+								style="height: 35px; border-radius: 5px; background: #13334A; color: white; border: solid 1px;"
 								name="btncheck" hidden>문자전송</button>
 						</div>
-						
+
 					</div>
 				</div>
-				
-				
-	
-					<br>
-					<br>
-					<div class="form-group">
+				<div class="form-group" id="showsms" hidden>
+					<div class="row">
+						<div class="col-xs-9">
+							<input type="text" class="form-control" name="authorization_code" id="authorization_code" placeholder="authorization code" required="required"> 
+								<input type="hidden" id="action" name="action" value="go">
+								<input type="hidden" id="sphone1" name="sphone1" value="010"> 
+								<input type="hidden" id="sphone2" name="sphone2" value="4560"> 
+								<input type="hidden" id="sphone3" name="sphone3" value="1780">
+						</div>
+						<div class="col-xs-3">
+							<button id="cksmsPn"
+								style="height: 35px; border-radius: 5px; background: #13334A; color: white; border: solid 1px;"
+								name="btncheck">인증확인</button>
+
+						</div>
+					</div>
+				</div>
+
+
+				<br>
+				<br>
+				<div class="form-group">
 					<button type="submit" id="joinBtn"
 						class="btn btn-join btn-lg btn-block" onclick="joinfiBtn();">가입하기
 					</button>
-					
+
 				</div>
 
 
 			</table>
 
 		</form>
-		
+
 
 	</div>
 	<br>
