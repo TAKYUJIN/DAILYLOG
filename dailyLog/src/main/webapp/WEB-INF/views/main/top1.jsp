@@ -488,7 +488,7 @@ background:none;
 					<form action="blockvi.rp" method="post" >
 					  <input type="hidden" id="userNo" name="userNo"  value="${loginUser.userNo}"/>
 										  <input type="hidden" id="vNo" name="vNo"  value="${videoimage.vNo}"/>
-					 <input type="submit" class="dropdown-item2"  value="동영상  차단">
+<input type="submit" class="dropdown-item2"  value="동영상  차단">
 					 </form> </div>		</li>	</ul>
 				
 				</nav>
@@ -593,6 +593,7 @@ background:none;
 					    <li> <input type="radio"id="rewhy" name="rewhy"  value="스팸 또는 사용자를 현혹하는 콘텐츠">스팸 또는 사용자를 현혹하는 콘텐츠</li>
 					    <li> <input type="text" class="form-control" id="rewhy" name="rewhy" placeholder="기타"></li >
  					  <input type="hidden" id="rety" name="rety" value="동영상"/>
+					
 					 <input type="hidden"  id="vNo" name="vNo" value="${videoimage.vNo}"/>
 					  <input type="hidden"  id="chNm" name="chNm" value="${videoimage.chNm}" > 
 				    <input type="submit" value="완료" class="btn btn-info">
@@ -600,7 +601,7 @@ background:none;
 					<li><div  id="blockch">
 					<form action="blockvi.rp" method="post" >
 					  <input type="hidden" id="userNo" name="userNo"  value="${loginUser.userNo}"/>
-										  <input type="hidden" id="vNo" name="vNo"  value="${videoimage.vNo}"/>
+					  <input type="hidden" id="vNo" name="vNo"  value="${videoimage.vNo}"/>
 					 <input type="submit" class="dropdown-item2"  value="동영상  차단">
 					 </form> </div>		</li>	</ul>
 				

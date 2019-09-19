@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.with.admin.model.vo.Board;
+import com.kh.with.main.model.vo.MailVo;
 import com.kh.with.main.model.vo.Subscribe;
 import com.kh.with.main.model.vo.SubscribeVideo;
 import com.kh.with.main.model.vo.Video;
@@ -74,6 +75,12 @@ public class MainDaoImpl implements MainDao{
 	public ArrayList<SubscribeVideo> subscribeVideoList(SqlSessionTemplate sqlSession, Subscribe subscribe) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public int subscribeVideoList(SqlSessionTemplate sqlSession, MailVo mailVo) {
+		 
+		return sqlSession.update("friend.frireject",mailVo);
 	}
 
 	

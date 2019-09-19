@@ -3,6 +3,7 @@ package com.kh.with.main.model.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.kh.with.main.model.vo.MailVo;
 import com.kh.with.main.model.vo.Subscribe;
 import com.kh.with.main.model.vo.SubscribeVideo;
 import com.kh.with.main.model.vo.Video;
@@ -28,6 +29,8 @@ public interface MainService {
 
 	//구독한 채널비디오
 	ArrayList<SubscribeVideo> subscribeVideoList(Subscribe subscribe);
+
+	int frireject(MailVo mailVo);
 
 	
 

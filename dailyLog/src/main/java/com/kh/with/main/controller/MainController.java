@@ -131,7 +131,9 @@ public class MainController {
 	@RequestMapping(value = "mailSending.mb",method=RequestMethod.GET)
 	  public String mailSending(MailVo MailVo,Model model,HttpServletRequest request) {
 		  String userId = request.getParameter("userId");
+		  String friId = request.getParameter("friId");
 		  
+		  MailVo.setFriId(friId);
 		  MailVo.setUserId(userId);
 	  reg_service.userReg_service(MailVo);
 	  
@@ -143,13 +145,34 @@ public class MainController {
 	  
 	 
 	  @RequestMapping(value = "frimail.mb", method = RequestMethod.GET) 
-	  public String key_alterConfirm(@RequestParam(value="userId", required=false) String userId, @RequestParam(value="status_yn", required=false) String status_yn) {
-	  System.out.println("key_alterConfirm");
-	  mailSender.alter_userKey_service(userId, status_yn); // mailsender의 경우 @Autowired
-	  
+	  public String key_alterConfirm(@RequestParam(value="userId", required=false) String userId, @RequestParam(value="status_yn", required=false) String status_yn,Model model,
+			  @RequestParam(value="friId", required=false) String friId,MailVo MailVo,HttpServletRequest request  ) {
+		  userId = request.getParameter("userId");
+		  friId = request.getParameter("friId");
+		  MailVo.setFriId(friId);
+		  System.out.println("friId333"+friId);
+		  MailVo.setUserId(userId);
+		  System.out.println("userId333"+userId);
+		  System.out.println("MailVo:33"+MailVo);
+		model.addAttribute("list", mailSender.alter_userKey_service(userId, status_yn,friId));
+		model.addAttribute("userId", userId);
+		model.addAttribute("friId", friId);
 	  return "friends/emailConfirm"; 
 	  }
 	
+	  @RequestMapping(value = "frireject.mb", method = RequestMethod.GET) 
+	  public String frireject(@RequestParam(value="userId", required=false) String userId, @RequestParam(value="status_yn", required=false) String status_yn,Model model,
+			  @RequestParam(value="friId", required=false) String friId,MailVo MailVo,HttpServletRequest request  ) {
+		  userId = request.getParameter("userId");
+		  friId = request.getParameter("friId");
+		  MailVo.setFriId(friId);
+		  MailVo.setUserId(userId);
+		  System.out.println("userId333"+userId);
+		  System.out.println("MailVo:33"+MailVo);
+		model.addAttribute("list", ms.frireject(MailVo));
+	 
+	  return "redirect:/guest.mb";
+	  }
 	
 	
 	

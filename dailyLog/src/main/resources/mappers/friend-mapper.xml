@@ -32,9 +32,11 @@
 	
 	<select id="FriendList" resultMap="FriendListResultSet" parameterType="com.kh.with.main.model.vo.MailVo">
 	
-		 SELECT DISTINCT USER_ID, FRI_ID FROM FRIEND WHERE STATUS_YN='Y'
-     AND USER_ID=#{userId}
-	
+		  SELECT DISTINCT FRI_ID FROM FRIEND F
+ 			WHERE USER_ID=#{userId}
+ 			AND F.FRI_ID IN(
+ 		    SELECT DISTINCT USER_ID FROM FRIEND WHERE 
+ 			FRI_ID=#{userId} AND STATUS_YN='Y')
 	</select>
 	 
 	 <select id="user" resultMap="memberResultSet" parameterType="com.kh.with.member.model.vo.Member">
@@ -43,7 +45,9 @@
 		WHERE USER_ID=#{userId}
 	
 	</select>
-	 
+	  <update id="frireject" parameterType="Map">
+  UPDATE FRIEND SET STATUS_YN ='N' WHERE USER_ID=#{userId} AND FRI_ID=   #{friId} 
+ </update>
 	 
 
 </mapper>
