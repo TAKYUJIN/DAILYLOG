@@ -198,6 +198,12 @@ public class VideoServiceImpl implements VideoService{
 
 	
 
+	public int selectAge(int loginUser) {
+		
+		return vd.selectAge(sqlSession, loginUser);
+	}
+
+
 
 	
 }

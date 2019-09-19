@@ -59,19 +59,27 @@ public class VideoController {
 		map.put("vNo", vNo);
 		
 		System.out.println("needs : " + userNo + ", " + vNo);
-		 
+		
+		//정보 select
 		List<Object> list1 = vs.selectVideoInfo(map);
 		List<Object> list2 = vs.selectLogerInfo(map);
 		
+		System.out.println("list1 : " + list1);
+		System.out.println("list2 : " + list2);
+
+		//맴버 나이
+		int age = vs.selectAge(loginUser);
 		
-		//System.out.println("list2 : " + list2.toString().substring(13,14));
+		System.out.println("age : " + age);
+
+		//정산 상태
+		System.out.println("::::: " + list2.toString().substring(13,14));
 		//int status = vs.selectRegStatus(loginUser, list1.get(1));
 		
 		model.addAttribute("list1", list1);
 		model.addAttribute("list2", list2);
+		model.addAttribute("age", age);
 		
-		System.out.println("list1 : " + list1);
-		System.out.println("list2 : " + list2);
 		
 		return "video/videoMain";
 	}

@@ -190,6 +190,7 @@ public class VideoDaoImpl implements VideoDao {
 	}
 
 	@Override
+
 	public List<Attachment> videoimagelist(SqlSessionTemplate sqlSession) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("Attachment.videoimagelist1");
@@ -207,6 +208,11 @@ public class VideoDaoImpl implements VideoDao {
 		return sqlSession.selectList("Attachment.videonew1");
 	}
 
+
+	public int selectAge(SqlSessionTemplate sqlSession, int loginUser) {
+		
+		return sqlSession.selectOne("Member.selectAge", loginUser);
+	}
 
 
 	

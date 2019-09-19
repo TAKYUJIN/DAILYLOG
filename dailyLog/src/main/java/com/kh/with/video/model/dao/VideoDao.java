@@ -68,5 +68,7 @@ public interface VideoDao {
 	List<Attachment> videopop(SqlSessionTemplate sqlSession);
 	List<Attachment> videonew(SqlSessionTemplate sqlSession);
 	
+	int selectAge(SqlSessionTemplate sqlSession, int loginUser);
+	
 
 }

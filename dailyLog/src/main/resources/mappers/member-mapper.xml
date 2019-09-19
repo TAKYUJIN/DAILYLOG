@@ -16,6 +16,7 @@
 		<result property="phone" column="PHONE" />
 		<result property="gender" column="GENDER" />
 		<result property="birth" column="BIRTH" />
+		<result property="age" column="AGE" />
 		<result property="adultYN" column="ADULT_YN" />
 		<result property="chYN" column="CH_YN" />
 		<result property="enrollDT" column="ENROLL_DT" />
@@ -28,8 +29,8 @@
 	<insert id="insertMember" parameterType="Member">
 		INSERT INTO MEMBER
 		VALUES(USER_NO.NEXTVAL, #{userNm}, #{userId}, #{userPwd},
-		#{nickname},
-		#{phone}, #{gender}, #{birth}, DEFAULT, DEFAULT, SYSDATE, NULL, 0, DEFAULT)
+		#{nickname}, #{phone}, #{gender}, #{birth}, 
+		FLOOR(MONTHS_BETWEEN(SYSDATE, TO_DATE(#{birth},'YYYYMMDD'))/12), DEFAULT, DEFAULT, SYSDATE, NULL, 0, DEFAULT)
 	</insert>
 	
 	<update id="joinGetKey" parameterType="Map">
@@ -160,6 +161,12 @@
 	UPDATE MEMBER SET STATUS =1
 	WHERE USER_NO =#{userNo}
 	</update>
+	
+	<select id="selectAge" parameterType="int" resultType="int">
+		SELECT AGE
+		FROM MEMBER
+		WHERE USER_NO = #{loginUser}
+	</select>
 	
 </mapper>
 

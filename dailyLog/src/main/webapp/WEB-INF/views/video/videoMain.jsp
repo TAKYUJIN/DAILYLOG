@@ -26,6 +26,14 @@
 		border-radius: 50%;
 		/* vertical-align: middle; */
 	}
+	.btn{
+		background:#13334A;
+		color:white !important;
+	}
+	.btn:hover {
+		opacity:0.7;
+	}
+/************************************/	
    .form-control {
       box-shadow: none;      
       font-weight: normal;
@@ -181,14 +189,101 @@
 	.social-btn .btn i {
 		font-size: 20px;
 	} 
-	.btn{
-		background:#13334A;
-		color:white !important;
-	}
-.btn:hover {
-	opacity:0.7;
-}
 
+/****************************/
+	.modal-confirm {	
+		color: #8e8e8e;
+		width: 450px;
+	}
+	.modal-confirm .modal-content {
+		padding: 20px;
+		border-radius: 5px;		
+		border: none;
+	}
+	.modal-confirm .modal-header {
+		border-bottom: none;   
+        position: relative;
+		text-align: center;
+		border-radius: 5px 5px 0 0;
+	}
+	.modal-confirm h4 {
+		color: #545557;
+		text-align: center;
+		font-size: 30px;
+		margin: 0 0 25px;
+	}
+	.modal-confirm .form-control, .modal-confirm .btn {
+		min-height: 40px;
+		border-radius: 3px; 
+	}
+	.modal-confirm .close {
+		background: #c0c3c8;
+		position: absolute;
+		top: 15px;
+		right: 15px;
+		color: #fff;
+		text-shadow: none;
+		opacity: 0.5;
+		width: 22px;
+		height: 22px;
+		border-radius: 20px;
+		font-size: 16px;
+	}
+	.modal-confirm .close span {
+		position: relative;
+		top: -1px;
+	}
+	.modal-confirm .close:hover {
+		opacity: 0.8;
+	}
+	.modal-confirm .icon-box {
+		color: #f95858;		
+		display: inline-block;
+		z-index: 9;
+		text-align: center;
+		position: relative;
+		transform: scale(1.5);
+	}
+	.modal-confirm .icon-box i:first-child {
+		font-size: 100px;
+	}
+	.modal-confirm .icon-box i:nth-child(2) {
+		font-size: 138px;
+		position: absolute;
+		left: -19px;
+		top: -23px;
+		font-weight: bold;
+		color: #fff;
+	}
+	.modal-confirm .icon-box i:last-child {
+		font-size: 26px;
+		position: absolute;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+		top: 44px;
+	}
+    .modal-confirm .btn {
+        color: #fff;
+        border-radius: 4px;
+		background: #eeb711;
+		text-decoration: none;
+		transition: all 0.4s;
+        line-height: normal;
+		border-radius: 3px;
+		margin: 30px 0 20px;
+		padding: 6px 20px;
+		min-width: 150px;
+        border: none;
+    }
+	.modal-confirm .btn:hover, .modal-confirm .btn:focus {
+		background: #eda645;
+		outline: none;
+	}
+	.trigger-btn {
+		display: inline-block;
+		/* margin: 100px auto; */
+	}
 </style>
 <script type="text/javascript">
 	$(document).on("click", ".navbar-right .dropdown-menu", function(e){
@@ -214,7 +309,7 @@
 	<br>
 	<%-- <c:forEach items="${list}" --%>
 	<div align="center">
-		<table >
+		<table border="1px">
 			<tr>
 				<!-- 채널소개, 좋아요 등 -->
 				<td width="60px" height="60px">
@@ -223,12 +318,9 @@
 						<img class="chImg" src="resources/images/man.jpg">
 					</div>
 				</td>
-				<td width="220px" height="60px">
+				<td width="300px" height="60px">
 					<div style="margin-left:10%;">
 						<div style="margin-right:10%; display:inline-block;">${ list1[0].chNm }</div>
-						<div style="display:inline-block;">
-							<button class="btn"><b>구독</b></button>
-						</div>
 						<div style="display:inline-block; margin-left:5%;">
 							<label id="regsubTY" style="color:gray; position:fixed;">
 								<c:if test="${ status == 1 }">
@@ -239,25 +331,21 @@
 								</c:if>
 							</label>
 						</div>
-						<br>
-						<small>구독자수 <b> ${ list2[0].subNum } </b><br></small>
+						<div style="margin:5%;"></div>
+						<small style="display:inline-block;">구독자수 <b> ${ list2[0].subNum } </b><br></small>
+						<div style="display:inline-block; margin-left:30%;">
+							<button class="btn">구독</button>
+						</div><br>
 						<small>게시일 : ${ list1[0].uploadDt }</samll>
-
-					</div>
-				</td>
-				
-				<td width="80px" height="60px">
-					<div style="margin-top:28%; align:right;">
-
 					</div>
 				</td>
 				<td width="240px" height="60px">
 					<div align="right" style="margin-top:15%;">
-						<nav class="navbar navbar-default navbar-expand-lg navbar-light">
+						<nav class="navbar navbar-default navbar-expand-lg navbar-light"style="background:none;">
 							<ul class="nav navbar-nav navbar-right ml-auto" style="width:300px;">			
 								<li class="nav-item" stlye="border:1px solid #A8B7BC;">
 									<a href="#none" data-toggle="dropdown" id="subtitle">
-										<img src="resources/images/diamond.png" style="width:18px; align:right;">
+										<img src="resources/images/money.png" style="width:18px; align:right;">
 									</a>
 									<ul class="dropdown-menu form-wrapper" style="width:280px;border:1px solid #A8B7BC;">					
 										<li>
@@ -473,18 +561,51 @@
 			<tr>
 				<!-- 비디오 -->
 				<td colspan="4" height="400px"><!-- autoplay="autoplay" -->
-					  <video id='my-video' class='video-js' controls  preload='auto' width='600' height='400'
-						  poster='resources/images/logo.png' data-setup='{}' >
+					<c:if test="${list1[0].adultAut eq 'Y' }">
+						<video id='my-video' class='video-js' controls  preload='auto' width='600' height='400'
+						  poster='resources/images/thumbnail_01.jpg' data-setup='{}' >
 						  <source src='resources/uploadFiles/${ list1[0].filepath}' type='video/mp4'>
 						  <source src='MY_VIDEO.webm' type='video/webm'>
 						  <p class='vjs-no-js'>
 						      To view this video please enable JavaScript, and consider upgrading to a web browser that
 						  <a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
 						  </p>
-					  </video>
+						</video>
+					</c:if>	
+					<c:if test="${list1[0].adultAut eq 'N' }">
+						<c:if test="${age < 19 }">
+							<a href="#myModal" class="trigger-btn" data-toggle="modal">
+								<video id='my-video' class='video-js'   preload='auto' width='600' height='400'
+								  poster='resources/images/age.png' data-setup='{}' >
+								  <source src='resources/uploadFiles/${ list1[0].filepath}' type='video/mp4'>
+								  <source src='MY_VIDEO.webm' type='video/webm'>
+								</video>
+							</a>
+						</c:if>
+						<c:if test="${age >= 19 }">
+							<video id='my-video' class='video-js' controls  preload='auto' width='600' height='380'
+							  poster='resources/images/thumbnail_01.jpg' data-setup='{}' >
+							  <source src='resources/uploadFiles/${ list1[0].filepath}' type='video/mp4'>
+							  <source src='MY_VIDEO.webm' type='video/webm'>
+							  <p class='vjs-no-js'>
+							      To view this video please enable JavaScript, and consider upgrading to a web browser that
+							  <a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
+							  </p>
+							</video>
+						</c:if>	
+					</c:if>
 				</td>
+
 				<!-- 댓글 -->
-				<td rowspan="3" width="250px">
+				<td rowspan="3" width="400px">
+					<div style="align:top;">
+						<a href="#none" data-toggle="dropdown" id="runtimeChat">
+							<img src="resources/images/chat.png" style="width:30px; align:right;">
+						</a>
+					</div>
+					<div>
+					
+					</div>
 				</td>
 			</tr>
 			<tr>
@@ -510,8 +631,31 @@
 			</tr>
 		</table>
 	</div>
+	<!-- Modal HTML -->
+	<div id="myModal" class="modal fade">
+		<div class="modal-dialog modal-confirm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="icon-box">
+						<i class="material-icons">&#xE86B;</i>
+						<i class="material-icons">&#xE86B;</i>
+						<i class="material-icons">&#xE645;</i>
+					</div>
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span>&times;</span></button>
+				</div>
+				<div class="modal-body text-center">
+					<h4>19세 미만 시청 불가</h4>	
+					<p>19세 미만 시청자는 시청할 수 없습니다.</p>
+					<button class="btn btn-primary" style="background:#13334A;"data-dismiss="modal">Go Back</button>
+				</div>
+			</div>
+		</div>
+	</div> 
 	<script>
-	   
+	$('#my-video').click(function(){
+		
+		
+	});
 	(function(d, s, id) {
 	    var js, fjs = d.getElementsByTagName(s)[0];
 	    if (d.getElementById(id)) return;

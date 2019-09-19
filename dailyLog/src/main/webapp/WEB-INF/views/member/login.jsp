@@ -199,7 +199,7 @@
 					style="background: #13334A; border-color: #192466">Sign in</button>
 			</div>
 			<div class="text-center small">
-				<a href="findId.me">Forgot Id / </a> <a href="#">Password Reset </a>
+				<a href="findId.me">Forgot Id / </a> <a href="findPwd.me">Password Reset </a>
 			</div>
 			<div class="text-center small" style="color:#525252;">
 				Don't have an account? <a href="memberJoinView.me"
