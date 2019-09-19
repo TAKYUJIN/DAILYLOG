@@ -154,6 +154,14 @@ public class LogerDaoImpl implements LogerDao{
 		
 		return vList;
 	}
+	@Override
+	public int videoDelete(SqlSessionTemplate sqlSession, int vNo) {
+		return sqlSession.delete("Loger.videoDelete", vNo);
+	}
+	@Override
+	public int attachmentDelete(SqlSessionTemplate sqlSession, int vNo) {
+		return sqlSession.delete("Loger.attachmentDelete", vNo);
+	}
 
 }
 	

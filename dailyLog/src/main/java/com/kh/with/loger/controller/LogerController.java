@@ -2,7 +2,9 @@ package com.kh.with.loger.controller;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -51,6 +53,24 @@ public class LogerController {
 		return "loger/updateLogerVideo";
 	}
 
+	// 로거 동영상 삭제
+	@RequestMapping(value="videoDelete.lo")
+	public String videoDelete(HttpServletRequest request, Model model, HttpSession session) {
+		Member m = (Member) session.getAttribute("loginUser");
+		int loginUser = m.getUserNo();
+		int vNo = Integer.parseInt(request.getParameter("vNo"));
+
+		
+		int result1 = ls.videoDelete(vNo);
+		int result2 = ls.attachmentDelete(vNo);
+		
+		if(result1 > 0 && result2 > 0) {
+			return "forward:/logerVideo.lo";			
+		}else {
+			model.addAttribute("msg", "알 수 없는 에러입니다.");
+			return "common/errorPage";
+		}
+	}
 	// 로거 -> 분석
 	@RequestMapping(value = "analysis.lo")
 	public String analysisView() {

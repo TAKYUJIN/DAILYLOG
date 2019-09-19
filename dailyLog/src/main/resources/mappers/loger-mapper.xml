@@ -205,6 +205,17 @@
         WHERE USER_NO = #{userNo}
       AND SUP_STDT BETWEEN TO_CHAR(TO_DATE(#{mon},'YYYY-MM-DD')) AND TO_CHAR(TO_DATE(#{day},'YYYY-MM-DD'))
    </update>
+   
+   
+	 <delete id="videoDelete" parameterType="int">
+	 	DELETE FROM VIDEO WHERE V_NO = #{vNo}
+	 </delete>
+	
+	<delete id="attachmentDelete" parameterType="int">
+	 	DELETE FROM ATTACHMENT WHERE V_NO = #{vNo}
+	 </delete>
+	
+   
 
    <!-- 로거채널개설 insert 쿼리 -->
    <insert id="insertcreateChannel" parameterType="Loger">

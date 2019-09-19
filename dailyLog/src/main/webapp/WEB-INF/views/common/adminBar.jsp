@@ -23,12 +23,12 @@
       box-shadow: none;      
       font-weight: normal;
       font-size: 12px; /* 검색부분 폰트사이즈 */
-      color:#DDD0DA;
+      color:#525252;
    }
    .form-control:focus {
       border-color: #EDEAD7;
       box-shadow: 0 0 8px rgba(0,0,0,0.1);
-      color:#DDD0DA;
+      color:#525252;
    }
    .navbar-header.col {
       padding: 0 !important;

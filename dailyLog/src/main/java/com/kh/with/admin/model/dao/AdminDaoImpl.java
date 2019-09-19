@@ -137,7 +137,51 @@ public class AdminDaoImpl implements AdminDao {
 		return sqlSession.update("Calculate2.updateCalculateApply", calNo);
 	}
 
-	
+	@Override
+	public ArrayList<Calculate> searchWait(SqlSessionTemplate sqlSession) {
+		ArrayList<Calculate> cList = null;
+		
+		cList = (ArrayList)sqlSession.selectList("Calculate2.searchWait");
+		
+		return cList;
+	}
+
+	@Override
+	public ArrayList<Calculate> searchSuccess(SqlSessionTemplate sqlSession) {
+		ArrayList<Calculate> cList = null;
+		
+		cList = (ArrayList)sqlSession.selectList("Calculate2.searchSuccess");
+		
+		return cList;
+	}
+
+	@Override
+	public ArrayList<Calculate> searchUserNm(SqlSessionTemplate sqlSession, String userNm) {
+		ArrayList<Calculate> cList = null;
+		
+		cList = (ArrayList)sqlSession.selectList("Calculate2.searchUserNm", userNm);
+		
+		return cList;
+	}
+
+	@Override
+	public ArrayList<Calculate> searchWaitAll(SqlSessionTemplate sqlSession, String userNm) {
+		ArrayList<Calculate> cList = null;
+		
+		cList = (ArrayList)sqlSession.selectList("Calculate2.searchWaitAll", userNm);
+		
+		return cList;
+	}
+
+	@Override
+	public ArrayList<Calculate> searchSuccessAll(SqlSessionTemplate sqlSession, String userNm) {
+		ArrayList<Calculate> cList = null;
+		
+		cList = (ArrayList)sqlSession.selectList("Calculate2.searchSuccessAll", userNm);
+		
+		return cList;
+	}
+
 	
 }
 

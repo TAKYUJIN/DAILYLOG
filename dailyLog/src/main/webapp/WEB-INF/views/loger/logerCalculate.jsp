@@ -94,6 +94,9 @@
 
 input:focus {outline:none;}
 
+
+
+
 </style>
 </head>
 <body>
@@ -214,10 +217,17 @@ input:focus {outline:none;}
         </div>
         </form>
     </div>  
+    
     <script>
     var message = '${msg}';
     if(message == "정산 신청이 완료되셨습니다."){
-		alert(message);
+		 alert(message); 
+		/* /* $("#myModal"); */
+		/* alert($("#myModal")); */
+		window.document.write($("#myModal"));
+		/* window.open.document.getElementById("#myModal");
+		window.open("", "PopupWin", "width=500,height=600"); */ */
+
     	
     }
     

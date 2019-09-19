@@ -60,6 +60,10 @@ public interface LogerService {
 	//로거 동영상 출력
 	ArrayList<Video> showLogerVideo(Member m);
 
+	//로거 동영상 삭제 video, attachment 
+	int videoDelete(int vNo);
+	int attachmentDelete(int vNo);
+
 
 
  

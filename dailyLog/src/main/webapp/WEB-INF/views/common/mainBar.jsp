@@ -418,7 +418,7 @@ $('#friendlist').click(function(){
                      <div class="noti_text" align="center"><p>알림</p></div>
                      <div class="form-group">
                      <div id="inputArea" align="center" style="display:none;">
-						<input type="hidden" name="tryMoney" id="tryMoney" value="${sessionScope.loginUser.nickname}">
+						<input type="hidden" name="tryMoney" id="tryMoney" value="${sessionScope.loginUser.userNo}">
 					</div>
                      <div id="history">
 			
@@ -497,7 +497,7 @@ $('#friendlist').click(function(){
 	});
  
 	</script>
-	<%-- <script> 잠시 주석..나의 알림..
+<%-- 	<script>
 		$(function(){
 			getConnection2();
 			
@@ -567,7 +567,7 @@ $('#friendlist').click(function(){
 				ws2 = new WebSocket("ws://localhost:8001" + "<%=request.getContextPath()%>/auctionStart");
 				
 				ws2.onopen2 = function(event){
-
+					
 				}
 				//서버로부터 메세지를 전달 받을 때 동작하는 메소드
 				ws2.onmessage = function(event){
@@ -609,4 +609,18 @@ $('#friendlist').click(function(){
 				alert(event);
 			}
 		</script> --%>
+		
+<%-- <script> 알림 시도 중
+	var wsUri = "ws://localhost:8001/" + '<%=request.getContextPath()%>/serverStart')
+	$(function(){
+		getConnection();
+	});
+	
+	function getConnection(){
+		websocket = new Websoket(wsUri);
+		websocket.onopen = function(evt){
+			onOpen(evt);
+		}
+	}
+</script> --%>
 </html>               

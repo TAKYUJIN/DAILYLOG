@@ -128,8 +128,31 @@ public class AdminServiceImpl implements AdminService {
 	public int updateCalculateApply(int calNo) {
 		return ad.updateCalculateApply(sqlSession, calNo);
 	}
-
 	
+	@Override
+	public ArrayList<Calculate> searchWait() {
+		return ad.searchWait(sqlSession);
+	}
+
+	@Override
+	public ArrayList<Calculate> searchSuccess() {
+		return ad.searchSuccess(sqlSession);
+	}
+
+	@Override
+	public ArrayList<Calculate> searchUserNm(String userNm) {
+		return ad.searchUserNm(sqlSession, userNm);
+	}
+
+	@Override
+	public ArrayList<Calculate> searchWaitAll(String userNm) {
+		return ad.searchWaitAll(sqlSession, userNm);
+	}
+
+	@Override
+	public ArrayList<Calculate> searchSuccessAll(String userNm) {
+		return ad.searchSuccessAll(sqlSession, userNm);
+	}
 	
 
 
