@@ -60,6 +60,13 @@ color: #525252; text-decoration:none; }
 }
 .footer-bs .footer-ns p { font-size:12px; color: #525252; }
 
+.max-small {
+    width: auto; height: auto;
+    max-width: 200px;
+    max-height: 200px;
+}
+
+
 @media (min-width: 768px) {
    .footer-bs .footer-nav, .footer-bs .footer-social, .footer-bs .footer-ns { 
    border-left:solid 1px rgba(255,255,255,0.10); }
@@ -74,7 +81,7 @@ div.Footer {   width:100%; height:20px;   margin:0px; padding:0px;   text-align:
     <footer class="footer-bs">
         <div class="row">
            <div class="col-md-3 footer-brand animated fadeInLeft">
-               <h2>DailyLog</h2>
+               <img class="max-small" src="resources/images/newlogo3.png" style="border-radius: 60%; margin-left:30px;">
                 <br><br><br><br><br><br>
 <p style="color: #525252;">Copyright ©WITH Corp. All rights reserved.</p>
             </div>
