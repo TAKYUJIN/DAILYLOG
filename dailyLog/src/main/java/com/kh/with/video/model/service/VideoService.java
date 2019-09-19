@@ -68,6 +68,13 @@ public interface VideoService {
 	int report(Map<String, Object> map);
 	int block(Map<String, Object> map);
 
+
+	List<Attachment> videoimagelist();
+
+	List<Attachment> videopop();
+
+	List<Attachment> videonew();
+
 	int selectAge(int loginUser);
 
 	

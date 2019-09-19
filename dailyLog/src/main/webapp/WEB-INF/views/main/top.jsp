@@ -39,6 +39,7 @@ h2 {
 	color: #ffffff;
 	font-size: 26px;
 	font-weight: 300;
+	
 	text-align: center;
 	position: relative;
 	margin: 40px 70px;
@@ -389,7 +390,7 @@ img.fixed{
 	background: #ebebeb;
 }
 h2 {
- background:#fff;
+ background:none;
 	color: #696969;
 	font-size: 26px;
 	font-weight: 300;
@@ -410,7 +411,7 @@ h2::after {
     left: 0;
     right: 0;
     bottom: 14px;
-     background:#fff;
+     background:none;
 }
 h2 span {
 	display: inline-block;
@@ -418,38 +419,38 @@ h2 span {
 	/* background:#ebebeb; */
 	position:relative;
 	z-index:2;
-	 background:#fff;
+background:none;
 }
 .col-center {
 	margin: 0 auto;
 	float: none !important;
-	 background:#fff;
+	 background:none;
 }
 .carousel {	
 	margin: 30px auto 50px;
 	padding: 0 68px;
- background:#fff;
+background:none;
 }
 .carousel .item {
     text-align: center;
 	overflow: hidden;
     height: 220px;
-     background:#fff;}
+    background:none;}
  .carousel-control{
- background:#fff;
+background:none;
  }
   .carousel .item .img-box {
-	background: #fff;
+	background:none;
 	padding: 9px;
 	/* box-shadow: 0 6px 20px -6px rgba(0,0,0,0.4); */
 } 
 .carousel .item img {
     margin: 0 auto;
-    background:#fff;
+   background:none;
 }
 .carousel .carousel-control {
 	width: 68px;
-	 background:#fff;
+	background:none;
 }
 .carousel .carousel-control i {
     font-size: 28px;
@@ -461,12 +462,12 @@ h2 span {
     left: 0;
     right: 0;
 	color: rgba(0, 0, 0, 0.8);
-	background:#fff;
+	background:none;
     text-shadow: 0 3px 3px #e6e6e6, 0 0 0 #000;
 }
 .carousel .carousel-indicators {
 	bottom: -40px;
-	background:#fff;
+	background:none;
 }
 .carousel-indicators li, .carousel-indicators li.active {
 	width: 10px;
@@ -474,7 +475,7 @@ h2 span {
 	border-radius: 50%;
 	margin: 1px 4px;
 	box-shadow: inset 0 2px 1px rgba(0,0,0,0.2);
-	background:#fff;
+	background:none;
 }
 .carousel-indicators li {	
 	background: #999;
@@ -572,20 +573,16 @@ h2 span {
 	   --%>
 	 <div class="row">
 		<div class="col-md-9 col-center m-auto">
-			<h2> <span>  <b>인기 동영상-조회수</b></span> </h2>
+			<h2> <span>  <b>인기 동영상 </b></span> </h2>
 			<div id="myCarousel1" class="carousel slide" data-ride="carousel" data-interval="0">
-				<ol class="carousel-indicators">
-					<li data-target="#myCarousel2" data-slide-to="0" class="active"></li>
-					<li data-target="#myCarousel2" data-slide-to="1"></li>
-					<li data-target="#myCarousel2" data-slide-to="2"></li> 
-				</ol>   
+				  
 				<div class="carousel-inner">
 					<div class="item carousel-item active"> 
 						<div class="row">
 							
-						<c:forEach var="videoimage" items="${list}">
-						<div class="col-sm-2  "><div class="img-box"><div style=" float:left;"> <a href="video.vd">
-						<img src="resources/images/${videoimage.filepath}" width = "102px"  height="130px"  >
+						<c:forEach var="videoimage" items="${videopop}">
+						<div class="col-sm-4 "><div class="img-box"><div style=" float:left;"> <a href="video.vd">
+						<img src="resources/images/${videoimage.filepath}" width = "350px"  height="300px"  >
 							<h5>제목:${videoimage.vTitle}</h5>
 							<h5>채널명:${videoimage.chNm }</h5>
 				</a></div></div></div> 
@@ -604,154 +601,42 @@ h2 span {
 							<h5>채널명:${videoimage.chNm }</h5>
 							
 							</div></div>
-							</c:forEach>
-						</div>
-					</div>
-				</div>
- 				<a class="carousel-control left carousel-control-prev" href="#myCarousel1" data-slide="prev" style="background:#fff;">
-					<i class="fa fa-chevron-left"></i>
-				</a>
-				<a class="carousel-control right carousel-control-next" href="#myCarousel1" data-slide="next"style="background:#fff;">
-					<i class="fa fa-chevron-right"></i>
- 
- </a></div></div></div> 
- <div class="row">
-		<div class="col-md-9 col-center m-auto">
-			<h2> <span>  <b>인기 동영상-즐겨찾기</b></span> </h2>
-			<div id="myCarousel3" class="carousel slide" data-ride="carousel" data-interval="0">
-				<ol class="carousel-indicators">
-					<li data-target="#myCarousel2" data-slide-to="0" class="active"></li>
-					<li data-target="#myCarousel2" data-slide-to="1"></li>
-					<li data-target="#myCarousel2" data-slide-to="2"></li> 
-				</ol>   
-				<div class="carousel-inner">
-					<div class="item carousel-item active"> 
-						<div class="row">
 							
-						<c:forEach var="videoimage" items="${list}">
-						<div class="col-sm-2"  ><div class="img-box"><div style=" float:left;"> <a href="video.vd">
-						<img src="resources/images/${videoimage.filepath}" width = "102px"  height="130px"  >
-							<h5>제목:${videoimage.vTitle}</h5>
-							<h5>채널명:${videoimage.chNm }</h5>
-				</a></div></div></div> 
-						 
-						  </c:forEach> </div></div>
-				 
-					<div class="item carousel-item1">
+							
+							
+							<div class="item carousel-item1">
 						<div class="row"><c:forEach var="videoimage" items="${list}">
  <img src="resources/images/${videoimage.filepath}" class="img-responsive img-fluid"width = "180px"  height="130px" alt=""> 
 						</c:forEach></div>
 					</div>
-					<div class="item carousel-item2">
-						<div class="row"><c:forEach var="videoimage" items="${list}">
-							<div class="col-sm-2" ><div class="img-box"><img src="resources/images/${videoimage.filepath}"  class="img-responsive img-fluid"width = "180px"  height="130px" alt="">
-							<h5>제목:${videoimage.vTitle}</h5>
-							<h5>채널명:${videoimage.chNm }</h5>
-							
-							</div></div>
 							</c:forEach>
 						</div>
 					</div>
 				</div>
- 				<a class="carousel-control left carousel-control-prev" href="#myCarousel3" data-slide="prev" style="background:#fff;">
-					<i class="fa fa-chevron-left"></i>
-				</a>
-				<a class="carousel-control right carousel-control-next" href="#myCarousel3" data-slide="next"style="background:#fff;">
-					<i class="fa fa-chevron-right"></i>
+ 				 
  
- </a></div></div></div> 
- 
-  <div class="row">
-		<div class="col-md-9 col-center m-auto">
-			<h2> <span>  <b>인기 동영상-댓글</b></span> </h2>
-			<div id="myCarousel3" class="carousel slide" data-ride="carousel" data-interval="0">
-				<ol class="carousel-indicators">
-					<li data-target="#myCarousel2" data-slide-to="0" class="active"></li>
-					<li data-target="#myCarousel2" data-slide-to="1"></li>
-					<li data-target="#myCarousel2" data-slide-to="2"></li> 
-				</ol>   
-				<div class="carousel-inner">
-					<div class="item carousel-item active"> 
-						<div class="row">
-							
-						<c:forEach var="videoimage" items="${list}">
-						<div class="col-sm-2" ><div class="img-box"><div style=" float:left;"> <a href="video.vd">
-						<img src="resources/images/${videoimage.filepath}" width = "102px"  height="130px"  >
-							<h5>제목:${videoimage.vTitle}</h5>
-							<h5>채널명:${videoimage.chNm }</h5>
-				</a></div></div></div> 
-						 
-						  </c:forEach> </div></div>
-				 
-					<div class="item carousel-item1">
-						<div class="row"><c:forEach var="videoimage" items="${list}">
- <img src="resources/images/${videoimage.filepath}" class="img-responsive img-fluid"width = "180px"  height="130px" alt=""> 
-						</c:forEach></div>
-					</div>
-					<div class="item carousel-item2">
-						<div class="row"><c:forEach var="videoimage" items="${list}">
-							<div class="col-sm-2" ><div class="img-box"><img src="resources/images/${videoimage.filepath}"  class="img-responsive img-fluid"width = "180px"  height="130px" alt="">
-							<h5>제목:${videoimage.vTitle}</h5>
-							<h5>채널명:${videoimage.chNm }</h5>
-							
-							</div></div>
-							</c:forEach>
-						</div>
-					</div>
-				</div>
- 				<a class="carousel-control left carousel-control-prev" href="#myCarousel3" data-slide="prev" style="background:#fff;">
-					<i class="fa fa-chevron-left"></i>
-				</a>
-				<a class="carousel-control right carousel-control-next" href="#myCarousel3" data-slide="next"style="background:#fff;">
-					<i class="fa fa-chevron-right"></i>
- 
- </a></div></div></div> 
- 
+  </div></div></div> 
+
   <div class="row">
 		<div class="col-md-9 col-center m-auto">
 			<h2> <span>  <b>최근 업로드된 동영상</b></span> </h2>
 			<div id="myCarousel3" class="carousel slide" data-ride="carousel" data-interval="0">
-				<ol class="carousel-indicators">
-					<li data-target="#myCarousel2" data-slide-to="0" class="active"></li>
-					<li data-target="#myCarousel2" data-slide-to="1"></li>
-					<li data-target="#myCarousel2" data-slide-to="2"></li> 
-				</ol>   
 				<div class="carousel-inner">
 					<div class="item carousel-item active"> 
 						<div class="row">
 							
-						<c:forEach var="videoimage" items="${list}">
-						<div class="col-sm-2" ><div class="img-box"><div style=" float:left;"> <a href="video.vd">
-						<img src="resources/images/${videoimage.filepath}" width = "102px"  height="130px"  >
+						<c:forEach var="videoimage" items="${videonew}">
+						<div class="col-sm-3" ><div class="img-box"><div style=" float:left;"> <a href="video.vd">
+						<img src="resources/images/${videoimage.filepath}" width = "230px"  height="200px"  >
 							<h5>제목:${videoimage.vTitle}</h5>
 							<h5>채널명:${videoimage.chNm }</h5>
 				</a></div></div></div> 
 					 
 						  </c:forEach> </div></div>
-				 
-					<div class="item carousel-item1">
-						<div class="row"><c:forEach var="videoimage" items="${list}">
- <img src="resources/images/${videoimage.filepath}" class="img-responsive img-fluid"width = "180px"  height="130px" alt=""> 
-						</c:forEach></div>
-					</div>
-					<div class="item carousel-item2">
-						<div class="row"><c:forEach var="videoimage" items="${list}">
-							<div class="col-sm-2" ><div class="img-box"><img src="resources/images/${videoimage.filepath}"  class="img-responsive img-fluid"width = "180px"  height="130px" alt="">
-							<h5>제목:${videoimage.vTitle}</h5>
-							<h5>채널명:${videoimage.chNm }</h5>
-							
-							</div></div>
-							</c:forEach>
-						</div>
-					</div>
 				</div>
- 				<a class="carousel-control left carousel-control-prev" href="#myCarousel3" data-slide="prev" style="background:#fff;">
-					<i class="fa fa-chevron-left"></i>
-				</a>
-				<a class="carousel-control right carousel-control-next" href="#myCarousel3" data-slide="next"style="background:#fff;">
-					<i class="fa fa-chevron-right"></i>
+ 				 
  
- </a></div></div></div> 
+  </div></div></div> 
   
  
 </body>

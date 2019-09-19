@@ -1,6 +1,7 @@
 package com.kh.with.main.model.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +33,25 @@ public class MainServiceImpl implements MainService{
 	public ArrayList<VideoLike> selectBookmark(VideoLike vl) {
 		return md.selectBookmark(sqlSession, vl);
 	}
+
+	@Override
+	public List<Video> searchch(String search) {
+		// TODO Auto-generated method stub
+		return md.searchch(sqlSession, search);
+	}
+
+	@Override
+	public List<Video> searchtitle(String search) {
+		// TODO Auto-generated method stub
+		return md.searchtitle(sqlSession, search);
+	}
+
+	@Override
+	public List<Video> searchtag(String search) {
+		// TODO Auto-generated method stub
+		return md.searchtag(sqlSession, search);
+	}
+
+ 
 
 }

@@ -154,6 +154,33 @@
 		AND CH_NO = #{chNo}
 		AND V_TY = '북마크'
 	</delete>
+	<select id="searchch" resultMap="videoResultSet" parameterType="com.kh.with.main.model.vo.Video">
+	
+<!-- 	SELECT * FROM VIDEO
+WHERE CH_NM LIKE '%${searchId}%' -->
+	SELECT * FROM VIDEO
+	WHERE CH_NM LIKE '%'||#{search}||'%'
+	
+<!-- 	<include refid="search"></include> -->
+	
+	</select>
+	<select id="searchtitle" resultMap="videoResultSet" parameterType="com.kh.with.main.model.vo.Video">
+	
+	SELECT * FROM VIDEO
+WHERE V_TITLE LIKE '%'||#{search}||'%'
+	</select>
+	<select id="searchtag" resultMap="videoResultSet" parameterType="com.kh.with.main.model.vo.Video">
+	
+	SELECT * FROM VIDEO
+WHERE TAG LIKE '%'||#{search}||'%'
+	
+	</select>
+	
+	 
+	
+	
+	
+	
 	
 	
 </mapper>

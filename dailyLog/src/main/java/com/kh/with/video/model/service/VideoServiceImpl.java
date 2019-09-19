@@ -179,10 +179,30 @@ public class VideoServiceImpl implements VideoService{
 	}
 
 	@Override
+	public List<Attachment> videoimagelist() {
+		// TODO Auto-generated method stub
+		return vd.videoimagelist(sqlSession);
+	}
+
+	@Override
+	public List<Attachment> videopop() {
+		// TODO Auto-generated method stub
+		return vd.videopop(sqlSession);
+	}
+
+	@Override
+	public List<Attachment> videonew() {
+		// TODO Auto-generated method stub
+		return vd.videonew(sqlSession);
+	}
+
+	
+
 	public int selectAge(int loginUser) {
 		
 		return vd.selectAge(sqlSession, loginUser);
 	}
+
 
 
 	

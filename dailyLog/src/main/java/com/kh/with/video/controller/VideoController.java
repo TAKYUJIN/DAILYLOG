@@ -580,9 +580,10 @@ public class VideoController {
 	 }
 	 @RequestMapping(value="guest.mb",method=RequestMethod.GET)
 		public ModelAndView guest( HttpSession session,ModelAndView mav ) {
-		 	Member m = (Member) session.getAttribute("loginUser");
 			 mav.setViewName("main/top");
-			 mav.addObject("list", videoservice.videoimagelist(m));
+			 mav.addObject("list", videoservice.videoimagelist());
+			 mav.addObject("videopop", videoservice.videopop());
+			 mav.addObject("videonew", videoservice.videonew());
 			 System.out.println(mav);
 			 return mav;
 	 }	

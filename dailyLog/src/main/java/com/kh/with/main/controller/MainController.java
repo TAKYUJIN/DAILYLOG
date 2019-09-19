@@ -1,11 +1,12 @@
 package com.kh.with.main.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,7 @@ import com.kh.with.main.model.service.MailSendService;
 import com.kh.with.main.model.service.MainService;
 import com.kh.with.main.model.service.regService;
 import com.kh.with.main.model.vo.MailVo;
+import com.kh.with.main.model.vo.Video;
 import com.kh.with.main.model.vo.VideoLike;
 import com.kh.with.member.model.vo.Member;
 
@@ -187,8 +189,51 @@ public class MainController {
 		//검색
 		@RequestMapping(value="search.mb")
 
-		public String search() {
-
+		/*public String search(HttpServletRequest request,Model model,HttpSession session) {
+				Video v =new Video();
+				
+				String searchId=request.getParameter("searchId");
+				v.setvTitle(searchId);
+				v.setChNm(searchId);
+				v.setTag(searchId);
+				
+				
+				List<Video>  searchch =ms.searchch(v); 
+				List<Video> searchtitle  =ms.searchtitle(v); 
+				List<Video> searchtag =ms.searchtag(v); 
+				
+				model.addAttribute("searchch", searchch);
+				model.addAttribute("searchtitle", searchtitle);
+				model.addAttribute("searchtag", searchtag);
 			return "main/search";
+		}*/
+		
+		public ModelAndView search(@RequestParam(defaultValue="") String search) {
+			
+			List<Video>  searchch =ms.searchch(search); 
+			List<Video> searchtitle  =ms.searchtitle(search); 
+			List<Video> searchtag =ms.searchtag(search); 
+			
+			ModelAndView mav =new ModelAndView();
+			
+			Map<String,Object>map =new HashMap<String,Object>();
+			map.put("searchch",searchch);
+			System.out.println("searchch"+searchch);
+			map.put("searchtitle",searchtitle);
+			System.out.println("searchtitle:"+searchtitle);
+			map.put("searchtag",searchtag);
+			System.out.println("searchtag:"+searchtag);
+			
+			map.put("search",search);
+			mav.addObject("map",map);
+			System.out.println("map:"+map);
+			mav.setViewName("main/search");
+			
+			return mav;
+			
+			
+			
 		}
+		
+		
 }
