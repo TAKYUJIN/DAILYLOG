@@ -2,7 +2,9 @@ package com.kh.with.loger.controller;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -51,6 +53,24 @@ public class LogerController {
 		return "loger/updateLogerVideo";
 	}
 
+	// 로거 동영상 삭제
+	@RequestMapping(value="videoDelete.lo")
+	public String videoDelete(HttpServletRequest request, Model model, HttpSession session) {
+		Member m = (Member) session.getAttribute("loginUser");
+		int loginUser = m.getUserNo();
+		int vNo = Integer.parseInt(request.getParameter("vNo"));
+
+		
+		int result1 = ls.videoDelete(vNo);
+		int result2 = ls.attachmentDelete(vNo);
+		
+		if(result1 > 0 && result2 > 0) {
+			return "forward:/logerVideo.lo";			
+		}else {
+			model.addAttribute("msg", "알 수 없는 에러입니다.");
+			return "common/errorPage";
+		}
+	}
 	// 로거 -> 분석
 	@RequestMapping(value = "analysis.lo")
 	public String analysisView() {
@@ -203,7 +223,7 @@ public class LogerController {
 		return "forward:/logerCalculate.lo";
 	}
 
-	// 로거스튜디오 이동(로거스튜디오 ,프로필사진, 채널명, 구독자수)
+	// 로거스튜디오 이동
 	@RequestMapping(value = "newHomeChannel.lo")
 		public ModelAndView  newHomeChannel(ModelAndView mv,HttpSession session, 
 				HttpServletRequest request, Model model){
@@ -223,10 +243,7 @@ public class LogerController {
 
 			return mv; 
 
-		
-		
-		
-		
+
 		
 		/* return "loger/newHomeChannel"; */
 	}
@@ -276,32 +293,8 @@ public class LogerController {
 		}
 	}
 
- 
 
-	/*
-	 * //로거스튜디오 메인 select (프로필,채널명, 구독자)
-	 * 
-	 * @RequestMapping(value="logerChMain") public String logerChMain(HttpSession
-	 * session, HttpServletRequest request, Model model){
-	 * 
-	 * int userNo = ((Member)
-	 * request.getSession().getAttribute("loginUser")).getUserNo();
-	 * 
-	 * Loger loger = new Loger();
-	 * 
-	 * loger.setUserNo(userNo);
-	 * 
-	 * System.out.println("loger:::" + loger);
-	 * 
-	 * ArrayList<Loger> logerChMain = ls.logerChMain(loger);
-	 * 
-	 * System.out.println("결과값이 담겼나요?" + logerChMain);
-	 * 
-	 * return null;
-	 * 
-	 * 
-	 * }
-	 */
+
 	//로거 신고내역
 	@RequestMapping(value="logerdeclarationlist.lo")
 	public String declarationlist(Report report,Model model,HttpSession session)

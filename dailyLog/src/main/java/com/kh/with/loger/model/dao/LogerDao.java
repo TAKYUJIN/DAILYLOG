@@ -60,6 +60,10 @@ public interface LogerDao {
 	//로거 동영상 출력
 	ArrayList<Video> showLogerVideo(SqlSessionTemplate sqlSession, Member m);
 
+	int videoDelete(SqlSessionTemplate sqlSession, int vNo);
+
+	int attachmentDelete(SqlSessionTemplate sqlSession, int vNo);
+
 
  
 	

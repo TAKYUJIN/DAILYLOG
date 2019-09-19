@@ -15,9 +15,9 @@
 }
 
 #left {
-	width: 650px;
+	width: 200px;
 	/* height:700px; */
-	margin-top: 50px;
+	margin-top: 100px;
 	margin-left: 20px;
 	/* border: 1px solid black; */
 }
@@ -25,9 +25,9 @@
 #right {
 	width: 600px;
 	/* height:700px;  */
-	margin-top: -400px;
-	margin-left: 500px;
-	/*  border: 1px solid red; */
+	margin-top:	-100px;
+	margin-left: 400px;
+	/*  border: 1px solid red;  */
 }
 
 #sub_list {
@@ -56,33 +56,11 @@
 									</tr>
 								</thead>
 								<tbody>
+									<c:forEach items="${subscribeList}" var="s">
 									<tr>
-										<td>김채원채널</td>
+										<td><c:out value="${s.chNm}"/></td>
 									</tr>
-									<tr>
-										<td>지희정채널</td>
-									</tr>
-									<tr>
-										<td>정은주채널</td>
-									</tr>
-									<tr>
-										<td>탁유진채널</td>
-									</tr>
-									<tr>
-										<td>박예진채널</td>
-									</tr>
-									<tr>
-										<td>이채빈채널</td>
-									</tr>
-									<tr>
-										<td>kh채널</td>
-									</tr>
-									<tr>
-										<td>집가자채널</td>
-									</tr>
-									<tr>
-										<td>오늘은채널</td>
-									</tr>
+									</c:forEach>
 								</tbody>
 							</table>
 						</div>
@@ -158,5 +136,5 @@
 	</form>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 </body>
-
+ <br>
 </html>

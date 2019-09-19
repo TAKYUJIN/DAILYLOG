@@ -135,6 +135,18 @@ public class LogerServiceImpl implements LogerService{
 	}
 
 
+	@Override
+	public int videoDelete(int vNo) {
+		return ld.videoDelete(sqlSession, vNo);
+	}
+
+
+	@Override
+	public int attachmentDelete(int vNo) {
+		return ld.attachmentDelete(sqlSession, vNo);
+	}
+
+
 
 
 

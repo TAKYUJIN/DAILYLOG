@@ -1,37 +1,48 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bootstrap Table with Add and Delete Row Feature</title>
+<title>WITH</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+<script src='https://vjs.zencdn.net/7.6.0/video.js'></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script><!-- 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"> -->
 <style type="text/css">
+	body {
+		background:none;
+	}
 	.table-wrapper {
 		width:80%;
         padding: 20px;
-        margin: 30px 0;
-        box-shadow: 0 1px 1px rgba(0,0,0,.05);
+        margin:0 auto;
     }
     .selectVideo {
 		width:80%;
-		margin-left:30px;
+		margin:0 auto;
 	}
     .searchLogerVideoForm {
 		width:80%;
 		margin-top:50px;
-		text-align:left;
-	}
-	.video_th {
 		text-align:center;
+		margin-left:100px;
 	}
+
 
     .table-title {
         padding-bottom: 10px;
@@ -61,6 +72,7 @@
         border-color: #e9e9e9;
     }
     table.table-striped tbody tr:nth-of-type(odd) {
+    	background:none;
 	}
     table.table th i {
         font-size: 13px;
@@ -153,7 +165,107 @@
         margin: 0 2px;
     }
     
+	
+	.video_td {
+	border:none;
+	background-color:transparent;
+	align:left;
+	font-size:16px;
+	text-align:center;
+	}
+
+	.video_th {
+		text-align:center;
+	}
 	input:focus {outline:none;}
+	
+	
+	
+	
+	.modal-confirm {		
+		color: #636363;
+		width: 400px;
+	}
+	.modal-confirm .modal-content {
+		padding: 20px;
+		border-radius: 5px;
+		border: none;
+        text-align: center;
+		font-size: 14px;
+	}
+	.modal-confirm .modal-header {
+		border-bottom: none;   
+        position: relative;
+	}
+	.modal-confirm h4 {
+		text-align: center;
+		font-size: 26px;
+		margin: 30px 0 -10px;
+	}
+	.modal-confirm .close {
+        position: absolute;
+		top: -5px;
+		right: -2px;
+	}
+	.modal-confirm .modal-body {
+		color: #999;
+	}
+	.modal-confirm .modal-footer {
+		border: none;
+		text-align: center;		
+		border-radius: 5px;
+		font-size: 13px;
+		padding: 10px 15px 25px;
+	}
+	.modal-confirm .modal-footer a {
+		color: #999;
+	}		
+	.modal-confirm .icon-box {
+		width: 80px;
+		height: 80px;
+		margin: 0 auto;
+		border-radius: 50%;
+		z-index: 9;
+		text-align: center;
+		border: 3px solid #f15e5e;
+	}
+	.modal-confirm .icon-box i {
+		color: #f15e5e;
+		font-size: 46px;
+		display: inline-block;
+		margin-top: 13px;
+	}
+    .modal-confirm .btn {
+        color: #fff;
+        border-radius: 4px;
+		background: #60c7c1;
+		text-decoration: none;
+		transition: all 0.4s;
+        line-height: normal;
+		min-width: 120px;
+        border: none;
+		min-height: 40px;
+		border-radius: 3px;
+		margin: 0 5px;
+		outline: none !important;
+    }
+	.modal-confirm .btn-info {
+        background: #c1c1c1;
+    }
+    .modal-confirm .btn-info:hover, .modal-confirm .btn-info:focus {
+        background: #a8a8a8;
+    }
+    .modal-confirm .btn-danger {
+        background: #f15e5e;
+    }
+    .modal-confirm .btn-danger:hover, .modal-confirm .btn-danger:focus {
+        background: #ee3535;
+    }
+	.trigger-btn {
+		display: inline-block;
+		margin: 100px auto;
+	}
+	
 </style>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -212,13 +324,15 @@ $(document).ready(function(){
 </head>
 <body>
 <jsp:include page="../common/logerBar.jsp"></jsp:include>
+    
+  
     <div class="selectVideo">
     <form action="" method="" class="searchLogerVideoForm">
         <div class="table-wrapper">
             <div class="table-title" style="width:900px;">
                 <div class="row">
-                    <div class="col-sm-8"><h2>Loger <b>Video</b></h2></div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-3"><h2>Loger <b>Video</b></h2></div>
+                    <div class="col-sm-9">
                         <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button>
                     </div>
                 </div>
@@ -235,22 +349,44 @@ $(document).ready(function(){
                 </thead>
                 <tbody>
                 <c:forEach items="${vList}" var="v">
-                    <tr style="vertical-align:middle">
-                        <td align="center" style="vertical-align:middle"><video width="200px;" height="150px;" controls loop>
+					<div id="myModal" class="modal fade">
+						<div class="modal-dialog modal-confirm">
+							<div class="modal-content">
+								<div class="modal-header">
+									<div class="icon-box">
+										<i class="material-icons">&#xE5CD;</i>
+									</div>
+									<h4 class="modal-title">동영상을 삭제하시겠습니까?</h4>
+									<button type="button" class="close" data-dismiss="modal"
+										aria-hidden="true">&times;</button>
+								</div>
+								<div class="modal-body">
+									<p>DailyLog에서 동영상이 영구적으로 삭제되며, 영상 및 정보는 복구되지 않습니다.</p>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-info"
+										data-dismiss="modal">취소</button>
+									<button type="button" class="btn btn-danger"
+										onclick="location.href='videoDelete.lo?userNo=${v.userNo}&vNo=${v.vNo}'">삭제</button>
+								</div>
+							</div>
+						</div>
+					</div>
+							<tr style="vertical-align:middle">
+                        <td align="center" style="vertical-align:middle">
+							<video id='my-video' class='video-js' controls loop poster='resources/images/${v.afilepath}'
+							onclick="location.href='video.vd?userNo=${v.userNo}&vNo=${v.vNo}'">
 							<source src="resources/images/${v.afilepath}" type="">
-							 <source src='resources/uploadFiles/${v.filepath}' type='video/mp4'><br>
+							 <source src="resources/uploadFiles/${v.filepath}" type='video/mp4'></video><br>
 							<input type="text" value="${v.vTitle}" class="video_td" id="videoTitle"></td>
-						<td style="vertical-align:middle"><c:out value="${v.openTY}"/></td>
+						<td style="vertical-align:middle"><c:out value="${v.openTy}"/></td>
 						<td style="vertical-align:middle"><c:out value="${v.uploadDt}"/></td>
 						<td style="vertical-align:middle"><c:out value="${v.count}"/></td>
-							<!-- <td><input type="text" value="공개" class="video_td" id="videoTitle"></td>
-							<td><input type="text" value="2019.08.13" class="video_td" id="videoDate"></td>
-							<td><input type="text" value="조회수" class="video_td" id="videoCount"></td>
-							<td><input type="text" value="댓글수" class="video_td" id="videoReply"></td> -->
                         <td style="vertical-align:middle">
 							<a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
                             <a class="edit" title="Edit" data-toggle="tooltip" href="updateLogerVideo.lo"><i class="material-icons">&#xE254;</i></a>
-                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                            <a href="#myModal" class="delete" title="Delete" data-toggle="modal"><i class="material-icons">&#xE872;</i></a>
+                            
                         </td>
                     </tr>
                     </c:forEach>
@@ -272,4 +408,6 @@ $(document).ready(function(){
     </div>     
     <jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
+<script>
+</script>
 </html>                            

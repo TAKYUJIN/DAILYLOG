@@ -91,7 +91,44 @@ public class AdminController {
 
 		return "forward:/adminCalculate.ad";
 	}
+	
+	//관리자 정산페이지 정산유무 검색
+		@RequestMapping(value="searchCalculate.ad")
+		public String searchCalculate(Calculate c, Model model, HttpServletRequest request) {
+			
+			String userNm = request.getParameter("userNm");
+			String selectCal[] = request.getParameterValues("calTY");
+			String select = selectCal[0];
+			
+			System.out.println(select);
+			
+			ArrayList<Calculate> cList = null;
+			
+			if(!select.equals("")) {
+				if(!userNm.equals("")) {
+					if(select.equals("wait")) {
+						cList = as.searchWaitAll(userNm);					
+					}else if(select.equals("success")) {
+						cList = as.searchSuccessAll(userNm);
+					}
+				}else if(userNm.equals("")) {
+					if(select.equals("wait")) {
+						cList = as.searchWait();
+					}else if(select.equals("success")) {
+						cList = as.searchSuccess();
+					}				
+				}
+			}else if(select.equals("")) {
+				if(!userNm.equals("")) {
+					cList = as.searchUserNm(userNm);
+				}
+			}
+			model.addAttribute("cList", cList);
 
+			
+			return "admin/adminCalculate";
+		}
+	
 	// 관리자 채널 페이지 이동
 	@RequestMapping(value = "channelManage.ad")
 	public String adminChannelView() {

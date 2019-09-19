@@ -57,6 +57,21 @@ public interface AdminService {
 
 
 	ArrayList<UserBoard> selectDetail(UserBoard user);
+
+	ArrayList<Calculate> searchWaitAll(String userNm);
+
+
+	ArrayList<Calculate> searchSuccessAll(String userNm);
+
+
+	ArrayList<Calculate> searchWait();
+
+
+	ArrayList<Calculate> searchSuccess();
+
+
+	ArrayList<Calculate> searchUserNm(String userNm);
+
 	
 
 

@@ -153,7 +153,7 @@ function fncalculate() {
 <body>
 <jsp:include page="../common/adminBar.jsp"></jsp:include>
     <div class="selectSupport">
-    <form name="f1" action="" method="post" class="selectLogerCalculateForm" float="left;">
+    <form name="f1" action="searchCalculate.ad" method="post" class="selectLogerCalculateForm" float="left;">
     <input type="hidden" name="chk_list"/>
         <div class="table-wrapper">
             <table class="table table-striped" id="adminTable">
@@ -165,19 +165,19 @@ function fncalculate() {
                     <div class="col-sm-11">
 						<div class="filter-group">
 							<label>회원명</label>
-							<input type="text" class="form-control">
+							<input type="text" class="form-control" name="userNm">
 						</div>
 						<div class="filter-group">
 							<label>정산유무</label>
-							<select class="form-control">
-								<option>-- 선택 --</option>
-								<option>대기</option>
-								<option>완료</option>
+							<select class="form-control" name="calTY">
+								<option value="">-- 선택 --</option>
+								<option value="wait">대기</option>
+								<option value="success">완료</option>
 							</select>
 						</div>
                     </div>
                     <div class="col-sm-1">
-                    <button type="button" value="" id="selectBtn">조회</button>
+                    <button type="submit" value="" id="selectBtn">조회</button>
 <!-- 						<button type="button" class="btn btn-primary"><i class="fa fa-search"></i></button> -->
 					</div>
                 </div>

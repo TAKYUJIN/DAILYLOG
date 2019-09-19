@@ -48,9 +48,21 @@ public interface AdminDao {
 
 	int updateCalculateApply(SqlSessionTemplate sqlSession, int calNo);
 
+
 	ArrayList<UserBoard> selectAdminUser(SqlSessionTemplate sqlSession, UserBoard user);
 
 	ArrayList<UserBoard> selectDetail(SqlSessionTemplate sqlSession, UserBoard user);
+
+	ArrayList<Calculate> searchWait(SqlSessionTemplate sqlSession);
+
+	ArrayList<Calculate> searchSuccess(SqlSessionTemplate sqlSession);
+
+	ArrayList<Calculate> searchUserNm(SqlSessionTemplate sqlSession, String userNm);
+
+	ArrayList<Calculate> searchWaitAll(SqlSessionTemplate sqlSession, String userNm);
+
+	ArrayList<Calculate> searchSuccessAll(SqlSessionTemplate sqlSession, String userNm);
+
 
 	
 

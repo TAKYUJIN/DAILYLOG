@@ -3,6 +3,8 @@ package com.kh.with.main.model.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.kh.with.main.model.vo.Subscribe;
+import com.kh.with.main.model.vo.SubscribeVideo;
 import com.kh.with.main.model.vo.Video;
 import com.kh.with.main.model.vo.VideoLike;
 import com.kh.with.member.model.vo.Member;
@@ -21,6 +23,15 @@ public interface MainService {
 
 	List<Video> searchtag(String search);
 
+	//구독한 채널명
+	ArrayList<Subscribe> subscribeList(Subscribe subscribe);
+
+	//구독한 채널비디오
+	ArrayList<SubscribeVideo> subscribeVideoList(Subscribe subscribe);
+
+	
+
+	
  
 
 

@@ -19,11 +19,14 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.with.admin.model.vo.Board;
 import com.kh.with.main.model.service.BoardService;
 import com.kh.with.main.model.service.MailSendService;
 import com.kh.with.main.model.service.MainService;
 import com.kh.with.main.model.service.regService;
 import com.kh.with.main.model.vo.MailVo;
+import com.kh.with.main.model.vo.Subscribe;
+import com.kh.with.main.model.vo.SubscribeVideo;
 import com.kh.with.main.model.vo.Video;
 import com.kh.with.main.model.vo.VideoLike;
 import com.kh.with.member.model.vo.Member;
@@ -81,10 +84,37 @@ public class MainController {
 	// 구독페이지로 이동
 	@RequestMapping(value="subscribe.mb")
 
-	public String subscribeList() {
+	public String subscribeList(ModelAndView mv,HttpSession session, HttpServletRequest request, Model model){
+		int userNo = ((Member) request.getSession().getAttribute("loginUser")).getUserNo();
 
+	
+		
+		Subscribe subscribe = new Subscribe();
+		subscribe.setUserNo(userNo);
+		
+		/* System.out.println("유저가 담겼니?::: " +subscribe ); */
+		
+		
+		//구독한채널명
+		ArrayList<Subscribe> subscribeList = ms.subscribeList(subscribe);
+		
+		//구독한채널비디오
+		ArrayList<SubscribeVideo> subscribeVideoList = ms.subscribeVideoList(subscribe);
+		 
+
+		
+		
+		
+		
+		
+		model.addAttribute("subscribeList", subscribeList);
+		
+		
 		return "subscribe/subscribeList";
 	}
+	
+	
+	
 
 	// 영상 클릭시 동영상 페이지로 이동
 	@RequestMapping(value="video.mb")
@@ -230,9 +260,7 @@ public class MainController {
 			mav.setViewName("main/search");
 			
 			return mav;
-			
-			
-			
+					
 		}
 		
 		
