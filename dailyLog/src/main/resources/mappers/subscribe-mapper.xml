@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+	<mapper namespace="Subscribe">
+
+    
+	<resultMap type="Subscribe" id="SubscribeResultSet">
+        <id property="subNo" column="SUB_NO"/>
+        <result property="chNo" column="CH_NO"/>
+        <result property="userNo" column="USER_NO"/>
+        <result property="chNm" column="CH_NM"/>
+     </resultMap>
+     
+    
+     <!-- 구독리스트 -->
+     <select id="subscribeList" resultMap="SubscribeResultSet">
+		SELECT  *
+		FROM LOGER L
+		JOIN SUBSCRIBE S 
+		ON (S.CH_NO = L.CH_NO)
+		WHERE S.USER_NO= #{userNo}
+	</select>
+     
+     
+     
+     
+</mapper>
+
+
+
+
+
+
+
+
+

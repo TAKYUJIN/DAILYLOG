@@ -396,7 +396,6 @@ public class VideoController {
 	public String insertVideo(Model model, HttpServletRequest request,
 			@RequestParam(name = "file1", required = false) MultipartFile file1) {
 
-		/* System.out.println(file1); */
 
 		String root = request.getSession().getServletContext().getRealPath("resources");
 
@@ -405,9 +404,9 @@ public class VideoController {
 		// 파일명 변경
 		String originFileName = file1.getOriginalFilename();
 		String ext = originFileName.substring(originFileName.lastIndexOf("."));
-		String fileName = CommonUtils.getRandomString();
+		String fileName = CommonUtils.getRandomString()+ext;
 		try {
-			file1.transferTo(new File(filepath + "\\" + fileName + ext));
+			file1.transferTo(new File(filepath + "\\" + fileName));
 
 			HttpSession session = request.getSession();
 			session.setAttribute("filepath", filepath);
@@ -416,7 +415,7 @@ public class VideoController {
 			return "video/videoBasicInfo";
 
 		} catch (Exception e) {
-			new File(filepath + "\\" + fileName + ext).delete();
+			new File(filepath + "\\" + fileName).delete();
 
 			model.addAttribute("msg", "동영상업로드실패");
 			return "common/errorPage";
@@ -435,13 +434,13 @@ public class VideoController {
 
 		String beforeenrollNm = file2.getOriginalFilename();
 		String ext = beforeenrollNm.substring(beforeenrollNm.lastIndexOf("."));
-		String enrollNm = CommonUtils.getRandomString();
+		String enrollNm = CommonUtils.getRandomString()+ext;
 
-		/* System.out.println(enrollNm + filepath1 ); */
+	
 
 		// 파일 업로드 하는 구문
 		try {
-			file2.transferTo(new File(filepath1 + "\\" + enrollNm + ext));
+			file2.transferTo(new File(filepath1 + "\\" + enrollNm));
 		} catch (IllegalStateException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -479,7 +478,7 @@ public class VideoController {
 		video.setAdYn(adYn);
 		video.setOpenTy(openTy);
 		video.setUserNo(getUserNo);
-		video.setFilepath(filepath);
+		video.setFilepath(fileName);
 		video.setAdInfo(adInfo);
 		video.setChNm(chNm);
 
@@ -489,8 +488,8 @@ public class VideoController {
 		System.out.println("컨트롤러result:::" + result);
 
 		Attachment attachment = new Attachment();
-		attachment.setEnrollNm(enrollNm);
-		attachment.setFilepath(filepath1);
+		/* attachment.setEnrollNm(filepath1); */
+		attachment.setFilepath(enrollNm);
 		attachment.setUserNo(getUserNo);
 
 		int result1 = vs.insertAttachment(attachment);
