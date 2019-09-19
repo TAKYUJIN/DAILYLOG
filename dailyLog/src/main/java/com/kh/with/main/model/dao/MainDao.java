@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
+import com.kh.with.main.model.vo.Subscribe;
+import com.kh.with.main.model.vo.SubscribeVideo;
 import com.kh.with.main.model.vo.Video;
 import com.kh.with.main.model.vo.VideoLike;
 import com.kh.with.member.model.vo.Member;
@@ -22,6 +24,14 @@ public interface MainDao {
 
 	List<Video> searchtag(SqlSessionTemplate sqlSession, String search);
 
+	//구독한 채널명
+	ArrayList<Subscribe> subscribeList(SqlSessionTemplate sqlSession, Subscribe subscribe);
+
+	//구독한 채널비디오
+	ArrayList<SubscribeVideo> subscribeVideoList(SqlSessionTemplate sqlSession, Subscribe subscribe);
+
+
+	
  
 
 }

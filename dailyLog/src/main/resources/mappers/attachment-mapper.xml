@@ -31,6 +31,7 @@
 
 		<id property="userNo" column="USER_NO" />
 		<result property="amNo" column="AM_NO" />
+		<result property="vNo" column="V_NO" />
 		<result property="filepath" column="FILEPATH" />
 		<result property="amDt" column="AM_DT" />
 		<result property="enrollNm" column="ENROLL_NM" />
@@ -115,8 +116,11 @@
 <!-- 썸네일 정보 insert 쿼리 -->
 	<insert id="insertAttachment" parameterType="Attachment">	
 	INSERT INTO ATTACHMENT
-	VALUES(#{userNo}, AM_NO.NEXTVAL,  #{filepath},  'NULL' , SYSDATE ,  #{enrollNm} , 'NULL'  , '썸네일')
+	VALUES(#{userNo}, AM_NO.NEXTVAL, V_NO.NEXTVAL, #{filepath}, SYSDATE ,   'NULL' , 'NULL'  , '썸네일')
+
 	</insert>  
+	
+	
 
 <select id="videoimagelist1"  resultMap="videoRSet"   >
 	 SELECT A.USER_NO,A.FILEPATH,A.AM_DT,V.V_NO,V.V_TITLE,V.CH_NM 

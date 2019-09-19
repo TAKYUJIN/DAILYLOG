@@ -6,6 +6,9 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.kh.with.admin.model.vo.Board;
+import com.kh.with.main.model.vo.Subscribe;
+import com.kh.with.main.model.vo.SubscribeVideo;
 import com.kh.with.main.model.vo.Video;
 import com.kh.with.main.model.vo.VideoLike;
 import com.kh.with.member.model.vo.Member;
@@ -50,7 +53,44 @@ public class MainDaoImpl implements MainDao{
 		return sqlSession.selectList("Video.searchtag",search);
 	}
 
- 
+	//구독
+	@Override
+	public ArrayList<Subscribe> subscribeList(SqlSessionTemplate sqlSession, Subscribe subscribe) {
+		
+		ArrayList<Subscribe> subscribeList = null;
+		
+		System.out.println("dao까지 왔나요?"  + subscribe );
+		
+		subscribeList = (ArrayList)sqlSession.selectList("Subscribe.subscribeList", subscribe);
+		
+		
+		System.out.println("subscribeList:::" + subscribeList);
+		
+		return subscribeList;
+	}
 
+	//구독한 채널의비디오
+	@Override
+	public ArrayList<SubscribeVideo> subscribeVideoList(SqlSessionTemplate sqlSession, Subscribe subscribe) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
