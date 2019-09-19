@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 
 import com.kh.with.admin.model.vo.Board;
 import com.kh.with.admin.model.vo.Calculate;
+import com.kh.with.admin.model.vo.UserBoard;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.report.model.vo.Report;
 import com.kh.with.report.model.vo.Report2;
@@ -46,6 +47,22 @@ public interface AdminDao {
 	int ublackstatus(SqlSessionTemplate sqlSession, Member m);
 
 	int updateCalculateApply(SqlSessionTemplate sqlSession, int calNo);
+
+
+	ArrayList<UserBoard> selectAdminUser(SqlSessionTemplate sqlSession, UserBoard user);
+
+	ArrayList<UserBoard> selectDetail(SqlSessionTemplate sqlSession, UserBoard user);
+
+	ArrayList<Calculate> searchWait(SqlSessionTemplate sqlSession);
+
+	ArrayList<Calculate> searchSuccess(SqlSessionTemplate sqlSession);
+
+	ArrayList<Calculate> searchUserNm(SqlSessionTemplate sqlSession, String userNm);
+
+	ArrayList<Calculate> searchWaitAll(SqlSessionTemplate sqlSession, String userNm);
+
+	ArrayList<Calculate> searchSuccessAll(SqlSessionTemplate sqlSession, String userNm);
+
 
 	
 

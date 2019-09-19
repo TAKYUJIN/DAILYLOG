@@ -9,6 +9,8 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Service;
 
 import com.kh.with.main.model.dao.MainDao;
+import com.kh.with.main.model.vo.Subscribe;
+import com.kh.with.main.model.vo.SubscribeVideo;
 import com.kh.with.main.model.vo.Video;
 import com.kh.with.main.model.vo.VideoLike;
 import com.kh.with.member.model.vo.Member;
@@ -51,7 +53,37 @@ public class MainServiceImpl implements MainService{
 		// TODO Auto-generated method stub
 		return md.searchtag(sqlSession, search);
 	}
+	//구독한 채널명
+	@Override
+	public ArrayList<Subscribe> subscribeList(Subscribe subscribe) {
+		
+		return md.subscribeList(sqlSession, subscribe);
+	}
 
- 
+	//구독한 채널비디오
+	@Override
+	public ArrayList<SubscribeVideo> subscribeVideoList(Subscribe subscribe) {
+		
+		return md.subscribeVideoList(sqlSession, subscribe);
+	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

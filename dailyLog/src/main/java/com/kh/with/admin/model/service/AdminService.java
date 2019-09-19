@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.kh.with.admin.model.vo.Board;
 import com.kh.with.admin.model.vo.Calculate;
+import com.kh.with.admin.model.vo.UserBoard;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.report.model.vo.Report;
 import com.kh.with.report.model.vo.Report2;
@@ -50,6 +51,27 @@ public interface AdminService {
 
 
 	int updateCalculateApply(int cal);
+
+
+	ArrayList<UserBoard> selectAdminUser(UserBoard user);
+
+
+	ArrayList<UserBoard> selectDetail(UserBoard user);
+
+	ArrayList<Calculate> searchWaitAll(String userNm);
+
+
+	ArrayList<Calculate> searchSuccessAll(String userNm);
+
+
+	ArrayList<Calculate> searchWait();
+
+
+	ArrayList<Calculate> searchSuccess();
+
+
+	ArrayList<Calculate> searchUserNm(String userNm);
+
 	
 
 

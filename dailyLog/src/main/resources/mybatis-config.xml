@@ -21,7 +21,9 @@
 		<typeAlias type="com.kh.with.reply.model.vo.Reply" alias="Reply" />
 		<typeAlias type="com.kh.with.main.model.vo.VideoLike" alias="VideoLike" />
 		<typeAlias type="com.kh.with.admin.model.vo.Calculate" alias="Calculate2" />
+		<typeAlias type="com.kh.with.main.model.vo.Subscribe" alias="Subscribe"/>
 	
+
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappers/member-mapper.xml"/>
@@ -33,9 +35,9 @@
 		<mapper resource="mappers/Board-mapper.xml"/>
 		<mapper resource="mappers/attachment-mapper.xml"/>
 		<mapper resource="mappers/report-mapper.xml"/>
-    <mapper resource="mappers/block-mapper.xml"/>
+    	<mapper resource="mappers/block-mapper.xml"/>
 		<mapper resource="mappers/admin-mapper.xml"/>
-
+		<mapper resource="mappers/subscribe-mapper.xml"/>
 		
 		
 		

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.with.admin.model.vo.Board;
 import com.kh.with.admin.model.vo.Calculate;
+import com.kh.with.admin.model.vo.UserBoard;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.report.model.vo.Report;
 import com.kh.with.report.model.vo.Report2;
@@ -137,7 +138,71 @@ public class AdminDaoImpl implements AdminDao {
 		return sqlSession.update("Calculate2.updateCalculateApply", calNo);
 	}
 
+	@Override
+	public ArrayList<UserBoard> selectAdminUser(SqlSessionTemplate sqlSession, UserBoard user) {
+		// TODO Auto-generated method stub
+ArrayList<UserBoard> userlist = null;
+		
+		userlist = (ArrayList)sqlSession.selectList("UserBoard.selectUserlist",user);
+		
+		System.out.println("뽕 ;;;;"+userlist);
 	
+		return userlist;
+	}
+
+	@Override
+	public ArrayList<UserBoard> selectDetail(SqlSessionTemplate sqlSession, UserBoard user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+
+	public ArrayList<Calculate> searchWait(SqlSessionTemplate sqlSession) {
+		ArrayList<Calculate> cList = null;
+		
+		cList = (ArrayList)sqlSession.selectList("Calculate2.searchWait");
+		
+		return cList;
+	}
+
+	@Override
+	public ArrayList<Calculate> searchSuccess(SqlSessionTemplate sqlSession) {
+		ArrayList<Calculate> cList = null;
+		
+		cList = (ArrayList)sqlSession.selectList("Calculate2.searchSuccess");
+		
+		return cList;
+	}
+
+	@Override
+	public ArrayList<Calculate> searchUserNm(SqlSessionTemplate sqlSession, String userNm) {
+		ArrayList<Calculate> cList = null;
+		
+		cList = (ArrayList)sqlSession.selectList("Calculate2.searchUserNm", userNm);
+		
+		return cList;
+	}
+
+	@Override
+	public ArrayList<Calculate> searchWaitAll(SqlSessionTemplate sqlSession, String userNm) {
+		ArrayList<Calculate> cList = null;
+		
+		cList = (ArrayList)sqlSession.selectList("Calculate2.searchWaitAll", userNm);
+		
+		return cList;
+	}
+
+	@Override
+	public ArrayList<Calculate> searchSuccessAll(SqlSessionTemplate sqlSession, String userNm) {
+		ArrayList<Calculate> cList = null;
+		
+		cList = (ArrayList)sqlSession.selectList("Calculate2.searchSuccessAll", userNm);
+		
+		return cList;
+	}
+
+
 	
 }
 

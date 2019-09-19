@@ -99,6 +99,7 @@
 			console.log(action);
 			
 			$.ajax({
+
 				url : "smssend.me",
 				dataType:"text",
 				type:"post",
@@ -110,6 +111,7 @@
 					//} else {
 						//alert("tlfvo");
 					//}
+
 				},
 				error : function() {
 					alert("서버에러 ");
@@ -366,6 +368,7 @@ body {
 								name="btncheck" hidden>문자전송</button>
 						</div>
 
+
 					</div>
 				</div>
 				<div class="form-group" id="showsms" hidden>
@@ -385,6 +388,7 @@ body {
 						</div>
 					</div>
 				</div>
+
 
 
 				<br>
