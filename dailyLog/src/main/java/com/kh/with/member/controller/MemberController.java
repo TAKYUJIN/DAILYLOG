@@ -58,6 +58,20 @@ public class MemberController {
 		return "member/findId";
 
 	}
+	
+	@RequestMapping(value = "findPwd.me")
+	public String showFindPwd() {
+
+		return "member/findPwd";
+
+	}
+	
+	@RequestMapping(value = "smssend.me")
+	public String showsmssend() {
+
+		return "member/smssend";
+
+	}
 
 	// 로그아웃 
 	@RequestMapping("logout.me")

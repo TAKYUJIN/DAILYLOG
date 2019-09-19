@@ -87,6 +87,8 @@
 		});
 		
 		
+		
+		
 		$("#joinForm").submit(
 				function() {
 					if ($("#userPwd").val() !== $("#userPwd2").val()) {
