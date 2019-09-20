@@ -309,7 +309,7 @@
 	</select>
 	
 	<!--로거스튜디오 메인 select (프로필,채널명, 구독자) -->
-	
+<!-- 	
 	<select id="newHomeChannel" resultMap="logerResultSet2">
 	SELECT *
 	FROM LOGER L
@@ -318,6 +318,6 @@
 	WHERE a.am_ty ='회원' 
 	AND A.USER_NO =  #{userNo}
 	</select>
-
+ -->
 
 </mapper>
