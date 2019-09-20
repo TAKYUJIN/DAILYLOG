@@ -383,8 +383,8 @@ public class AdminController {
 	// 관리자 동영상 신고 상세내역 ->신고처리
 	//@RequestParam(value="reno",defaultValue="false") String r,
 	
-	@RequestMapping(value = "videoreportdetail2.ad")
-	public String videoreportdetail2(HttpSession session, HttpServletRequest request) {
+	@RequestMapping(value = "repreportdetail.ad")
+	public String repreportdetail(HttpSession session, HttpServletRequest request) {
 		System.out.println("controller start");
 		Enumeration e = request.getParameterNames();
 		
@@ -394,13 +394,10 @@ public class AdminController {
 		
 		int recount = Integer.parseInt(request.getParameter("recount"));
 		int reno = Integer.parseInt(request.getParameter("reno"));
-		
 		Report2 report = new Report2();
-		
 		report.setReno(reno);
 		report.setRecount(recount);
 		int result = rs.videoreportupdate(report);
-
 		if (result > 0) {
 			//
 			
@@ -412,6 +409,66 @@ public class AdminController {
 		}
 	}
 
+	@RequestMapping(value = "videoreportdetail2.ad")
+	public String videoreportdetail2(HttpSession session, HttpServletRequest request) {
+		System.out.println("controller start");
+		Enumeration e = request.getParameterNames();
+		
+		while(e.hasMoreElements()) {
+			System.out.println(e.nextElement());
+		}
+		
+		int recount = Integer.parseInt(request.getParameter("recount"));
+		int reno = Integer.parseInt(request.getParameter("reno"));
+		Report2 report = new Report2();
+		report.setReno(reno);
+		report.setRecount(recount);
+		int result = rs.videoreportupdate(report);
+		if (result > 0) {
+			//
+			
+		//	return "redirect:/videoreportdetail.ad?reno=${v.reno}";
+			return "redirect:/videoreportdetail.ad?reno="+reno;
+			
+		} else {
+			return "redirect:/videoreportdetail.ad";
+		}
+	}
+	//채널 차단
+	@RequestMapping(value = "chreportdetail.ad")
+	public String chreportdetail(HttpSession session, HttpServletRequest request) {
+		System.out.println("controller start");
+		Enumeration e = request.getParameterNames();
+		
+		while(e.hasMoreElements()) {
+			System.out.println(e.nextElement());
+		}
+		
+		int recount = Integer.parseInt(request.getParameter("recount"));
+		int reno = Integer.parseInt(request.getParameter("reno"));
+		Report2 report = new Report2();
+		report.setReno(reno);
+		report.setRecount(recount);
+		int result = rs.videoreportupdate(report);
+		if (result > 0) {
+			//
+			
+		//	return "redirect:/videoreportdetail.ad?reno=${v.reno}";
+			return "redirect:/chreportdetail.ad?reno="+reno;
+			
+		} else {
+			return "redirect:/videoreportdetail.ad";
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/*
 	 * @RequestMapping(value="videoreportdetail2.ad",method=RequestMethod.POST)
 	 * public String videoreportupdate( @ModelAttribute Report2 report) { int
