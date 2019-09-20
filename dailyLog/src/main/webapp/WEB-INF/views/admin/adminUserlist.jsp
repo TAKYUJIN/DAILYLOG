@@ -164,9 +164,9 @@
                         <td>${user.userNo}</td>
                         <td>${user.chNm }
 						<td>${user.userId}</td>
-						<td>${user.calSTDT}</td>
-						<td>${user.calPrice}</td>
-						<td>${user.calVAT}</td>
+						<td>${user.chYn}</td>
+						<td><c:out value="${user.enrollDate}"/> </td>
+						<td><c:out value="${user.status}"/></td>
                     </tr>
                     </c:forEach>
                 </tbody>

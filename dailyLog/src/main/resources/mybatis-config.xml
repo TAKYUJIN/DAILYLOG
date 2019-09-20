@@ -22,7 +22,7 @@
 		<typeAlias type="com.kh.with.main.model.vo.VideoLike" alias="VideoLike" />
 		<typeAlias type="com.kh.with.admin.model.vo.Calculate" alias="Calculate2" />
 		<typeAlias type="com.kh.with.main.model.vo.Subscribe" alias="Subscribe"/>
-	
+		<typeAlias type="com.kh.with.admin.model.vo.UserBoard" alias="userBoard" />
 
 	</typeAliases>
 	<mappers>
@@ -38,7 +38,7 @@
     	<mapper resource="mappers/block-mapper.xml"/>
 		<mapper resource="mappers/admin-mapper.xml"/>
 		<mapper resource="mappers/subscribe-mapper.xml"/>
-		
+		<mapper resource="mappers/userboard-mapper.xml"/>
 		
 		
 	</mappers>

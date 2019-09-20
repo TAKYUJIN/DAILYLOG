@@ -40,13 +40,16 @@ public class AdminController {
 	private ReportService rs;
 	//관리자 회원관리 페이지
 		@RequestMapping(value="adminUser.ad")
-		public String selectAdminUser(UserBoard user , Model model) {
+		public String selectAdminUser(UserBoard user , Model model 
+				) {
 			ArrayList<UserBoard>  userlist = as.selectAdminUser(user);
 			
 			model.addAttribute("userlist", userlist);
 			model.addAttribute("UserBoard", user);
 			
 			System.out.println("list ;;;;"+userlist);
+			
+			
 			
 			return "admin/adminUserlist";
 		}
