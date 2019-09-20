@@ -199,16 +199,11 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	@Override
-	public List<Object> calInfo() {
+	public List<Integer> info() {
 		
-		return ad.calInfo(sqlSession);
+		return ad.info(sqlSession);
 	}
 	
-	@Override
-	public List<Object> reportInfo() {
-		
-		return ad.reportInfo(sqlSession);
-	}
 
 
 

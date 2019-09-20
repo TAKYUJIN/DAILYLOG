@@ -237,17 +237,12 @@ public class AdminDaoImpl implements AdminDao {
 	 @Override
 	public List<Object> channelInfo(SqlSessionTemplate sqlSession) {
 		
-		return sqlSession.selectList("Admin.channelInfo");
+		return sqlSession.selectList("ChannelBoard.channelInfo");
 	}
 	 @Override
-	public List<Object> calInfo(SqlSessionTemplate sqlSession) {
+	public List<Integer> info(SqlSessionTemplate sqlSession) {
 		
-		return sqlSession.selectList("Admin.calInfo");
-	}
-	 @Override
-	public List<Object> reportInfo(SqlSessionTemplate sqlSession) {
-		
-		return sqlSession.selectList("Admin.reportInfo");
+		return sqlSession.selectList("ChannelBoard.info");
 	}
 
 }
