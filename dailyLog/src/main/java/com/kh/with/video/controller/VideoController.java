@@ -75,7 +75,7 @@ public class VideoController {
 		System.out.println("age : " + age);
 
 		//정산 상태
-		System.out.println("::::: " + list2.toString().substring(13,14));
+		//System.out.println("::::: " + list2.toString().substring(13,14));
 		//int status = vs.selectRegStatus(loginUser, list1.get(1));
 		
 		model.addAttribute("list1", list1);

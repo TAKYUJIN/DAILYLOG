@@ -271,6 +271,12 @@
                     </div>
                 </div>
 			</div>
+			<script>
+			var a = "<c:out value='${channelInfo[0].chNm}'/>";
+				console.log(a);
+			</script>
+			
+			
             <table class="table table-striped table-hover" style="background:none;">
                 <thead>
                     <tr>
@@ -283,27 +289,23 @@
                     </tr>
                 </thead>
                 <tbody>
-					<c:forEach var="ch" items="${ channelInfo }">
-					<c:forEach var="cal" items="${ calInfo }">
-					<c:forEach var="re" items="${ reportInfo }">
-<%--                     <tr>
+					<c:forEach items="${channelInfo}" var="ch">
+                     <tr>
                         <td>1</td>
                         <td>
                         	<a href="#">
-                        		<img src="resources/images/${ch.fileNm}" class="avatar" alt="Avatar"> ${ ch.chNm }
+                        		<img src="resources/images/${ch.fileNm}" class="avatar" alt="Avatar"> ${ channelInfo[0].chNm }
                         	</a>
                         </td>
 						<td>${ch.userId}</td>
 						<td>${cal.price }</td>
-						<td><span class="status text-success">&bull;</span>${re.cCount }/${re.reCount }</td>
+						<td><span class="status text-success">&bull;</span>${re.cCount }/${info[0].reCount }</td>
 						<td>
 							<a href="channelDetail.ad" class="view" title="View Details" data-toggle="tooltip">
 								<i class="material-icons">&#xE5C8;</i>
 							</a>
 						</td>
-                    </tr> --%>
-					</c:forEach>
-					</c:forEach>
+                    </tr> 
 					</c:forEach>
                 </tbody>
             </table>

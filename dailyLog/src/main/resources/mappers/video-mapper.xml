@@ -93,7 +93,6 @@
 		SELECT *
 		FROM LOGER
 		WHERE USER_NO = #{userNo}
-		AND V_NO = #{vNo}
 	</select>
 	
 	<!-- 동영상페이지  -->

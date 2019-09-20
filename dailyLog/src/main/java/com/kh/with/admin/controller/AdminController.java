@@ -179,17 +179,14 @@ public class AdminController {
 	@RequestMapping(value = "channelManage.ad")
 	public String adminChannelView(Model model, HttpSession session) {
 		  
-//		List<Object> channelInfo = as.channelInfo();
-		List<Object> calInfo = as.calInfo();
-		List<Object> reportInfo = as.reportInfo();
+		List<Object> channelInfo = as.channelInfo();
+		List<Integer> info = as.info();
 		
-	//	model.addAttribute("channelInfo", channelInfo);
-		model.addAttribute("calInfo", calInfo);
-		model.addAttribute("reportInfo", reportInfo);
+		model.addAttribute("channelInfo", channelInfo);
+		model.addAttribute("calInfo", info);
 		
-		//System.out.println("channelInfo : " + channelInfo);
-		System.out.println("calInfo : " + calInfo);
-		System.out.println("reportInfo : " + reportInfo);
+		System.out.println("channelInfo : " + channelInfo);
+		System.out.println("calInfo : " + info);
 		
 		
 		return "admin/channelManage";

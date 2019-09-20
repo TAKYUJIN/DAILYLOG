@@ -23,14 +23,6 @@
         <result property="userNm" column="USER_NM"/>
      </resultMap>
      
-     <resultMap type="ChannelBoard" id="ChannelResultSet">
-        <result property="userId" column="USER_NO"/>
-        <result property="chNm" column="CH_NO"/>
-        <result property="fileNm" column="FILE_NM"/>
-        <result property="price" column="PRICE"/>
-        <result property="reCount" column="RE_COUNT"/>
-        <result property="cCount" column="C_COUNT"/>
-     </resultMap>
 	
   	<select id="selectAdminCalculate" resultMap="calculateResultSet">
   		SELECT RANK, CAL_NO, USER_NO, CH_NO, CAL_STDT, CAL_EDT, CAL_PRICE, CAL_VAT, AMOUNT_PRICE, CAL_TY, ACC_NM, BANK_NM, ACCOUNT, USER_ID, USER_NM
@@ -90,25 +82,7 @@
 		ORDER BY RANK ASC
   	</select>
   	
-  	<select id="channelInfo">
-  		SELECT L.CH_NM, M.USER_ID
-		FROM LOGER L
-		JOIN MEMBER M ON(L.USER_NO = M.USER_NO)
-		JOIN ATTACHMENT A ON(L.USER_NO = A.USER_NO)
-		WHERE A.AM_TY = '회원'
-  	</select>
-  	
-  	<select id="calInfo">
-  		SELECT SUM(C.AMOUNT_PRICE) AS PRICE
-		FROM LOGER L
-		JOIN CALCULATE C ON(L.CH_NO = C.CH_NO)
-  	</select>
-  	
-  	<select id="reportInfo">
-  		SELECT SUM(RE_COUNT), SUM(C_COUNT)
-		FROM LOGER L
-		JOIN REPORT R ON(L.USER_NO = R.RE_TARGET)
-  	</select>
+
   	
 </mapper>
 
