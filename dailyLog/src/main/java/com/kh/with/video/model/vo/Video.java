@@ -17,16 +17,24 @@ public class Video implements java.io.Serializable {
 	private String adInfo; //광고정보
 	private String location; //위치
 	private String info; //추가장소정보
-	private String filenm; // 파일경로
+
+	private String fileNm; // 파일경로
+
 	private String openTy; //공개여부
 	private int nNo;
-	private String afilepath;
+	private String afileNm;
 	
 	public Video () {}
 
 	public Video(int vNo, int userNo, String vTitle, int count, String chNm, String tag, String vblYn, Date uploadDt,
+
+			Date modifyDt, String adultAut, String adYn, String adInfo, String location, String info, String fileNm,
+			String openTy, int nNo, String afileNm) {
+
+      /*
 			Date modifyDt, String adultAut, String adYn, String adInfo, String location, String info, String filenm,
-			String openTy, int nNo, String afilepath) {
+			String openTy, int nNo, String afilepath) { */
+
 		super();
 		this.vNo = vNo;
 		this.userNo = userNo;
@@ -42,10 +50,12 @@ public class Video implements java.io.Serializable {
 		this.adInfo = adInfo;
 		this.location = location;
 		this.info = info;
-		this.filenm = filenm;
+
+		this.fileNm = fileNm;
+
 		this.openTy = openTy;
 		this.nNo = nNo;
-		this.afilepath = afilepath;
+		this.afileNm = afileNm;
 	}
 
 	public int getvNo() {
@@ -160,12 +170,14 @@ public class Video implements java.io.Serializable {
 		this.info = info;
 	}
 
-	public String getFilenm() {
-		return filenm;
+
+	public String getFileNm() {
+		return fileNm;
 	}
 
-	public void setFilenm(String filenm) {
-		this.filenm = filenm;
+	public void setFileNm(String fileNm) {
+		this.fileNm = fileNm;
+
 	}
 
 	public String getOpenTy() {
@@ -184,12 +196,12 @@ public class Video implements java.io.Serializable {
 		this.nNo = nNo;
 	}
 
-	public String getAfilepath() {
-		return afilepath;
+	public String getAfileNm() {
+		return afileNm;
 	}
 
-	public void setAfilepath(String afilepath) {
-		this.afilepath = afilepath;
+	public void setAfileNm(String afileNm) {
+		this.afileNm = afileNm;
 	}
 
 	@Override
@@ -197,8 +209,10 @@ public class Video implements java.io.Serializable {
 		return "Video [vNo=" + vNo + ", userNo=" + userNo + ", vTitle=" + vTitle + ", count=" + count + ", chNm=" + chNm
 				+ ", tag=" + tag + ", vblYn=" + vblYn + ", uploadDt=" + uploadDt + ", modifyDt=" + modifyDt
 				+ ", adultAut=" + adultAut + ", adYn=" + adYn + ", adInfo=" + adInfo + ", location=" + location
-				+ ", info=" + info + ", filenm=" + filenm + ", openTy=" + openTy + ", nNo=" + nNo + ", afilepath="
-				+ afilepath + "]";
+
+				+ ", info=" + info + ", fileNm=" + fileNm + ", openTy=" + openTy + ", nNo=" + nNo + ", afileNm="
+				+ afileNm + "]";
+
 	}
 
 	 

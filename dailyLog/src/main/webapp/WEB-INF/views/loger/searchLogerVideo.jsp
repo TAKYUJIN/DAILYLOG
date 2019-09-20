@@ -374,10 +374,10 @@ $(document).ready(function(){
 					</div>
 							<tr style="vertical-align:middle">
                         <td align="center" style="vertical-align:middle">
-							<video id='my-video' class='video-js' controls loop poster='resources/images/${v.afilepath}'
+							<video id='my-video' class='video-js' controls loop poster='resources/images/${v.afileNm}'
 							onclick="location.href='video.vd?userNo=${v.userNo}&vNo=${v.vNo}'">
-							<source src="resources/images/${v.afilepath}" type="">
-							 <source src="resources/uploadFiles/${v.filepath}" type='video/mp4'></video><br>
+							<source src="resources/images/${v.afileNm}" type="">
+							 <source src="resources/uploadFiles/${v.fileNm}" type='video/mp4'></video><br>
 							<input type="text" value="${v.vTitle}" class="video_td" id="videoTitle"></td>
 						<td style="vertical-align:middle"><c:out value="${v.openTy}"/></td>
 						<td style="vertical-align:middle"><c:out value="${v.uploadDt}"/></td>
