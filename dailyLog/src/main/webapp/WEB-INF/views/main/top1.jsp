@@ -284,7 +284,7 @@ background:none;
 						<div class="row">
 						<c:forEach var="videoimage" items="${videopop}" begin="0" end="0"> 
 						<div class="col-sm-6"><div class="img-box"><div style=" float:left;">  <a href="video.vd?userNo=${videoimage.userNo}&vNo=${videoimage.vNo}">
-						<img src="resources/images/${videoimage.filenm}" width = "530px"  height="300px"  >
+						<img src="resources/images/${videoimage.fileNm}" width = "530px"  height="300px"  >
 							<h5>제목:${videoimage.vTitle}</h5>
 							<h5>채널명:${videoimage.chNm }</h5>
 								<h5>태그명:${videoimage.tag }</h5>
@@ -339,7 +339,7 @@ background:none;
 							
 						<c:forEach var="videoimage" items="${videonew}" begin="0" end="5"> 
 						<div class="col-sm-3"><div class="img-box"><div style=" float:left;">  <a href="video.vd?userNo=${videoimage.userNo}&vNo=${videoimage.vNo}">
-						<img src="resources/images/${videoimage.filenm}" width = "250px"  height="300px"  >
+						<img src="resources/images/${videoimage.fileNm}" width = "250px"  height="300px"  >
 							<h5>제목:${videoimage.vTitle}</h5>
 							<h5>채널명:${videoimage.chNm }</h5>
 								<h5>태그명:${videoimage.tag }</h5>
@@ -396,7 +396,7 @@ background:none;
 							
 						<c:forEach var="videoimage" items="${list}" begin="0" end="5"> 
 						<div class="col-sm-3"><div class="img-box"><div style=" float:left;">  <a href="video.vd?userNo=${videoimage.userNo}&vNo=${videoimage.vNo}">
-						<img src="resources/images/${videoimage.filenm}" width = "250px"  height="300px"  >
+						<img src="resources/images/${videoimage.fileNm}" width = "250px"  height="300px"  >
 							<h5>제목:${videoimage.vTitle}</h5>
 							<h5>채널명:${videoimage.chNm }</h5>
 								<h5>태그명:${videoimage.tag }</h5>
@@ -456,7 +456,7 @@ background:none;
 							
 						<c:forEach var="videoimage" items="${videobook}" begin="0" end="5"> 
 						<div class="col-sm-3"><div class="img-box"><div style=" float:left;"> <a href="video.vd?userNo=${videoimage.userNo}&vNo=${videoimage.vNo}">
-						<img src="resources/images/${videoimage.filenm}" width = "250px"  height="300px"  >
+						<img src="resources/images/${videoimage.fileNm}" width = "250px"  height="300px"  >
 							<h5>제목:${videoimage.vTitle}</h5>
 							<h5>채널명:${videoimage.chNm }</h5>
 								<h5>태그명:${videoimage.tag }</h5>
@@ -512,7 +512,7 @@ background:none;
 							
 						<c:forEach var="videoimage" items="${videosub}" begin="0" end="5"> 
 						<div class="col-sm-3"><div class="img-box"><div style=" float:left;"> <a href="video.vd?userNo=${videoimage.userNo}&vNo=${videoimage.vNo}">
-						<img src="resources/images/${videoimage.filenm}" width = "250px"  height="300px"  >
+						<img src="resources/images/${videoimage.fileNm}" width = "250px"  height="300px"  >
 							<h5>제목:${videoimage.vTitle}</h5>
 							<h5>채널명:${videoimage.chNm }</h5>
 								<h5>태그명:${videoimage.tag }</h5>
@@ -569,7 +569,7 @@ background:none;
 							
 						<c:forEach var="videoimage" items="${videolike}" begin="0" end="5"> 
 						<div class="col-sm-3"><div class="img-box"><div style=" float:left;"> <a href="video.vd?userNo=${videoimage.userNo}&vNo=${videoimage.vNo}">
-						<img src="resources/images/${videoimage.filenm}" width = "250px"  height="300px"  >
+						<img src="resources/images/${videoimage.fileNm}" width = "250px"  height="300px"  >
 							<h5>제목:${videoimage.vTitle}</h5>
 							<h5>채널명:${videoimage.chNm }</h5>
 								<h5>태그명:${videoimage.tag }</h5>
@@ -619,7 +619,7 @@ background:none;
 						<div class="row">
 						<c:forEach var="videoimage" items="${videopop}" > 
 						<div class="col-sm-6"><div class="img-box"><div style=" float:left;">  <a href="video.vd?userNo=${videoimage.userNo}&vNo=${videoimage.vNo}">
-						<img src="resources/images/${videoimage.filenm}" width = "400px"  height="300px"  >
+						<img src="resources/images/${videoimage.fileNm}" width = "400px"  height="300px"  >
 							<h5>제목:${videoimage.vTitle}</h5>
 							<h5>채널명:${videoimage.chNm }</h5>
 								<h5>태그명:${videoimage.tag }</h5>

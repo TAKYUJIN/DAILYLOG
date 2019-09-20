@@ -9,7 +9,6 @@ public class Attachment {
 	private String fileNm; //파일경로
 
 	private String amDt; //업로드날짜
-	private String fileNm; // 파일명
 	private String amTY; //파일구분
 
 	
@@ -18,17 +17,13 @@ public class Attachment {
 
 
 
-	public Attachment(int userNo, int amNo, int vNo, String amDt, String fileNm, String amTY) {
-
+	public Attachment(int userNo, int amNo, int vNo, String fileNm, String amDt, String amTY) {
 		super();
 		this.userNo = userNo;
 		this.amNo = amNo;
 		this.vNo = vNo;
-
 		this.fileNm = fileNm;
-
 		this.amDt = amDt;
-		this.fileNm = fileNm;
 		this.amTY = amTY;
 	}
 
@@ -75,6 +70,7 @@ public class Attachment {
 	}
 
 
+
 	public void setFileNm(String fileNm) {
 		this.fileNm = fileNm;
 	}
@@ -93,18 +89,6 @@ public class Attachment {
 
 
 
-	public String getFileNm() {
-		return fileNm;
-	}
-
-
-
-	public void setFileNm(String fileNm) {
-		this.fileNm = fileNm;
-	}
-
-
-
 	public String getAmTY() {
 		return amTY;
 	}
@@ -119,9 +103,8 @@ public class Attachment {
 
 	@Override
 	public String toString() {
-
-		return "Attachment [userNo=" + userNo + ", amNo=" + amNo + ", vNo=" + vNo + ", amDt=" + amDt + ", fileNm="
-				+ fileNm + ", amTY=" + amTY + "]";
+		return "Attachment [userNo=" + userNo + ", amNo=" + amNo + ", vNo=" + vNo + ", fileNm=" + fileNm + ", amDt="
+				+ amDt + ", amTY=" + amTY + "]";
 	}
 
 
