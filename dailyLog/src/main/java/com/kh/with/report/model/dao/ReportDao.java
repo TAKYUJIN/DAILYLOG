@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
+import com.kh.with.main.model.vo.Alram;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.report.model.vo.Report;
 import com.kh.with.report.model.vo.Report2;
@@ -24,6 +25,9 @@ public interface ReportDao {
 	List<Report> repreportdetail(SqlSessionTemplate sqlSession, int reno);
 
 	public int videoreportupdate(SqlSessionTemplate sqlSession, Report2 report);
+
+
+	int alramreport(SqlSessionTemplate sqlSession, Alram alram);
 
 	 
 

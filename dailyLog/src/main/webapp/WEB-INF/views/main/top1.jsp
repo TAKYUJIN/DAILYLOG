@@ -364,6 +364,7 @@ background:none;
 					    <li> <input type="text" class="form-control" id="rewhy" name="rewhy" placeholder="기타"></li >
  					  <input type="hidden" id="rety" name="rety" value="동영상"/>
 					 <input type="hidden"  id="vNo" name="vNo" value="${videoimage.vNo}"/>
+					 <input type="hidden" id="vTitle" name="vTitle" value="${videoimage.vTitle}">
 					  <input type="hidden"  id="chNm" name="chNm" value="${videoimage.chNm}" > 
 				    <input type="submit" value="완료" class="btn btn-info">
         			<input type="reset" value="취소" class="btn btn-default"> 	</form> </div></li>

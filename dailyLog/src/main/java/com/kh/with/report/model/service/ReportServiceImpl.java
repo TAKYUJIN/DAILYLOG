@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kh.with.main.model.vo.Alram;
 import com.kh.with.report.model.dao.ReportDao;
 import com.kh.with.report.model.vo.Report;
 import com.kh.with.report.model.vo.Report2;
@@ -59,6 +60,12 @@ public class ReportServiceImpl implements ReportService {
 	public List<Report> repreportdetail(int reno) {
 		// TODO Auto-generated method stub
 		return rd.repreportdetail(sqlSession,reno);
+	}
+
+	@Override
+	public int alramreport(Alram alram) {
+		// TODO Auto-generated method stub
+		return rd.alramreport(sqlSession,alram);
 	}
 	 
 	
