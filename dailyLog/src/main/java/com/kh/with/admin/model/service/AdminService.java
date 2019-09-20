@@ -8,6 +8,9 @@ import java.util.List;
 import com.kh.with.admin.model.vo.Board;
 import com.kh.with.admin.model.vo.Calculate;
 import com.kh.with.admin.model.vo.UserBoard;
+import com.kh.with.block.model.vo.Blockch;
+import com.kh.with.block.model.vo.Blockrep;
+import com.kh.with.block.model.vo.Blockvi;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.report.model.vo.Report;
 import com.kh.with.report.model.vo.Report2;
@@ -52,11 +55,11 @@ public interface AdminService {
 
 	int updateCalculateApply(int cal);
 
-
+	//회원관리 list
 	ArrayList<UserBoard> selectAdminUser(UserBoard user);
 
 
-	ArrayList<UserBoard> selectDetail(UserBoard user);
+	
 
 	ArrayList<Calculate> searchWaitAll(String userNm);
 
@@ -71,6 +74,19 @@ public interface AdminService {
 
 
 	ArrayList<Calculate> searchUserNm(String userNm);
+	
+	//회원관리 상세보기
+	ArrayList<UserBoard> selectDetail(UserBoard user1);
+	
+	ArrayList<Blockch> selectDetail1(Blockch ch);
+
+
+	ArrayList<Blockrep> selectDetail2(Blockrep rep);
+
+
+	ArrayList<Blockvi> selectDetail3(Blockvi vi);
+
+
 
 	
 

@@ -93,18 +93,18 @@
 	<jsp:include page="../common/adminBar.jsp"></jsp:include>
  <div class="signup-form">
 <!--     <form action="/examples/actions/confirmation.php" method="post" class="form-horizontal">
- -->
- <form action="videoreportdetail2.ad" method="post">
+ --> 
 <c:forEach items="${videoreportdetail}" var="de">
 			<h3><b>동영상 신고 관리 상세 </b></h3><br>
 		<div class="form-group">
+ <form action="videoreportdetail2.ad" method="post">
 			<label>신고 번호:${de.reno}  </label><br><br>
 			<input type="hidden" id="reno" name="reno" value="${de.reno}">
 			<label>신고 동영상 번호:${de.vNo}  </label><br><br>
 			<input type="hidden" id="vNo" name="vNo" value="${de.vNo}">
 			<label>신고 동영상 제목:${de.vTitle} </label><br><br>
 			<input type="hidden" id="vTitle" name="vTitle" value="${de.vTitle}">
-			<label>신고인 아이디:${de.userNm}</label><br><br>
+			<label>신고인 :${de.userNm}</label><br><br>
 			<input type="hidden" id="userNm" name="userNm" value="${de.userNm}">
 			<label>신고일:${de.redt} </label><br><br>
 			<input type="hidden" id="redt" name="redt" value="${de.redt}">
@@ -114,13 +114,14 @@
 			 <br>
              
 			<div class="col-xs-8 col-xs-offset-4"><br><br><br>
- 		    <input type="submit" class="btn btn-link" value="신고">
  		   
+ 		    <input type="submit" class="btn btn-link" value="신고">
  		    <button type="button" class="btn btn-primary" onclick="location.href='reportlist.ad'">취소</button>
  		    <br><br>  
  		    
 			</div>  
-	</div></c:forEach></form></div>
+ 		    </form>
+	</div></c:forEach></div>
     <jsp:include page="../common/footer.jsp" />
 
 </body>
