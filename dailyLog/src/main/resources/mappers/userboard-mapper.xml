@@ -20,8 +20,10 @@
 	</resultMap>
 
 	<select id="selectUserlist" resultMap="userBoardResultSet">
-		SELECT USER_NO,USER_ID,CH_NM,CH_YN,ENROLL_DT,STATUS
-		FROM (SELECT ROW_NUMBER() OVER(ORDER BY M.USER_NO DESC) RANK
+		SELECT
+		USER_NO,USER_ID,CH_NM,CH_YN,ENROLL_DT,STATUS
+		FROM (SELECT ROW_NUMBER()
+		OVER(ORDER BY M.USER_NO DESC) RANK
 		,M.USER_NO,M.USER_ID,L.CH_NM,M.CH_YN,M.ENROLL_DT,M.STATUS
 		FROM MEMBER M
 		JOIN LOGER L ON(M.USER_NO = L.USER_NO))
@@ -29,6 +31,8 @@
 
 	<!-- 회원관리 -->
 	<select id="detailList1" resultMap="userBoardResultSet">
-	
+		SELECT M.USER_ID,M.PHONE,L.CH_NM,M.ENROLL_DT
+		FROM MEMBER M
+		JOIN LOGER L ON(M.USER_NO = L.USER_NO)
 	</select>
 </mapper>
