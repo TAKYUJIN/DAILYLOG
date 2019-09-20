@@ -27,5 +27,8 @@
 		JOIN LOGER L ON(M.USER_NO = L.USER_NO))
 	</select>
 
-
+	<!-- 회원관리 -->
+	<select id="detailList1" resultMap="userBoardResultSet">
+	
+	</select>
 </mapper>

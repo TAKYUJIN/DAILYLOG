@@ -12,6 +12,9 @@ import com.kh.with.admin.model.dao.AdminDao;
 import com.kh.with.admin.model.vo.Board;
 import com.kh.with.admin.model.vo.Calculate;
 import com.kh.with.admin.model.vo.UserBoard;
+import com.kh.with.block.model.vo.Blockch;
+import com.kh.with.block.model.vo.Blockrep;
+import com.kh.with.block.model.vo.Blockvi;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.report.model.vo.Report;
 import com.kh.with.report.model.vo.Report2;
@@ -136,13 +139,29 @@ public class AdminServiceImpl implements AdminService {
 		// TODO Auto-generated method stub
 		return ad.selectAdminUser(sqlSession,user);
 	}
-
+	//회원관리 상세보기
 	@Override
-	public ArrayList<UserBoard> selectDetail(UserBoard user) {
+	public ArrayList<UserBoard> selectDetail(UserBoard user1) {
 		// TODO Auto-generated method stub
-		return ad.selectDetail(sqlSession, user);
+		return ad.selectDetail(sqlSession, user1);
+	}
+	@Override
+	public ArrayList<Blockch> selectDetail1(Blockch ch) {
+		// TODO Auto-generated method stub
+		return ad.selectDetail1(sqlSession, ch);
 	}
 
+	@Override
+	public ArrayList<Blockrep> selectDetail2(Blockrep rep) {
+		// TODO Auto-generated method stub
+		return ad.selectDetail2(sqlSession, rep);
+	}
+
+	@Override
+	public ArrayList<Blockvi> selectDetail3(Blockvi vi) {
+		// TODO Auto-generated method stub
+		return ad.selectDetail3(sqlSession, vi);
+	}
 	
 	@Override
 	public ArrayList<Calculate> searchWait() {
@@ -168,6 +187,10 @@ public class AdminServiceImpl implements AdminService {
 	public ArrayList<Calculate> searchSuccessAll(String userNm) {
 		return ad.searchSuccessAll(sqlSession, userNm);
 	}
+
+	
+
+	
 	
 
 

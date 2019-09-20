@@ -9,6 +9,9 @@ import org.springframework.stereotype.Repository;
 import com.kh.with.admin.model.vo.Board;
 import com.kh.with.admin.model.vo.Calculate;
 import com.kh.with.admin.model.vo.UserBoard;
+import com.kh.with.block.model.vo.Blockch;
+import com.kh.with.block.model.vo.Blockrep;
+import com.kh.with.block.model.vo.Blockvi;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.report.model.vo.Report;
 import com.kh.with.report.model.vo.Report2;
@@ -150,11 +153,38 @@ public class AdminDaoImpl implements AdminDao {
 	
 		return userlist;
 	}
+	//회원관리 상세보기
+	@Override
+	public ArrayList<UserBoard> selectDetail(SqlSessionTemplate sqlSession, UserBoard user1) {
+		// TODO Auto-generated method stub
+		ArrayList<UserBoard> detail1 = null;
+		
+		detail1 = (ArrayList)sqlSession.selectList("userBoard.detailList1",user1);
+		
+		return detail1;
+	}
+	@Override
+	public ArrayList<Blockch> selectDetail1(SqlSessionTemplate sqlSession, Blockch ch) {
+		// TODO Auto-generated method stub
+		ArrayList<Blockch> detail2 = null;
+		detail2 = (ArrayList)sqlSession.selectList("userBoard.detailList2",ch);
+		return detail2;
+	}
 
 	@Override
-	public ArrayList<UserBoard> selectDetail(SqlSessionTemplate sqlSession, UserBoard user) {
+	public ArrayList<Blockrep> selectDetail2(SqlSessionTemplate sqlSession, Blockrep rep) {
 		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Blockrep> detail3 = null;
+		detail3 = (ArrayList)sqlSession.selectList("userBoard.detailList3",rep);
+		return detail3;
+	}
+
+	@Override
+	public ArrayList<Blockvi> selectDetail3(SqlSessionTemplate sqlSession, Blockvi vi) {
+		// TODO Auto-generated method stub
+		ArrayList<Blockvi> detail4 = null;
+		detail4 = (ArrayList)sqlSession.selectList("userBoard.detailList4",vi);
+		return detail4;
 	}
 
 	
@@ -202,6 +232,8 @@ public class AdminDaoImpl implements AdminDao {
 		
 		return cList;
 	}
+
+	
 
 
 	
