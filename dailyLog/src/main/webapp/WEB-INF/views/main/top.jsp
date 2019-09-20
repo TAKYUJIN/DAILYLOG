@@ -223,7 +223,7 @@ background:none;
 							
 						<c:forEach var="videoimage" items="${videopop}" begin="0" end="5">
 						<div class="col-sm-4 "><div class="img-box"><div style=" float:left;"> <a href="video.vd">
-						<img src="resources/images/${videoimage.filepath}" width = "350px"  height="300px"  >
+						<img src="resources/images/${videoimage.filenm}" width = "350px"  height="300px"  >
 							<h5>제목:${videoimage.vTitle}</h5>
 							<h5>채널명:${videoimage.chNm }</h5>
 							<h5>태그명:${videoimage.tag }</h5>
@@ -243,7 +243,7 @@ background:none;
 							
 						<c:forEach var="videoimage" items="${videonew}" begin="0" end="5">
 						<div class="col-sm-4" ><div class="img-box"><div style=" float:left;"> <a href="video.vd">
-						<img src="resources/images/${videoimage.filepath}" width = "230px"  height="200px"  >
+						<img src="resources/images/${videoimage.filenm}" width = "230px"  height="200px"  >
 							<h5>제목:${videoimage.vTitle}</h5>
 							<h5>채널명:${videoimage.chNm }</h5>
 							<h5>태그명:${videoimage.tag }</h5>

@@ -2,6 +2,7 @@ package com.kh.with.admin.controller;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -310,9 +311,9 @@ public class AdminController {
 
 	// 관리자 동영상,채널,댓글 신고 내역
 	@RequestMapping(value = "videoreportdetail.ad", method = RequestMethod.GET)
-	public String videoreportdetail(@ModelAttribute Report2 report, @RequestParam("reno") int reno, Model model,
+	public String videoreportdetail(@ModelAttribute Report2 report, Model model,
 			HttpSession session, HttpServletRequest request) {
-
+		int reno = Integer.parseInt(request.getParameter("reno"));
 		List<Report> videoreportdetail = rs.videoreportdetail(reno);
 		List<Report> chreportdetail = rs.chreportdetail(reno);
 		List<Report> repreportdetail = rs.repreportdetail(reno);
@@ -326,34 +327,32 @@ public class AdminController {
 	}
 
 	// 관리자 동영상 신고 상세내역 ->신고처리
-
-	@RequestMapping(value = "videoreportdetail2.ad", method = RequestMethod.POST)
-	public String videoreportdetail2(Model model, HttpSession session, HttpServletRequest request) {
-
-		int reno = Integer.parseInt(request.getParameter("reno"));
-		System.out.println("reno1" + reno);
-		/*
-		 * int vNo =Integer.parseInt(request.getParameter("vNo")); String vTitle=
-		 * request.getParameter("vTitle"); String userNm=request.getParameter("userNm");
-		 */
+	//@RequestParam(value="reno",defaultValue="false") String r,
+	
+	@RequestMapping(value = "videoreportdetail2.ad")
+	public String videoreportdetail2(HttpSession session, HttpServletRequest request) {
+		System.out.println("controller start");
+		Enumeration e = request.getParameterNames();
+		
+		while(e.hasMoreElements()) {
+			System.out.println(e.nextElement());
+		}
+		
 		int recount = Integer.parseInt(request.getParameter("recount"));
-		/*
-		 * String redt=request.getParameter("redt"); String rewhy
-		 * =request.getParameter("rewhy");
-		 */
-
+		int reno = Integer.parseInt(request.getParameter("reno"));
+		
 		Report2 report = new Report2();
-
+		
 		report.setReno(reno);
 		report.setRecount(recount);
-		/*
-		 * report.setvNo(vNo); report.setvTitle(vTitle); report.setUserNm(userNm);
-		 * report.setRedt(redt); report.setRewhy(rewhy);
-		 */
 		int result = rs.videoreportupdate(report);
 
 		if (result > 0) {
-			return "redirect:/videoreportdetail.ad";
+			//
+			
+		//	return "redirect:/videoreportdetail.ad?reno=${v.reno}";
+			return "redirect:/videoreportdetail.ad?reno="+reno;
+			
 		} else {
 			return "redirect:/videoreportdetail.ad";
 		}
