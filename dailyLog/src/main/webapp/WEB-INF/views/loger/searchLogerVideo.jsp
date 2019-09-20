@@ -333,7 +333,7 @@ $(document).ready(function(){
                 <div class="row">
                     <div class="col-sm-3"><h2>Loger <b>Video</b></h2></div>
                     <div class="col-sm-9">
-                        <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button>
+                        <button type="button" class="btn btn-info add-new" onclick="videoAdd();"><i class="fa fa-plus"></i> Add New</button>
                     </div>
                 </div>
             </div>
@@ -409,5 +409,9 @@ $(document).ready(function(){
     <jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
 <script>
+function videoAdd(){
+	location.href='videoUpload.vd';
+	
+}
 </script>
 </html>                            
