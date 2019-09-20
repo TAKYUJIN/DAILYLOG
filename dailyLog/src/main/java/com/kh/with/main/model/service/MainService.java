@@ -28,9 +28,11 @@ public interface MainService {
 	ArrayList<Subscribe> subscribeList(Subscribe subscribe);
 
 	//구독한 채널비디오
-	ArrayList<SubscribeVideo> subscribeVideoList(Subscribe subscribe);
+	ArrayList<SubscribeVideo> subscribeVideoList(SubscribeVideo subscribeVideo);
 
 	int frireject(MailVo mailVo);
+
+	
 
 	
 

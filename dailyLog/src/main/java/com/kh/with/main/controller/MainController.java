@@ -94,12 +94,15 @@ public class MainController {
 		
 		/* System.out.println("유저가 담겼니?::: " +subscribe ); */
 		
+		SubscribeVideo subscribeVideo = new SubscribeVideo();
+		subscribeVideo.setUserNo(userNo);
+		
 		
 		//구독한채널명
 		ArrayList<Subscribe> subscribeList = ms.subscribeList(subscribe);
 		
 		//구독한채널비디오
-		ArrayList<SubscribeVideo> subscribeVideoList = ms.subscribeVideoList(subscribe);
+		ArrayList<SubscribeVideo> subscribeVideoList = ms.subscribeVideoList(subscribeVideo);
 		 
 
 		
@@ -107,8 +110,8 @@ public class MainController {
 		
 		
 		
-		model.addAttribute("subscribeList", subscribeList);
-		
+		model.addAttribute("subscribeList", subscribeList);	
+		model.addAttribute("subscribeVideoList", subscribeVideoList);
 		
 		return "subscribe/subscribeList";
 	}
