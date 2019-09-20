@@ -25,6 +25,9 @@ import com.kh.with.admin.model.service.AdminService;
 import com.kh.with.admin.model.vo.Board;
 import com.kh.with.admin.model.vo.Calculate;
 import com.kh.with.admin.model.vo.UserBoard;
+import com.kh.with.block.model.vo.Blockch;
+import com.kh.with.block.model.vo.Blockrep;
+import com.kh.with.block.model.vo.Blockvi;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.report.model.service.ReportService;
 import com.kh.with.report.model.vo.Report;
@@ -45,6 +48,22 @@ public class AdminController {
 				) {
 			ArrayList<UserBoard>  userlist = as.selectAdminUser(user);
 			
+	
+			for(int i = 0; i < userlist.size(); i++) {
+			if(userlist.get(i).getChYn().equals("Y")) {
+				userlist.get(i).setChYn("로거");
+			}else if(userlist.get(i).getChYn().equals("N")) {
+				userlist.get(i).setChYn("회원");
+			}
+			
+			if(userlist.get(i).getStatus().equals("0")) {
+				userlist.get(i).setStatus("N");
+			}else if(userlist.get(i).getStatus().equals("1")) {
+				userlist.get(i).setStatus("Y");
+			}
+			}
+			
+					
 			model.addAttribute("userlist", userlist);
 			model.addAttribute("UserBoard", user);
 			
@@ -57,13 +76,28 @@ public class AdminController {
 		
 		//관리자  회원상세보기
 		@RequestMapping(value="adminUserDetail.ad")
-		public String selectDetail(UserBoard user, Model model) {
-			ArrayList<UserBoard> user1 =as.selectDetail(user);
+		public String selectDetail(UserBoard user1, Blockch ch, Blockrep rep, Blockvi vi, Model model) {
+			ArrayList<UserBoard> userList =as.selectDetail(user1);
 			
-			model.addAttribute("user1", user1);
-			model.addAttribute("UserBoard", user);
+			ArrayList<Blockch> ch1 = as.selectDetail1(ch);
 			
-			System.out.println("list ;;;;"+user1);
+			ArrayList<Blockrep> rep1 = as.selectDetail2(rep);
+			
+			ArrayList<Blockvi> vi1 = as.selectDetail3(vi);
+			
+			model.addAttribute("userlist", userList);
+			model.addAttribute("ch1", ch1);
+			model.addAttribute("rep1", rep1);
+			model.addAttribute("vi1", vi1);
+			model.addAttribute("UserBoard", user1);
+			model.addAttribute("Blockch", ch);
+			model.addAttribute("Blockrep", rep);
+			model.addAttribute("Blockvi", vi);
+			
+			System.out.println("list ;;;;"+userList);
+			System.out.println("list ;;;;"+ch1);
+			System.out.println("list ;;;;"+rep1);
+			System.out.println("list ;;;;"+vi1);
 			
 			return "admin/UserDetail";
 		}
