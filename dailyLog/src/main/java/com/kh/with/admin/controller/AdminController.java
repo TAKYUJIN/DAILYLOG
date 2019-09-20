@@ -166,10 +166,32 @@ public class AdminController {
 			
 			return "admin/adminCalculate";
 		}
-	
+	/*
+	 * Report2 report = new Report2(); List<Object> ublacklist =
+	 * as.ublacklist(report);
+	 * 
+	 * System.out.println("ublacklist" + ublacklist);
+	 * 
+	 * model.addAttribute("ublacklist", ublacklist);
+	 */
+		
 	// 관리자 채널 페이지 이동
 	@RequestMapping(value = "channelManage.ad")
-	public String adminChannelView() {
+	public String adminChannelView(Model model, HttpSession session) {
+		  
+//		List<Object> channelInfo = as.channelInfo();
+		List<Object> calInfo = as.calInfo();
+		List<Object> reportInfo = as.reportInfo();
+		
+	//	model.addAttribute("channelInfo", channelInfo);
+		model.addAttribute("calInfo", calInfo);
+		model.addAttribute("reportInfo", reportInfo);
+		
+		//System.out.println("channelInfo : " + channelInfo);
+		System.out.println("calInfo : " + calInfo);
+		System.out.println("reportInfo : " + reportInfo);
+		
+		
 		return "admin/channelManage";
 	}
 
@@ -330,6 +352,7 @@ public class AdminController {
 
 		return "admin/ublacklist";
 	}
+	
 
 	// 관리자 채널 블랙 리스트
 	@RequestMapping(value = "cblacklist.ad")
@@ -405,5 +428,6 @@ public class AdminController {
 	 * 
 	 * }
 	 */
-
+	
+	
 }

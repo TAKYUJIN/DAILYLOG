@@ -72,7 +72,13 @@ public interface AdminDao {
 
 	ArrayList<Calculate> searchSuccessAll(SqlSessionTemplate sqlSession, String userNm);
 
-	
+
+	List<Object> channelInfo(SqlSessionTemplate sqlSession);
+
+	List<Object> calInfo(SqlSessionTemplate sqlSession);
+
+	List<Object> reportInfo(SqlSessionTemplate sqlSession);
+
 
 	
 
