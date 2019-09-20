@@ -450,7 +450,6 @@ public class VideoController {
 
 		m = (Member) session.getAttribute("loginUser");
 
-		String filepath = (String) request.getSession().getAttribute("filepath");
 		String fileName = (String) session.getAttribute("fileName");
 		String vTitle = request.getParameter("vTitle");
 		String beforetag = request.getParameter("tag");
@@ -480,7 +479,7 @@ public class VideoController {
 		video.setAdYn(adYn);
 		video.setOpenTy(openTy);
 		video.setUserNo(getUserNo);
-		video.setFilepath(fileName);
+		video.setFileNm(fileName);
 		video.setAdInfo(adInfo);
 		video.setChNm(chNm);
 
@@ -491,7 +490,7 @@ public class VideoController {
 
 		Attachment attachment = new Attachment();
 		/* attachment.setEnrollNm(filepath1); */
-		attachment.setFilepath(enrollNm);
+		attachment.setFileNm(enrollNm);
 		attachment.setUserNo(getUserNo);
 
 		int result1 = vs.insertAttachment(attachment);

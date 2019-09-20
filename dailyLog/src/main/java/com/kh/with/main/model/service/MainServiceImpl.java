@@ -63,9 +63,9 @@ public class MainServiceImpl implements MainService{
 
 	//구독한 채널비디오
 	@Override
-	public ArrayList<SubscribeVideo> subscribeVideoList(Subscribe subscribe) {
+	public ArrayList<SubscribeVideo> subscribeVideoList(SubscribeVideo subscribeVideo) {
 		
-		return md.subscribeVideoList(sqlSession, subscribe);
+		return md.subscribeVideoList(sqlSession, subscribeVideo);
 	}
 
 	@Override

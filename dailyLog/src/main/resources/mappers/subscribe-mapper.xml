@@ -13,18 +13,46 @@
         <result property="chNm" column="CH_NM"/>
      </resultMap>
      
+     
+     	<resultMap type="SubscribeVideo" id="SubscribeResultSet2">
+     	
+        <id property="userNo" column="USER_NO"/>
+        <result property="vNo" column="V_NO"/>
+        <result property="vTitle" column="V_TITLE"/>
+        <result property="count" column="COUNT"/>
+          <result property="fileNm" column="FILE_NM"/>
+           <result property="chNm" column="CH_NM"/>
+           <result property="uploadDt" column="UPLOAD_DT"/>
+     </resultMap>
+     
+     
+     
+     
     
-     <!-- 구독리스트 -->
+     <!-- 구독채널명리스트 -->
      <select id="subscribeList" resultMap="SubscribeResultSet">
 		SELECT  *
 		FROM LOGER L
 		JOIN SUBSCRIBE S 
 		ON (S.CH_NO = L.CH_NO)
-		WHERE S.USER_NO= #{userNo}
+		WHERE S.USER_NO = #{userNo}
 	</select>
      
-     
-     
+     <!-- 구독영상리스트-->
+       <select id="subscribeVideoList" resultMap="SubscribeResultSet2">
+	SELECT S.USER_NO,V.V_NO , V.V_TITLE , V.COUNT ,A.FILE_NM ,v.CH_NM, V.UPLOAD_DT
+	FROM SUBSCRIBE S 
+	JOIN LOGER L
+	ON (S.CH_NO = L.CH_NO)
+	JOIN VIDEO V
+	ON (L.CH_NM = V.CH_NM)
+	JOIN ATTACHMENT A
+	ON (A.V_NO = V.V_NO)
+	WHERE S.USER_NO =  #{userNo}
+	ORDER BY UPLOAD_DT DESC
+
+	</select>
+        
      
 </mapper>
 
