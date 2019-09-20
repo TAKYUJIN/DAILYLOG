@@ -74,10 +74,10 @@ input:focus {outline:none;}
 						<tr>
 					</c:if>
 					<td><video id='my-video' class='video-js' width="300px;"
-							height="200px;" controls loop poster='resources/images/${b.filepath}' data-setup='{}'
+							height="200px;" controls loop poster='resources/images/${b.fileNm}' data-setup='{}'
 							onclick="location.href='video.vd?userNo=${b.userNo}&vNo=${b.vNo}'">
-							<source src="resources/images/${b.filepath}" type="">
-							 <source src='resources/uploadFiles/${b.vfilepath}' type='video/mp4'>
+							<source src="resources/images/${b.fileNm}" type="">
+							 <source src='resources/uploadFiles/${b.vfileNm}' type='video/mp4'>
 							<!--  <source src='MY_VIDEO.webm' type='video/webm'> -->
 						</video><br> 
 						<input type="text" value="${b.vTitle}" class="video_td" id="videoTitle" readonly onfocus="this.blur();"> 

@@ -22,7 +22,9 @@
 		<result property="adInfo" column="AD_INFO" />
 		<result property="location" column="LOCATION" />
 		<result property="info" column="INFO" />
+
 		<result property="fileNm" column="FILE_NM" />
+
 		<result property="openTy" column="OPEN_TY" />
 	</resultMap>
 	
@@ -32,7 +34,7 @@
 		<id property="userNo" column="USER_NO" />
 		<result property="amNo" column="AM_NO" />
 		<result property="vNo" column="V_NO" />
-		<result property="filepath" column="FILEPATH" />
+		<result property="filenm" column="FILE_NM" />
 		<result property="amDt" column="AM_DT" />
 		<result property="enrollNm" column="ENROLL_NM" />
 		<result property="modifyNm" column="MODIFY_NM" />
@@ -48,7 +50,7 @@
 		 SELECT USER_NO,FILEPATH,AM_DT FROM ATTACHMENT 
 	</select> -->
 <select id="videoimagelist"  resultMap="videoRSet"   >
-	   SELECT A.USER_NO,A.FILEPATH,A.AM_DT,V.V_NO,V.V_TITLE,V.CH_NM , V.TAG
+	   SELECT A.USER_NO,A.FILE_NM,A.AM_DT,V.V_NO,V.V_TITLE,V.CH_NM , V.TAG
 	  FROM ATTACHMENT A 
 	  JOIN VIDEO V ON(V.V_NO = A.V_NO)
        WHERE V.V_NO 
@@ -59,7 +61,7 @@
 
 <select id="videopop"  resultMap="videoRSet"  parameterType="map" >
 	
-	   SELECT A.USER_NO,A.FILEPATH,A.AM_DT,V.V_NO,V.V_TITLE,V.CH_NM,V.COUNT, V.TAG 
+	   SELECT A.USER_NO,A.FILE_NM,A.AM_DT,V.V_NO,V.V_TITLE,V.CH_NM,V.COUNT, V.TAG 
 	  FROM ATTACHMENT A 
 	  JOIN VIDEO V ON(V.V_NO = A.V_NO)
 	   WHERE V.V_NO 
@@ -71,7 +73,7 @@
 	
 	<select id="videonew"  resultMap="videoRSet"  parameterType="map" >
 	
-	  SELECT A.USER_NO,A.FILEPATH,A.AM_DT,V.V_NO,V.V_TITLE,V.CH_NM , V.TAG
+	  SELECT A.USER_NO,A.FILE_NM,A.AM_DT,V.V_NO,V.V_TITLE,V.CH_NM , V.TAG
 	  FROM ATTACHMENT A 
 	  JOIN VIDEO V ON(V.V_NO = A.V_NO)
 	   WHERE V.V_NO 
@@ -81,7 +83,7 @@
 	
 	<select id="videobook"  resultMap="videoRSet"  parameterType="map" >
 	
-	  SELECT A.USER_NO,A.FILEPATH,A.AM_DT,V.V_NO,V.V_TITLE,V.CH_NM , V.TAG
+	  SELECT A.USER_NO,A.FILE_NM,A.AM_DT,V.V_NO,V.V_TITLE,V.CH_NM , V.TAG
 	  FROM ATTACHMENT A 
 	  JOIN VIDEO V ON(V.V_NO = A.V_NO)
 	   WHERE V.V_NO 
@@ -92,7 +94,7 @@
 	
 	<select id="videolike"  resultMap="videoRSet"  parameterType="map" >
 	
-	 SELECT A.USER_NO,A.FILEPATH,A.AM_DT,V.V_NO,V.V_TITLE,V.CH_NM ,L.LIKE_NO,V_TY, V.TAG
+	 SELECT A.USER_NO,A.FILE_NM,A.AM_DT,V.V_NO,V.V_TITLE,V.CH_NM ,L.LIKE_NO,V_TY, V.TAG
 	  FROM ATTACHMENT A 
 	 JOIN VIDEO V ON(V.V_NO = A.V_NO)
 	  JOIN VIDEO_LIKE L ON(L.V_NO = A.V_NO)
@@ -103,7 +105,7 @@
 
 <select id="videosub"  resultMap="videoRSet" >
 	
-	SELECT A.USER_NO,A.FILEPATH,A.AM_DT,V.V_NO,V.V_TITLE,V.CH_NM ,L.LIKE_NO,V_TY,V.TAG
+	SELECT A.USER_NO,A.FILE_NM,A.AM_DT,V.V_NO,V.V_TITLE,V.CH_NM ,L.LIKE_NO,V_TY,V.TAG
 	  FROM ATTACHMENT A 
 	 JOIN VIDEO V ON(V.V_NO = A.V_NO)
 	  JOIN VIDEO_LIKE L ON(L.V_NO = A.V_NO)
@@ -123,7 +125,7 @@
 	
 
 <select id="videoimagelist1"  resultMap="videoRSet"   >
-	 SELECT A.USER_NO,A.FILEPATH,A.AM_DT,V.V_NO,V.V_TITLE,V.CH_NM ,V.TAG
+	 SELECT A.USER_NO,A.FILE_NM,A.AM_DT,V.V_NO,V.V_TITLE,V.CH_NM ,V.TAG
 	  FROM ATTACHMENT A 
 	  JOIN VIDEO V ON(V.V_NO = A.V_NO)
 	</select>
@@ -131,7 +133,7 @@
 
 <select id="videopop1"  resultMap="videoRSet"  parameterType="map" >
 	
-	   SELECT A.USER_NO,A.FILEPATH,A.AM_DT,V.V_NO,V.V_TITLE,V.CH_NM,V.COUNT ,V.TAG
+	   SELECT A.USER_NO,A.FILE_NM,A.AM_DT,V.V_NO,V.V_TITLE,V.CH_NM,V.COUNT ,V.TAG
 	  FROM ATTACHMENT A 
 	  JOIN VIDEO V ON(V.V_NO = A.V_NO)
       ORDER BY V.COUNT DESC
@@ -141,7 +143,7 @@
 	
 	<select id="videonew1"  resultMap="videoRSet"  parameterType="map" >
 	
-	  SELECT A.USER_NO,A.FILEPATH,A.AM_DT,V.V_NO,V.V_TITLE,V.CH_NM  ,V.TAG
+	  SELECT A.USER_NO,A.FILE_NM,A.AM_DT,V.V_NO,V.V_TITLE,V.CH_NM  ,V.TAG
 	  FROM ATTACHMENT A 
 	  JOIN VIDEO V ON(V.V_NO = A.V_NO)
 	 ORDER BY AM_DT DESC

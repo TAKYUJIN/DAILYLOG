@@ -2,6 +2,7 @@ package com.kh.with.admin.controller;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,6 +25,9 @@ import com.kh.with.admin.model.service.AdminService;
 import com.kh.with.admin.model.vo.Board;
 import com.kh.with.admin.model.vo.Calculate;
 import com.kh.with.admin.model.vo.UserBoard;
+import com.kh.with.block.model.vo.Blockch;
+import com.kh.with.block.model.vo.Blockrep;
+import com.kh.with.block.model.vo.Blockvi;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.report.model.service.ReportService;
 import com.kh.with.report.model.vo.Report;
@@ -44,6 +48,22 @@ public class AdminController {
 				) {
 			ArrayList<UserBoard>  userlist = as.selectAdminUser(user);
 			
+	
+			for(int i = 0; i < userlist.size(); i++) {
+			if(userlist.get(i).getChYn().equals("Y")) {
+				userlist.get(i).setChYn("로거");
+			}else if(userlist.get(i).getChYn().equals("N")) {
+				userlist.get(i).setChYn("회원");
+			}
+			
+			if(userlist.get(i).getStatus().equals("0")) {
+				userlist.get(i).setStatus("N");
+			}else if(userlist.get(i).getStatus().equals("1")) {
+				userlist.get(i).setStatus("Y");
+			}
+			}
+			
+					
 			model.addAttribute("userlist", userlist);
 			model.addAttribute("UserBoard", user);
 			
@@ -56,13 +76,28 @@ public class AdminController {
 		
 		//관리자  회원상세보기
 		@RequestMapping(value="adminUserDetail.ad")
-		public String selectDetail(UserBoard user, Model model) {
-			ArrayList<UserBoard> user1 =as.selectDetail(user);
+		public String selectDetail(UserBoard user1, Blockch ch, Blockrep rep, Blockvi vi, Model model) {
+			ArrayList<UserBoard> userList =as.selectDetail(user1);
 			
-			model.addAttribute("user1", user1);
-			model.addAttribute("UserBoard", user);
+			ArrayList<Blockch> ch1 = as.selectDetail1(ch);
 			
-			System.out.println("list ;;;;"+user1);
+			ArrayList<Blockrep> rep1 = as.selectDetail2(rep);
+			
+			ArrayList<Blockvi> vi1 = as.selectDetail3(vi);
+			
+			model.addAttribute("userlist", userList);
+			model.addAttribute("ch1", ch1);
+			model.addAttribute("rep1", rep1);
+			model.addAttribute("vi1", vi1);
+			model.addAttribute("UserBoard", user1);
+			model.addAttribute("Blockch", ch);
+			model.addAttribute("Blockrep", rep);
+			model.addAttribute("Blockvi", vi);
+			
+			System.out.println("list ;;;;"+userList);
+			System.out.println("list ;;;;"+ch1);
+			System.out.println("list ;;;;"+rep1);
+			System.out.println("list ;;;;"+vi1);
 			
 			return "admin/UserDetail";
 		}
@@ -310,9 +345,9 @@ public class AdminController {
 
 	// 관리자 동영상,채널,댓글 신고 내역
 	@RequestMapping(value = "videoreportdetail.ad", method = RequestMethod.GET)
-	public String videoreportdetail(@ModelAttribute Report2 report, @RequestParam("reno") int reno, Model model,
+	public String videoreportdetail(@ModelAttribute Report2 report, Model model,
 			HttpSession session, HttpServletRequest request) {
-
+		int reno = Integer.parseInt(request.getParameter("reno"));
 		List<Report> videoreportdetail = rs.videoreportdetail(reno);
 		List<Report> chreportdetail = rs.chreportdetail(reno);
 		List<Report> repreportdetail = rs.repreportdetail(reno);
@@ -326,34 +361,32 @@ public class AdminController {
 	}
 
 	// 관리자 동영상 신고 상세내역 ->신고처리
-
-	@RequestMapping(value = "videoreportdetail2.ad", method = RequestMethod.POST)
-	public String videoreportdetail2(Model model, HttpSession session, HttpServletRequest request) {
-
-		int reno = Integer.parseInt(request.getParameter("reno"));
-		System.out.println("reno1" + reno);
-		/*
-		 * int vNo =Integer.parseInt(request.getParameter("vNo")); String vTitle=
-		 * request.getParameter("vTitle"); String userNm=request.getParameter("userNm");
-		 */
+	//@RequestParam(value="reno",defaultValue="false") String r,
+	
+	@RequestMapping(value = "videoreportdetail2.ad")
+	public String videoreportdetail2(HttpSession session, HttpServletRequest request) {
+		System.out.println("controller start");
+		Enumeration e = request.getParameterNames();
+		
+		while(e.hasMoreElements()) {
+			System.out.println(e.nextElement());
+		}
+		
 		int recount = Integer.parseInt(request.getParameter("recount"));
-		/*
-		 * String redt=request.getParameter("redt"); String rewhy
-		 * =request.getParameter("rewhy");
-		 */
-
+		int reno = Integer.parseInt(request.getParameter("reno"));
+		
 		Report2 report = new Report2();
-
+		
 		report.setReno(reno);
 		report.setRecount(recount);
-		/*
-		 * report.setvNo(vNo); report.setvTitle(vTitle); report.setUserNm(userNm);
-		 * report.setRedt(redt); report.setRewhy(rewhy);
-		 */
 		int result = rs.videoreportupdate(report);
 
 		if (result > 0) {
-			return "redirect:/videoreportdetail.ad";
+			//
+			
+		//	return "redirect:/videoreportdetail.ad?reno=${v.reno}";
+			return "redirect:/videoreportdetail.ad?reno="+reno;
+			
 		} else {
 			return "redirect:/videoreportdetail.ad";
 		}
