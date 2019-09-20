@@ -22,6 +22,7 @@
 		<typeAlias type="com.kh.with.main.model.vo.VideoLike" alias="VideoLike" />
 		<typeAlias type="com.kh.with.admin.model.vo.Calculate" alias="Calculate2" />
 		<typeAlias type="com.kh.with.main.model.vo.Subscribe" alias="Subscribe"/>
+			<typeAlias type="com.kh.with.main.model.vo.SubscribeVideo" alias="SubscribeVideo"/>
 		<typeAlias type="com.kh.with.admin.model.vo.UserBoard" alias="userBoard" />
 
 	</typeAliases>

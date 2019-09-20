@@ -54,13 +54,13 @@ public class MainDaoImpl implements MainDao{
 		return sqlSession.selectList("Video.searchtag",search);
 	}
 
-	//구독
+	//구독한 채널명
 	@Override
 	public ArrayList<Subscribe> subscribeList(SqlSessionTemplate sqlSession, Subscribe subscribe) {
 		
 		ArrayList<Subscribe> subscribeList = null;
 		
-		System.out.println("dao까지 왔나요?"  + subscribe );
+		/* System.out.println("dao까지 왔나요?" + subscribe ); */
 		
 		subscribeList = (ArrayList)sqlSession.selectList("Subscribe.subscribeList", subscribe);
 		
@@ -72,11 +72,41 @@ public class MainDaoImpl implements MainDao{
 
 	//구독한 채널의비디오
 	@Override
-	public ArrayList<SubscribeVideo> subscribeVideoList(SqlSessionTemplate sqlSession, Subscribe subscribe) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<SubscribeVideo> subscribeVideoList(SqlSessionTemplate sqlSession, SubscribeVideo subscribeVideo) {
+		
+		
+		ArrayList<SubscribeVideo> subscribeVideoList = null;
+		
+		/* System.out.println("구독한채널의비디오dao까지 왔나요?" + subscribeVideo ); */
+		
+		subscribeVideoList = (ArrayList)sqlSession.selectList("Subscribe.subscribeVideoList", subscribeVideo);
+		
+		
+		 System.out.println("구독영상:::" + subscribeVideoList); 
+		
+		return subscribeVideoList;
 	}
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@Override
 	public int subscribeVideoList(SqlSessionTemplate sqlSession, MailVo mailVo) {
 		 

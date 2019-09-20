@@ -20,7 +20,7 @@
 		<result property="adInfo" column="AD_INFO" />
 		<result property="location" column="LOCATION" />
 		<result property="info" column="INFO" />
-		<result property="filepath" column="FILEPATH" />
+		<result property="fileNm" column="FILE_NM" />
 		<result property="openTy" column="OPEN_TY" />
 	</resultMap>
 	

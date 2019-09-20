@@ -29,7 +29,7 @@ public interface MainDao {
 	ArrayList<Subscribe> subscribeList(SqlSessionTemplate sqlSession, Subscribe subscribe);
 
 	//구독한 채널비디오
-	ArrayList<SubscribeVideo> subscribeVideoList(SqlSessionTemplate sqlSession, Subscribe subscribe);
+	ArrayList<SubscribeVideo> subscribeVideoList(SqlSessionTemplate sqlSession, SubscribeVideo subscribeVideo);
 
 	int subscribeVideoList(SqlSessionTemplate sqlSession, MailVo mailVo);
 

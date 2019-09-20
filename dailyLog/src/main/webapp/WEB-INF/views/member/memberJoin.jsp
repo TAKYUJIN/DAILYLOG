@@ -1,16 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%
-	String checkNo = Integer.toString((int)(Math.random()*999999) + 100000);
+	String checkNo = Integer.toString((int) (Math.random() * 999999) + 100000);
 	System.out.println(checkNo);
-%>  
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>WITH</title>
 <script
-   src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
    $(function() {
       var idx = false;
@@ -94,7 +94,7 @@
       
       $("#sendPn").click(function() {
          var rphone = $('#phone').val();
-         var msg = $("#msg").val();
+         var msg = $('input[name=msg]').val();
          var sphone1 = $("#sphone1").val();
          var sphone2 = $("#sphone2").val();
          var sphone3 = $("#sphone3").val();
@@ -108,20 +108,37 @@
             type:"post",
             data:{rphone:rphone, sphone1:sphone1, sphone2:sphone2, sphone3:sphone3, msg:msg, action:action},
             success : function(data) {
-               console.log(data);
-               //if (data == 0 && $.trim($("#phone").val()) != '') {
-                  alert("인증번호가 발송되었습니다 ");
-               //} else {
-                  //alert("tlfvo");
-               //}
-            },
-            error : function() {
-               alert("서버에러 ");
-            }
-         });
-      });
-      
-      
+				alert("인증번호가 발송되었습니다.");			
+				
+						
+		
+				$("#cksmsPn").on("click", function(){
+					
+					var checkNo = $("input[name='msg']").val();
+					var checkPhone = $("input[name='authorization_code']").val();		
+					
+					console.log("checkNo :::: " + checkNo);
+					console.log("checkPhone ::::" + checkPhone);
+					
+					if(checkNo == checkPhone){
+						$("#checkNo").attr({"readonly":"true"});
+						$("#cksmsPn").hide();
+						
+						alert("인증이 완료되었습니다.");
+						$("#joinBtn").removeAttr("disabled");
+						num = 1;
+					}else{
+						alert("인증번호가 틀렸습니다. 다시 입력하세요.");
+						$("#joinBtn").attr("disabled", "disabled");
+					}
+							
+				});
+			},
+			error:function(){
+				alert("서버에러 ");
+		    }			
+		});
+	});
       
       
       $("#joinForm").submit(
@@ -167,254 +184,256 @@
       </script>
 <style type="text/css">
 body {
-   color: #fff;
-   background: white;
-   font-family: 'Roboto', sans-serif;
+	color: #fff;
+	background: white;
+	font-family: 'Roboto', sans-serif;
 }
 
 .form-control {
-   height: 40px;
-   box-shadow: none;
-   color: #969fa4;
+	height: 40px;
+	box-shadow: none;
+	color: #969fa4;
 }
 
 .form-control:focus {
-   border-color: #192466;
+	border-color: #192466;
 }
 
 .form-control, .btn {
-   border-radius: 3px;
+	border-radius: 3px;
 }
 
 .signup-form {
-   width: 400px;
-   margin: 0 auto;
-   padding: 30px 0;
+	width: 400px;
+	margin: 0 auto;
+	padding: 30px 0;
 }
 
 .signup-form h2 {
-   color: #636363;
-   margin: 0 0 15px;
-   position: relative;
-   text-align: center;
+	color: #636363;
+	margin: 0 0 15px;
+	position: relative;
+	text-align: center;
 }
 
 .signup-form h2:before, .signup-form h2:after {
-   content: "";
-   height: 2px;
-   width: 30%;
-   background: #d4d4d4;
-   position: absolute;
-   top: 50%;
-   z-index: 2;
+	content: "";
+	height: 2px;
+	width: 30%;
+	background: #d4d4d4;
+	position: absolute;
+	top: 50%;
+	z-index: 2;
 }
 
 .signup-form h2:before {
-   left: 0;
+	left: 0;
 }
 
 .signup-form h2:after {
-   right: 0;
+	right: 0;
 }
 
 .signup-form .hint-text {
-   color: #999;
-   margin-bottom: 30px;
-   text-align: center;
+	color: #999;
+	margin-bottom: 30px;
+	text-align: center;
 }
 
 .signup-form form {
-   color: #999;
-   border-radius: 3px;
-   margin-bottom: 15px;
-   padding: 30px;
+	color: #999;
+	border-radius: 3px;
+	margin-bottom: 15px;
+	padding: 30px;
 }
 
 .signup-form .form-group {
-   margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 .signup-form input[type="checkbox"] {
-   margin-top: 3px;
+	margin-top: 3px;
 }
 
 .signup-form .btn {
-   font-size: 16px;
-   font-weight: bold;
-   min-width: 140px;
-   outline: none !important;
+	font-size: 16px;
+	font-weight: bold;
+	min-width: 140px;
+	outline: none !important;
 }
 
 .signup-form .row div:first-child {
-   padding-right: 10px;
+	padding-right: 10px;
 }
 
 .signup-form .row div:last-child {
-   padding-left: 10px;
+	padding-left: 10px;
 }
 
 .signup-form a {
-   color: #fff;
-   text-decoration: underline;
+	color: #fff;
+	text-decoration: underline;
 }
 
 .signup-form a:hover {
-   text-decoration: none;
+	text-decoration: none;
 }
 
 .signup-form form a {
-   color: #192466;
-   text-decoration: none;
+	color: #192466;
+	text-decoration: none;
 }
 
 .signup-form form a:hover {
-   text-decoration: underline;
+	text-decoration: underline;
 }
 
 .btn-join {
-   color: #fff;
-   background-color: #13334A;
-   border-color: #4cae4c;
+	color: #fff;
+	background-color: #13334A;
+	border-color: #4cae4c;
 }
 </style>
 </head>
 <body>
-   <jsp:include page="../common/guest.jsp"></jsp:include>
-   <br>
-   <br>
-   <br>
-   <div class="signup-form">
+	<jsp:include page="../common/guest.jsp"></jsp:include>
+	<br>
+	<br>
+	<br>
+	<div class="signup-form">
 
-      <form id="joinForm" action="insert.me" method="post"
-         encType="multipart/form-data">
-         <table align="center">
-            <h2>Sign up</h2>
-            <p class="hint-text">
-               Create your account. <br>It's free and only takes a minute.
-            </p>
+		<form id="joinForm" action="insert.me" method="post"
+			encType="multipart/form-data">
+			<table align="center">
+				<h2>Sign up</h2>
+				<p class="hint-text">
+					Create your account. <br>It's free and only takes a minute.
+				</p>
 
-            <div class="form-group">
-               <input type="text" class="form-control" name="userNm" id="userNm"
-                  placeholder="Name" required="required">
-            </div>
-            </div>
-            <div class="form-group">
-               <div class="row">
-                  <div class="col-xs-9">
-                     <input type="email" class="form-control" name="userId"
-                        id="userId" placeholder="Email" required="required">
-                  </div>
-                  <div class="col-xs-3">
-                     <button
-                        style="height: 35px; border-radius: 5px; background: #13334A; color: white; border: solid 1px;"
-                        name="btncheck" id="ckId">중복확인</button>
-                  </div>
-               </div>
-            </div>
-            <div class="form-group">
-               <input type="password" class="form-control" name="userPwd"
-                  id="userPwd" placeholder="Password" required="required">
-            </div>
-            <div class="form-group">
-               <input type="password" class="form-control" name="userPwd2"
-                  id="userPwd2" placeholder="Confirm Password" required="required">
-            </div>
-            <div class="form-group">
-               <div class="row">
-                  <div class="col-xs-9">
-                     <input type="text" class="form-control" name="nickname"
-                        id="nickname" placeholder="Nickname" required="required">
-                  </div>
-                  <div class="col-xs-3">
-                     <button id="ckNn"
-                        style="height: 35px; border-radius: 5px; background: #13334A; color: white; border: solid 1px;"
-                        name="btncheck">중복확인</button>
-                  </div>
-               </div>
-            </div>
+				<div class="form-group">
+					<input type="text" class="form-control" name="userNm" id="userNm"
+						placeholder="Name" required="required" style="color: black;">
+				</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-xs-9">
+							<input type="email" class="form-control" name="userId"
+								id="userId" placeholder="Email" required="required" style="color: black;">
+						</div>
+						<div class="col-xs-3">
+							<button
+								style="height: 35px; border-radius: 5px; background: #13334A; color: white; border: solid 1px;"
+								name="btncheck" id="ckId">중복확인</button>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<input type="password" class="form-control" name="userPwd"
+						id="userPwd" placeholder="Password" required="required" style="color: black;">
+				</div>
+				<div class="form-group">
+					<input type="password" class="form-control" name="userPwd2"
+						id="userPwd2" placeholder="Confirm Password" required="required" style="color: black;">
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-xs-9">
+							<input type="text" class="form-control" name="nickname"
+								id="nickname" placeholder="Nickname" required="required" style="color: black;">
+						</div>
+						<div class="col-xs-3">
+							<button id="ckNn"
+								style="height: 35px; border-radius: 5px; background: #13334A; color: white; border: solid 1px;"
+								name="btncheck">중복확인</button>
+						</div>
+					</div>
+				</div>
 
-            <div class="form-group">
-               <div class="row">
-                  <div class="col-xs-3">
-                     <input type="text" class="form-control" placeholder="Gender"
-                        disabled>
-                  </div>
-                  <div class="col-xs-3" style="margin-top: 5px;">
-                     <input type="radio" name="gender" id="gender" value="여"
-                        checked="checked">&nbsp;&nbsp; 여
-                  </div>
-                  <div class="col-xs-3" style="margin-top: 5px;">
-                     <input type="radio" name="gender" id="gender" value="남">&nbsp;&nbsp;
-                     남
-                  </div>
-               </div>
-            </div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-xs-3">
+							<input type="text" class="form-control" placeholder="Gender"
+								disabled >
+						</div>
+						<div class="col-xs-3" style="margin-top: 5px;">
+							<input type="radio" name="gender" id="gender" value="여"
+								checked="checked">&nbsp;&nbsp; 여
+						</div>
+						<div class="col-xs-3" style="margin-top: 5px;">
+							<input type="radio" name="gender" id="gender" value="남">&nbsp;&nbsp;
+							남
+						</div>
+					</div>
+				</div>
 
-            <div class="form-group">
-               <input type="text" class="form-control" name="birth" id="birth"
-                  placeholder="Birth  ex) 961231" required="required">
-            </div>
+				<div class="form-group">
+					<input type="text" class="form-control" name="birth" id="birth"
+						placeholder="Birth  ex) 961231" required="required" style="color: black;">
+				</div>
 
-            <div class="form-group">
-               <div class="row">
-                  <div class="col-xs-9">
-                     <input type="tel" class="form-control" name="phone" id="phone"
-                        placeholder="Phone" required="required">
-                  </div>
-                  <div class="col-xs-3">
-                     <button id="ckPn"
-                        style="height: 35px; border-radius: 5px; background: #13334A; color: white; border: solid 1px;"
-                        name="btncheck">중복확인</button>
-                     <button id="sendPn"
-                        style="height: 35px; border-radius: 5px; background: #13334A; color: white; border: solid 1px;"
-                        name="btncheck" hidden>문자전송</button>
-                  </div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-xs-9">
+							<input type="tel" class="form-control" name="phone" id="phone"
+								placeholder="Phone" required="required" style="color: black;">
+						</div>
+						<div class="col-xs-3">
+							<button id="ckPn"
+								style="height: 35px; border-radius: 5px; background: #13334A; color: white; border: solid 1px;"
+								name="btncheck">중복확인</button>
+							<button id="sendPn"
+								style="height: 35px; border-radius: 5px; background: #13334A; color: white; border: solid 1px;"
+								name="btncheck" hidden>문자전송</button>
+						</div>
 
-               </div>
-            </div>
-            <div class="form-group" id="showsms" hidden>
-               <div class="row">
-                  <div class="col-xs-9">
-                     <input type="text" class="form-control" name="authorization_code" id="authorization_code" placeholder="authorization code" required="required"> 
-                        <input type="hidden" id="action" name="action" value="go">
-                        <input type="hidden" name="msg" value="<%=checkNo%>">
-                        <input type="hidden" id="sphone1" name="sphone1" value="010"> 
-                        <input type="hidden" id="sphone2" name="sphone2" value="4560"> 
-                        <input type="hidden" id="sphone3" name="sphone3" value="1780">
-                  </div>
-                  <div class="col-xs-3">
-                     <button id="cksmsPn"
-                        style="height: 35px; border-radius: 5px; background: #13334A; color: white; border: solid 1px;"
-                        name="btncheck">인증확인</button>
+					</div>
+				</div>
+				<div class="form-group" id="showsms" hidden>
+					<div class="row">
+						<div class="col-xs-9">
+							<input type="text" class="form-control" name="authorization_code"
+								id="authorization_code" placeholder="authorization code"
+								 style="color: black;"> <input type="hidden" id="action"
+								name="action" value="go"> <input type="hidden"
+								name="msg" value="<%=checkNo%>"> <input type="hidden"
+								id="sphone1" name="sphone1" value="010"> <input
+								type="hidden" id="sphone2" name="sphone2" value="9923">
+							<input type="hidden" id="sphone3" name="sphone3" value="0092">
+						</div>
+						<div class="col-xs-3">
+							<button id="cksmsPn"
+								style="height: 35px; border-radius: 5px; background: #13334A; color: white; border: solid 1px;"
+								name="cksmsPn">인증확인</button>
 
-                  </div>
-               </div>
-            </div>
-
-
-            <br>
-            <br>
-            <div class="form-group">
-               <button type="submit" id="joinBtn"
-                  class="btn btn-join btn-lg btn-block" onclick="joinfiBtn();">가입하기
-               </button>
-
-            </div>
+						</div>
+					</div>
+				</div>
 
 
-         </table>
+				<br>
+				<br>
+				<div class="form-group">
+					<button type="submit" id="joinBtn"
+						class="btn btn-join btn-lg btn-block" onclick="joinfiBtn();">가입하기
+					</button>
 
-      </form>
+				</div>
 
 
-   </div>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
+			</table>
 
-   <jsp:include page="../common/footer.jsp"></jsp:include>
+		</form>
+
+
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<jsp:include page="../common/footer.jsp"></jsp:include>
 
 
 </body>

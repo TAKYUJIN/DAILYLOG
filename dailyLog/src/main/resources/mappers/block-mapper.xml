@@ -58,8 +58,18 @@
 	VALUES(#{userNo},#{repno})
 	</insert>
 	
+	<!-- 회원관리 -->
+	<select id="detailList2" resultMap="BlockchResultSet">
 	
+	</select>
 	
+	<select id="detailList3" resultMap="BlockrepResultSet">
+	
+	</select>
+	
+	<select id="detailList4" resultMap="BlockviResultSet">
+	
+	</select>
 	
 	</mapper>
 	

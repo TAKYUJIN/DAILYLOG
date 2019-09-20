@@ -8,6 +8,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import com.kh.with.admin.model.vo.Board;
 import com.kh.with.admin.model.vo.Calculate;
 import com.kh.with.admin.model.vo.UserBoard;
+import com.kh.with.block.model.vo.Blockch;
+import com.kh.with.block.model.vo.Blockrep;
+import com.kh.with.block.model.vo.Blockvi;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.report.model.vo.Report;
 import com.kh.with.report.model.vo.Report2;
@@ -51,7 +54,13 @@ public interface AdminDao {
 
 	ArrayList<UserBoard> selectAdminUser(SqlSessionTemplate sqlSession, UserBoard user);
 
-	ArrayList<UserBoard> selectDetail(SqlSessionTemplate sqlSession, UserBoard user);
+	ArrayList<UserBoard> selectDetail(SqlSessionTemplate sqlSession, UserBoard user1);
+	
+	ArrayList<Blockch> selectDetail1(SqlSessionTemplate sqlSession, Blockch ch);
+
+	ArrayList<Blockrep> selectDetail2(SqlSessionTemplate sqlSession, Blockrep rep);
+
+	ArrayList<Blockvi> selectDetail3(SqlSessionTemplate sqlSession, Blockvi vi);
 
 	ArrayList<Calculate> searchWait(SqlSessionTemplate sqlSession);
 
@@ -62,6 +71,7 @@ public interface AdminDao {
 	ArrayList<Calculate> searchWaitAll(SqlSessionTemplate sqlSession, String userNm);
 
 	ArrayList<Calculate> searchSuccessAll(SqlSessionTemplate sqlSession, String userNm);
+
 
 	List<Object> channelInfo(SqlSessionTemplate sqlSession);
 
