@@ -41,7 +41,7 @@
 		<mapper resource="mappers/admin-mapper.xml"/>
 		<mapper resource="mappers/subscribe-mapper.xml"/>
 		<mapper resource="mappers/userboard-mapper.xml"/>
-		
+		<mapper resource="mappers/channelBoard-mapper.xml"/>
 		
 	</mappers>
 </configuration>

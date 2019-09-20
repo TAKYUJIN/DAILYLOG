@@ -111,7 +111,10 @@ public class LogerDaoImpl implements LogerDao{
 	@Override
 	public Loger2 newHomeChannel(SqlSessionTemplate sqlSession, int userNo) {
 		
+		System.out.println("로거스튜디오여기까지왔니?");
+		
 		Loger2 l = new Loger2();
+		
 		l.setUserNo(userNo);
 		
 		
@@ -161,6 +164,13 @@ public class LogerDaoImpl implements LogerDao{
 	@Override
 	public int attachmentDelete(SqlSessionTemplate sqlSession, int vNo) {
 		return sqlSession.delete("Loger.attachmentDelete", vNo);
+	}
+	
+	//채널개설시 채널유무 업데이트
+	@Override
+	public int updatechyn(SqlSessionTemplate sqlSession, Member member) {
+		
+		return sqlSession.update("Member.updatechyn",member);
 	}
 
 }

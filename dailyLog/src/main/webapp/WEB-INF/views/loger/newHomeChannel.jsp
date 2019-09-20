@@ -179,7 +179,8 @@ body {
 			</div>
 
 			<div class="myInfo">
-				<img class="imInfoPic" src="resources/images/user.png">
+			 <%-- <img class="imInfoPic"src="resources/images/${result.fileNm}" width = "250px"  height="200px"  > --%>
+				 <img class="imInfoPic" src="resources/images/user.png"> 
 				<div class="textInfo">
 					<p style="widht: 200px; margin-left: 130px; margin-top: -50px;">
 						<strong><c:out value="${result.chNm}"/></strong>

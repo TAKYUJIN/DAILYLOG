@@ -609,17 +609,36 @@ $('#friendlist').click(function(){
 			}
 		</script> --%>
 		
-<%-- <script> 알림 시도 중
-	var wsUri = "ws://localhost:8001/" + '<%=request.getContextPath()%>/serverStart')
+ <script>
+ 	var wsUri = new WebSocket("ws://localhost:8001" + '<%=request.getContextPath()%>/serverStart');
 	$(function(){
 		getConnection();
 	});
-	
-	function getConnection(){
-		websocket = new Websoket(wsUri);
-		websocket.onopen = function(evt){
-			onOpen(evt);
+		function getConnection() {
+			websocket = new Websoket(wsUri);
+			websocket.onopen = function(evt) {
+				onOpen(evt);
+
+				websocket.onmessage = function(evt) {
+					onMessage(evt);
+				};
+
+				websocket.onerror = function(evt) {
+				};
+
+				websocket.onclose = function(event) {
+				}
+			}
 		}
-	}
-</script> --%>
+
+		function onOpen(evt) {
+
+		}
+
+		function onMessage(evt) {
+			var result = evt.data;
+			console.log(result);
+
+		}
+	</script>
 </html>               

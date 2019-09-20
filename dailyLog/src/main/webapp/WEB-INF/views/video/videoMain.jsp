@@ -565,7 +565,7 @@
 					<c:if test="${list1[0].adultAut eq 'Y' }">
 						<video id='my-video' class='video-js' controls  preload='auto' width='600' height='400'
 						  poster='resources/images/thumbnail_01.jpg' data-setup='{}' >
-						  <source src='resources/uploadFiles/${ list1[0].filepath}' type='video/mp4'>
+						  <source src='resources/uploadFiles/${ list1[0].fileNm}' type='video/mp4'>
 						  <source src='MY_VIDEO.webm' type='video/webm'>
 						  <p class='vjs-no-js'>
 						      To view this video please enable JavaScript, and consider upgrading to a web browser that
@@ -578,7 +578,7 @@
 							<a href="#myModal" class="trigger-btn" data-toggle="modal">
 								<video id='my-video' class='video-js'   preload='auto' width='600' height='400'
 								  poster='resources/images/age.png' data-setup='{}' >
-								  <source src='resources/uploadFiles/${ list1[0].filepath}' type='video/mp4'>
+								  <source src='resources/uploadFiles/${ list1[0].fileNm}' type='video/mp4'>
 								  <source src='MY_VIDEO.webm' type='video/webm'>
 								</video>
 							</a>
@@ -586,7 +586,7 @@
 						<c:if test="${age >= 19 }">
 							<video id='my-video' class='video-js' controls  preload='auto' width='600' height='380'
 							  poster='resources/images/thumbnail_01.jpg' data-setup='{}' >
-							  <source src='resources/uploadFiles/${ list1[0].filepath}' type='video/mp4'>
+							  <source src='resources/uploadFiles/${ list1[0].fileNm}' type='video/mp4'>
 							  <source src='MY_VIDEO.webm' type='video/webm'>
 							  <p class='vjs-no-js'>
 							      To view this video please enable JavaScript, and consider upgrading to a web browser that

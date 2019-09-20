@@ -146,6 +146,13 @@ public class LogerServiceImpl implements LogerService{
 		return ld.attachmentDelete(sqlSession, vNo);
 	}
 
+	//채널개설시 채널유무 업데이트
+	@Override
+	public int updatechyn(Member member) {
+		
+		return ld.updatechyn(sqlSession, member);
+	}
+
 
 
 

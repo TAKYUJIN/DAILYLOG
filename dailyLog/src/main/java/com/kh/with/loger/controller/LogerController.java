@@ -232,7 +232,17 @@ public class LogerController {
 	
 			System.out.println("loger:::" + userNo);
 			
-			Loger2 result = ls.newHomeChannel(userNo);
+			Loger2 loger2 = new Loger2();
+			loger2.setUserNo(userNo);
+			
+			System.out.println("loger2:::" + loger2);
+			
+			
+			
+			
+			
+			
+			Loger2 result = ls.newHomeChannel(userNo); 
 			
 			System.out.println("상세내역이 보여지나요?" + result);
 			
@@ -245,7 +255,7 @@ public class LogerController {
 
 
 		
-		/* return "loger/newHomeChannel"; */
+
 	}
 
 	// 로거스튜디오내 동영상으로 이동
@@ -284,8 +294,16 @@ public class LogerController {
 		loger.setChInfo(chInfo);
 
 		int result = ls.insertcreateChannel(loger);
+		
+		Member member = new Member();
+		member.setUserNo(userNo);
+		
+		
+		int result1 = ls.updatechyn(member); 
+		
+		
 
-		if (result > 0) {
+		if (result > 0 && result1 > 0) {
 			return "redirect:index.jsp";
 		} else {
 			model.addAttribute("msg", "채널개설 실패");

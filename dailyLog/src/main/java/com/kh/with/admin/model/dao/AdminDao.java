@@ -75,9 +75,8 @@ public interface AdminDao {
 
 	List<Object> channelInfo(SqlSessionTemplate sqlSession);
 
-	List<Object> calInfo(SqlSessionTemplate sqlSession);
+	List<Integer> info(SqlSessionTemplate sqlSession);
 
-	List<Object> reportInfo(SqlSessionTemplate sqlSession);
 
 
 	
