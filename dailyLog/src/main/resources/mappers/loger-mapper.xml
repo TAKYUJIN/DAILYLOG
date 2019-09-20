@@ -225,6 +225,7 @@
 
    </insert>
 
+
    <!--로거스튜디오 메인 select (프로필,채널명, 구독자) -->
    <select id="newHomeChannel" resultMap="logerResultSet2">
       SELECT l.ch_nm,l.subnum, a.file_nm
@@ -234,7 +235,7 @@
       WHERE a.am_ty ='회원'
       AND A.USER_NO = #{userNo}
    </select>
-  
+
     <select id="reportlist" resultMap="ReportResultSet">
     SELECT RE_NO,V_TITLE,RE_WHY,RE_COUNT,FLOOR(C_COUNT/3) AS C_COUNT, RE_TY,R.CH_NM,RE_DT,A.FILEPATH
    FROM REPORT R
@@ -307,7 +308,16 @@
 	
 	</select>
 	
-
+	<!--로거스튜디오 메인 select (프로필,채널명, 구독자) -->
+	
+	<select id="newHomeChannel" resultMap="logerResultSet2">
+	SELECT *
+	FROM LOGER L
+	JOIN ATTACHMENT A
+	ON (L.USER_NO = A.USER_NO)
+	WHERE a.am_ty ='회원' 
+	AND A.USER_NO =  #{userNo}
+	</select>
 
 
 </mapper>

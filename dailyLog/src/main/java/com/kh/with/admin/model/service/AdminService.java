@@ -90,9 +90,8 @@ public interface AdminService {
 
 	List<Object> channelInfo();
 
-	List<Object> calInfo();
+	List<Integer> info();
 
-	List<Object> reportInfo();
 
 	
 

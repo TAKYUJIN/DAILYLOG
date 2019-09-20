@@ -64,6 +64,9 @@ public interface LogerService {
 	int videoDelete(int vNo);
 	int attachmentDelete(int vNo);
 
+	//채널개설시 채널유무 업데이트
+	int updatechyn(Member member);
+
 
 
  

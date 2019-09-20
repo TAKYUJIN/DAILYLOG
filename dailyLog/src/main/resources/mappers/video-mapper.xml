@@ -72,12 +72,23 @@
      </resultMap>
 
 	<!-- 업로드할 동영상 정보 insert 쿼리 -->
+
+     <!--
     <insert id="insertVideoInfo" parameterType="Video">       
    INSERT INTO VIDEO
    VALUES(V_NO.NEXTVAL, #{userNo}, #{vTitle}, 0, #{chNm}, #{tag},'N', SYSDATE, NULL, #{adultAut}, #{adYn}  ,#{adInfo},
    NULL, NULL, #{fileNm}, #{openTy})
     
-   </insert>
+   </insert> -->
+
+ 	<insert id="insertVideoInfo" parameterType="Video">	 	
+	INSERT INTO VIDEO
+	VALUES(V_NO.NEXTVAL, #{userNo}, #{vTitle}, 0, #{chNm}, #{tag},'N', SYSDATE, NULL, #{adultAut}, #{adYn}  ,#{adInfo},
+	NULL, NULL, #{fileNm}, #{openTy})
+ 	
+	</insert>
+	
+
 	
 
 	<!-- 동영상페이지 비디오 정보 -->
@@ -92,7 +103,6 @@
 		SELECT *
 		FROM LOGER
 		WHERE USER_NO = #{userNo}
-		AND V_NO = #{vNo}
 	</select>
 	
 	<!-- 동영상페이지  -->

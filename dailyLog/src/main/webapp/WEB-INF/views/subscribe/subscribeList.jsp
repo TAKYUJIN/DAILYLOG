@@ -82,7 +82,7 @@
                <source src="" type="">
                <source src="nature.ogg" type="">
             </video> -->
-             <a href="video.vd?userNo=${videoimage.userNo}&vNo=${videoimage.vNo}">  <!--  영상클릭시 해당영상으로 이동하는 링크(작업해야함) -->
+          <a href="video.vd?userNo=${videoimage.userNo}&vNo=${videoimage.vNo}">  <!--  영상클릭시 해당영상으로 이동하는 링크(작업해야함) -->
                 <img src="resources/images/${sv.fileNm}" width = "250px"  height="200px"  >
             <br>
         		<div style="width:150px;"><c:out value="${sv.chNm}"/></div>
