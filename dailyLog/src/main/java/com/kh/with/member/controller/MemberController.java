@@ -368,7 +368,7 @@ public class MemberController {
    @RequestMapping(value = "insert.me", method= {RequestMethod.GET, RequestMethod.POST})
    public String insertMember(Model model, Member m, HttpServletRequest request) {
 
-      System.out.println(m);
+      System.out.println("insert me : " + m);
 
       String root = request.getSession().getServletContext().getRealPath("resources");
 
@@ -380,10 +380,11 @@ public class MemberController {
 
          if (m.getGender().equals("남")) {
             m.setGender("M");
+            
          } else {
             m.setGender("F");
          }
-
+         System.out.println("MS 전  ;;;; ");
          ms.insertMember(m);
          System.out.println("컨트롤러 회원가입 ");
          
@@ -489,88 +490,6 @@ public class MemberController {
 
       }
       
-   //문자전송
-      
-
-   // 마이페이지 이동
-      @RequestMapping(value = "myPage.me")
-      public String myPage(Model model, Member m, HttpSession session) {
-         m = (Member) session.getAttribute("loginUser");
-
-         ArrayList<Member> list = ms.selectMyPage(m);
-         System.out.println("list " + list);
-         model.addAttribute("memberList", list.get(0));
-         return "member/myPage";
-      }
-      // myPage 수정
-      @RequestMapping(value = "update_myPage.me", method = RequestMethod.POST)
-      public String update_mypage(@ModelAttribute Member m,Model model,HttpServletRequest request,
-            @RequestParam(name="pro", required=false) MultipartFile pro ,HttpSession session, RedirectAttributes rttr)
-            throws Exception {
-         
-         System.out.println(pro);
-         System.out.println("******************************* : " + m);
-         
-         System.out.println("왔냐 ? ::::" + m);
-         
-         
-         String root = request.getSession().getServletContext().getRealPath("resources");
-//         System.out.println(encPassword);
-         
-         String filePath = root + "\\ images";
-         
-         //파일명 변경
-//               String originFileName = pro.getOriginalFilename();
-//               String ext = originFileName.substring(originFileName.lastIndexOf("."));
-//               String changeName = CommonUtils.getRandomString();
-               try {
-//               pro.transferTo(new File(filePath + "\\" +changeName +ext));
-            
-            String encPassword = passwordEncoder.encode(m.getUserPwd());
-            System.out.println(encPassword);
-            
-            m.setUserPwd(encPassword);
-            System.out.println("insertMember : " + m);
-            
-            ms.update_myPage(m);
-            
-            
-            
-            return "forward:index.jsp";
-               } catch (Exception e) {
-//                  new File(filePath + "\\" + changeName + ext).delete();
-                  
-                  model.addAttribute("msg", "마이페이지 수정 실패");
-                  return "common/errorPage";
-               }
-      }
-      //mypage 탈퇴
-      @RequestMapping(value = "delete_myPage.me", method = RequestMethod.POST)
-      public String delete_mypage(@ModelAttribute Member m,Model model,HttpServletRequest request,
-            HttpSession session, RedirectAttributes rttr)
-            throws Exception {
-         
-         
-      
-         ms.delete_myPage(m);
-         
-         System.out.println("탈퇴인가요 ?");
-         return "forward:logout.me";
-      }
-      
-      
-      //회원 중지
-      @RequestMapping(value="ustop.me", method = RequestMethod.GET )
-      public String ustop(@ModelAttribute Member m,Model model,HttpServletRequest request,
-            @RequestParam(name="userId", required=false)String userId,HttpSession session) {
-           userId=request.getParameter("userId");
-         System.out.println("userId"+userId);
-         m.setUserId(userId);
-         ms.ustop(m);
-         
-         return "redirect:/ublacklist.ad";
-      }
-      
       //휴대폰 인증번호 체크
       @RequestMapping("smssend.me")
       public ModelAndView phoneMe(ModelAndView mv , HttpServletRequest request) throws IOException, Exception {
@@ -579,7 +498,7 @@ public class MemberController {
             String msg2 = "";
 
              String  action  = nullcheck(request.getParameter("action"), "");
-
+             		
              String msgRnd = request.getParameter("msg");
              msg2 = "데일리로그 휴대폰 인증번호는 [" + msgRnd +"] 입니다. ";
 
@@ -765,6 +684,88 @@ public class MemberController {
             return mv;
          }
 
+      
+
+   // 마이페이지 이동
+      @RequestMapping(value = "myPage.me")
+      public String myPage(Model model, Member m, HttpSession session) {
+         m = (Member) session.getAttribute("loginUser");
+
+         ArrayList<Member> list = ms.selectMyPage(m);
+         System.out.println("list " + list);
+         model.addAttribute("memberList", list.get(0));
+         return "member/myPage";
+      }
+      // myPage 수정
+      @RequestMapping(value = "update_myPage.me", method = RequestMethod.POST)
+      public String update_mypage(@ModelAttribute Member m,Model model,HttpServletRequest request,
+            @RequestParam(name="pro", required=false) MultipartFile pro ,HttpSession session, RedirectAttributes rttr)
+            throws Exception {
+         
+         System.out.println(pro);
+         System.out.println("******************************* : " + m);
+         
+         System.out.println("왔냐 ? ::::" + m);
+         
+         
+         String root = request.getSession().getServletContext().getRealPath("resources");
+//         System.out.println(encPassword);
+         
+         String filePath = root + "\\ images";
+         
+         //파일명 변경
+//               String originFileName = pro.getOriginalFilename();
+//               String ext = originFileName.substring(originFileName.lastIndexOf("."));
+//               String changeName = CommonUtils.getRandomString();
+               try {
+//               pro.transferTo(new File(filePath + "\\" +changeName +ext));
+            
+            String encPassword = passwordEncoder.encode(m.getUserPwd());
+            System.out.println(encPassword);
+            
+            m.setUserPwd(encPassword);
+            System.out.println("insertMember : " + m);
+            
+            ms.update_myPage(m);
+            
+            
+            
+            return "forward:index.jsp";
+               } catch (Exception e) {
+//                  new File(filePath + "\\" + changeName + ext).delete();
+                  
+                  model.addAttribute("msg", "마이페이지 수정 실패");
+                  return "common/errorPage";
+               }
+      }
+      //mypage 탈퇴
+      @RequestMapping(value = "delete_myPage.me", method = RequestMethod.POST)
+      public String delete_mypage(@ModelAttribute Member m,Model model,HttpServletRequest request,
+            HttpSession session, RedirectAttributes rttr)
+            throws Exception {
+         
+         
+      
+         ms.delete_myPage(m);
+         
+         System.out.println("탈퇴인가요 ?");
+         return "forward:logout.me";
+      }
+      
+      
+      //회원 중지
+      @RequestMapping(value="ustop.me", method = RequestMethod.GET )
+      public String ustop(@ModelAttribute Member m,Model model,HttpServletRequest request,
+            @RequestParam(name="userId", required=false)String userId,HttpSession session) {
+           userId=request.getParameter("userId");
+         System.out.println("userId"+userId);
+         m.setUserId(userId);
+         ms.ustop(m);
+         
+         return "redirect:/ublacklist.ad";
+      }
+      
+     
    
       
       
