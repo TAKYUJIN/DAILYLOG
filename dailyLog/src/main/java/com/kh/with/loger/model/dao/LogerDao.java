@@ -64,6 +64,9 @@ public interface LogerDao {
 
 	int attachmentDelete(SqlSessionTemplate sqlSession, int vNo);
 
+	//채널개설시 채널유무 업데이트
+	int updatechyn(SqlSessionTemplate sqlSession, Member member);
+
 
  
 	

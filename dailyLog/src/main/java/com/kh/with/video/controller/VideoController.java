@@ -472,6 +472,7 @@ public class VideoController {
 			tag += "#" + Tags[i];
 		}
 
+		//동영상 
 		Video video = new Video();
 		video.setvTitle(vTitle);
 		video.setTag(tag);
@@ -488,8 +489,8 @@ public class VideoController {
 		
 		System.out.println("컨트롤러result:::" + result);
 
+		//썸네일
 		Attachment attachment = new Attachment();
-		/* attachment.setEnrollNm(filepath1); */
 		attachment.setFileNm(enrollNm);
 		attachment.setUserNo(getUserNo);
 
