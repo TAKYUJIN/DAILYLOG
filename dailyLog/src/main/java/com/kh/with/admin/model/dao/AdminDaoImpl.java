@@ -138,12 +138,13 @@ public class AdminDaoImpl implements AdminDao {
 		return sqlSession.update("Calculate2.updateCalculateApply", calNo);
 	}
 
+	//회원관리 리스트
 	@Override
 	public ArrayList<UserBoard> selectAdminUser(SqlSessionTemplate sqlSession, UserBoard user) {
 		// TODO Auto-generated method stub
-ArrayList<UserBoard> userlist = null;
+		ArrayList<UserBoard> userlist = null;
 		
-		userlist = (ArrayList)sqlSession.selectList("UserBoard.selectUserlist",user);
+		userlist = (ArrayList)sqlSession.selectList("userBoard.selectUserlist",user);
 		
 		System.out.println("뽕 ;;;;"+userlist);
 	

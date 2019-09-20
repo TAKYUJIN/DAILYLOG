@@ -277,7 +277,7 @@
 	<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
 		<ul class="nav navbar-nav" >
 			<li class="nav-item"><a href="adminNoticeList.ad" class="nav-link" style="padding-right:0px;">공지사항</a></li>
-			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">회원관리</a></li>
+			<li class="nav-item"><a href="adminUser.ad" class="nav-link" style="padding-right:0px;">회원관리</a></li>
 			<li class="nav-item dropdown">
 				<a data-toggle="dropdown" class="nav-link dropdown-toggle" href="reportmanage.ad" style="padding-right:0px;">신고관리 <b class="caret"></b></a>
 				<ul class="dropdown-menu">					
