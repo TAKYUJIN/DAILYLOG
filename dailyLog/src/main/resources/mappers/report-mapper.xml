@@ -38,7 +38,21 @@
          <result property="ccount" column="C_COUNT"/>
         <result property="filepath" column="FILEPATH"/>
      </resultMap>
-     
+    
+    
+      <resultMap type="Alram" id="AlramResultSet"> 
+	    <id property="alNo" column="AL_NO"/>
+		<result property="userNo" column="USER_NO" />
+		<result property="alDT" column="AL_DT" />
+        <result property="alCT" column="AL_CT"/>
+        <result property="alYN" column="AL_YN"/>
+        <result property="subNo" column="SUB_NO"/>
+        <result property="re_no" column="REP_NO"/>
+        <result property="vNo" column="V_NO"/>
+        <result property="retarget" column="RE_TARGET"/>
+        <result property="chNo" column="CH_NO"/>
+     </resultMap> 
+      
      
      
      <!-- <resultMap type="Blockvi" id="BlockchResultSet"> 
@@ -50,7 +64,10 @@
 	INSERT INTO REPORT 
 	VALUES(RE_NO.NEXTVAL,#{userNo},#{retarget},SYSDATE,#{rewhy},#{rety},#{vNo},0,#{chNm},0,0)
 	</insert>  
-	
+	 <insert id="alramreport" parameterType="Alram">
+	INSERT INTO ALRAM  
+	VALUES(AL_NO.NEXTVAL,#{retarget},SYSDATE,#{alCT},'신고',NULL,NULL,#{vNo},NULL)
+	</insert>
 	<!-- <insert id="mainblockvi" parameterType="Blockvi">
 	INSERT INTO BLOK_VIDEO
 	VALUES(#{userNo},#{vNo})
@@ -137,5 +154,9 @@ SELECT  V_NO,USER_ID ,M.USER_NO,STATUS,RE_COUNT,FLOOR(C_COUNT/3) AS C_COUNT , RE
         WHERE RE_NO=#{reno}
 	
 	</update>
+	
+	
+	
+	
 	
 	</mapper>

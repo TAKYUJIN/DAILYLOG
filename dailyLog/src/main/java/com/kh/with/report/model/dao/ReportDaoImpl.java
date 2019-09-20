@@ -6,6 +6,7 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.kh.with.main.model.vo.Alram;
 import com.kh.with.report.model.vo.Report;
 import com.kh.with.report.model.vo.Report2;
 @Repository
@@ -44,6 +45,14 @@ public class ReportDaoImpl implements ReportDao{
 	public int videoreportupdate(SqlSessionTemplate sqlSession, Report2 report) {
 		// TODO Auto-generated method stub
 		return sqlSession.update("Report.videoreportdetail2",report);
+	}
+
+
+	@Override
+	public int alramreport(SqlSessionTemplate sqlSession, Alram alram) {
+		// TODO Auto-generated method stub
+		System.out.println("alram:"+alram);
+		return sqlSession.insert("Report.alramreport",alram);
 	}
 
 

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.kh.with.HomeController;
+import com.kh.with.main.model.vo.Alram;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.report.model.service.ReportService;
 import com.kh.with.report.model.vo.Report;
@@ -32,19 +33,38 @@ public class ReportController {
 	 public String	 mainreport(Model model,HttpServletRequest request, 
 			 @RequestParam(name = "userNo", required = false)  int userNo)
 	 { userNo=((Member)request.getSession().getAttribute("loginUser")).getUserNo(); int vNo=
-	  Integer.parseInt(request.getParameter("vNo")); String rewhy=
+	  Integer.parseInt(request.getParameter("vNo")); 
+	 String rewhy=
 	  request.getParameter("rewhy"); String chNm=request.getParameter("chNm");
 	  String rety= request.getParameter("rety"); String retarget=
 	  request.getParameter("retarget");
+	  String vTitle=request.getParameter("vTitle");
+	  
+	  String alCT=vTitle+" 동영상이 "+rewhy+"사유로 신고 되었습니다.";
 	  
 	  Report report =new Report ();
+      Alram alram =new Alram();
+     
 	  
-	  report.setRetarget(retarget); report.setUserNo(userNo); report.setvNo(vNo);
+	  report.setRetarget(retarget); report.setUserNo(userNo); 
+	  report.setvNo(vNo);
 	  report.setRewhy(rewhy); report.setChNm(chNm); report.setRety(rety);
+	  report.setvTitle(vTitle);
+	 
+	alram.setRetarget(retarget);
+	  
+	  alram.setAlCT(alCT);
+	  alram.setvNo(vNo);
+	  System.out.println(vTitle);
+	  System.out.println(alCT);
+	  System.out.println(alram);
 	  
 	  int result =rs.mainreport(report);
+	  int result1 =rs.alramreport(alram);
 	  
-	  if (result > 0) { return "redirect:/home.mb"; } else {
+	  
+	  
+	  if (result > 0 && result1>0) { return "redirect:/home.mb"; } else {
 	  model.addAttribute("msg", "신고 실패"); 
 	  return "common/errorPage"; }
 	  

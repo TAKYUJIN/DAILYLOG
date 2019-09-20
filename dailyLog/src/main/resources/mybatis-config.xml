@@ -25,6 +25,8 @@
 			<typeAlias type="com.kh.with.main.model.vo.SubscribeVideo" alias="SubscribeVideo"/>
 		<typeAlias type="com.kh.with.admin.model.vo.UserBoard" alias="userBoard" />
 		<typeAlias type="com.kh.with.admin.model.vo.ChannelBoard" alias="ChannelBoard" />
+		<typeAlias type="com.kh.with.main.model.vo.Alram" alias="Alram" />
+				
 
 	</typeAliases>
 	<mappers>
