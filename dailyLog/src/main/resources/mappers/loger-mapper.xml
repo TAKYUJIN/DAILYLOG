@@ -77,7 +77,7 @@
 		<result property="vcount" column="COUNT" />
 		<result property="recount" column="RE_COUNT" />
 		<result property="ccount" column="C_COUNT" />
-		<result property="filepath" column="FILEPATH" />
+		<result property="fileNm" column="FILE_NM" />
 	</resultMap>
 	<resultMap type="Report" id="Report2ResultSet">
 		<id property="reno" column="RE_NO" />
@@ -108,10 +108,10 @@
 		<result property="adInfo" column="AD_INFO" />
 		<result property="location" column="LOCATION" />
 		<result property="info" column="INFO" />
-		<result property="filepath" column="FILEPATH" />
+		<result property="fileNm" column="FILE_NM" />
 		<result property="openTy" column="OPEN_TY" />
 		<result property="nNo" column="RANK" />
-		<result property="afilepath" column="AFILEPATH" />
+		<result property="afileNm" column="AFILE_NM" />
 	</resultMap>
 
 
@@ -297,8 +297,8 @@
 	
 	<!-- 로거 동영상 출력 -->
 	<select id="showLogerVideo" resultMap="VideoResultSet">
-	SELECT RANK, AFILEPATH, V_NO, USER_NO, V_TITLE, COUNT, CH_NM, TAG, VBL_YN, UPLOAD_DT, MODIFY_DT, ADULT_AUT, AD_YN, AD_INFO, LOCATION, INFO, FILEPATH, OPEN_TY
-		FROM (SELECT ROW_NUMBER() OVER(ORDER BY V.UPLOAD_DT DESC) RANK,	V.*, A.FILEPATH AFILEPATH
+	SELECT RANK, AFILE_NM, V_NO, USER_NO, V_TITLE, COUNT, CH_NM, TAG, VBL_YN, UPLOAD_DT, MODIFY_DT, ADULT_AUT, AD_YN, AD_INFO, LOCATION, INFO, FILE_NM, OPEN_TY
+		FROM (SELECT ROW_NUMBER() OVER(ORDER BY V.UPLOAD_DT DESC) RANK,	V.*, A.FILE_NM AFILE_NM
 		FROM VIDEO V
 		JOIN MEMBER M ON(V.USER_NO = M.USER_NO)
 		JOIN ATTACHMENT A ON(V.V_NO = A.V_NO)
