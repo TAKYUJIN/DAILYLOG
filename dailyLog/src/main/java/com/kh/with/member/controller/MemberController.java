@@ -364,45 +364,7 @@ public class MemberController {
 
    }
 
-   // 회원가입 
-   @RequestMapping(value = "insert.me", method= {RequestMethod.GET, RequestMethod.POST})
-   public String insertMember(Model model, Member m, HttpServletRequest request) {
-
-      System.out.println("insert me : " + m);
-
-      String root = request.getSession().getServletContext().getRealPath("resources");
-
-      try {
-
-
-         m.setUserPwd(passwordEncoder.encode(m.getUserPwd()));
-         System.out.println(m.getUserPwd());
-
-         if (m.getGender().equals("남")) {
-            m.setGender("M");
-            
-         } else {
-            m.setGender("F");
-         }
-         System.out.println("MS 전  ;;;; ");
-         ms.insertMember(m);
-         System.out.println("컨트롤러 회원가입 ");
-         
-         ms.mailSendWithUserKey(m, request);
-         
-         System.out.println("email 인즈");
-         
-         
-
-         return "redirect:index.jsp";
-
-      } catch (Exception e) {
-
-         model.addAttribute("msg", "회원 가입 실패");
-         return "common/errorPage";
-      }
-
-   }
+  
 
    
    @RequestMapping(value = "joinFinal.me", method = RequestMethod.GET)
@@ -673,7 +635,7 @@ public class MemberController {
 
                      }
              } catch(IOException ex){
-
+            	 ex.printStackTrace();
              }
 
 
@@ -766,7 +728,45 @@ public class MemberController {
       }
       
      
-   
+      // 회원가입 
+      @RequestMapping(value = "insert.me", method= {RequestMethod.GET, RequestMethod.POST})
+      public String insertMember(Model model, Member m, HttpServletRequest request) {
+
+         System.out.println("insert me : " + m);
+
+         String root = request.getSession().getServletContext().getRealPath("resources");
+
+         try {
+
+
+            m.setUserPwd(passwordEncoder.encode(m.getUserPwd()));
+            System.out.println(m.getUserPwd());
+
+            if (m.getGender().equals("남")) {
+               m.setGender("M");
+               
+            } else {
+               m.setGender("F");
+            }
+            System.out.println("MS 전  ;;;; ");
+            ms.insertMember(m);
+            System.out.println("컨트롤러 회원가입 ");
+            
+            ms.mailSendWithUserKey(m, request);
+            
+            System.out.println("email 인즈");
+            
+            
+
+            return "redirect:index.jsp";
+
+         } catch (Exception e) {
+        	 e.printStackTrace();
+            model.addAttribute("msg", "회원 가입 실패");
+            return "common/errorPage";
+         }
+
+      }
       
       
 }

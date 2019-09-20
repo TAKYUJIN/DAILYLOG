@@ -109,7 +109,10 @@
             data:{rphone:rphone, sphone1:sphone1, sphone2:sphone2, sphone3:sphone3, msg:msg, action:action},
             success : function(data) {
 				alert("인증번호가 발송되었습니다.");			
-			
+				
+            } else {
+                alert("인증번호  안돼 ")
+             }
           },
           error : function() {
              alert("서버에러 ");
@@ -135,9 +138,14 @@
 					}else{
 						alert("인증번호가 틀렸습니다. 다시 입력하세요.");
 						$("#joinBtn").attr("disabled", "disabled");
-					}	
-			
-		
+					}
+							
+				});
+			},
+			error:function(){
+				alert("서버에러 ");
+		    }			
+		});
 	});
       
       
@@ -170,15 +178,18 @@
                   alert("휴대폰 버노   중복체크를 해주세요 ");
                   return false;
                } else {
-            	   $("#joinForm").submit();
-                  alert("회원가입 인증 이메일 발송완료! \n가입하기 버튼을 누르셔야 로그인이 가능합니다  ");
-                 
+                  $("#joinForm").submit();
                }
             })
 
    });
 </script>
-
+<script>
+         function joinfiBtn() {
+            alert("회원가입 인증 이메일 발송완료! \n가입하기 버튼을 누르셔야 로그인이 가능하오 ");
+            document.location.href="index.jsp";
+         }
+      </script>
 <style type="text/css">
 body {
 	color: #fff;
@@ -412,7 +423,7 @@ body {
 				<br>
 				<div class="form-group">
 					<button type="submit" id="joinBtn"
-						class="btn btn-join btn-lg btn-block">가입하기
+						class="btn btn-join btn-lg btn-block" onclick="joinfiBtn();">가입하기
 					</button>
 
 				</div>

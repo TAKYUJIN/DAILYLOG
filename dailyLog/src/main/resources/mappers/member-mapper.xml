@@ -30,7 +30,7 @@
 		INSERT INTO MEMBER
 		VALUES(USER_NO.NEXTVAL, #{userNm}, #{userId}, #{userPwd},
 		#{nickname}, #{phone}, #{gender}, #{birth}, 
-		FLOOR(MONTHS_BETWEEN(SYSDATE, TO_DATE(#{birth},'YYYYMMDD'))/12), DEFAULT, DEFAULT, SYSDATE, NULL, 0, DEFAULT)
+		20, DEFAULT, DEFAULT, SYSDATE, NULL, 0, DEFAULT)
 	</insert>
 	
 	<update id="joinGetKey" parameterType="Map">
