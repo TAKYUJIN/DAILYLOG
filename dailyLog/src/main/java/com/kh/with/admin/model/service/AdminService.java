@@ -72,6 +72,12 @@ public interface AdminService {
 
 	ArrayList<Calculate> searchUserNm(String userNm);
 
+	List<Object> channelInfo();
+
+	List<Object> calInfo();
+
+	List<Object> reportInfo();
+
 	
 
 

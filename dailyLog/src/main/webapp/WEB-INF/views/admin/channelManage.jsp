@@ -277,32 +277,34 @@
                         <th></th>
                         <th>채널명</th>
 						<th>채널인</th>
-						<th>영상 업로드일</th>						
-                        <th>중지상태</th>						
-						<th>총 정산?</th>
+						<th>총 정산</th>
+                        <th>경고상태</th>						
 						<th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+					<c:forEach var="ch" items="${ channelInfo }">
+					<c:forEach var="cal" items="${ calInfo }">
+					<c:forEach var="re" items="${ reportInfo }">
+<%--                     <tr>
                         <td>1</td>
-                        <td><a href="#"><img src="resources/images/man.jpg" class="avatar" alt="Avatar"> Michael Holz</a></td>
-						<td>London</td>
-                        <td>Jun 15, 2017</td>                        
-						<td><span class="status text-success">&bull;</span> Delivered</td>
-						<td>$254</td>
-						<td><a href="channelDetail.ad" class="view" title="View Details" data-toggle="tooltip"><i class="material-icons">&#xE5C8;</i></a></td>
-                    </tr>
-					<tr>
-                        <td>2</td>
-                        <td><a href="#"><img src="resources/images/man.jpg" class="avatar" alt="Avatar"> Paula Wilson</a></td>
-                        <td>Madrid</td>                       
-						<td>Jun 21, 2017</td>
-						<td><span class="status text-info">&bull;</span> Shipped</td>
-						<td>$1,260</td>
-						<td><a href="#" class="view" title="View Details" data-toggle="tooltip"><i class="material-icons">&#xE5C8;</i></a></td>
-                    </tr>
-
+                        <td>
+                        	<a href="#">
+                        		<img src="resources/images/${ch.fileNm}" class="avatar" alt="Avatar"> ${ ch.chNm }
+                        	</a>
+                        </td>
+						<td>${ch.userId}</td>
+						<td>${cal.price }</td>
+						<td><span class="status text-success">&bull;</span>${re.cCount }/${re.reCount }</td>
+						<td>
+							<a href="channelDetail.ad" class="view" title="View Details" data-toggle="tooltip">
+								<i class="material-icons">&#xE5C8;</i>
+							</a>
+						</td>
+                    </tr> --%>
+					</c:forEach>
+					</c:forEach>
+					</c:forEach>
                 </tbody>
             </table>
 			<div class="clearfix">
