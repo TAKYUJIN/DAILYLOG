@@ -73,12 +73,15 @@
 
 	<!-- 업로드할 동영상 정보 insert 쿼리 -->
 
+
      <!--
     <insert id="insertVideoInfo" parameterType="Video">       
+
    INSERT INTO VIDEO
    VALUES(V_NO.NEXTVAL, #{userNo}, #{vTitle}, 0, #{chNm}, #{tag},'N', SYSDATE, NULL, #{adultAut}, #{adYn}  ,#{adInfo},
    NULL, NULL, #{fileNm}, #{openTy})
     
+
    </insert> -->
 
  	<insert id="insertVideoInfo" parameterType="Video">	 	
@@ -87,6 +90,7 @@
 	NULL, NULL, #{fileNm}, #{openTy})
  	
 	</insert>
+
 	
 
 	

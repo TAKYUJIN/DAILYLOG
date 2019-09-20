@@ -614,21 +614,7 @@ background:none;
  	 </div></div></div> 
 
 
-		<div class="col-md-9 col-center m-auto">
-			<h2> <span>  <b>~~~~</b></span> </h2>
-						<div class="row">
-						<c:forEach var="videoimage" items="${videopop}" > 
-						<div class="col-sm-6"><div class="img-box"><div style=" float:left;">  <a href="video.vd?userNo=${videoimage.userNo}&vNo=${videoimage.vNo}">
-						<img src="resources/images/${videoimage.fileNm}" width = "400px"  height="300px"  >
-							<h5>제목:${videoimage.vTitle}</h5>
-							<h5>채널명:${videoimage.chNm }</h5>
-								<h5>태그명:${videoimage.tag }</h5>
-				</a></div></div></div> 
-						 
-						  </c:forEach> 
-						  </div>
-			 
- </div>  
+		 
 
 
 
