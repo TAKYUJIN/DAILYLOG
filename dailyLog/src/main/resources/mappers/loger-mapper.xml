@@ -227,7 +227,7 @@
 
    <!--로거스튜디오 메인 select (프로필,채널명, 구독자) -->
    <select id="newHomeChannel" resultMap="logerResultSet2">
-      SELECT l.ch_nm,l.subnum, a.filepath
+      SELECT l.ch_nm,l.subnum, a.file_nm
       FROM LOGER L
       JOIN ATTACHMENT A
       ON (L.USER_NO = A.USER_NO)

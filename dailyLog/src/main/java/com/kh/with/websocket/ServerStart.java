@@ -17,16 +17,17 @@ import javax.websocket.server.ServerEndpoint;
 
 @ServerEndpoint("/serverStart")
 public class ServerStart {
-	private static Set<Session> clients = Collections.synchronizedSet(new HashSet<Session>());
-	private static Map<String, Session> user = Collections.synchronizedMap(new HashMap<String, Session>());
-
+//	private static Set<Session> clients = Collections.synchronizedSet(new HashSet<Session>());
+//	private static Map<String, Session> user = Collections.synchronizedMap(new HashMap<String, Session>());
+	private static Set<Session> loginUser = Collections.synchronizedSet(new HashSet<Session>());
+	
 	@OnOpen
 	public void onOpen(Session session) {
 		//서버 연결한 시점에 동작하는 메소드
 		System.out.println("서버스타트 제발 오셨나요?");
 		
 		//기존 사용자 리스트에 새로 연결 요청이 들어온 사용자를 추가한다
-		clients.add(session);
+		loginUser.add(session);
 	}
 
 	@OnMessage
@@ -47,8 +48,8 @@ public class ServerStart {
 		
 		//하나의 일 처리를 수행하는동안 사용자의 변경이 일어나면 안된다.
 		//즉 NullPointer를 방지하기 위해 동기화 처리를 해준다.
-		synchronized(clients) {
-			for(Session client : clients) {
+		synchronized(loginUser) {
+			for(Session client : loginUser) {
 				client.getBasicRemote().sendText(sendMessage);
 				
 			}
@@ -64,7 +65,7 @@ public class ServerStart {
 	@OnClose
 	public void onClose(Session session) {
 		//지워주지 않으면 Set에 이미 나간 사용자가 남아있기 때문에 메세지 전송시 에러 난다.
-		clients.remove(session);
+		loginUser.remove(session);
 	}
 
 }

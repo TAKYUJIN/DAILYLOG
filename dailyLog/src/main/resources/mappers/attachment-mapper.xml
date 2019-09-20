@@ -114,14 +114,12 @@
 	</select>
 
 
-
 <!-- 썸네일 정보 insert 쿼리 -->
-	<insert id="insertAttachment" parameterType="Attachment">	
-	INSERT INTO ATTACHMENT
-	VALUES(#{userNo}, AM_NO.NEXTVAL, V_NO.NEXTVAL,SYSDATE, #{fileNm},  '썸네일')
+   <insert id="insertAttachment" parameterType="Attachment">   
+   INSERT INTO ATTACHMENT
+   VALUES(#{userNo}, AM_NO.NEXTVAL, V_NO.NEXTVAL,SYSDATE, #{fileNm},  '썸네일')
 
-	</insert>  
-	
+   </insert>  
 	
 
 <select id="videoimagelist1"  resultMap="videoRSet"   >
