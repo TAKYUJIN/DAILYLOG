@@ -89,28 +89,16 @@ public class MainDaoImpl implements MainDao{
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	@Override
 	public int subscribeVideoList(SqlSessionTemplate sqlSession, MailVo mailVo) {
 		 
 		return sqlSession.update("friend.frireject",mailVo);
+	}
+
+	@Override
+	public Member idcheck(SqlSessionTemplate sqlSession, String userId) {
+		 System.out.println("userId"+userId);
+		return sqlSession.selectOne("Member.friendCheck",userId);
 	}
 
 	

@@ -33,6 +33,8 @@ public interface MainDao {
 
 	int subscribeVideoList(SqlSessionTemplate sqlSession, MailVo mailVo);
 
+	public Member idcheck(SqlSessionTemplate sqlSession, String userId);
+
 
 	
  

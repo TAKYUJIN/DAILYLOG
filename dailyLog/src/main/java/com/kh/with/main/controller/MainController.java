@@ -136,17 +136,39 @@ public class MainController {
 		  String userId = request.getParameter("userId");
 		  String friId = request.getParameter("friId");
 		  
-		  MailVo.setFriId(friId);
 		  MailVo.setUserId(userId);
-	  reg_service.userReg_service(MailVo);
+		  
+		  MailVo.setFriId(friId);
+	      reg_service.userReg_service(MailVo);
 	  
-	  mailSender.mailSendWithUserKey(MailVo.getFriId(),MailVo.getUserId(), request);
+	      mailSender.mailSendWithUserKey(MailVo.getFriId(),MailVo.getUserId(), request);
 	  
 	  return "forward:/List.mb"; 
 	  
 	  }
 	  
-	 
+	@RequestMapping(value = "fricheck.mb",method=RequestMethod.GET)
+	
+	public int fricheck( Member m, HttpServletRequest request) {
+		String userId = request.getParameter("userId");
+		System.out.println("fricheck1"+userId);
+			m.setUserId(userId);
+			System.out.println("fricheck2"+userId);
+		 ms.idcheck(userId);
+		 System.out.println("fricheck3"+userId);
+		  int result=0;
+		  if(userId != null) {
+			  
+			  result =1;
+		  }
+		  
+		  System.out.println("idcheck"+userId);
+		return result;
+	}
+			
+			
+	
+	
 	  @RequestMapping(value = "frimail.mb", method = RequestMethod.GET) 
 	  public String key_alterConfirm(@RequestParam(value="userId", required=false) String userId, @RequestParam(value="status_yn", required=false) String status_yn,Model model,
 			  @RequestParam(value="friId", required=false) String friId,MailVo MailVo,HttpServletRequest request  ) {

@@ -74,6 +74,12 @@ public class MainServiceImpl implements MainService{
 		return md.subscribeVideoList(sqlSession, mailVo);
 	}
 
+	@Override
+	public Member idcheck(String userId) {
+		// TODO Auto-generated method stub
+		return md.idcheck(sqlSession, userId);
+	}
+
 }
 
 
