@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Alram">
+	
+	 <resultMap type="Alram" id="AlramResultSet"> 
+	    <id property="alNo" column="AL_NO"/>
+		<result property="userNo" column="USER_NO" />
+		<result property="alDT" column="AL_DT" />
+        <result property="alCT" column="AL_CT"/>
+        <result property="alYN" column="AL_YN"/>
+        <result property="subNo" column="SUB_NO"/>
+        <result property="re_no" column="REP_NO"/>
+        <result property="vNo" column="V_NO"/>
+        <result property="retarget" column="RE_TARGET"/>
+        <result property="chNo" column="CH_NO"/>
+     </resultMap> 
+
+	
+	<select id="selectAlram" resultMap="AlramResultSet">
+		SELECT RANK, AL_NO, USER_NO, AL_DT, AL_CT, AL_YN, SUB_NO, REP_NO, V_NO, CH_NO
+		FROM (SELECT ROW_NUMBER() OVER(ORDER BY AL_DT DESC) RANK, A.*
+   		FROM ALRAM A
+ 	    WHERE USER_NO = #{userNo})
+		WHERE RANK BETWEEN 1 AND 10
+		ORDER BY RANK ASC
+	</select>
+
+</mapper>
+

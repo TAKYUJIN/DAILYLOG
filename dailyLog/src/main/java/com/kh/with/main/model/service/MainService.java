@@ -3,6 +3,7 @@ package com.kh.with.main.model.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.kh.with.main.model.vo.Alram;
 import com.kh.with.main.model.vo.MailVo;
 import com.kh.with.main.model.vo.Subscribe;
 import com.kh.with.main.model.vo.SubscribeVideo;
@@ -31,6 +32,8 @@ public interface MainService {
 	ArrayList<SubscribeVideo> subscribeVideoList(SubscribeVideo subscribeVideo);
 
 	int frireject(MailVo mailVo);
+
+	ArrayList<Alram> selectAlram(Member m);
 
 	
 

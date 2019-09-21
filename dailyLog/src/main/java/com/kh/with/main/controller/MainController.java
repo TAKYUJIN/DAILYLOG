@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +20,11 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.kh.with.admin.model.vo.Board;
 import com.kh.with.main.model.service.BoardService;
 import com.kh.with.main.model.service.MailSendService;
 import com.kh.with.main.model.service.MainService;
 import com.kh.with.main.model.service.regService;
+import com.kh.with.main.model.vo.Alram;
 import com.kh.with.main.model.vo.MailVo;
 import com.kh.with.main.model.vo.Subscribe;
 import com.kh.with.main.model.vo.SubscribeVideo;
@@ -34,13 +35,6 @@ import com.kh.with.member.model.vo.Member;
 @Controller
 @SessionAttributes("loginUser") 
 public class MainController {
-
-	/*
-	 * @Autowired private JavaMailSender Sender;
-	 */
-	
-	
-	
 	@Autowired
 	private regService reg_service;
 	@Autowired
@@ -79,6 +73,21 @@ public class MainController {
 		
 		
 		return "main/selectBookmark";
+	}
+	
+	//알림 db
+	@RequestMapping(value="goAlram.mb")
+	public ModelAndView selectAlram(ModelAndView mv, HttpSession session, HttpServletResponse response) {
+		response.setContentType("text/html;charset=UTF-8");
+		Member m = (Member) session.getAttribute("loginUser");
+		
+		ArrayList<Alram> dateList = ms.selectAlram(m);
+		
+		mv.addObject("dateList", dateList);
+		mv.setViewName("jsonView");
+
+		
+		return mv;
 	}
 	
 	// 구독페이지로 이동
@@ -268,6 +277,8 @@ public class MainController {
 			return mav;
 					
 		}
+		
+		
 		
 		
 }

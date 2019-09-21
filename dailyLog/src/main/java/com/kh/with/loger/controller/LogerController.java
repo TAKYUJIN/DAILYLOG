@@ -90,6 +90,10 @@ public class LogerController {
 		// 로거 정산내역 조회
 		ArrayList<Calculate> cList = ls.selectLogerCalculate(c, m);
 		// 로거 후원내역 조회
+		ArrayList<Loger> loger = ls.selectLogerInfo(m);
+		int chNo = loger.get(0).getChNo();
+		m.setChNo(chNo);
+		System.out.println(chNo);
 		ArrayList<Support> sList = ls.selectLogerSupport(s, m);
 		// 로거 마지막 계좌 조회
 		ArrayList<Calculate> aList = ls.logerLastAccount(c, m);
@@ -154,7 +158,11 @@ public class LogerController {
 			HttpServletResponse response) {
 		response.setContentType("text/html;charset=UTF-8");
 		Member m = (Member) session.getAttribute("loginUser");
+		
+		ArrayList<Loger> loger = ls.selectLogerInfo(m);
+		int chNo = loger.get(0).getChNo();
 
+		m.setChNo(chNo);
 		m.setMon(mon);
 		m.setDay(day);
 
