@@ -27,5 +27,11 @@ public class PaymentController {
 
 		return "payment/supportandPoint";
 	}
+	//결제창 모듈
+		@RequestMapping(value ="pay.me", method = {RequestMethod.GET, RequestMethod.POST})
+		public String PayList(Model model, Payment p, HttpSession session) {
+
+			return "payment/pay";
+		}
 
 }

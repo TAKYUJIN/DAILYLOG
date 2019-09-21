@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,19 +15,25 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <!-- iamport.payment.js -->
-  <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+
 <style type="text/css">
- .bs-example{
-        margin-left: 20px; 
-        margin-top : 10%;
-        width: 20%;       
-    }
+
     body {
         color: #566787;
 		background: #f5f5f5;
 		font-family: 'Varela Round', sans-serif;
 		font-size: 13px;
 	}
+	.bs-example{
+        margin-left: 20px; 
+        margin-top : 5%;
+        width: 15%;       
+    }
+    .container{
+   		margin-right: 50%; 
+        margin-top : -12%;
+        margin-bottom: 15px;
+    }
 
     table.table tr th, table.table tr td {
         border-color: #e9e9e9;
@@ -97,7 +104,7 @@
     }
     .pagination {
         float: right;
-        margin: 0 0 5px;
+        margin: 0 auto;
     }
     .pagination li a {
         border: none;
@@ -131,67 +138,37 @@
         float: left;
         margin-top: 10px;
         font-size: 13px;
+        align-content: center
     }    
+    #rep{
+  	   margin-left: 20px; 
+       margin-top: -18%;
+        width: 15%; 
+        margin-bottom: 20%;
+    }
 </style>
-<script type="text/javascript">
-$(document).ready(function(){
-	$('[data-toggle="tooltip"]').tooltip();
-});
-$("#test").click(function() {
-	var IMP = window.IMP; // 생략해도 괜찮습니다.
-	IMP.init("imp51812845"); // "imp00000000" 대신 발급받은 "가맹점 식별코드"를 사용합니다.
-	IMP.request_pay({
-	    pg : 'html5_inicis',
-	    pay_method : 'card',
-	    m_redirect_url : 'https://www.yourdomain.com/payments/complete'
-	}, function(rsp) {
-	    if ( rsp.success ) {
-	    	jQuery.ajax({
-	            url: "https://www.myservice.com/payments/complete", // 가맹점 서버
-	            method: "POST",
-	            headers: { "Content-Type": "application/json" },
-	            data: {
-	                imp_uid: rsp.imp_uid,
-	                merchant_uid: rsp.merchant_uid
-	            }
-	        }).done(function (data) {
-	          // 가맹점 서버 결제 API 성공시 로직
-	        var msg = '결제가 완료되었습니다.';
-	        msg += '고유ID : ' + rsp.imp_uid;
-	        msg += '상점 거래ID : ' + rsp.merchant_uid;
-	        msg += '결제 금액 : ' + rsp.paid_amount;
-	        msg += '카드 승인번호 : ' + rsp.apply_num;
-	        })
-	    } else {
-	        var msg = '결제에 실패하였습니다.';
-	        msg += '에러내용 : ' + rsp.error_msg;
-	    }
 
-	    alert(msg);
-	});
-	});
-</script>
 </head>
 <body>
 <jsp:include page="../common/mainBar.jsp"/>
 	<div class="bs-example">    
     <div class="list-group">
-      <a href="myPage.me" class="list-group-item list-group-item-action">
+        <a href="myPage.me" class="list-group-item list-group-item-action">
             <i class="fa fa-home"></i> 
         </a>
         <a href="allim.me" class="list-group-item list-group-item-action">
             <i class="fa fa-camera"></i> 알림
         </a>
-        <a href="point.me" class="list-group-item list-group-item-action active" >
+        <a href="point.me" class="list-group-item list-group-item-action active">
             <i class="fa fa-music"></i> 후원&포인트 충전
         </a>
-        <a href="#" class="list-group-item list-group-item-action">
+        <a href="refund.me" class="list-group-item list-group-item-action">
             <i class="fa fa-film"></i> 환불
         </a>
     </div>
 </div>
 <form id="point" action="point.me" method="post">
-    <div class="container">
+    <div class="container" style="margin-left: 20%; ">
        <h1>
        <a>정기후원</a>
        <a href="#">문의하기</a>
@@ -223,7 +200,7 @@ $("#test").click(function() {
 					
                 </tbody>
             </table>
-			<div class="clearfix">
+			<div class="clearfix" style="margin 0 auto;">
                 <ul class="pagination">
                     <li class="page-item disabled"><a href="#">Previous</a></li>
                     <li class="page-item"><a href="#" class="page-link">1</a></li>
@@ -239,8 +216,8 @@ $("#test").click(function() {
             
             <h1>
        <a>포인트</a>
-       <a type="button" id="test">포인트 충전</a>
-       <a href="#">포인트 환불</a>
+      <input type="button" id="pay" name="pay" value="결제" onclick="location.href='pay.me'">
+       <input type="button" id="re" name="re" value="환불">
        </h1>
        <hr>
        <br>
@@ -285,8 +262,8 @@ $("#test").click(function() {
                 </ul>
             </div>
         </div>
-        <div>
-        	<p "style:color='red'">경고! 필독해주세요</p>
+        <div id="rep">
+        	<p style="color :red;">경고! 필독해주세요</p>
         	<br>
         	<p>
 			포인트 충전후 사용하지 않았을시에 전액 환불되며, 정기/일회성 후원시에는 화불이 불가합니다.

@@ -35,23 +35,16 @@
 					return false;
 				}
 			});
-	$(function() {
-		$("#pro").on('change', function() {
-			readURL(this);
-		});
-	});
-
-	function readURL(input) {
-		if (input.files && input.files[0]) {
-			var reader = new FileReader();
-
-			reader.onload = function(e) {
-				$('#pro').attr('src', e.target.result);
+	
+	$("pro").change(function(){
+		if(this.files && this.files[0]) {
+			var reader = new FileReader;
+			reader.onload = function(data) {
+				$("pro1 img").attr("src", data.taget.result);
 			}
-
-			reader.readAsDataURL(input.files[0]);
+			reader.readAsDataURL(this.files[0]);
 		}
-	}
+	});
 
 	$("#delete").submit(function() {
 		if (!confirm("정말 탈퇴할까요?")) {
@@ -105,7 +98,6 @@ body{
 	top: 100px;
 	display: inline-block;
 	padding: 0 30px 10px 0;
-	border-bottom: 3px solid #5cd3b4;
 }
 
 .signup-form form {
@@ -138,6 +130,11 @@ body{
 	outline: none !important;
 }
 
+.form-group1{
+	margin-top: -10%;
+	margin-left: 5%;
+}
+
 .avatar {
 	/* position: absolute;
 		margin: 0 auto;
@@ -154,9 +151,7 @@ body{
 	border-radius: 50%;
 }
 
-.avatar img {
-	width: 100%;
-}
+
 
 .pro {
 	margin-top: -60px;
@@ -171,7 +166,9 @@ body{
 </head>
 <body>
 	<jsp:include page="../common/mainBar.jsp" />
-	<a href="myPage.me" class="list-group-item list-group-item-action active">
+<div class="bs-example">    
+    <div class="list-group">
+        <a href="myPage.me" class="list-group-item list-group-item-action active">
             <i class="fa fa-home"></i> 
         </a>
         <a href="allim.me" class="list-group-item list-group-item-action">
@@ -180,7 +177,7 @@ body{
         <a href="point.me" class="list-group-item list-group-item-action">
             <i class="fa fa-music"></i> 후원&포인트 충전
         </a>
-        <a href="#" class="list-group-item list-group-item-action">
+        <a href="refund.me" class="list-group-item list-group-item-action">
             <i class="fa fa-film"></i> 환불
         </a>
     </div>
@@ -192,12 +189,12 @@ body{
 		<%
 			System.out.print("오냐?");
 		%>
-		<form id="mypage" action="update_myPage.me" method="post"
-			class="form-horizontal">
+		<form id="mypage" action="update_myPage.me" method="post" class="form-horizontal" enctype="multipart/form-data">
+			<input type="hidden" name="userNo" value="${memberList.userNo}"/>
 			<div class="avatar">
-				<img id="pro" src="#" />
+				<img id="pro1" src="${memberList.profilePath }" style="border-radius: 50%; margin-left:40%; margin-top:-30%; width:20%;" />
 			</div>
-			<input type="file" class="pro" id="pro">
+			<input type="file" class="pro" id="pro" name="pro">
 			<div class="form-group">
 				<label class="control-label col-xs-4" style="font-size:16px; font-family: 'Varela Round', sans-serif;"><b>User ID</b></label>
 				<div class="col-xs-6">
@@ -243,7 +240,7 @@ body{
 			</div>
 
 
-			<div class="form-group">
+			<div class="form-group" style=" margin-left: 5%;">
 				<div class="col-xs-8 col-xs-offset-4">
 					<button type="submit" class="btn btn-primary btn-lg" style="background:#A8B7BC;">수정완료</button>
 					<button type="reset" class="btn btn-primary btn-lg" style="background:#13334A;">취소</button>
@@ -252,13 +249,13 @@ body{
 		</form>
 
 		<form id="delete" action="delete_myPage.me" method="post">
-			<div class="form-group">
+			<div class="form-group1" >
 				<div class="col-xs-6 col-xs-offset-4">
 					<input type="hidden" class="form-control" id="userPwd"
 						name="userPwd" required="required" value="${memberList.userPwd}">
 					<input type="hidden" class="form-control" id="userId" name="userId"
 						required="required" readonly value="${memberList.userId}">
-					<button type="submit" class="btn btn-primary btn-lg" id="outbtn">탈퇴하기</button>
+					<button type="submit" class="btn btn-primary btn-lg" id="outbtn" style="background:#A8B7BC;">탈퇴하기</button>
 				</div>
 
 			</div>

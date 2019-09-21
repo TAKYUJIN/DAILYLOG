@@ -61,6 +61,10 @@ public class AdminController {
 			}else if(userlist.get(i).getStatus().equals("1")) {
 				userlist.get(i).setStatus("Y");
 			}
+			
+			 if(userlist.get(i).getChNm().equals(null)) {
+				 userlist.get(i).setChNm("-");
+			 }
 			}
 			
 					

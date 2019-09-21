@@ -3,6 +3,7 @@ package com.kh.with.member.model.service;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 
 import javax.mail.MessagingException;
@@ -112,6 +113,16 @@ public class MemberServiceImpl implements MemberService {
 
 		return md.delete_myPage(sqlSession, m) ;
 
+	}
+	
+	@Override
+	public int delete_myPage_file(HashMap map) {
+		return md.delete_myPage_file(sqlSession, map);
+	}
+	
+	@Override
+	public int insert_myPage_file(HashMap map) {
+		return md.insert_myPage_file(sqlSession, map);
 	}
 
 	// 이메일 난수 만드는 메서드

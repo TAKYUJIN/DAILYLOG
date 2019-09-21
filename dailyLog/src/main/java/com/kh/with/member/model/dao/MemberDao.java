@@ -1,8 +1,7 @@
 package com.kh.with.member.model.dao;
 
 import java.util.ArrayList;
-
-import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
@@ -31,6 +30,10 @@ public interface MemberDao {
 	int update_myPage(SqlSessionTemplate sqlSession, Member m);
 
 	int delete_myPage(SqlSessionTemplate sqlSession, Member m);
+	
+	int delete_myPage_file(SqlSessionTemplate sqlSession, HashMap map); // 마이페이지 사진 삭제
+	
+	int insert_myPage_file(SqlSessionTemplate sqlSession, HashMap map); // 마이페이지 사진 추가
 
 
 

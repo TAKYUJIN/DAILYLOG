@@ -149,7 +149,30 @@
 	 ORDER BY AM_DT DESC
 	</select>
 	
-
+	<delete id="delete_myPage_file" parameterType="map">
+		DELETE FROM ATTACHMENT
+		WHERE USER_NO = #{userNo}
+	</delete>
+	
+	<insert id="insert_myPage_file" parameterType="map">
+		INSERT INTO ATTACHMENT(
+					USER_NO
+				   ,AM_NO
+				   ,V_NO
+				   ,AM_DT
+				   ,FILE_NM
+				   ,AM_TY 
+				  ) VALUES (
+				  	#{userNo}
+				   ,AM_NO.NEXTVAL
+				   ,NULL
+				   ,SYSDATE
+				   ,#{fileNm}
+				   ,#{amTy}
+				  )
+				  
+		 
+	</insert>
 
 
 

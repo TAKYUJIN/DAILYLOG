@@ -60,15 +60,19 @@
 	
 	<!-- 회원관리 -->
 	<select id="detailList2" resultMap="BlockchResultSet">
+	SELECT *
+	FROM BLOCK_CH
 	
 	</select>
 	
 	<select id="detailList3" resultMap="BlockrepResultSet">
-	
+	SELECT *
+	FROM BLOCK_REP
 	</select>
 	
 	<select id="detailList4" resultMap="BlockviResultSet">
-	
+	SELECT *
+	FROM BLOCK_VIDEO
 	</select>
 	
 	</mapper>

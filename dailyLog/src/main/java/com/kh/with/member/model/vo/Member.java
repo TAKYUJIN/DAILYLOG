@@ -23,12 +23,13 @@ public class Member implements java.io.Serializable{
 	private String accNm;	//예금주
 	private String bankNm;	//은행명
 	private String account;	//계좌번호
+	private String profilePath; // 프로필사진경로
 	
 	public Member() {}
 
 	public Member(int userNo, String userNm, String userId, String userPwd, String nickname, String phone,
 			String gender, String birth, int age, String adultYN, String chYN, Date enrollDT, Date leaveDT,
-			int remainPT, String status, Date mon, Date day, String accNm, String bankNm, String account) {
+			int remainPT, String status, Date mon, Date day, String accNm, String bankNm, String account, String profilePath) {
 		super();
 		this.userNo = userNo;
 		this.userNm = userNm;
@@ -50,6 +51,7 @@ public class Member implements java.io.Serializable{
 		this.accNm = accNm;
 		this.bankNm = bankNm;
 		this.account = account;
+		this.profilePath = profilePath;
 	}
 
 	public int getUserNo() {
@@ -212,13 +214,25 @@ public class Member implements java.io.Serializable{
 		this.account = account;
 	}
 
+
+	public String getProfilePath() {
+		return profilePath;
+	}
+
+	public void setProfilePath(String profilePath) {
+		this.profilePath = profilePath;
+	}
+
 	@Override
 	public String toString() {
 		return "Member [userNo=" + userNo + ", userNm=" + userNm + ", userId=" + userId + ", userPwd=" + userPwd
 				+ ", nickname=" + nickname + ", phone=" + phone + ", gender=" + gender + ", birth=" + birth + ", age="
 				+ age + ", adultYN=" + adultYN + ", chYN=" + chYN + ", enrollDT=" + enrollDT + ", leaveDT=" + leaveDT
 				+ ", remainPT=" + remainPT + ", status=" + status + ", mon=" + mon + ", day=" + day + ", accNm=" + accNm
-				+ ", bankNm=" + bankNm + ", account=" + account + "]";
+				+ ", bankNm=" + bankNm + ", account=" + account + ", profilePath=" + profilePath + "]";
 	}
+
+	
+	
 
 }
