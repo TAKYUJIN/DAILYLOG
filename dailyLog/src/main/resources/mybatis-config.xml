@@ -44,6 +44,6 @@
 		<mapper resource="mappers/subscribe-mapper.xml"/>
 		<mapper resource="mappers/userboard-mapper.xml"/>
 		<mapper resource="mappers/channelBoard-mapper.xml"/>
-		
+		<mapper resource="mappers/alram-mapper.xml"/>
 	</mappers>
 </configuration>

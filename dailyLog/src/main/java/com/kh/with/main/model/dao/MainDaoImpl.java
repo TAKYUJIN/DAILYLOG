@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.with.admin.model.vo.Board;
+import com.kh.with.main.model.vo.Alram;
 import com.kh.with.main.model.vo.MailVo;
 import com.kh.with.main.model.vo.Subscribe;
 import com.kh.with.main.model.vo.SubscribeVideo;
@@ -96,9 +97,16 @@ public class MainDaoImpl implements MainDao{
 	}
 
 	@Override
+
 	public Member idcheck(SqlSessionTemplate sqlSession, String userId) {
 		 System.out.println("userId"+userId);
 		return sqlSession.selectOne("Member.friendCheck",userId);
+
+	public ArrayList<Alram> selectAlram(SqlSessionTemplate sqlSession, Member m) {
+		ArrayList<Alram> list = (ArrayList) sqlSession.selectList("Alram.selectAlram", m);
+		
+		return list;
+
 	}
 
 	
