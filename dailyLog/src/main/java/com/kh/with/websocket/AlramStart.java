@@ -12,8 +12,8 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
-@ServerEndpoint("/auctionStart")
-public class AuctionStart {
+@ServerEndpoint("/alramStart")
+public class AlramStart {
 	private static Set<Session> clients = Collections.synchronizedSet(new HashSet<Session>());
 
 	@OnOpen

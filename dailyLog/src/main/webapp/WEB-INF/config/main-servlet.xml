@@ -33,7 +33,6 @@
 		<beans:property name="maxUploadSize" value="10000000"/>	
 	</beans:bean>
 	
-
 	<!-- 뷰 리졸버에 대한 설정 -->
 	<beans:bean id="jsonView"
 		class="net.sf.json.spring.web.servlet.view.JsonView" />
@@ -44,6 +43,7 @@
 		class="org.springframework.web.servlet.view.BeanNameViewResolver">
 		<beans:property name="order" value="1" />
 	</beans:bean>
+
 	
 </beans:beans>
 

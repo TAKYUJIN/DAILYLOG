@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
+import com.kh.with.main.model.vo.Alram;
 import com.kh.with.main.model.vo.MailVo;
 import com.kh.with.main.model.vo.Subscribe;
 import com.kh.with.main.model.vo.SubscribeVideo;
@@ -32,6 +33,8 @@ public interface MainDao {
 	ArrayList<SubscribeVideo> subscribeVideoList(SqlSessionTemplate sqlSession, SubscribeVideo subscribeVideo);
 
 	int subscribeVideoList(SqlSessionTemplate sqlSession, MailVo mailVo);
+
+	ArrayList<Alram> selectAlram(SqlSessionTemplate sqlSession, Member m);
 
 
 	

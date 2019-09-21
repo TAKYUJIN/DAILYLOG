@@ -9,6 +9,7 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Service;
 
 import com.kh.with.main.model.dao.MainDao;
+import com.kh.with.main.model.vo.Alram;
 import com.kh.with.main.model.vo.MailVo;
 import com.kh.with.main.model.vo.Subscribe;
 import com.kh.with.main.model.vo.SubscribeVideo;
@@ -72,6 +73,11 @@ public class MainServiceImpl implements MainService{
 	public int frireject(MailVo mailVo) {
 		 
 		return md.subscribeVideoList(sqlSession, mailVo);
+	}
+
+	@Override
+	public ArrayList<Alram> selectAlram(Member m) {
+		return md.selectAlram(sqlSession, m);
 	}
 
 }
