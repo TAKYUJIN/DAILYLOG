@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +20,11 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.kh.with.admin.model.vo.Board;
 import com.kh.with.main.model.service.BoardService;
 import com.kh.with.main.model.service.MailSendService;
 import com.kh.with.main.model.service.MainService;
 import com.kh.with.main.model.service.regService;
+import com.kh.with.main.model.vo.Alram;
 import com.kh.with.main.model.vo.MailVo;
 import com.kh.with.main.model.vo.Subscribe;
 import com.kh.with.main.model.vo.SubscribeVideo;
@@ -34,13 +35,6 @@ import com.kh.with.member.model.vo.Member;
 @Controller
 @SessionAttributes("loginUser") 
 public class MainController {
-
-	/*
-	 * @Autowired private JavaMailSender Sender;
-	 */
-	
-	
-	
 	@Autowired
 	private regService reg_service;
 	@Autowired
@@ -81,6 +75,21 @@ public class MainController {
 		return "main/selectBookmark";
 	}
 	
+	//알림 db
+	@RequestMapping(value="goAlram.mb")
+	public ModelAndView selectAlram(ModelAndView mv, HttpSession session, HttpServletResponse response) {
+		response.setContentType("text/html;charset=UTF-8");
+		Member m = (Member) session.getAttribute("loginUser");
+		
+		ArrayList<Alram> dateList = ms.selectAlram(m);
+		
+		mv.addObject("dateList", dateList);
+		mv.setViewName("jsonView");
+
+		
+		return mv;
+	}
+	
 	// 구독페이지로 이동
 	@RequestMapping(value="subscribe.mb")
 
@@ -105,7 +114,7 @@ public class MainController {
 		ArrayList<SubscribeVideo> subscribeVideoList = ms.subscribeVideoList(subscribeVideo);
 		 
 
-		
+		System.out.println("구독한 채널 비디오 :::: " + subscribeVideoList );
 		
 		
 		
@@ -136,17 +145,39 @@ public class MainController {
 		  String userId = request.getParameter("userId");
 		  String friId = request.getParameter("friId");
 		  
-		  MailVo.setFriId(friId);
 		  MailVo.setUserId(userId);
-	  reg_service.userReg_service(MailVo);
+		  
+		  MailVo.setFriId(friId);
+	      reg_service.userReg_service(MailVo);
 	  
-	  mailSender.mailSendWithUserKey(MailVo.getFriId(),MailVo.getUserId(), request);
+	      mailSender.mailSendWithUserKey(MailVo.getFriId(),MailVo.getUserId(), request);
 	  
 	  return "forward:/List.mb"; 
 	  
 	  }
 	  
-	 
+	@RequestMapping(value = "fricheck.mb",method=RequestMethod.GET)
+	
+	public int fricheck( Member m, HttpServletRequest request) {
+		String userId = request.getParameter("userId");
+		System.out.println("fricheck1"+userId);
+			m.setUserId(userId);
+			System.out.println("fricheck2"+userId);
+		 ms.idcheck(userId);
+		 System.out.println("fricheck3"+userId);
+		  int result=0;
+		  if(userId != null) {
+			  
+			  result =1;
+		  }
+		  
+		  System.out.println("idcheck"+userId);
+		return result;
+	}
+			
+			
+	
+	
 	  @RequestMapping(value = "frimail.mb", method = RequestMethod.GET) 
 	  public String key_alterConfirm(@RequestParam(value="userId", required=false) String userId, @RequestParam(value="status_yn", required=false) String status_yn,Model model,
 			  @RequestParam(value="friId", required=false) String friId,MailVo MailVo,HttpServletRequest request  ) {
@@ -268,6 +299,8 @@ public class MainController {
 			return mav;
 					
 		}
+		
+		
 		
 		
 }

@@ -9,9 +9,6 @@ public class Loger2 {
 	private int vNo;		//동영상번호
 	private Date chDT;		//채널생성일자
 	private String chInfo;	//채널정보
-	private String accNm;	//예금주
-	private String bankNm;	//은행명
-	private String account; //계좌번호
 	private int subNum;		//구독자수
 	private int status;
 	private int amNo; //첨부파일번호
@@ -23,8 +20,8 @@ public class Loger2 {
 	public Loger2() {}
 
 
-	public Loger2(int chNo, int userNo, String chNm, int vNo, Date chDT, String chInfo, String accNm, String bankNm,
-			String account, int subNum, int status, int amNo, String fileNm, String amDt, String amTY) {
+	public Loger2(int chNo, int userNo, String chNm, int vNo, Date chDT, String chInfo, int subNum, int status,
+			int amNo, String fileNm, String amDt, String amTY) {
 		super();
 		this.chNo = chNo;
 		this.userNo = userNo;
@@ -32,9 +29,6 @@ public class Loger2 {
 		this.vNo = vNo;
 		this.chDT = chDT;
 		this.chInfo = chInfo;
-		this.accNm = accNm;
-		this.bankNm = bankNm;
-		this.account = account;
 		this.subNum = subNum;
 		this.status = status;
 		this.amNo = amNo;
@@ -104,36 +98,6 @@ public class Loger2 {
 	}
 
 
-	public String getAccNm() {
-		return accNm;
-	}
-
-
-	public void setAccNm(String accNm) {
-		this.accNm = accNm;
-	}
-
-
-	public String getBankNm() {
-		return bankNm;
-	}
-
-
-	public void setBankNm(String bankNm) {
-		this.bankNm = bankNm;
-	}
-
-
-	public String getAccount() {
-		return account;
-	}
-
-
-	public void setAccount(String account) {
-		this.account = account;
-	}
-
-
 	public int getSubNum() {
 		return subNum;
 	}
@@ -197,11 +161,10 @@ public class Loger2 {
 	@Override
 	public String toString() {
 		return "Loger2 [chNo=" + chNo + ", userNo=" + userNo + ", chNm=" + chNm + ", vNo=" + vNo + ", chDT=" + chDT
-				+ ", chInfo=" + chInfo + ", accNm=" + accNm + ", bankNm=" + bankNm + ", account=" + account
-				+ ", subNum=" + subNum + ", status=" + status + ", amNo=" + amNo + ", fileNm=" + fileNm + ", amDt="
-				+ amDt + ", amTY=" + amTY + "]";
+				+ ", chInfo=" + chInfo + ", subNum=" + subNum + ", status=" + status + ", amNo=" + amNo + ", fileNm="
+				+ fileNm + ", amDt=" + amDt + ", amTY=" + amTY + "]";
 	}
 
-	
 
+	
 }

@@ -19,14 +19,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.with.admin.model.vo.Board;
 import com.kh.with.loger.model.service.LogerService;
 import com.kh.with.loger.model.vo.Calculate;
 import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.loger.model.vo.Loger2;
+import com.kh.with.loger.model.vo.MyVideo;
 import com.kh.with.loger.model.vo.Support;
+import com.kh.with.main.model.vo.SubscribeVideo;
 import com.kh.with.main.model.vo.VideoLike;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.report.model.vo.Report;
+import com.kh.with.video.model.vo.Attachment;
 import com.kh.with.video.model.vo.Video;
 
 @Controller
@@ -90,6 +94,10 @@ public class LogerController {
 		// 로거 정산내역 조회
 		ArrayList<Calculate> cList = ls.selectLogerCalculate(c, m);
 		// 로거 후원내역 조회
+		ArrayList<Loger> loger = ls.selectLogerInfo(m);
+		int chNo = loger.get(0).getChNo();
+		m.setChNo(chNo);
+		System.out.println(chNo);
 		ArrayList<Support> sList = ls.selectLogerSupport(s, m);
 		// 로거 마지막 계좌 조회
 		ArrayList<Calculate> aList = ls.logerLastAccount(c, m);
@@ -154,7 +162,11 @@ public class LogerController {
 			HttpServletResponse response) {
 		response.setContentType("text/html;charset=UTF-8");
 		Member m = (Member) session.getAttribute("loginUser");
+		
+		ArrayList<Loger> loger = ls.selectLogerInfo(m);
+		int chNo = loger.get(0).getChNo();
 
+		m.setChNo(chNo);
 		m.setMon(mon);
 		m.setDay(day);
 
@@ -228,25 +240,40 @@ public class LogerController {
 		public ModelAndView  newHomeChannel(ModelAndView mv,HttpSession session, 
 				HttpServletRequest request, Model model){
 			
-			int userNo = ((Member) request.getSession().getAttribute("loginUser")).getUserNo();
+		 int userNo = Integer.parseInt(request.getParameter("userNo"));
 	
 			System.out.println("loger:::" + userNo);
 			
+			//프로필정보
 			Loger2 loger2 = new Loger2();
 			loger2.setUserNo(userNo);
 			
 			System.out.println("loger2:::" + loger2);
-			
-			
-			
-			
-			
-			
+	
 			Loger2 result = ls.newHomeChannel(userNo); 
 			
-			System.out.println("상세내역이 보여지나요?" + result);
+			//로거스튜디오 홈 하단의 동영상정보
+			MyVideo myvideo = new MyVideo();
+			myvideo.setUserNo(userNo);
+			
+			//최근동영상
+			ArrayList<MyVideo> newHomeChannellVideo = ls.newHomeChannellVideo(myvideo);
+			
+			//인기동영상
+			ArrayList<MyVideo> favHomeChannellVideo = ls.favHomeChannellVideo(myvideo);
+			
+			
+			
+			
+			
+			
+			HttpSession session1 = request.getSession();
+			session.setAttribute("userNo", userNo);
+			
 			
 			mv.addObject("result", result); 
+			mv.addObject("newHomeChannellVideo", newHomeChannellVideo); 
+			mv.addObject("favHomeChannellVideo", favHomeChannellVideo); 
 			
 			mv.setViewName("loger/newHomeChannel"); 
 
@@ -260,13 +287,60 @@ public class LogerController {
 
 	// 로거스튜디오내 동영상으로 이동
 	@RequestMapping(value = "logerHomeAllVideo.lo")
-	public String logerHomeAllVideo() {
+	public String  logerHomeAllVideo(ModelAndView mv,HttpSession session, 
+			HttpServletRequest request, Model model){
+		
+		/* int userNo = Integer.parseInt(request.getParameter("userNo")); */
+		
+		 int userNo =  (int) session.getAttribute("userNo");
+
+			System.out.println("세션으로 잘 넘어왔ㅆ니?" + userNo);
+			
+		 
+		//모든영상
+		MyVideo myvideo = new MyVideo();
+		myvideo.setUserNo(userNo);
+		
+		ArrayList<MyVideo> logerHomeAllVideo = ls.logerHomeAllVideo(myvideo);
+		
+		//프로필 
+
+		Loger2 loger2 = new Loger2();
+		loger2.setUserNo(userNo);
+		Loger2 result = ls.homeProfile(loger2); 
+		
+	
+		
+		HttpSession session2 = request.getSession();
+		
+		session.setAttribute("userNo", userNo);
+		
+		model.addAttribute("logerHomeAllVideo", logerHomeAllVideo);
+		model.addAttribute("result", result);
+		
 		return "loger/logerHomeAllVideo";
 	}
 
 	// 로거스튜디오내 정보로 이동
 	@RequestMapping(value = "logerHomeInfo.lo")
-	public String logerHomeInfo() {
+	public String logerHomeInfo(ModelAndView mv,HttpSession session, 
+			HttpServletRequest request, Model model){
+		
+		 int userNo =  (int) session.getAttribute("userNo");
+		 
+			System.out.println("로거스튜디오로 넘어왔니??" + userNo);
+		
+		Loger2 loger2 = new Loger2();
+		loger2.setUserNo(userNo);
+		
+		Loger2 logerHomeInfo = ls.logerHomeInfo(loger2);
+		
+		System.out.println("로거정보:::" + logerHomeInfo);
+		
+		model.addAttribute("logerHomeInfo", logerHomeInfo);
+		
+		
+		
 		return "loger/logerHomeInfo";
 
 	}
@@ -297,6 +371,8 @@ public class LogerController {
 		
 		Member member = new Member();
 		member.setUserNo(userNo);
+		member.setNickname(chNm);
+		
 		
 		
 		int result1 = ls.updatechyn(member); 

@@ -222,11 +222,6 @@ input:focus {outline:none;}
     var message = '${msg}';
     if(message == "정산 신청이 완료되셨습니다."){
 		 alert(message); 
-		/* /* $("#myModal"); */
-		/* alert($("#myModal")); */
-		window.document.write($("#myModal"));
-		/* window.open.document.getElementById("#myModal");
-		window.open("", "PopupWin", "width=500,height=600"); */ */
 
     	
     }

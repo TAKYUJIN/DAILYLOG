@@ -301,7 +301,7 @@
 			<li class="nav-item"><a href="subscribe.mb" class="nav-link" style="padding-right:0px;">구독</a></li>	
 			<li class="nav-item"><a href="newAction.mb" class="nav-link" style="padding-right:0px;">최근 활동</a></li>	
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">좋아요 영상</a></li>
-			<li class="nav-item"><a href="newHomeChannel.lo" class="nav-link" style="padding-right:0px;" onclick="">로거 스튜디오</a></li>
+			<li class="nav-item"><a href="newHomeChannel.lo?userNo=${sessionScope.loginUser.userNo}" class="nav-link" style="padding-right:0px;" onclick="">로거 스튜디오</a></li>
 			<li class="nav-item"><a href="lotest.lo" class="nav-link" style="padding-right:0px;">알림 예시</a></li>
 		</ul>
 
@@ -408,7 +408,7 @@ $('#friendlist').click(function(){
   
  
          <li class="nav-item">
-         <a <%-- href="notification.mb" --%> data-toggle="dropdown" class="btn_global link_login" onclick="send2();">
+         <a <%-- href="notification.mb" --%> data-toggle="dropdown" class="btn_global link_login" onclick="alram();"><!-- onclick="send2();" -->
             <img src="resources/images/bell.png" style="width:25px;">
          </a>
             <ul class="dropdown-menu form-wrapper">               
@@ -417,10 +417,13 @@ $('#friendlist').click(function(){
                      <div class="noti_text" align="center"><p>알림</p></div>
                      <div class="form-group">
                      <div id="inputArea" align="center" style="display:none;">
-						<input type="hidden" name="tryMoney" id="tryMoney" value="${sessionScope.loginUser.userNo}">
+						<input type="hidden" name="tryMoney" id="tryMoney" value="${sessionScope.loginUser.nickname}">
 					</div>
                      <div id="history">
-			
+                     <table id="alramTable">
+						<tbody>
+						</tbody>
+                     </table>
 					</div>
                         <!-- <table class="noti_table">
                            <tr>님을 구독하셨습니다.</tr><br>
@@ -474,9 +477,9 @@ $('#friendlist').click(function(){
 	}); 
 		
 	}); */
- 	function notification(){
+ 	/* function notification(){
  		location.href="notification.mb";
-		/* $.ajax({
+		 $.ajax({
 			url:"notification.mb",
 			type:"post",
 			success:function(data){
@@ -486,8 +489,8 @@ $('#friendlist').click(function(){
 			error:function(){
 				console.log("실패!");
 			}
-		}); */
-	}
+		}); 
+	} */
  
 	$(function(){
 		$("#tryMoney").select();
@@ -496,7 +499,29 @@ $('#friendlist').click(function(){
 	});
  
 	</script>
-<%-- 	<script>
+ 	<script>
+ 	
+ 	function alram(){
+ 		$.ajax({
+ 			url:"goAlram.mb",
+ 			type:"post",
+ 			success:function(data){
+ 				var $alramTable = $("#alramTable tbody");
+				$alramTable.html("");
+				 for(var i = 0; i < data["dateList"].length; i++){ 
+					var $tr = $("<tr>");
+					var $alCT = $("<td>").text(data["dateList"][i].alCT);
+					$tr.append($nNo);
+					$tr.append($td);
+					$alramTable.append($tr); 
+				 }
+ 			},
+ 			error:function(){
+ 				console.log("실패");
+ 			}
+ 		});
+ 	}
+ 	
 		$(function(){
 			getConnection2();
 			
@@ -563,7 +588,7 @@ $('#friendlist').click(function(){
 			}
 			
 			function getConnection2(){
-				ws2 = new WebSocket("ws://localhost:8001" + "<%=request.getContextPath()%>/auctionStart");
+				ws2 = new WebSocket("ws://localhost:8001" + "<%=request.getContextPath()%>/alramStart");
 				
 				ws2.onopen2 = function(event){
 					
@@ -607,11 +632,94 @@ $('#friendlist').click(function(){
 			function onClose2(event){
 				alert(event);
 			}
-		</script> --%>
+		</script>
 		
- <script>
+ <%-- <script>
  	var wsUri = new WebSocket("ws://localhost:8001" + '<%=request.getContextPath()%>/serverStart');
-	$(function(){
+	
+ 	
+ 	function sendMessage(msg){
+		/* location.href="notification.mb"; */
+		var wsUri = "ws://localhost:8001" + '<%=request.getContextPath()%>/alramStart?userNo='+userNo;
+		ws2 = new WebSocket(wsUri);
+		var userNo = $("#tryMoney").val();
+		var userId = "${m.userNm}";
+		var sendMsg = userId + ":" + userNo;
+		ws2.send(sendMsg);
+	}
+ 	
+ 	function goReport(userNo){
+		var userNo = userNo
+		var wsUri = "ws://localhost:8001" + '<%=request.getContextPath()%>/alramStart?userNo='+userNo;
+			/* "ws://localhost:8002/sixDestiny/start?userNo:"+userNo+"&kind:user"; */
+		ws2 = new WebSocket(wsUri);
+		//서버 시작할 때 동작
+		ws2.onopen = function(evt){
+
+		}
+
+		//서버로부터 메세지를 전달 받을 때 동작하는 메소드
+		ws2.onmessage = function(event){
+			onMessage2(event);
+		}
+
+		//서버에서 에러가 발생할 경우 동작할 메소드
+		ws2.onerror = function(event){
+			onError2(event);
+		}
+
+		//서버와의 연결이 종료될 경우 동작하는 메소드
+		ws2.onclose = function(event){
+			onClose2(event);
+		}
+
+		$("#message").keydown(function (key) {
+	        if(key.keyCode == 13){
+	        	console.log("엔터!");
+	        	var message = $("#message").val();
+				var result = userNo + "#" +userNo + " 회원님 : " + message
+				console.log(result);
+				ws2.send(result);
+				$("#message").val('');
+				$("#message").focus();
+	        }
+
+	    });
+
+		$("#gomesseage").click(function(){
+			console.log("클릭!");
+
+				var message = $("#message").val();
+				var result = userNo + "#" + userNo + " 회원님 : " + message
+				console.log(result);
+				ws2.send(result);
+				$("#message").val('');
+				$("#message").focus();
+
+		});
+	}
+
+
+	function onMessage2(event){
+		var content = event.data;
+		console.log(content);
+		var $chat = $("#cahtarea");
+		$br = $("<br>");
+
+		$chat.append(content);
+		$chat.append("&#10;");
+
+
+	}
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	$(function(){
 		getConnection();
 	});
 		function getConnection() {
@@ -640,5 +748,5 @@ $('#friendlist').click(function(){
 			console.log(result);
 
 		}
-	</script>
+	</script> --%>
 </html>               

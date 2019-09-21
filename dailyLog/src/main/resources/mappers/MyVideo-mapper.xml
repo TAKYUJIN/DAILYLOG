@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+	<mapper namespace="MyVideo">
+
+   
+     	<resultMap type="MyVideo" id="MyVideoResultSet">
+     	
+        <id property="userNo" column="USER_NO"/>
+        <result property="vNo" column="V_NO"/>
+        <result property="vTitle" column="V_TITLE"/>
+        <result property="count" column="COUNT"/>
+          <result property="fileNm" column="FILE_NM"/>
+           <result property="chNm" column="CH_NM"/>
+           <result property="uploadDt" column="UPLOAD_DT"/>
+           <result property="tag" column="TAG"/>
+     </resultMap>
+     
+     
+     
+     
+
+     
+     <!-- 구독영상리스트-->
+       <select id="logerHomeAllVideo" resultMap="MyVideoResultSet">
+	SELECT L.USER_NO, V.V_NO, V.V_TITLE, A.FILE_NM, L.CH_NM, v.upload_dt ,V.TAG
+	FROM LOGER L
+	JOIN VIDEO V
+	ON (L.CH_NM = V.CH_NM)
+	JOIN ATTACHMENT A
+	ON (A.V_NO = V.V_NO)
+	WHERE v.USER_NO =  #{userNo}
+
+	</select>
+	
+	
+	  <!-- 로거스튜디오 홈 하단의  최신동영상-->
+       <select id="newHomeChannellVideo" resultMap="MyVideoResultSet">
+	SELECT L.USER_NO, V.V_NO, V.V_TITLE, A.FILE_NM, L.CH_NM, v.upload_dt , V.TAG
+	FROM LOGER L
+	JOIN VIDEO V
+	ON (L.CH_NM = V.CH_NM)
+	JOIN ATTACHMENT A
+	ON (A.V_NO = V.V_NO)
+    WHERE v.USER_NO =  #{userNo}
+    ORDER BY UPLOAD_DT DESC
+	</select> 
+	
+	<!-- 로거스튜디오 홈 하단의  인기동영상-->
+       <select id="favHomeChannellVideo" resultMap="MyVideoResultSet">
+	SELECT L.USER_NO, V.V_NO, V.V_TITLE, A.FILE_NM, L.CH_NM, v.upload_dt , V.TAG , v.count
+	FROM LOGER L
+	JOIN VIDEO V
+	ON (L.CH_NM = V.CH_NM)
+	JOIN ATTACHMENT A
+	ON (A.V_NO = V.V_NO)
+    WHERE v.USER_NO =    #{userNo}
+    ORDER BY COUNT DESC 
+	</select> 
+     
+</mapper>
+
+
+
+
+
+
+
+
+

@@ -8,9 +8,12 @@ import org.mybatis.spring.SqlSessionTemplate;
 import com.kh.with.loger.model.vo.Calculate;
 import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.loger.model.vo.Loger2;
+import com.kh.with.loger.model.vo.MyVideo;
 import com.kh.with.loger.model.vo.Support;
+import com.kh.with.main.model.vo.SubscribeVideo;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.report.model.vo.Report;
+import com.kh.with.video.model.vo.Attachment;
 import com.kh.with.video.model.vo.Video;
 
 public interface LogerDao {
@@ -67,6 +70,21 @@ public interface LogerDao {
 	//채널개설시 채널유무 업데이트
 	int updatechyn(SqlSessionTemplate sqlSession, Member member);
 
+	//로거스튜디오내 모든 동영상
+	ArrayList<MyVideo> logerHomeAllVideo(SqlSessionTemplate sqlSession, MyVideo myvideo);
+
+	//로거스튜디오내 정보
+	Loger2 logerHomeInfo(SqlSessionTemplate sqlSession, Loger2 loger2);
+
+	//로거스튜디오내 모든 동영상 프로필
+	Loger2 homeProfile(SqlSessionTemplate sqlSession, Loger2 loger2);
+
+
+	//로거스튜디오 홈 하단의 최근동영상
+	ArrayList<MyVideo> newHomeChannellVideo(SqlSessionTemplate sqlSession, MyVideo myvideo);
+
+	//로거스튜디오 홈 하단의 인기동영상
+	ArrayList<MyVideo> favHomeChannellVideo(SqlSessionTemplate sqlSession, MyVideo myvideo);
 
  
 	

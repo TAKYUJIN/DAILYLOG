@@ -2,12 +2,12 @@ package com.kh.with.main.model.vo;
 
 import java.sql.Date;
 
-public class SubscribeVideo {
+public class SubscribeVideo implements java.io.Serializable {
 	private int userNo;
 	private int vNo;
 	private String vTitle;
 	private int count;
-	private String fileNm;
+	private String fileNm;  
 	private String chNm;
 	private Date  uploadDt; 
 	

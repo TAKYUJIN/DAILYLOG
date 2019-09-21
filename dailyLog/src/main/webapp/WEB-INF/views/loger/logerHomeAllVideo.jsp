@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -208,6 +209,7 @@ body {
 	:
 	blue;
 }
+
 </style>
 </head>
 <body>
@@ -226,24 +228,28 @@ body {
 				<span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
 			</div>
 
-			<div class="myInfo">
-				<img class="imInfoPic" src="resources/images/user.png">
+			<div class="myInfo" style="margin-left:30px;">
+			 <img	src="resources/uploadFiles/${result.fileNm}" width="100px" height="100px">
+			 
 				<div class="textInfo">
 					<p style="widht: 200px; margin-left: 130px; margin-top: -50px;">
-						<strong>채널명</strong>
+						<strong><c:out value="${result.chNm}" /></strong>
 					</p>
 				</div>
 				<button id="subscribebtn" class="btn btn-primary">구독</button>
-				<p style="widht: 200px; margin-left: 130px; margin-top: -10px;">구독자:5명</p>
+				<p style="widht: 200px; margin-left: 130px; margin-top: -10px;"><c:out value="${result.subNum}" />명</p>
 			</div>
+			
+			
+			
 
 			<div class="row" style="margin-left: 30px;">
 				<div class="col-lg-15">
-					<a href="newHomeChannel.lo" class="noticeLink"
+					<a href="newHomeChannel.lo?userNo=${sessionScope.userNo}" class="noticeLink"
 						style="float: left; width: 15%;"><h4 class="page-title1">홈</h4></a>
-					<a href="logerHomeAllVideo.lo" class="noticeLink"
+					<a href="logerHomeAllVideo.lo?userNo=${sessionScope.userNo}" class="noticeLink"
 						style="float: left; width: 15%;"><h4 class="page-title2">동영상</h4></a>
-					<a href="logerHomeInfo.lo" class="noticeLink"
+					<a href="logerHomeInfo.lo?userNo=${sessionScope.userNo}" class="noticeLink"
 						style="float: left; width: 15%;"><h4 class="page-title3">정보</h4></a>
 				</div>
 
@@ -252,155 +258,29 @@ body {
 				<p id="newvideos">
 					<strong>모든동영상</strong>
 				</p>
-				<table id="videoarea">
-					<tr>
-						<td><video width="200px;" height="150px;" controls loop>
-								<source src="${pageContext.request.contextPath }${url }">
-								<source src="nature.ogg" type="">
-							</video><br> <br>
-							<div class="video_title">
-								<p>
-									<strong>동영상제목</strong>
+					<c:forEach items="${logerHomeAllVideo}" var="av" begin="0" end="5">
+					
+				<div class="col-sm-4">
+					
+							<a href="video.vd?userNo=${av.userNo}&vNo=${av.vNo}">
+							 <img	src="resources/uploadFiles/${av.fileNm}" width="250px"
+								height="200px"> <br><br>
+								<div style="width: 150px;">
+									<c:out value="${av.chNm}" />
+								</div>
+								<div style="width: 150px;">
+									<c:out value="${av.vTitle}" />
+								</div>
+								<p style="width: 150px;">
+									<c:out value="${av.count}" />
+									회
 								</p>
-							</div> <br>
-							<div class="ch_info">
-								<img src="resources/images/playbtn.png" style="width: 15px;">
-								<span class="hit"> <strong class="blind">조회수</strong> <em>80,634</em>
-								</span> <span class="bar"></span>
-							</div></td>
-						<td><video width="200px;" height="150px;" controls loop>
-								<source src="" type="">
-								<source src="nature.ogg" type="">
-							</video><br> <br>
-							<div class="video_title">
-								<p>
-									<strong>동영상제목</strong>
-								</p>
-							</div> <br>
-							<div class="ch_info">
-								<img src="resources/images/playbtn.png" style="width: 15px;">
-								<span class="hit"> <strong class="blind">조회수</strong> <em>80,634</em>
-								</span> <span class="bar"></span>
-							</div></td>
-						<td><video width="200px;" height="150px;" controls loop>
-								<source src="" type="">
-								<source src="nature.ogg" type="">
-							</video><br> <br>
-							<div class="video_title">
-								<p>
-									<strong>동영상제목</strong>
-								</p>
-							</div> <br>
-							<div class="ch_info">
-								<img src="resources/images/playbtn.png" style="width: 15px;">
-								<span class="hit"> <strong class="blind">조회수</strong> <em>80,634</em>
-								</span> <span class="bar"></span>
-							</div></td>
-					</tr>
-				</table>
+							</a>
+							
+						</div>
+				</c:forEach>
 
-				<hr>
-				<table id="videoarea1">
-					<tr>
-						<td><video width="200px;" height="150px;" controls loop>
-								<source src="" type="">
-								<source src="nature.ogg" type="">
-							</video><br>
-							<div class="video_title">
-								<br>
-								<p>
-									<strong>동영상제목</strong>
-								</p>
-							</div> <br>
-							<div class="ch_info">
-								<img src="resources/images/playbtn.png" style="width: 15px;">
-								<span class="hit"> <strong class="blind">조회수</strong> <em>80,634</em>
-								</span> <span class="bar"></span>
-							</div></td>
-						<td><video width="200px;" height="150px;" controls loop>
-								<source src="" type="">
-								<source src="nature.ogg" type="">
-							</video><br>
-							<div class="video_title">
-								<br>
-								<p>
-									<strong>동영상제목</strong>
-								</p>
-							</div> <br>
-							<div class="ch_info">
-								<img src="resources/images/playbtn.png" style="width: 15px;">
-								<span class="hit"> <strong class="blind">조회수</strong> <em>80,634</em>
-								</span> <span class="bar"></span>
-							</div></td>
-
-						<td><video width="200px;" height="150px;" controls loop>
-								<source src="" type="">
-								<source src="nature.ogg" type="">
-							</video><br>
-							<div class="video_title">
-								<br>
-								<p>
-									<strong>동영상제목</strong>
-								</p>
-							</div> <br>
-							<div class="ch_info">
-								<img src="resources/images/playbtn.png" style="width: 15px;">
-								<span class="hit"> <strong class="blind">조회수</strong> <em>80,634</em>
-								</span> <span class="bar"></span>
-							</div></td>
-					</tr>
-				</table>
-
-				<table id="videoarea1">
-					<tr>
-						<td><video width="200px;" height="150px;" controls loop>
-								<source src="" type="">
-								<source src="nature.ogg" type="">
-							</video><br>
-							<div class="video_title">
-								<br>
-								<p>
-									<strong>동영상제목</strong>
-								</p>
-							</div> <br>
-							<div class="ch_info">
-								<img src="resources/images/playbtn.png" style="width: 15px;">
-								<span class="hit"> <strong class="blind">조회수</strong> <em>80,634</em>
-								</span> <span class="bar"></span>
-							</div></td>
-						<td><video width="200px;" height="150px;" controls loop>
-								<source src="" type="">
-								<source src="nature.ogg" type="">
-							</video><br>
-							<div class="video_title">
-								<br>
-								<p>
-									<strong>동영상제목</strong>
-								</p>
-							</div> <br>
-							<div class="ch_info">
-								<img src="resources/images/playbtn.png" style="width: 15px;">
-								<span class="hit"> <strong class="blind">조회수</strong> <em>80,634</em>
-								</span> <span class="bar"></span>
-							</div></td>
-
-						<td><video width="200px;" height="150px;" controls loop>
-								<source src="" type="">
-								<source src="nature.ogg" type="">
-							</video><br>
-							<div class="video_title">
-								<br>
-								<p>
-									<strong>동영상제목</strong>
-								</p>
-							</div> <br>
-							<div class="ch_info">
-								<img src="resources/images/playbtn.png" style="width: 15px;">
-								<span class="hit"> <strong class="blind">조회수</strong> <em>80,634</em>
-								</span> <span class="bar"></span>
-							</div></td>
-					</tr>
-				</table>
+		
 			</div>
 		</div>
 	</form>

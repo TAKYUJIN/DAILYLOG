@@ -56,11 +56,12 @@
 		<result property="vNo" column="V_NO" />
 		<result property="chDT" column="CH_DT" />
 		<result property="chInfo" column="CH_INFO" />
-		<result property="accNm" column="ACC_NM" />
-		<result property="bankNm" column="BANK_NM" />
-		<result property="account" column="ACCOUNT" />
 		<result property="subNum" column="SUBNUM" />
-		<result property="enrollNm" column="ENROLL_NM" />
+		<result property="status" column="STATUS" />
+		<result property="amNo" column="AM_NO" />
+		<result property="fileNm" column="FILE_NM" />	
+		<result property="amDt" column="AM_DT" />
+		<result property="amTY" column="AM_TY" />
 	</resultMap>
 
 	<resultMap type="Report" id="ReportResultSet">
@@ -129,12 +130,14 @@
 	</select>
 
 	<select id="selectLogerSupport" resultMap="supportResultSet">
-		SELECT RANK, NICKNAME, SUP_NO, USER_NO, CH_NO, SUP_STDT, SUP_PRICE, SUP_TY
+		SELECT RANK, NICKNAME, SUP_NO, USER_NO, CH_NO, SUP_STDT, SUP_PRICE, SUP_TY, CAL_STATUS
 		FROM(SELECT ROW_NUMBER() OVER(ORDER BY S.SUP_STDT DESC) RANK,
 		M.NICKNAME, S.*
 		FROM SUPPORT S
+        JOIN LOGER L ON(L.CH_NO = S.CH_NO)
 		JOIN MEMBER M ON(S.USER_NO = M.USER_NO)
-		WHERE M.USER_ID = #{userId})
+		WHERE S.CH_NO = #{chNo}
+		AND M.USER_NO != #{userNo})
 		ORDER BY RANK ASC
 	</select>
 
@@ -153,8 +156,10 @@
 		FROM(SELECT ROW_NUMBER() OVER(ORDER BY S.SUP_STDT DESC) RANK,
 		M.NICKNAME, S.*
 		FROM SUPPORT S
+        JOIN LOGER L ON(L.CH_NO = S.CH_NO)
 		JOIN MEMBER M ON(S.USER_NO = M.USER_NO)
-		WHERE S.USER_NO = #{userNo}
+		WHERE S.CH_NO = #{chNo}
+		AND M.USER_NO != #{userNo}
         AND CAL_STATUS = 0)
 		WHERE SUP_STDT BETWEEN
 		TO_CHAR(TO_DATE(#{mon},'YYYY-MM-DD')) AND
@@ -308,16 +313,26 @@
 	
 	</select>
 	
-	<!--로거스튜디오 메인 select (프로필,채널명, 구독자) -->
-<!-- 	
-	<select id="newHomeChannel" resultMap="logerResultSet2">
-	SELECT *
-	FROM LOGER L
-	JOIN ATTACHMENT A
-	ON (L.USER_NO = A.USER_NO)
-	WHERE a.am_ty ='회원' 
-	AND A.USER_NO =  #{userNo}
+	
+	<!-- 스튜디오 내  정보 -->
+	<select id="logerHomeInfo"  parameterType="Loger"  resultMap="logerResultSet2">
+    SELECT *
+    FROM ATTACHMENT A
+    JOIN LOGER L
+    ON(A.USER_NO = L.USER_NO)
+    WHERE AM_TY = '회원'
+    AND  L.USER_NO = #{userNo}
 	</select>
- -->
+	
+	
+	<!-- 스튜디오 내  동영상 프로필 -->
+	<select id="homeProfile"  parameterType="Loger"  resultMap="logerResultSet2">
+    SELECT *
+    FROM ATTACHMENT A
+    JOIN LOGER L
+    ON(A.USER_NO = L.USER_NO)
+    WHERE AM_TY = '회원'
+    AND  L.USER_NO = #{userNo}
+	</select>
 
 </mapper>
