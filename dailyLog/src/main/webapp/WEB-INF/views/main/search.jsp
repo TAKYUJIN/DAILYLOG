@@ -251,7 +251,7 @@ background:none;
 	  	<div class="row" id="v1"> <h2> <span>  <b>채널명</b></span> </h2><br>
 						<c:forEach var="c" items="${map.searchtitle}">
 						<div class="col-sm-4"id="l"><div class="img-box"><div style=" float:left;"> <a href="video.vd">
-						<img src="resources/images/${c.filepath}" width = "102px"  height="130px"  >
+						<img src="resources/images/${c.fileNm}" width = "102px"  height="130px"  >
 							  <h5>제목:${c.vTitle}</h5>
 							<h5>채널명:${c.chNm }</h5> 
 							<input type="hidden"  id="target" value="${c.vNo}"/> 	</a></div></div></div> 
@@ -516,7 +516,7 @@ background:none;
 							
 						<c:forEach var="ch" items="${map.searchch}"> 
 						<div class="col-sm-4"><div class="img-box"><div style=" float:left;"> <a href="video.vd">
-						<img src="resources/images/${ch.filepath}" width = "350px"  height="300px"  >
+						<img src="resources/uploadFiles/${ch.fileNm}" width = "350px"  height="200px"  >
 							<h5>제목:${ch.vTitle}</h5>
 							<h5>채널명:${ch.chNm }</h5>
 								<h5>태그명:${ch.tag }</h5>
@@ -538,7 +538,7 @@ background:none;
  						<div class="row">
 						<c:forEach var="title" items="${map.searchtitle}">
 						<div class="col-sm-4"  ><div class="img-box"><div style=" float:left;"> <a href="video.vd">
-						<img src="resources/images/${title.filepath}"  width = "350px"  height="300px" >
+						<img src="resources/uploadFiles/${title.fileNm}"  width = "100px"  height="200px" >
 							<h5>제목:${title.vTitle}</h5>
 							<h5>채널명:${title.chNm }</h5>
 							<h5>태그명:${title.tag }</h5>
@@ -558,7 +558,7 @@ background:none;
 							
 						<c:forEach var="tag" items="${map.searchtag}">
 						<div class="col-sm-4" ><div class="img-box"><div style=" float:left;"> <a href="video.vd">
-						<img src="resources/images/${tag.filepath}" width = "350px"  height="300px" >
+					<img src="resources/uploadFiles/${tag.fileNm}" width = "330px"  height="200px" >
 							<h5>제목:${tag.vTitle}</h5>
 							<h5>채널명:${tag.chNm }</h5>
 							<h5>태그명:${tag.tag }</h5>
@@ -572,6 +572,7 @@ background:none;
  
   
   
+ 	<jsp:include page="../common/footer.jsp"></jsp:include>
  
 </body>
 </html>

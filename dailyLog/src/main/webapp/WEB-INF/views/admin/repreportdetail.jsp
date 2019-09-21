@@ -94,9 +94,9 @@
  <div class="signup-form">
 <!--     <form action="/examples/actions/confirmation.php" method="post" class="form-horizontal">
  -->
- <form action="videoreportdetail2.ad" method="get">
-<c:forEach items="${videoreportdetail}" var="de">
-			<h3><b>동영상 신고 관리 상세 </b></h3><br>
+ <form action="repreportdetail.ad" method="get">
+<c:forEach items="${repreportdetail}" var="de">
+			<h3><b>댓글 신고 관리 상세 </b></h3><br>
 		<div class="form-group">
 			<label>신고 번호:${de.reno}  </label><br><br>
 			<input type="hidden" id="reno" name="reno" value="${de.reno}">

@@ -39,7 +39,7 @@ public class ReportController {
 	  String rety= request.getParameter("rety"); String retarget=
 	  request.getParameter("retarget");
 	  String vTitle=request.getParameter("vTitle");
-	  
+	  System.out.println("vTitle:"+vTitle);
 	  String alCT=vTitle+" 동영상이 "+rewhy+"사유로 신고 되었습니다.";
 	  
 	  Report report =new Report ();

@@ -244,26 +244,6 @@ public class MainController {
 		
 		//검색
 		@RequestMapping(value="search.mb")
-
-		/*public String search(HttpServletRequest request,Model model,HttpSession session) {
-				Video v =new Video();
-				
-				String searchId=request.getParameter("searchId");
-				v.setvTitle(searchId);
-				v.setChNm(searchId);
-				v.setTag(searchId);
-				
-				
-				List<Video>  searchch =ms.searchch(v); 
-				List<Video> searchtitle  =ms.searchtitle(v); 
-				List<Video> searchtag =ms.searchtag(v); 
-				
-				model.addAttribute("searchch", searchch);
-				model.addAttribute("searchtitle", searchtitle);
-				model.addAttribute("searchtag", searchtag);
-			return "main/search";
-		}*/
-		
 		public ModelAndView search(@RequestParam(defaultValue="") String search) {
 			
 			List<Video>  searchch =ms.searchch(search); 
