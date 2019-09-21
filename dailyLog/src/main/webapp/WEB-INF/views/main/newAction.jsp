@@ -187,7 +187,7 @@ body {
 	<form action="selectnewAction.mb" method="post">
 
 				<p id="newvideos">
-					<h3>좋아요 표시한 영상</h3>
+					<h3>시청기록</h3>
 					
 				</p>
 				<div id="select">

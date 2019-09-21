@@ -23,6 +23,7 @@
 		<result property="leaveDT" column="LEAVE_DT" />
 		<result property="remainPT" column="REMAIN_PT" />
 		<result property="status" column="STATUS" />
+		<result property="profilePath" column="PROFILE_PATH" />
 	</resultMap>
 
 	<!-- 회원가입 -->
@@ -65,9 +66,12 @@
   
   <!-- 회원정보조회 -->
    <select id="selectMyPage" parameterType="Member" resultMap="memberResultSet">
-      SELECT *
-      FROM MEMBER
-      WHERE USER_ID = #{userId}
+     SELECT M.*, 
+     FILE_NM AS PROFILE_PATH
+      FROM MEMBER M
+    ,attachment A
+      WHERE M.USER_NO = A.USER_NO (+)
+      AND M.USER_ID = #{userId}
       AND STATUS = 0
    </select>
    

@@ -1,9 +1,9 @@
 package com.kh.with.member.model.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import com.kh.with.member.model.exception.LoginException;
 import com.kh.with.member.model.vo.Member;
@@ -35,6 +35,10 @@ public interface MemberService {
   
 	//mypage 탈퇴
 	int delete_myPage(Member m) throws Exception;
+	
+	int delete_myPage_file(HashMap map);
+	
+	int insert_myPage_file(HashMap map);
 
 	void mailSendWithUserKey(Member m, HttpServletRequest request);
 
@@ -43,6 +47,7 @@ public interface MemberService {
 	int ustop(Member m);
 
 	int alter_userKey_service(String userId, String status);
+	
 
 	
 	
