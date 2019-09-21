@@ -5,8 +5,8 @@ public class Attachment {
 	private int userNo ; //회원번호
 	private int amNo; //첨부파일번호
 	private int vNo; //동영상번호
-	private String fileNm; //파일경로
 	private String amDt; //업로드날짜
+	private String fileNm; //파일경로
 	private String amTY; //파일구분
 
 	

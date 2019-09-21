@@ -26,7 +26,7 @@
 		<typeAlias type="com.kh.with.admin.model.vo.UserBoard" alias="userBoard" />
 		<typeAlias type="com.kh.with.admin.model.vo.ChannelBoard" alias="ChannelBoard" />
 		<typeAlias type="com.kh.with.main.model.vo.Alram" alias="Alram" />
-				
+				<typeAlias type="com.kh.with.loger.model.vo.MyVideo" alias="MyVideo" />
 
 	</typeAliases>
 	<mappers>
@@ -44,6 +44,6 @@
 		<mapper resource="mappers/subscribe-mapper.xml"/>
 		<mapper resource="mappers/userboard-mapper.xml"/>
 		<mapper resource="mappers/channelBoard-mapper.xml"/>
-		
+		<mapper resource="mappers/MyVideo-mapper.xml"/>
 	</mappers>
 </configuration>

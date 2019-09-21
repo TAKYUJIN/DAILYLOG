@@ -34,10 +34,8 @@
 		<id property="userNo" column="USER_NO" />
 		<result property="amNo" column="AM_NO" />
 		<result property="vNo" column="V_NO" />
-		<result property="filenm" column="FILE_NM" />
 		<result property="amDt" column="AM_DT" />
-		<result property="enrollNm" column="ENROLL_NM" />
-		<result property="modifyNm" column="MODIFY_NM" />
+		<result property="filenm" column="FILE_NM" />
 		<result property="amTY" column="AM_TY" />
 	</resultMap>
 	
@@ -149,11 +147,6 @@
 	 ORDER BY AM_DT DESC
 	</select>
 	
-
-
-
-
-
 
 
 

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -195,6 +196,9 @@ body {
 	width: 800px;
 	/* border: 1px solid black; */
 }
+.myInfo{
+	margin-left:30px;
+}
 </style>
 <script>
 	$(document).ready(function() {
@@ -228,27 +232,28 @@ body {
 			</div>
 
 			<div class="myInfo">
-				<img class="imInfoPic" src="resources/images/user.png">
+			 <img	src="resources/uploadFiles/${logerHomeInfo.fileNm}" width="100px" height="100px">
+			 
 				<div class="textInfo">
 					<p style="widht: 200px; margin-left: 130px; margin-top: -50px;">
-						<strong>채널명</strong>
+						<strong><c:out value="${logerHomeInfo.chNm}" /></strong>
 					</p>
 				</div>
 				<button id="subscribebtn" class="btn btn-primary">구독</button>
-				<p style="widht: 200px; margin-left: 130px; margin-top: -10px;">구독자:5명</p>
+				<p style="widht: 200px; margin-left: 130px; margin-top: -10px;"><c:out value="${logerHomeInfo.subNum}" />명</p>
 			</div>
 
 			<div class="row" style="margin-left: 30px;">
 				<div class="col-lg-15">
-					<a href="newHomeChannel.lo" class="noticeLink"
+					<a href="newHomeChannel.lo?userNo=${sessionScope.userNo}" class="noticeLink"
 						style="float: left; width: 15%;"><h4 class="page-title1">홈</h4></a>
-					<a href="logerHomeAllVideo.lo" class="noticeLink"
+					<a href="logerHomeAllVideo.lo?userNo=${sessionScope.userNo}" class="noticeLink"
 						style="float: left; width: 15%;"><h4 class="page-title2">동영상</h4></a>
-					<a href="logerHomeInfo.lo" class="noticeLink"
+					<a href="logerHomeInfo.lo?userNo=${sessionScope.userNo}" class="noticeLink"
 						style="float: left; width: 15%;"><h4 class="page-title3">정보</h4></a>
 				</div>
 
-				<br> <br> <br>
+				<br> <br> <br><br><br>
 			
 					<div class="table-wrapper" style="width: 300px">
 						<table class="table table-striped" >
@@ -258,32 +263,22 @@ body {
 
 								</tr>
 							</thead>
-							<tbody>
-								<tr>
-									<td>가입일:2019.09.03</td>
-								</tr>
-								<tr>
-									<td>구독자수:5명</td>
-								</tr>
-							</tbody>
 						</table>
 					</div>
+				<P>가입일 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<c:out value="${logerHomeInfo.chDT}" /></P>
+		        <P>구독자수 &nbsp;&nbsp;<c:out value="${logerHomeInfo.subNum}" />명</P>
+					<br> <br> 
 					<p id="textInfo">
 						<strong>정보</strong>
 					</p>
-					<div id="infoarea">설산에서 뭇 품고 현저하게 품었기 이것이야말로 약동하다. 들어 장식하는 이는
-						길을 무한한 끝까지 같이, 따뜻한 인간이 말이다. 못할 그들은 열락의 그것을 사랑의 그들에게 것이다. 실로 관현악이며,
-						인생의 같은 공자는 앞이 유소년에게서 심장은 사막이다. 불어 지혜는 살 것이다. 같지 인간의 있을 가슴이 모래뿐일
-						동력은 있다. 고행을 천하를 굳세게 천고에 거친 뿐이다. 가지에 천하를 우는 그들은 얼마나 듣기만 뿐이다. 하는 그것은
-						귀는 없는 인생에 불어 이 온갖 설산에서 것이다. 인간은 충분히 많이 두손을 이것이야말로 있는 가장 것이다. 이상은
-						얼마나 피가 인류의 황금시대의 부패를 방지하는 사람은 소리다.이것은 있다.</div>
+					<div id="infoarea"><c:out value="${logerHomeInfo.chInfo}" /></div>
 				</div>
 			</div>
 		
 
 	</form>
 
-
+	<br> <br> <br><br><br>
 
 
 

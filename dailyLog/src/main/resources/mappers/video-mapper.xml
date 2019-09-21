@@ -71,25 +71,18 @@
         <result property="regStatus" column="REG_STATUS"/>
      </resultMap>
 
+
 	<!-- 업로드할 동영상 정보 insert 쿼리 -->
-
-
-     <!--
+ 
     <insert id="insertVideoInfo" parameterType="Video">       
-
    INSERT INTO VIDEO
    VALUES(V_NO.NEXTVAL, #{userNo}, #{vTitle}, 0, #{chNm}, #{tag},'N', SYSDATE, NULL, #{adultAut}, #{adYn}  ,#{adInfo},
    NULL, NULL, #{fileNm}, #{openTy})
-    
-
-   </insert> -->
-
- 	<insert id="insertVideoInfo" parameterType="Video">	 	
-	INSERT INTO VIDEO
-	VALUES(V_NO.NEXTVAL, #{userNo}, #{vTitle}, 0, #{chNm}, #{tag},'N', SYSDATE, NULL, #{adultAut}, #{adYn}  ,#{adInfo},
-	NULL, NULL, #{fileNm}, #{openTy})
- 	
-	</insert>
+   
+   </insert>
+   
+   
+ 
 
 	
 
@@ -189,8 +182,12 @@ WHERE TAG LIKE '%'||#{search}||'%'
 	
 	</select>
 
-	
-	
+	<!-- 로거스튜디오내 동영상 -->
+		<select id="logerHomeAllVideo" resultMap="videoResultSet" parameterType="com.kh.with.main.model.vo.Video">
+		SELECT *
+		FROM VIDEO
+		WHERE USER_NO = #{userNo}
+	</select>
 	
 </mapper>
 

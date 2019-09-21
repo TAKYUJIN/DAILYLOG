@@ -105,7 +105,7 @@ public class MainController {
 		ArrayList<SubscribeVideo> subscribeVideoList = ms.subscribeVideoList(subscribeVideo);
 		 
 
-		
+		System.out.println("구독한 채널 비디오 :::: " + subscribeVideoList );
 		
 		
 		

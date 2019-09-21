@@ -161,6 +161,9 @@ body {
 .newVideo {
 	margin-top: 100px;
 }
+.myInfo{
+	margin-left:30px;
+}
 </style>
 
 
@@ -179,8 +182,10 @@ body {
 			</div>
 
 			<div class="myInfo">
-			 <%-- <img class="imInfoPic"src="resources/images/${result.fileNm}" width = "250px"  height="200px"  > --%>
-				 <img class="imInfoPic" src="resources/images/user.png"> 
+			 <img	src="resources/uploadFiles/${result.fileNm}" width="100px"
+								height="100px">
+				 
+				 
 				<div class="textInfo">
 					<p style="widht: 200px; margin-left: 130px; margin-top: -50px;">
 						<strong><c:out value="${result.chNm}"/></strong>
@@ -192,11 +197,11 @@ body {
 
 			<div class="row" style="margin-left: 30px;">
 				<div class="col-lg-15">
-					<a href="newHomeChannel.lo" class="noticeLink"
+					<a href="newHomeChannel.lo?userNo=${sessionScope.userNo}" class="noticeLink"
 						style="float: left; width: 15%;"><h4 class="page-title1">홈</h4></a>
-					<a href="logerHomeAllVideo.lo" class="noticeLink"
+					<a href="logerHomeAllVideo.lo?userNo=${sessionScope.userNo}" class="noticeLink"
 						style="float: left; width: 15%;"><h4 class="page-title2">동영상</h4></a>
-					<a href="logerHomeInfo.lo" class="noticeLink"
+					<a href="logerHomeInfo.lo?userNo=${sessionScope.userNo}" class="noticeLink"
 						style="float: left; width: 15%;"><h4 class="page-title3">정보</h4></a>
 				</div>
 				<div class="newVideo">
@@ -207,6 +212,7 @@ body {
 
 				</div> 
 			 	<div class="textNewVideo">
+			 	
 					<h3>
 						<strong>최신동영상제목부분입니다!!</strong>
 					</h3>
@@ -226,50 +232,30 @@ body {
 				<strong>최신동영상</strong>
 			</p> 
 		<table id="videoarea">
-				<tr>
-					<td><video width="200px;" height="150px;" controls loop>
-							<source src="" type="">
-							<source src="nature.ogg" type="">
-						</video><br> <br>
-						<div class="video_title">
-							<p>
-								<strong>동영상제목</strong>
-							</p>
-						</div> <br>
-						<div class="ch_info">
-							<img src="resources/images/playbtn.png" style="width: 15px;">
-							<span class="hit"> <strong class="blind">조회수</strong> <em>80,634</em>
-							</span> <span class="bar"></span>
-						</div></td>
-					<td><video width="200px;" height="150px;" controls loop>
-							<source src="" type="">
-							<source src="nature.ogg" type="">
-						</video><br> <br>
-						<div class="video_title">
-							<p>
-								<strong>동영상제목</strong>
-							</p>
-						</div> <br>
-						<div class="ch_info">
-							<img src="resources/images/playbtn.png" style="width: 15px;">
-							<span class="hit"> <strong class="blind">조회수</strong> <em>80,634</em>
-							</span> <span class="bar"></span>
-						</div></td>
-					<td><video width="200px;" height="150px;" controls loop>
-							<source src="" type="">
-							<source src="nature.ogg" type="">
-						</video><br> <br>
-						<div class="video_title">
-							<p>
-								<strong>동영상제목</strong>
-							</p>
-						</div> <br>
-						<div class="ch_info">
-							<img src="resources/images/playbtn.png" style="width: 15px;">
-							<span class="hit"> <strong class="blind">조회수</strong> <em>80,634</em>
-							</span> <span class="bar"></span>
-						</div></td>
-				</tr>
+					<c:forEach items="${newHomeChannellVideo}" var="hv" begin="0" end="5">
+					
+				<div class="col-sm-4">
+					
+							<a href="video.vd?userNo=${hv.userNo}&vNo=${hv.vNo}">
+							 <img	src="resources/uploadFiles/${hv.fileNm}" width="250px"
+								height="200px"> <br><br>
+								<div style="width: 150px;">
+									<c:out value="${hv.chNm}" />
+								</div>
+								<div style="width: 150px;">
+									<c:out value="${hv.vTitle}" />
+								</div>
+								<p style="width: 150px;">
+									<c:out value="${hv.count}" />
+									회
+								</p>
+								<p style="width: 150px;">
+									<c:out value="${hv.tag}" />
+								</p>
+								</a>
+								</div>
+				</c:forEach>
+
 			</table> 
 
 	 	<hr>
@@ -277,54 +263,35 @@ body {
 				<strong>인기동영상</strong>
 			</p>
 			<table id="videoarea1">
-				<tr>
-					<td><video width="200px;" height="150px;" controls loop>
-							<source src="" type="">
-							<source src="nature.ogg" type="">
-						</video><br>
-						<div class="video_title">
-							<br>
-							<p>
-								<strong>동영상제목</strong>
-							</p>
-						</div> <br>
-						<div class="ch_info">
-							<img src="resources/images/playbtn.png" style="width: 15px;">
-							<span class="hit"> <strong class="blind">조회수</strong> <em>80,634</em>
-							</span> <span class="bar"></span>
-						</div></td>
-					<td><video width="200px;" height="150px;" controls loop>
-							<source src="" type="">
-							<source src="nature.ogg" type="">
-						</video><br>
-						<div class="video_title">
-							<br>
-							<p>
-								<strong>동영상제목</strong>
-							</p>
-						</div> <br>
-						<div class="ch_info">
-							<img src="resources/images/playbtn.png" style="width: 15px;">
-							<span class="hit"> <strong class="blind">조회수</strong> <em>80,634</em>
-							</span> <span class="bar"></span>
-						</div></td>
-
-					<td><video width="200px;" height="150px;" controls loop>
-							<source src="" type="">
-							<source src="nature.ogg" type="">
-						</video><br>
-						<div class="video_title">
-							<br>
-							<p>
-								<strong>동영상제목</strong>
-							</p>
-						</div> <br>
-						<div class="ch_info">
-							<img src="resources/images/playbtn.png" style="width: 15px;">
-							<span class="hit"> <strong class="blind">조회수</strong> <em>80,634</em>
-							</span> <span class="bar"></span>
-						</div></td>
-				</tr>
+						<c:forEach items="${favHomeChannellVideo}" var="fv" begin="0" end="5">
+					
+				<div class="col-sm-4">
+					
+							<a href="video.vd?userNo=${fv.userNo}&vNo=${fv.vNo}">
+							 <img	src="resources/uploadFiles/${fv.fileNm}" width="250px"
+								height="200px"> <br><br>
+								<div style="width: 150px;">
+									<c:out value="${fv.chNm}" />
+								</div>
+								<div style="width: 150px;">
+									<c:out value="${fv.vTitle}" />
+								</div>
+								<p style="width: 150px;">
+									<c:out value="${fv.count}" />
+									회
+								</p>
+								<p style="width: 150px;">
+									<c:out value="${fv.tag}" />
+								</p>
+								</a>
+								</div>
+				</c:forEach>
+				
+				
+				
+				
+				
+				
 			</table> 
 	</div>
 

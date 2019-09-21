@@ -449,7 +449,6 @@ public class VideoController {
 		}
 
 		m = (Member) session.getAttribute("loginUser");
-
 		String fileName = (String) session.getAttribute("fileName");
 		String vTitle = request.getParameter("vTitle");
 		String beforetag = request.getParameter("tag");
@@ -487,7 +486,9 @@ public class VideoController {
 
 		int result = vs.insertVideoInfo(video);
 		
-		System.out.println("컨트롤러result:::" + result);
+	
+		//동영상번호 select 
+	
 
 		//썸네일
 		Attachment attachment = new Attachment();

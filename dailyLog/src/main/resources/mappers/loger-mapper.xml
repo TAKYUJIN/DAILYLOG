@@ -56,11 +56,12 @@
 		<result property="vNo" column="V_NO" />
 		<result property="chDT" column="CH_DT" />
 		<result property="chInfo" column="CH_INFO" />
-		<result property="accNm" column="ACC_NM" />
-		<result property="bankNm" column="BANK_NM" />
-		<result property="account" column="ACCOUNT" />
 		<result property="subNum" column="SUBNUM" />
-		<result property="enrollNm" column="ENROLL_NM" />
+		<result property="status" column="STATUS" />
+		<result property="amNo" column="AM_NO" />
+		<result property="fileNm" column="FILE_NM" />	
+		<result property="amDt" column="AM_DT" />
+		<result property="amTY" column="AM_TY" />
 	</resultMap>
 
 	<resultMap type="Report" id="ReportResultSet">
@@ -308,16 +309,26 @@
 	
 	</select>
 	
-	<!--로거스튜디오 메인 select (프로필,채널명, 구독자) -->
-<!-- 	
-	<select id="newHomeChannel" resultMap="logerResultSet2">
-	SELECT *
-	FROM LOGER L
-	JOIN ATTACHMENT A
-	ON (L.USER_NO = A.USER_NO)
-	WHERE a.am_ty ='회원' 
-	AND A.USER_NO =  #{userNo}
+	
+	<!-- 스튜디오 내  정보 -->
+	<select id="logerHomeInfo"  parameterType="Loger"  resultMap="logerResultSet2">
+    SELECT *
+    FROM ATTACHMENT A
+    JOIN LOGER L
+    ON(A.USER_NO = L.USER_NO)
+    WHERE AM_TY = '회원'
+    AND  L.USER_NO = #{userNo}
 	</select>
- -->
+	
+	
+	<!-- 스튜디오 내  동영상 프로필 -->
+	<select id="homeProfile"  parameterType="Loger"  resultMap="logerResultSet2">
+    SELECT *
+    FROM ATTACHMENT A
+    JOIN LOGER L
+    ON(A.USER_NO = L.USER_NO)
+    WHERE AM_TY = '회원'
+    AND  L.USER_NO = #{userNo}
+	</select>
 
 </mapper>
