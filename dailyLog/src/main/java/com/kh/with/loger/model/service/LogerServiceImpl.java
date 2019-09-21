@@ -12,9 +12,12 @@ import com.kh.with.loger.model.dao.LogerDao;
 import com.kh.with.loger.model.vo.Calculate;
 import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.loger.model.vo.Loger2;
+import com.kh.with.loger.model.vo.MyVideo;
 import com.kh.with.loger.model.vo.Support;
+import com.kh.with.main.model.vo.SubscribeVideo;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.report.model.vo.Report;
+import com.kh.with.video.model.vo.Attachment;
 import com.kh.with.video.model.vo.Video;
 
 @Service
@@ -153,7 +156,45 @@ public class LogerServiceImpl implements LogerService{
 		return ld.updatechyn(sqlSession, member);
 	}
 
+	//로거스튜디오내 모든 동영상
+	@Override
+	public ArrayList<MyVideo> logerHomeAllVideo(MyVideo myvideo) {
+		
+		return ld.logerHomeAllVideo(sqlSession, myvideo);
+	}
 
+	//로거스튜디오내 정보
+	@Override
+	public Loger2 logerHomeInfo(Loger2 loger2) {
+		
+		return ld.logerHomeInfo(sqlSession, loger2);
+	}
+
+	//로거스튜디오내 모든 동영상 프로필
+	@Override
+	public Loger2 homeProfile(Loger2 loger2) {
+		
+		return ld.homeProfile(sqlSession, loger2);
+	
+	}
+
+	//로거스튜디오 홈 하단의 최근동영상
+	@Override
+	public ArrayList<MyVideo> newHomeChannellVideo(MyVideo myvideo) {
+		
+		return ld.newHomeChannellVideo(sqlSession, myvideo);
+	}
+
+	//로거스튜디오 홈 하단의 인기동영상
+	@Override
+	public ArrayList<MyVideo> favHomeChannellVideo(MyVideo myvideo) {
+		
+		return ld.favHomeChannellVideo(sqlSession, myvideo);
+	}
+
+
+
+	
 
 
 

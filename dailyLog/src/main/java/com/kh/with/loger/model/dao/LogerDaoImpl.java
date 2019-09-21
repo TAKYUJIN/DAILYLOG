@@ -12,9 +12,12 @@ import com.kh.with.admin.model.vo.Board;
 import com.kh.with.loger.model.vo.Calculate;
 import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.loger.model.vo.Loger2;
+import com.kh.with.loger.model.vo.MyVideo;
 import com.kh.with.loger.model.vo.Support;
+import com.kh.with.main.model.vo.SubscribeVideo;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.report.model.vo.Report;
+import com.kh.with.video.model.vo.Attachment;
 import com.kh.with.video.model.vo.Video;
 
 @Repository
@@ -166,12 +169,92 @@ public class LogerDaoImpl implements LogerDao{
 		return sqlSession.delete("Loger.attachmentDelete", vNo);
 	}
 	
-	//채널개설시 채널유무 업데이트
+	//채널개설시 채널유무 및 채널명 업데이트
 	@Override
 	public int updatechyn(SqlSessionTemplate sqlSession, Member member) {
 		
+		System.out.println("멤버업데이트:::: " + member);
+		
 		return sqlSession.update("Member.updatechyn",member);
 	}
+	
+	//로거스튜디오내 모든 동영상
+	@Override
+	public ArrayList<MyVideo> logerHomeAllVideo(SqlSessionTemplate sqlSession, MyVideo myvideo) {
+		
+		ArrayList<MyVideo> myvideo1 = null;
+
+		myvideo1 = (ArrayList)sqlSession.selectList("MyVideo.logerHomeAllVideo", myvideo);
+
+			return myvideo1;	
+		
+	}
+	//로거스튜디오내 정보
+	@Override
+	public Loger2 logerHomeInfo(SqlSessionTemplate sqlSession, Loger2 loger2) {
+		
+		Loger2 result = sqlSession.selectOne("Loger.logerHomeInfo",loger2);
+		
+		return result;
+
+	}
+	
+	//로거스튜디오내 모든 동영상 프로필
+	@Override
+	public Loger2 homeProfile(SqlSessionTemplate sqlSession, Loger2 loger2) {
+		
+		Loger2 result = sqlSession.selectOne("Loger.homeProfile",loger2);
+		
+		return result;
+	}
+	
+
+	//로거스튜디오 홈 하단의 최근동영상
+	@Override
+	public ArrayList<MyVideo> newHomeChannellVideo(SqlSessionTemplate sqlSession, MyVideo myvideo) {
+		
+		
+		ArrayList<MyVideo> newHomeChannellVideo = null;
+
+		newHomeChannellVideo = (ArrayList)sqlSession.selectList("MyVideo.newHomeChannellVideo", myvideo);
+
+			return newHomeChannellVideo;	
+	}
+	
+	//로거스튜디오 홈 하단의 인기동영상
+	@Override
+	public ArrayList<MyVideo> favHomeChannellVideo(SqlSessionTemplate sqlSession, MyVideo myvideo) {
+		
+		
+		ArrayList<MyVideo> favHomeChannellVideo = null;
+
+		favHomeChannellVideo = (ArrayList)sqlSession.selectList("MyVideo.favHomeChannellVideo", myvideo);
+
+			return favHomeChannellVideo;	
+	}
+	
+	
+	
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	

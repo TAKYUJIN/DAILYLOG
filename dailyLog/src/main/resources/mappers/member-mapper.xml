@@ -167,9 +167,9 @@
 		WHERE USER_NO = #{loginUser}
 	</select>
 	
-	<!-- 채널개설시 채널유무 업데이트 -->
+	<!-- 채널개설시 채널유무 , 닉네임 업데이트 -->
 	<update id="updatechyn" parameterType="Member">
-	 UPDATE MEMBER SET CH_YN = 'Y'
+	 UPDATE MEMBER SET CH_YN = 'Y' ,NICKNAME =  #{nickname}
     WHERE USER_NO = #{userNo}
 
 	</update>
