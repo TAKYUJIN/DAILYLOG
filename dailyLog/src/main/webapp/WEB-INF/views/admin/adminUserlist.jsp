@@ -158,7 +158,7 @@
 						<th class="calculate_th">탈퇴여부</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="list">
                 <c:forEach items="${userlist}" var="user">
                     <tr>
                         <td>${user.userNo}</td>
@@ -186,6 +186,15 @@
             </div>
         </div>
         </form>
+        
     </div>  
 </body>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#list").click(function(){
+		location.href="${path}/admin/adminUserDetail.ad";
+	});
+});
+	
+</script>
 </html>

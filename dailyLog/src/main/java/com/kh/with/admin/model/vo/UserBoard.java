@@ -6,6 +6,7 @@ public class UserBoard {
 
 	private int userNo;
 	private String userId;
+	private String userNm;
 	private String phone;
 	private String chYn;
 	private int chNo;
@@ -13,18 +14,19 @@ public class UserBoard {
 	private Date enrollDate;
 	private String status;
 	private String reTy;
-	private int reCount;
-	private int cCount;
-	
+	private int userReCount;
+	private int userCCount;
+	private int chReCount;
+	private int chCCount;
 	
 	public UserBoard() {}
 
-
-	public UserBoard(int userNo, String userId, String phone, String chYn, int chNo, String chNm, Date enrollDate,
-			String status, String reTy, int reCount, int cCount) {
+	public UserBoard(int userNo, String userId, String userNm, String phone, String chYn, int chNo, String chNm,
+			Date enrollDate, String status, String reTy, int userReCount, int userCCount, int chReCount, int chCCount) {
 		super();
 		this.userNo = userNo;
 		this.userId = userId;
+		this.userNm = userNm;
 		this.phone = phone;
 		this.chYn = chYn;
 		this.chNo = chNo;
@@ -32,131 +34,134 @@ public class UserBoard {
 		this.enrollDate = enrollDate;
 		this.status = status;
 		this.reTy = reTy;
-		this.reCount = reCount;
-		this.cCount = cCount;
+		this.userReCount = userReCount;
+		this.userCCount = userCCount;
+		this.chReCount = chReCount;
+		this.chCCount = chCCount;
 	}
-
 
 	public int getUserNo() {
 		return userNo;
 	}
 
-
-	public void setUserNo(int usetNo) {
-		this.userNo = usetNo;
+	public void setUserNo(int userNo) {
+		this.userNo = userNo;
 	}
-
 
 	public String getUserId() {
 		return userId;
 	}
 
-
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 
+	public String getUserNm() {
+		return userNm;
+	}
+
+	public void setUserNm(String userNm) {
+		this.userNm = userNm;
+	}
 
 	public String getPhone() {
 		return phone;
 	}
 
-
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-
 
 	public String getChYn() {
 		return chYn;
 	}
 
-
 	public void setChYn(String chYn) {
 		this.chYn = chYn;
 	}
-
 
 	public int getChNo() {
 		return chNo;
 	}
 
-
 	public void setChNo(int chNo) {
 		this.chNo = chNo;
 	}
-
 
 	public String getChNm() {
 		return chNm;
 	}
 
-
 	public void setChNm(String chNm) {
 		this.chNm = chNm;
 	}
-
 
 	public Date getEnrollDate() {
 		return enrollDate;
 	}
 
-
 	public void setEnrollDate(Date enrollDate) {
 		this.enrollDate = enrollDate;
 	}
-
 
 	public String getStatus() {
 		return status;
 	}
 
-
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
 
 	public String getReTy() {
 		return reTy;
 	}
 
-
 	public void setReTy(String reTy) {
 		this.reTy = reTy;
 	}
 
-
-	public int getReCount() {
-		return reCount;
+	public int getUserReCount() {
+		return userReCount;
 	}
 
-
-	public void setReCount(int reCount) {
-		this.reCount = reCount;
+	public void setUserReCount(int userReCount) {
+		this.userReCount = userReCount;
 	}
 
-
-	public int getcCount() {
-		return cCount;
+	public int getUserCCount() {
+		return userCCount;
 	}
 
-
-	public void setcCount(int cCount) {
-		this.cCount = cCount;
+	public void setUserCCount(int userCCount) {
+		this.userCCount = userCCount;
 	}
 
+	public int getChReCount() {
+		return chReCount;
+	}
+
+	public void setChReCount(int chReCount) {
+		this.chReCount = chReCount;
+	}
+
+	public int getChCCount() {
+		return chCCount;
+	}
+
+	public void setChCCount(int chCCount) {
+		this.chCCount = chCCount;
+	}
 
 	@Override
 	public String toString() {
-		return "UserBoard [userNo=" + userNo + ", userId=" + userId + ", phone=" + phone + ", chYn=" + chYn + ", chNo="
-				+ chNo + ", chNm=" + chNm + ", enrollDate=" + enrollDate + ", status=" + status + ", reTy=" + reTy
-				+ ", reCount=" + reCount + ", cCount=" + cCount + "]";
+		return "UserBoard [userNo=" + userNo + ", userId=" + userId + ", userNm=" + userNm + ", phone=" + phone
+				+ ", chYn=" + chYn + ", chNo=" + chNo + ", chNm=" + chNm + ", enrollDate=" + enrollDate + ", status="
+				+ status + ", reTy=" + reTy + ", userReCount=" + userReCount + ", userCCount=" + userCCount
+				+ ", chReCount=" + chReCount + ", chCCount=" + chCCount + "]";
 	}
-	
-	
+
 
 	
-	
+
 	
 }

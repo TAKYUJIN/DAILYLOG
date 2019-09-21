@@ -31,8 +31,9 @@
 
 	<!-- 회원관리 -->
 	<select id="detailList1" resultMap="userBoardResultSet">
-		SELECT M.USER_ID,M.PHONE,L.CH_NM,M.ENROLL_DT
+		SELECT M.USER_ID,M.PHONE,L.CH_NM,M.ENROLL_DT,R.RE_COUNT,R.C_COUNT
 		FROM MEMBER M
 		JOIN LOGER L ON(M.USER_NO = L.USER_NO)
+		JOIN REPORT R ON(M.USER_NO = R.USER_NO)
 	</select>
 </mapper>
