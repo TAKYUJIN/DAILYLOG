@@ -50,10 +50,12 @@ public class ChatController {
 	
 	//친구 채팅
 	@RequestMapping(value="FriendChat.mb",method=RequestMethod.GET)
-	public String frichat(HttpSession session) {
+	public String frichat(HttpSession session,Model model) {
 		Member m = (Member) session.getAttribute("loginUser");
 		
-		
+		model.addAttribute("m"+m);
+		System.out.println("m333"+m);
+System.out.println("model11"+model);
 		return "friends/frichat";
 	}
 	

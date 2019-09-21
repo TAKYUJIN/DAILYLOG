@@ -179,16 +179,21 @@
                  <div class="panel-body">
                     <table class="table table-hover">
          <h4>친구요청 보내기</h4>
-        <form action="mailSending.mb" method="get"> <c:forEach var="user" items="${user}">
+        <form action="mailSending.mb" method="get"  > <c:forEach var="user" items="${user}">
  			<input type="hidden" id="userId" name="userId" value="${user.userId }"/>
  			<input type="hidden" id=status_yn name="status_yn" value="Y"/>
  			
 			<!-- 아이디 -->
 			<div class="form-group">
-				<label for="friId">친구 이메일</label>
-					<input type="text" class="form-control" id="friId" name="friId" placeholder="친구 이메일" required>
-				<div class="check_font" id="id_check"></div>
-			</div>
+			<p>	<label for="friId">친구 이메일</label>
+					<input  style="float:left;"type="text" class="form-control" id="friId" name="friId" placeholder="친구 이메일" required>
+				<button type="button" id ="fricheck" class="btn btn-default" style="background:#13334A; color:#fff;  float:left;"   >이메일 확인</button>
+		</p><p id="result">
+			<span class="msg">친구 이메일을 다시 한번 확인 해주세요.</span>
+		
+		</p>
+		
+			</div><br><br>
       <div align="center">
         <input type="submit" value="메일 보내기"  class="btn btn-default" style="background:#13334A; color:#fff;">
         <input type="reset" value="취소" class="btn btn-default" id="reset" style="background:#A8B7BC; color:#fff;">
@@ -214,6 +219,29 @@
     });
     
  });
+ 
+ $("#fricheck").click (function(){
+	 var query={userId:$(".friId").val()};
+	 alert(userId);
+	 $.ajax({
+		  url : "fricheck.mb",
+		  type : "get",
+		  data : query,
+		  success : function(data) {
+			  alert(data);
+		   if(data == 1) {
+		    $(".result .msg").text("사용 불가");
+		    $(".result .msg").attr("style", "color:#f00");    
+		   } else {
+		    $(".result .msg").text("사용 가능");
+		    $(".result .msg").attr("style", "color:#00f");
+		   }
+		  }
+	 
+	 
+ });});
+ 
+ 
  </script>
  
 </html>                                                                                    

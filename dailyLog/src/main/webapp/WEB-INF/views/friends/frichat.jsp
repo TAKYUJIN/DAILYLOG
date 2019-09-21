@@ -82,109 +82,139 @@ body{
 </html>
 
  --%>
- 
- 
- 
- 
- 
  <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ page session="true"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>소켓 서버</title>
- <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="/socket.io/socket.io.js"></script>
-<script src="/js/index.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+ <meta charset="UTF-8">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <style>
  
-<style>
-body{
-		font-family: 'Varela Round', sans-serif;
-		margin: 10px;
-		    height:100%;
-		    background:#fff;
-	}
-#chat_box {
-    width: 300px;
-    height: 500px;
-    border: 1px solid #bdb7b7;
-}
-#msg {
-    width: 300px;
-}
-#msg_process {
-    width: 90px;
-}
- #main {
-  margin: auto;
-  margin-top: 100px;
-  border-radius: 20px;
-  background-color: lightblue;
-  text-align: center;
-  width: 500px;
-  height: 800px;
-}
-
-/* 채팅 영역 */
-#chat {
-  height: 90%;
-  width: 100%;
-  overflow-y: auto;
-}
-
-/* 접속 알림 */
-.connect {
-  width: 90%;
-  margin: auto;
-  background-color: aquamarine;
-  text-align: center;
-  margin-top: 10px;
-}
-
-/* 접속 종료 알림 */
-.disconnect {
-  width: 90%;
-  margin: auto;
-  background-color: indianred;
-  text-align: center;
-  margin-top: 10px;
-}
-
-/* 내가 보낸 메시지 */
-.me {
-  width: 90%;
-  margin: auto;
-  background-color: lemonchiffon;
-  border-radius: 5px;
-  margin-top: 10px;
-}
-
-/* 상대방이 보낸 메시지 */
-.other {
-  width: 90%;
-  margin: auto;
-  background-color: white;
-  border-radius: 5px;
-  margin-top: 10px;
-}
-</style>
-</head>
+ #messageWindow{
+ width:150px;
+ height:500px;
+ 
+ }
+ </style>
 <body>
+
+<%-- <c:forEach var="l" items="${friId}" >  --%>
+    <!-- 로그인한 상태일 경우와 비로그인 상태일 경우의 chat_id설정 -->
+    <%--  <c:if test="${ empty sessionScope.loginUser }">
+        <input type="hidden" value='${login.id }' id='chat_id' />
+    </c:if> --%>
+   ${loginUser.nickname}
+    <c:forEach var="l" items="${m}" >
+    
+      <input type="hidden" value="${loginUser.nickname}" id='chat_id' />
+        </c:forEach>
+    <!--     채팅창 -->
+    <div id="_chatbox" style="display: none">
+        <fieldset>
+            <div id="messageWindow"> 
+            
+             </div>
+           
+             <input id="inputMessage" type="text" onkeyup="enterkey()" />
+            <input type="submit" value="보내기" onclick="send()" />
+          
+        </fieldset>
+    </div>
+   <img class="chat" src="resources/images/chat.png" />
+</body>
+
+<!-- 말풍선아이콘 클릭시 채팅창 열고 닫기 -->
+<script type="text/javascript">
+    $(".chat").on({
+        "click" : function() {
+            if ($(this).attr("src") == "resources/images/chat.png") {
+                $(".chat").attr("src", "resources/images/chat.png");
+                $("#_chatbox").css("display", "block");
+            } else if ($(this).attr("src") == "resources/images/chat.png") {
+                $(".chat").attr("src", "resources/images/chat.png");
+                $("#_chatbox").css("display", "none");
+            }
+        }
+    });
+</script>
+<script type="text/javascript">
+    var textarea = document.getElementById("messageWindow");
+    
+    var webSocket = new WebSocket('ws://localhost:8001/with/broadcasting');
+    var inputMessage = document.getElementById('inputMessage');
+    webSocket.onerror = function(event) {
+        onError(event)
+    };
+    webSocket.onopen = function(event) {
+        onOpen(event)
+    };
+    webSocket.onmessage = function(event) {
+        onMessage(event)
+    };
+    function onMessage(event) {
+        var message = event.data.split("|");
+        var sender = message[0];
+        var content = message[1];
+        if (content == "") {
+            
+        } else {
+            if (content.match("/")) {
+                if (content.match(("/" + $("#chat_id").val()))) {
+                    var temp = content.replace("/" + $("#chat_id").val(), "(귓속말) :").split(":");
+                    if (temp[1].trim() == "") {
+                    } else {
+                        $("#messageWindow").html($("#messageWindow").html() + "<p class='whisper'>"
+                            + sender + content.replace("/" + $("#chat_id").val(), "(귓속말) :") + "</p>");
+                    }
+                } else {
+                }
+            } else {
+                if (content.match("!")) {
+                    $("#messageWindow").html($("#messageWindow").html()
+                        + "<p class='chat_content'><b class='impress'>" + sender + " : " + content + "</b></p>");
+                } else {
+                    $("#messageWindow").html($("#messageWindow").html()
+                        + "<p class='chat_content'>" + sender + " : " + content + "</p>");
+                }
+            }
+        }
+    }
+    function onOpen(event) {
+        $("#messageWindow").html("  <p class='chat_content'> "+"님이 채팅에 참여하였습니다.</p> ");
+    }
+    function onError(event) {
+        alert(event.data);
+    }
+    function send() {
+        if (inputMessage.value == "") {
+        } else {
+            $("#messageWindow").html($("#messageWindow").html()
+                + "<p class='chat_content'>나 : " + inputMessage.value + "</p>");
+        }
+        webSocket.send($("#chat_id").val() + "|" + inputMessage.value);
+        inputMessage.value = "";
+    }
+    //     엔터키를 통해 send함
+    function enterkey() {
+        if (window.event.keyCode == 13) {
+            send();
+        }
+    }
+    //     채팅이 많아져 스크롤바가 넘어가더라도 자동적으로 스크롤바가 내려가게함
+    window.setInterval(function() {
+        var elem = document.getElementById('messageWindow');
+        elem.scrollTop = elem.scrollHeight;
+    }, 0);
+</script>
  
-	<div id="main" >
-		<input type="text" id="test">
-		<button onclick="send()">전송 </button>
-	</div>
-	
-	
-	</body></html>
+ </html>
  
  
  

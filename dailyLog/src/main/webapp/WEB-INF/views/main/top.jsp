@@ -31,7 +31,7 @@ img.fixed{
   */body {
 	background: #ebebeb;
 }
-h2 {
+h3 {
  background:none;
 	color: #696969;
 	font-size: 26px;
@@ -42,7 +42,7 @@ h2 {
 	text-transform: uppercase;
 	font-family: 'Open Sans', sans-serif;
 }
-h2::after {
+h3::after {
 	content: "";
     width: 100%;
     position: absolute;
@@ -55,7 +55,7 @@ h2::after {
     bottom: 14px;
      background:none;
 }
-h2 span {
+h3 span {
 	display: inline-block;
 	padding: 0 25px;
 	/* background:#ebebeb; */
@@ -141,7 +141,7 @@ background:none;
 		float: left;
 	}
 	.navbar .navbar-brand {
-		color: #555;
+		color: none;
 		/* padding-left: 0;
 		padding-right: 50px; */
 		font-family: 'Merienda One', sans-serif;
@@ -162,15 +162,17 @@ background:none;
 	}
 	.navbar .nav-item.open > a {
 		background: none !important;
+		text-decoration: none;
 	}
  
 	.navbar .dropdown-menu li a {
 		/* color: #777; */
 		/* padding: 8px 20px; */
-		/* line-height: normal; */
+		/* line-height: normal; */text-decoration: none;
+		
 	}
 	.navbar .dropdown-menu li a:hover, .navbar .dropdown-menu li a:active {
-		color: #333;
+		color: none;text-decoration: none;
 	}	
 	.navbar .dropdown-item .material-icons {
 		font-size: 21px;
@@ -183,7 +185,64 @@ background:none;
 	background:none;
 	border:1px none;
 	}
+	  #vid{
+	  color:#7d7d7d;  letter-spacing: 5px;
+	   border-radius: 5px;
+	   font-size:35px;
+	 }
+	 #sty{
+	 background:#f7f5f5;
+	 border: 1px solid #d1cfcf;
+	  margin:20px;
+	   width : "500px";  
+	   height:"400px" ;
+	    border-radius:10px;
+	    text-decoration: none;
+	     color: black;
+	 }
+	 	 #sty1{
+	 background:#f7f5f5;
+	  margin:15px;
+	   width : "500px";  
+	   height:"400px" ;
+	   text-decoration: none;
+	    color: black;
+	 }	/*  #sty1:hover{
+color: black; text-decoration: none;
+	 }
+	  #sty:hover{
+color: black; text-decoration: none;
+	 } */
 	 
+	 	 #sty2{
+	 color:#9e9d9d;
+	 }
+	/*  #sty:hover{
+	  background:#c9c9c9;
+	 } */
+	 a:link { color: black; text-decoration: none;}
+ a:visited { color: black; text-decoration: none;}
+ a:hover { color: black; text-decoration: none; }
+ 
+.scale {
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transition: all 0.3s ease-in-out;   /* 부드러운 모션을 위해 추가*/
+}
+.scale:hover {
+  transform: scale(1.02 );
+  -webkit-transform: scale(1.02 );
+  -moz-transform: scale(1.02 );
+  -ms-transform: scale(1.02 );
+  -o-transform: scale(1.02 );
+  box-shadow: 1px 1px 20px  grey;
+  background:#c9c9c9;
+  text-decoration: none;
+}
+.img {width:325px; height:280px; overflow:hidden }    
 	 
 	 
 </style>
@@ -213,47 +272,50 @@ background:none;
 				</script> --> 
 			 
 	   --%>
-	 <div class="row">
-		<div class="col-md-9 col-center m-auto">
-			<h2> <span>  <b>인기 동영상 </b></span> </h2>
+	   
+	  
+	 <div class="row"><br><br><br><br>
+		<div class="col-md-10 col-center m-auto"><br><br><br><br><br><br>
+			<h3>  <span><div id="vid"><b>인 기 동 영 상 </b></div>  </span></h3>  <br>
 			<div id="myCarousel1" class="carousel slide" data-ride="carousel" data-interval="0">
 				  
 				<div class="carousel-inner">
 						<div class="row">
 							
 						<c:forEach var="videoimage" items="${videopop}" begin="0" end="5">
-						<div class="col-sm-4 "><div class="img-box"><div style=" float:left;"> <a href="video.vd">
-						<img src="resources/uploadFiles/${videoimage.fileNm}" width = "350px"  height="300px"  >
-							<h5>제목:${videoimage.vTitle}</h5>
-							<h5>채널명:${videoimage.chNm }</h5>
-							<h5>태그명:${videoimage.tag }</h5>
+						<div class="col-sm-4 "><div class="img-box"><div id="sty" class="scale"style=" float:left;text-decoration: none;  color: black; "> 
+						<a  style=" text-decoration: none;" href="loginbutton.me">
+						<img style=" border-radius:10px;  color: black; text-decoration: none; margin:10px;" src="resources/uploadFiles/${videoimage.fileNm}" width = "300px"  height="200px"  >
+							<div id="sty1"><h4><b>  ${videoimage.vTitle}</b></h4>
+							<div id="sty2"><h5><b> ${videoimage.chNm }</b> &nbsp;&nbsp;<b>  ${videoimage.tag }</b> </h5>
+							 </div></div>
 				</a></div></div></div> 
-						 
+						  
 						  </c:forEach> </div></div>
 				</div>
-  </div></div></div> 
+  </div></div> 
+ 
 
-  <div class="row">
-		<div class="col-md-9 col-center m-auto">
-			<h2> <span>  <b>최근 업로드된 동영상</b></span> </h2>
-			<div id="myCarousel3" class="carousel slide" data-ride="carousel" data-interval="0">
+ <div class="row"><br><br><br><br>
+		<div class="col-md-10 col-center m-auto"><br><br><br> 
+			<h3>  <span><div id="vid"><b>최 근   업 로 드 된    동 영 상</b></div>  </span></h3>  <br>
+			<div id="myCarousel1" class="carousel slide" data-ride="carousel" data-interval="0">
+				  
 				<div class="carousel-inner">
-					 
 						<div class="row">
 							
 						<c:forEach var="videoimage" items="${videonew}" begin="0" end="5">
-						<div class="col-sm-4" ><div class="img-box"><div style=" float:left;"> <a href="video.vd">
-						<img src="resources/uploadFiles/${videoimage.fileNm}" width = "230px"  height="200px"  >
-							<h5>제목:${videoimage.vTitle}</h5>
-							<h5>채널명:${videoimage.chNm }</h5>
-							<h5>태그명:${videoimage.tag }</h5>
+						<div class="col-sm-4 "><div class="img-box"><div id="sty" class="scale"style=" float:left;text-decoration: none;  color: black; "> 
+						<a  style=" text-decoration: none;" href="loginbutton.me">
+						<img style=" border-radius:10px; color: black; text-decoration: none; margin:10px;" src="resources/uploadFiles/${videoimage.fileNm}" width = "300px"  height="200px"  >
+							<div id="sty1"><h4><b>  ${videoimage.vTitle}</b></h4>
+							<div id="sty2"><h5><b> ${videoimage.chNm }</b> &nbsp;&nbsp;<b>  ${videoimage.tag }</b> </h5>
+							 </div></div>
 				</a></div></div></div> 
-					 
+						  
 						  </c:forEach> </div></div>
 				</div>
- 				 
- 
-  </div></div></div> 
+  </div></div> 
   
  	<jsp:include page="../common/footer.jsp"></jsp:include>
  
