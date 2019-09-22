@@ -77,6 +77,9 @@ public interface VideoService {
 
 	int selectAge(int loginUser);
 
+	//동영상번호 셀렉
+	Video selectvNo(int getUserNo);
+
 	
 	
 	

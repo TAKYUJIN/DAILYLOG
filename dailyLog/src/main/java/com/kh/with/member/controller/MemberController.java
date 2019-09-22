@@ -586,8 +586,14 @@ public class MemberController {
 		return mv;
 	}
 
+
+	/*
+	 * // 마이페이지 이동
+	 * 
+
 	// 마이페이지 이동
 	/*
+
 	 * @RequestMapping(value = "myPage.me") public String myPage(Model model, Member
 	 * m, HttpSession session) { m = (Member) session.getAttribute("loginUser");
 	 * 

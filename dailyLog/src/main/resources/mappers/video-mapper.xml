@@ -81,13 +81,7 @@
    
    </insert>
    
-   
  
-
-	
-
-	
-
 	<!-- 동영상페이지 비디오 정보 -->
 	<select id="selectVideoInfo" parameterType="map" resultMap="videoResultSet">
 		SELECT *
@@ -190,6 +184,26 @@ WHERE TAG LIKE '%'||#{search}||'%'
 		SELECT *
 		FROM VIDEO
 		WHERE USER_NO = #{userNo}
+	</select>
+	
+	<!-- 동영상번호 셀렉 -->
+	<select id="selectvNo" resultMap="videoResultSet" parameterType="Video">
+	<![CDATA[ SELECT V_NO
+	FROM(SELECT *
+	FROM VIDEO
+	WHERE  USER_NO = #{userNo}
+	ORDER BY UPLOAD_DT DESC)
+	WHERE ROWNUM <= 1 ]]>
+	</select>
+	
+	<!-- 최근동영상1개 셀렉 -->
+	<select id="favOne" resultMap="videoResultSet" parameterType="Video">
+	<![CDATA[ SELECT *
+	FROM(SELECT *
+	FROM VIDEO
+	WHERE  USER_NO = #{userNo}
+	ORDER BY UPLOAD_DT DESC)
+	WHERE ROWNUM <= 1 ]]>
 	</select>
 	
 </mapper>

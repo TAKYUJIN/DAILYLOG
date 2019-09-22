@@ -223,7 +223,7 @@ body {
 		<div class="mainpage">
 
 			<div class="logerMainImg">
-				<img src="resources/images/loger_home_title.png">
+				<img	src="resources/uploadFiles/${logertitleimg.fileNm}" >
 			</div>
 			<br> <br>
 			<div class="input-group search-box">

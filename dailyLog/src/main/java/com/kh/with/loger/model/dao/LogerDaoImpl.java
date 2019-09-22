@@ -232,6 +232,33 @@ public class LogerDaoImpl implements LogerDao{
 
 			return favHomeChannellVideo;	
 	}
+
+	//채널 타이틅 이미지
+	@Override
+	public Attachment logertitleimg(SqlSessionTemplate sqlSession, Attachment attachment) {
+		
+		
+		Attachment result = sqlSession.selectOne("Attachment.logertitleimg",attachment);
+		
+		System.out.println("타이틀이미지 result" + result);
+		
+		return result;
+	}
+	//최신동영상1개
+	@Override
+	public Video favOne(SqlSessionTemplate sqlSession, MyVideo myvideo) {
+		
+		
+		return sqlSession.selectOne("Video.favOne", myvideo);
+	}
+
+	//최신동영상 1개 썸네일 
+	@Override
+	public Attachment favOnesum(SqlSessionTemplate sqlSession, MyVideo myvideo) {
+		
+		
+		return sqlSession.selectOne("Attachment.favOnesum", myvideo);
+	}
 	
 	
 	
