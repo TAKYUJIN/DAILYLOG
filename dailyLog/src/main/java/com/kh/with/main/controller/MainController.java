@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
@@ -155,24 +156,20 @@ public class MainController {
 	  return "forward:/List.mb"; 
 	  
 	  }
-	  
+	@ResponseBody
 	@RequestMapping(value = "fricheck.mb",method=RequestMethod.GET)
 	
-	public int fricheck( Member m, HttpServletRequest request) {
-		String userId = request.getParameter("userId");
+	public String fricheck( Member m, HttpServletRequest request) {
+		String userId = request.getParameter("friId");
+	 
 		System.out.println("fricheck1"+userId);
 			m.setUserId(userId);
 			System.out.println("fricheck2"+userId);
-		 ms.idcheck(userId);
-		 System.out.println("fricheck3"+userId);
-		  int result=0;
-		  if(userId != null) {
-			  
-			  result =1;
-		  }
-		  
+		
+		 System.out.println("fricheck3"+ms.idcheck(userId));
+		  int result= ms.idcheck(userId);
 		  System.out.println("idcheck"+userId);
-		return result;
+		return Integer.toString(result);
 	}
 			
 			

@@ -79,6 +79,8 @@
 		<result property="recount" column="RE_COUNT" />
 		<result property="ccount" column="C_COUNT" />
 		<result property="fileNm" column="FILE_NM" />
+		<result property="uploadDt" column="UPLOAD_DT" />
+		
 	</resultMap>
 	<resultMap type="Report" id="Report2ResultSet">
 		<id property="reno" column="RE_NO" />
@@ -242,13 +244,13 @@
    </select>
 
     <select id="reportlist" resultMap="ReportResultSet">
-    SELECT RE_NO,V_TITLE,RE_WHY,RE_COUNT,FLOOR(C_COUNT/3) AS C_COUNT, RE_TY,R.CH_NM,RE_DT,A.FILEPATH
+    SELECT RE_NO,V_TITLE,RE_WHY,RE_COUNT,FLOOR(C_COUNT/3)
+ AS C_COUNT, RE_TY,R.CH_NM,RE_DT,A.FILE_NM,V.V_NO,V.COUNT,V.UPLOAD_DT
    FROM REPORT R
-   JOIN ATTACHMENT A ON(R.RE_TARGET=A.USER_NO)
-   JOIN VIDEO V ON (A.USER_NO=V.USER_NO)
-    WHERE (RE_TY='동영상' OR  RE_TY='채널')
-   AND 
-   R.RE_TARGET =#{userNo}  
+   JOIN VIDEO V ON (R.V_NO=V.V_NO)
+   JOIN ATTACHMENT A ON(R.V_NO=A.V_NO)
+   WHERE (RE_TY='동영상' OR  RE_TY='채널')
+   AND R.RE_TARGET =#{userNo}  
     
    </select>  
 

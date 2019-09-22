@@ -194,7 +194,7 @@ $(document).ready(function(){
                     <tr>
 													<td>${v.reno}</td>
 													<td>
-													<a href="videoreportdetail.ad?reno=${v.reno}">${v.rewhy}</a>
+													<a href="chreportdetail.ad?reno=${v.reno}">${v.rewhy}</a>
 													</td>
 													<td>${v.chNm}</td>
 													<td>${v.userNo}</td>
@@ -286,22 +286,36 @@ $(document).ready(function(){
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><c:forEach items="${repreportlist}" var="v"   >
+                
+                
+                
+                
+                <c:forEach items="${repreportlist}" var="v"   >
+                     <tr>
                    <td>${v.reno}</td>
 													<td>
-													<a href="videoreportdetail.ad?reno=${v.reno}">${v.rewhy}</a>
+													<a href="repreportdetail.ad?reno=${v.reno}">${v.rewhy}</a>
 													
 													</td>
 													<td>${v.repno}</td>
 													<td>${v.userNo}</td>
 					 							 <td>${v.redt}</td>
-      				     </c:forEach>
-												</tr>
-												 
-								 
-											 
-    </tr>
-                </tbody>
+      		</c:forEach></tr>  
+      		
+      		<%-- <c:forEach items="${repreportdetail}" var="v"   >
+								  <tr id="ureport">
+								 					<td>${v.reno}</td>
+													<td>
+													<a href="repreportdetail.ad?reno=${v.reno}">${v.rewhy}</a>
+													
+													</td>
+													<td>${v.repno}</td>
+													 <td>${v.userNo}</td>  
+					 							 <td>${v.redt}</td>
+								
+								</tr>
+								 </c:forEach> --%>
+      		</tbody>
             </table>
               <div class="clearfix">
                  <ul class="pagination">

@@ -290,5 +290,10 @@ public class Member implements java.io.Serializable{
 				+ ", bankNm=" + bankNm + ", account=" + account + ", chNo=" + chNo + ", count=" + count + "]";
 	}
 
+	public Object getProfilePath() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }
