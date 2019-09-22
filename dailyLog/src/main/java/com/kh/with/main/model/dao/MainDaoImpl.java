@@ -23,8 +23,9 @@ public class MainDaoImpl implements MainDao{
 	public ArrayList<VideoLike> showBookmark(SqlSessionTemplate sqlSession, Member m) {
 		ArrayList<VideoLike> bList = null;
 		
-		bList = (ArrayList)sqlSession.selectList("VideoLike.showBookmark", m);
+		bList = (ArrayList)sqlSession.selectList("VideoLike.showBookmark",m);
 		
+		System.out.println("bList:::::::" + bList);
 		return bList;
 	}
 
