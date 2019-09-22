@@ -616,7 +616,7 @@ $('#friendlist').click(function(){
 				}
 				
 				//서버에서 에러가 발생할 경우 동작할 메소드
-				ws.onerror = function(event){
+				ws2.onerror = function(event){
 					onError2(event);
 				}
 				

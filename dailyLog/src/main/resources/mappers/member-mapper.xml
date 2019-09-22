@@ -165,11 +165,6 @@
 	UPDATE MEMBER SET STATUS =1
 	WHERE USER_NO =#{userNo}
 	</update>
- 	<select id="selectAge" parameterType="int" resultType="int">
-		SELECT AGE
-		FROM MEMBER
-		WHERE USER_NO = #{loginUser}
-	</select>
 	
 	<!-- 채널개설시 채널유무 , 닉네임 업데이트 -->
 	<update id="updatechyn" parameterType="Member">

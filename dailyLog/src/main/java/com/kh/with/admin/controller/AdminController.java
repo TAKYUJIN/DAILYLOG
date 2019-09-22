@@ -1,29 +1,25 @@
 package com.kh.with.admin.controller;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Enumeration;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.jasper.tagplugins.jstl.core.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.with.admin.model.service.AdminService;
 import com.kh.with.admin.model.vo.Board;
 import com.kh.with.admin.model.vo.Calculate;
+import com.kh.with.admin.model.vo.ChannelBoard;
 import com.kh.with.admin.model.vo.UserBoard;
 import com.kh.with.block.model.vo.Blockch;
 import com.kh.with.block.model.vo.Blockrep;
@@ -183,8 +179,8 @@ public class AdminController {
 	@RequestMapping(value = "channelManage.ad")
 	public String adminChannelView(Model model, HttpSession session) {
 		  
-		List<Object> channelInfo = as.channelInfo();
-		List<Integer> info = as.info();
+		List<ChannelBoard> channelInfo = as.channelInfo();
+		List<ChannelBoard> info = as.info();
 		
 		model.addAttribute("channelInfo", channelInfo);
 		model.addAttribute("calInfo", info);

@@ -50,6 +50,7 @@ public class VideoController {
 	public String showVideoView(HttpServletRequest request, Model model, HttpSession session) {
 		Member m = (Member) session.getAttribute("loginUser");
 		int loginUser = m.getUserNo();
+		int age = m.getAge();
 		
 		//썸네일 userNo, vNo
 		int userNo = Integer.parseInt(request.getParameter("userNo"));
@@ -58,6 +59,7 @@ public class VideoController {
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("userNo", userNo);
 		map.put("vNo", vNo);
+		map.put("loginUser", loginUser);
 		
 		System.out.println("needs : " + userNo + ", " + vNo);
 		
@@ -67,42 +69,104 @@ public class VideoController {
 		
 		System.out.println("list1 : " + list1);
 		System.out.println("list2 : " + list2);
-		
-		System.out.println((list2.get(0)).getChNo());
-		
-		//맴버 나이
-		int age = vs.selectAge(loginUser);
-		
 		System.out.println("age : " + age);
-
-		//정산 상태
-		//System.out.println("::::: " + list2.toString().substring(13,14));
-		//int status = vs.selectRegStatus(loginUser, list1.get(1));
+		
+		int chNo = (list2.get(0)).getChNo();
+		map.put("chNo", chNo);
+		System.out.println("chNo : " + chNo);
+		
+		//썸넬, 프로필
+		String thumb = vs.selectThumb(map);
+		String profile = vs.selectProfile(map);
 		
 		model.addAttribute("list1", list1);
 		model.addAttribute("list2", list2);
 		model.addAttribute("age", age);
-		
+		model.addAttribute("thumb", thumb);
+		model.addAttribute("profile", profile);
+		model.addAttribute("chNo", chNo);
 		
 		return "video/videoMain";
 	}
+	
 	//비디오 정기후원 상태 조회
 	@RequestMapping(value = "regStatus.vd")
-	public String selectRegStatus(HttpServletRequest request, Model model) {
-		int userNo = Integer.parseInt(request.getParameter("userNo"));
+	@ResponseBody
+	public String selectRegStatus(HttpServletRequest request, Model model, HttpSession session) {
+		Member m = (Member) session.getAttribute("loginUser");
+		int loginUser = m.getUserNo();
 		int chNo = Integer.parseInt(request.getParameter("chNo"));		
 		
-		int status = vs.selectRegStatus(userNo, chNo);
-		System.out.println("status : " + status);
-		model.addAttribute("stauts" + status);
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("loginUser", loginUser);
+		map.put("chNo", chNo);
 		
-		return "video/videoMain";
+		int status = vs.selectRegStatus(map);
+		System.out.println("status : " + status);
+		model.addAttribute("status" + status);
+		
+		return Integer.toString(status);
 	}
+	
+	// like
+	@RequestMapping(value = "selectLike.vd")
+	@ResponseBody
+	public String selectLike(HttpServletRequest request, Model model, HttpSession session) {
+		Member m = (Member) session.getAttribute("loginUser");
+		int loginUser = m.getUserNo();
+		int vNo = Integer.parseInt(request.getParameter("vNo"));
+
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("vNo", vNo);
+		map.put("loginUser", loginUser);
+		
+		//좋/싫/북
+		int like = vs.selectLike(map);
+		int hate = vs.selectHate(map);
+		
+		System.out.println("## : " + hate);
+		
+		int result = 0;
+		if(like > 0) {
+			result = 1;
+		}else {
+			result = 0;
+		}
+		
+		model.addAttribute("result", result);
+		
+		
+		return Integer.toString(result);
+	}
+	// like
+	@RequestMapping(value = "selectBook.vd")
+	@ResponseBody
+	public String selectBook(HttpServletRequest request, Model model, HttpSession session) {
+		Member m = (Member) session.getAttribute("loginUser");
+		int loginUser = m.getUserNo();
+		int vNo = Integer.parseInt(request.getParameter("vNo"));
+
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("vNo", vNo);
+		map.put("loginUser", loginUser);
+		
+		//좋/싫/북
+		int book = vs.selectBook(map);
+		
+		System.out.println("## : " + book);
+		
+		model.addAttribute("book", book);
+		
+		
+		return Integer.toString(book);
+	}
+
 	// 동영상 페이지 포인트 조회
 	@RequestMapping(value = "selectPoint.vd")
 	@ResponseBody
-	public String selectPoint(HttpServletRequest request) {
-		int userNo = Integer.parseInt(request.getParameter("userNo"));
+	public String selectPoint(HttpServletRequest request, HttpSession session) {
+		Member m = (Member) session.getAttribute("loginUser");
+		int userNo= m.getUserNo();
 		
 		int point = vs.selectPoint(userNo);
 		System.out.println("point : " + point);
@@ -307,6 +371,8 @@ public class VideoController {
 		int vNo = Integer.parseInt(request.getParameter("vNo"));
 		String check = request.getParameter("check");
 		String chNm = request.getParameter("chNm");
+		String vTitle = request.getParameter("vTitle");
+		System.out.println(loginUser + ", " + vNo + ", " + userNo +", " + check + ", " + chNm + ", " + vTitle);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("userNo", userNo);
@@ -314,9 +380,13 @@ public class VideoController {
 		map.put("check", check);
 		map.put("vNo", vNo);
 		map.put("chNm", chNm);
+		map.put("vTitle", vTitle);
 		
 		int result = vs.report(map);
 		System.out.println("result : " + result);
+		
+		int alram = vs.videoAlram(map);
+		
 		return Integer.toString(result);
 	}
 	
@@ -336,6 +406,58 @@ public class VideoController {
 		
 		int result = vs.block(map);
 		System.out.println("result : " + result);
+		return Integer.toString(result);
+	}
+	
+	//구독
+	@RequestMapping(value = "subInsert.vd")
+	@ResponseBody
+	public String subInsert(HttpSession session, HttpServletRequest request) {
+		Member m = (Member) session.getAttribute("loginUser");
+		int loginUser = m.getUserNo();
+		int userNo = Integer.parseInt(request.getParameter("userNo"));
+		int chNo = Integer.parseInt(request.getParameter("chNo"));
+		String nickName = m.getNickname();
+		String chNm = request.getParameter("chNm");
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("loginUser", loginUser);
+		map.put("chNo", chNo);
+		map.put("nickName", nickName);
+		map.put("chNm", chNm);
+		map.put("userNo", userNo);
+		
+		int result = vs.subInsert(map);
+		System.out.println("result : " + result);
+		
+		int alram = vs.insertSubAlram(map);
+		
+		return Integer.toString(result);
+	}
+	
+	//구독
+	@RequestMapping(value = "subDelete.vd")
+	@ResponseBody
+	public String subDelete(HttpSession session, HttpServletRequest request) {
+		Member m = (Member) session.getAttribute("loginUser");
+		int loginUser = m.getUserNo();
+		int chNo = Integer.parseInt(request.getParameter("chNo"));
+		int userNo = Integer.parseInt(request.getParameter("userNo"));
+		String nickName = m.getNickname();
+		String chNm = request.getParameter("chNm");
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("loginUser", loginUser);
+		map.put("chNo", chNo);
+		map.put("nickName", nickName);
+		map.put("chNm", chNm);
+		map.put("userNo", userNo);
+		
+		int result = vs.subDelete(map);
+		System.out.println("result : " + result);
+		
+		int alram = vs.deleteSubAlram(map);
+		
 		return Integer.toString(result);
 	}
 	

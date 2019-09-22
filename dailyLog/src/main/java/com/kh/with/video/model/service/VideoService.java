@@ -75,10 +75,30 @@ public interface VideoService {
 
 	List<Attachment> videonew();
 
-	int selectAge(int loginUser);
-
 	//동영상번호 셀렉
 	Video selectvNo(int getUserNo);
+
+	int subInsert(Map<String, Object> map);
+
+	int subDelete(Map<String, Object> map);
+
+	int videoAlram(Map<String, Object> map);
+
+	int insertSubAlram(Map<String, Object> map);
+
+	int deleteSubAlram(Map<String, Object> map);
+
+	String selectThumb(Map<String, Integer> map);
+
+	String selectProfile(Map<String, Integer> map);
+
+	int selectRegStatus(Map<String, Integer> map);
+
+	int selectLike(Map<String, Integer> map);
+
+	int selectHate(Map<String, Integer> map);
+
+	int selectBook(Map<String, Integer> map);
 
 	
 	

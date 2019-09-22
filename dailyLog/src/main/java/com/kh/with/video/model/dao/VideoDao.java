@@ -66,11 +66,21 @@ public interface VideoDao {
 	List<Attachment> videopop(SqlSessionTemplate sqlSession);
 	List<Attachment> videonew(SqlSessionTemplate sqlSession);
 	
-	int selectAge(SqlSessionTemplate sqlSession, int loginUser);
-	
 	//동영상번호 셀렉
 	
 	Video selectvNo(SqlSessionTemplate sqlSession, int getUserNo);
+	
+	int subInsert(SqlSessionTemplate sqlSession, Map<String, Object> map);
+	int subDelete(SqlSessionTemplate sqlSession, Map<String, Object> map);
+	int videoAlram(SqlSessionTemplate sqlSession, Map<String, Object> map);
+	int insertSubAlram(SqlSessionTemplate sqlSession, Map<String, Object> map);
+	int deleteSubAlram(SqlSessionTemplate sqlSession, Map<String, Object> map);
+	String selectThumb(SqlSessionTemplate sqlSession, Map<String, Integer> map);
+	String selectProfile(SqlSessionTemplate sqlSession, Map<String, Integer> map);
+	int selectLike(SqlSessionTemplate sqlSession, Map<String, Integer> map);
+	int selectHate(SqlSessionTemplate sqlSession, Map<String, Integer> map);
+	int selectBook(SqlSessionTemplate sqlSession, Map<String, Integer> map);
+	int selectRegStatus(SqlSessionTemplate sqlSession, Map<String, Integer> map);
 	
 
 }
