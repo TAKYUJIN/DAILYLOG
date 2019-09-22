@@ -35,7 +35,7 @@
 		<result property="amNo" column="AM_NO" />
 		<result property="vNo" column="V_NO" />
 		<result property="amDt" column="AM_DT" />
-		<result property="filenm" column="FILE_NM" />
+		<result property="fileNm" column="FILE_NM" />
 		<result property="amTY" column="AM_TY" />
 	</resultMap>
 	
@@ -117,7 +117,7 @@
 	  <insert id="insertAttachment" parameterType="Attachment">   
 
    INSERT INTO ATTACHMENT
-   VALUES(#{userNo}, AM_NO.NEXTVAL, V_NO.NEXTVAL,SYSDATE, #{fileNm},  '썸네일')
+   VALUES(#{userNo}, AM_NO.NEXTVAL, #{vNo},SYSDATE, #{fileNm},  '썸네일') 
 
    </insert>  
 
@@ -169,13 +169,39 @@
 				   ,#{amTy}
 				  )
 				  
-		 
 	</insert>
 
 
+	<!-- 채널 타이틅 이미지 -->
+	<select id="logertitleimg" resultMap="attachmentRSet"
+		parameterType="Attachment">
+		SELECT *
+		FROM ATTACHMENT 
+		WHERE AM_TY = '채널'
+		AND USER_NO  =  #{userNo}
+	</select>
 
+	<!-- 최신동영상 1개 썸네일  -->
+	<select id="favOnesum" resultMap="attachmentRSet"
+		parameterType="Attachment">
+		<![CDATA[ SELECT *
+		FROM(SELECT  a.file_nm
+		FROM VIDEO V
+	    JOIN ATTACHMENT A
+	    ON (V.V_NO = A.V_NO)
+		WHERE  V.USER_NO =  #{userNo}
+		ORDER BY UPLOAD_DT DESC)
+		WHERE ROWNUM <= 1 ]]>
+	</select>
 
+	<!-- 로거스튜디오 타이틀이미지 isnert  쿼리 -->
 
+	  <insert id="insertTitleImg" parameterType="Attachment">   
+
+   INSERT INTO ATTACHMENT
+   VALUES(#{userNo}, AM_NO.NEXTVAL, NULL ,SYSDATE, #{fileNm},  '채널') 
+
+   </insert>  
 
 </mapper>
 

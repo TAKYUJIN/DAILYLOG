@@ -1,5 +1,7 @@
 package com.kh.with.loger.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,9 +19,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.with.admin.model.vo.Board;
+import com.kh.with.common.CommonUtils;
 import com.kh.with.loger.model.service.LogerService;
 import com.kh.with.loger.model.vo.Calculate;
 import com.kh.with.loger.model.vo.Loger;
@@ -235,15 +239,25 @@ public class LogerController {
 		return "forward:/logerCalculate.lo";
 	}
 
-	// 로거스튜디오 이동
+	
+	
+	// 로거스튜디오
 	@RequestMapping(value = "newHomeChannel.lo")
 		public ModelAndView  newHomeChannel(ModelAndView mv,HttpSession session, 
-				HttpServletRequest request, Model model){
-			
-		 int userNo = Integer.parseInt(request.getParameter("userNo"));
+				HttpServletRequest request, Model model,@ModelAttribute Member m){
+		
+		int userNo = Integer.parseInt(request.getParameter("userNo")); 
+		
 	
-			System.out.println("loger:::" + userNo);
+			System.out.println("로거스튜디오에서의 유저 넘버 !!!:::" + userNo);
 			
+			//채널타이틀이미지 
+			Attachment attachment = new Attachment();
+			attachment.setUserNo(userNo);
+			
+			Attachment logertitleimg = ls.logertitleimg(attachment);
+			
+
 			//프로필정보
 			Loger2 loger2 = new Loger2();
 			loger2.setUserNo(userNo);
@@ -263,8 +277,14 @@ public class LogerController {
 			ArrayList<MyVideo> favHomeChannellVideo = ls.favHomeChannellVideo(myvideo);
 			
 			
+			//최신동영상 1개 
+			Video favOne = ls.favOne(myvideo);
 			
 			
+			
+			//최신동영상 1개 썸네일 
+			
+			Attachment favOnesum = ls.favOnesum(myvideo);
 			
 			
 			HttpSession session1 = request.getSession();
@@ -274,6 +294,9 @@ public class LogerController {
 			mv.addObject("result", result); 
 			mv.addObject("newHomeChannellVideo", newHomeChannellVideo); 
 			mv.addObject("favHomeChannellVideo", favHomeChannellVideo); 
+			mv.addObject("logertitleimg", logertitleimg); 
+			mv.addObject("favOne", favOne); 
+			mv.addObject("favOnesum", favOnesum); 
 			
 			mv.setViewName("loger/newHomeChannel"); 
 
@@ -309,6 +332,12 @@ public class LogerController {
 		loger2.setUserNo(userNo);
 		Loger2 result = ls.homeProfile(loger2); 
 		
+		
+		//채널타이틀이미지 
+		Attachment attachment = new Attachment();
+		attachment.setUserNo(userNo);
+		
+		Attachment logertitleimg = ls.logertitleimg(attachment);
 	
 		
 		HttpSession session2 = request.getSession();
@@ -317,6 +346,8 @@ public class LogerController {
 		
 		model.addAttribute("logerHomeAllVideo", logerHomeAllVideo);
 		model.addAttribute("result", result);
+		model.addAttribute("logertitleimg", logertitleimg);
+		
 		
 		return "loger/logerHomeAllVideo";
 	}
@@ -335,10 +366,16 @@ public class LogerController {
 		
 		Loger2 logerHomeInfo = ls.logerHomeInfo(loger2);
 		
-		System.out.println("로거정보:::" + logerHomeInfo);
+		//채널타이틀이미지 
+				Attachment attachment = new Attachment();
+				attachment.setUserNo(userNo);
+				
+				Attachment logertitleimg = ls.logertitleimg(attachment);
+		
+	
 		
 		model.addAttribute("logerHomeInfo", logerHomeInfo);
-		
+		model.addAttribute("logertitleimg", logertitleimg);
 		
 		
 		return "loger/logerHomeInfo";
@@ -354,14 +391,20 @@ public class LogerController {
 	// 로거채널개설
 	@RequestMapping(value = "createChannel.lo")
 	public String insertcreateChannel(@ModelAttribute Member m, Model model, HttpServletRequest request,
-			HttpSession session) {
+			HttpSession session ,@RequestParam(name = "file1", required = false) MultipartFile file1) {
+		
+		
 
+		
+
+		
 		int userNo = ((Member) request.getSession().getAttribute("loginUser")).getUserNo();
 		String chNm = request.getParameter("chNm");
 		String chInfo = request.getParameter("chInfo");
 
 		System.out.println("로거정보가 들어왔나요::::" + userNo + chNm + chInfo);
 
+	
 		Loger loger = new Loger();
 		loger.setUserNo(userNo);
 		loger.setChNm(chNm);
@@ -372,13 +415,10 @@ public class LogerController {
 		Member member = new Member();
 		member.setUserNo(userNo);
 		member.setNickname(chNm);
-		
-		
-		
+				
 		int result1 = ls.updatechyn(member); 
 		
 		
-
 		if (result > 0 && result1 > 0) {
 			return "redirect:index.jsp";
 		} else {

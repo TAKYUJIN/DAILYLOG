@@ -192,7 +192,29 @@ public class LogerServiceImpl implements LogerService{
 		return ld.favHomeChannellVideo(sqlSession, myvideo);
 	}
 
+	//채널타이틅 이미지
+	@Override
+	public Attachment logertitleimg(Attachment attachment) {
+		
+		return ld.logertitleimg(sqlSession, attachment);
+	}
 
+	//최신동영상1개
+	@Override
+	public Video favOne(MyVideo myvideo) {
+		
+		return ld.favOne(sqlSession, myvideo);
+	}
+
+	//최신동영상 1개 썸네일 
+	@Override
+	public Attachment favOnesum(MyVideo myvideo) {
+		
+		return ld.favOnesum(sqlSession, myvideo);
+	}
+
+
+	
 
 	
 

@@ -593,23 +593,22 @@ public class MemberController {
 		return mv;
 	}
 
-	// 마이페이지 이동
-	@RequestMapping(value = "myPage.me")
-	public String myPage(Model model, Member m, HttpSession session) {
-		m = (Member) session.getAttribute("loginUser");
-
-		ArrayList<Member> list = ms.selectMyPage(m);
-		System.out.println("list " + list.get(0));
-		
-		if(list.get(0).getProfilePath() == null) {
-			list.get(0).setProfilePath("resources/images/newlogo3.png");
-		}else {
-			list.get(0).setProfilePath("resources/uploadFiles/" + list.get(0).getProfilePath());
-		}
-		
-		model.addAttribute("memberList", list.get(0));
-		return "member/myPage";
-	}
+	/*
+	 * // 마이페이지 이동
+	 * 
+	 * @RequestMapping(value = "myPage.me") public String myPage(Model model, Member
+	 * m, HttpSession session) { m = (Member) session.getAttribute("loginUser");
+	 * 
+	 * ArrayList<Member> list = ms.selectMyPage(m); System.out.println("list " +
+	 * list.get(0));
+	 * 
+	 * if(list.get(0).getProfilePath() == null) {
+	 * list.get(0).setProfilePath("resources/images/newlogo3.png"); }else {
+	 * list.get(0).setProfilePath("resources/uploadFiles/" +
+	 * list.get(0).getProfilePath()); }
+	 * 
+	 * model.addAttribute("memberList", list.get(0)); return "member/myPage"; }
+	 */
 
 	// myPage 수정
 	@RequestMapping(value = "update_myPage.me", method = RequestMethod.POST)

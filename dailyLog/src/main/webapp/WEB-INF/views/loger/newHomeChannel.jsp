@@ -1,6 +1,7 @@
- <%@ page language="java" contentType="text/html; charset=UTF-8"
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,10 +11,11 @@
 <title>Insert title here</title>
 <style>
 .mainpage {
-	width: 1024px;
+	width: 1600px;
 	margin-top: 30px;
 	/* border: 1px solid red; */
 }
+
 .logerMainImg {
 	width: 900px;
 	height: 200px;
@@ -148,7 +150,7 @@ body {
 	width: 900px;
 	margin-left: 30px;
 	margin-top: 20px;
-/* 	border: 1px solid red; */
+	/* 	border: 1px solid red; */
 }
 
 #videoarea1 {
@@ -161,8 +163,9 @@ body {
 .newVideo {
 	margin-top: 100px;
 }
-.myInfo{
-	margin-left:30px;
+
+.myInfo {
+	margin-left: 30px;
 }
 </style>
 
@@ -173,132 +176,131 @@ body {
 
 	<div class="mainpage">
 		<div class="logerMainImg">
-				<img src="resources/images/loger_home_title.png">
+			<img src="resources/uploadFiles/${logertitleimg.fileNm}">
+		</div>
+		<br> <br>
+		<div class="input-group search-box" style="margin-left: 700px">
+			<input type="text" id="search" class="form-control" placeholder="검색">
+			<span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
+		</div>
+
+		<div class="myInfo">
+			<img src="resources/uploadFiles/${result.fileNm}" width="100px"
+				height="100px">
+
+
+			<div class="textInfo">
+				<p style="widht: 200px; margin-left: 130px; margin-top: -50px;">
+					<strong><c:out value="${result.chNm}" /></strong>
+				</p>
 			</div>
-			<br> <br>
-			<div class="input-group search-box" style="margin-left: 700px">
-				<input type="text" id="search" class="form-control" placeholder="검색">
-				<span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
-			</div>
-
-			<div class="myInfo">
-			 <img	src="resources/uploadFiles/${result.fileNm}" width="100px"
-								height="100px">
-				 
-				 
-				<div class="textInfo">
-					<p style="widht: 200px; margin-left: 130px; margin-top: -50px;">
-						<strong><c:out value="${result.chNm}"/></strong>
-					</p>
-				</div>
-				<button id="subscribebtn" class="btn btn-primary">구독</button>
-				<p style="widht: 200px; margin-left: 130px; margin-top: -10px;"><c:out value="${result.subNum}"/>명</p>
-			</div>
-
-			<div class="row" style="margin-left: 30px;">
-				<div class="col-lg-15">
-					<a href="newHomeChannel.lo?userNo=${sessionScope.userNo}" class="noticeLink"
-						style="float: left; width: 15%;"><h4 class="page-title1">홈</h4></a>
-					<a href="logerHomeAllVideo.lo?userNo=${sessionScope.userNo}" class="noticeLink"
-						style="float: left; width: 15%;"><h4 class="page-title2">동영상</h4></a>
-					<a href="logerHomeInfo.lo?userNo=${sessionScope.userNo}" class="noticeLink"
-						style="float: left; width: 15%;"><h4 class="page-title3">정보</h4></a>
-				</div>
-				<div class="newVideo">
-					<video width="350px;" height="230px;" controls loop>
-						<source src="" type="">
-						<source src="nature.ogg" type="">
-					</video>
-
-				</div> 
-			 	<div class="textNewVideo">
-			 	
-					<h3>
-						<strong>최신동영상제목부분입니다!!</strong>
-					</h3>
-					<br>
-					<div class="ch_cnt">
-						<img src="resources/images/playbtn.png" style="width: 20px;">
-						<span class="hit"> <strong class="blind">조회수</strong> <em>80,634</em>
-						</span> <span class="bar"></span> <span class="date"> <strong>등록</strong>
-							<em>2019.09.03.</em>
-						</span> <br> <br> <span class="tag"><em>#태그 #태그</em> </span>
-					</div>
-				</div>
-			</div>
-			<br>
-			<hr>
-			<p id="newvideos" style="margin-left: 20px">
-				<strong>최신동영상</strong>
-			</p> 
-		<table id="videoarea">
-					<c:forEach items="${newHomeChannellVideo}" var="hv" begin="0" end="5">
-					
-				<div class="col-sm-4">
-					
-							<a href="video.vd?userNo=${hv.userNo}&vNo=${hv.vNo}">
-							 <img	src="resources/uploadFiles/${hv.fileNm}" width="250px"
-								height="200px"> <br><br>
-								<div style="width: 150px;">
-									<c:out value="${hv.chNm}" />
-								</div>
-								<div style="width: 150px;">
-									<c:out value="${hv.vTitle}" />
-								</div>
-								<p style="width: 150px;">
-									<c:out value="${hv.count}" />
-									회
-								</p>
-								<p style="width: 150px;">
-									<c:out value="${hv.tag}" />
-								</p>
-								</a>
-								</div>
-				</c:forEach>
-
-			</table> 
-
-	 	<hr>
-			<p id="favvideo" style="margin-left: 20px">
-				<strong>인기동영상</strong>
+			<button id="subscribebtn" class="btn btn-primary">구독</button>
+			<p style="widht: 200px; margin-left: 130px; margin-top: -10px;">
+				<c:out value="${result.subNum}" />
+				명
 			</p>
-			<table id="videoarea1">
-						<c:forEach items="${favHomeChannellVideo}" var="fv" begin="0" end="5">
-					
+		</div>
+
+		<div class="row" style="margin-left: 30px;">
+			<div class="col-lg-15">
+				<a href="newHomeChannel.lo?userNo=${sessionScope.userNo}"
+					class="noticeLink" style="float: left; width: 15%;"><h4
+						class="page-title1">홈</h4></a> <a
+					href="logerHomeAllVideo.lo?userNo=${sessionScope.userNo}"
+					class="noticeLink" style="float: left; width: 15%;"><h4
+						class="page-title2">동영상</h4></a> <a
+					href="logerHomeInfo.lo?userNo=${sessionScope.userNo}"
+					class="noticeLink" style="float: left; width: 15%;"><h4
+						class="page-title3">정보</h4></a>
+			</div>
+			<div class="newVideo"></div>
+			<div class="textNewVideo">
+
+				<h3>
+					<strong><c:out value="${favOne.vTitle}" /></strong>
+				</h3>
+				<br>
+				<div class="ch_cnt">
+					<a href="video.vd?userNo=${favOne.userNo}&vNo=${favOne.vNo}"> <img
+						src="resources/uploadFiles/${favOnesum.fileNm}" width="250px"
+						height="200px"></a> <br>
+					<br> <span class="hit"> <strong class="blind">조회수</strong>
+						<em><c:out value="${favOne.count}" /></em>
+					</span> <span class="bar"></span> <span class="date"> <strong>등록</strong>
+						<em><c:out value="${favOne.uploadDt}" /></em>
+					</span> <br> <br> <span class="tag"><em><c:out
+								value="${favOne.tag}" /></em> </span>
+				</div>
+			</div>
+		</div>
+		<br>
+		<hr>
+		<p id="newvideos" style="margin-left: 20px">
+			<strong>최신동영상</strong>
+		</p>
+		<table id="videoarea">
+			<c:forEach items="${newHomeChannellVideo}" var="hv" begin="0" end="2">
+
 				<div class="col-sm-4">
-					
-							<a href="video.vd?userNo=${fv.userNo}&vNo=${fv.vNo}">
-							 <img	src="resources/uploadFiles/${fv.fileNm}" width="250px"
-								height="200px"> <br><br>
-								<div style="width: 150px;">
-									<c:out value="${fv.chNm}" />
-								</div>
-								<div style="width: 150px;">
-									<c:out value="${fv.vTitle}" />
-								</div>
-								<p style="width: 150px;">
-									<c:out value="${fv.count}" />
-									회
-								</p>
-								<p style="width: 150px;">
-									<c:out value="${fv.tag}" />
-								</p>
-								</a>
-								</div>
-				</c:forEach>
-				
-				
-				
-				
-				
-				
-			</table> 
-	</div>
+
+					<a href="video.vd?userNo=${hv.userNo}&vNo=${hv.vNo}"> <img
+						src="resources/uploadFiles/${hv.fileNm}" width="250px"
+						height="200px"></a> <br>
+					<div class="ch_cnt">
+
+						<strong style="font-size: 15px;"><c:out
+								value="${hv.vTitle}" /></strong> <br>
+						<br> <img src="resources/images/playbtn.png"
+							style="width: 15px;"> <span class="hit"> <strong
+							class="blind">조회수</strong> <em><c:out value="${hv.count}" />회</em>
+							&nbsp;
+						</span> <span class="bar"> </span> <span class="date"> <strong>등록</strong>
+							<em><c:out value="${hv.uploadDt}" /></em>
+						</span> <br>
+						<span class="tag"><em><c:out value="${hv.tag}" /></em> </span>
+					</div>
+
+				</div>
+			</c:forEach>
+
+		</table>
+
+		<hr>
+
+
+		<p id="favvideo" style="margin-left: 20px">
+			<strong>인기동영상</strong>
+		</p>
+
+		<c:forEach items="${favHomeChannellVideo}" var="fv" begin="0" end="2">
+
+			<div class="col-sm-4">
+
+				<a href="video.vd?userNo=${fv.userNo}&vNo=${fv.vNo}"> <img
+					src="resources/uploadFiles/${fv.fileNm}" width="250px"
+					height="200px"></a> <br>
+				<div class="ch_cnt">
+					<strong style="font-size: 15px;"><c:out
+							value="${fv.vTitle}" /></strong> <br>
+					<br> <img src="resources/images/playbtn.png"
+						style="width: 15px;"> <span class="hit"> <strong
+						class="blind">조회수</strong> <em><c:out value="${fv.count}" />회</em>
+						&nbsp;
+					</span> <span class="bar"> </span> <span class="date"> <strong>등록</strong>
+						<em><c:out value="${fv.uploadDt}" /></em>
+					</span> <br>
+					<span class="tag"><em><c:out value="${fv.tag}" /></em> </span>
+				</div>
+
+			</div>
+		</c:forEach>
 
 
 
 
 
-	<jsp:include page="../common/footer.jsp"></jsp:include>
+
+
+		<jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
 </html>

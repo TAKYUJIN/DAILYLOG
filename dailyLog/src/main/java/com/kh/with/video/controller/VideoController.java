@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.with.admin.model.vo.Board;
 import com.kh.with.common.CommonUtils;
 import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.member.model.service.MemberService;
@@ -387,6 +388,7 @@ public class VideoController {
 		if(chYN.equals("Y")) {
 			return"video/videoUpload";
 		}else {
+			
 			return "loger/createChannel";
 
 		}
@@ -428,6 +430,8 @@ public class VideoController {
 	@RequestMapping(value = "insertVideoInfo.vd")
 	public String insertVideoInfo(@ModelAttribute Member m, Model model, HttpServletRequest request,
 			HttpSession session, @RequestParam("file2") MultipartFile file2) {
+		
+			
 
 		// 썸네일 업로드 및 파일이름바꾸기
 		String root = request.getSession().getServletContext().getRealPath("resources");
@@ -488,18 +492,21 @@ public class VideoController {
 		
 	
 		//동영상번호 select 
-	
+		int UserNo = ((Member) request.getSession().getAttribute("loginUser")).getUserNo();
+		Video result2 = vs.selectvNo(UserNo);
 
 		//썸네일
 		Attachment attachment = new Attachment();
 		attachment.setFileNm(enrollNm);
 		attachment.setUserNo(getUserNo);
-
+		attachment.setvNo(result2.getvNo());
+	
 		int result1 = vs.insertAttachment(attachment);
 
-
+		System.out.println("result1" + result1);
 
 		if(result > 0  && result1 > 0 ) {
+			model.addAttribute("msg", "동영상등록이 완료되었습니다ㅏ.");
 			return "redirect:index.jsp";
 		}else {
 			model.addAttribute("msg", "동영상 업로드실패");

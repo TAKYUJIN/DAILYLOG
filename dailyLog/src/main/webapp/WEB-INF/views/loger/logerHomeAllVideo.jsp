@@ -220,7 +220,7 @@ body {
 		<div class="mainpage">
 
 			<div class="logerMainImg">
-				<img src="resources/images/loger_home_title.png">
+				 <img	src="resources/uploadFiles/${logertitleimg.fileNm}" >
 			</div>
 			<br> <br>
 			<div class="input-group search-box">
@@ -264,18 +264,24 @@ body {
 					
 							<a href="video.vd?userNo=${av.userNo}&vNo=${av.vNo}">
 							 <img	src="resources/uploadFiles/${av.fileNm}" width="250px"
-								height="200px"> <br><br>
-								<div style="width: 150px;">
-									<c:out value="${av.chNm}" />
-								</div>
-								<div style="width: 150px;">
-									<c:out value="${av.vTitle}" />
-								</div>
-								<p style="width: 150px;">
-									<c:out value="${av.count}" />
-									회
-								</p>
-							</a>
+								height="200px"></a> <br>
+								
+								<div class="ch_cnt">
+									
+								<strong style="font-size:15px;"><c:out value="${av.vTitle}" /></strong>
+								<br><br>
+						<img src="resources/images/playbtn.png" style="width: 15px;">
+						<span class="hit"> 
+						<strong class="blind">조회수</strong> 
+						<em><c:out value="${av.count}" />회</em>
+						&nbsp;</span> <span class="bar">
+						</span> <span class="date"> 
+						<strong >등록</strong>
+							<em><c:out value="${av.uploadDt}" /></em>
+						</span> <br><span class="tag"><em><c:out value="${av.tag}" /></em> </span>
+					</div>
+					
+							
 							
 						</div>
 				</c:forEach>

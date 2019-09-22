@@ -68,5 +68,9 @@ public interface VideoDao {
 	
 	int selectAge(SqlSessionTemplate sqlSession, int loginUser);
 	
+	//동영상번호 셀렉
+	
+	Video selectvNo(SqlSessionTemplate sqlSession, int getUserNo);
+	
 
 }

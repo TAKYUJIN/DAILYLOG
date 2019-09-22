@@ -202,6 +202,13 @@ public class VideoServiceImpl implements VideoService{
 		return vd.selectAge(sqlSession, loginUser);
 	}
 
+	//동영상번호 셀렉
+	@Override
+	public Video selectvNo(int getUserNo) {
+		
+		return vd.selectvNo(sqlSession, getUserNo);
+	}
+
 
 
 	

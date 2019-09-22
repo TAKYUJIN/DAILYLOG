@@ -110,6 +110,8 @@ public class MainController {
 		//구독한채널명
 		ArrayList<Subscribe> subscribeList = ms.subscribeList(subscribe);
 		
+		System.out.println("구독한채널명유저넘버나오니:" + subscribeList);
+		
 		//구독한채널비디오
 		ArrayList<SubscribeVideo> subscribeVideoList = ms.subscribeVideoList(subscribeVideo);
 		 

@@ -86,6 +86,16 @@ public interface LogerService {
 	//로거스튜디오 홈 하단의 인기동영상
 	ArrayList<MyVideo> favHomeChannellVideo(MyVideo myvideo);
 
+	//채널 타이틀 이미지
+	Attachment logertitleimg(Attachment attachment);
+
+	//최신동영상 1개
+	Video favOne(MyVideo myvideo);
+
+	//최신동영상 1개 썸네일 
+	Attachment favOnesum(MyVideo myvideo);
+
+
 
 
 

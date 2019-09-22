@@ -86,6 +86,17 @@ public interface LogerDao {
 	//로거스튜디오 홈 하단의 인기동영상
 	ArrayList<MyVideo> favHomeChannellVideo(SqlSessionTemplate sqlSession, MyVideo myvideo);
 
+	//채널타이틀 이미지
+	Attachment logertitleimg(SqlSessionTemplate sqlSession, Attachment attachment);
+
+	//최신동영상1개
+	Video favOne(SqlSessionTemplate sqlSession, MyVideo myvideo);
+
+
+	//최신동영상 1개 썸네일 
+	Attachment favOnesum(SqlSessionTemplate sqlSession, MyVideo myvideo);
+
+
  
 	
 

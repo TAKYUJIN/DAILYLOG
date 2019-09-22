@@ -215,6 +215,19 @@ public class VideoDaoImpl implements VideoDao {
 		return sqlSession.selectOne("Member.selectAge", loginUser);
 	}
 
+	//동영상번호 셀렉
+
+	@Override
+	public Video selectvNo(SqlSessionTemplate sqlSession, int getUserNo) {
+		
+		System.out.println("업로드하는 유저의 정보 가지고왔니?" + getUserNo );
+		
+		
+		
+		return sqlSession.selectOne("Video.selectvNo", getUserNo);
+		
+	}
+
 
 	
 }
