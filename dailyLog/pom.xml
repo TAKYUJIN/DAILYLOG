@@ -303,7 +303,11 @@
     <version>2.8.1</version>
 </dependency>
 
-
+    <dependency>
+      <groupId>com.google.apis</groupId>
+      <artifactId>google-api-services-analytics</artifactId>
+      <version>v3-rev161-1.25.0</version>
+    </dependency>
 
 	</dependencies>
 	<build>

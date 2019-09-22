@@ -79,7 +79,11 @@ public class MainServiceImpl implements MainService{
 
 	public int idcheck(String userId) {
 		// TODO Auto-generated method stub
-		return md.idcheck(sqlSession, userId);}
+
+		return md.idcheck(sqlSession, userId);
+		
+	}
+
 
 	public ArrayList<Alram> selectAlram(Member m) {
 		return md.selectAlram(sqlSession, m);

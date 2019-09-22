@@ -245,6 +245,27 @@ public class AdminDaoImpl implements AdminDao {
 		return sqlSession.selectList("ChannelBoard.info");
 	}
 
+	@Override
+	public int monthMemberListCount(SqlSessionTemplate sqlSession) {
+		int mMonth = sqlSession.selectOne("Calculate2.monthMemberListCount");
+		
+		return mMonth;
+	}
+
+	@Override
+	public int weekMemberListCount(SqlSessionTemplate sqlSession) {
+		int mWeek = sqlSession.selectOne("Calculate2.weekMemberListCount");
+		
+		return mWeek;
+	}
+
+	@Override
+	public int dayMemberListCount(SqlSessionTemplate sqlSession) {
+		int mDay = sqlSession.selectOne("Calculate2.dayMemberListCount");
+		
+		return mDay;
+	}
+
 }
 
 

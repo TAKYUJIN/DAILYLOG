@@ -77,6 +77,12 @@ public interface AdminDao {
 
 	List<Integer> info(SqlSessionTemplate sqlSession);
 
+	int monthMemberListCount(SqlSessionTemplate sqlSession);
+
+	int weekMemberListCount(SqlSessionTemplate sqlSession);
+
+	int dayMemberListCount(SqlSessionTemplate sqlSession);
+
 
 
 	
