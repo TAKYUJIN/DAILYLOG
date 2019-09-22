@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>WITH </title>
 <style>
 .form-horizontal1 {
 	width: 1600px; /* 전체 폼 사이즈임 */ !
@@ -31,14 +31,14 @@ div.left {
 	width: 50%;
 	float: left;
 	line-height: 50px;
-	background: #A8B7BC;
+	background: lightgray;
 }
 
 div.right {
 	width: 50%;
 	float: right;
 	line-height: 50px;
-	background: #13334A;
+	background: #DDD0DA;
 }
 
 A:link {
@@ -133,23 +133,19 @@ A:hover {
 	
 	$(function() {
 		$("#sendPwd").click(function(){
-		
 			$.ajax({
-			type:"POST",
-			url:sendPwd.me,
-			data:{
-				userNm : $("#userNm").val(), 
-				userId : $("#email").val()
-			},
-			
-			success:function(result){
-				alert(result);
-			},
-		})
-	});
-	
+				url : "sendPwd.me",
+				type : "POST",
+				data : {
+					id : $("#userNm").val(),
+					email : $("#email").val()
+				},
+				success : function(result) {
+					alert(result);
+				},
+			})
+		});
 	})
-
 	</script>
 
 

@@ -16,6 +16,7 @@
       var idx = false;
       var ndx = false;
       var pdx = false;
+      var smsPn = false;
       
       
 
@@ -32,7 +33,7 @@
                   alert("사용가능한 아이디입니다.");
                   $("#joinBtn").removeAttr("disabled");
                } else {
-                  alert("아이디 안돼 ")
+                  alert("이미 가입되어 있는 아이디입니다.  ")
                   $("#joinBtn").attr("disabled", "disabled");
                }
             },
@@ -55,7 +56,7 @@
                   alert("사용가능한 닉네임입니다.");
                   $("#joinBtn").removeAttr("disabled");
                } else {
-                  alert("닉네임 안돼 ")
+                  alert("중복되는 닉네임입니다.  ")
                   $("#joinBtn").attr("disabled", "disabled");
                }
             },
@@ -75,14 +76,14 @@
             success : function(data) {
                if (data == 0 && $.trim($("#phone").val()) != '') {
                   pdx = true;
-                  alert("사용가능한 휴대폰번호입니.");
+                  alert("사용가능한 휴대폰번호입니다 .");
                   $("#ckPn").hide();
                   $("#sendPn").show();
                   $("#showsms").show();
                   
                   $("#joinBtn").removeAttr("disabled");
                } else {
-                  alert("이미 가입되어 있는 폰임  ")
+                  alert("이미 가입되어 있는 휴대폰번호 입니다.  ")
                   $("#joinBtn").attr("disabled", "disabled");
                }
             },
@@ -128,10 +129,10 @@
 					if(checkNo == checkPhone){
 						$("#checkNo").attr({"readonly":"true"});
 						$("#cksmsPn").hide();
-						
+						smsPn = true;
 						alert("인증이 완료되었습니다.");
 						$("#joinBtn").removeAttr("disabled");
-						num = 1;
+						
 					}else{
 						alert("인증번호가 틀렸습니다. 다시 입력하세요.");
 						$("#joinBtn").attr("disabled", "disabled");
@@ -167,8 +168,12 @@
                   alert("닉네임  중복체크를 해주세요 ");
                   return false;
                } else if (pdx == false) {
-                  alert("휴대폰 버노   중복체크를 해주세요 ");
+                  alert("휴대폰 번호 중복체크를 해주세요 ");
                   return false;
+               } else if (smsPn == false) {
+                   alert("인증번호 입력 후 확인을 눌러주세요 ");
+                   return false;
+                   
                } else {
             	   $("#joinForm").submit();
                   alert("회원가입 인증 이메일 발송완료! \n가입하기 버튼을 누르셔야 로그인이 가능합니다  ");
