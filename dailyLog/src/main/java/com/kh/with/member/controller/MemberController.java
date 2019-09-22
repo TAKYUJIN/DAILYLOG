@@ -103,11 +103,7 @@ public class MemberController {
 
 	}
 
-	@RequestMapping(value = "sendPwd.me", method = RequestMethod.POST)
-	public void find_pw(@ModelAttribute Member m, HttpServletResponse response) throws Exception{
-		//ms.find_pw(response, m);
-	}
-
+	
 //   @ResponseBody
 //   @RequestMapping(value = "smssend.me", method= RequestMethod.POST)
 //   public ModelAndView showsmssend(ModelAndView mv, HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -344,6 +340,8 @@ public class MemberController {
 		}
 
 	}
+	
+	
 
 	@RequestMapping(value = "joinFinal.me", method = RequestMethod.GET)
 	public String key_alterConfirm(@RequestParam("userNm") String userNm, @RequestParam("userId") String userId,
@@ -720,7 +718,22 @@ public class MemberController {
 			model.addAttribute("msg", "회원 가입 실패");
 			return "common/errorPage";
 		}
-
+		
 	}
+	
+	@RequestMapping(value="sendPwd.me", method= RequestMethod.POST)
+	public String sendPwd(HttpServletRequest request) {
+		String email = request.getParameter("email");
+		
+		System.out.println("email ~~ " + email);
+		
+		
+		ms.mailSendWithPwd(email, request);
+		
+		return "member/findPwd";
+	}
+		
+
+	
 
 }

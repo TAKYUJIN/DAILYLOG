@@ -39,7 +39,7 @@ public class MemberServiceImpl implements MemberService {
 	private DataSourceTransactionManager transactionManager;
 	@Autowired
 	private JavaMailSender mailSender;
-	
+
 
 
 
@@ -73,7 +73,7 @@ public class MemberServiceImpl implements MemberService {
 		int result = md.nickCheck(nickname);
 		return result;
 	}
-	
+
 	@Override
 	public int phoneCheck(String phone) {
 		int result = md.phoneCheck(phone);
@@ -114,12 +114,12 @@ public class MemberServiceImpl implements MemberService {
 		return md.delete_myPage(sqlSession, m) ;
 
 	}
-	
+
 	@Override
 	public int delete_myPage_file(HashMap map) {
 		return md.delete_myPage_file(sqlSession, map);
 	}
-	
+
 	@Override
 	public int insert_myPage_file(HashMap map) {
 		return md.insert_myPage_file(sqlSession, map);
@@ -143,7 +143,7 @@ public class MemberServiceImpl implements MemberService {
 		if (lowerCheck) {
 			return sb.toString().toLowerCase();
 		}
-		
+
 		System.out.println(sb.toString());
 		return sb.toString();
 	}
@@ -155,7 +155,7 @@ public class MemberServiceImpl implements MemberService {
 	public String getKey(boolean lowerCheck, int size) {
 		this.lowerCheck = lowerCheck;
 		this.size = size;
-		
+
 		return init();
 	}
 
@@ -168,11 +168,11 @@ public class MemberServiceImpl implements MemberService {
 		//System.out.println(userId  + ":::" +id);
 		//System.out.println("key : " + key);
 		m.setStatus(key);
-		
+
 		md.GetKey(m); 
 		System.out.println(";;;;;;;;");
-		
-		
+
+
 		MimeMessage mail = mailSender.createMimeMessage();
 		String htmlStr = "<h2>안녕하세요 데일리로그입니다!</h2><br><br>" 
 				+ "<h3>" + m.getUserNm() + "님</h3>" + "<p>가입하기 버튼을 누르시면 로그인을 하실 수 있습니다 : " 
@@ -186,33 +186,69 @@ public class MemberServiceImpl implements MemberService {
 		} catch (MessagingException e) {
 			e.printStackTrace();
 		}
-		
+
 		System.out.println("durlsms? ");
 
 	}
 
+
+
+
+
+	@Override
+	public int ustop(Member m) {
+
+		return md.ustop(sqlSession,m);
+	}
+
+
+
+	@Override
+	public int alter_userKey_service(String userId, String status) {
+		int resultCnt = 0;
+
+		resultCnt = md.alter_userKey(userId, status);
+
+		return resultCnt;
+	}
+
+
+
+	@Override
+	public void mailSendWithPwd(String email, HttpServletRequest request) {
+		System.out.println("비밀번호 메일 왜안오냐");
+
+		String key = getKey(false, 8);
+
+
+		MimeMessage mail = mailSender.createMimeMessage();
+		String htmlStr = "<h2>안녕하세요 데일리로그입니다!</h2><br><br>" 
+				+ "<p>비밀번호 찾기를 신청해주셔서 임시 비밀번호를 발급해드렸습니다.</p>"
+				+ "<p>임시로 발급 드린 비밀번호는 <h2 style='color : blue'>'" + key +"'</h2>이며 로그인 후 마이페이지에서 비밀번호를 변경해주시면 됩니다.</p><br>"
+				+ "<a href='http://localhost:8001" + request.getContextPath() + "/loginbutton.me" +"'>로그인하기</a></p>"
+				+ "(혹시 잘못 전달된 메일이라면 이 이메일을 무시하셔도 됩니다)";
+		try {
+			mail.setSubject("[데일리로그] 비밀번호 재발급 되었습니다. ", "utf-8");
+			mail.setText(htmlStr, "utf-8", "html");
+			mail.addRecipient(RecipientType.TO, new InternetAddress(email));
+			mailSender.send(mail);
+		} catch (MessagingException e) {
+			e.printStackTrace();
+		}
 		
-
-
-
-		@Override
-		public int ustop(Member m) {
-		 
-			return md.ustop(sqlSession,m);
-		}
-
-
-
-		@Override
-		public int alter_userKey_service(String userId, String status) {
-			int resultCnt = 0;
-			
-			resultCnt = md.alter_userKey(userId, status);
-			
-			return resultCnt;
-		}
-
-
-
+		key = passwordEncoder.encode(key);
 		
-		}
+		System.out.println("d암호화 키 : " + key);
+		
+		md.resetKey(key, email);
+
+	}
+
+
+
+	
+
+
+
+
+}

@@ -38,6 +38,10 @@ public interface MainService {
 
 	ArrayList<Alram> selectAlram(Member m);
 
+	ArrayList<VideoLike> showVideoLike(Member m);
+
+	ArrayList<VideoLike> selectVideoLike(VideoLike vl);
+
 
 	
 
