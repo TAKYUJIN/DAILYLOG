@@ -180,8 +180,8 @@
 	
 	
 	
-	<select id="friendCheck"  resultType="Member">
-		SELECT USER_ID
+	<select id="friendCheck" parameterType="String" resultType="int">
+		SELECT count(*)
 		FROM MEMBER
 		WHERE USER_ID = #{userId}
 	</select>

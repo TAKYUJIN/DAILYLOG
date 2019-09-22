@@ -34,7 +34,7 @@ public interface MainService {
 	int frireject(MailVo mailVo);
 
 
-	public Member idcheck(String userId);
+	public int idcheck(String userId);
 
 	ArrayList<Alram> selectAlram(Member m);
 
