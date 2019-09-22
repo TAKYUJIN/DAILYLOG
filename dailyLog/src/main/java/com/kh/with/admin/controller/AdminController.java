@@ -466,8 +466,31 @@ public class AdminController {
 	}
 	
 	
+	// 관리자 메인 페이지 이동
+	@RequestMapping(value = "adminStatisticsChart.ad")
+	public String adminStatisticsChart(Model model) {
+//		int mMonth = as.monthMemberListCount();
+//		int mWeek = as.weekMemberListCount();
+//		int mDay = as.dayMemberListCount();
+//		
+//		model.addAttribute("mMonth", mMonth);
+//		model.addAttribute("mWeek", mWeek);
+//		model.addAttribute("mDay", mDay);
+//		
+//		System.out.println(mMonth);
+		
+		
+		return "admin/adminStatisticsChart";
+	}
 	
-	
+	// 관리자 통계 페이지 이동
+	@RequestMapping(value = "adminStatistics.ad")
+	public String adminStatistics() {
+
+		return "admin/adminStatistics";
+	}
+
+		
 	
 	
 	

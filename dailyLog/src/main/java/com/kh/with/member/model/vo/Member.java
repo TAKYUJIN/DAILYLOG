@@ -25,17 +25,16 @@ public class Member implements java.io.Serializable{
 	private String account;	//계좌번호
 	//private String profilePath; // 프로필사진경로
 	private int chNo;
+	private int count;	//회원 수 카운트
 
 	
 	public Member() {}
 
+
 	public Member(int userNo, String userNm, String userId, String userPwd, String nickname, String phone,
 			String gender, String birth, int age, String adultYN, String chYN, Date enrollDT, Date leaveDT,
-
-			//int remainPT, String status, Date mon, Date day, String accNm, String bankNm, String account, String profilePath) {
-
-			int remainPT, String status, Date mon, Date day, String accNm, String bankNm, String account, int chNo) {
-
+			int remainPT, String status, Date mon, Date day, String accNm, String bankNm, String account, int chNo,
+			int count) {
 		super();
 		this.userNo = userNo;
 		this.userNm = userNm;
@@ -57,189 +56,230 @@ public class Member implements java.io.Serializable{
 		this.accNm = accNm;
 		this.bankNm = bankNm;
 		this.account = account;
-	//	this.profilePath = profilePath;
 		this.chNo = chNo;
-
+		this.count = count;
 	}
+
 
 	public int getUserNo() {
 		return userNo;
 	}
 
+
 	public void setUserNo(int userNo) {
 		this.userNo = userNo;
 	}
+
 
 	public String getUserNm() {
 		return userNm;
 	}
 
+
 	public void setUserNm(String userNm) {
 		this.userNm = userNm;
 	}
+
 
 	public String getUserId() {
 		return userId;
 	}
 
+
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
+
 
 	public String getUserPwd() {
 		return userPwd;
 	}
 
+
 	public void setUserPwd(String userPwd) {
 		this.userPwd = userPwd;
 	}
+
 
 	public String getNickname() {
 		return nickname;
 	}
 
+
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
+
 
 	public String getPhone() {
 		return phone;
 	}
 
+
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+
 
 	public String getGender() {
 		return gender;
 	}
 
+
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
+
 
 	public String getBirth() {
 		return birth;
 	}
 
+
 	public void setBirth(String birth) {
 		this.birth = birth;
 	}
+
 
 	public int getAge() {
 		return age;
 	}
 
+
 	public void setAge(int age) {
 		this.age = age;
 	}
+
 
 	public String getAdultYN() {
 		return adultYN;
 	}
 
+
 	public void setAdultYN(String adultYN) {
 		this.adultYN = adultYN;
 	}
+
 
 	public String getChYN() {
 		return chYN;
 	}
 
+
 	public void setChYN(String chYN) {
 		this.chYN = chYN;
 	}
+
 
 	public Date getEnrollDT() {
 		return enrollDT;
 	}
 
+
 	public void setEnrollDT(Date enrollDT) {
 		this.enrollDT = enrollDT;
 	}
+
 
 	public Date getLeaveDT() {
 		return leaveDT;
 	}
 
+
 	public void setLeaveDT(Date leaveDT) {
 		this.leaveDT = leaveDT;
 	}
+
 
 	public int getRemainPT() {
 		return remainPT;
 	}
 
+
 	public void setRemainPT(int remainPT) {
 		this.remainPT = remainPT;
 	}
+
 
 	public String getStatus() {
 		return status;
 	}
 
+
 	public void setStatus(String status) {
 		this.status = status;
 	}
+
 
 	public Date getMon() {
 		return mon;
 	}
 
+
 	public void setMon(Date mon) {
 		this.mon = mon;
 	}
+
 
 	public Date getDay() {
 		return day;
 	}
 
+
 	public void setDay(Date day) {
 		this.day = day;
 	}
+
 
 	public String getAccNm() {
 		return accNm;
 	}
 
+
 	public void setAccNm(String accNm) {
 		this.accNm = accNm;
 	}
+
 
 	public String getBankNm() {
 		return bankNm;
 	}
 
+
 	public void setBankNm(String bankNm) {
 		this.bankNm = bankNm;
 	}
 
+
 	public String getAccount() {
 		return account;
 	}
+
 
 	public void setAccount(String account) {
 		this.account = account;
 	}
 
 
-/*
-	public String getProfilePath() {
-		return profilePath;
-	}
-
-	public void setProfilePath(String profilePath) {
-		this.profilePath = profilePath;
-    */
-
 	public int getChNo() {
 		return chNo;
 	}
 
+
 	public void setChNo(int chNo) {
 		this.chNo = chNo;
-
 	}
+
+
+	public int getCount() {
+		return count;
+	}
+
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
 
 	@Override
 	public String toString() {
@@ -247,11 +287,7 @@ public class Member implements java.io.Serializable{
 				+ ", nickname=" + nickname + ", phone=" + phone + ", gender=" + gender + ", birth=" + birth + ", age="
 				+ age + ", adultYN=" + adultYN + ", chYN=" + chYN + ", enrollDT=" + enrollDT + ", leaveDT=" + leaveDT
 				+ ", remainPT=" + remainPT + ", status=" + status + ", mon=" + mon + ", day=" + day + ", accNm=" + accNm
-
-				//+ ", bankNm=" + bankNm + ", account=" + account + ", profilePath=" + profilePath + "]";
-
-				+ ", bankNm=" + bankNm + ", account=" + account + ", chNo=" + chNo + "]";
-
+				+ ", bankNm=" + bankNm + ", account=" + account + ", chNo=" + chNo + ", count=" + count + "]";
 	}
 
 

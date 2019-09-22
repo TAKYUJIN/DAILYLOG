@@ -140,7 +140,7 @@ table.table-striped tbody tr:nth-of-type(odd) {
 </style>
 </head>
 <body>
-	<jsp:include page="../common/mainBar.jsp"></jsp:include>
+	<jsp:include page="../common/logerBar.jsp"></jsp:include>
 	<div class="selectSupport">
 		<form action="" method="post" class="selectLogerCalculateForm" float="left;">
 			<div class="table-wrapper">

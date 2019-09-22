@@ -15,7 +15,8 @@
 	</c:if>
 	<c:if test="${ !empty sessionScope.loginUser }">
   		 <jsp:include page="../common/adminBar.jsp"></jsp:include>	
-		
+		<%-- <jsp:include page="../admin/adminStatisticsChart.jsp"></jsp:include> --%>
+		<jsp:include page="/adminStatisticsChart.ad"></jsp:include>
 	</c:if>  
 	
 	<jsp:include page="../common/footer.jsp"></jsp:include> 

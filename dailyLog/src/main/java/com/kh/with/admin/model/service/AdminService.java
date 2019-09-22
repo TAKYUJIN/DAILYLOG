@@ -93,6 +93,15 @@ public interface AdminService {
 	List<Integer> info();
 
 
+	int monthMemberListCount();
+
+
+	int weekMemberListCount();
+
+
+	int dayMemberListCount();
+
+
 	
 
 

@@ -17,37 +17,30 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <style type="text/css">
     table.table tr th, table.table tr td {
-        border-color: #e9e9e9;
         text-align:center;
     }
     table.table-striped tbody tr:nth-of-type(odd) {
-    	background-color: #fcfcfc;
-    	width:1000px;
+    	width:90%;
 		text-align:center;
 		margin-bottom:100px;
 		text-align:center;
+		background:none;
 	}
 	.selectSupport {
-		width:1000px;
+		width:90%;
 		margin-left:10px;
-		font-size:12px;
 	}
 	
 	.selectLogerCalculateForm {
-		margin-top:50px;
-		margin-left:auto;
-		margin-right:auto;
-		margin-bottom:50px;
-		width:1000px;
+		width:90%;
+		margin:0 auto;
 	}
 	.calculate_th {
 		text-align:center;
 	}
     .table-wrapper {
-        background: #fff;
         padding: 20px;
         margin: 30px 0;
-        box-shadow: 0 1px 1px rgba(0,0,0,.05);
     }
     
     .pagination {
@@ -86,7 +79,7 @@
         margin: 0 2px;
     }
     #searchAdminCalBtn {
-    		width:900px;
+    		width:100%;
 	text-align:center;
     }
     
@@ -133,6 +126,16 @@
 		font-size: 18px;
 		opacity: 0.7;
 	}	
+	
+	.calBtn {
+	width:80px;
+	border:1px solid #13334A;
+	border-radius:5px;
+	margin-right:5px;
+	background:#13334A;
+	padding:5px;
+	color:#FFF;
+	}
 </style>
 <script>
 function fncalculate() {
@@ -177,13 +180,13 @@ function fncalculate() {
 						</div>
                     </div>
                     <div class="col-sm-1">
-                    <button type="submit" value="" id="selectBtn">조회</button>
+                    <button type="submit" value="" class="calBtn" id="selectBtn">조회</button>
 <!-- 						<button type="button" class="btn btn-primary"><i class="fa fa-search"></i></button> -->
 					</div>
                 </div>
 			</div>
-				<button type="button" class="btnReset" style="float:right;" onclick="location.href='deleteBoard.do?idx=<%-- ${} --%>'">&nbsp;취소&nbsp;</button> 
-				<button type="button" class="btnCalculate" style="float:right;" onclick="fncalculate();">&nbsp;정산&nbsp;</button></div>
+				<button type="button" class="calBtn" id="btnReset" style="float:right;" onclick="location.href='deleteBoard.do?idx=<%-- ${} --%>'">&nbsp;취소&nbsp;</button> 
+				<button type="button" class="calBtn" id="btnCalculate" style="float:right;" onclick="fncalculate();">&nbsp;정산&nbsp;</button></div>
 			<tr><br></tr>
 			<tr><br></tr>
                 <thead>
@@ -237,113 +240,6 @@ function fncalculate() {
                     }
                 });
             });
-
-            /* $(".btn_calculate").click(function(){
-            	var calNo = new Array();
-            	var calcnt = 0;
-            	var chkbox = $(".input_check").parent().siblings().eq(0).text();
-            	
-            	
-            	for(i = 0; i < chkbox.length; i++) {
-            	    if (chkbox[i].checked == true){
-            	    	calNo[calcnt] = chkbox[i].value;
-            	    	calcnt++;
-            	    }
-            	}
-            	console.log(calNo);
-
-            	$("#array").val(calNo);
-            	
-            	
-            	
-            }); */
-            /* $(function(){
-            	$(".btnCalculate").click(function(){
-		            $(".inputCheck:checked").each(function(){
-		            	var calNo = new Array();
-		            	calNo = $(this).parent().siblings().eq(0).text();
-		            	console.log(calNo);
-		            	
-		            	location.href='calculateApply.ad?calNo='+calNo;
-		            	
-		            });
-            		
-            	});
-            });  */
-            
-            /* $(document).ready(function(){
-    			$(".btnCalculate").click(function(){
-    				var lists = new Array();
-    				$("input[name='check']:checked").each(function(i){
-    					lists.push($(this).val());
-    					
-    					location.href='calculateApply.ad?calNo='+calNo;
-        				});
-    		 */		
-    				/* 	$.ajax({
-        					url:"calculateApply.ad",
-        					type:"post",
-        					traditional : true,
-        					data:{"lists":lists},
-        					success:function(data){
-        					console.log("성공!");
-        					/* var $adminTable = $("#adminTable #admin");
-        					$adminTable.html(""); */
-        					
-        					/*  for(var i = 0; i < data["cList"].length; i++){ 
-        	    					var $tr = $("<tr>");
-        	    					var $nNo = $("<td>").text(data["cList"][i].nNo);
-        	    					var $supTY = $("<td>").text(data["cList"][i].supTY);
-        	    					var $nickname = $("<td>").text(data["cList"][i].nickname);
-        	    					var $supPrice = $("<td>").text(numeral(data["cList"][i].supPrice).format('0,0')+"원");
-        	    					var $supSTDT = $("<td>").text(data["cList"][i].supSTDT);
-        	    					var $td = $("<td>");
-        	    					var result = $supSTDT.text().substr(0,10);
-        	    					$td.append(result)
-        	    					$tr.append($nNo);
-        	    					$tr.append($supTY);
-        	    					$tr.append($nickname);
-        	    					$tr.append($supPrice);
-        	    					$tr.append($td);
-        	    					$logerTable.append($tr); 
-        	    					
-        	    					
-        	    					<td><input type="checkbox" class="inputCheck" name="check" value="${c.calNo}"></td>
-        	                        <td><c:out value="${c.userNo}"/></td>
-        							<td><c:out value="${c.userId}"/></td>
-        							<td><c:out value="${c.userNm}"/></td>
-        							<td><c:out value="${c.calSTDT}"/></td>
-        							<td><c:out value="${c.calPrice}"/></td>
-        							<td><c:out value="${c.calVAT}"/></td>
-        							<td><c:out value="${c.amountPrice}"/></td>
-        							<td><c:out value="${c.bankNm}"/></td>
-        							<td><c:out value="${c.account}"/></td>
-        							<td><c:out value="${c.calTY}"/></td>
-        							<td><c:out value="${c.calEDT}"/></td>
-        	    				
-        	    					
-        	    					
-        	    				 }  */
-        					/* },
-        					error:function(data){
-        						console.log("실패!");
-        					} */
-    			
-
-    				
-    			/* 	$.ajax({
-    					url:"insertVideoInfo.vd",
-    					type:"post",
-    					data:{titleName:titleName,videoTag:videoTag,model:model,filepath:filepath,fileName:fileName,adInfo:adInfo,
-    						file2:file2,'allView':lists},
-    						traditional:true,
-    					success:function(data){
-    						console.log("성공!");
-    					},
-    					error:function(data){
-    						console.log("실패!");
-    					}
-    				}); */
 
             
             </script>
