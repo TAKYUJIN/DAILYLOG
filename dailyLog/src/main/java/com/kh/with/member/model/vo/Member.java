@@ -254,5 +254,10 @@ public class Member implements java.io.Serializable{
 
 	}
 
+	public Object getProfilePath() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }

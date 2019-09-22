@@ -94,17 +94,17 @@
  <div class="signup-form">
 <!--     <form action="/examples/actions/confirmation.php" method="post" class="form-horizontal">
  -->
- <form action="chreportdetail.ad" method="get">
-<c:forEach items="${videoreportdetail}" var="de">
+<c:forEach items="${chreportdetail}" var="de">
 			<h3><b>채널 신고 관리 상세 </b></h3><br>
 		<div class="form-group">
+ <form action="chreportdetail2.ad" method="get">
 			<label>신고 번호:${de.reno}  </label><br><br>
 			<input type="hidden" id="reno" name="reno" value="${de.reno}">
 			<label>신고 동영상 번호:${de.vNo}  </label><br><br>
 			<input type="hidden" id="vNo" name="vNo" value="${de.vNo}">
 			<label>신고 동영상 제목:${de.vTitle} </label><br><br>
 			<input type="hidden" id="vTitle" name="vTitle" value="${de.vTitle}">
-			<label>신고인 아이디:${de.userNm}</label><br><br>
+			<label>신고인  :${de.userNm}</label><br><br>
 			<input type="hidden" id="userNm" name="userNm" value="${de.userNm}">
 			<label>신고일:${de.redt} </label><br><br>
 			<input type="hidden" id="redt" name="redt" value="${de.redt}">
@@ -118,8 +118,8 @@
  		    <button type="button" class="btn btn-primary" onclick="location.href='reportlist.ad'">취소</button>
  		    <br><br>  
  		    
-			</div>  
-	</div></c:forEach></form></div>
+			</div></form>  
+	</div></c:forEach></div>
     <jsp:include page="../common/footer.jsp" />
 
 </body>

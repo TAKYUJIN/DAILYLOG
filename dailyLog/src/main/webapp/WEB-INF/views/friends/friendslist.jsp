@@ -185,17 +185,21 @@
  			
 			<!-- 아이디 -->
 			<div class="form-group">
-			<p>	<label for="friId">친구 이메일</label>
+			 	<label for="friId">친구 이메일</label>
 					<input  style="float:left;"type="text" class="form-control" id="friId" name="friId" placeholder="친구 이메일" required>
-				<button type="button" id ="fricheck" class="btn btn-default" style="background:#13334A; color:#fff;  float:left;"   >이메일 확인</button>
-		</p><p id="result">
+				  <!-- <button type="button" id ="fricheck" class="btn btn-default" style="background:#13334A; color:#fff;  float:left;"   >이메일 확인</button>
+	  -->
+		<div class="check" id="id_check"></div>
+		<!-- <p id="result">
 			<span class="msg">친구 이메일을 다시 한번 확인 해주세요.</span>
 		
-		</p>
+		</p> -->
+		
+		 
 		
 			</div><br><br>
       <div align="center">
-        <input type="submit" value="메일 보내기"  class="btn btn-default" style="background:#13334A; color:#fff;">
+        <input type="submit" id=" joinBtn"value="메일 보내기"  class="btn btn-default" style="background:#13334A; color:#fff;">
         <input type="reset" value="취소" class="btn btn-default" id="reset" style="background:#A8B7BC; color:#fff;">
       </div></c:forEach>
   </form></table></div></div></div></div></div></div>
@@ -220,11 +224,11 @@
     
  });
  
- $("#fricheck").click (function(){
-	 var query={userId:$(".friId").val()};
-	 alert(userId);
+ /* $("#fricheck").click (function(){
+	 var query={userId:$("#friId").val()};
+	 alert(query);
 	 $.ajax({
-		  url : "fricheck.mb",
+		  url : '${pageContext.request.contextPath}/fricheck.mb?friId='+ friId ,
 		  type : "get",
 		  data : query,
 		  success : function(data) {
@@ -239,9 +243,71 @@
 		  }
 	 
 	 
- });});
+ });}); */
  
  
  </script>
  
+  
+
+<script>
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" </script>
+	
+	
+<script>
+$(function() {
+    var idx = false;
+    var ndx = false;
+    var pdx = false;
+    
+    
+
+    $("#friId").blur(function()  {
+    	 var friId = $('#friId').val();
+       $.ajax({
+          url : '${pageContext.request.contextPath}/fricheck.mb?friId='+friId,
+          type : "GET",
+          data : {
+             "friId" : $("#friId").val() 
+          },
+          success : function(data) {
+             if (data == 1 && $.trim($("#friId").val()) != '') {
+                idx = true;
+                $("#id_check").text("사용 가능한 이메일 입니다");
+				$("#id_check").css("color", "red");
+            $("#joinBtn").attr("disabled", true);
+             } else {
+            	 $("#id_check").text("없는 아이디 입니다ㅠ 친구 아이디를 다시 확인 해주세요");
+					$("#id_check").css("color", "red");
+             }
+          },
+          error : function() {
+             alert("서버에러 ");
+             alert(data);
+          }
+       });
+    });
+});
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </html>                                                                                    

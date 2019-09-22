@@ -110,15 +110,15 @@ body{
     <%--  <c:if test="${ empty sessionScope.loginUser }">
         <input type="hidden" value='${login.id }' id='chat_id' />
     </c:if> --%>
-   ${loginUser.nickname}
+   
     <c:forEach var="l" items="${m}" >
     
       <input type="hidden" value="${loginUser.nickname}" id='chat_id' />
         </c:forEach>
     <!--     채팅창 -->
-    <div id="_chatbox" style="display: none">
+    <div id="_chatbox"  >
         <fieldset>
-            <div id="messageWindow"> 
+            <div id="messageWindow" style="width:100%; "> 
             
              </div>
            
@@ -127,8 +127,7 @@ body{
           
         </fieldset>
     </div>
-   <img class="chat" src="resources/images/chat.png" />
-</body>
+ </body>
 
 <!-- 말풍선아이콘 클릭시 채팅창 열고 닫기 -->
 <script type="text/javascript">
@@ -159,6 +158,7 @@ body{
         onMessage(event)
     };
     function onMessage(event) {
+    	
         var message = event.data.split("|");
         var sender = message[0];
         var content = message[1];
@@ -187,18 +187,26 @@ body{
         }
     }
     function onOpen(event) {
-        $("#messageWindow").html("  <p class='chat_content'> "+"님이 채팅에 참여하였습니다.</p> ");
+    	var chat_id ="${loginUser.nickname}";
+    	console.log(chat_id);
+    	
+        $("#messageWindow").append("  <p class='chat_content'>"+chat_id  +"님이 채팅에 참여하였습니다.</p> ");
     }
     function onError(event) {
         alert(event.data);
     }
     function send() {
+    	var chat_id ="${loginUser.nickname}";
+    	  
         if (inputMessage.value == "") {
         } else {
             $("#messageWindow").html($("#messageWindow").html()
-                + "<p class='chat_content'>나 : " + inputMessage.value + "</p>");
+                + "<p class='chat_content'>  "+"<b>"+chat_id+"<b>" + inputMessage.value + "</p>");
+            
         }
-        webSocket.send($("#chat_id").val() + "|" + inputMessage.value);
+        
+        
+        webSocket.send(chat_id + "|" + inputMessage.value);
         inputMessage.value = "";
     }
     //     엔터키를 통해 send함
