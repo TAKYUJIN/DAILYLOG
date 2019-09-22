@@ -10,7 +10,15 @@
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.2.js"></script>
 </head>
 <body>
-<form id="pay" action="pay.me" method="post">
+<form id="pay" name="f1" action="point.me" method="post">
+<input type="hidden" name="IMP_UID"/>		<!-- 아임포트고유번호 -->
+<input type="hidden" name="MERCHANT_UID"/>		<!-- 고유주문번호 -->
+<input type="hidden" name="PAID_AMOUNT"/>		<!-- 결제금액 -->
+<input type="hidden" name="BUYER_NAME"/>		<!-- 주문자이름 -->
+<input type="hidden" name="BUYER_ID"/>		<!-- 주문자ID -->
+<input type="hidden" name="BUYER_PHONE"/>		<!-- 주문자연락처 -->
+<input type="hidden" name="PAID_AT"/>	<!-- 결제승인시각 -->
+
 <script type="text/javascript">
 
 	IMP.init('imp51812845');
@@ -27,7 +35,18 @@
 	    buyer_postcode : '123-456'
 	}, function(rsp) {
 	    if ( rsp.success ) {
-	    	//[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
+	    	alert()
+	    	//var data = "IMP_UID=" + rsp.imp_uid + "&MERCHANT_UID=" + rsp.merchant_uid;
+	    	$("input[name='IMP_UID']").val(rsp.imp_uid);
+	    	$("input[name='MERCHANT_UID']").val(rsp.merchant_uid);
+	    	$("input[name='PAID_AMOUNT']").val(rsp.paid_amount);
+	    	$("input[name='BUYER_NAME']").val(rsp.buyer_name);
+	    	$("input[name='BUYER_ID']").val(rsp.buyer_email);
+	    	$("input[name='BUYER_PHONE']").val(rsp.buyer_tel);
+	    	$("input[name='PAID_AT']").val(rsp.paid_at);
+	    	
+	    	f1.submit();
+	    	/* //[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
 	    	jQuery.ajax({
 	    		url: "/payments/complete", //cross-domain error가 발생하지 않도록 주의해주세요
 	    		type: 'POST',
@@ -51,12 +70,13 @@
 	    			//[4] 결제된 금액이 요청한 금액과 달라 결제를 자동취소처리하였습니다.
 	    		}
 	    	});
-	    	location.href="point.me";
+	    	location.href="point.me"; */
 	    } else {
 	        var msg = '결제에 실패하였습니다.';
 	        msg += '에러내용 : ' + rsp.error_msg;
 	        location.href="pay.me";
 	        alert(msg);
+	        console.log(msg);
 	    }
 	});
 
