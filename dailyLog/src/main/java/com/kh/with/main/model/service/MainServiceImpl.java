@@ -76,10 +76,14 @@ public class MainServiceImpl implements MainService{
 	}
 
 	@Override
-	public Member idcheck(String userId) {
+	public int idcheck(String userId) {
 		// TODO Auto-generated method stub
-		return null;
+
+		return md.idcheck(sqlSession, userId);
+		
 	}
+
+
 
 	@Override
 	public ArrayList<Alram> selectAlram(Member m) {

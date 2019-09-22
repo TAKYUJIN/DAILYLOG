@@ -23,17 +23,20 @@
       font-family: 'Varela Round', sans-serif;
       background:linear-gradient(rgb(237, 234, 215) 0%, rgb(221, 208, 218) 85%);
    }
+   
+   input::-webkit-input-placeholder { color: #525252; }
+   
    .form-control {
       box-shadow: none;      
       font-weight: normal;
       font-size: 12px; /* 검색부분 폰트사이즈 */
-      color:#DDD0DA;
+      color:#525252;
       font-size:14px;
    }
    .form-control:focus {
       border-color: #EDEAD7;
       box-shadow: 0 0 8px rgba(0,0,0,0.1);
-      color:#DDD0DA;
+      color:#525252;
    }
    .navbar-header.col {
       padding: 0 !important;
@@ -269,7 +272,7 @@
 	padding:0;
    }
    #searchId {
-   	color:#DDD0DA;
+   	color:#525252;
    }
    
    #navbarCollapse {
@@ -301,6 +304,7 @@
 			<li class="nav-item"><a href="subscribe.mb" class="nav-link" style="padding-right:0px;">구독</a></li>	
 			<li class="nav-item"><a href="newAction.mb" class="nav-link" style="padding-right:0px;">최근 활동</a></li>	
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">좋아요 영상</a></li>
+
 			<li class="nav-item" >
 	
 			
@@ -308,6 +312,11 @@
 			
 			
 			<li class="nav-item"><a href="lotest.lo" class="nav-link" style="padding-right:0px;">알림 예시</a></li>
+
+    <!-- 주석 에진
+			<li class="nav-item"><a href="newHomeChannel.lo?userNo=${sessionScope.loginUser.userNo}" class="nav-link" style="padding-right:0px;" onclick="">로거 스튜디오</a></li>
+			<!-- <li class="nav-item"><a href="lotest.lo" class="nav-link" style="padding-right:0px;">알림 예시</a></li> -->
+-->
 		</ul>
 
 		<form class="navbar-form form-inline" action="search.mb" method="get">

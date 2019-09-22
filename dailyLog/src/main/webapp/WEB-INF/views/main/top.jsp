@@ -191,8 +191,8 @@ background:none;
 	   font-size:35px;
 	 }
 	 #sty{
-	 background:#f7f5f5;
-	 border: 1px solid #d1cfcf;
+	 /* background:#f7f5f5;
+	 border: 1px solid #d1cfcf; */
 	  margin:20px;
 	   width : "500px";  
 	   height:"400px" ;
@@ -201,7 +201,7 @@ background:none;
 	     color: black;
 	 }
 	 	 #sty1{
-	 background:#f7f5f5;
+	 /* background:#f7f5f5; */
 	  margin:15px;
 	   width : "500px";  
 	   height:"400px" ;
@@ -281,13 +281,12 @@ color: black; text-decoration: none;
 				  
 				<div class="carousel-inner">
 						<div class="row">
-							
 						<c:forEach var="videoimage" items="${videopop}" begin="0" end="5">
 						<div class="col-sm-4 "><div class="img-box"><div id="sty" class="scale"style=" float:left;text-decoration: none;  color: black; "> 
 						<a  style=" text-decoration: none;" href="loginbutton.me">
 						<img style=" border-radius:10px;  color: black; text-decoration: none; margin:10px;" src="resources/uploadFiles/${videoimage.fileNm}" width = "300px"  height="200px"  >
 							<div id="sty1"><h4><b>  ${videoimage.vTitle}</b></h4>
-							<div id="sty2"><h5><b> ${videoimage.chNm }</b> &nbsp;&nbsp;<b>  ${videoimage.tag }</b> </h5>
+							<div id="sty2"><h5><b> ${videoimage.chNm }</b> &nbsp;&nbsp;<b>  ${videoimage.tag }</b> <b>  ${videoimage.uploadDt }</b></h5>
 							 </div></div>
 				</a></div></div></div> 
 						  
@@ -309,7 +308,7 @@ color: black; text-decoration: none;
 						<a  style=" text-decoration: none;" href="loginbutton.me">
 						<img style=" border-radius:10px; color: black; text-decoration: none; margin:10px;" src="resources/uploadFiles/${videoimage.fileNm}" width = "300px"  height="200px"  >
 							<div id="sty1"><h4><b>  ${videoimage.vTitle}</b></h4>
-							<div id="sty2"><h5><b> ${videoimage.chNm }</b> &nbsp;&nbsp;<b>  ${videoimage.tag }</b> </h5>
+							<div id="sty2"><h5><b> ${videoimage.chNm }</b> &nbsp;&nbsp;<b>  ${videoimage.tag }</b> <b>  ${videoimage.uploadDt }</b> </h5>
 							 </div></div>
 				</a></div></div></div> 
 						  

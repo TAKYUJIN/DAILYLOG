@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import com.kh.with.member.model.exception.LoginException;
 import com.kh.with.member.model.vo.Member;
@@ -47,6 +48,8 @@ public interface MemberService {
 	int ustop(Member m);
 
 	int alter_userKey_service(String userId, String status);
+
+	
 	
 
 	

@@ -1,7 +1,8 @@
   <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-    
+    <%@taglib prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE HTML>
  <html>
 	<head>
@@ -148,11 +149,11 @@
     .reno{
     width:100px;
     }.filepath{
-    width:350px;
+    width:380px;
     height: 30px;
     }
     .rewhy{
-        width:550px;
+        width:450px;
          padding: 200px;
          font-family: 'Roboto', sans-serif;
     }
@@ -163,7 +164,9 @@
    .redt{
      width:280px;
    }
-   
+   #why{
+   margin-top:20px;
+   }
 </style>
 	</head>
 	<body>
@@ -213,22 +216,32 @@
       				     <th class="reno" align=center>경고횟수 </th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody> 
                 <c:forEach var="list" items="${reportlist}">
                 <tr>
                     
  				  						
 													<td>${list.reno}</td>
 													<td>${list.rety}</td>
-													<td><div style=" float:left; margin-right:40px;"><img src="resources/images/${list.filepath}" width = "102px"  height="100px"  >
+													<td><div style=" float:left; margin-right:10px;"><img src="resources/uploadFiles/${list.fileNm}" width = "102px"  height="100px"  >
 													</div> 
-													 <h5><b>동영상 제목:</b> ${list.vTitle}</h5>
-													<h5><b>채널 명:</b>${list.chNm}</h5>
-													<h5><b>조회수:</b>${list.vcount}</h5> 
+													 <h5><b>  ${list.vTitle}</b></h5>
+													<h5><b>채널 명</b>${list.chNm}</h5>
+													<h5><b>조회수</b>${list.vcount}</h5>
+													 
+														<%-- <c:forEach var="list"items="${fn:split(list.updateDt,'00:00:00')}" varStatus="status">
+														 ${list} 
+														
+													<h5><b>업로드</b>${list.uploadDt}</h5>
+														</c:forEach> --%>
+												 <c:set var="TextValue" value="${list.uploadDt}"/>
+													<h5><b>업로드</b>${fn:substring(TextValue,0,10) }</h5>
+													
 													
 													</td>
-													<td valign=middle align=center> <h4> ${list.rewhy} </h4></td>
-													<td valign=middle align=center><h4> ${list.redt}</h4></td>
+													<td valign=middle align=center> <div id="why"> <h4> ${list.rewhy}</h4> </div> </td>
+													
+													<td valign=middle align=center> <div id="why"><h4> ${list.redt}</h4></td>
 												<td><span style="color:red">${list.recount}</span></td>
 												<td><span style="color:red">${list.ccount}</span></td>
 										 

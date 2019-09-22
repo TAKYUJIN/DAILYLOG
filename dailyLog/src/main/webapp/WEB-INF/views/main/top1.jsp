@@ -412,7 +412,7 @@ width:150px;
 	 }
  
 	 #sty{
-	 background:#f5eded;
+	 /* background:#f5eded; */
 	 bolder:1px none;
 	  margin:10px;
 
@@ -428,9 +428,9 @@ width:150px;
 
 	 #sty{
 
-	 background:#f7f5f5;
+	 /* background:#f7f5f5;
 
-	 border: 1px solid #d1cfcf;
+	 border: 1px solid #d1cfcf; */
 
 	  margin:20px;
 
@@ -447,7 +447,7 @@ width:150px;
 
 	 	 #sty1{
 
-	 background:#f7f5f5;
+	 /* background:#f7f5f5; */
 	  margin:15px;
 	   text-decoration: none;
 	    color: black;
@@ -554,7 +554,7 @@ color: black; text-decoration: none;
 						<img style=" border-radius:10px;  margin:10px;" src="resources/uploadFiles/${videoimage.fileNm}" width = "530px"  height="300px"  >
 			 	<div id="sty1">  <h4> <b>${videoimage.vTitle}</b></h4>
 						<div id="sty2">	<h5><b> ${videoimage.chNm }</b> &nbsp;&nbsp; 
-								<b>${videoimage.tag }</b></h5></div></div>
+								<b>${videoimage.tag }</b> <b>  ${videoimage.uploadDt }</b></h5></div></div>
 				</a></div></div> 
 				<div id="dot" style ="float:left;  ">
 							<nav class="navbar  navbar-expand-xl navbar-light" id="dot2"> 
@@ -604,7 +604,7 @@ color: black; text-decoration: none;
 						<img style=" border-radius:10px;  margin:10px;"  src="resources/uploadFiles/${videoimage.fileNm}" width = "300px"  height="200px"  >
 							 <div id="sty1"><h4><b>  ${videoimage.vTitle}</b></h4>
 							<div id="sty2"><h5><b> ${videoimage.chNm }</b>&nbsp;&nbsp; 
-								 <b>${videoimage.tag }</b></h5></div></div>
+								 <b>${videoimage.tag }</b> <b>  ${videoimage.uploadDt }</b></h5></div></div>
 				</a></div></div></div> <div id="dot" style ="float:left;">
 							<nav class="navbar  navbar-expand-xl navbar-light" id="dot1"> 
 								<button type="button" class="main"  data-toggle="dropdown" id="btncolor" >
@@ -655,7 +655,7 @@ color: black; text-decoration: none;
 						<img style=" border-radius:10px;  margin:10px;"  src="resources/uploadFiles/${videoimage.fileNm}" width = "300px"  height="200px"  >
 							 <div id="sty1"><h4><b>  ${videoimage.vTitle}</b></h4>
 							<div id="sty2"><h5><b> ${videoimage.chNm }</b>&nbsp;&nbsp; 
-								 <b>${videoimage.tag }</b></h5></div></div>
+								 <b>${videoimage.tag }</b> <b>  ${videoimage.uploadDt }</b></h5></div></div>
 				</a></div></div></div> <div id="dot" style ="float:left;">
 							<nav class="navbar  navbar-expand-xl navbar-light" id="dot1"> 
 								<button type="button" class="main"  data-toggle="dropdown" id="btncolor" >
@@ -708,7 +708,7 @@ color: black; text-decoration: none;
 						<img style=" border-radius:10px;  margin:10px;"  src="resources/uploadFiles/${videoimage.fileNm}" width = "300px"  height="200px"  >
 							 <div id="sty1"><h4><b>  ${videoimage.vTitle}</b></h4>
 							<div id="sty2"><h5><b> ${videoimage.chNm }</b>&nbsp;&nbsp; 
-								 <b>${videoimage.tag }</b></h5></div></div>
+								 <b>${videoimage.tag }</b> <b>  ${videoimage.uploadDt }</b></h5></div></div>
 				</a></div></div></div> <div id="dot" style ="float:left;">
 							<nav class="navbar  navbar-expand-xl navbar-light" id="dot1"> 
 								<button type="button" class="main"  data-toggle="dropdown" id="btncolor" >

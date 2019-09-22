@@ -203,6 +203,21 @@ public class AdminServiceImpl implements AdminService {
 		
 		return ad.info(sqlSession);
 	}
+
+	@Override
+	public int monthMemberListCount() {
+		return ad.monthMemberListCount(sqlSession);
+	}
+
+	@Override
+	public int weekMemberListCount() {
+		return ad.weekMemberListCount(sqlSession);
+	}
+
+	@Override
+	public int dayMemberListCount() {
+		return ad.dayMemberListCount(sqlSession);
+	}
 	
 
 

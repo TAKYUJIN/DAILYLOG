@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -103,16 +104,8 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "sendPwd.me", method = RequestMethod.POST)
-	@ResponseBody
-	public String find_pw(HttpServletRequest request) {
-
-		String userId = request.getParameter("userId");
-		String userNm = request.getParameter("userNm");
-
-		System.out.println("userId " + userId);
-		System.out.println(userNm);
-
-		return "member/login";
+	public void find_pw(@ModelAttribute Member m, HttpServletResponse response) throws Exception{
+		//ms.find_pw(response, m);
 	}
 
 //   @ResponseBody
@@ -593,9 +586,14 @@ public class MemberController {
 		return mv;
 	}
 
+
 	/*
 	 * // 마이페이지 이동
 	 * 
+
+	// 마이페이지 이동
+	/*
+
 	 * @RequestMapping(value = "myPage.me") public String myPage(Model model, Member
 	 * m, HttpSession session) { m = (Member) session.getAttribute("loginUser");
 	 * 

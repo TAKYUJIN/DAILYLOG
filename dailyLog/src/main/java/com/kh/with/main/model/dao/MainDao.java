@@ -35,7 +35,7 @@ public interface MainDao {
 	int subscribeVideoList(SqlSessionTemplate sqlSession, MailVo mailVo);
 
 
-	public Member idcheck(SqlSessionTemplate sqlSession, String userId);
+	public int idcheck(SqlSessionTemplate sqlSession, String userId);
 
 	ArrayList<Alram> selectAlram(SqlSessionTemplate sqlSession, Member m);
 

@@ -158,7 +158,8 @@
 	
 <!-- 	SELECT * FROM VIDEO
 WHERE CH_NM LIKE '%${searchId}%' -->
-	SELECT * FROM VIDEO
+	SELECT V_TITLE,V.CH_NM,V.TAG,A.FILE_NM,V.UPLOAD_DT FROM VIDEO V
+JOIN ATTACHMENT A ON (V.V_NO=A.V_NO)
 	WHERE CH_NM LIKE '%'||#{search}||'%'
 	
 <!-- 	<include refid="search"></include> -->
@@ -166,12 +167,14 @@ WHERE CH_NM LIKE '%${searchId}%' -->
 	</select>
 	<select id="searchtitle" resultMap="videoResultSet" parameterType="com.kh.with.main.model.vo.Video">
 	
-	SELECT * FROM VIDEO
+	SELECT V_TITLE,V.CH_NM,V.TAG,A.FILE_NM,V.UPLOAD_DT FROM VIDEO V
+JOIN ATTACHMENT A ON (V.V_NO=A.V_NO)
 WHERE V_TITLE LIKE '%'||#{search}||'%'
 	</select>
 	<select id="searchtag" resultMap="videoResultSet" parameterType="com.kh.with.main.model.vo.Video">
 	
-	SELECT * FROM VIDEO
+	SELECT V_TITLE,V.CH_NM,V.TAG,A.FILE_NM,V.UPLOAD_DT FROM VIDEO V
+JOIN ATTACHMENT A ON (V.V_NO=A.V_NO)
 WHERE TAG LIKE '%'||#{search}||'%'
 	
 	</select>

@@ -96,13 +96,14 @@ public class MainDaoImpl implements MainDao{
 		return sqlSession.update("friend.frireject",mailVo);
 	}
 
-	@Override
-	public Member idcheck(SqlSessionTemplate sqlSession, String userId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
+	public int idcheck(SqlSessionTemplate sqlSession, String userId) {
+		 System.out.println("userId"+userId);
+		return sqlSession.selectOne("Member.friendCheck",userId);
+
+	}
+
 	public ArrayList<Alram> selectAlram(SqlSessionTemplate sqlSession, Member m) {
 		// TODO Auto-generated method stub
 		return null;

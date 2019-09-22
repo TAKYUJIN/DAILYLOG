@@ -23,6 +23,25 @@
         <result property="userNm" column="USER_NM"/>
      </resultMap>
      
+     <resultMap type="Member" id="memberResultSet">
+
+		<id property="userNo" column="USER_NO" />
+		<result property="userNm" column="USER_NM" />
+		<result property="userId" column="USER_ID" />
+		<result property="userPwd" column="USER_PWD" />
+		<result property="nickname" column="NICKNAME" />
+		<result property="phone" column="PHONE" />
+		<result property="gender" column="GENDER" />
+		<result property="birth" column="BIRTH" />
+		<result property="age" column="AGE" />
+		<result property="adultYN" column="ADULT_YN" />
+		<result property="chYN" column="CH_YN" />
+		<result property="enrollDT" column="ENROLL_DT" />
+		<result property="leaveDT" column="LEAVE_DT" />
+		<result property="remainPT" column="REMAIN_PT" />
+		<result property="status" column="STATUS" />
+		<result property="count" column="COUNT" />
+	</resultMap>
 	
   	<select id="selectAdminCalculate" resultMap="calculateResultSet">
   		SELECT RANK, CAL_NO, USER_NO, CH_NO, CAL_STDT, CAL_EDT, CAL_PRICE, CAL_VAT, AMOUNT_PRICE, CAL_TY, ACC_NM, BANK_NM, ACCOUNT, USER_ID, USER_NM
@@ -82,6 +101,23 @@
 		ORDER BY RANK ASC
   	</select>
   	
+	<!-- <select id="monthMemberListCount" resultMap="memberResultSet">
+		SELECT COUNT(*)
+   		FROM MEMBER
+   		WHERE ENROLL_DT BETWEEN	TO_CHAR(TO_DATE(add_months(sysdate,-1),'YYYY-MM-DD')) AND TO_CHAR(TO_DATE(SYSDATE,'YYYY-MM-DD'))
+  	</select>
+  	
+  	<select id="weekMemberListCount" resultMap="memberResultSet">
+		SELECT COUNT(*)
+   		FROM MEMBER
+   		WHERE ENROLL_DT BETWEEN	TO_CHAR(TO_DATE(sysdate-7,'YYYY-MM-DD')) AND TO_CHAR(TO_DATE(SYSDATE,'YYYY-MM-DD'))
+  	</select>
+  	
+  	<select id="dayMemberListCount" resultMap="memberResultSet">
+		SELECT COUNT(*)
+   		FROM MEMBER
+   		WHERE ENROLL_DT BETWEEN	TO_CHAR(TO_DATE(SYSDATE,'YYYY-MM-DD')) AND TO_CHAR(TO_DATE(SYSDATE,'YYYY-MM-DD'))
+  	</select> -->
 
   	
 </mapper>

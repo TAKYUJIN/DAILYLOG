@@ -383,12 +383,36 @@ public class AdminController {
 		System.out.println("repreportdetail" + repreportdetail);
 		return "admin/videoreportdetail";
 	}
+	@RequestMapping(value = "chreportdetail.ad", method = RequestMethod.GET)
+	public String chreportdetail(@ModelAttribute Report2 report, Model model,
+			HttpSession session, HttpServletRequest request) {
+		int reno = Integer.parseInt(request.getParameter("reno"));
+		List<Report> chreportdetail = rs.chreportdetail(reno);
 
+		model.addAttribute("chreportdetail", chreportdetail);
+		System.out.println("model" + model);
+		return "admin/chreportdetail";
+	}
+	@RequestMapping(value = "repreportdetail.ad", method = RequestMethod.GET)
+	public String repreportdetail(@ModelAttribute Report2 report, Model model,
+			HttpSession session, HttpServletRequest request) {
+		int reno = Integer.parseInt(request.getParameter("reno"));
+		List<Report> repreportdetail = rs.repreportdetail(reno);
+
+		model.addAttribute("repreportdetail", repreportdetail);
+		System.out.println("model" + model);
+		System.out.println("repreportdetail" + repreportdetail);
+		return "admin/repreportdetail";
+	}
+	
+	
+	
+	
 	// 관리자 동영상 신고 상세내역 ->신고처리
 	//@RequestParam(value="reno",defaultValue="false") String r,
 	
-	@RequestMapping(value = "repreportdetail.ad")
-	public String repreportdetail(HttpSession session, HttpServletRequest request) {
+	@RequestMapping(value = "repreportdetail2.ad")
+	public String repreportdetail2(HttpSession session, HttpServletRequest request) {
 		System.out.println("controller start");
 		Enumeration e = request.getParameterNames();
 		
@@ -406,7 +430,7 @@ public class AdminController {
 			//
 			
 		//	return "redirect:/videoreportdetail.ad?reno=${v.reno}";
-			return "redirect:/videoreportdetail.ad?reno="+reno;
+			return "redirect:/repreportdetail.ad?reno="+reno;
 			
 		} else {
 			return "redirect:/videoreportdetail.ad";
@@ -439,8 +463,8 @@ public class AdminController {
 		}
 	}
 	//채널 차단
-	@RequestMapping(value = "chreportdetail.ad")
-	public String chreportdetail(HttpSession session, HttpServletRequest request) {
+	@RequestMapping(value = "chreportdetail2.ad")
+	public String chreportdetail2(HttpSession session, HttpServletRequest request) {
 		System.out.println("controller start");
 		Enumeration e = request.getParameterNames();
 		
@@ -466,8 +490,31 @@ public class AdminController {
 	}
 	
 	
+	// 관리자 메인 페이지 이동
+	@RequestMapping(value = "adminStatisticsChart.ad")
+	public String adminStatisticsChart(Model model) {
+//		int mMonth = as.monthMemberListCount();
+//		int mWeek = as.weekMemberListCount();
+//		int mDay = as.dayMemberListCount();
+//		
+//		model.addAttribute("mMonth", mMonth);
+//		model.addAttribute("mWeek", mWeek);
+//		model.addAttribute("mDay", mDay);
+//		
+//		System.out.println(mMonth);
+		
+		
+		return "admin/adminStatisticsChart";
+	}
 	
-	
+	// 관리자 통계 페이지 이동
+	@RequestMapping(value = "adminStatistics.ad")
+	public String adminStatistics() {
+
+		return "admin/adminStatistics";
+	}
+
+		
 	
 	
 	
