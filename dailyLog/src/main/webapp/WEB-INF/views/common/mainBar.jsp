@@ -319,7 +319,7 @@
 
 		</ul>
 
-		<form class="navbar-form form-inline" action="search.mb" method="get">
+		<form class="navbar-form form-inline" action="search.mb" method="get" style="width:240px; margin-top:10px; margin-left:120px;">
 			<div class="input-group search-box">		
 				<input type="text" id="search" name="search"  class="form-control" placeholder="검색" >
 				  <span  class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span> 
@@ -522,7 +522,9 @@ $('#friendlist').click(function(){
  		$.ajax({
  			url:"goAlram.mb",
  			type:"post",
+ 			dateType:"json",
  			success:function(data){
+ 				console.log(data);
  				var $alramTable = $("#alramTable tbody");
 				$alramTable.html("");
 				 for(var i = 0; i < data["dateList"].length; i++){ 
@@ -597,11 +599,11 @@ $('#friendlist').click(function(){
 			} 
 			
 			function onError(event){
-				alert(event.data);
+				/* alert(event.data); */
 			}
 			
 			function onClose(event){
-				alert(event);
+				/* alert(event); */
 			}
 			
 			function getConnection2(){
@@ -643,11 +645,11 @@ $('#friendlist').click(function(){
 			}
 			
 			function onError2(event){
-				alert(event.data);
+				/* alert(event.data); */
 			}
 			
 			function onClose2(event){
-				alert(event);
+				/* alert(event); */
 			}
 			
 			function home(){

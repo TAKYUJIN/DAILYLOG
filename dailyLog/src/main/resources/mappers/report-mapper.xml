@@ -47,7 +47,7 @@
         <result property="alCT" column="AL_CT"/>
         <result property="alYN" column="AL_YN"/>
         <result property="subNo" column="SUB_NO"/>
-        <result property="re_no" column="REP_NO"/>
+        <result property="reNo" column="REP_NO"/>
         <result property="vNo" column="V_NO"/>
         <result property="retarget" column="RE_TARGET"/>
         <result property="chNo" column="CH_NO"/>

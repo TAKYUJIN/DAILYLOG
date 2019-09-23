@@ -25,12 +25,12 @@ body{
       box-shadow: none;      
       font-weight: normal;
       font-size: 12px; /* 검색부분 폰트사이즈 */
-      color:#DDD0DA;
+      color:#525252;
    }
    .form-control:focus {
       border-color: #EDEAD7;
       box-shadow: 0 0 8px rgba(0,0,0,0.1);
-      color:#DDD0DA;
+      color:#525252;
    }
    .navbar-header.col {
       padding: 0 !important;
@@ -59,7 +59,7 @@ body{
    }
    .navbar .navbar-brand b {
       font-weight: bold;
-      color: #33cabb;      
+      color: #525252;      
    }
    .navbar .form-inline {
         display: inline-block;
@@ -68,7 +68,7 @@ body{
       position: relative;
    }
    .navbar .nav li a {
-      color: #434738; /*상단바 글자색*/
+      color: #525252; /*상단바 글자색*/
    }
    	.search-box {
         position: relative;
@@ -264,13 +264,23 @@ body{
 			display: block;
 		}
 	}
+
+	#navbarCollapse a {
+		font-size:15px;
+	}
 	#logo {
    	color:black;
    	padding-top:5px; 
+   	margin-top:5px;
    }
-	#navbarCollapse a {
-		font-size:12px;
-	}
+   
+   #searchId {
+   	color:#525252;
+   }
+   
+   #navbarCollapse {
+   	font-size:15px;
+   }
 	
 </style>
 <script type="text/javascript">
@@ -284,8 +294,8 @@ body{
 <body>
 <nav class="navbar navbar-default navbar-expand-lg navbar-light">
 
-	<div class="navbar-header d-flex col" >
-		<a href="logout.me" value="DailyLog" id="logo" style="width:90px; font-size:22px;">DailyLog</a>
+	<div class="navbar-header d-flex col" style="margin-top:10px;">
+		<a value="DailyLog" id="logo" style="width:110px; font-size:22px; margin-top:10px" onclick="location.href='home.mb'">DailyLog</a>
 	</div>
 	<!-- Collection of nav links, forms, and other content for toggling -->
 	<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
@@ -297,7 +307,7 @@ body{
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">좋아요 영상</a></li>
 			<li class="nav-item"><a href="analysis.lo" class="nav-link" style="padding-right:0px;" onclick="${ contextPath }/searchLogerVideo.jsp">로거 스튜디오</a></li>
 		</ul>				<!-- 로거스튜디오 -> loger.mb -->
-		<form class="navbar-form form-inline" style="width:240px;">
+		<form class="navbar-form form-inline" style="width:240px; margin-top:10px; margin-left:120px;">
 			<div class="input-group search-box">								
 				<input type="text" id="search" class="form-control" placeholder="검색">
 				<span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>

@@ -1,5 +1,6 @@
 package com.kh.with.main.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,6 +22,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonIOException;
 import com.kh.with.main.model.service.BoardService;
 import com.kh.with.main.model.service.MailSendService;
 import com.kh.with.main.model.service.MainService;
@@ -109,17 +112,27 @@ public class MainController {
 	
 	//알림 db
 	@RequestMapping(value="goAlram.mb")
-	public ModelAndView selectAlram(ModelAndView mv, HttpSession session, HttpServletResponse response) {
+	@ResponseBody
+	public void selectAlram(HttpSession session, HttpServletResponse response) {
 		response.setContentType("text/html;charset=UTF-8");
 		Member m = (Member) session.getAttribute("loginUser");
 		
 		ArrayList<Alram> dateList = ms.selectAlram(m);
+		System.out.println(dateList);
 		
-		mv.addObject("dateList", dateList);
-		mv.setViewName("jsonView");
-
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+		try {
+			new Gson().toJson(dateList,response.getWriter());
+		} catch (JsonIOException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
-		return mv;
+//		mv.addObject("dateList", dateList);
+//		mv.setViewName("jsonView");
+		
 	}
 	
 	// 구독페이지로 이동

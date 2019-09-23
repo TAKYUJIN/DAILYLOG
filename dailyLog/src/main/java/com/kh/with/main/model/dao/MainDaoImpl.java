@@ -6,7 +6,6 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.kh.with.admin.model.vo.Board;
 import com.kh.with.main.model.vo.Alram;
 import com.kh.with.main.model.vo.MailVo;
 import com.kh.with.main.model.vo.Subscribe;
@@ -114,8 +113,8 @@ public class MainDaoImpl implements MainDao{
 	}
 
 	public ArrayList<Alram> selectAlram(SqlSessionTemplate sqlSession, Member m) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Alram> list = (ArrayList) sqlSession.selectList("Alram.selectAlram", m);
+		return list;
 	}
 
 	@Override

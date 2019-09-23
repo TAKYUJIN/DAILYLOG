@@ -87,8 +87,7 @@ public class MainServiceImpl implements MainService{
 
 	@Override
 	public ArrayList<Alram> selectAlram(Member m) {
-		// TODO Auto-generated method stub
-		return null;
+		return md.selectAlram(sqlSession, m);
 	}
 
 	@Override

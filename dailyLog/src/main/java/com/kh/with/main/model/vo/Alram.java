@@ -1,135 +1,132 @@
 package com.kh.with.main.model.vo;
 
-public class Alram {
- private int alNo;
- private int userNo;
- private String alDT;
- private String alCT;
- private String alYN;
- private String retarget;
- private int subNo;
- private int re_no;
- private int vNo;
- private int chNo;
- private int nNo;
- 
- public Alram() {}
+public class Alram implements java.io.Serializable{
+	private int alNo;
+	private int userNo;
+	private String alDT;
+	private String alCT;
+	private String alYN;
+	private String retarget;
+	private int subNo;
+	private int reNo;
+	private int vNo;
+	private int chNo;
+	private int nNo;
 
-public Alram(int alNo, int userNo, String alDT, String alCT, String alYN, String retarget, int subNo, int re_no,
-		int vNo, int chNo, int nNo) {
-	super();
-	this.alNo = alNo;
-	this.userNo = userNo;
-	this.alDT = alDT;
-	this.alCT = alCT;
-	this.alYN = alYN;
-	this.retarget = retarget;
-	this.subNo = subNo;
-	this.re_no = re_no;
-	this.vNo = vNo;
-	this.chNo = chNo;
-	this.nNo = nNo;
-}
+	public Alram() {}
 
-public int getAlNo() {
-	return alNo;
-}
+	public Alram(int alNo, int userNo, String alDT, String alCT, String alYN, String retarget, int subNo, int reNo,
+			int vNo, int chNo, int nNo) {
+		super();
+		this.alNo = alNo;
+		this.userNo = userNo;
+		this.alDT = alDT;
+		this.alCT = alCT;
+		this.alYN = alYN;
+		this.retarget = retarget;
+		this.subNo = subNo;
+		this.reNo = reNo;
+		this.vNo = vNo;
+		this.chNo = chNo;
+		this.nNo = nNo;
+	}
 
-public void setAlNo(int alNo) {
-	this.alNo = alNo;
-}
+	public int getAlNo() {
+		return alNo;
+	}
 
-public int getUserNo() {
-	return userNo;
-}
+	public void setAlNo(int alNo) {
+		this.alNo = alNo;
+	}
 
-public void setUserNo(int userNo) {
-	this.userNo = userNo;
-}
+	public int getUserNo() {
+		return userNo;
+	}
 
-public String getAlDT() {
-	return alDT;
-}
+	public void setUserNo(int userNo) {
+		this.userNo = userNo;
+	}
 
-public void setAlDT(String alDT) {
-	this.alDT = alDT;
-}
+	public String getAlDT() {
+		return alDT;
+	}
 
-public String getAlCT() {
-	return alCT;
-}
+	public void setAlDT(String alDT) {
+		this.alDT = alDT;
+	}
 
-public void setAlCT(String alCT) {
-	this.alCT = alCT;
-}
+	public String getAlCT() {
+		return alCT;
+	}
 
-public String getAlYN() {
-	return alYN;
-}
+	public void setAlCT(String alCT) {
+		this.alCT = alCT;
+	}
 
-public void setAlYN(String alYN) {
-	this.alYN = alYN;
-}
+	public String getAlYN() {
+		return alYN;
+	}
 
-public String getRetarget() {
-	return retarget;
-}
+	public void setAlYN(String alYN) {
+		this.alYN = alYN;
+	}
 
-public void setRetarget(String retarget) {
-	this.retarget = retarget;
-}
+	public String getRetarget() {
+		return retarget;
+	}
 
-public int getSubNo() {
-	return subNo;
-}
+	public void setRetarget(String retarget) {
+		this.retarget = retarget;
+	}
 
-public void setSubNo(int subNo) {
-	this.subNo = subNo;
-}
+	public int getSubNo() {
+		return subNo;
+	}
 
-public int getRe_no() {
-	return re_no;
-}
+	public void setSubNo(int subNo) {
+		this.subNo = subNo;
+	}
 
-public void setRe_no(int re_no) {
-	this.re_no = re_no;
-}
+	public int getReNo() {
+		return reNo;
+	}
 
-public int getvNo() {
-	return vNo;
-}
+	public void setReNo(int reNo) {
+		this.reNo = reNo;
+	}
 
-public void setvNo(int vNo) {
-	this.vNo = vNo;
-}
+	public int getvNo() {
+		return vNo;
+	}
 
-public int getChNo() {
-	return chNo;
-}
+	public void setvNo(int vNo) {
+		this.vNo = vNo;
+	}
 
-public void setChNo(int chNo) {
-	this.chNo = chNo;
-}
+	public int getChNo() {
+		return chNo;
+	}
 
-public int getnNo() {
-	return nNo;
-}
+	public void setChNo(int chNo) {
+		this.chNo = chNo;
+	}
 
-public void setnNo(int nNo) {
-	this.nNo = nNo;
-}
+	public int getnNo() {
+		return nNo;
+	}
 
-@Override
-public String toString() {
-	return "Alram [alNo=" + alNo + ", userNo=" + userNo + ", alDT=" + alDT + ", alCT=" + alCT + ", alYN=" + alYN
-			+ ", retarget=" + retarget + ", subNo=" + subNo + ", re_no=" + re_no + ", vNo=" + vNo + ", chNo=" + chNo
-			+ ", nNo=" + nNo + "]";
-}
+	public void setnNo(int nNo) {
+		this.nNo = nNo;
+	}
 
- 
- 
-	
-	
-	
-	
+	@Override
+	public String toString() {
+		return "Alram [alNo=" + alNo + ", userNo=" + userNo + ", alDT=" + alDT + ", alCT=" + alCT + ", alYN=" + alYN
+				+ ", retarget=" + retarget + ", subNo=" + subNo + ", reNo=" + reNo + ", vNo=" + vNo + ", chNo=" + chNo
+				+ ", nNo=" + nNo + "]";
+	}
+
+
+
+
 }
