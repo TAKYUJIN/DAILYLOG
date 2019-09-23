@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Payment">
+
+	<resultMap type="Payment" id="PaymentResultSet">
+		<id property="payNo" column="PAY_NO" />
+		<result property="userNo" column="USER_NO" />
+		<result property="chNo" column="CH_NO" />
+		<result property="payDate" column="PAY_DT" />
+		<result property="payPrice" column="PAY_PRICE" />
+		<result property="vKey" column="VKEY" />
+		<result property="orgNo" column="ORG_NO" />
+	</resultMap>
+
+	<select id="selectPayment" parameterType="map" resultType="map">
+
+		SELECT M.*
+     	      ,CH_NO
+     	  FROM MEMBER M
+     	      ,LOGER  L
+     	 WHERE M.USER_NO = L.USER_NO (+)
+     	   AND M.USER_NM = #{BUYER_NAME}
+     	   AND M.PHONE = #{BUYER_PHONE}
+	</select>
+
+	<insert id="insertPayment" parameterType="map">
+		INSERT INTO PAYMENT
+		VALUES(PAY_NO.NEXTVAL, #{USER_NO},
+		#{CH_NO},SYSDATE,#{PAID_AMOUNT},NULL,NULL)
+	</insert>
+
+
+</mapper>
