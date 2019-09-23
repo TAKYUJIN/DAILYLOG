@@ -510,25 +510,7 @@ public class AdminController {
 		return "admin/adminStatistics";
 	}
 
-		
-	
-	
-	
-	
-	
-	/*
-	 * @RequestMapping(value="videoreportdetail2.ad",method=RequestMethod.POST)
-	 * public String videoreportupdate( @ModelAttribute Report2 report) { int
-	 * videoreportupdate =rs.videoreportupdate(report);
-	 * 
-	 * if(videoreportupdate>0) {
-	 * 
-	 * return "redirect:/videoreportdetail.ad"; }else { return "common/errorPage";
-	 * 
-	 * }
-	 * 
-	 * }
-	 */
+
 	
 	
 }

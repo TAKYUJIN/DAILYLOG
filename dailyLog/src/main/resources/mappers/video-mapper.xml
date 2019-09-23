@@ -293,6 +293,7 @@ WHERE TAG LIKE '%'||#{search}||'%'
 		AND V_TY = '싫어요'
 	</select>
 
+
 	<select id="selectBook" parameterType="map" resultType="int">
 		SELECT LIKE_NO
 		FROM VIDEO_LIKE

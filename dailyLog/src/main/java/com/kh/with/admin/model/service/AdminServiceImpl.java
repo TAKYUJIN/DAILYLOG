@@ -205,6 +205,8 @@ public class AdminServiceImpl implements AdminService {
 		return ad.info(sqlSession);
 	}
 
+	
+	
 	@Override
 	public int monthMemberListCount() {
 		return ad.monthMemberListCount(sqlSession);

@@ -31,6 +31,8 @@ public class VideoServiceImpl implements VideoService{
 		return vd.selectPoint(sqlSession, userNo);
 	}
 
+	
+	
 	//정기후원
 	@Override
 	public int regSub(Map<String, Integer> map) {

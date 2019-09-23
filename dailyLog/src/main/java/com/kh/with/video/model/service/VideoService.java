@@ -31,6 +31,8 @@ public interface VideoService {
 
 	List<Attachment> videonew(Member m);
 
+	
+	
 	List<Attachment> videobook(Member m);
 
 	List<Attachment> videosub(Member m);

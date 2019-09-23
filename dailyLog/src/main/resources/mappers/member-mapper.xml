@@ -106,6 +106,7 @@
 		
 	</update>
 	
+	
 	<!-- 포인트 후원금액 차감 -->
 	<update id="regSub" parameterType="Member">
 		UPDATE MEMBER

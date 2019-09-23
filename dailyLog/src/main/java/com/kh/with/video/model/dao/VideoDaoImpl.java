@@ -38,6 +38,9 @@ public class VideoDaoImpl implements VideoDao {
 	}
 	
 	
+	
+	
+	
 	// 동영상 업로드정보 insert 메소드
 	@Override
 	public int insertVideoInfo(SqlSessionTemplate sqlSession, Video video) {

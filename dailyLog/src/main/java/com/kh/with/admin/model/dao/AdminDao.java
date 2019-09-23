@@ -34,6 +34,8 @@ public interface AdminDao {
 	int adminNoticeDelete(SqlSessionTemplate sqlSession, int bNo);
 	//신고관리 댓글,채널,동영상
 	List<Object> videoreportlist(SqlSessionTemplate sqlSession,Report report);
+	
+	
 	List<Object> chreportlist(SqlSessionTemplate sqlSession, Report report);
 	List<Object> repreportlist(SqlSessionTemplate sqlSession, Report report);
 

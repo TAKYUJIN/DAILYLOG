@@ -15,13 +15,7 @@
         <result property="cCount" column="C_COUNT"/>
      </resultMap>
 
-<!-- 	<select id="selectUserlist" resultMap="userBoardResultSet">
-		SELECT USER_NO,USER_ID,CH_NM,CH_YN,ENROLL_DT,STATUS
-		FROM (SELECT ROW_NUMBER() OVER(ORDER BY M.USER_NO DESC) RANK
-		,M.USER_NO,M.USER_ID,L.CH_NM,M.CH_YN,M.ENROLL_DT,M.STATUS
-		FROM MEMBER M
-		JOIN LOGER L ON(M.USER_NO = L.USER_NO))
-	</select> -->
+
 
 		
   	<select id="channelInfo" resultMap="channelResultSet">

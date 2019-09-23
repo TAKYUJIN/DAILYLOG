@@ -32,6 +32,8 @@ public class AdminDaoImpl implements AdminDao {
 		return aboard;
 	}
 
+	
+	
 	//공지사항 작성 insert
 	@Override
 	public int noticeWriteAdmin(SqlSessionTemplate sqlSession, Board board) {

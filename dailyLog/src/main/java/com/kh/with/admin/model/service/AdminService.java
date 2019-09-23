@@ -42,6 +42,8 @@ public interface AdminService {
 	List<Object> chreportlist(Report report);
 	List<Object> repreportlist(Report report);
 
+	
+	
 	//블랙리스트
 	List<Object> ublacklist(Report2 report);
 	List<Object> cblacklist(Report2 report);
