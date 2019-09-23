@@ -10,7 +10,7 @@
 	width: 1024px;
 	height: 600px;
 	margin-top: 200px;
-	/* 	border: 1px solid black; */
+/* 	border: 1px solid black; */
 }
 
 .text1 {
@@ -25,10 +25,9 @@
 	margin-left: 100px;
 	margin-top: 20px;
 }
-
-#submit {
-	margin-left: 300px;
-	margin-top: 20px;
+#submit{
+	margin-left:300px;
+	margin-top:20px;
 }
 </style>
 </head>
@@ -36,7 +35,7 @@
 	<jsp:include page="../common/mainBar.jsp"></jsp:include>
 
 
-	<form action="createChannel.lo" method="post" enctype="multipart/form-data">
+	<form action="createChannel.lo" method="post">
 		<div class="mainpage">
 
 			<div class="text1">
@@ -49,50 +48,28 @@
 
 			<div id="createch1">
 				<div class="container">
+					
+						<div class="form-group">
+							<label for="usr">채널명</label>
+							<p>채널명을 기재하지 않을경우 닉네임으로 채널명이 개설됩니다 !</p>
+							 <input type="text"
+								class="form-control" id="chNm" name="chNm" style="width: 700px">
+						</div>
+						<br> <br> <br>
+						<div class="form-group">
+							<label for="comment">채널소개</label>
+							<textarea class="form-control" rows="5" id="comment" id="chInfo" name="chInfo"
+								style="width: 700px"></textarea>
 
-					<div class="form-group">
-						<label for="usr">채널명</label>
-						<p>채널명을 기재하지 않을경우 닉네임으로 채널명이 개설됩니다 !</p>
-						<input type="text" class="form-control" id="chNm" name="chNm"
-							style="width: 700px">
-					</div>
-					<br> <br> <br>
-					<div class="form-group">
-						<label for="comment">채널소개</label>
-						<textarea class="form-control" rows="5" id="comment" id="chInfo"
-							name="chInfo" style="width: 700px"></textarea>
-
-					</div>
-					<br>
-					<br>
-					<p>채널타이틀이미지를 선택해주세요</p>
-					<input type="file" name="file1" value="file1" id="file1" />
-
+						</div>
+					
 				</div>
-				<button type="uploadbtn" id="submit" class="btn btn-primary btn-lg">채널개설</button>
+				<button type="submit" id="submit" class="btn btn-primary btn-lg">채널개설</button>
 			</div>
 
 		</div>
 	</form>
-	<script>
-		$(document).ready(function(){
-			$("#uploadbtn").click(function(){
-				var file1 = $("#file1").val();
-				System.out.println("file1" + file1);
-				
-				$.ajax({
-					url:"createChannel.lo",
-					type:"post",
-					data:{file1:file1},
-					success:function(data){
-						console.log("성공!");
-					},
-					error:function(data){
-						console.log("실패!");
-					}
-				});
-			});
-				</script>
+
 
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 
