@@ -71,7 +71,17 @@
         <result property="regStatus" column="REG_STATUS"/>
      </resultMap>
 
-
+	<resultMap type="VideoLike" id="videoLikeResultSet">
+		<id property="likeNo" column="LIKE_NO" />
+		<result property="userNo" column="USER_NO" />
+		<result property="vNo" column="V_NO" />
+		<result property="chNo" column="CH_NO" />
+		<result property="vTY" column="V_TY" />
+		<result property="vTitle" column="V_TITLE" />
+		<result property="uploadDT" column="UPLOAD_DT" />
+		<result property="fileNm" column="FILE_NM" />
+		<result property="vfileNm" column="VFILE_NM" />
+	</resultMap>
 	<!-- 업로드할 동영상 정보 insert 쿼리 -->
  
     <insert id="insertVideoInfo" parameterType="Video">       
@@ -96,24 +106,16 @@
 		WHERE USER_NO = #{userNo}
 	</select>
 	
-	<!-- 동영상페이지  -->
-	<select id="selectRegStatus" parameterType="map" resultType="int">
-		SELECT R.RS_STATUS
-		FROM REGULAR_SUB R
-		JOIN LOGER L ON(R.USER_NO = L.USER_NO)
-		WHERE R.USER_NO = #{userNo}
-		AND R.CH_NO = #{chNo}
-	</select>
-	
 	<!-- 동영상페이지 후원 내역 추가 -->
 	<insert id="insertReg" parameterType="map">
 		INSERT INTO SUPPORT
-		VALUES(SUP_NO.NEXTVAL, #{userNo}, #{chNo}, SYSDATE, #{price}, '정기', NULL, 1)
+		VALUES(SUP_NO.NEXTVAL, #{userNo}, #{chNo}, SYSDATE, 
+		#{price}, '정기', TO_CHAR(ADD_MONTHS(SYSDATE, 1), 'YYYY-MM-DD'), 1, 0)
 	</insert>
 
 	<insert id="insertOnce" parameterType="map">
 		INSERT INTO SUPPORT
-		VALUES(SUP_NO.NEXTVAL, #{userNo}, #{chNo}, SYSDATE, #{price}, DEFAULT, NULL, 1)
+		VALUES(SUP_NO.NEXTVAL, #{userNo}, #{chNo}, SYSDATE, #{price}, DEFAULT, SYSDATE, 1, 0)
 	</insert>
 	
 	<insert id="insertLike" parameterType="map">
@@ -206,6 +208,99 @@ WHERE TAG LIKE '%'||#{search}||'%'
 	WHERE ROWNUM <= 1 ]]>
 	</select>
 	
+	<insert id="insertSub"  parameterType="map">
+		INSERT INTO SUBSCRIBE
+		VALUES(SUB_NO.NEXTVAL, #{chNo}, #{loginUser})
+	</insert>
+	
+	<delete id="deleteSub">
+		DELETE FROM SUBSCRIBE
+		WHERE USER_NO = #{loginUser}
+		AND CH_NO = #{chNo}
+	</delete>
+	
+	<insert id="videoAlram" parameterType="map">
+		INSERT INTO ALRAM
+		VALUES(AL_NO.NEXTVAL, #{userNo}, SYSDATE, 
+		#{vTitle} || ' 동영상이 ' || #{check} || '의 사유로 신고되었습니다.',
+		 DEFAULT, NULL, NULL, #{vNo}, NULL)
+	</insert>
+	
+	<insert id="insertReport" parameterType="map">
+		INSERT INTO REPORT
+		VALUES(RE_NO.NEXTVAL, #{loginUser}, #{userNo}, SYSDATE, #{check}, '동영상', #{vNo}
+		, NULL, NULL, 1, 0)
+	</insert>
+	
+	<insert id="insertBlock" parameterType="map">
+		INSERT INTO BLOCK_VIDEO
+		VALUES(#{loginUser}, #{vNo})
+	</insert>
+	
+	<insert id="insertSubAlram" parameterType="map">
+		INSERT INTO ALRAM
+		VALUES(AL_NO.NEXTVAL, #{userNo}, SYSDATE, 
+		#{nickName} || ' 님이 ' || #{chNm} || '님을 구독하셨습니다.',
+		 DEFAULT, NULL, NULL, NULL, #{chNo})
+	</insert>
+	
+	<delete id="deleteSubAlram">
+		DELETE FROM ALRAM
+		WHERE USER_NO = #{userNo}
+		AND CH_NO = #{chNo}
+		AND AL_CT LIKE #{nickName}||'%'
+	</delete>
+	
+	<select id="selectThumb" parameterType="map" resultType="String">
+		SELECT FILE_NM
+		FROM ATTACHMENT
+		WHERE AM_TY = '썸네일'
+		AND V_NO = #{vNo}
+	</select>
+	
+	<select id="selectProfile" parameterType="map" resultType="String">
+		SELECT FILE_NM
+		FROM (SELECT FILE_NM, AM_TY, 
+		      RANK() OVER(ORDER BY FILE_NM ASC) AS R
+		      FROM ATTACHMENT
+		      WHERE USER_NO = #{userNo}
+		      AND AM_TY = '회원')
+		WHERE R = 1
+	</select>
+	
+	<select id="selectRegStatus" parameterType="map" resultType="int">
+		SELECT SUP_NO
+		FROM SUPPORT
+		WHERE SUP_TY = '정기'
+		AND SYSDATE BETWEEN SUP_STDT AND REG_EDT
+		AND USER_NO = #{loginUser}
+		AND CH_NO = #{chNo}
+	</select>
+
+	<select id="selectLike" parameterType="map" resultType="int">
+		SELECT LIKE_NO
+		FROM VIDEO_LIKE
+		WHERE V_NO = #{vNo}
+		AND USER_NO = #{loginUser} 
+		AND V_TY = '좋아요'
+	</select>
+
+	<select id="selectHate" parameterType="map" resultType="int">
+		SELECT LIKE_NO
+		FROM VIDEO_LIKE
+		WHERE V_NO = #{vNo}
+		AND USER_NO = #{loginUser} 
+		AND V_TY = '싫어요'
+	</select>
+
+
+	<select id="selectBook" parameterType="map" resultType="int">
+		SELECT LIKE_NO
+		FROM VIDEO_LIKE
+		WHERE V_NO = #{vNo}
+		AND USER_NO = #{loginUser} 
+		AND V_TY = '북마크'
+	</select>
 </mapper>
 
 

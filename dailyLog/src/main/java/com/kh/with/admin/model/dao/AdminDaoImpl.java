@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.with.admin.model.vo.Board;
 import com.kh.with.admin.model.vo.Calculate;
+import com.kh.with.admin.model.vo.ChannelBoard;
 import com.kh.with.admin.model.vo.UserBoard;
 import com.kh.with.block.model.vo.Blockch;
 import com.kh.with.block.model.vo.Blockrep;
@@ -31,6 +32,8 @@ public class AdminDaoImpl implements AdminDao {
 		return aboard;
 	}
 
+	
+	
 	//공지사항 작성 insert
 	@Override
 	public int noticeWriteAdmin(SqlSessionTemplate sqlSession, Board board) {
@@ -235,12 +238,12 @@ public class AdminDaoImpl implements AdminDao {
 
 
 	 @Override
-	public List<Object> channelInfo(SqlSessionTemplate sqlSession) {
+	public List<ChannelBoard> channelInfo(SqlSessionTemplate sqlSession) {
 		
 		return sqlSession.selectList("ChannelBoard.channelInfo");
 	}
 	 @Override
-	public List<Integer> info(SqlSessionTemplate sqlSession) {
+	public List<ChannelBoard> info(SqlSessionTemplate sqlSession) {
 		
 		return sqlSession.selectList("ChannelBoard.info");
 	}

@@ -15,13 +15,7 @@
         <result property="cCount" column="C_COUNT"/>
      </resultMap>
 
-<!-- 	<select id="selectUserlist" resultMap="userBoardResultSet">
-		SELECT USER_NO,USER_ID,CH_NM,CH_YN,ENROLL_DT,STATUS
-		FROM (SELECT ROW_NUMBER() OVER(ORDER BY M.USER_NO DESC) RANK
-		,M.USER_NO,M.USER_ID,L.CH_NM,M.CH_YN,M.ENROLL_DT,M.STATUS
-		FROM MEMBER M
-		JOIN LOGER L ON(M.USER_NO = L.USER_NO))
-	</select> -->
+
 
 		
   	<select id="channelInfo" resultMap="channelResultSet">
@@ -32,11 +26,14 @@
 		WHERE A.AM_TY = '회원'
   	</select>
   	
-  	<select id="info" resultType="hashMap">
-		SELECT SUM(C.AMOUNT_PRICE), SUM(RE_COUNT), SUM(C_COUNT)
-		FROM LOGER L
-		JOIN CALCULATE C ON(L.CH_NO = C.CH_NO)
-		JOIN REPORT R ON(L.USER_NO = R.RE_TARGET)
+  	<select id="info" resultMap="channelResultSet">
+		select *
+		from (SELECT SUM(C.AMOUNT_PRICE) as amount_price, 
+		       SUM(RE_COUNT) as re_count, 
+		       SUM(C_COUNT) as c_count
+				FROM LOGER L
+				JOIN CALCULATE C ON(L.CH_NO = C.CH_NO)
+				JOIN REPORT R ON(L.USER_NO = R.RE_TARGET))
   	</select>
   	
 <!-- resultType="hashMap" -->

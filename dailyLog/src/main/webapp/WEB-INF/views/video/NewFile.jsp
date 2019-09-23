@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-									<!--	<div align="right" style="margin-top:15%;">
+					<div align="right" style="margin-top:15%;">
 						 <nav class="navbar navbar-default navbar-expand-lg navbar-light" style="background:none;">
 							<ul class="nav navbar-nav navbar-right ml-auto" style="width:300px;">			
 								<li class="nav-item" stlye="border:1px solid #A8B7BC;"> 
@@ -57,6 +57,6 @@
 
 							</ul>
 						</nav> 
-					</div>--%>
+					</div>
 </body>
 </html>

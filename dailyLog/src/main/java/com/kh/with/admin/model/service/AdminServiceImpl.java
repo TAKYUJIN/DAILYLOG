@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.kh.with.admin.model.dao.AdminDao;
 import com.kh.with.admin.model.vo.Board;
 import com.kh.with.admin.model.vo.Calculate;
+import com.kh.with.admin.model.vo.ChannelBoard;
 import com.kh.with.admin.model.vo.UserBoard;
 import com.kh.with.block.model.vo.Blockch;
 import com.kh.with.block.model.vo.Blockrep;
@@ -193,17 +194,19 @@ public class AdminServiceImpl implements AdminService {
 	
 	
 	@Override
-	public List<Object> channelInfo() {
+	public List<ChannelBoard> channelInfo() {
 		
 		return ad.channelInfo(sqlSession);
 	}
 	
 	@Override
-	public List<Integer> info() {
+	public List<ChannelBoard> info() {
 		
 		return ad.info(sqlSession);
 	}
 
+	
+	
 	@Override
 	public int monthMemberListCount() {
 		return ad.monthMemberListCount(sqlSession);

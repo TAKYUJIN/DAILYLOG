@@ -38,6 +38,9 @@ public class VideoDaoImpl implements VideoDao {
 	}
 	
 	
+	
+	
+	
 	// 동영상 업로드정보 insert 메소드
 	@Override
 	public int insertVideoInfo(SqlSessionTemplate sqlSession, Video video) {
@@ -209,12 +212,6 @@ public class VideoDaoImpl implements VideoDao {
 		return sqlSession.selectList("Attachment.videonew1");
 	}
 
-
-	public int selectAge(SqlSessionTemplate sqlSession, int loginUser) {
-		
-		return sqlSession.selectOne("Member.selectAge", loginUser);
-	}
-
 	//동영상번호 셀렉
 
 	@Override
@@ -228,6 +225,69 @@ public class VideoDaoImpl implements VideoDao {
 		
 	}
 
-
+	@Override
+	public int subInsert(SqlSessionTemplate sqlSession, Map<String, Object> map) {
+		
+		return sqlSession.insert("Video.insertSub", map);
+	}
+	
+	@Override
+	public int subDelete(SqlSessionTemplate sqlSession, Map<String, Object> map) {
+		
+		return sqlSession.delete("Video.deleteSub", map);
+	}
+	
+	@Override
+	public int videoAlram(SqlSessionTemplate sqlSession, Map<String, Object> map) {
+		
+		return sqlSession.insert("Video.videoAlram", map);
+	}
+	
+	
+	@Override
+	public int insertSubAlram(SqlSessionTemplate sqlSession, Map<String, Object> map) {
+		
+		return sqlSession.insert("Video.insertSubAlram", map);
+	}
+	
+	@Override
+	public int deleteSubAlram(SqlSessionTemplate sqlSession, Map<String, Object> map) {
+		
+		return sqlSession.delete("Video.deleteSubAlram", map);
+	}
+	
+	@Override
+	public String selectThumb(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
+		
+		return sqlSession.selectOne("Video.selectThumb", map);
+	}
+	
+	@Override
+	public String selectProfile(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
+		
+		return sqlSession.selectOne("Video.selectProfile", map);
+	}
+	
+	@Override
+	public int selectRegStatus(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
+		
+		return sqlSession.selectOne("Video.selectRegStatus", map);
+	}
+	@Override
+	public int selectLike(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
+		
+		return sqlSession.selectOne("Video.selectLike", map);
+	}
+	@Override
+	public int selectHate(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
+		
+		return sqlSession.selectOne("Video.selectHate", map);
+	}
+	@Override
+	public int selectBook(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
+		
+		return sqlSession.selectOne("Video.selectBook", map);
+	}
+	
 	
 }

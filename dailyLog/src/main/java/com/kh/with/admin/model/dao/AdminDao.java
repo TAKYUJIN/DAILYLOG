@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 
 import com.kh.with.admin.model.vo.Board;
 import com.kh.with.admin.model.vo.Calculate;
+import com.kh.with.admin.model.vo.ChannelBoard;
 import com.kh.with.admin.model.vo.UserBoard;
 import com.kh.with.block.model.vo.Blockch;
 import com.kh.with.block.model.vo.Blockrep;
@@ -33,6 +34,8 @@ public interface AdminDao {
 	int adminNoticeDelete(SqlSessionTemplate sqlSession, int bNo);
 	//신고관리 댓글,채널,동영상
 	List<Object> videoreportlist(SqlSessionTemplate sqlSession,Report report);
+	
+	
 	List<Object> chreportlist(SqlSessionTemplate sqlSession, Report report);
 	List<Object> repreportlist(SqlSessionTemplate sqlSession, Report report);
 
@@ -73,9 +76,9 @@ public interface AdminDao {
 	ArrayList<Calculate> searchSuccessAll(SqlSessionTemplate sqlSession, String userNm);
 
 
-	List<Object> channelInfo(SqlSessionTemplate sqlSession);
+	List<ChannelBoard> channelInfo(SqlSessionTemplate sqlSession);
 
-	List<Integer> info(SqlSessionTemplate sqlSession);
+	List<ChannelBoard> info(SqlSessionTemplate sqlSession);
 
 	int monthMemberListCount(SqlSessionTemplate sqlSession);
 
