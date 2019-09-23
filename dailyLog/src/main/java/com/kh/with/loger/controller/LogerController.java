@@ -259,6 +259,8 @@ public class LogerController {
 			
 			Attachment logertitleimg = ls.logertitleimg(attachment);
 			
+			System.out.println("logertitleimg" + logertitleimg);
+			
 
 			//프로필정보
 			Loger2 loger2 = new Loger2();
@@ -268,6 +270,8 @@ public class LogerController {
 	
 			Loger2 result = ls.newHomeChannel(userNo); 
 			
+		
+			
 			//로거스튜디오 홈 하단의 동영상정보
 			MyVideo myvideo = new MyVideo();
 			myvideo.setUserNo(userNo);
@@ -275,18 +279,24 @@ public class LogerController {
 			//최근동영상
 			ArrayList<MyVideo> newHomeChannellVideo = ls.newHomeChannellVideo(myvideo);
 			
+		
+			
 			//인기동영상
 			ArrayList<MyVideo> favHomeChannellVideo = ls.favHomeChannellVideo(myvideo);
+	
+			
 			
 			
 			//최신동영상 1개 
 			Video favOne = ls.favOne(myvideo);
 			
-			
+			System.out.println("최신동영상" + favOne);
 			
 			//최신동영상 1개 썸네일 
 			
 			Attachment favOnesum = ls.favOnesum(myvideo);
+			
+			System.out.println("최신동영상" + favOne);
 			
 			
 			HttpSession session1 = request.getSession();
@@ -299,6 +309,10 @@ public class LogerController {
 			mv.addObject("logertitleimg", logertitleimg); 
 			mv.addObject("favOne", favOne); 
 			mv.addObject("favOnesum", favOnesum); 
+			
+			
+			
+			
 			
 			mv.setViewName("loger/newHomeChannel"); 
 
@@ -391,44 +405,40 @@ public class LogerController {
 	}
 
 	// 로거채널개설
-	@RequestMapping(value = "createChannel.lo")
-	public String insertcreateChannel(@ModelAttribute Member m, Model model, HttpServletRequest request,
-			HttpSession session ,@RequestParam(name = "file1", required = false) MultipartFile file1) {
-		
-		
+		@RequestMapping(value = "createChannel.lo")
+		public String insertcreateChannel(@ModelAttribute Member m, Model model, HttpServletRequest request,
+				HttpSession session) {
 
-		
+			int userNo = ((Member) request.getSession().getAttribute("loginUser")).getUserNo();
+			String chNm = request.getParameter("chNm");
+			String chInfo = request.getParameter("chInfo");
 
-		
-		int userNo = ((Member) request.getSession().getAttribute("loginUser")).getUserNo();
-		String chNm = request.getParameter("chNm");
-		String chInfo = request.getParameter("chInfo");
+			System.out.println("로거정보가 들어왔나요::::" + userNo + chNm + chInfo);
 
-		System.out.println("로거정보가 들어왔나요::::" + userNo + chNm + chInfo);
+			Loger loger = new Loger();
+			loger.setUserNo(userNo);
+			loger.setChNm(chNm);
+			loger.setChInfo(chInfo);
 
-	
-		Loger loger = new Loger();
-		loger.setUserNo(userNo);
-		loger.setChNm(chNm);
-		loger.setChInfo(chInfo);
+			int result = ls.insertcreateChannel(loger);
+			
+			Member member = new Member();
+			member.setUserNo(userNo);
+			member.setNickname(chNm);
+			
+			
+			
+			int result1 = ls.updatechyn(member); 
+			
+			
 
-		int result = ls.insertcreateChannel(loger);
-		
-		Member member = new Member();
-		member.setUserNo(userNo);
-		member.setNickname(chNm);
-				
-		int result1 = ls.updatechyn(member); 
-		
-		
-		if (result > 0 && result1 > 0) {
-			return "redirect:index.jsp";
-		} else {
-			model.addAttribute("msg", "채널개설 실패");
-			return "common/errorPage";
+			if (result > 0 && result1 > 0) {
+				return "redirect:index.jsp";
+			} else {
+				model.addAttribute("msg", "채널개설 실패");
+				return "common/errorPage";
+			}
 		}
-	}
-
 
 
 	//로거 신고내역
