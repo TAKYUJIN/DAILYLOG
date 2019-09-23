@@ -188,7 +188,6 @@
         <c:forEach var="user" items="${user}">
  			
  			<input type="hidden" id="userId" name="userId" value="${user.userId }"/>
- 			<input type="hidden" id=status_yn name="status_yn" value="N"/>
  			
 			<!-- 아이디 -->
 			<div class="form-group">
