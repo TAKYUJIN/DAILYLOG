@@ -474,13 +474,12 @@ public class LogerController {
 	public String subOk(Model model,HttpServletRequest request,HttpSession session,@ModelAttribute Member m) {
 		
 
-			System.out.println("구독등록으로 등로왔니");
-			 //로거의 유저넘버 
 			 int userNo =  (int) session.getAttribute("userNo");
 			 System.out.println("로거의 유저넘버 " + userNo);
 			
 			 //로그인한 유저번호 
-				int loginUserNo = ((Member) request.getSession().getAttribute("loginUser")).getUserNo();				
+				int loginUserNo = ((Member) request.getSession().getAttribute("loginUser")).getUserNo();	
+				String nickName =  ((Member) request.getSession().getAttribute("loginUser")).getNickname();	
 
 				 System.out.println("로그인의 유저넘버 " + loginUserNo);
 				 
@@ -497,21 +496,26 @@ public class LogerController {
 				
 				SubUserInfo result = ls.subUserInfo(subUserInfo); 
 				
-				
-				System.out.println("구독에 필요한 정보를 갖고 왔나요?" + result);
-				
 				int chNo = result.getChNo();
-				String nickname = result.getNickname();
+				String chNm = result.getChNm(); 
+				
+		/*
+		 * System.out.println("최종정보입니다::: " + "로거번호:::" +userNo + "로그인유저번호::" +
+		 * loginUserNo + "로거채널번호:::" + chNo + "로거닉네임:::" + nickname + "채널네임:::" + chNm);
+		 */
+				
 				
 				
 				
 				
 				HttpSession session1 = request.getSession();
+				session.setAttribute("loginUserNo", loginUserNo);
 				session.setAttribute("userNo", userNo);
-				session.setAttribute("result", result);
+				session.setAttribute("chNo", chNo);
+				session.setAttribute("nickName", nickName);
+				session.setAttribute("chNm", chNm);
 				
-				
-				return  "forward:/subInsert.vd";
+				return  "forward:/studeioSubInsert.vd" ;
 	}
 	
 }

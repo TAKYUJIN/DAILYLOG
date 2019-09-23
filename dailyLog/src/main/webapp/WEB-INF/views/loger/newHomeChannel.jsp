@@ -306,6 +306,16 @@ body {
 			 alert(message); 
 	    	
 	    }
+	    var message = '${msg}';
+	    if(message == "동영상이 업로드 되었습니다!"){
+			 alert(message); 
+	    }
+	
+	    var message = '${msg}';
+	    if(message == "구독되었습니다"){
+			 alert(message); 
+	    	
+	    }
 	</script>
 	
 

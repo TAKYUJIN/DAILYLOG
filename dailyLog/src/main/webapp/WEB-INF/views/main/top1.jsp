@@ -766,7 +766,7 @@ color: black; text-decoration: none;
 		console.log(paramData);
 
 	}
-
+	
     
     </script>
   <jsp:include page="../common/footer.jsp"></jsp:include>
