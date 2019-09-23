@@ -46,7 +46,7 @@
 	  WHERE V.USER_NO = A.USER_NO
 		 SELECT USER_NO,FILEPATH,AM_DT FROM ATTACHMENT 
 	</select> -->
-<select id="videoimagelist"  resultMap="videoRSet"   >
+<select id="videoimagelist"  resultMap="videoRSet">
 	   SELECT A.USER_NO,A.FILE_NM,A.AM_DT,V.V_NO,V.V_TITLE,V.CH_NM , V.TAG,V.UPLOAD_DT
 	  FROM ATTACHMENT A 
 	  JOIN VIDEO V ON(V.V_NO = A.V_NO)
@@ -56,7 +56,7 @@
 	</select>
 
 
-<select id="videopop"  resultMap="videoRSet"  parameterType="map" >
+<select id="videopop"  resultMap="videoRSet"   >
 	
 	   SELECT A.USER_NO,A.FILE_NM,A.AM_DT,V.V_NO,V.V_TITLE,V.CH_NM,V.COUNT, V.TAG ,V.UPLOAD_DT
 	  FROM ATTACHMENT A 
@@ -68,46 +68,53 @@
 	</select>
 	
 	
-	<select id="videonew"  resultMap="videoRSet"  parameterType="map" >
+	<select id="videonew"  resultMap="videoRSet"    >
 	
 	  SELECT A.USER_NO,A.FILE_NM,A.AM_DT,V.V_NO,V.V_TITLE,V.CH_NM , V.TAG,V.UPLOAD_DT
 	  FROM ATTACHMENT A 
 	  JOIN VIDEO V ON(V.V_NO = A.V_NO)
 	   WHERE V.V_NO 
        NOT IN (SELECT V_NO FROM BLOCK_VIDEO WHERE USER_NO =#{userNo} )
-	 ORDER BY AM_DT DESC
+	 ORDER BY V.UPLOAD_DT DESC
 	</select>
 	
-	<select id="videobook"  resultMap="videoRSet"  parameterType="map" >
+	<select id="videobook"  resultMap="videoRSet"   >
 	
-	  SELECT A.USER_NO,A.FILE_NM,A.AM_DT,V.V_NO,V.V_TITLE,V.CH_NM , V.TAG,V.UPLOAD_DT
-	  FROM ATTACHMENT A 
-	  JOIN VIDEO V ON(V.V_NO = A.V_NO)
-	   WHERE V.V_NO 
-       NOT IN (SELECT V_NO FROM BLOCK_VIDEO WHERE USER_NO =#{userNo} )
-	 
-	</select>
-	
-	
-	<select id="videolike"  resultMap="videoRSet"  parameterType="map" >
-	
-	 SELECT A.USER_NO,A.FILE_NM,A.AM_DT,V.V_NO,V.V_TITLE,V.CH_NM ,L.LIKE_NO,V_TY, V.TAG,V.UPLOAD_DT
+         SELECT A.USER_NO,A.FILE_NM,A.AM_DT,V.V_NO,V.V_TITLE,V.CH_NM ,L.LIKE_NO,V_TY, V.TAG,V.UPLOAD_DT
 	  FROM ATTACHMENT A 
 	 JOIN VIDEO V ON(V.V_NO = A.V_NO)
-	  JOIN VIDEO_LIKE L ON(L.V_NO = A.V_NO)
-	   WHERE V_TY='3' AND A.USER_NO=#{userNo} AND V.V_NO 
-       NOT IN (SELECT V_NO FROM BLOCK_VIDEO ) 
+      JOIN VIDEO_LIKE 
+      L ON(L.V_NO=V.V_NO )
+	 JOIN MEMBER M ON(M.USER_NO = L.USER_NO)
+       WHERE V_TY='북마크' AND M.USER_NO=#{userNo} AND V.V_NO 
+       NOT IN (SELECT V_NO FROM BLOCK_VIDEO WHERE USER_NO =#{userNo})
+	</select>
+	
+	
+	<select id="videolike"  resultMap="videoRSet"   >
+	
+	  SELECT A.USER_NO,A.FILE_NM,A.AM_DT,V.V_NO,V.V_TITLE,V.CH_NM ,L.LIKE_NO,V_TY, V.TAG,V.UPLOAD_DT
+	  FROM ATTACHMENT A 
+	 JOIN VIDEO V ON(V.V_NO = A.V_NO)
+      JOIN VIDEO_LIKE 
+      L ON(L.V_NO=V.V_NO )
+	 JOIN MEMBER M ON(M.USER_NO = L.USER_NO)
+       WHERE V_TY='좋아요' AND M.USER_NO=#{userNo} AND V.V_NO 
+       NOT IN (SELECT V_NO FROM BLOCK_VIDEO WHERE USER_NO =#{userNo})
 	</select>
 
 
 <select id="videosub"  resultMap="videoRSet" >
 	
-	SELECT A.USER_NO,A.FILE_NM,A.AM_DT,V.V_NO,V.V_TITLE,V.CH_NM ,L.LIKE_NO,V_TY,V.TAG,V.UPLOAD_DT
+	SELECT  S.USER_NO,A.FILE_NM,A.AM_DT,V.V_NO,V.V_TITLE,V.CH_NM , V.TAG,V.UPLOAD_DT
 	  FROM ATTACHMENT A 
-	 JOIN VIDEO V ON(V.V_NO = A.V_NO)
-	  JOIN VIDEO_LIKE L ON(L.V_NO = A.V_NO)
-	   WHERE V_TY='3' AND A.USER_NO=#{userNo} AND V.V_NO 
-       NOT IN (SELECT V_NO FROM BLOCK_VIDEO )	 
+	  JOIN VIDEO V ON(V.V_NO = A.V_NO)
+	 JOIN LOGER L ON(V.USER_NO=L.USER_NO)
+      JOIN SUBSCRIBE S ON(S.CH_NO = L.CH_NO)
+     JOIN MEMBER M ON(M.USER_NO = S.USER_NO)
+       WHERE    S.USER_NO=#{userNo}
+       AND V.V_NO NOT IN (SELECT V_NO FROM BLOCK_VIDEO WHERE USER_NO =#{userNo} )
+	 
 	</select>
 
 
@@ -140,10 +147,10 @@
 	
 	<select id="videonew1"  resultMap="videoRSet"  parameterType="map" >
 	
-	  SELECT A.USER_NO,A.FILE_NM,A.AM_DT,V.V_NO,V.V_TITLE,V.CH_NM  ,V.TAG,V.UPLOAD_DT
+	 SELECT A.USER_NO,A.FILE_NM,A.AM_DT,V.V_NO,V.V_TITLE,V.CH_NM,V.COUNT ,V.TAG,V.UPLOAD_DT
 	  FROM ATTACHMENT A 
 	  JOIN VIDEO V ON(V.V_NO = A.V_NO)
-	 ORDER BY AM_DT DESC
+      ORDER BY V.UPLOAD_DT DESC
 	</select>
 	
 	<delete id="delete_myPage_file" parameterType="map">
@@ -201,6 +208,61 @@
    VALUES(#{userNo}, AM_NO.NEXTVAL, NULL ,SYSDATE, #{fileNm},  '채널') 
 
    </insert>  
+ 
+
+<select id="videotak"  resultMap="videoRSet"  >
+	
+	  SELECT A.USER_NO,A.FILE_NM,A.AM_DT,V.V_NO,V.V_TITLE,V.CH_NM,V.COUNT ,V.TAG,V.UPLOAD_DT
+	  FROM ATTACHMENT A 
+	  JOIN VIDEO V ON(V.V_NO = A.V_NO)
+      WHERE V.USER_NO=7
+	 
+	</select>
+
+<select id="videokim1"  resultMap="videoRSet"   >
+	
+	  SELECT A.USER_NO,A.FILE_NM,A.AM_DT,V.V_NO,V.V_TITLE,V.CH_NM,V.COUNT ,V.TAG,V.UPLOAD_DT
+	  FROM ATTACHMENT A 
+	  JOIN VIDEO V ON(V.V_NO = A.V_NO)
+      WHERE V.USER_NO=3
+	 
+	</select>
+
+<select id="videokim2"  resultMap="videoRSet"  >
+	
+	  SELECT A.USER_NO,A.FILE_NM,A.AM_DT,V.V_NO,V.V_TITLE,V.CH_NM,V.COUNT ,V.TAG,V.UPLOAD_DT
+	  FROM ATTACHMENT A 
+	  JOIN VIDEO V ON(V.V_NO = A.V_NO)
+      WHERE V.USER_NO=5
+	 
+	</select>
+	
+	<select id="videopark"  resultMap="videoRSet"   >
+	
+	  SELECT A.USER_NO,A.FILE_NM,A.AM_DT,V.V_NO,V.V_TITLE,V.CH_NM,V.COUNT ,V.TAG,V.UPLOAD_DT
+	  FROM ATTACHMENT A 
+	  JOIN VIDEO V ON(V.V_NO = A.V_NO)
+      WHERE V.USER_NO=1
+	 
+	</select>
+	
+	<select id="videoji"  resultMap="videoRSet"   >
+	
+	  SELECT A.USER_NO,A.FILE_NM,A.AM_DT,V.V_NO,V.V_TITLE,V.CH_NM,V.COUNT ,V.TAG,V.UPLOAD_DT
+	  FROM ATTACHMENT A 
+	  JOIN VIDEO V ON(V.V_NO = A.V_NO)
+      WHERE V.USER_NO=2
+	 
+	</select>
+
+<select id="videojeong"  resultMap="videoRSet" >
+	
+	  SELECT A.USER_NO,A.FILE_NM,A.AM_DT,V.V_NO,V.V_TITLE,V.CH_NM,V.COUNT ,V.TAG,V.UPLOAD_DT
+	  FROM ATTACHMENT A 
+	  JOIN VIDEO V ON(V.V_NO = A.V_NO)
+      WHERE V.USER_NO=6
+	 
+	</select>
 
 </mapper>
 

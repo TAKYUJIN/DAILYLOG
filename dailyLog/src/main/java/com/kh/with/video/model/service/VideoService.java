@@ -73,12 +73,27 @@ public interface VideoService {
 
 	List<Attachment> videoimagelist();
 
-	List<Attachment> videopop();
-
-	List<Attachment> videonew();
+ 
 
 	//동영상번호 셀렉
 	Video selectvNo(int getUserNo);
+
+
+	List<Attachment> videotak();
+
+	List<Attachment> videokim1();
+
+	List<Attachment> videokim2();
+
+	List<Attachment> videopark();
+
+	List<Attachment> videoji();
+
+	List<Attachment> videojeong();
+
+	List<Video> videopop1();
+
+	List<Video> videonew1();
 
 	int subInsert(Map<String, Object> map);
 
@@ -101,6 +116,7 @@ public interface VideoService {
 	int selectHate(Map<String, Integer> map);
 
 	int selectBook(Map<String, Integer> map);
+
 
 	
 	

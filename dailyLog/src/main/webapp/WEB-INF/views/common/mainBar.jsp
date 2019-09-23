@@ -290,7 +290,8 @@
 <nav class="navbar navbar-default navbar-expand-lg navbar-light">
 
 	<div class="navbar-header d-flex col" style="margin-top:13px;">
-	 <a value="DailyLog" id="logo" style="width:110px; font-size:22px;" ><button style="background:none; border:0;" onclick="home();">DailyLog</button></a>
+	 <a value="DailyLog" id="logo" style="width:110px; font-size:22px;" onclick="location.href='home.mb'">DailyLog</a>
+
 	</div>
 	<!-- Collection of nav links, forms, and other content for toggling -->
 	<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
