@@ -19,6 +19,7 @@
 		<typeAlias type="com.kh.with.block.model.vo.Blockch" alias="Blockch" />
 		<typeAlias type="com.kh.with.block.model.vo.Blockrep" alias="Blockrep" />
 		<typeAlias type="com.kh.with.reply.model.vo.Reply" alias="Reply" />
+		<typeAlias type="com.kh.with.video.model.vo.Reply2" alias="Reply2" />
 		<typeAlias type="com.kh.with.main.model.vo.VideoLike" alias="VideoLike" />
 		<typeAlias type="com.kh.with.admin.model.vo.Calculate" alias="Calculate2" />
 		<typeAlias type="com.kh.with.main.model.vo.Subscribe" alias="Subscribe"/>

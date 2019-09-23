@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,6 +24,13 @@
 	.chImg {
 		width:60px; 
 		height:60px;
+		/* border:1px dashed gray; */
+		border-radius: 50%;
+		/* vertical-align: middle; */
+	}
+	.userImg {
+		width:40px; 
+		height:40px;
 		/* border:1px dashed gray; */
 		border-radius: 50%;
 		/* vertical-align: middle; */
@@ -309,7 +317,7 @@
 	table.table-striped.table-hover tbody tr:hover {
 		background: #f5f5f5;
         background:none;
-        opacity:0.5;
+        /* opacity:0.8; */
 	}
     table.table th i {
         font-size: 13px;
@@ -331,7 +339,7 @@
 	table.table td a:hover {
 		color: #2196F3;
         background:none;
-        opacity:0.5;
+        /* opacity:0.8; */
 	}
 	table.table td a.edit {
         color: #FFC107;
@@ -743,9 +751,9 @@
 			</tr>
 			<tr>
 				<!-- 비디오 -->
-				<td colspan="4" height="400px"><!-- autoplay="autoplay" -->
+				<td colspan="4" height="500px"><!-- autoplay="autoplay" -->
 					<c:if test="${list1[0].adultAut eq 'Y' }">
-						<video id='my-video' class='video-js' controls  preload='auto' width='600' height='400'
+						<video id='my-video' class='video-js' controls  preload='auto' width='700' height='500'
 						  poster='resources/uploadFiles/${thumb}' data-setup='{}' >
 						  <source src='resources/uploadFiles/${ list1[0].fileNm}' type='video/mp4'>
 						  <source src='MY_VIDEO.webm' type='video/webm'>
@@ -754,7 +762,7 @@
 					<c:if test="${list1[0].adultAut eq 'N' }">
 						<c:if test="${age < 19 }">
 							<a href="#myModal" class="trigger-btn" data-toggle="modal">
-								<video id='my-video' class='video-js'   preload='auto' width='600' height='400'
+								<video id='my-video' class='video-js'   preload='auto' width='700' height='500'
 								  poster='resources/images/age.png' data-setup='{}' >
 								  <source src='resources/uploadFiles/${ list1[0].fileNm}' type='video/mp4'>
 								  <source src='MY_VIDEO.webm' type='video/webm'>
@@ -762,7 +770,7 @@
 							</a>
 						</c:if>
 						<c:if test="${age >= 19 }">
-							<video id='my-video' class='video-js' controls  preload='auto' width='600' height='380'
+							<video id='my-video' class='video-js' controls  preload='auto' width='700' height='500'
 							  poster='resources/uploadFiles/${thumb}' data-setup='{}' >
 							  <source src='resources/uploadFiles/${ list1[0].fileNm}' type='video/mp4'>
 							  <source src='MY_VIDEO.webm' type='video/webm'>
@@ -777,11 +785,11 @@
 				<td colspan="4" height="130px">
 					<div style="margin:20px;">
 						<h3>${ list1[0].vTitle }</h3>
-						<small>조회수  ${ list1[0].count }</small><br>
-						<small>게시일 : ${ list1[0].uploadDt }</samll><br>
-						<div>
-							<a href="" style="color: #525252;"><small><b>${ list1[0].tag }</b></small></a>
+						<div style="margin-top:1%;">
+							<a href="" style="color: #525252;"><b>${ list1[0].tag }</b></a>
 						</div>
+						<div style="margin-top:1%;"><small>조회수  ${ list1[0].count }</small></div>
+						<div style="margin-top:1%;"><small>게시일 ${ list1[0].uploadDt }</small></div>
 					</div>
 					<div style="margin-right:8%;">
 						<hr style="border-color:#A8B7BC; height:30px;">
@@ -797,80 +805,245 @@
 		</table>
 	</div>
 	<!-- <div style="border-left:1px solid #A8B7BC;height:500px;"></div> -->  
-	<div style="display:inline-block; margin-left:3%; margin-bottom:10%;">
+	<div style="align:center; display:inline-block; margin-left:3%; margin-top:10%; position:absolute;">
 		<!-- 댓글 -->
-<!-- 		<table border="1px">
-			<thead>
-				<tr>
-					<td>
-						<div style="align:top;">
-							<a href="#none" data-toggle="dropdown" id="runtimeChat">
-								<img src="resources/images/chat.png" style="width:30px; align:right;">
-							</a>
-						</div>						
-					</td>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td rowspan="3" width="45px" height="45px">
-						프로필
-					</td>
-					<td style="padding:5%; width:300px;">내용</td>
-					<td>신고/삭제(본인만)</td>
-				</tr>
-					<td>날짜</td>
-					<td></td>
-				<tr>
-					<td>좋아요 싫어요 더보기</td>
-					<td></td>
-				</tr>
-			</tbody>
-			<tfoot>
-				<tr>
-					<td height="50">프로필</td>
-					<td height="50">텍스트</td>
-					<td height="50">작성</td>
-				</tr>
-			</tfoot>
-					실시간 & 정렬
-		</table> -->
-		
-   
-            <table class="table table-striped table-hover">
-                <tbody>
-                    <tr  style="background:none !important;">
-                        <td>Thomas Hardy</td>
-                        <td>안녕하세요</td>
-                        <td>
-                            <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Dominique Perrier</td>
-                        <td>dominiqueperrier@mail.com</td>
-                        <td>
-                            <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                        </td>
-                    </tr>
+<!-- 		<div style="align:top;">
+			<a href="#none" data-toggle="dropdown" id="runtimeChat">
+				<img src="resources/images/chat.png" style="width:30px; align:right;">
+			</a>
+		</div>	 -->	
+		<nav class="navbar navbar-default navbar-expand-lg navbar-light"style="background:none; border:none;">
+			<ul class="nav navbar-nav navbar-right ml-auto">					
+		       <table class="table table-striped table-hover">
+		           <tbody>
+		           	<c:forEach var="r" items="${reply}" >
+		                <tr  style="background:none !important;">
+		                    <td width="60px">
+		                    	<div style="margin-top:10px;">
+									<c:if test="${r.fileNm != null}">
+										<img class="userImg" src="resources/images/${r.fileNm}">
+									</c:if>
+									<c:if test="${r.fileNm == null}">
+										<img class="userImg" src="resources/images/newlogo3.png">
+									</c:if>	
+								</div>
+		                    </td>
+		                    <td width="100px">
+		                    	<div style="margin-top:20px;">${ r.nickName }</div>
+		                    </td>
+		                    <td width="200px">
+		                    	<div>
+		                    		<div style="font-size:12px;margin-top:5%;margin-bottom:5%;">
+		                    			${ r.repDt }
+		                    		</div>
+		                    		<div style="font-size:15px;margin-top:5%;margin-bottom:5%;">
+		                     		 	${ r.repCt }
+		                    		</div>
+		                    		<div style="display:inline-block;">
+		                    			<div style="display:inline-block;">
+					                   		<li class="nav-item">
+												<a href="#none">
+												<img src="resources/images/heart_black.png" id="replyLike" style="width:14px;" onclick="replyLike()">
+											</a>
+											</li>
+		                    			</div>
+		                    			<div style="display:inline-block;">
+											<li class="nav-item">
+												<a href="#none">
+												<img src="resources/images/broken.png" id="replyHate" style="width:14px;" onclick="replyHate()">
+											</a>
+											</li>
+		                    			</div>
+		                    			<div style="display:inline-block;">
+											<a href="#none">
+												<img src="resources/images/plus.png" class="reReply" style="width:14px;" >
+											</a>
+		                    			</div>
+		                    			<div style="margin-top:5%;">
+		                    				<input type="button" class="plus" style="background:none;  margin-right:10%; border:none;" value="답글 ${fn:length(reply)}개 더보기">
+		                    			</div>
+<%-- 		                    			
+ 										<div class="replyPlus">
+										<div style="display:block;">
+											<table class="table table-striped table-hover" style="background:none;">
+										           <tbody>
+										           	<c:forEach var="re" items="${reReply}" >
+										                <tr  style="background:none !important;">
+										                    <td width="60px">
+										                    	<div style="margin-top:10px;">
+																	<c:if test="${r.fileNm != null}">
+																		<img class="userImg" src="resources/images/${r.fileNm}">
+																	</c:if>
+																	<c:if test="${r.fileNm == null}">
+																		<img class="userImg" src="resources/images/newlogo3.png">
+																	</c:if>	
+																</div>
+										                    </td>
+										                    <td width="100px">
+										                    	<div style="margin-top:20px;">${ r.nickName }</div>
+										                    </td>
+										                    <td width="200px">
+										                    	<div>
+										                    		<div style="font-size:15px;margin-top:5%;margin-bottom:5%;">
+										                     		 	${ r.repCt }
+										                    		</div>
+										                    		<div style="display:inline-block;">
+										                    			<div style="display:inline-block;">
+													                   		<li class="nav-item">
+																				<a href="#none">
+																				<img src="resources/images/heart_black.png" id="like" style="width:14px;" onclick="selectLike()">
+																			</a>
+																			</li>
+										                    			</div>
+										                    			<div style="display:inline-block;">
+																			<li class="nav-item">
+																				<a href="#none">
+																				<img src="resources/images/broken.png" id="hate" style="width:14px;" onclick="selectHate()">
+																			</a>
+																			</li>
+										                    			</div>
+										                    		</div>
+										                    		<div style="font-size:12px;margin-top:5%;margin-bottom:5%;">
+										                    			${ r.repDt }
+										                    		</div>
+										                    	</div>
+										                    </td>
+										                    <td>
+										                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"></a>
+										                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><img src="resources/images/more.png" style="width:18px;"></a>
+										                    </td>
+										                </tr>
+													</c:forEach>
+										           </tbody>
+										       </table>
+										</div>
+									</div>                     			
+		                    			
+		                    			 --%>
+		                    			
+		                    			
+		                    		</div>
+		                    		
+		                    	</div>
+		                    </td>
+		                    <td>
+		                    	<c:if test="${r.userNo == loginUser.userNo}">
+			                    	<li class="nav-item" >
+										<a href="#none" data-toggle="dropdown" id="threeMore">
+										<img src="resources/images/more.png"  style="width:18px; align:right;">
+										</a>
+										<ul class="dropdown-menu form-wrapper" style="width:15px;border:1px solid #A8B7BC;">					
+											<li>
+												<div class="form-group" id="more">
+													<table class="noti_table" align="center">
+														<tr>
+															<td>
+																<div>
+																<a href="#editEmployeeModal" class="edit" data-toggle="modal">
+																	<i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;
+																	<label style="font-size:13px;">수정</label></i>
+																</a>
+																</div>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
+																	<i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;
+																	<label style="font-size:13px;">삭제</label></i>
+																</a>
+															</td>
+														</tr>
+													</table>
+												</div>
+											</li>
+										</ul>
+									</li>
+		                    	
+		                    	</c:if>
+		                    	<c:if test="${r.userNo != loginUser.userNo}">
+		                        <li class="nav-item" >
+									<a href="#none" data-toggle="dropdown" id="threeMore">
+									<img src="resources/images/more.png"  style="width:18px; align:right;">
+									</a>
+									<ul class="dropdown-menu form-wrapper" style="width:350px;border:1px solid #A8B7BC;">					
+										<li>
+											<!-- 신고 -->
+											<div id="report1">
+												<div class="noti_text" style="margin-top:5%; width:350px;"><b style="text-align:center;">동영상신고</b></div>
+												<div align="left" style="margin-left:10%; margin-right:10%;">
+													<table class="noti_table">
+														<tr><td>
+															<div class="checks" style="display:inline-block;">
+										                      <div style="display:inline-block;"><input type="radio" id="more1" value="원치 않는 상업적 콘텐츠 또는 스팸" name="more" onclick="oneCheckbox(this)"></div>
+										                      <div style="display:inline-block;"><label for="more1">원치 않는 상업적 콘텐츠 또는 스팸</label></div><br>
+										                      <div style="display:inline-block;"><input type="radio" id="more2" value="포르노 또는 음란물" name="more" onclick="oneCheckbox(this)"></div> 
+										                      <div style="display:inline-block;"><label for="more2">포르노 또는 음란물</label></div><br>
+										                      <div style="display:inline-block;"><input type="radio" id="more5" value="아동 학대" name="more" onclick="oneCheckbox(this)"></div> 
+										                      <div style="display:inline-block;"><label for="more2">아동 학대</label></div><br>
+										                      <div style="display:inline-block;"><input type="radio" id="more8" value="증오심 표현 또는 노골적인 폭력" name="more" onclick="oneCheckbox(this)"></div> 
+										                      <div style="display:inline-block;"><label for="more2">증오심 표현 또는 노골적인 폭력</label></div><br>
+										                      <div style="display:inline-block;"><input type="radio" value="희롱 또는 괴롭힘" id="more9" name="more" onclick="oneCheckbox(this)"></div> 
+										                      <div style="display:inline-block;"><label for="more3">희롱 또는 괴롭힘</label></div><br>
+										                    </div>
+														</td></tr>
+														<tr>
+															<td>
+																<button style="background:#A8B7BC;display:inline-block;width:100px;margin-right:5% !important;" class="btn" id="cancle4">취소</button>
+																<button id="reportNext" style="width:100px;display:inline-block;" class="btn">다음</button><br><br>
+															</td>
+														</tr>
+													</table>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</li>
+								</c:if>
+		                    </td>
+		                </tr>
+					</c:forEach>
+		           </tbody>
+		           <tfoot>
+		           		<div style="width:50px; display:inline-block;">
+		       			    <div>
+								<c:if test="${userImg != null}">
+									<img class="userImg" src="resources/images/${userImg}" style="margin-bottom:30px;">
+								</c:if>
+								<c:if test="${userImg == null}">
+									<img class="userImg" src="resources/images/newlogo3.png" style="margin-bottom:30px;">
+								</c:if>	
+							</div>
+		           		</div>
+		         		<div style="display:inline-block; margin-left:1%; margin-right:1%;">
+		     			    <div class="input-group">
+								<input type="text" id="content" class="form-control" placeholder="Search&hellip;" style="background:none !important; width:250px;">
+							</div>
+		           		</div>
+		           		<div style="display:inline-block;">
+		           			<input type="button" id="insertReply" style="width:60px; margin-bottom:30px; background:#A8B7BC;" class="btn" value="작성">
+							<!-- <a><i class="material-icons">&#xE876;</i></a> -->
+		           		</div>
+		           </tfoot>
+		       </table>
+			
 
-                </tbody>
-            </table>
-	
+			</ul>
+		</nav>
+	</div>
+
 	<!-- Edit Modal HTML -->
 	<div id="editEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<form>
 					<div class="modal-header">						
-						<h4 class="modal-title">Edit Employee</h4>
+						<h4 class="modal-title">댓글 수정</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">					
 						<div class="form-group">
-							<label>Name</label>
+							<label>#{ reply.nickName }</label>
 							<input type="text" class="form-control" required>
 						</div>	
 					</div>
@@ -888,11 +1061,11 @@
 			<div class="modal-content">
 				<form>
 					<div class="modal-header">						
-						<h4 class="modal-title">Delete Employee</h4>
+						<h4 class="modal-title">댓글 삭제</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">					
-						<p>Are you sure you want to delete these Records?</p>
+						<p>삭제하시면 복구할 수 없습니다. <br> 정말 삭제하시겠습니까?</p>
 						<p class="text-warning"><small>This action cannot be undone.</small></p>
 					</div>
 					<div class="modal-footer">
@@ -902,7 +1075,6 @@
 				</form>
 			</div>
 		</div>
-	</div>
 	</div>
 	</div>
 	<!-- Modal HTML -->
@@ -926,7 +1098,127 @@
 		</div>
 	</div> 
 	<script>
-	
+	//좋아요 조회
+	function replyLike(){
+		var chNo = "<c:out value='${list2[0].chNo}'/>";
+		var vNo = "<c:out value='${list1[0].vNo}'/>";
+		console.log(chNo + "::" + vNo);
+		if(state == 0){
+			document.getElementById('replyLike').src = "resources/images/heart_red.png";
+			document.getElementById('replyHate').src = "resources/images/broken.png";
+			$.ajax({
+				url:"insertReplyLike.vd",
+				type:"post",
+				data:{chNo:chNo, vNo:vNo},
+				success:function(data){
+					console.log("insert성공!");
+					state = 1;
+				},
+				error:function(){
+					console.log("실패!");
+				}
+			});
+			$.ajax({
+				url:"deleteReplyHate.vd",
+				type:"post",
+				data:{chNo:chNo, vNo:vNo},
+				success:function(data){
+					console.log("delete성공!");
+					state = 0;
+				},
+				error:function(){
+					console.log("실패!");
+				}
+			});
+		}else {
+			document.getElementById('replyLike').src = "resources/images/heart_black.png";
+			
+			$.ajax({
+				url:"deleteReplyLike.vd",
+				type:"post",
+				data:{chNo:chNo, vNo:vNo},
+				success:function(data){
+					console.log("delete성공!");
+					state = 0;
+				},
+				error:function(){
+					console.log("실패!");
+				}
+			});
+		}
+	}
+	//싫어요 조회
+	function replyHate(){
+		var chNo = "<c:out value='${list2[0].chNo}'/>";
+		var vNo = "<c:out value='${list1[0].vNo}'/>";
+		console.log(chNo + "::" + vNo);
+		if(state == 0){
+			document.getElementById('replyHate').src = "resources/images/broken_color.png";
+			document.getElementById('replyLike').src = "resources/images/heart_black.png";
+			$.ajax({
+				url:"insertReplyHate.vd",
+				type:"post",
+				data:{chNo:chNo, vNo:vNo},
+				success:function(data){
+					console.log("insert성공!");
+					state = 1;
+				},
+				error:function(){
+					console.log("실패!");
+				}
+			});
+			$.ajax({
+				url:"deleteReplyLike.vd",
+				type:"post",
+				data:{chNo:chNo, vNo:vNo},
+				success:function(data){
+					console.log("delete성공!");
+					state = 0;
+				},
+				error:function(){
+					console.log("실패!");
+				}
+			});
+		}else {
+			document.getElementById('replyHate').src = "resources/images/broken.png";
+			
+			$.ajax({
+				url:"deleteReplyHate.vd",
+				type:"post",
+				data:{chNo:chNo, vNo:vNo},
+				success:function(data){
+					console.log("delete성공!");
+					state = 0;
+				},
+				error:function(){
+					console.log("실패!");
+				}
+			});
+		}
+	}
+	$("#insertReply").click(function(){
+		var vNo = "<c:out value='${list1[0].vNo}'/>";
+		var content = document.getElementById("content").value;
+		var userNo = "<c:out value='${list2[0].userNo}'/>";
+		
+		console.log(vNo + content);
+		$.ajax({
+	        	url:"insertReply.vd",
+				type:"post",
+				data:{vNo:vNo,
+					  content:content,
+					  userNo:userNo},
+				success:function(data){
+					console.log("성공!");
+					$("#content").val("");
+					window.location.reload();
+					/* $(".replyReload").location().reload() */
+				},
+				error:function(){
+					console.log("실패!");
+				}
+	        });
+	});
 	
 	
 	(function(d, s, id) {
@@ -1313,6 +1605,18 @@
 			}); 
 		//후원 div 
 		 $(document).ready(function(){
+				$(".replyPlus").click().hide();
+				var check = 0;
+				$(".plus").click(function(){
+					if(check == 0){
+						$(".replyPlus").show();
+						check=1;
+					}else {
+						$(".replyPlus").hide();
+						check=0;
+					}
+				});
+				
 				
 			 var chNo = "<c:out value='${list2[0].chNo}'/>";
 			 var vNo = "<c:out value='${list1[0].vNo}'/>";
@@ -1483,24 +1787,7 @@
 				 $('#share1').hide();
 				 return false;
 			 });
-/* 			 var copyLink = new ClipboardJS("#btnCopy");
-				
-				copyLink.on("success", function(){
-					alert("클립보드에 복사되었습니다.");
-					
-					window.getSelection().removeAllRanges();
-					
-				}); */
-/* 				function copyUrl(var){
-					var textArea = document.createElement("textArea");
-					document.body.appendChild(textArea);
-					textArea.value=val;
-					textArea.select();
-					
-					document.execCommand('copy');
-					document.body.removeChild(textArea);
-					console.log('copied on clipboard');
-				} */
+
 		 });
 	</script>
 
