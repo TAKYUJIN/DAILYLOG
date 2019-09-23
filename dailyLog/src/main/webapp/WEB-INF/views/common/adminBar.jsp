@@ -66,7 +66,7 @@
       position: relative;
    }
    .navbar .nav li a {
-      color: #434738; /*상단바 글자색*/
+      color: #525252; /*상단바 글자색*/
    }
    .search-box {
         position: relative;
@@ -260,6 +260,20 @@
 	.nav navbar-nav{
 		color: #525252;
 	}
+	
+	#logo {
+   	color:black;
+   	padding-top:5px; 
+   	margin-top:5px;
+   }
+   
+   #searchId {
+   	color:#525252;
+   }
+   
+   #navbarCollapse {
+   	font-size:15px;
+   }
 </style>
 <script type="text/javascript">
 	// Prevent dropdown menu from closing when click inside the form
@@ -270,8 +284,8 @@
 </head> 
 <body>
 <nav class="navbar navbar-default navbar-expand-lg navbar-light">
-	<div class="navbar-header d-flex col" >
-		<a href="home.mb" value="DailyLog" id="logo" style="width:90px; font-size:22px; color: #525252;">DailyLog</a>
+	<div class="navbar-header d-flex col" style="margin-top:10px;">
+		<a value="DailyLog" id="logo" style="width:110px; font-size:22px;" onclick="location.href='home.mb'">DailyLog</a>
 	</div>
 	<!-- Collection of nav links, forms, and other content for toggling -->
 	<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
@@ -296,7 +310,7 @@
 		<ul class="nav navbar-nav navbar-right ml-auto">	
 			<li class="nav-item">
 				<a href="logout.me" class="btn_global link_login" >
-				<img src="resources/images/exit.png" style="width:20px;">
+				<img src="resources/images/exit.png" style="width:25px;">
 			</a>
 			</li>		
 			<li class="nav-item dropdown">

@@ -276,7 +276,7 @@ color: black; text-decoration: none;
 	  
 	 <div class="row"><br><br><br><br>
 		<div class="col-md-10 col-center m-auto"><br><br><br><br><br><br>
-			<h3>  <span><div id="vid"><b>인 기 동 영 상 </b></div>  </span></h3>  <br>
+			<h3>  <span><div id="vid"><b> 인기 동영상 </b></div>  </span></h3>  <br>
 			<div id="myCarousel1" class="carousel slide" data-ride="carousel" data-interval="0">
 				  
 				<div class="carousel-inner">
@@ -297,7 +297,7 @@ color: black; text-decoration: none;
 
  <div class="row"><br><br><br><br>
 		<div class="col-md-10 col-center m-auto"><br><br><br> 
-			<h3>  <span><div id="vid"><b>최 근   업 로 드 된    동 영 상</b></div>  </span></h3>  <br>
+			<h3>  <span><div id="vid"><b>최 근   업로드된    동영상</b></div>  </span></h3>  <br>
 			<div id="myCarousel1" class="carousel slide" data-ride="carousel" data-interval="0">
 				  
 				<div class="carousel-inner">
@@ -318,7 +318,7 @@ color: black; text-decoration: none;
    
   <div class="row"><br><br><br><br>
 		<div class="col-md-10 col-center m-auto"><br><br><br> 
-			<h3>  <span><div id="vid"><b>  T A K L O G</b></div>  </span></h3>  <br>
+			<h3>  <span><div id="vid"><b> TAKLOG </b></div>  </span></h3>  <br>
 			<div id="myCarousel1" class="carousel slide" data-ride="carousel" data-interval="0">
 				  
 				<div class="carousel-inner">
@@ -341,7 +341,7 @@ color: black; text-decoration: none;
   
   <div class="row"><br><br><br><br>
 		<div class="col-md-10 col-center m-auto"><br><br><br> 
-			<h3>  <span><div id="vid"><b>채 빈 S 채 널</b></div>  </span></h3>  <br>
+			<h3>  <span><div id="vid"><b> 채빈S 채널 </b></div>  </span></h3>  <br>
 			<div id="myCarousel1" class="carousel slide" data-ride="carousel" data-interval="0">
 				  
 				<div class="carousel-inner">
@@ -363,7 +363,7 @@ color: black; text-decoration: none;
   
   <div class="row"><br><br><br><br>
 		<div class="col-md-10 col-center m-auto"><br><br><br> 
-			<h3>  <span><div id="vid"><b>오 이 도 꿔 까</b></div>  </span></h3>  <br>
+			<h3>  <span><div id="vid"><b> 오이도꿔까  </b></div>  </span></h3>  <br>
 			<div id="myCarousel1" class="carousel slide" data-ride="carousel" data-interval="0">
 				  
 				<div class="carousel-inner">
@@ -383,7 +383,7 @@ color: black; text-decoration: none;
   </div></div> 
    <div class="row"><br><br><br><br>
 		<div class="col-md-10 col-center m-auto"><br><br><br> 
-			<h3>  <span><div id="vid"><b> 희 정 이 네 </b></div>  </span></h3>  <br>
+			<h3>  <span><div id="vid"><b> 희정이네 </b></div>  </span></h3>  <br>
 			<div id="myCarousel1" class="carousel slide" data-ride="carousel" data-interval="0">
 				  
 				<div class="carousel-inner">
@@ -404,7 +404,7 @@ color: black; text-decoration: none;
   
   <div class="row"><br><br><br><br>
 		<div class="col-md-10 col-center m-auto"><br><br><br> 
-			<h3>  <span><div id="vid"><b>C H A E W O N</b></div>  </span></h3>  <br>
+			<h3>  <span><div id="vid"><b> CHAEWON </b></div>  </span></h3>  <br>
 			<div id="myCarousel1" class="carousel slide" data-ride="carousel" data-interval="0">
 				  
 				<div class="carousel-inner">
@@ -426,7 +426,7 @@ color: black; text-decoration: none;
  
   <div class="row"><br><br><br><br>
 		<div class="col-md-10 col-center m-auto"><br><br><br> 
-			<h3>  <span><div id="vid"><b>은 주 의 일 상</b></div>  </span></h3>  <br>
+			<h3>  <span><div id="vid"><b> 은주의 일상 </b></div>  </span></h3>  <br>
 			<div id="myCarousel1" class="carousel slide" data-ride="carousel" data-interval="0">
 				  
 				<div class="carousel-inner">

@@ -545,7 +545,7 @@ color: black; text-decoration: none;
  <div class="row">
 		<div class="col-md-10 col-center m-auto">
 		<br><br><br><br>
-			<h3> <span> <div id="vid"><b>인기 동영상</b></div> </span> </h3>
+			<h3> <span> <div id="vid"><b> 인기 동영상 </b></div> </span> </h3>
 			<div id="myCarousel1" class="carousel slide" data-ride="carousel" data-interval="0">
 				<div class="carousel-inner"> 
 						<div class="row">

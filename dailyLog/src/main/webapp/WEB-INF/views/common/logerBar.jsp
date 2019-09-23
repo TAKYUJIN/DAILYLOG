@@ -67,7 +67,7 @@
 		position: relative;
 	}
 	.navbar .nav li a {
-		color: #888;
+		color: #525252;
 	}
 	.search-box {
         position: relative;
@@ -266,10 +266,19 @@
 	a:visited { color: black; text-decoration: none; color: black;}
  	a:hover { color: black; text-decoration: none; color: black;}
 	a:active { color: black; text-decoration: none; color: black;}
-	
-	#logo {
+   
+  #logo {
    	color:black;
    	padding-top:5px; 
+   	margin-top:5px;
+   }
+   
+   #searchId {
+   	color:#525252;
+   }
+   
+   #navbarCollapse {
+   	font-size:15px;
    }
 </style>
 <script type="text/javascript">
@@ -281,8 +290,8 @@
 </head> 
 <body>
 <nav class="navbar navbar-default navbar-expand-lg navbar-light">
-	<div class="navbar-header d-flex col" >
-		<a href="home.mb" value="DailyLog" id="logo" style="width:90px; font-size:22px;">DailyLog</a>
+	<div class="navbar-header d-flex col" style="margin-top:10px;">
+		<a value="DailyLog" id="logo" style="width:110px; font-size:22px;" onclick="location.href='home.mb'">DailyLog</a>
 	</div>
 	<!-- Collection of nav links, forms, and other content for toggling -->
 	<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
@@ -295,28 +304,28 @@
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">댓글</a></li>
 			<li class="nav-item"><a href="logerdeclarationlist.lo" class="nav-link" style="padding-right:0px;">신고기록</a></li>
 		</ul>
-		<form class="navbar-form form-inline" style="width:240px;">
+		<form class="navbar-form form-inline" style="width:240px; margin-top:10px; margin-left:120px;">
 			<div class="input-group search-box">								
 				<input type="text" id="search" class="form-control" placeholder="검색">
 				<span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
 			</div>
 		</form>
-		<ul class="nav navbar-nav navbar-right ml-auto" style="width:265px;">			
+		<ul class="nav navbar-nav navbar-right ml-auto" style="width:310px;">			
 			<li class="nav-item">
 				<a href="logout.me" class="btn_global link_login" >
-				<img src="resources/images/exit.png" style="width:20px;">
+				<img src="resources/images/exit.png" style="width:25px;">
 			</a>
 			</li>
 			
 			<li class="nav-item">
 				<a href="#none" class="btn_global link_login">
-				<img src="resources/images/film.png" style="width:20px;">
+				<img src="resources/images/film.png" style="width:25px;">
 			</a>
 			</li>
 			
 			<li class="nav-item">
 				<button  type="button" id="friendlist" class="btn_global link_login" >
-				<img src="resources/images/laugh.png" style="width:20px;margin:15px;">
+				<img src="resources/images/laugh.png" style="width:25px;margin:15px;">
 				</button>
 			 
 			</li>
@@ -330,7 +339,7 @@ $('#friendlist').click(function(){
 </script>
 			<li class="nav-item">
 			<a href="#none" data-toggle="dropdown" class="btn_global link_login">
-				<img src="resources/images/bell.png" style="width:20px;">
+				<img src="resources/images/bell.png" style="width:25px;">
 			</a>
 				<ul class="dropdown-menu form-wrapper">					
 					<li>
@@ -350,7 +359,7 @@ $('#friendlist').click(function(){
 			</li>
 			<li class="nav-item">
 				<a href="#none" class="btn_global link_login" onclick="account();">
-				<img src="resources/images/management.png" style="width:20px;">
+				<img src="resources/images/management.png" style="width:25px;">
 			</a>
 			</li>
 		</ul>
