@@ -1,8 +1,9 @@
-/*package com.kh.with.websocket.controller;
+ package com.kh.with.websocket.controller;
 
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,89 +26,121 @@ import com.kh.with.websocket.model.vo.ChatMember;
 @SessionAttributes("login") 
 public class FriendController {
 
-	private static final Logger log =LoggerFactory.getLogger(FriendController.class);
+	//private static final Logger logger = LoggerFactory.getLogger(FriendController.class);
 	
 	@Autowired
-	FriendChatService friendchatservice;
+	FriendChatService FriendChatService;
 	
-	
-	@RequestMapping(value="chat.mb",method= {RequestMethod.GET,RequestMethod.POST})
-	public String friendchat (Model model,HttpServletRequest request) {
+	//전체채팅룸으로 이동
+	@RequestMapping(value="echo.mb", method = { RequestMethod.GET, RequestMethod.POST })
+	public String chat (HttpSession session,Model model,HttpServletRequest req) throws Exception{
 		
+//		logger.info("chat.mb RUN! / Run Time: " + new Date());	
+	//	System.out.println("login"+logger);
+		Member login = (Member)req.getSession().getAttribute("login");
+		System.out.println("login"+login);
+		if(login==null) {
+			return "redirect:/loginbutton.me";
+		}
 		
-		log.info("chat.mb run!!"+new Date());
+		//DB에 현재 아이디로 어떤 방에 들어가있는지 조사 후, 세팅하기
+		ChatMember chatM = FriendChatService.getRoomMember(new ChatMember(0, login.getUserId(), "",""));
 		
-		Member m =(Member)request.getSession().getAttribute("login");
-		ChatMember chM =friendchatservice.getRoomMember(new ChatMember(0,m.getNickname(),"",""));//room 변경
-		
-		model.addAttribute("room","WITH");
-		
-		return "friends/friendchat";
-		
-	}
-	@RequestMapping(value="createChat.mb",method= {RequestMethod.GET,RequestMethod.POST})
-	public String createChat(Model model,HttpServletRequest request,Chat chat) {
-		log.info("createChat.mb run!"+new Date());
-		
-		Member login=(Member)request.getSession().getAttribute("login");
-		log.info(chat.toString());
-		
-		Chat ch=friendchatservice.checkRoom(chat.getname());
-		if(ch ==null) {
-			friendchatservice.createchatRoom(chat);
+		//만약 채팅방을 처음 입장하는 것이라면 방에대한 아이디정보를 생성
+		if(chatM ==null) {
+			FriendChatService.addRoomMember(new ChatMember(0, login.getUserId(), "all", "all"));
+			
+			//추가를 한다음 chatM을 다시 받아오도록한다.
+			chatM = FriendChatService.getRoomMember(new ChatMember(0, login.getUserId(), "",""));
+		//	logger.info("아이디 정보 추가 성공!" + new Date());
 			
 		}
-		//현재 아이디로 만든 방의 이름으로 정보 수정
-		friendchatservice.updateRoomMember(new ChatMember(0,login.getNickname(),chat.getname(),""));
+		//존재한다면 방정보를 all로 변경 
+		else {
+			FriendChatService.updateRoomMember(new ChatMember(0,  login.getUserId(), "all", "")); //room 변경
+			
+		}
 		
-		//이전 방은 수정 하지 않음
-		
-		model.addAttribute("room","WITH");
-		return "friends/friendchat";
-		
+
+		//현재 방이름 넣기(전체채팅방이니 all)
+		model.addAttribute("room", "all");
+
+		return "friends/chattiels";
 	}
 	
-	//중복 확인
+	
+	//방만들기
+	@RequestMapping(value="createChatRoom.mb", method = { RequestMethod.GET, RequestMethod.POST })
+	public String createChatRoom (HttpSession session,Model model, HttpServletRequest req, Chat chat) throws Exception{
+		
+		//logger.info("createChatRoom.mb RUN! / Run Time: " + new Date());
+		
+		Member login = (Member)req.getSession().getAttribute("login");
+		
+		if(login==null) {
+			return "redirect:/loginbutton.me";
+		}
+		
+	//	logger.info(chat.toString());
+		
+		//해당 정보로 방을 DB에 생성( 이미 방이 존재한다면 생성하지 않는다 )
+		Chat dto = FriendChatService.checkRoom(chat.getName());
+		if(dto ==null) {
+			FriendChatService.createChatRoom(chat);
+		}
+		
+		//현재 아이디로 만든 방의 이름으로 정보를 수정한다.
+		FriendChatService.updateRoomMember(new ChatMember(0, login.getUserId(), chat.getName(), ""));
+		
+		//이전방은 수정하지 않음
+		
+		//현재 방이름 넣기(전체채팅방이니 all)
+		model.addAttribute("room", chat.getName());
+		
+		return "friends/chattiels";
+	}
+	//중복확인
 	@ResponseBody
-	@RequestMapping(value="checkRoom.mb",method= {RequestMethod.GET,RequestMethod.POST})
-	public int checkRoom(Model model,String name) {
-		System.out.println("name"+name);
+	@RequestMapping(value="checkRoom.mb", method = { RequestMethod.GET, RequestMethod.POST })
+	public int checkRoom(Model model, String name) throws Exception{
+		System.out.println("name="+name);
 		
-		Chat chat=FriendChatService.chekRoom(name);
-		
-		//중복값이 없을 경우
-		if(chat ==null) {
+		Chat dto = FriendChatService.checkRoom(name);
+		//중복값이 없을경우
+		if(dto ==null) {
 			return 1;
-		}else {
-			
-			return 0;
 		}
+		else {
+			return 0;
+		}		
 	}
 	
-	//방 이동
-	@RequestMapping(value="MoveChatRoom.mb",method= {RequestMethod.GET,RequestMethod.POST})
-	
-	 public String MoveChatRoom (Model model,HttpServletRequest request,String roomName) {
-	
-		log.info("Movechatroom"+new Date());
+	//방이동
+	@RequestMapping(value="MoveChatRoom.mb", method = { RequestMethod.GET, RequestMethod.POST })
+	public String MoveChatRoom (HttpSession session,Model model, HttpServletRequest req, String roomName) throws Exception{
 		
-		Member login=(Member)request.getSession().getAttribute("login");
+	//	logger.info("MoveChatRoom.mb RUN! / Run Time: " + new Date());
 		
-			log.info("이동 할 방 이름"+roomName);
-			//이동하게 될 방이름으로 수정
-			FriendChatService.updateRoomMember(new ChatMember(0,login.getNickname(),roomName,""));
+		Member login = (Member)req.getSession().getAttribute("login");
 		
-			model.addAttribute("room",roomName);
+		if(login==null) {
+			return "redirect:/loginbutton.me";
+		}
 		
-		return roomName;
+	//	logger.info("이동할 방이름 : "+roomName);
 		
+		//이동하게 될 방 이름으로 수정
+		FriendChatService.updateRoomMember(new ChatMember(0, login.getUserId(), roomName, ""));
 		
+		//접속 끊기 이전방은 수정하지 않음.
 		
+		//방이동 처리
+		model.addAttribute("room", roomName);
+		
+		return "friends/chattiels";
 	}
-	 
-	 
 	
 	
+}
 	
-	
-}*/
+ 

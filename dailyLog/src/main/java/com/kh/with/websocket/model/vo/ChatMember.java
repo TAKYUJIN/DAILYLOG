@@ -3,7 +3,7 @@ package com.kh.with.websocket.model.vo;
 import java.sql.Date;
 
 public class ChatMember implements java.io.Serializable{
-	private int userNo;
+	/*private int userNo;
 	private String userNm;
 	private String userId;
 	private String nickname;
@@ -14,18 +14,6 @@ public class ChatMember implements java.io.Serializable{
 	
 	
 	public ChatMember() {}
-
-
-	public ChatMember(int userNo, String userNm, String userId, String nickname, String gender, String birth, int age) {
-		super();
-		this.userNo = userNo;
-		this.userNm = userNm;
-		this.userId = userId;
-		this.nickname = nickname;
-		this.gender = gender;
-		this.birth = birth;
-		this.age = age;
-	}
 
 
 	public int getUserNo() {
@@ -98,14 +86,76 @@ public class ChatMember implements java.io.Serializable{
 	}
 
 
+	public String getRoom() {
+		return Room;
+	}
+
+
+	public void setRoom(String room) {
+		Room = room;
+	}
+
+
 	@Override
 	public String toString() {
 		return "ChatMember [userNo=" + userNo + ", userNm=" + userNm + ", userId=" + userId + ", nickname=" + nickname
-				+ ", gender=" + gender + ", birth=" + birth + ", age=" + age + "]";
+				+ ", gender=" + gender + ", birth=" + birth + ", age=" + age + ", Room=" + Room + "]";
 	}
-	
-	
-	
-	
-	
+
+
+	public ChatMember(int userNo, String userNm, String userId, String nickname, String gender, String birth, int age,
+			String room) {
+		super();
+		this.userNo = userNo;
+		this.userNm = userNm;
+		this.userId = userId;
+		this.nickname = nickname;
+		this.gender = gender;
+		this.birth = birth;
+		this.age = age;
+		Room = room;
+	}
+
+ */
+	private int  No;
+	private String Id;
+	private String room;
+	private String priroom;
+	public int getNo() {
+		return No;
+	}
+	public void setNo(int no) {
+		No = no;
+	}
+	public String getId() {
+		return Id;
+	}
+	public void setId(String id) {
+		Id = id;
+	}
+	public String getRoom() {
+		return room;
+	}
+	public void setRoom(String room) {
+		this.room = room;
+	}
+	public String getPriroom() {
+		return priroom;
+	}
+	public void setPriroom(String priroom) {
+		this.priroom = priroom;
+	}
+	public ChatMember(int no, String id, String room, String priroom) {
+		super();
+		No = no;
+		Id = id;
+		this.room = room;
+		this.priroom = priroom;
+	}
+	@Override
+	public String toString() {
+		return "ChatMember [No=" + No + ", Id=" + Id + ", room=" + room + ", priroom=" + priroom + "]";
+	}
+ 
+	 
 }
