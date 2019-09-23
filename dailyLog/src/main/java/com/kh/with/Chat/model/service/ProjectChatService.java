@@ -1,12 +1,11 @@
-package com.kh.with.websocket.model.service;
+package com.kh.with.Chat.model.service;
 
 import java.util.List;
 
 import com.kh.with.websocket.model.vo.Chat;
 import com.kh.with.websocket.model.vo.ChatMember;
 
-public interface FriendChatService {
-
+public interface ProjectChatService {
 public Chat checkRoom(String name) throws Exception;
 	
 	public void createChatRoom(Chat dto) throws Exception;

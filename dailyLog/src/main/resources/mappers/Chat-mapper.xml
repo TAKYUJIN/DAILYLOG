@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="FriendChat">
+
+<!-- <resultMap type="com.kh.with.Chat.model.vo.chatRoom" id="chatRoomResultSet">
+		 <id property="chatroom_id" column="CHATROOM_ID" />
+		<result property="userId" column="USER_ID" />
+		<result property="friId" column="FRI_ID" /> 
+		<result property="class_id" column="CLASS_ID" />
+	</resultMap>
+	
+	
+<resultMap type="com.kh.with.Chat.model.vo.Text" id="TextResultSet">
+		 <id property="text_no" column="NO" />
+		<result property="text_sender" column="SENDER" />
+		<result property="text_receiver" column="RECEIVER" /> 
+		<result property="text_content" column="CONTENT" /> 
+		<result property="text_sendTime" column="SENDTIME" /> 
+		<result property="text_readTime" column="READTITME" /> 
+		<result property="chatroom_id" column="CHATROOM_ID" /> 
+		<result property="userId" column="USER_ID" /> 
+		<result property="friId" column="FRI_ID" /> 
+		<result property="room_Id" column="ROOM_ID" /> 
+		<result property="class_Id" column="CLASS_ID" /> 
+		
+		
+	</resultMap> -->
+<!-- <resultMap type="com.kh.with.video.model.vo.Attachment"
+		id="attachmentSet">
+
+		<id property="userNo" column="USER_NO" />
+		<result property="amNo" column="AM_NO" />
+		<result property="vNo" column="V_NO" />
+		<result property="amDt" column="AM_DT" />
+		<result property="fileNm" column="FILE_NM" />
+		<result property="amTY" column="AM_TY" />
+	</resultMap>
+ 
+	 -->
+<!-- <insert id = "createRoom">
+insert into CHATROOM (userId , friId, class_Id) 
+values(#{userId}, #{friId} , #{class_Id} )
+</insert>
+
+
+<select id ="isRoom" resultType = "chatRoom">
+select * from CHATROOM WHERE userId = #{userId} and friId = #{friId} 
+and class_Id = #{class_Id} 
+</select>
+
+<insert id = "insertMessage">
+insert into MESSAGE (text_sender , text_receiver, text_content, 
+chatroom_id, userId , friId, class_Id)
+values (#{text_sender}, #{text_receiver}, #{text_content} , #{chatroom_id} , #{userId},
+#{friId} , #{class_Id})
+</insert>
+
+<select id = "getPartner" resultType = "Text">
+SELECT USER_ID FROM MESSAGE WHERE FRI_ID = #{friId} and CHATROOM_ID = #{class_Id}
+</select>
+<select id = "getProfile" resultType = "String">
+SELECT user_profileImagePath FROM ATTACHMENT WHERE user_id = #{user_id}
+</select>
+
+<select id = "getProfile" resultType = "String">
+SELECT FILE_NM FROM ATTACHMENT A JOIN   MEMBER M ON(A.USER_NO=M.USER_NO)
+WHERE A.USER_NO = #{userNo} AND AM_TY='회원
+</select>
+
+
+<select id = "getName" resultType = "String">
+SELECT USER_NM FROM MEMBER WHERE USER_ID = #{userId}
+</select>
+
+<select id = "getMessageList" resultType = "Text">
+select m.* , user_name, user_profileImagePath from MESSAGE m left outer join USER u on m.message_sender = u.user_id where CHATROOM_chatroom_id = #{CHATROOM_chatroom_id}
+
+</select>
+
+<select id = "getMessageList" resultType = "Text">
+select M.* , M1.USER_NM, FILE_NM from MESSAGE M left outer join MEMBER M1 
+JOIN ATTACHMENT A ON(A.USER_NO =M1.USER_NO)
+on M.SENDER = M.USER_ID WHERE CHATROOM_ID = #{chatroom_id} AND AM_TY='회원'
+</select>
+
+
+<select id = "getRoomList" resultType = "chatRoom">
+select * from CHATROOM where USER_ID = #{userId}
+</select>
+<select id = "getRoomList2" resultType = "chatRoom">
+select * from CHATROOM where FRI_ID = #{friId}
+</select>
+
+<select id = "getRecentMessage" resultType = "MessageVO">
+
+select m.* , class_name, class_id , TUTOR_tutor_id from MESSAGE m left outer join CLASS c on m.CLASS_class_id = c.class_id 
+where CHATROOM_chatroom_id = #{CHATROOM_chatroom_id} order by message_id desc limit 1;
+
+
+</select>
+ <select id = "getRecentMessage" resultType = "Text">
+select m.* , CLASS_ID,  
+C.FRI_ID from
+MESSAGE m 
+left outer join CHATROOM c on m.CHATROOM_ID = c.CHATROOM_ID
+where m.CHATROOM_ID = #{chatroom_Id} order by NO desc limit 1
+</select>
+
+<select id = "getTutorId" resultType = "String">
+select tutor_id from TUTOR where USER_user_id = #{USER_user_id}
+</select>
+ <select id = "getTutorId" resultType = "String">
+SELECT USER_ID FROM MEMBER WHERE USER_ID = #{friId}
+</select> 
+
+
+
+
+
+
+<update id ="updateReadTime">
+update MESSAGE SET READTITME = NOW() where FRI_ID = #{friId} AND CLASS_ID = #{class_Id}
+ AND READTITME = SENDTIME and SENDER =
+  FRI_ID and USER_ID = #{userId} 
+</update>
+<update id ="updateReadTimeTutor">
+update MESSAGE SET READTITME = NOW() where FRI_ID = #{friId} AND CLASS_ID = #{class_Id} 
+AND READTITME = SENDTIME and SENDER = USER_ID and USER_ID =
+ #{userId} 
+
+</update>
+
+
+<select id = "getUnReadCount" resultType = "int">
+
+select count(*) from MESSAGE where USER_ID = #{userId} and FRI_ID = #{friId} AND CLASS_ID = 
+#{CLASS_class_id} AND READTITME = SENDTIME and SENDER = FRI_ID 
+
+</select>
+<select id = "getUnReadCountTutor" resultType = "int">
+
+select count(*) from MESSAGE where FRI_ID =#{friId} and CLASS_ID = #{CLASS_class_id}
+ AND READTITME = SENDTIME and SENDER = USER_ID and
+  USER_ID = #{userId} 
+
+</select>
+
+<select id = "getAllCount" resultType = "int">
+select count(*) from MESSAGE WHERE (FRI_ID = #{friId} and READTITME = 
+SENDTIME and SENDER != #{userId}) or (USER_ID = #{userId} 
+and READTITME = SENDTIME and SENDER != #{userId})  
+
+
+</select> -->
+
+
+
+
+	<select id="getRoom" parameterType="java.lang.String" resultType="com.kh.with.websocket.model.vo.Chat">
+	SELECT * FROM  CHAT WHERE NAME =#{name} AND REMAINCOUNT !=0
+	</select>
+	
+	<!-- 방 생성 -->
+	<insert id="createChatRoom" parameterType="com.kh.with.websocket.model.vo.Chat">
+	INSERT INTO CHAT (NUM, NAME, PWD, TOTALCOUNT,REMAINCOUNT, CONTENT)
+	VALUES(CHAT_SEQ.NEXTVAL, #{name}, #{pwd}, #{totalcount},0, #{content})
+	</insert>
+	
+	<!-- 존재하는 방 리스트가져오기 -->
+	<select id="getRoomList" resultType="com.kh.with.websocket.model.vo.Chat">
+	SELECT * FROM CHAT
+	WHERE REMAINCOUNT !=0
+	</select>
+	
+	<!-- 현재 어떤 방에 들어가있는지 데이터추가하기 -->
+	<insert id="addRoomMember" parameterType="com.kh.with.websocket.model.vo.ChatMember">
+	INSERT INTO CHATMEMBER(NUM, ID, ROOM, PRIROOM)
+	VALUES(CHAT_MEMBER_SEQ.NEXTVAL, #{id}, #{room}, #{priroom})
+	</insert>
+	
+	<!-- 현재 아이디가 어떤방에 들어가있는지 확인 -->
+	<select id="getRoomMember" parameterType="com.kh.with.websocket.model.vo.ChatMember" resultType="com.kh.with.websocket.model.vo.ChatMember">
+	SELECT ID,ROOM,PRIROOM
+	FROM CHATMEMBER
+	WHERE ID = #{id}
+		
+	</select>
+	
+	<!-- 같은 방에 존재하는 사람정보 모두가져오기 -->
+	<select id="sameRoomList" parameterType="com.kh.with.websocket.model.vo.ChatMember" resultType="com.kh.with.websocket.model.vo.ChatMember">
+	SELECT ID, ROOM, PRIROOM
+	FROM CHATMEMBER
+	WHERE ROOM=#{room}
+	</select>
+	
+	<!-- 방변경 -->
+	<update id="updateRoomMember" parameterType="com.kh.with.websocket.model.vo.ChatMember">
+	<if test="room !=null and room !=''">
+	UPDATE CHATMEMBER SET ROOM = #{room} 
+	WHERE ID= #{id}
+	</if>
+	
+	<if test="priroom !=null and priroom !=''">
+	UPDATE CHATMEMBER SET PRIROOM = #{priroom} 
+	WHERE ID= #{id}
+	</if>	
+	</update>
+	
+	<!-- 방정보 제거-->
+	<delete id="deleteRoomMember" parameterType="com.kh.with.websocket.model.vo.ChatMember">
+	DELETE FROM CHATMEMBER
+	WHERE ID=#{id}
+	
+	</delete>
+	
+	
+	<!-- 채팅방 입장 count증가 : Controller에서 처리-->
+	<update id="updateChatCountInc" parameterType="com.kh.with.websocket.model.vo.Chat">
+		UPDATE CHAT SET REMAINCOUNT = REMAINCOUNT + 1
+		WHERE NAME = #{name}
+	</update>
+	
+	<!-- 채팅방 입장 count감소 : Controller에서 처리-->
+	<update id="updateChatCountDec" parameterType="com.kh.with.websocket.model.vo.Chat">
+		UPDATE CHAT SET REMAINCOUNT = REMAINCOUNT - 1
+		WHERE NAME = #{name}
+	</update>
+	
+	<!-- 채팅방 삭제 : REMAINCOUNT가 0이되면 삭제한다. -->
+	<delete id="deleteChat">
+		DELETE FROM CHAT
+		WHERE REMAINCOUNT = 0
+	</delete>
+	
+	<!-- 검색한 방 리스트가져오기 -->
+	<select id="searchRoomList" resultType="com.kh.with.websocket.model.vo.Chat" parameterType="java.lang.String">
+	SELECT * FROM CHAT
+	WHERE REMAINCOUNT !=0 AND NAME LIKE '%'||#{name}||'%'
+	</select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>

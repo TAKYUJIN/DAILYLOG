@@ -158,7 +158,7 @@ var id='${login.nickname}';
 $(document).ready(function(){
 	$("#textID").focus();
 });
-	ws = new WebSocket("ws://localhost:8001/");
+	ws = new WebSocket("ws://localhost:8001/with/chat.mb");
 ws.onopen =function(){
 	//처음 접속시에만 채팅방에 추가
 	$("#output").append("<b>채팅방에 참여 했습니다.</b>:"+$("#room").val()+"<br>");
