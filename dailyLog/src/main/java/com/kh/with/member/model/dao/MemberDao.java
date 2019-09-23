@@ -51,6 +51,8 @@ public interface MemberDao {
 
 	int resetKey(String key, String email);
 
+	String showId(String phone);
+
 
 
 

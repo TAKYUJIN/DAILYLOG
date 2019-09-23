@@ -494,6 +494,13 @@ public class VideoController {
 
 		return "video/test22";
 	}
+	
+	// 더보기 입력 페이지로 이동
+		@RequestMapping(value = "addInfo.vd")
+		public String showAddInfo() {
+
+			return "video/videoAddInfo";
+		}
 
 
 

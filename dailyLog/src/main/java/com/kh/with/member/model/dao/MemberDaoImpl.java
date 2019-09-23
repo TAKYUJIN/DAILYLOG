@@ -144,4 +144,9 @@ public class MemberDaoImpl implements MemberDao {
 		return sqlSession.update("Member.resetPwd", map);
 	}
 
+	@Override
+	public String showId(String phone) {
+		return sqlSession.selectOne("Member.showId", phone);
+	}
+
 }

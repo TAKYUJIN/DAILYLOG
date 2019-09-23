@@ -317,7 +317,7 @@ public class MemberController {
 	// 회원 로그인
 	@RequestMapping(value = "login.me")
 	public String loginCheck(Member m, Model model) {
-
+		System.out.println("로그인 안되냐고 ㅠㅠㅠㅠㅠㅠㅠㅠ ");
 		try {
 			Member loginUser = ms.loginMember(m);
 
@@ -729,7 +729,21 @@ public class MemberController {
 		return "member/findPwd";
 	}
 		
-
+	@RequestMapping(value="showId.me")
+	public String showId(HttpServletRequest request, Model model) {
+		String phone = request.getParameter("phone");
+		System.out.println(phone + "::::: dlllll");
+		
+		String userId = ms.showId(phone);
+		System.out.println(userId + "userId 받아왔나");
+		
+		if (userId != null) {
+	         model.addAttribute("msg", "회원님의 아이디는 " + userId + " 입니다.");
+	         model.addAttribute("userId", userId);
+	      } 
+		
+		return "member/findId";
+	}
 	
 
 }

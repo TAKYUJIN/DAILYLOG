@@ -70,6 +70,14 @@
 		WHERE USER_ID = #{userId}
 	</select>
   
+ 
+  	<select id="showId" parameterType="String" resultType="java.lang.String">
+		SELECT USER_ID
+		FROM MEMBER
+		WHERE PHONE = #{phone}
+	</select> 
+	
+	
   <!-- 회원정보조회 -->
    <select id="selectMyPage" parameterType="Member" resultMap="memberResultSet">
      SELECT M.*, 

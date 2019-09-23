@@ -116,7 +116,7 @@
              //alert("서버에러 ");
           }
        });
-    });		
+    });ㄴ	
 		
 				$("#cksmsPn").click(function(){
 					

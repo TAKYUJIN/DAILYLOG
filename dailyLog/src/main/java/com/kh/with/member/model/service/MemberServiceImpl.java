@@ -246,6 +246,15 @@ public class MemberServiceImpl implements MemberService {
 
 
 
+	@Override
+	public String showId(String phone) {
+		// TODO Auto-generated method stub
+		return md.showId(phone);
+	}
+
+
+
+
 	
 
 
