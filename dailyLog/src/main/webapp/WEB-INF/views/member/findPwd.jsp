@@ -62,7 +62,28 @@ A:hover {
 }
 </style>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-
+<script>
+			function login(){
+				location.href="loginbutton.me";
+			}
+			function sendPwd(){
+				var userNm = $("#userNm").val();
+				var email = $('#email').val();
+				
+				$.ajax({
+					url:"/sendPwd.me",
+					type:"post",
+					data:{userNm:userNm, email:email},
+					success:function(data){
+						location.href="loginbutton.me";				
+					},
+					error:function(){
+						console.log("실패!");
+					}
+				});
+				alert("임시비밀번호가 발송되었습니다.\n확인 후 로그인 해주세요");
+			}
+		</script>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/guest.jsp"></jsp:include>
@@ -82,7 +103,7 @@ A:hover {
 		<br> <br>
 
 
-
+		
 		<div id="1nd_con">
 			<p style="font-weight: bold; font-size: medium; margin-left: 30px;">이메일로
 				비밀번호 찾기</p>
@@ -90,16 +111,17 @@ A:hover {
 		</div>
 
 		<div id="inputdiv" style="width: 400px; margin: 0 auto;">
+			<form action= "sendPwd.me" method="POST">
 			<div class="form-group">
 				<input type="text" class="form-control" name="userNm" id="userNm"
-					placeholder="Name" required="required" style="width: 292px;">
+					placeholder="Name" required="required" style="width: 292px; color:black;">
 			</div>
 
 			<div class="form-group">
 				<div class="row">
 					<div class="col-xs-9">
 						<input type="email" class="form-control" name="email" id="email"
-							placeholder="Email" required="required">
+							placeholder="Email" required="required" style="color:black;">
 					</div>
 					<div class="col-xs-3">
 						<button id="ckNn"
@@ -113,41 +135,23 @@ A:hover {
 			<br> <br>
 			<div class="form-group">
 				<div class="col-xs-4">
-					<button type="button" id="sendPwd"
+					<button id="sendPwd"
 						class="btn btn-join btn-lg btn-block" 
-						style="height: 40px; font-size: medium; background: #13334A; color: white;">번호
+						style="height: 40px; font-size: medium; background: #13334A; color: white;" onclick="sendPwd();">번호
 						발송</button>
 				</div>
 				<div class="col-xs-4">
 					<button class="btn btn-join btn-lg btn-block"
-						style="height: 40px; font-size: medium;">취소</button>
+						style="height: 40px; font-size: medium;" onclick="login();">취소</button>
 				</div>
 
 			</div>
+			</form>
 		</div>
 
 	</div>
-	<script>	
 	
-	// 아이디 값 받고 출력하는 ajax
 	
-	$(function() {
-		$("#sendPwd").click(function(){
-			$.ajax({
-				url : "sendPwd.me",
-				type : "POST",
-				data : {
-					id : $("#userNm").val(),
-					email : $("#email").val()
-				},
-				success : function(result) {
-					alert(result);
-				},
-			})
-		});
-	})
-	</script>
-
 
 	<br>
 	<br>

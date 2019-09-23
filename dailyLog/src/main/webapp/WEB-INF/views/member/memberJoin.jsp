@@ -113,7 +113,7 @@
 			
           },
           error : function() {
-             alert("서버에러 ");
+             //alert("서버에러 ");
           }
        });
     });		

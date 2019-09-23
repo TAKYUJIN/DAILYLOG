@@ -51,11 +51,11 @@ input:focus {outline:none;}
 <body>
 	<jsp:include page="../common/mainBar.jsp"></jsp:include>
 
-	<form action="selectBookmark.mb" method="post" class="bookmarkForm">
+	<form action="selectVideoLike.mb" method="post" class="bookmarkForm">
 		<div id="searchArea" style="float:right;">
 
 				<div class="input-group search-box">
-					<input type="text" id="searchTitle" class="form-control" placeholder="북마크 검색">
+					<input type="text" id="searchTitle" class="form-control" placeholder="좋아요 검색">
 					<span class="input-group-addon"><i class="material-icons" onclick="selectBookmark();">&#xE8B6;</i></span>
 				</div>
 
@@ -74,9 +74,10 @@ input:focus {outline:none;}
 						<tr>
 					</c:if>
 					<td><video id='my-video' class='video-js' width="300px;"
-							height="200px;" controls loop poster='resources/uploadFiles/${b.fileNm}' data-setup='{}'
+							height="200px;" controls loop poster='resources/images/${b.fileNm}' data-setup='{}'
 							onclick="location.href='video.vd?userNo=${b.userNo}&vNo=${b.vNo}'">
-							 <source src="resources/uploadFiles/${b.vfileNm}" type="video/mp4">
+							<source src="resources/images/${b.fileNm}" type="">
+							 <source src='resources/uploadFiles/${b.vfileNm}' type='video/mp4'>
 							<!--  <source src='MY_VIDEO.webm' type='video/webm'> -->
 						</video><br> 
 						<input type="text" value="${b.vTitle}" class="video_td" id="videoTitle" readonly onfocus="this.blur();"> 
@@ -187,7 +188,7 @@ input:focus {outline:none;}
 				var title = $("#searchTitle").val();
 				console.log(title);
 				
-				location.href='selectBookmark.mb?title='+title;
+				location.href='selectVideoLike.mb?title='+title;
 				
 			}
 			

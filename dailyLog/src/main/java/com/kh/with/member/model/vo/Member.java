@@ -23,7 +23,7 @@ public class Member implements java.io.Serializable{
 	private String accNm;	//예금주
 	private String bankNm;	//은행명
 	private String account;	//계좌번호
-	//private String profilePath; // 프로필사진경로
+	private String profilePath; // 프로필사진경로
 	private int chNo;
 	private int count;	//회원 수 카운트
 
@@ -33,8 +33,8 @@ public class Member implements java.io.Serializable{
 
 	public Member(int userNo, String userNm, String userId, String userPwd, String nickname, String phone,
 			String gender, String birth, int age, String adultYN, String chYN, Date enrollDT, Date leaveDT,
-			int remainPT, String status, Date mon, Date day, String accNm, String bankNm, String account, int chNo,
-			int count) {
+			int remainPT, String status, Date mon, Date day, String accNm, String bankNm, String account,
+			String profilePath, int chNo, int count) {
 		super();
 		this.userNo = userNo;
 		this.userNm = userNm;
@@ -56,6 +56,7 @@ public class Member implements java.io.Serializable{
 		this.accNm = accNm;
 		this.bankNm = bankNm;
 		this.account = account;
+		this.profilePath = profilePath;
 		this.chNo = chNo;
 		this.count = count;
 	}
@@ -261,6 +262,16 @@ public class Member implements java.io.Serializable{
 	}
 
 
+	public String getProfilePath() {
+		return profilePath;
+	}
+
+
+	public void setProfilePath(String profilePath) {
+		this.profilePath = profilePath;
+	}
+
+
 	public int getChNo() {
 		return chNo;
 	}
@@ -287,13 +298,12 @@ public class Member implements java.io.Serializable{
 				+ ", nickname=" + nickname + ", phone=" + phone + ", gender=" + gender + ", birth=" + birth + ", age="
 				+ age + ", adultYN=" + adultYN + ", chYN=" + chYN + ", enrollDT=" + enrollDT + ", leaveDT=" + leaveDT
 				+ ", remainPT=" + remainPT + ", status=" + status + ", mon=" + mon + ", day=" + day + ", accNm=" + accNm
-				+ ", bankNm=" + bankNm + ", account=" + account + ", chNo=" + chNo + ", count=" + count + "]";
+				+ ", bankNm=" + bankNm + ", account=" + account + ", profilePath=" + profilePath + ", chNo=" + chNo
+				+ ", count=" + count + "]";
 	}
 
-	public Object getProfilePath() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
+
 
 
 }

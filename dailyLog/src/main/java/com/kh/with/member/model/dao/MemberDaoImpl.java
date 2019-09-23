@@ -2,6 +2,7 @@ package com.kh.with.member.model.dao;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -132,6 +133,15 @@ public class MemberDaoImpl implements MemberDao {
 	@Override
 	public int insert_myPage_file(SqlSessionTemplate sqlSession, HashMap map) {
 		return sqlSession.insert("Attachment.insert_myPage_file", map);
+	}
+
+	@Override
+	public int resetKey(String key, String email) {
+		Map map = new HashMap();
+		map.put("parameter1", key);
+		map.put("parameter2", email);
+		
+		return sqlSession.update("Member.resetPwd", map);
 	}
 
 }
