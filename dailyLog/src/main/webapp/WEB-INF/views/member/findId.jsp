@@ -65,6 +65,61 @@ A:hover {
 
 </style>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script>
+$(function() {
+
+	$("#sendId").click(function() {
+        var rphone = $('#phone').val();
+        var msg = $('input[name=msg]').val();
+        var sphone1 = $("#sphone1").val();
+        var sphone2 = $("#sphone2").val();
+        var sphone3 = $("#sphone3").val();
+        var action = $("#action").val();
+        console.log(rphone);
+        console.log(action);
+        console.log(msg);
+        
+        $.ajax({
+           url : "smssend.me",
+           type:"post",
+           data:{rphone:rphone, sphone1:sphone1, sphone2:sphone2, sphone3:sphone3, msg:msg, action:action},
+           success : function(data) {
+				alert("인증번호가 발송되었습니다.");			
+			
+         },
+         error : function() {
+            //alert("서버에러 ");
+         }
+      });
+   });	
+	
+	$("#cksmsPn").click(function(){
+		
+		var checkNo = $("input[name='msg']").val();
+		var checkPhone = $("input[name='authorization_code']").val();		
+		
+		console.log("checkNo :::: " + checkNo);
+		console.log("checkPhone ::::" + checkPhone);
+		
+		if(checkNo == checkPhone){
+			$("#checkNo").attr({"readonly":"true"});
+			$("#cksmsPn").hide();
+			smsPn = true;
+			alert("인증이 완료되었습니다.");
+			$("#joinBtn").removeAttr("disabled");
+			
+		}else{
+			alert("인증번호가 틀렸습니다. 다시 입력하세요.");
+			$("#joinBtn").attr("disabled", "disabled");
+		}	
+
+
+});
+
+})
+
+
+</script>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/guest.jsp"></jsp:include>
@@ -95,17 +150,17 @@ A:hover {
 		<div id="inputdiv" style=" width: 400px; margin:0 auto;">
 			<div class="form-group">
 				<input type="text" class="form-control" name="userNm" id="userNm"
-					placeholder="Name" required="required" style="width: 292px;">
+					placeholder="Name" required="required" style="width: 292px; color:black;">
 			</div>
 			
 			<div class="form-group" >
                <div class="row">
                   <div class="col-xs-9">
                      <input type="text" class="form-control" name="phone"
-                        id="phone" placeholder="Phone" required="required" >
+                        id="phone" placeholder="Phone" required="required" style="color:black;">
                   </div>
                   <div class="col-xs-3">
-                     <button id="ckNn"
+                     <button id="sendId"
                         style="height: 35px; border-radius: 5px; background: #13334A; color: white; border: solid 1px;"
                         name="btncheck">번호발송</button>
                   </div>
@@ -115,7 +170,7 @@ A:hover {
             <div class="form-group" id="showsms" >
                <div class="row">
                   <div class="col-xs-9">
-                     <input type="text" class="form-control" name="authorization_code" id="authorization_code" placeholder="authorization code" required="required"> 
+                     <input type="text" class="form-control" name="authorization_code" id="authorization_code" placeholder="authorization code" required="required" style="color:black;"> 
                         <input type="hidden" id="action" name="action" value="go">
                         <input type="hidden" name="msg" value="<%=checkNo%>">
                         <input type="hidden" id="sphone1" name="sphone1" value="010"> 
@@ -133,8 +188,8 @@ A:hover {
             <br><br>
             <div class="form-group" >
             <div class="col-xs-4" >
-               <button type="submit" id="joinBtn"
-                  class="btn btn-join btn-lg btn-block" onclick="joinfiBtn();" style="height:40px; font-size: medium; background: #13334A; color: white;" >확인 
+               <button type="submit" id="showId"
+                  class="btn btn-join btn-lg btn-block" onclick="showId();" style="height:40px; font-size: medium; background: #13334A; color: white;" >확인 
                </button></div>
               <div class="col-xs-4" >
                <button type="submit" id="joinBtn"
@@ -152,7 +207,19 @@ A:hover {
 	<br>
 	<br>
 	<br>
-
+	<script>
+		function showId(){
+			var phone = $("#phone").val();
+			location.href = "showId.me?phone="+phone;
+		}
+		
+		var message = "${msg}";
+		var userId = "${userId}";
+		if(message == "회원님의 아이디는 " + userId + " 입니다."){
+			alert(message);
+			document.location.href="loginbutton.me";
+		}
+	</script>
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 

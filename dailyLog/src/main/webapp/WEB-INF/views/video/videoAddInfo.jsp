@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>WITH</title>
+<title>Insert title here</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -85,7 +85,7 @@
 		<div class="mainpage">
 			<br> <br> <br>
 			<div class="container">
-				<div class="progress" style="width: 950px;">
+				<div class="progress" style="width: 950px; margin-left:90px;">
 					<div class="progress-bar progress-bar-striped active"
 						role="progressbar" aria-valuenow="40" aria-valuemin="0"
 						aria-valuemax="100" style="width: 40%"></div>
@@ -95,7 +95,7 @@
 			<div id="innerbox">
 				<div class="infobtn">
 					<button type="button" class="btn">기본정보</button>
-					<button type="button" class="btn" onclick="addInfo();">추가정보</button>
+					<button type="button" class="btn">추가정보</button>
 				</div>
 				<br>
 				<div class="basicInfo">
@@ -182,10 +182,6 @@
 				
 			});
 		});
-		
-		function addInfo(){
-			location.href="addInfo.vd";
-		}
 	</script>
 
 

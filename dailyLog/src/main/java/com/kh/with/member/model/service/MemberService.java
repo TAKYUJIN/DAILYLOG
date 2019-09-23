@@ -51,6 +51,8 @@ public interface MemberService {
 
 	void mailSendWithPwd(String email, HttpServletRequest request);
 
+	String showId(String phone);
+
 	
 	
 
