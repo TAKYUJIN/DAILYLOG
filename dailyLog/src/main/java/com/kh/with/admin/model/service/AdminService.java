@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.kh.with.admin.model.vo.Board;
 import com.kh.with.admin.model.vo.Calculate;
+import com.kh.with.admin.model.vo.ChannelBoard;
 import com.kh.with.admin.model.vo.UserBoard;
 import com.kh.with.block.model.vo.Blockch;
 import com.kh.with.block.model.vo.Blockrep;
@@ -41,6 +42,8 @@ public interface AdminService {
 	List<Object> chreportlist(Report report);
 	List<Object> repreportlist(Report report);
 
+	
+	
 	//블랙리스트
 	List<Object> ublacklist(Report2 report);
 	List<Object> cblacklist(Report2 report);
@@ -88,9 +91,9 @@ public interface AdminService {
 
 
 
-	List<Object> channelInfo();
+	List<ChannelBoard> channelInfo();
 
-	List<Integer> info();
+	List<ChannelBoard> info();
 
 
 	int monthMemberListCount();

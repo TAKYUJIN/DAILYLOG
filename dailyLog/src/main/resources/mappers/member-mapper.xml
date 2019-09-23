@@ -38,6 +38,12 @@
 		UPDATE MEMBER SET STATUS = #{status}
 		WHERE USER_ID = #{userId}
 	</update>
+	
+	<!-- 비밀번호 재발급  -->
+	<update id="resetPwd" parameterType="Map">
+		UPDATE MEMBER SET USER_PWD = #{parameter1}
+		WHERE USER_ID = #{parameter2}
+	</update>
 
 	<!-- 로그인 정보 조회용 쿼리 -->
 	<select id="loginCheck" resultMap="memberResultSet"
@@ -106,6 +112,7 @@
 		
 	</update>
 	
+	
 	<!-- 포인트 후원금액 차감 -->
 	<update id="regSub" parameterType="Member">
 		UPDATE MEMBER
@@ -165,11 +172,6 @@
 	UPDATE MEMBER SET STATUS =1
 	WHERE USER_NO =#{userNo}
 	</update>
- 	<select id="selectAge" parameterType="int" resultType="int">
-		SELECT AGE
-		FROM MEMBER
-		WHERE USER_NO = #{loginUser}
-	</select>
 	
 	<!-- 채널개설시 채널유무 , 닉네임 업데이트 -->
 	<update id="updatechyn" parameterType="Member">

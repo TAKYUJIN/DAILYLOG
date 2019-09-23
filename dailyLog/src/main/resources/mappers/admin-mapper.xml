@@ -72,6 +72,9 @@
 		WHERE CAL_TY = '완료')
 		ORDER BY RANK ASC
   	</select>
+  	
+  	
+  	
   	<select id="searchUserNm" resultMap="calculateResultSet">
 		SELECT RANK, CAL_NO, USER_NO, CH_NO, CAL_STDT, CAL_EDT, CAL_PRICE, CAL_VAT, AMOUNT_PRICE, CAL_TY, ACC_NM, BANK_NM, ACCOUNT, USER_ID, USER_NM
 		FROM(SELECT ROW_NUMBER() OVER(ORDER BY C.CAL_STDT DESC) RANK, C.*, USER_ID, USER_NM

@@ -291,6 +291,7 @@
 
 	<div class="navbar-header d-flex col" style="margin-top:13px;">
 	 <a value="DailyLog" id="logo" style="width:110px; font-size:22px;" onclick="location.href='home.mb'">DailyLog</a>
+
 	</div>
 	<!-- Collection of nav links, forms, and other content for toggling -->
 	<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
@@ -303,7 +304,7 @@
 			<li class="nav-item"><a href="bookmark.mb" class="nav-link" style="padding-right:0px;" onclick="">북마크</a></li>			
 			<li class="nav-item"><a href="subscribe.mb" class="nav-link" style="padding-right:0px;">구독</a></li>	
 			<li class="nav-item"><a href="newAction.mb" class="nav-link" style="padding-right:0px;">최근 활동</a></li>	
-			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">좋아요 영상</a></li>
+			<li class="nav-item"><a href="videoLike.mb" class="nav-link" style="padding-right:0px;">좋아요 영상</a></li>
 
 			<li class="nav-item" >
 	
@@ -311,12 +312,11 @@
  <a href="newHomeChannel.lo?userNo=${sessionScope.loginUser.userNo}" class="nav-link" style="padding-right:0px;" onclick="">로거 스튜디오</a></li> 
 			
 			
-			<li class="nav-item"><a href="lotest.lo" class="nav-link" style="padding-right:0px;">알림 예시</a></li>
 
     <!-- 주석 에진
 			<li class="nav-item"><a href="newHomeChannel.lo?userNo=${sessionScope.loginUser.userNo}" class="nav-link" style="padding-right:0px;" onclick="">로거 스튜디오</a></li>
 			<!-- <li class="nav-item"><a href="lotest.lo" class="nav-link" style="padding-right:0px;">알림 예시</a></li> -->
- 
+
 		</ul>
 
 		<form class="navbar-form form-inline" action="search.mb" method="get">
@@ -616,7 +616,7 @@ $('#friendlist').click(function(){
 				}
 				
 				//서버에서 에러가 발생할 경우 동작할 메소드
-				ws.onerror = function(event){
+				ws2.onerror = function(event){
 					onError2(event);
 				}
 				
@@ -648,6 +648,10 @@ $('#friendlist').click(function(){
 			
 			function onClose2(event){
 				alert(event);
+			}
+			
+			function home(){
+				location.href="home.mb";
 			}
 		</script>
 		

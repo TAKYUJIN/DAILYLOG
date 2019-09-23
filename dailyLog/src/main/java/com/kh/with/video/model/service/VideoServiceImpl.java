@@ -31,6 +31,8 @@ public class VideoServiceImpl implements VideoService{
 		return vd.selectPoint(sqlSession, userNo);
 	}
 
+	
+	
 	//정기후원
 	@Override
 	public int regSub(Map<String, Integer> map) {
@@ -183,7 +185,7 @@ public class VideoServiceImpl implements VideoService{
 		return vd.videoimagelist(sqlSession);
 	}
 
-	 
+
  
 
 	
@@ -191,6 +193,19 @@ public class VideoServiceImpl implements VideoService{
 	public int selectAge(int loginUser) {
 		
 		return vd.selectAge(sqlSession, loginUser);
+	}
+
+
+	@Override
+	public List<Attachment> videopop() {
+		// TODO Auto-generated method stub
+		return vd.videopop(sqlSession);
+	}
+
+	@Override
+	public List<Attachment> videonew() {
+		// TODO Auto-generated method stub
+		return vd.videonew(sqlSession);
 	}
 
 	//동영상번호 셀렉
@@ -201,6 +216,7 @@ public class VideoServiceImpl implements VideoService{
 	}
 
 	@Override
+
 	public List<Attachment> videotak() {
 		// TODO Auto-generated method stub
 		return vd.videotak(sqlSession);
@@ -249,6 +265,73 @@ public class VideoServiceImpl implements VideoService{
 	}
 
 
+
+	public int subInsert(Map<String, Object> map) {
+		
+		return vd.subInsert(sqlSession, map);
+	}
+	@Override
+	public int subDelete(Map<String, Object> map) {
+		
+		return vd.subDelete(sqlSession, map);
+	}
+	
+	@Override
+	public int videoAlram(Map<String, Object> map) {
+		
+		return vd.videoAlram(sqlSession, map);
+	}
+	
+	@Override
+	public int insertSubAlram(Map<String, Object> map) {
+		
+		return vd.insertSubAlram(sqlSession, map);
+	}
+	
+	@Override
+	public int deleteSubAlram(Map<String, Object> map) {
+		
+		return vd.deleteSubAlram(sqlSession, map);
+	}
+	
+	@Override
+	public String selectThumb(Map<String, Integer> map) {
+		
+		return vd.selectThumb(sqlSession, map);
+	}
+	
+	@Override
+	public String selectProfile(Map<String, Integer> map) {
+		
+		return vd.selectProfile(sqlSession, map);
+	}
+	
+	@Override
+	public int selectLike(Map<String, Integer> map) {
+		
+		return vd.selectLike(sqlSession, map);
+	}
+	
+	@Override
+	public int selectHate(Map<String, Integer> map) {
+		
+		return vd.selectHate(sqlSession, map);
+	}
+	@Override
+	public int selectBook(Map<String, Integer> map) {
+		
+		return vd.selectBook(sqlSession, map);
+	}
+	@Override
+	public int selectRegStatus(Map<String, Integer> map) {
+		int  result = vd.selectRegStatus(sqlSession, map);
+		if(result == 0) result = 0;
+		
+		return result;
+	}
+	
+	
+	
 
 	
 }

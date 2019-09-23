@@ -165,7 +165,7 @@
 	
 		<jsp:include page="/WEB-INF/views/common/guest.jsp"></jsp:include>
 	<div class="signin-form">
-		<h1> 이메일 인증 완료 후 로그인 가능하다  </h1>
+		<h1> 이메일 인증 완료 후 로그인이 가능합니다.  </h1>
 		
 		
 		<br>

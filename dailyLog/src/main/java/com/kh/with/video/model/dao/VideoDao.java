@@ -28,11 +28,22 @@ public interface VideoDao {
 	//int insertVideoInfo(SqlSessionTemplate sqlSession, Model model);
 	
 	
+
 	List<Attachment> videoimagelist(SqlSessionTemplate sqlSession,Member m);
 	List<Attachment> videopop(SqlSessionTemplate sqlSession,Member m);
 	List<Attachment> videonew(SqlSessionTemplate sqlSession,Member m);
 	List<Attachment> videobook(SqlSessionTemplate sqlSession,Member m);
 	List<Attachment> videosub(SqlSessionTemplate sqlSession,Member m);
+
+  /*
+	List<Attachment> videoimagelist(Member m);
+	List<Attachment> videopop(Member m);
+	List<Attachment> videonew(Member m);
+	List<Attachment> videobook(Member m);
+	List<Attachment> videosub(Member m);
+	*/
+	
+
 	//썸네일  insert 메소드
 	int insertAttachment(SqlSessionTemplate sqlSession, Attachment attachment);
 	
@@ -63,8 +74,13 @@ public interface VideoDao {
 	int block(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	List<Attachment> videolike(SqlSessionTemplate sqlSession,Member m);
 	List<Attachment> videoimagelist(SqlSessionTemplate sqlSession);
+
 	 
 	int selectAge(SqlSessionTemplate sqlSession, int loginUser);
+
+	List<Attachment> videopop(SqlSessionTemplate sqlSession);
+	List<Attachment> videonew(SqlSessionTemplate sqlSession);
+
 	
 	//동영상번호 셀렉
 	
@@ -78,6 +94,18 @@ public interface VideoDao {
 	List<Video> videopop1(SqlSessionTemplate sqlSession);
 	List<Video> videonew1(SqlSessionTemplate sqlSession);
 	
+	
+	int subInsert(SqlSessionTemplate sqlSession, Map<String, Object> map);
+	int subDelete(SqlSessionTemplate sqlSession, Map<String, Object> map);
+	int videoAlram(SqlSessionTemplate sqlSession, Map<String, Object> map);
+	int insertSubAlram(SqlSessionTemplate sqlSession, Map<String, Object> map);
+	int deleteSubAlram(SqlSessionTemplate sqlSession, Map<String, Object> map);
+	String selectThumb(SqlSessionTemplate sqlSession, Map<String, Integer> map);
+	String selectProfile(SqlSessionTemplate sqlSession, Map<String, Integer> map);
+	int selectLike(SqlSessionTemplate sqlSession, Map<String, Integer> map);
+	int selectHate(SqlSessionTemplate sqlSession, Map<String, Integer> map);
+	int selectBook(SqlSessionTemplate sqlSession, Map<String, Integer> map);
+	int selectRegStatus(SqlSessionTemplate sqlSession, Map<String, Integer> map);
 	
 
 }

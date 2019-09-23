@@ -49,6 +49,8 @@ public interface MemberDao {
 
 	int phoneCheck(String phone);
 
+	int resetKey(String key, String email);
+
 
 
 

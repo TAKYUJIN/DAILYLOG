@@ -127,7 +127,7 @@ table.table td .add {
 	width: 100px;
 }
 .mainpage {
-	width:1024px;
+	width:1600px;
 	margin-top:-150px;
 }
 .button1 {
@@ -148,11 +148,11 @@ table.table td .add {
 </style>
 <body>
 
-	<jsp:include page="../common/adminBar.jsp"></jsp:include>
+	<jsp:include page="../common/mainBar.jsp"></jsp:include>
 	
 	<div class="mainpage">
 		<div class="container">
-			<div class="table-wrapper">
+			<div class="table-wrapper" >
 				<div class="table-title">
 					<div class="row"></div>
 				</div>
@@ -164,20 +164,18 @@ table.table td .add {
 				
 				<tbody>
 				
-					<tr>
+				<tr>
 						<td><strong>NO</strong></td> 
 						<td    style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px; width:500px;">
-						<input  disabled id ="bNo" type="text"  value=<c:out value="${result.bNo}" />>
+						<input  disabled id ="bNo" type="text"  style="border:none; width:300px; background:none;" value=<c:out value="${result.bNo}" />>
 						<%-- <c:out value="${result.bNo}" /> --%>
 						</td>
 
 					</tr>
 					<tr>
 						<td><strong>Subject</strong></td>
-						<td><input type="text" placeholder="제목"  id="bTitle" name="bTitle" value=<c:out value="${result.bTitle}" />
-						style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px; width:500px;" >
-				
-						</td>
+						<td> 
+						<input  disabled id ="bNo" type="text"  style="border:none; width:300px; background:none; " value=<c:out  value="${result.bTitle}" />></td>
 
 					</tr>
 					<tr>
@@ -194,8 +192,11 @@ table.table td .add {
 					</tr>
 					<tr>
 						<td colspan="2" align="center">
-						<textarea rows = "20"  cols="150"  wrap="soft"  id="bcontent" name="bcontent" 
-						style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;"><c:out value="${result.bcontent}"/></textarea></td>
+						<textarea  disabled rows = "20"  cols="150"  wrap="soft"  id="bcontent" name="bcontent" 
+						style="border:none; background:none; border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;">
+						<c:out value="${result.bcontent}"/></textarea></td>
+						
+					
 					</tr>
 					
 				</tbody>

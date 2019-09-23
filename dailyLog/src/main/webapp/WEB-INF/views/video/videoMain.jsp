@@ -315,29 +315,109 @@
 				<!-- 채널소개, 좋아요 등 -->
 				<td width="60px" height="60px">
 					<!-- 채널이미지 -->
-					<div>
-						<img class="chImg" src="resources/images/man.jpg">
+					<div align="right" style="margin-top:15%;">
+						 <nav class="navbar navbar-default navbar-expand-lg navbar-light" style="background:none;">
+							<ul class="nav navbar-nav navbar-right ml-auto">	 <!-- style="width:300px;" -->		
+								<li class="nav-item" stlye="border:1px solid #A8B7BC;"> 
+									<a href="#none" data-toggle="dropdown" id="profile">
+										<!-- <img src="resources/images/chat.png" style="width:18px; align:right;"> -->
+										<div>
+											<c:if test="${profile != null}">
+												<img class="chImg" src="resources/images/${profile}">
+											</c:if>
+											<c:if test="${profile == null}">
+												<img class="chImg" src="resources/images/newlogo3.png">
+											</c:if>
+										</div>
+									</a>
+									<ul class="dropdown-menu form-wrapper" style="width:280px;border:1px solid #A8B7BC;">					
+										<li>
+											<div class="form-group" id="pro">
+												<table class="noti_table">
+													<tr><a id="moveChannel">채널로 이동</a></tr><br>
+													<tr><a id="reportChannel">신고</a></tr><br>
+													<tr><a id="blockChannel">차단</a></tr><br>
+												</table>
+											</div>
+											<!-- 신고-->
+											<div id="reportCh">
+												<div class="noti_text" align="center" style="margin-top:5%; width:350px;"><b>동영상신고</b></div>
+												<div align="left" style="margin-left:10%; margin-right:10%;">
+													<table class="noti_table">
+														<tr><td>
+															<div class="checks" style="display:inline-block;">
+										                      <div style="display:inline-block;"><input type="radio" id="more1" value="성적인 콘텐츠" name="more" onclick="oneCheckbox(this)"></div>
+										                      <div style="display:inline-block;"><label for="more1">성적인 콘텐츠</label></div><br>
+										                      <div style="display:inline-block;"><input type="radio" id="more2" value="폭력적 또는 혐오스러운 콘텐츠" name="more" onclick="oneCheckbox(this)"></div> 
+										                      <div style="display:inline-block;"><label for="more2">폭력적 또는 혐오스러운 콘텐츠</label></div><br>
+										                      <div style="display:inline-block;"><input type="radio" value="증오 또는 악의적인 콘텐츠" id="more3" name="more" onclick="oneCheckbox(this)"></div> 
+										                      <div style="display:inline-block;"><label for="more3">증오 또는 악의적인 콘텐츠</label></div><br>
+										                      <div style="display:inline-block;"><input type="radio" id="more4" value="유해한 위험 행위" name="more" onclick="oneCheckbox(this)"></div>
+										                      <div style="display:inline-block;"><label for="more1">유해한 위험 행위</label></div><br>
+										                      <div style="display:inline-block;"><input type="radio" id="more5" value="아동 학대" name="more" onclick="oneCheckbox(this)"></div> 
+										                      <div style="display:inline-block;"><label for="more2">아동 학대</label></div><br>
+										                      <div style="display:inline-block;"><input type="radio" value="테러 조장" id="more6" name="more" onclick="oneCheckbox(this)"></div> 
+										                      <div style="display:inline-block;"><label for="more3">테러 조장</label></div><br>
+										                      <div style="display:inline-block;"><input type="radio" id="more7" value="스팸 또는 사용자 현혹 콘텐츠" name="more" onclick="oneCheckbox(this)"></div>
+										                      <div style="display:inline-block;"><label for="more1">스팸 또는 사용자 현혹 콘텐츠</label></div><br>
+										                      <div style="display:inline-block;"><input type="radio" id="more8" value="권리 침해" name="more" onclick="oneCheckbox(this)"></div> 
+										                      <div style="display:inline-block;"><label for="more2">권리 침해</label></div><br>
+										                      <div style="display:inline-block;"><input type="radio" value="자막 문제" id="more9" name="more" onclick="oneCheckbox(this)"></div> 
+										                      <div style="display:inline-block;"><label for="more3">자막 문제</label></div><br>
+										                      <small>Daily log<br> 커뮤니티 가이드를 위반한 계정을 제재를 받게 되며 심각하거나 반복적인 위반 행위에 대해서는 계정 해지 조치가 취해질 수 있습니다. <a href="" style="color:red;">채널 신고하기</a></small>	
+										                    </div>
+														</td></tr>
+														<tr>
+															<td>
+																<button style="background:#A8B7BC;display:inline-block;width:100px;margin-right:5% !important;" class="btn" id="cancle4">취소</button>
+																<button id="reportNext" style="width:100px;display:inline-block;" class="btn">다음</button><br><br>
+															</td>
+														</tr>
+													</table>
+												</div>
+											</div>
+											<!-- 차단 -->
+											<div id="blockCh">
+												<div class="noti_text" align="center" style="margin-top:5%;">
+													<img src="resources/images/caution.png" style="width:30px; margin:5%;"><br>
+												</div>
+												<div align="center" style="margin-left:10%; margin-right:10%; text-align:center">
+													<table class="noti_table">
+														<tr><td><b>채널 차단에 관한 공지</b></td></tr>
+														<tr>
+															<td>
+																<small>앞으로 <b>${ list1[0].chNm }</b>채널에 대한 영상을<br> 추천 받지 않게 됩니다.</small>
+															</td>
+														</tr>
+														<tr><td style="color:red;"><small><b>*자세한 내용은 공지사항을 참고해 주세요</b></small></td></tr>
+														<tr>
+															<td>
+																<button class="btn" style="width:100px;margin-right:5% !important;background:#A8B7BC;" id="cancle5">취소</button>
+																<button id="blockOk" style="width:100px;"class="btn">확인</button><br><br>
+															</td>
+														</tr>
+													</table>
+												</div>
+											</div>
+											
+										</li>
+									</ul>
+								</li>
+
+
+							</ul>
+						</nav> 
 					</div>
 				</td>
 				<td width="300px" height="60px">
-					<div style="margin-left:10%;">
-						<div style="margin-right:10%; display:inline-block;">${ list1[0].chNm }</div>
-						<div style="display:inline-block; margin-left:5%;">
-							<label id="regsubTY" style="color:gray; position:fixed;">
-								<c:if test="${ status == 1 }">
-									정기후원중
-								</c:if>
-								<c:if test="${ status == 0 }">
-									정기후원중아님
-								</c:if>
-							</label>
+					<div style="margin-left:3%;">
+						<div style="margin-right:5%; display:inline-block;"><b>${ list1[0].chNm }</b></div>
+						<div style="display:inline-block; margin-right:3%;">
+							<label id="regsubTY" style="color:#525252;"></label>
 						</div>
-						<div style="margin:5%;"></div>
-						<small style="display:inline-block;">구독자수 <b> ${ list2[0].subNum } </b><br></small>
-						<div style="display:inline-block; margin-left:30%;">
-							<button class="btn">구독</button>
-						</div><br>
-						<small>게시일 : ${ list1[0].uploadDt }</samll>
+							<input type="button" class="btn" id="subscribe" value="구독"><br>
+						<small style="display:inline-block;">구독자 <b> ${ list2[0].subNum }명 </b><br></small>
+						
 					</div>
 				</td>
 				<td width="240px" height="60px">
@@ -367,8 +447,8 @@
 														<tr><td><input type="text" class="form-control" id="rPoint" placehold="포인트를 조회하세요" readonly></td></tr>
 														<tr>
 															<td>
-																<button id="selectPoint" style="width:75px;margin-right:2% !important;background:#A8B7BC;margin-top:5%;margin-bottom:5%;" class="btn">조회</button>
-																<button id="chargeBtn" style="width:75px; text-align:center;margin-top:5%;margin-bottom:5%;" class="btn">충전</button><br>
+																<input type="button" id="selectPoint" style="width:75px;margin-right:2% !important;background:#A8B7BC;margin-top:5%;margin-bottom:5%;" class="btn" value="조회">
+																<input type="button" id="chargeBtn" style="width:75px; text-align:center;margin-top:5%;margin-bottom:5%;" class="btn" value="충전">
 															</td>
 														</tr>
 																											
@@ -377,7 +457,7 @@
 														<tr>
 															<td>
 																<button style="width:75px;margin-right:2% !important;text-align:center;background:#A8B7BC;margin-top:5%;margin-bottom:5%;" class="btn" id="cancle1">취소</button>
-																<button id="rOk" style="width:75px; text-align:center;margin-top:5%;margin-bottom:5%;" class="btn">후원</button>
+																<input type="button" id="rOk" style="width:75px; text-align:center;margin-top:5%;margin-bottom:5%;" class="btn" value="후원">
 																<br><br>
 															</td>
 														</tr>
@@ -395,8 +475,8 @@
 														<tr><td><input type="text" class="form-control" id="oPoint" placehold="포인트를 조회하세요" readonly></td></tr>
 														<tr>
 															<td>
-																<button id="selectPoint2" style="width:75px;margin-right:2% !important;background:#A8B7BC;margin-top:5%;margin-bottom:5%;" class="btn">조회</button>
-																<button id="chargeBtn" style="width:75px;margin-right:2% !important;margin-top:5%;margin-bottom:5%;" class="btn">충전</button>
+																<input type="button" id="selectPoint2" style="width:75px;margin-right:2% !important;background:#A8B7BC;margin-top:5%;margin-bottom:5%;" class="btn" value="조회">
+																<input type="button" id="chargeBtn" style="width:75px;margin-right:2% !important;margin-top:5%;margin-bottom:5%;" class="btn" value="충전">
 															</td>
 														</tr>
 																											
@@ -405,7 +485,7 @@
 														<tr>
 															<td>
 																<button style="width:75px;margin-right:2% !important;background:#A8B7BC;margin-top:5%;margin-bottom:5%;" class="btn" id="cancle2">취소</button>
-																<button id="oOk" style="width:75px;margin-right:2% !important;margin-top:5%;margin-bottom:5%;" class="btn">후원</button>
+																<input type="button" id="oOk" style="width:75px;margin-right:2% !important;margin-top:5%;margin-bottom:5%;" class="btn" value="후원">
 																<br><br>
 															</td>
 														</tr>
@@ -474,7 +554,7 @@
 											</div>
 											<!-- 신고 -->
 											<div id="report1">
-												<div class="noti_text" align="center" style="margin-top:5%; width:350px;"><b>동영상신고</b></div>
+												<div class="noti_text" style="margin-top:5%; width:350px;"><b style="text-align:center;">동영상신고</b></div>
 												<div align="left" style="margin-left:10%; margin-right:10%;">
 													<table class="noti_table">
 														<tr><td>
@@ -519,7 +599,7 @@
 														<tr><td><b>채널 차단에 관한 공지</b></td></tr>
 														<tr>
 															<td>
-																<small>앞으로 <b>${ list1[0].chNm }</b>채널에 대한 영상을<br> 추천 받지 않게 됩니다.</small>
+																<small>앞으로 <b>${ list1[0].chNm }</b>채널에 대한 ${ list1[0].vTitle } 영상을<br> 볼 수 없게 됩니다.</small>
 															</td>
 														</tr>
 														<tr><td style="color:red;"><small><b>*자세한 내용은 공지사항을 참고해 주세요</b></small></td></tr>
@@ -564,13 +644,9 @@
 				<td colspan="4" height="400px"><!-- autoplay="autoplay" -->
 					<c:if test="${list1[0].adultAut eq 'Y' }">
 						<video id='my-video' class='video-js' controls  preload='auto' width='600' height='400'
-						  poster='resources/images/thumbnail_01.jpg' data-setup='{}' >
+						  poster='resources/uploadFiles/${thumb}' data-setup='{}' >
 						  <source src='resources/uploadFiles/${ list1[0].fileNm}' type='video/mp4'>
 						  <source src='MY_VIDEO.webm' type='video/webm'>
-						  <p class='vjs-no-js'>
-						      To view this video please enable JavaScript, and consider upgrading to a web browser that
-						  <a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
-						  </p>
 						</video>
 					</c:if>	
 					<c:if test="${list1[0].adultAut eq 'N' }">
@@ -585,13 +661,9 @@
 						</c:if>
 						<c:if test="${age >= 19 }">
 							<video id='my-video' class='video-js' controls  preload='auto' width='600' height='380'
-							  poster='resources/images/thumbnail_01.jpg' data-setup='{}' >
+							  poster='resources/uploadFiles/${thumb}' data-setup='{}' >
 							  <source src='resources/uploadFiles/${ list1[0].fileNm}' type='video/mp4'>
 							  <source src='MY_VIDEO.webm' type='video/webm'>
-							  <p class='vjs-no-js'>
-							      To view this video please enable JavaScript, and consider upgrading to a web browser that
-							  <a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
-							  </p>
 							</video>
 						</c:if>	
 					</c:if>
@@ -604,8 +676,9 @@
 					<div style="margin:20px;">
 						<h3>${ list1[0].vTitle }</h3>
 						<small>조회수  ${ list1[0].count }</small><br>
+						<small>게시일 : ${ list1[0].uploadDt }</samll><br>
 						<div>
-							<a href="" style="color: #525252;"><small>${ list1[0].tag }</small></a>
+							<a href="" style="color: #525252;"><small><b>${ list1[0].tag }</b></small></a>
 						</div>
 					</div>
 					<div style="margin-right:8%;">
@@ -617,8 +690,6 @@
 				<!-- 더보기 -->
 				<td colspan="4" height="130px">
 					더보기
-					<a href="age.vd">본인인증</a>
-					<a href="age2.vd">본인인증222</a>
 				</td>
 			</tr>
 		</table>
@@ -626,7 +697,7 @@
 	<!-- <div style="border-left:1px solid #A8B7BC;height:500px;"></div> -->  
 	<div style="display:inline-block; margin-left:3%; margin-bottom:10%;">
 		<!-- 댓글 -->
-		<table border="1px">
+<!-- 		<table border="1px">
 			<thead>
 				<tr>
 					<td>
@@ -655,13 +726,13 @@
 			</tbody>
 			<tfoot>
 				<tr>
-					<td height="50"><!-- 프로필 --></td>
-					<td height="50"><!-- 텍스트 --></td>
-					<td height="50"><!-- 작성 --></td>
+					<td height="50">프로필</td>
+					<td height="50">텍스트</td>
+					<td height="50">작성</td>
 				</tr>
 			</tfoot>
-					<!-- 실시간 & 정렬 -->
-		</table>
+					실시간 & 정렬
+		</table> -->
 	</div>
 	</div>
 	<!-- Modal HTML -->
@@ -685,10 +756,9 @@
 		</div>
 	</div> 
 	<script>
-	$('#my-video').click(function(){
-		
-		
-	});
+	
+	
+	
 	(function(d, s, id) {
 	    var js, fjs = d.getElementsByTagName(s)[0];
 	    if (d.getElementById(id)) return;
@@ -732,15 +802,17 @@
 	        var userNo = "<c:out value='${list2[0].userNo}'/>";
 	        var vNo = "<c:out value='${list1[0].vNo}'/>";
 	        var chNm = "<c:out value='${list2[0].chNm}'/>";
+	        var vTitle = "<c:out value='${list1[0].vTitle}'/>";
 			
-	        console.log(check + ", " + userNo + ", " + vNo + ", " + chNm);
+	        console.log(check + ", " + userNo + ", " + vNo + ", " + chNm + ", " + vTitle);
 	        $.ajax({
 	        	url:"report.vd",
 				type:"post",
 				data:{check:check, 
 					  userNo:userNo,
 					  vNo:vNo,
-					  chNm:chNm},
+					  chNm:chNm,
+					  vTitle:vTitle},
 				success:function(data){
 					console.log("성공!");
 					if(data == 1){
@@ -769,6 +841,7 @@
 					console.log("성공!");
 					if(data = 1){
 						alert("차단되었습니다.");
+						location.href="home.mb";
 					}else{
 						alert("차단 실패했습니다.");
 					}
@@ -780,8 +853,53 @@
 	        });
 	        
 		});
-	    
 		var state = 0;
+		$('#subscribe').click(function(){
+			var chNo = "<c:out value='${list2[0].chNo}'/>";
+			var chNm = "<c:out value='${list2[0].chNm}'/>";
+			var userNo = "<c:out value='${list2[0].userNo}'/>";
+			
+			console.log(chNo);
+
+			if(state == 0){
+				document.getElementById('subscribe').value = "구독중";
+				
+				$.ajax({
+					url:"subInsert.vd",
+					type:"post",
+					data:{chNo:chNo,
+						chNm:chNm,
+						userNo:userNo},
+					success:function(data){
+						console.log("insert성공!");
+						$("#subscribe1").hide();
+						$("#subscribe2").show();
+						state = 1;
+					},
+					error:function(){
+						console.log("실패!");
+					}
+				});
+			}else {
+				document.getElementById('subscribe').value = "구독";
+				$.ajax({
+					url:"subDelete.vd",
+					type:"post",
+					data:{chNo:chNo,
+						chNm:chNm,
+						userNo:userNo},
+					success:function(data){
+						console.log("delete성공!");
+						$("#subscribe1").show();
+						$("#subscribe2").hide();
+						state = 0;
+					},
+					error:function(){
+						console.log("실패!");
+					}
+				});
+			}
+		});
 		//좋아요 조회
 		function selectLike(){
 			var chNo = "<c:out value='${list2[0].chNo}'/>";
@@ -789,14 +907,26 @@
 			console.log(chNo + "::" + vNo);
 			if(state == 0){
 				document.getElementById('like').src = "resources/images/heart_red.png";
-				state = 1;
+				document.getElementById('hate').src = "resources/images/broken.png";
 				$.ajax({
 					url:"insertLike.vd",
 					type:"post",
 					data:{chNo:chNo, vNo:vNo},
 					success:function(data){
 						console.log("insert성공!");
-						//state = data;
+						state = 1;
+					},
+					error:function(){
+						console.log("실패!");
+					}
+				});
+				$.ajax({
+					url:"deleteHate.vd",
+					type:"post",
+					data:{chNo:chNo, vNo:vNo},
+					success:function(data){
+						console.log("delete성공!");
+						state = 0;
 					},
 					error:function(){
 						console.log("실패!");
@@ -804,14 +934,14 @@
 				});
 			}else {
 				document.getElementById('like').src = "resources/images/heart_black.png";
-				state = 0;
+				
 				$.ajax({
 					url:"deleteLike.vd",
 					type:"post",
 					data:{chNo:chNo, vNo:vNo},
 					success:function(data){
 						console.log("delete성공!");
-						
+						state = 0;
 					},
 					error:function(){
 						console.log("실패!");
@@ -826,14 +956,26 @@
 			console.log(chNo + "::" + vNo);
 			if(state == 0){
 				document.getElementById('hate').src = "resources/images/broken_color.png";
-				state = 1;
+				document.getElementById('like').src = "resources/images/heart_black.png";
 				$.ajax({
 					url:"insertHate.vd",
 					type:"post",
 					data:{chNo:chNo, vNo:vNo},
 					success:function(data){
 						console.log("insert성공!");
-						//state = data;
+						state = 1;
+					},
+					error:function(){
+						console.log("실패!");
+					}
+				});
+				$.ajax({
+					url:"deleteLike.vd",
+					type:"post",
+					data:{chNo:chNo, vNo:vNo},
+					success:function(data){
+						console.log("delete성공!");
+						state = 0;
 					},
 					error:function(){
 						console.log("실패!");
@@ -841,14 +983,14 @@
 				});
 			}else {
 				document.getElementById('hate').src = "resources/images/broken.png";
-				state = 0;
+				
 				$.ajax({
 					url:"deleteHate.vd",
 					type:"post",
 					data:{chNo:chNo, vNo:vNo},
 					success:function(data){
 						console.log("delete성공!");
-						
+						state = 0;
 					},
 					error:function(){
 						console.log("실패!");
@@ -863,14 +1005,15 @@
 			console.log(chNo + "::" + vNo);
 			if(state == 0){
 				document.getElementById('bookmark').src = "resources/images/bookmark_color.png";
-				state = 1;
+				
 				$.ajax({
 					url:"insertBookmark.vd",
 					type:"post",
 					data:{chNo:chNo, vNo:vNo},
 					success:function(data){
 						console.log("insert성공!");
-						//state = data;
+						state = 1;
+						alert("북마크에 추가되었습니다.");
 					},
 					error:function(){
 						console.log("실패!");
@@ -878,14 +1021,15 @@
 				});
 			}else {
 				document.getElementById('bookmark').src = "resources/images/bookmark.png";
-				state = 0;
+				
 				$.ajax({
 					url:"deleteBookmark.vd",
 					type:"post",
 					data:{chNo:chNo, vNo:vNo},
 					success:function(data){
 						console.log("delete성공!");
-						
+						alert("북마크에서 삭제되었습니다.");
+						state = 0;
 					},
 					error:function(){
 						console.log("실패!");
@@ -997,24 +1141,52 @@
 					}					
 				});
 			}); 
-/* 		//정산상태
-		var userNo1 = "<c:out value='${list2[0].userNo}'/>";
-		var chNo = "<c:out value='${list2[0].chNo}'/>";
-		
-			$.ajax({
-				url:"regStatus.vd",
-				type:"post",
-				data:{userNo:userNo1,
-						chNo:chNo},
-				success:function(data){
-					console.log("성공");
-				},
-				error:function(){
-					console.log("실패");
-				}
-			}); */
 		//후원 div 
 		 $(document).ready(function(){
+			 var chNo = "<c:out value='${list2[0].chNo}'/>";
+			 var vNo = "<c:out value='${list1[0].vNo}'/>";
+				$.ajax({
+					url:"regStatus.vd",
+					type:"post",
+					data:{chNo:chNo},
+					success:function(data){
+						$('#regsubTY').text("정기후원증");
+						console.log("success reg " +data);
+					},
+					error:function(){
+						console.log('실패!');
+					}					
+				});
+				$.ajax({
+					url:"selectLike.vd",
+					type:"post",
+					data:{vNo:vNo},
+					success:function(data){
+						if(data == 1){
+							document.getElementById('like').src = "resources/images/heart_red.png";
+						}else {
+							document.getElementById('hate').src = "resources/images/broken_color.png";
+						}
+						console.log("success " +data);
+					},
+					error:function(){
+						console.log('실패!');
+					}					
+				});
+			 
+				$.ajax({
+					url:"selectBook.vd",
+					type:"post",
+					data:{vNo:vNo},
+					success:function(data){
+						document.getElementById('bookmark').src = "resources/images/bookmark_color.png";
+						console.log("success book " +data);
+					},
+					error:function(){
+						console.log('실패!');
+					}					
+				});
+			 
 			 
 			$('#subtitle').click(function(){
 				 $('#sub').show();
