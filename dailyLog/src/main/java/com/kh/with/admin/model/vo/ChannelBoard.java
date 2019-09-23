@@ -1,23 +1,44 @@
 package com.kh.with.admin.model.vo;
 
 public class ChannelBoard implements java.io.Serializable{
-	private String chNm;
 	private String userId;
+	private int userNo;
+	private String chNm;
+	private String amTY;
 	private String fileNm;
 	private int price;
 	private int reCount;
 	private int cCount;
-	
+    
 	public ChannelBoard() {}
 
-	public ChannelBoard(String chNm, String userId, String fileNm, int price, int reCount, int cCount) {
+	public ChannelBoard(String userId, int userNo, String chNm, String amTY, String fileNm, int price, int reCount,
+			int cCount) {
 		super();
-		this.chNm = chNm;
 		this.userId = userId;
+		this.userNo = userNo;
+		this.chNm = chNm;
+		this.amTY = amTY;
 		this.fileNm = fileNm;
 		this.price = price;
 		this.reCount = reCount;
 		this.cCount = cCount;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public int getUserNo() {
+		return userNo;
+	}
+
+	public void setUserNo(int userNo) {
+		this.userNo = userNo;
 	}
 
 	public String getChNm() {
@@ -28,12 +49,12 @@ public class ChannelBoard implements java.io.Serializable{
 		this.chNm = chNm;
 	}
 
-	public String getUserId() {
-		return userId;
+	public String getAmTY() {
+		return amTY;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setAmTY(String amTY) {
+		this.amTY = amTY;
 	}
 
 	public String getFileNm() {
@@ -70,8 +91,8 @@ public class ChannelBoard implements java.io.Serializable{
 
 	@Override
 	public String toString() {
-		return "ChannelBoard [chNm=" + chNm + ", userId=" + userId + ", fileNm=" + fileNm + ", price=" + price
-				+ ", reCount=" + reCount + ", cCount=" + cCount + "]";
+		return "ChannelBoard [userId=" + userId + ", userNo=" + userNo + ", chNm=" + chNm + ", amTY=" + amTY
+				+ ", fileNm=" + fileNm + ", price=" + price + ", reCount=" + reCount + ", cCount=" + cCount + "]";
 	}
 
 }

@@ -189,23 +189,12 @@ public class AdminServiceImpl implements AdminService {
 		return ad.searchSuccessAll(sqlSession, userNm);
 	}
 
-	
-
-	
-	
 	@Override
 	public List<ChannelBoard> channelInfo() {
 		
 		return ad.channelInfo(sqlSession);
 	}
-	
-	@Override
-	public List<ChannelBoard> info() {
-		
-		return ad.info(sqlSession);
-	}
 
-	
 	
 	@Override
 	public int monthMemberListCount() {

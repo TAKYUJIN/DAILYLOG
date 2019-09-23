@@ -6,19 +6,33 @@
 <mapper namespace="ChannelBoard">
 
      <resultMap type="ChannelBoard" id="channelResultSet">
-     
+     	<result property="userNo" column="USER_NO"/>
         <result property="userId" column="USER_ID"/>
         <result property="chNm" column="CH_NM"/>
+        <result property="amTY" column="AM_TY"/>
         <result property="fileNm" column="FILE_NM"/>
         <result property="price" column="AMOUNT_PRICE"/>
         <result property="reCount" column="RE_COUNT"/>
         <result property="cCount" column="C_COUNT"/>
      </resultMap>
 
-
-
-		
+  	
   	<select id="channelInfo" resultMap="channelResultSet">
+		SELECT USER_NO, USER_ID, CH_NM, AM_TY, FILE_NM, AMOUNT_PRICE, RE_COUNT, C_COUNT
+		FROM (SELECT A.FILE_NM, L.CH_NM, A.AM_TY, L.USER_NO, M.USER_ID
+		             , NVL(SUM(C.AMOUNT_PRICE), 0) AMOUNT_PRICE,
+		            NVL(SUM(RE_COUNT), 0) RE_COUNT, NVL(SUM(C_COUNT), 0) C_COUNT
+		      FROM MEMBER M
+		      JOIN LOGER L ON(M.USER_NO = L.USER_NO)
+		      LEFT JOIN CALCULATE C ON(L.CH_NO = C.CH_NO)
+		      LEFT OUTER JOIN REPORT R ON(L.USER_NO = R.RE_TARGET)
+		      JOIN ATTACHMENT A ON(L.USER_NO = A.USER_NO)
+		      GROUP BY  A.FILE_NM, L.CH_NM, A.AM_TY, L.USER_NO, M.USER_ID)
+		WHERE AM_TY = '회원'
+  	</select>
+  	
+		
+<!--   	<select id="channelInfo" resultMap="channelResultSet">
   		SELECT L.CH_NM, M.USER_ID, A.FILE_NM
 		FROM LOGER L
 		JOIN MEMBER M ON(L.USER_NO = M.USER_NO)
@@ -34,7 +48,8 @@
 				FROM LOGER L
 				JOIN CALCULATE C ON(L.CH_NO = C.CH_NO)
 				JOIN REPORT R ON(L.USER_NO = R.RE_TARGET))
-  	</select>
+  	</select> -->
+
   	
 <!-- resultType="hashMap" -->
 </mapper>

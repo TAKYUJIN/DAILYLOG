@@ -242,11 +242,6 @@ public class AdminDaoImpl implements AdminDao {
 		
 		return sqlSession.selectList("ChannelBoard.channelInfo");
 	}
-	 @Override
-	public List<ChannelBoard> info(SqlSessionTemplate sqlSession) {
-		
-		return sqlSession.selectList("ChannelBoard.info");
-	}
 
 	@Override
 	public int monthMemberListCount(SqlSessionTemplate sqlSession) {

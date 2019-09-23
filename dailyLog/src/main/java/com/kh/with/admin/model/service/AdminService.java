@@ -89,12 +89,7 @@ public interface AdminService {
 
 	ArrayList<Blockvi> selectDetail3(Blockvi vi);
 
-
-
 	List<ChannelBoard> channelInfo();
-
-	List<ChannelBoard> info();
-
 
 	int monthMemberListCount();
 
