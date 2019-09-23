@@ -9,6 +9,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.video.model.vo.Attachment;
+import com.kh.with.video.model.vo.Reply2;
 import com.kh.with.video.model.vo.Video;
 
 public interface VideoDao {
@@ -47,9 +48,9 @@ public interface VideoDao {
 	//썸네일  insert 메소드
 	int insertAttachment(SqlSessionTemplate sqlSession, Attachment attachment);
 	
-	List<Video> selectVideoInfo(SqlSessionTemplate sqlSession, Map<String, Integer> map);
+	List<Video> selectVideoInfo(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	
-	List<Loger> selectLogerInfo(SqlSessionTemplate sqlSession, Map<String, Integer> map);
+	List<Loger> selectLogerInfo(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	
 	int selectRegStatus(SqlSessionTemplate sqlSession, int userNo, int chNo);
 	
@@ -100,12 +101,17 @@ public interface VideoDao {
 	int videoAlram(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	int insertSubAlram(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	int deleteSubAlram(SqlSessionTemplate sqlSession, Map<String, Object> map);
-	String selectThumb(SqlSessionTemplate sqlSession, Map<String, Integer> map);
-	String selectProfile(SqlSessionTemplate sqlSession, Map<String, Integer> map);
+	String selectThumb(SqlSessionTemplate sqlSession, Map<String, Object> map);
+	String selectProfile(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	int selectLike(SqlSessionTemplate sqlSession, Map<String, Integer> map);
 	int selectHate(SqlSessionTemplate sqlSession, Map<String, Integer> map);
 	int selectBook(SqlSessionTemplate sqlSession, Map<String, Integer> map);
 	int selectRegStatus(SqlSessionTemplate sqlSession, Map<String, Integer> map);
+	List<Reply2> selectReply(SqlSessionTemplate sqlSession, Map<String, Object> map);
+	String selectUserImg(SqlSessionTemplate sqlSession, Map<String, Object> map);
+	int insertReply(SqlSessionTemplate sqlSession, Map<String, Object> map);
+	int replyAlram(SqlSessionTemplate sqlSession, Map<String, Object> map);
+	int repNo(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	
 
 }

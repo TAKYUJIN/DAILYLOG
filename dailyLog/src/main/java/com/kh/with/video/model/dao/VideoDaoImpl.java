@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.video.model.vo.Attachment;
+import com.kh.with.video.model.vo.Reply2;
 import com.kh.with.video.model.vo.Video;
 
 @Repository
@@ -113,13 +114,13 @@ public class VideoDaoImpl implements VideoDao {
 	}
 	
 	@Override
-	public List<Video> selectVideoInfo(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
+	public List<Video> selectVideoInfo(SqlSessionTemplate sqlSession, Map<String, Object> map) {
 		
 		return sqlSession.selectList("Video.selectVideoInfo", map);
 	}
 
 	@Override
-	public List<Loger> selectLogerInfo(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
+	public List<Loger> selectLogerInfo(SqlSessionTemplate sqlSession, Map<String, Object> map) {
 		
 		return sqlSession.selectList("Video.selectLogerInfo", map);
 	}
@@ -299,13 +300,13 @@ public class VideoDaoImpl implements VideoDao {
 	}
 	
 	@Override
-	public String selectThumb(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
+	public String selectThumb(SqlSessionTemplate sqlSession, Map<String, Object> map) {
 		
 		return sqlSession.selectOne("Video.selectThumb", map);
 	}
 	
 	@Override
-	public String selectProfile(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
+	public String selectProfile(SqlSessionTemplate sqlSession, Map<String, Object> map) {
 		
 		return sqlSession.selectOne("Video.selectProfile", map);
 	}
@@ -349,7 +350,35 @@ public class VideoDaoImpl implements VideoDao {
 		return null;
 	}
 
+	@Override
+	public List<Reply2> selectReply(SqlSessionTemplate sqlSession, Map<String, Object> map) {
+		
+		return sqlSession.selectList("Video.selectReply", map);
+	}
 
-
+	@Override
+	public String selectUserImg(SqlSessionTemplate sqlSession, Map<String, Object> map) {
+		
+		return sqlSession.selectOne("Video.selectUserImg", map);
+	}
+	
+	@Override
+	public int insertReply(SqlSessionTemplate sqlSession, Map<String, Object> map) {
+		
+		return sqlSession.insert("Video.insertReply", map);
+	}
+	
+	@Override
+	public int repNo(SqlSessionTemplate sqlSession, Map<String, Object> map) {
+		
+		return sqlSession.selectOne("Video.repNo", map);
+	}
+	
+	@Override
+	public int replyAlram(SqlSessionTemplate sqlSession, Map<String, Object> map) {
+		
+		return sqlSession.insert("Video.replyAlram", map);
+	}
+	
 	
 }

@@ -47,6 +47,17 @@
 		<result property="repTy" column="REP_TY" />
 	</resultMap>
 	
+	<resultMap type="Reply2" id="replyResultSet2">
+		<id property="repNo" column="REP_NO" />
+		<result property="userNo" column="USER_NO" />
+		<result property="vNo" column="V_NO" />
+		<result property="repDt" column="REP_DT" />
+		<result property="repCt" column="REP_CT" />
+		<result property="repTy" column="REP_TY" />
+		<result property="fileNm" column="FILE_NM" />
+		<result property="nickName" column="NICKNAME" />
+	</resultMap>
+	
 	<resultMap type="com.kh.with.video.model.vo.Attachment"
 		id="attachmentResultSet">
 
@@ -270,7 +281,7 @@ WHERE TAG LIKE '%'||#{search}||'%'
 	</select>
 	
 	<select id="selectRegStatus" parameterType="map" resultType="int">
-		SELECT SUP_NO
+		SELECT NVL(SUP_NO, 0)
 		FROM SUPPORT
 		WHERE SUP_TY = '정기'
 		AND SYSDATE BETWEEN SUP_STDT AND REG_EDT
@@ -279,7 +290,7 @@ WHERE TAG LIKE '%'||#{search}||'%'
 	</select>
 
 	<select id="selectLike" parameterType="map" resultType="int">
-		SELECT LIKE_NO
+		SELECT NVL(LIKE_NO, 0)
 		FROM VIDEO_LIKE
 		WHERE V_NO = #{vNo}
 		AND USER_NO = #{loginUser} 
@@ -302,6 +313,47 @@ WHERE TAG LIKE '%'||#{search}||'%'
 		AND USER_NO = #{loginUser} 
 		AND V_TY = '북마크'
 	</select>
+	
+	<select id="selectReply" parameterType="map" resultMap="replyResultSet2">
+		SELECT R.*, A.FILE_NM, M.NICKNAME
+		FROM REPLY R
+		JOIN ATTACHMENT A ON(R.USER_NO = A.USER_NO)
+		JOIN MEMBER M ON(A.USER_NO = M.USER_NO)
+		WHERE R.V_NO = #{vNo}
+		AND A.AM_TY = '회원'
+	</select>
+	
+	<select id="selectUserImg" parameterType="map" resultType="String">
+		SELECT A.FILE_NM
+		FROM MEMBER M
+		JOIN ATTACHMENT A ON(M.USER_NO = A.USER_NO)
+		WHERE M.USER_NO = #{loginUser}
+		AND A.AM_TY = '회원'
+	</select>
+	
+	<insert id="insertReply" parameterType="map">
+		INSERT INTO REPLY
+		VALUES(REP_NO.NEXTVAL, #{loginUser}, #{vNo}, SYSDATE, #{content}, DEFAULT)
+	</insert>
+	
+	<select id="repNo" parameterType="map" resultType="int">
+		SELECT REP_NO
+		FROM (SELECT REP_NO, RANK() OVER(ORDER BY REP_NO ASC) AS R
+				FROM REPLY
+				WHERE USER_NO = #{loginUser}
+				AND V_NO = #{vNo}
+				AND REP_CT = #{content})
+		WHERE R = 1
+	</select>
+	
+	<insert id="replyAlram" parameterType="map">
+		INSERT INTO ALRAM
+		VALUES(AL_NO.NEXTVAL, #{userNo}, SYSDATE, 
+		#{nickName} || '님이 댓글을 남기셨습니다.', '댓글', NULL, #{repNo}, #{vNo}, NULL)
+	</insert>
+	
+	
+	
 </mapper>
 
 

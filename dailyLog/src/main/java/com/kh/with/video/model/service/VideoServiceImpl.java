@@ -13,6 +13,7 @@ import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.video.model.dao.VideoDao;
 import com.kh.with.video.model.vo.Attachment;
+import com.kh.with.video.model.vo.Reply2;
 import com.kh.with.video.model.vo.Video;
 
 @Service
@@ -105,12 +106,12 @@ public class VideoServiceImpl implements VideoService{
 	}
 
 	@Override
-	public List<Video> selectVideoInfo(Map<String, Integer> map) {
+	public List<Video> selectVideoInfo(Map<String, Object> map) {
 		
 		return vd.selectVideoInfo(sqlSession, map);
 	}
 	@Override
-	public List<Loger> selectLogerInfo(Map<String, Integer> map) {
+	public List<Loger> selectLogerInfo(Map<String, Object> map) {
 		
 		return vd.selectLogerInfo(sqlSession, map);
 	}
@@ -293,13 +294,13 @@ public class VideoServiceImpl implements VideoService{
 	}
 	
 	@Override
-	public String selectThumb(Map<String, Integer> map) {
+	public String selectThumb(Map<String, Object> map) {
 		
 		return vd.selectThumb(sqlSession, map);
 	}
 	
 	@Override
-	public String selectProfile(Map<String, Integer> map) {
+	public String selectProfile(Map<String, Object> map) {
 		
 		return vd.selectProfile(sqlSession, map);
 	}
@@ -328,9 +329,35 @@ public class VideoServiceImpl implements VideoService{
 		return result;
 	}
 	
+	@Override
+	public List<Reply2> selectReply(Map<String, Object> map) {
+		
+		return vd.selectReply(sqlSession, map);
+	}
+	
+	@Override
+	public String selectUserImg(Map<String, Object> map) {
+		
+		return vd.selectUserImg(sqlSession, map);
+	}
+	@Override
+	public int insertReply(Map<String, Object> map) {
+		
+		return vd.insertReply(sqlSession, map);
+	}
+	
+@Override
+	public int repNo(Map<String, Object> map) {
+		
+		return vd.repNo(sqlSession, map);
+	}
+	@Override
+	public int replyAlram(Map<String, Object> map) {
+		
+		return vd.replyAlram(sqlSession, map);
+	}
 	
 	
-
 	
 }
 

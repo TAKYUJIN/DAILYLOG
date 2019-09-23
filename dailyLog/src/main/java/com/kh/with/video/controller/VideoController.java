@@ -3,7 +3,6 @@ package com.kh.with.video.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -24,13 +23,13 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.kh.with.admin.model.vo.Board;
 import com.kh.with.common.CommonUtils;
 import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.member.model.service.MemberService;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.video.model.service.VideoService;
 import com.kh.with.video.model.vo.Attachment;
+import com.kh.with.video.model.vo.Reply2;
 import com.kh.with.video.model.vo.Video;
 
 @Controller
@@ -56,7 +55,7 @@ public class VideoController {
 		int userNo = Integer.parseInt(request.getParameter("userNo"));
 		int vNo = Integer.parseInt(request.getParameter("vNo"));
 
-		Map<String, Integer> map = new HashMap<String, Integer>();
+		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("userNo", userNo);
 		map.put("vNo", vNo);
 		map.put("loginUser", loginUser);
@@ -75,17 +74,24 @@ public class VideoController {
 		map.put("chNo", chNo);
 		System.out.println("chNo : " + chNo);
 		
-		//썸넬, 프로필
+		//loger 썸넬, 프로필
 		String thumb = vs.selectThumb(map);
 		String profile = vs.selectProfile(map);
-		//String userImage = vs.selectUserImage(map);
 		
+		List<Reply2> reply = vs.selectReply(map);
+		System.out.println("reply : " + reply);
+		
+		String userImg = vs.selectUserImg(map);
+		
+		model.addAttribute("m", m);
 		model.addAttribute("list1", list1);
 		model.addAttribute("list2", list2);
 		model.addAttribute("age", age);
 		model.addAttribute("thumb", thumb);
 		model.addAttribute("profile", profile);
 		model.addAttribute("chNo", chNo);
+		model.addAttribute("reply", reply);
+		model.addAttribute("userImg", userImg);
 		
 		return "video/videoMain";
 	}
@@ -107,6 +113,39 @@ public class VideoController {
 		model.addAttribute("status" + status);
 		
 		return Integer.toString(status);
+	}
+	//댓글
+	@RequestMapping(value = "insertReply.vd")
+	@ResponseBody
+	public String insertReply(HttpServletRequest request, Model model, HttpSession session) {
+		Member m = (Member) session.getAttribute("loginUser");
+		int loginUser = m.getUserNo();
+		int vNo = Integer.parseInt(request.getParameter("vNo"));
+		String content = request.getParameter("content");
+		int userNo = Integer.parseInt(request.getParameter("userNo"));
+		String nickName = m.getNickname(); 
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("vNo", vNo);
+		map.put("loginUser", loginUser);
+		map.put("content", content);
+		map.put("userNo", userNo);
+		map.put("nickName", nickName);
+		
+		int result = vs.insertReply(map);
+		
+		List<Reply2> reply = vs.selectReply(map);
+		
+		int repNo = vs.repNo(map);
+		map.put("repNo", repNo);
+		
+		int alram = vs.replyAlram(map);
+		
+		model.addAttribute("reply", reply);
+		model.addAttribute("result", result);
+		System.out.println("result : " + result);
+		
+		return Integer.toString(result);
 	}
 	
 	// like

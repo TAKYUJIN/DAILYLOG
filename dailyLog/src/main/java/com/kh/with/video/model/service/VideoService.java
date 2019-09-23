@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.video.model.vo.Attachment;
+import com.kh.with.video.model.vo.Reply2;
 import com.kh.with.video.model.vo.Video;
 
 public interface VideoService {
@@ -41,9 +42,9 @@ public interface VideoService {
 	int insertAttachment(Attachment attachment);
 	
 	//비디오값 불러오기
-	List<Video> selectVideoInfo(Map<String, Integer> map);
+	List<Video> selectVideoInfo(Map<String, Object> map);
 
-	List<Loger> selectLogerInfo(Map<String, Integer> map);
+	List<Loger> selectLogerInfo(Map<String, Object> map);
 
 	//정기후원 상태 조회
 	int selectRegStatus(int userNo, int chNo);
@@ -105,9 +106,9 @@ public interface VideoService {
 
 	int deleteSubAlram(Map<String, Object> map);
 
-	String selectThumb(Map<String, Integer> map);
+	String selectThumb(Map<String, Object> map);
 
-	String selectProfile(Map<String, Integer> map);
+	String selectProfile(Map<String, Object> map);
 
 	int selectRegStatus(Map<String, Integer> map);
 
@@ -117,8 +118,17 @@ public interface VideoService {
 
 	int selectBook(Map<String, Integer> map);
 
+	List<Reply2> selectReply(Map<String, Object> map);
 
-	
+	String selectUserImg(Map<String, Object> map);
+
+	int insertReply(Map<String, Object> map);
+
+	int replyAlram(Map<String, Object> map);
+
+	int repNo(Map<String, Object> map);
+
+
 	
 	
 
