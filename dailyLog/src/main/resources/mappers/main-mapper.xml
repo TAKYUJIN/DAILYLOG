@@ -15,6 +15,7 @@
 		<result property="uploadDT" column="UPLOAD_DT" />
 		<result property="fileNm" column="FILE_NM" />
 		<result property="vfileNm" column="VFILE_NM" />
+		<result property="nNo" column="RANK" />
 	</resultMap>
 	
 	 <resultMap type="Alram" id="AlramResultSet"> 
@@ -28,6 +29,7 @@
         <result property="vNo" column="V_NO"/>
         <result property="retarget" column="RE_TARGET"/>
         <result property="chNo" column="CH_NO"/>
+        <result property="nNo" column="RANK" />
      </resultMap> 
 
 	<!-- 북마크 조회 -->
@@ -40,7 +42,8 @@
 		JOIN MEMBER M ON(VL.USER_NO = M.USER_NO)
 		JOIN VIDEO V ON(VL.V_NO = V.V_NO)
 		JOIN ATTACHMENT A ON(V.V_NO = A.V_NO)
-		WHERE VL.USER_NO = #{userNo})
+		WHERE VL.USER_NO = #{userNo}
+        AND V_TY = '북마크')
 		ORDER BY RANK ASC
 	</select>
 	

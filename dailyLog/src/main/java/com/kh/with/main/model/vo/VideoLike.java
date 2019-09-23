@@ -10,11 +10,12 @@ public class VideoLike {
 	private String uploadDT;
 	private String fileNm; // 썸네일 파일경로
 	private String vfileNm; // 동영상 파일경로
+	private int nNo;
 	
 	public VideoLike() {}
 
 	public VideoLike(int likeNo, int userNo, int vNo, int chNo, String vTY, String vTitle, String uploadDT,
-			String fileNm, String vfileNm) {
+			String fileNm, String vfileNm, int nNo) {
 		super();
 		this.likeNo = likeNo;
 		this.userNo = userNo;
@@ -25,6 +26,7 @@ public class VideoLike {
 		this.uploadDT = uploadDT;
 		this.fileNm = fileNm;
 		this.vfileNm = vfileNm;
+		this.nNo = nNo;
 	}
 
 	public int getLikeNo() {
@@ -99,11 +101,21 @@ public class VideoLike {
 		this.vfileNm = vfileNm;
 	}
 
+	public int getnNo() {
+		return nNo;
+	}
+
+	public void setnNo(int nNo) {
+		this.nNo = nNo;
+	}
+
 	@Override
 	public String toString() {
 		return "VideoLike [likeNo=" + likeNo + ", userNo=" + userNo + ", vNo=" + vNo + ", chNo=" + chNo + ", vTY=" + vTY
-				+ ", vTitle=" + vTitle + ", uploadDT=" + uploadDT + ", fileNm=" + fileNm + ", vfileNm=" + vfileNm + "]";
+				+ ", vTitle=" + vTitle + ", uploadDT=" + uploadDT + ", fileNm=" + fileNm + ", vfileNm=" + vfileNm
+				+ ", nNo=" + nNo + "]";
 	}
-	
 
+	
+	
 }

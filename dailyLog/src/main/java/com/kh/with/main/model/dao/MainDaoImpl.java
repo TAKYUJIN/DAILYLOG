@@ -33,7 +33,7 @@ public class MainDaoImpl implements MainDao{
 		ArrayList<VideoLike> bList = null;
 
 		bList = (ArrayList)sqlSession.selectList("VideoLike.showVideoLike", m);
-		
+		System.out.println("bList:::::::" + bList);
 		return bList;
 	}
 

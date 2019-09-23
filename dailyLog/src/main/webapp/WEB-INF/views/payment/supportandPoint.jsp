@@ -234,7 +234,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach items="${supportandPoint}" var="p">
+                    <c:forEach items="${list}" var="p">
                     <tr>
                         <td><c:out value="${p.payNo }"/></td>
                         <td> <c:out value="${p.userNo }"/></a></td>
