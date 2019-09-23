@@ -13,6 +13,7 @@ import com.kh.with.loger.model.vo.Calculate;
 import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.loger.model.vo.Loger2;
 import com.kh.with.loger.model.vo.MyVideo;
+import com.kh.with.loger.model.vo.SubUserInfo;
 import com.kh.with.loger.model.vo.Support;
 import com.kh.with.main.model.vo.SubscribeVideo;
 import com.kh.with.member.model.vo.Member;
@@ -212,6 +213,15 @@ public class LogerServiceImpl implements LogerService{
 		
 		return ld.favOnesum(sqlSession, myvideo);
 	}
+
+	//구독시 원하는 정보 셀렉
+	@Override
+	public SubUserInfo subUserInfo(SubUserInfo subUserInfo) {
+		
+		return ld.subUserInfo(sqlSession, subUserInfo);
+	}
+
+	
 
 
 	

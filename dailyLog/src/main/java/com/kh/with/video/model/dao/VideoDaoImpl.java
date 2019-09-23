@@ -330,7 +330,26 @@ public class VideoDaoImpl implements VideoDao {
 		
 		return sqlSession.selectOne("Video.selectBook", map);
 	}
-	
+
+	@Override
+	public int selectAge(SqlSessionTemplate sqlSession, int loginUser) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<Attachment> videopop(SqlSessionTemplate sqlSession) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Attachment> videonew(SqlSessionTemplate sqlSession) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 
 	
 }

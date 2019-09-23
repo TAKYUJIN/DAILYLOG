@@ -10,6 +10,7 @@ public class SubscribeVideo implements java.io.Serializable {
 	private String fileNm;  
 	private String chNm;
 	private Date  uploadDt; 
+	private int videoUserNo;
 	
 	
 	
@@ -17,7 +18,8 @@ public class SubscribeVideo implements java.io.Serializable {
 
 
 
-	public SubscribeVideo(int userNo, int vNo, String vTitle, int count, String fileNm, String chNm, Date uploadDt) {
+	public SubscribeVideo(int userNo, int vNo, String vTitle, int count, String fileNm, String chNm, Date uploadDt,
+			int videoUserNo) {
 		super();
 		this.userNo = userNo;
 		this.vNo = vNo;
@@ -26,6 +28,7 @@ public class SubscribeVideo implements java.io.Serializable {
 		this.fileNm = fileNm;
 		this.chNm = chNm;
 		this.uploadDt = uploadDt;
+		this.videoUserNo = videoUserNo;
 	}
 
 
@@ -114,14 +117,24 @@ public class SubscribeVideo implements java.io.Serializable {
 
 
 
-	@Override
-	public String toString() {
-		return "SubscribeVideo [userNo=" + userNo + ", vNo=" + vNo + ", vTitle=" + vTitle + ", count=" + count
-				+ ", fileNm=" + fileNm + ", chNm=" + chNm + ", uploadDt=" + uploadDt + "]";
+	public int getVideoUserNo() {
+		return videoUserNo;
 	}
 
 
 
-	
-	
+	public void setVideoUserNo(int videoUserNo) {
+		this.videoUserNo = videoUserNo;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "SubscribeVideo [userNo=" + userNo + ", vNo=" + vNo + ", vTitle=" + vTitle + ", count=" + count
+				+ ", fileNm=" + fileNm + ", chNm=" + chNm + ", uploadDt=" + uploadDt + ", videoUserNo=" + videoUserNo
+				+ "]";
+	}
+
+
 }

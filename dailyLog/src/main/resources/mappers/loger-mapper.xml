@@ -116,7 +116,26 @@
 		<result property="nNo" column="RANK" />
 		<result property="afileNm" column="AFILE_NM" />
 	</resultMap>
+	
+	
+	<resultMap type="SubUserInfo" id="SubUserInfoResultSet">
+		<id property="chNo" column="CH_NO" />
+		<result property="nickname" column="NICKNAME" />
+		<result property="chNm" column="CH_NM" />
+		<result property="userNo" column="USER_NO" />
+	
+		
+	</resultMap>
 
+	<!-- 구독시 값 가지고 오는 셀렉트 -->
+	<select id="subUserInfo"  resultMap="SubUserInfoResultSet">
+		SELECT L.CH_NO, M.NICKNAME , L.CH_NM 
+	FROM LOGER L
+	JOIN MEMBER M
+	ON (L.USER_NO = M.USER_NO)
+	WHERE  L.USER_NO = #{userNo}
+	
+	</select>
 
 	<!-- 정산페이지 조회 -->
 	<select id="selectLogerCalculate" resultMap="calculateResultSet">

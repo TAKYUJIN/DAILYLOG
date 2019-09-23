@@ -200,14 +200,7 @@
 		WHERE ROWNUM <= 1 ]]>
 	</select>
 
-	<!-- 로거스튜디오 타이틀이미지 isnert  쿼리 -->
 
-	  <insert id="insertTitleImg" parameterType="Attachment">   
-
-   INSERT INTO ATTACHMENT
-   VALUES(#{userNo}, AM_NO.NEXTVAL, NULL ,SYSDATE, #{fileNm},  '채널') 
-
-   </insert>  
  
 
 <select id="videotak"  resultMap="videoRSet"  >

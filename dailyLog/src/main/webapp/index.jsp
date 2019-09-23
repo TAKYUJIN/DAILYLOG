@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 	<h1 align="center">인덱스페이지</h1>
 	 <c:set var="contextPath" value="${ pageContext.servletContext.contextPath }" scope="application"/>
 	 
@@ -20,6 +21,8 @@
 	 
 	 <c:if test="${ !empty sessionScope.loginUser }">
  		<jsp:forward page="home.mb"></jsp:forward>  
-	</c:if>   
+	</c:if> 
+	
+	
 </body>
 </html>

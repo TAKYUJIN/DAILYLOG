@@ -29,6 +29,7 @@ import com.kh.with.loger.model.vo.Calculate;
 import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.loger.model.vo.Loger2;
 import com.kh.with.loger.model.vo.MyVideo;
+import com.kh.with.loger.model.vo.SubUserInfo;
 import com.kh.with.loger.model.vo.Support;
 import com.kh.with.main.model.vo.SubscribeVideo;
 import com.kh.with.main.model.vo.VideoLike;
@@ -375,7 +376,7 @@ public class LogerController {
 		
 		 int userNo =  (int) session.getAttribute("userNo");
 		 
-			System.out.println("로거스튜디오로 넘어왔니??" + userNo);
+		/* System.out.println("로거스튜디오로 넘어왔니??" + userNo); */
 		
 		Loger2 loger2 = new Loger2();
 		loger2.setUserNo(userNo);
@@ -413,7 +414,7 @@ public class LogerController {
 			String chNm = request.getParameter("chNm");
 			String chInfo = request.getParameter("chInfo");
 
-			System.out.println("로거정보가 들어왔나요::::" + userNo + chNm + chInfo);
+		/* System.out.println("로거정보가 들어왔나요::::" + userNo + chNm + chInfo); */
 
 			Loger loger = new Loger();
 			loger.setUserNo(userNo);
@@ -468,12 +469,58 @@ public class LogerController {
 		
 	}		
 		
+	//구독등록
+	@RequestMapping(value="subOk.lo")
+	public String subOk(Model model,HttpServletRequest request,HttpSession session,@ModelAttribute Member m) {
 		
-		
-		
-		
-		
-		
-		
-		
+
+			System.out.println("구독등록으로 등로왔니");
+			 //로거의 유저넘버 
+			 int userNo =  (int) session.getAttribute("userNo");
+			 System.out.println("로거의 유저넘버 " + userNo);
+			
+			 //로그인한 유저번호 
+				int loginUserNo = ((Member) request.getSession().getAttribute("loginUser")).getUserNo();				
+
+				 System.out.println("로그인의 유저넘버 " + loginUserNo);
+				 
+				if(userNo == loginUserNo) {
+					model.addAttribute("msg", "자신의 채널은 구독 불가 입니다");
+
+					return "forward:/newHomeChannel.lo?userNo="+userNo;
+				}
+			
+				
+				SubUserInfo subUserInfo = new SubUserInfo();
+				subUserInfo.setUserNo(userNo);
+
+				
+				SubUserInfo result = ls.subUserInfo(subUserInfo); 
+				
+				
+				System.out.println("구독에 필요한 정보를 갖고 왔나요?" + result);
+				
+				int chNo = result.getChNo();
+				String nickname = result.getNickname();
+				
+				
+				
+				
+				HttpSession session1 = request.getSession();
+				session.setAttribute("userNo", userNo);
+				session.setAttribute("result", result);
+				
+				
+				return  "forward:/subInsert.vd";
+	}
+	
 }
+
+
+
+
+
+
+
+
+
