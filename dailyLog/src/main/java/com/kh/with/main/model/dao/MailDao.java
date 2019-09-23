@@ -4,6 +4,7 @@
   import java.sql.SQLException;
 import java.util.List;
 
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.with.main.model.vo.MailVo;
@@ -19,7 +20,9 @@ import com.kh.with.main.model.vo.MailVo;
   
   //친구 리스트 
   public List<MailVo> FriendsList(MailVo mailVo);
-
+/*int friendSending1(SqlSessionTemplate sqlSession, MailVo mailVo);
+int friendSending2(SqlSessionTemplate sqlSession, MailVo mailVo);
+*/
   
   
   

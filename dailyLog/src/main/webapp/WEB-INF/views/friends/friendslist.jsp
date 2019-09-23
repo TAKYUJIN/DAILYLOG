@@ -135,7 +135,11 @@
 
 <nav class="navbar navbar-default navbar-expand-lg navbar-light">
 	<div class="navbar-header d-flex col" >
-		<img src="resources/images/logo.png" style="width:90px; padding-top:10px;">	
+		
+		<a href="List.mb"> <img src="resources/images/logo.png" style="width:90px; padding-top:10px;"></a>	
+		<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;" onclick="">친구 요청 확인</a></li>			
+			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">친구 요청 보내기</a></li>	
+			
 	</div><br><br>
   <div class="page-wrapper">
   
@@ -179,9 +183,12 @@
                  <div class="panel-body">
                     <table class="table table-hover">
          <h4>친구요청 보내기</h4>
-        <form action="mailSending.mb" method="get"  > <c:forEach var="user" items="${user}">
+        <!-- <form action="mailSending.mb" method="get"  > --> 
+        <form action="friendSending.mb" method="get"  >
+        <c:forEach var="user" items="${user}">
+ 			
  			<input type="hidden" id="userId" name="userId" value="${user.userId }"/>
- 			<input type="hidden" id=status_yn name="status_yn" value="Y"/>
+ 			<input type="hidden" id=status_yn name="status_yn" value="N"/>
  			
 			<!-- 아이디 -->
 			<div class="form-group">
@@ -199,7 +206,10 @@
 		
 			</div><br><br>
       <div align="center">
-        <input type="submit" id=" joinBtn"value="메일 보내기"  class="btn btn-default" style="background:#13334A; color:#fff;">
+        
+        <!-- <input type="submit" id=" joinBtn"value="메일 보내기"  class="btn btn-default" style="background:#13334A; color:#fff;">
+         -->
+         <input type="submit" id=" joinBtn"value="친구 요청 보내기"  class="btn btn-default" style="background:#13334A; color:#fff;">
         <input type="reset" value="취소" class="btn btn-default" id="reset" style="background:#A8B7BC; color:#fff;">
       </div></c:forEach>
   </form></table></div></div></div></div></div></div>

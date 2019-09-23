@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Service;
 
+import com.kh.with.main.model.dao.MailDao;
 import com.kh.with.main.model.dao.MainDao;
 import com.kh.with.main.model.vo.Alram;
+import com.kh.with.main.model.vo.Friend;
 import com.kh.with.main.model.vo.MailVo;
 import com.kh.with.main.model.vo.Subscribe;
 import com.kh.with.main.model.vo.SubscribeVideo;
@@ -24,6 +26,7 @@ public class MainServiceImpl implements MainService{
 	private SqlSessionTemplate sqlSession;
 	@Autowired
 	private MainDao md;
+	 private MailDao userDao;
 	@Autowired
 	private DataSourceTransactionManager transactionManager;
 	
@@ -103,6 +106,38 @@ public class MainServiceImpl implements MainService{
 
 	}
 
+	@Override
+	public int friendSending1(Friend f) {
+		// TODO Auto-generated method stub
+		return md.friendSending1(sqlSession,f);
+		
+	}
+
+	@Override
+	public int friendSending2(Friend f) {
+		// TODO Auto-generated method stub
+		return md.friendSending2(sqlSession,f);
+	}
+
+	@Override
+	public List<Friend> friendconfirm(Friend f) {
+		// TODO Auto-generated method stub
+		return md.friendconfirm(sqlSession,f);
+	}
+
+	/*@Override
+	public int friendSending1(MailVo mailVo) {
+		// TODO Auto-generated method stub
+		return userDao.friendSending1(sqlSession, mailVo);
+	}
+	@Override
+	public int friendSending2(MailVo mailVo) {
+		// TODO Auto-generated method stub
+		return userDao.friendSending2(sqlSession, mailVo);
+	}*/
+
+	
+	
 	/*
 	 * @Override
 	 * 

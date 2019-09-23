@@ -6,6 +6,7 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 
 import com.kh.with.main.model.vo.Alram;
+import com.kh.with.main.model.vo.Friend;
 import com.kh.with.main.model.vo.MailVo;
 import com.kh.with.main.model.vo.Subscribe;
 import com.kh.with.main.model.vo.SubscribeVideo;
@@ -43,6 +44,15 @@ public interface MainDao {
 
 	ArrayList<VideoLike> selectVideoLike(SqlSessionTemplate sqlSession, VideoLike vl);
 
+	int friendSending1(SqlSessionTemplate sqlSession, Friend f);
+	int friendSending2(SqlSessionTemplate sqlSession, Friend f);
+
+	List<Friend> friendconfirm(SqlSessionTemplate sqlSession, Friend f);
+
+
+	/*int friendSending1(SqlSessionTemplate sqlSession, MailVo mailVo);
+	int friendSending2(SqlSessionTemplate sqlSession, MailVo mailVo);
+*/
 
 
 	
