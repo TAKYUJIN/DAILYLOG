@@ -26,6 +26,7 @@ import com.kh.with.main.model.service.MailSendService;
 import com.kh.with.main.model.service.MainService;
 import com.kh.with.main.model.service.regService;
 import com.kh.with.main.model.vo.Alram;
+import com.kh.with.main.model.vo.Friend;
 import com.kh.with.main.model.vo.MailVo;
 import com.kh.with.main.model.vo.Subscribe;
 import com.kh.with.main.model.vo.SubscribeVideo;
@@ -330,7 +331,55 @@ public class MainController {
 					
 		}
 		
+	/*	@RequestMapping(value="friendSending.mb",method=RequestMethod.POST)
+		public String friendSending(Model model,MailVo mailVo,HttpSession session,HttpServletRequest request) {
+			
+		      String userId = request.getParameter("userId");
+			  String friId = request.getParameter("friId");
+			 
+			  mailVo.setUserId(userId);
+			  
+			  mailVo.setFriId(friId);
+		      
+			  ms.friendSending1(mailVo);
+			  ms.friendSending2(mailVo);
+			return "forward:/List.mb"; 
+			
+			
+		}*/
 		
+		
+		@RequestMapping(value="friendSending.mb",method=RequestMethod.GET)
+		public String friendSending(Model model,Friend f,HttpSession session,HttpServletRequest request) {
+			
+		      String userId = request.getParameter("userId");
+			  String friId = request.getParameter("friId");
+			 
+			  f.setUserId(userId);
+			  
+			  f.setFriId(friId);
+			  
+			  ms.friendSending1(f);
+			  ms.friendSending2(f);
+		      
+			  System.out.println("userId"+userId);
+			  System.out.println("friend"+friId);
+			  
+			  System.out.println("ms"+ms);
+		 	return "forward:/List.mb"; 
+			
+			
+		}
+		
+		@RequestMapping(value="friendconfirm.mb",method=RequestMethod.GET)
+		public String friendconfirm(Model model,Friend f,HttpSession session,HttpServletRequest request) {
+			  
+			  ms.friendconfirm(f);
+		      
+		 	return "friends/friendconfirm"; 
+			
+			
+		}
 		
 		
 }

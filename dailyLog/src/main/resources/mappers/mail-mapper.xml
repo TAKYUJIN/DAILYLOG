@@ -28,4 +28,17 @@ UPDATE FRIEND SET STATUS_YN = #{param2} WHERE USER_ID= #{param1}
  <update id="reject" parameterType="MailVo">
   UPDATE FRIEND SET STATUS_YN ='N' WHERE USER_ID=#{friId}  AND FRI_ID= #{userId}  
  </update>
+ 
+ <!-- <insert id="friendSending1" parameterType="MailVo">
+	INSERT INTO FRIEND VALUES (#{friId},#{userId},#{status_yn})</insert>
+	
+<insert id="friendSending1" parameterType="MailVo">
+	INSERT INTO FRIEND VALUES (#{userId},#{friId},#{status_yn})</insert> 
+	  -->
+	 
+ 
+ 
+ 
+ 
+ 
 </mapper>

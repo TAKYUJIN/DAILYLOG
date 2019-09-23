@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.with.admin.model.vo.Board;
 import com.kh.with.main.model.vo.Alram;
+import com.kh.with.main.model.vo.Friend;
 import com.kh.with.main.model.vo.MailVo;
 import com.kh.with.main.model.vo.Subscribe;
 import com.kh.with.main.model.vo.SubscribeVideo;
@@ -125,6 +126,35 @@ public class MainDaoImpl implements MainDao{
 		list = (ArrayList)sqlSession.selectList("VideoLike.selectVideoLike", vl);
 		return list;
 	}
+
+	@Override
+	public int friendSending1(SqlSessionTemplate sqlSession, Friend f) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("friend.friendSending1",f);
+	}
+
+	@Override
+	public int friendSending2(SqlSessionTemplate sqlSession, Friend f) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("friend.friendSending1",f);
+	}
+
+	@Override
+	public List<Friend> friendconfirm(SqlSessionTemplate sqlSession, Friend f) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("friend.friendconfirm",f);
+	}
+
+	/*@Override
+	public int friendSending1(SqlSessionTemplate sqlSession,MailVo mailVo) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("Mail.friendSending1",mailVo);
+	}
+
+	@Override
+	public int friendSending2(SqlSessionTemplate sqlSession, MailVo mailVo) {
+		return sqlSession.insert("friend.friendSending2",mailVo);
+	}*/
 
 
 

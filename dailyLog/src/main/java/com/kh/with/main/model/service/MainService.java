@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.kh.with.main.model.vo.Alram;
+import com.kh.with.main.model.vo.Friend;
 import com.kh.with.main.model.vo.MailVo;
 import com.kh.with.main.model.vo.Subscribe;
 import com.kh.with.main.model.vo.SubscribeVideo;
@@ -42,7 +43,17 @@ public interface MainService {
 
 	ArrayList<VideoLike> selectVideoLike(VideoLike vl);
 
+	int friendSending1(Friend f);
+	int friendSending2(Friend f);
 
+	List<Friend> friendconfirm(Friend f);
+	
+
+	/*int friendSending1(MailVo mailVo);
+
+	int friendSending2(MailVo mailVo);
+
+*/
 	
 
 	
