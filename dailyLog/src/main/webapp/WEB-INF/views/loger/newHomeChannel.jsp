@@ -194,7 +194,7 @@ body {
 					<strong><c:out value="${result.chNm}" /></strong>
 				</p>
 			</div>
-			<button id="subscribebtn" class="btn btn-primary">구독</button>
+			<button id="subscribebtn" class="btn btn-primary" onclick="subOk();" >구독</button>  
 			<p style="widht: 200px; margin-left: 130px; margin-top: -10px;">
 				<c:out value="${result.subNum}" />
 				명
@@ -295,8 +295,19 @@ body {
 			</div>
 		</c:forEach>
 
-
-
+<script>
+		function subOk(){
+		
+			location.href='subOk.lo';
+			
+		}
+		var message = '${msg}';
+	    if(message == "자신의 채널은 구독 불가 입니다"){
+			 alert(message); 
+	    	
+	    }
+	</script>
+	
 
 
 

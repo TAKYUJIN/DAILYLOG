@@ -7,6 +7,7 @@ import com.kh.with.loger.model.vo.Calculate;
 import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.loger.model.vo.Loger2;
 import com.kh.with.loger.model.vo.MyVideo;
+import com.kh.with.loger.model.vo.SubUserInfo;
 import com.kh.with.loger.model.vo.Support;
 import com.kh.with.main.model.vo.SubscribeVideo;
 import com.kh.with.member.model.vo.Member;
@@ -95,10 +96,11 @@ public interface LogerService {
 	//최신동영상 1개 썸네일 
 	Attachment favOnesum(MyVideo myvideo);
 
+	//구독시 원하는 정보 셀렉
+	SubUserInfo subUserInfo(SubUserInfo subUserInfo);
 
-
-
-
+	
+	
  
 	
 

@@ -75,13 +75,10 @@
       <div id="right">
          <table id="subscribeArea">
             <c:forEach items="${subscribeVideoList}" var="sv" begin="0" end="5">
-
-
-
                <div style="float: left; margin-left:50px;">
                   <div class="col-sm-4">
                
-                     <a href="video.vd?userNo=${sv.userNo}&vNo=${sv.vNo}">
+                     <a href="video.vd?userNo=${sv.videoUserNo}&vNo=${sv.vNo}"> 
                       <img   src="resources/uploadFiles/${sv.fileNm}" width="250px"
                         height="200px"> <br><br>
                         <div style="width: 150px;">

@@ -628,6 +628,7 @@ public class VideoController {
 		System.out.println("result1" + result1);
 
 		if(result > 0  && result1 > 0 ) {
+			
 			return "redirect:index.jsp";
 		}else {
 			model.addAttribute("msg", "동영상 업로드실패");

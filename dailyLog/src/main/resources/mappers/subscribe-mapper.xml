@@ -23,7 +23,11 @@
           <result property="fileNm" column="FILE_NM"/>
            <result property="chNm" column="CH_NM"/>
            <result property="uploadDt" column="UPLOAD_DT"/>
+           <result property="videoUserNo" column="VIDEO_USER_NO"/>
      </resultMap>
+     
+     
+  
      
      
      
@@ -40,7 +44,7 @@
      
      <!-- 구독영상리스트-->
        <select id="subscribeVideoList" resultMap="SubscribeResultSet2">
-	SELECT S.USER_NO,V.V_NO , V.V_TITLE , V.COUNT ,A.FILE_NM ,v.CH_NM, V.UPLOAD_DT
+	SELECT S.USER_NO,V.V_NO , V.V_TITLE , V.COUNT ,A.FILE_NM ,v.CH_NM, V.UPLOAD_DT, V.USER_NO AS VIDEO_USER_NO
 	FROM SUBSCRIBE S 
 	JOIN LOGER L
 	ON (S.CH_NO = L.CH_NO)
@@ -50,7 +54,6 @@
 	ON (A.V_NO = V.V_NO)
 	WHERE S.USER_NO =  #{userNo}
 	ORDER BY UPLOAD_DT DESC
-
 	</select>
 	
 	

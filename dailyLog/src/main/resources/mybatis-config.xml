@@ -29,6 +29,8 @@
 
 	<typeAlias type="com.kh.with.loger.model.vo.MyVideo" alias="MyVideo" />
 		<typeAlias type="com.kh.with.payment.model.vo.Payment" alias="Payment" />
+		
+			<typeAlias type="com.kh.with.loger.model.vo.SubUserInfo" alias="SubUserInfo" />
 
 	</typeAliases>
 	<mappers>
