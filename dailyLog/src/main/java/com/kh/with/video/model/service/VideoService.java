@@ -71,14 +71,28 @@ public interface VideoService {
 
 	List<Attachment> videoimagelist();
 
-	List<Attachment> videopop();
-
-	List<Attachment> videonew();
+ 
 
 	int selectAge(int loginUser);
 
 	//동영상번호 셀렉
 	Video selectvNo(int getUserNo);
+
+	List<Attachment> videotak();
+
+	List<Attachment> videokim1();
+
+	List<Attachment> videokim2();
+
+	List<Attachment> videopark();
+
+	List<Attachment> videoji();
+
+	List<Attachment> videojeong();
+
+	List<Video> videopop1();
+
+	List<Video> videonew1();
 
 	
 	

@@ -290,7 +290,7 @@
 <nav class="navbar navbar-default navbar-expand-lg navbar-light">
 
 	<div class="navbar-header d-flex col" style="margin-top:13px;">
-	 <a value="DailyLog" id="logo" style="width:110px; font-size:22px;">DailyLog</a>
+	 <a value="DailyLog" id="logo" style="width:110px; font-size:22px;" onclick="location.href='home.mb'">DailyLog</a>
 	</div>
 	<!-- Collection of nav links, forms, and other content for toggling -->
 	<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
@@ -316,7 +316,7 @@
     <!-- 주석 에진
 			<li class="nav-item"><a href="newHomeChannel.lo?userNo=${sessionScope.loginUser.userNo}" class="nav-link" style="padding-right:0px;" onclick="">로거 스튜디오</a></li>
 			<!-- <li class="nav-item"><a href="lotest.lo" class="nav-link" style="padding-right:0px;">알림 예시</a></li> -->
--->
+ 
 		</ul>
 
 		<form class="navbar-form form-inline" action="search.mb" method="get">

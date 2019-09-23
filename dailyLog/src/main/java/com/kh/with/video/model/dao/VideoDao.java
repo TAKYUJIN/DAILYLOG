@@ -28,11 +28,11 @@ public interface VideoDao {
 	//int insertVideoInfo(SqlSessionTemplate sqlSession, Model model);
 	
 	
-	List<Attachment> videoimagelist(Member m);
-	List<Attachment> videopop(Member m);
-	List<Attachment> videonew(Member m);
-	List<Attachment> videobook(Member m);
-	List<Attachment> videosub(Member m);
+	List<Attachment> videoimagelist(SqlSessionTemplate sqlSession,Member m);
+	List<Attachment> videopop(SqlSessionTemplate sqlSession,Member m);
+	List<Attachment> videonew(SqlSessionTemplate sqlSession,Member m);
+	List<Attachment> videobook(SqlSessionTemplate sqlSession,Member m);
+	List<Attachment> videosub(SqlSessionTemplate sqlSession,Member m);
 	//썸네일  insert 메소드
 	int insertAttachment(SqlSessionTemplate sqlSession, Attachment attachment);
 	
@@ -61,16 +61,23 @@ public interface VideoDao {
 	//신고
 	int report(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	int block(SqlSessionTemplate sqlSession, Map<String, Object> map);
-	List<Attachment> videolike(Member m);
+	List<Attachment> videolike(SqlSessionTemplate sqlSession,Member m);
 	List<Attachment> videoimagelist(SqlSessionTemplate sqlSession);
-	List<Attachment> videopop(SqlSessionTemplate sqlSession);
-	List<Attachment> videonew(SqlSessionTemplate sqlSession);
-	
+	 
 	int selectAge(SqlSessionTemplate sqlSession, int loginUser);
 	
 	//동영상번호 셀렉
 	
 	Video selectvNo(SqlSessionTemplate sqlSession, int getUserNo);
+	List<Attachment> videotak(SqlSessionTemplate sqlSession);
+	List<Attachment> videokim1(SqlSessionTemplate sqlSession);
+	List<Attachment> videokim2(SqlSessionTemplate sqlSession);
+	List<Attachment> videopark(SqlSessionTemplate sqlSession);
+	List<Attachment> videoji(SqlSessionTemplate sqlSession);
+	List<Attachment> videojeong(SqlSessionTemplate sqlSession);
+	List<Video> videopop1(SqlSessionTemplate sqlSession);
+	List<Video> videonew1(SqlSessionTemplate sqlSession);
+	
 	
 
 }

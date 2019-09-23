@@ -315,6 +315,135 @@ color: black; text-decoration: none;
 						  </c:forEach> </div></div>
 				</div>
   </div></div> 
+   
+  <div class="row"><br><br><br><br>
+		<div class="col-md-10 col-center m-auto"><br><br><br> 
+			<h3>  <span><div id="vid"><b>  T A K L O G</b></div>  </span></h3>  <br>
+			<div id="myCarousel1" class="carousel slide" data-ride="carousel" data-interval="0">
+				  
+				<div class="carousel-inner">
+						<div class="row">
+							
+						<c:forEach var="videoimage" items="${videotak}" begin="0" end="5">
+						<div class="col-sm-4 "><div class="img-box"><div id="sty" class="scale"style=" float:left;text-decoration: none;  color: black; "> 
+						<a  style=" text-decoration: none;" href="loginbutton.me">
+						<img style=" border-radius:10px; color: black; text-decoration: none; margin:10px;" src="resources/uploadFiles/${videoimage.fileNm}" width = "300px"  height="200px"  >
+							<div id="sty1"><h4><b>  ${videoimage.vTitle}</b></h4>
+							<div id="sty2"><h5><b> ${videoimage.chNm }</b> &nbsp;&nbsp;<b>  ${videoimage.tag }</b> <b>  ${videoimage.uploadDt }</b> </h5>
+							 </div></div>
+				</a></div></div></div> 
+						  
+						  </c:forEach> </div></div>
+				</div>
+  </div></div> 
+  
+  
+  
+  <div class="row"><br><br><br><br>
+		<div class="col-md-10 col-center m-auto"><br><br><br> 
+			<h3>  <span><div id="vid"><b>채 빈 S 채 널</b></div>  </span></h3>  <br>
+			<div id="myCarousel1" class="carousel slide" data-ride="carousel" data-interval="0">
+				  
+				<div class="carousel-inner">
+						<div class="row">
+							
+						<c:forEach var="videoimage" items="${videokim1}" begin="0" end="5">
+						<div class="col-sm-4 "><div class="img-box"><div id="sty" class="scale"style=" float:left;text-decoration: none;  color: black; "> 
+						<a  style=" text-decoration: none;" href="loginbutton.me">
+						<img style=" border-radius:10px; color: black; text-decoration: none; margin:10px;" src="resources/uploadFiles/${videoimage.fileNm}" width = "300px"  height="200px"  >
+							<div id="sty1"><h4><b>  ${videoimage.vTitle}</b></h4>
+							<div id="sty2"><h5><b> ${videoimage.chNm }</b> &nbsp;&nbsp;<b>  ${videoimage.tag }</b> <b>  ${videoimage.uploadDt }</b> </h5>
+							 </div></div>
+				</a></div></div></div> 
+						  
+						  </c:forEach> </div></div>
+				</div>
+  </div></div> 
+  
+  
+  <div class="row"><br><br><br><br>
+		<div class="col-md-10 col-center m-auto"><br><br><br> 
+			<h3>  <span><div id="vid"><b>오 이 도 꿔 까</b></div>  </span></h3>  <br>
+			<div id="myCarousel1" class="carousel slide" data-ride="carousel" data-interval="0">
+				  
+				<div class="carousel-inner">
+						<div class="row">
+							
+						<c:forEach var="videoimage" items="${videopark}" begin="0" end="5">
+						<div class="col-sm-4 "><div class="img-box"><div id="sty" class="scale"style=" float:left;text-decoration: none;  color: black; "> 
+						<a  style=" text-decoration: none;" href="loginbutton.me">
+						<img style=" border-radius:10px; color: black; text-decoration: none; margin:10px;" src="resources/uploadFiles/${videoimage.fileNm}" width = "300px"  height="200px"  >
+							<div id="sty1"><h4><b>  ${videoimage.vTitle}</b></h4>
+							<div id="sty2"><h5><b> ${videoimage.chNm }</b> &nbsp;&nbsp;<b>  ${videoimage.tag }</b> <b>  ${videoimage.uploadDt }</b> </h5>
+							 </div></div>
+				</a></div></div></div> 
+						  
+						  </c:forEach> </div></div>
+				</div>
+  </div></div> 
+   <div class="row"><br><br><br><br>
+		<div class="col-md-10 col-center m-auto"><br><br><br> 
+			<h3>  <span><div id="vid"><b> 희 정 이 네 </b></div>  </span></h3>  <br>
+			<div id="myCarousel1" class="carousel slide" data-ride="carousel" data-interval="0">
+				  
+				<div class="carousel-inner">
+						<div class="row">
+							
+						<c:forEach var="videoimage" items="${videoji}" begin="0" end="5">
+						<div class="col-sm-4 "><div class="img-box"><div id="sty" class="scale"style=" float:left;text-decoration: none;  color: black; "> 
+						<a  style=" text-decoration: none;" href="loginbutton.me">
+						<img style=" border-radius:10px; color: black; text-decoration: none; margin:10px;" src="resources/uploadFiles/${videoimage.fileNm}" width = "300px"  height="200px"  >
+							<div id="sty1"><h4><b>  ${videoimage.vTitle}</b></h4>
+							<div id="sty2"><h5><b> ${videoimage.chNm }</b> &nbsp;&nbsp;<b>  ${videoimage.tag }</b> <b>  ${videoimage.uploadDt }</b> </h5>
+							 </div></div>
+				</a></div></div></div> 
+						  
+						  </c:forEach> </div></div>
+				</div>
+  </div></div> 
+  
+  <div class="row"><br><br><br><br>
+		<div class="col-md-10 col-center m-auto"><br><br><br> 
+			<h3>  <span><div id="vid"><b>C H A E W O N</b></div>  </span></h3>  <br>
+			<div id="myCarousel1" class="carousel slide" data-ride="carousel" data-interval="0">
+				  
+				<div class="carousel-inner">
+						<div class="row">
+							
+						<c:forEach var="videoimage" items="${videokim2}" begin="0" end="5">
+						<div class="col-sm-4 "><div class="img-box"><div id="sty" class="scale"style=" float:left;text-decoration: none;  color: black; "> 
+						<a  style=" text-decoration: none;" href="loginbutton.me">
+						<img style=" border-radius:10px; color: black; text-decoration: none; margin:10px;" src="resources/uploadFiles/${videoimage.fileNm}" width = "300px"  height="200px"  >
+							<div id="sty1"><h4><b>  ${videoimage.vTitle}</b></h4>
+							<div id="sty2"><h5><b> ${videoimage.chNm }</b> &nbsp;&nbsp;<b>  ${videoimage.tag }</b> <b>  ${videoimage.uploadDt }</b> </h5>
+							 </div></div>
+				</a></div></div></div> 
+						  
+						  </c:forEach> </div></div>
+				</div>
+  </div></div> 
+  
+ 
+  <div class="row"><br><br><br><br>
+		<div class="col-md-10 col-center m-auto"><br><br><br> 
+			<h3>  <span><div id="vid"><b>은 주 의 일 상</b></div>  </span></h3>  <br>
+			<div id="myCarousel1" class="carousel slide" data-ride="carousel" data-interval="0">
+				  
+				<div class="carousel-inner">
+						<div class="row">
+							
+						<c:forEach var="videoimage" items="${videojeong}" begin="0" end="5">
+						<div class="col-sm-4 "><div class="img-box"><div id="sty" class="scale"style=" float:left;text-decoration: none;  color: black; "> 
+						<a  style=" text-decoration: none;" href="loginbutton.me">
+						<img style=" border-radius:10px; color: black; text-decoration: none; margin:10px;" src="resources/uploadFiles/${videoimage.fileNm}" width = "300px"  height="200px"  >
+							<div id="sty1"><h4><b>  ${videoimage.vTitle}</b></h4>
+							<div id="sty2"><h5><b> ${videoimage.chNm }</b> &nbsp;&nbsp;<b>  ${videoimage.tag }</b> <b>  ${videoimage.uploadDt }</b> </h5>
+							 </div></div>
+				</a></div></div></div> 
+						  
+						  </c:forEach> </div></div>
+				</div>
+  </div></div> 
   
  	<jsp:include page="../common/footer.jsp"></jsp:include>
  

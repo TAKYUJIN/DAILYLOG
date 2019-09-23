@@ -591,8 +591,16 @@ public class VideoController {
 		public ModelAndView guest( HttpSession session,ModelAndView mav ) {
 			 mav.setViewName("main/top");
 			 mav.addObject("list", videoservice.videoimagelist());
-			 mav.addObject("videopop", videoservice.videopop());
-			 mav.addObject("videonew", videoservice.videonew());
+			 mav.addObject("videopop", videoservice.videopop1());
+			 mav.addObject("videonew", videoservice.videonew1());
+			 mav.addObject("videotak", videoservice.videotak());
+			 mav.addObject("videokim1", videoservice.videokim1());
+			 mav.addObject("videokim2", videoservice.videokim2());
+			 mav.addObject("videopark", videoservice.videopark());
+			 mav.addObject("videoji", videoservice.videoji());
+			 mav.addObject("videojeong", videoservice.videojeong());
+			 
+			 
 			 System.out.println(mav);
 			 return mav;
 	 }	

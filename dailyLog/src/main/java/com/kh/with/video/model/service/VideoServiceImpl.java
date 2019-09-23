@@ -61,37 +61,37 @@ public class VideoServiceImpl implements VideoService{
 	public List<Attachment> videoimagelist(Member m){
 		System.out.println("videoServiceimpl");
 		
-		return vd.videoimagelist(m);
+		return vd.videoimagelist(sqlSession,m);
 	}
 	
 	@Override
 	public List<Attachment> videopop(Member m) {
 		// TODO Auto-generated method stub
-		return vd.videopop(m);
+		return vd.videopop(sqlSession,m);
 	}
 
 	@Override
 	public List<Attachment> videonew(Member m) {
 		// TODO Auto-generated method stub
-		return vd.videonew(m);
+		return vd.videonew(sqlSession,m);
 	}
 
 	@Override
 	public List<Attachment> videobook(Member m) {
 		// TODO Auto-generated method stub
-		return vd.videobook(m);
+		return vd.videobook(sqlSession,m);
 	}
 
 	@Override
 	public List<Attachment> videosub(Member m) {
 		// TODO Auto-generated method stub
-		return vd.videosub(m);
+		return vd.videosub(sqlSession,m);
 	}
 	
 	@Override
 	public List<Attachment> videolike(Member m) {
 		// TODO Auto-generated method stub
-		return vd.videolike(m);
+		return vd.videolike(sqlSession,m);
 	}
 	
 
@@ -183,17 +183,8 @@ public class VideoServiceImpl implements VideoService{
 		return vd.videoimagelist(sqlSession);
 	}
 
-	@Override
-	public List<Attachment> videopop() {
-		// TODO Auto-generated method stub
-		return vd.videopop(sqlSession);
-	}
-
-	@Override
-	public List<Attachment> videonew() {
-		// TODO Auto-generated method stub
-		return vd.videonew(sqlSession);
-	}
+	 
+ 
 
 	
 
@@ -207,6 +198,54 @@ public class VideoServiceImpl implements VideoService{
 	public Video selectvNo(int getUserNo) {
 		
 		return vd.selectvNo(sqlSession, getUserNo);
+	}
+
+	@Override
+	public List<Attachment> videotak() {
+		// TODO Auto-generated method stub
+		return vd.videotak(sqlSession);
+	}
+
+	@Override
+	public List<Attachment> videokim1() {
+		// TODO Auto-generated method stub
+		return vd.videokim1(sqlSession);
+	}
+
+	@Override
+	public List<Attachment> videokim2() {
+		// TODO Auto-generated method stub
+		return vd.videokim2(sqlSession);
+	}
+
+	@Override
+	public List<Attachment> videopark() {
+		// TODO Auto-generated method stub
+		return vd.videopark(sqlSession);
+	}
+
+	@Override
+	public List<Attachment> videoji() {
+		// TODO Auto-generated method stub
+		return vd.videoji(sqlSession);
+	}
+
+	@Override
+	public List<Attachment> videojeong() {
+		// TODO Auto-generated method stub
+		return vd.videojeong(sqlSession);
+	}
+
+	@Override
+	public List<Video> videopop1() {
+		// TODO Auto-generated method stub
+		return vd.videopop1(sqlSession);
+	}
+
+	@Override
+	public List<Video> videonew1() {
+		// TODO Auto-generated method stub
+		return vd.videonew1(sqlSession);
 	}
 
 

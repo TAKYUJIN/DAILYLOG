@@ -255,7 +255,11 @@
 			display: block;
 		}
 	}
-	
+	 #logo,#friendlist{
+   background:none;
+   border:none;
+	padding:0;
+    }
 	#navbarCollapse a {
 		font-size:12px;
 	}a:link { color: black; text-decoration: none; color: black;}
@@ -311,11 +315,19 @@
 			</li>
 			
 			<li class="nav-item">
-				<a href="#none" class="btn_global link_login">
-				<img src="resources/images/laugh.png" style="width:20px;">
-			</a>
+				<button  type="button" id="friendlist" class="btn_global link_login" >
+				<img src="resources/images/laugh.png" style="width:20px;margin:15px;">
+				</button>
+			 
 			</li>
-			
+			<script type="text/javascript">
+$('#friendlist').click(function(){
+	 var popUrl = "List.mb";	 
+	 var popOption = "width=370, height=700, resizable=no, scrollbars=no, status=no;";   
+			window.open(popUrl,"",popOption);
+	 
+});
+</script>
 			<li class="nav-item">
 			<a href="#none" data-toggle="dropdown" class="btn_global link_login">
 				<img src="resources/images/bell.png" style="width:20px;">
