@@ -642,7 +642,8 @@ public class VideoController {
 
 		if(result > 0  && result1 > 0 ) {
 			
-			return "redirect:index.jsp";
+			model.addAttribute("msg", "동영상이 업로드 되었습니다!");
+			return "forward:/newHomeChannel.lo?userNo="+UserNo;
 		}else {
 			model.addAttribute("msg", "동영상 업로드실패");
 			return "common/errorPage";
@@ -741,7 +742,47 @@ public class VideoController {
 	 }	
 	
 	 
-	 
-	 
+		//로거스튜디오에서의 구독
+		@RequestMapping(value = "studeioSubInsert.vd")
+		@ResponseBody
+		public String studeioSubInsert(HttpSession session, HttpServletRequest request,@ModelAttribute Member m) {
+			
+			System.out.println("로거스튜디오의 구독으로 넘어왔나요?");
+		
+			int userNo = (int) session.getAttribute("userNo");
+			int loginUserNo = (int) session.getAttribute("loginUserNo");
+			int chNo = (int) session.getAttribute("chNo");
+			String nickName = (String) session.getAttribute("nickName");
+			String chNm = (String) session.getAttribute("chNm");
+			
+
+			System.out.println("로거스튜디오에서의 구독에서의 정보::: "  +
+					"로거번호:::" +userNo + "로그인유저번호::" + loginUserNo + "로거채널번호:::" + chNo + 
+					"로거닉네임:::" + nickName + "채널네임:::" + chNm);
+		
+		
+			
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("loginUser", loginUserNo);
+			map.put("chNo", chNo);
+			map.put("nickName", nickName);
+			map.put("chNm", chNm);
+			map.put("userNo", userNo);
+			
+			int result = vs.subInsert(map);
+			System.out.println("result : " + result);
+			
+			int alram = vs.insertSubAlram(map);
+			
+			
+	
+		/* return Integer.toString(result); */
+			
+			return "newHomeChannel.lo?userNo="+userNo;
+			
+		}
+
+	
+		
 	
 }
