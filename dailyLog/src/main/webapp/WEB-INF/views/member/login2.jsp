@@ -165,8 +165,8 @@
 	
 		<jsp:include page="/WEB-INF/views/common/guest.jsp"></jsp:include>
 	<div class="signin-form">
-		<h1>회원가입 됐따아ㅏ아아아아아 3 파이널 발표자는 김채원 지희정 </h1>
-		
+	
+		<br>
 		<br>
 		<h3>안녕하세요, ${param.userNm} 님</h3>
 		<br>

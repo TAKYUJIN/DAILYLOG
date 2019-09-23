@@ -39,6 +39,10 @@ public interface MainDao {
 
 	ArrayList<Alram> selectAlram(SqlSessionTemplate sqlSession, Member m);
 
+	ArrayList<VideoLike> showVideoLike(SqlSessionTemplate sqlSession, Member m);
+
+	ArrayList<VideoLike> selectVideoLike(SqlSessionTemplate sqlSession, VideoLike vl);
+
 
 
 	

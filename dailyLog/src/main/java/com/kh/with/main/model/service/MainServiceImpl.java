@@ -91,6 +91,18 @@ public class MainServiceImpl implements MainService{
 		return null;
 	}
 
+	@Override
+	public ArrayList<VideoLike> showVideoLike(Member m) {
+		return md.showVideoLike(sqlSession, m);
+		
+	}
+
+	@Override
+	public ArrayList<VideoLike> selectVideoLike(VideoLike vl) {
+		return md.selectVideoLike(sqlSession, vl);
+
+	}
+
 	/*
 	 * @Override
 	 * 

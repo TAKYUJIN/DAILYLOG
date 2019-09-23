@@ -46,9 +46,37 @@
         AND V_TY = '북마크')
 		ORDER BY RANK ASC
 	</select>
+	
+	<!--좋아요  조회 -->
+	<select id="showVideoLike" resultMap="videoLikeResultSet">
+		SELECT RANK, LIKE_NO,
+		USER_NO, V_NO, CH_NO, V_DT, V_TY, V_TITLE, UPLOAD_DT, FILE_NM, VFILE_NM
+		FROM (SELECT ROW_NUMBER() OVER(ORDER BY VL.V_DT DESC) RANK, VL.*, V_TITLE,
+		UPLOAD_DT, A.FILE_NM, V.FILE_NM VFILE_NM
+		FROM VIDEO_LIKE VL
+		JOIN MEMBER M ON(VL.USER_NO = M.USER_NO)
+		JOIN VIDEO V ON(VL.V_NO = V.V_NO)
+		JOIN ATTACHMENT A ON(V.V_NO = A.V_NO)
+		WHERE VL.USER_NO = #{userNo})
+		ORDER BY RANK ASC
+	</select>
 
 	<!-- 검색한 제목의 북마크 조회 -->
 	<select id="selectBookmark" resultMap="videoLikeResultSet">
+		SELECT RANK, LIKE_NO, USER_NO, V_NO, CH_NO, V_DT, V_TY, V_TITLE, UPLOAD_DT, FILE_NM, VFILE_NM
+		FROM (SELECT ROW_NUMBER() OVER(ORDER BY VL.V_DT DESC) RANK,	VL.*, V_TITLE,
+		UPLOAD_DT, A.FILE_NM, V.FILE_NM VFILE_NM
+		FROM VIDEO_LIKE VL
+		JOIN MEMBER M ON(VL.USER_NO = M.USER_NO)
+		JOIN VIDEO V ON(VL.V_NO = V.V_NO)
+		JOIN ATTACHMENT A ON(V.V_NO = A.V_NO)
+		WHERE VL.USER_NO = #{userNo}
+		AND V_TITLE LIKE '%' || #{vTitle} || '%')
+		ORDER BY RANK ASC
+	</select>
+	
+	<!-- 검색한 제목의 좋아요  조회 -->
+	<select id="selectVideoLike" resultMap="videoLikeResultSet">
 		SELECT RANK, LIKE_NO, USER_NO, V_NO, CH_NO, V_DT, V_TY, V_TITLE, UPLOAD_DT, FILE_NM, VFILE_NM
 		FROM (SELECT ROW_NUMBER() OVER(ORDER BY VL.V_DT DESC) RANK,	VL.*, V_TITLE,
 		UPLOAD_DT, A.FILE_NM, V.FILE_NM VFILE_NM

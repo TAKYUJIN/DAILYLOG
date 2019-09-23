@@ -59,6 +59,18 @@ public class MainController {
 		return "main/bookmark";
 	}
 	
+	// 좋아요 페이지로 이동
+		@RequestMapping(value="videoLike.mb")
+		public String showVideoLike(Model model, HttpSession session, VideoLike vl) {
+			Member m = (Member) session.getAttribute("loginUser");
+			// 좋아 조회
+			ArrayList<VideoLike> bList = ms.showVideoLike(m);
+
+			model.addAttribute("bList", bList);		
+			
+			return "main/videoLike";
+		}
+	
 	//북마크 동영상 제목으로 검색
 	@RequestMapping(value="selectBookmark.mb")
 	public String selectBookmark(Model model, HttpSession session, VideoLike vl, @RequestParam(value="title", required=true) String title) {
@@ -76,6 +88,24 @@ public class MainController {
 		
 		return "main/selectBookmark";
 	}
+	
+	//좋아요  동영상 제목으로 검색
+		@RequestMapping(value="selectVideoLike.mb")
+		public String selectVideoLike(Model model, HttpSession session, VideoLike vl, @RequestParam(value="title", required=true) String title) {
+			Member m = (Member) session.getAttribute("loginUser");
+			
+			int userNo = m.getUserNo();
+			vl.setUserNo(userNo);
+			vl.setvTitle(title);
+			
+			ArrayList<VideoLike> list = ms.selectVideoLike(vl);
+			
+			model.addAttribute("list", list);
+			
+			
+			
+			return "main/selectVideoLike";
+		}
 	
 	//알림 db
 	@RequestMapping(value="goAlram.mb")
