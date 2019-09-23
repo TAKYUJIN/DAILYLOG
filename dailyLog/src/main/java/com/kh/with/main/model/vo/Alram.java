@@ -11,11 +11,12 @@ public class Alram {
  private int re_no;
  private int vNo;
  private int chNo;
+ private int nNo;
  
  public Alram() {}
 
 public Alram(int alNo, int userNo, String alDT, String alCT, String alYN, String retarget, int subNo, int re_no,
-		int vNo, int chNo) {
+		int vNo, int chNo, int nNo) {
 	super();
 	this.alNo = alNo;
 	this.userNo = userNo;
@@ -27,6 +28,7 @@ public Alram(int alNo, int userNo, String alDT, String alCT, String alYN, String
 	this.re_no = re_no;
 	this.vNo = vNo;
 	this.chNo = chNo;
+	this.nNo = nNo;
 }
 
 public int getAlNo() {
@@ -109,13 +111,21 @@ public void setChNo(int chNo) {
 	this.chNo = chNo;
 }
 
+public int getnNo() {
+	return nNo;
+}
+
+public void setnNo(int nNo) {
+	this.nNo = nNo;
+}
+
 @Override
 public String toString() {
 	return "Alram [alNo=" + alNo + ", userNo=" + userNo + ", alDT=" + alDT + ", alCT=" + alCT + ", alYN=" + alYN
 			+ ", retarget=" + retarget + ", subNo=" + subNo + ", re_no=" + re_no + ", vNo=" + vNo + ", chNo=" + chNo
-			+ "]";
+			+ ", nNo=" + nNo + "]";
 }
- 
+
  
  
 	

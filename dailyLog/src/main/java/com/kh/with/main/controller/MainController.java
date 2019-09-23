@@ -52,7 +52,8 @@ public class MainController {
 		Member m = (Member) session.getAttribute("loginUser");
 		// 북마크 조회
 		ArrayList<VideoLike> bList = ms.showBookmark(m);
-
+		System.out.println(bList);
+		
 		model.addAttribute("bList", bList);		
 		
 		return "main/bookmark";
