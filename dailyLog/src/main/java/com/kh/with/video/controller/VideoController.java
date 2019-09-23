@@ -78,6 +78,7 @@ public class VideoController {
 		//썸넬, 프로필
 		String thumb = vs.selectThumb(map);
 		String profile = vs.selectProfile(map);
+		//String userImage = vs.selectUserImage(map);
 		
 		model.addAttribute("list1", list1);
 		model.addAttribute("list2", list2);
@@ -382,7 +383,12 @@ public class VideoController {
 		map.put("chNm", chNm);
 		map.put("vTitle", vTitle);
 		
+		//select rcount, ccount
+		
 		int result = vs.report(map);
+//		if(Integer.toString(result) == 0) {
+//			
+//		}
 		System.out.println("result : " + result);
 		
 		int alram = vs.videoAlram(map);

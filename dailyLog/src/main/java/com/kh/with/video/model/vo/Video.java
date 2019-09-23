@@ -21,12 +21,13 @@ public class Video implements java.io.Serializable {
  	private String openTy; //공개여부
 	private int nNo;
 	private String afileNm; //일부러 넣은 겁니다 주석하지말아주세요ㅠㅠ
+	private int vStatus;
 	
 	public Video () {}
 
 	public Video(int vNo, int userNo, String vTitle, int count, String chNm, String tag, String vblYn, Date uploadDt,
 			Date modifyDt, String adultAut, String adYn, String adInfo, String location, String info, String fileNm,
-			String openTy, int nNo, String afileNm) {
+			String openTy, int nNo, String afileNm, int vStatus) {
 		super();
 		this.vNo = vNo;
 		this.userNo = userNo;
@@ -46,6 +47,7 @@ public class Video implements java.io.Serializable {
 		this.openTy = openTy;
 		this.nNo = nNo;
 		this.afileNm = afileNm;
+		this.vStatus = vStatus;
 	}
 
 	public int getvNo() {
@@ -192,16 +194,22 @@ public class Video implements java.io.Serializable {
 		this.afileNm = afileNm;
 	}
 
+	public int getvStatus() {
+		return vStatus;
+	}
+
+	public void setvStatus(int vStatus) {
+		this.vStatus = vStatus;
+	}
+
 	@Override
 	public String toString() {
 		return "Video [vNo=" + vNo + ", userNo=" + userNo + ", vTitle=" + vTitle + ", count=" + count + ", chNm=" + chNm
 				+ ", tag=" + tag + ", vblYn=" + vblYn + ", uploadDt=" + uploadDt + ", modifyDt=" + modifyDt
 				+ ", adultAut=" + adultAut + ", adYn=" + adYn + ", adInfo=" + adInfo + ", location=" + location
 				+ ", info=" + info + ", fileNm=" + fileNm + ", openTy=" + openTy + ", nNo=" + nNo + ", afileNm="
-				+ afileNm + "]";
+				+ afileNm + ", vStatus=" + vStatus + "]";
 	}
 
-	 
-	
 	
 }

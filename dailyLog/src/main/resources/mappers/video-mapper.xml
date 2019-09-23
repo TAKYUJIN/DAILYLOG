@@ -22,6 +22,7 @@
 		<result property="info" column="INFO" />
 		<result property="fileNm" column="FILE_NM" />
 		<result property="openTy" column="OPEN_TY" />
+		<result property="vStatus" column="v_STATUS" />
 	</resultMap>
 	
   	<resultMap type="Loger" id="logerResultSet">
@@ -87,7 +88,7 @@
     <insert id="insertVideoInfo" parameterType="Video">       
    INSERT INTO VIDEO
    VALUES(V_NO.NEXTVAL, #{userNo}, #{vTitle}, 0, #{chNm}, #{tag},'N', SYSDATE, NULL, #{adultAut}, #{adYn}  ,#{adInfo},
-   NULL, NULL, #{fileNm}, #{openTy})
+   NULL, NULL, #{fileNm}, #{openTy}, DEFAULT)
    
    </insert>
    
@@ -229,7 +230,7 @@ WHERE TAG LIKE '%'||#{search}||'%'
 	<insert id="insertReport" parameterType="map">
 		INSERT INTO REPORT
 		VALUES(RE_NO.NEXTVAL, #{loginUser}, #{userNo}, SYSDATE, #{check}, '동영상', #{vNo}
-		, NULL, NULL, 1, 0)
+		, NULL, NULL, #{rCount} + 1, #{cCount} + 1)
 	</insert>
 	
 	<insert id="insertBlock" parameterType="map">

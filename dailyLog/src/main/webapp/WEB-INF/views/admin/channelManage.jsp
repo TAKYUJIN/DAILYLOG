@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +14,13 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <style>
-
+	.chImg {
+		width:40px; 
+		height:40px;
+		/* border:1px dashed gray; */
+		border-radius: 50%;
+		/* vertical-align: middle; */
+	}
 	tr {
 		background:none !important;
 	}
@@ -248,12 +255,12 @@
                     <div class="col-sm-3">
 					</div>
                     <div class="col-sm-9">
-						<button type="button" class="btn btn-primary"><i class="fa fa-search"></i></button>
+						<button type="button" id="search" class="btn btn-primary"><i class="fa fa-search"></i></button>
 						<div class="filter-group">
 							<label>채널명</label>
 							<input type="text" class="form-control">
 						</div>
-						<div class="filter-group">
+						<!-- <div class="filter-group">
 							<label>중지사유</label>
 							<select class="form-control">
 								<option>-- 선택 --</option>
@@ -267,7 +274,7 @@
 								<option>권리 침해</option>
 								<option>자막 문제</option>		
 							</select>
-						</div>
+						</div> -->
 						<span class="filter-icon"><i class="fa fa-filter"></i></span>
                     </div>
                 </div>
@@ -285,31 +292,40 @@
                         <th>채널명</th>
 						<th>채널인</th>
 						<th>총 정산</th>
-                        <th>경고상태</th>						
+                        <th>신고 / 경고</th>						
 						<th></th>
                     </tr>
                 </thead>
                 <tbody>
-					<c:forEach items="${channelInfo}" var="ch">
-                     <tr>
-                        <td>1</td>
-                        <td>
-                        	<a href="#">
-                        		<img src="resources/images/${ch.fileNm}" class="avatar" alt="Avatar"> ${ channelInfo[0].chNm }
-                        	</a>
-                        </td>
-						<td>${ch.userId}</td>
-						<td>${cal.price }</td>
-						<td><span class="status text-success">&bull;</span>${re.cCount }/${info[0].reCount }</td>
-						<td>
-							<a href="channelDetail.ad" class="view" title="View Details" data-toggle="tooltip">
-								<i class="material-icons">&#xE5C8;</i>
-							</a>
-						</td>
-                    </tr> 
+					<c:forEach var="ch" items="${chInfo}" >
+	                     <tr>
+	                        <td>
+	                        	<a href="#">
+	                        		<img class="chImg" src="resources/images/${ch.fileNm}" class="avatar">
+	                        	</a>
+	                        </td>
+	                        <td>${ch.chNm}</td>
+							<td>${ch.userId}</td>
+							<td>${ch.price }</td>
+							<c:if test="${ ch.cCount == 0}">
+								<td><span class="status text-info">&bull;</span>${ch.cCount } / ${ch.reCount }</td>
+							</c:if>
+							<c:if test="${ ch.cCount == 1}">
+								<td><span class="status text-warning">&bull;</span>${ch.cCount } / ${ch.reCount }</td>
+							</c:if>
+							<c:if test="${ ch.cCount >= 2}">
+								<td><span class="status text-danger">&bull;</span>${ch.cCount } / ${ch.reCount }</td>
+							</c:if>
+								<td>
+									<a href="channelDetail.ad" class="view" title="View Details" data-toggle="tooltip">
+										<i class="material-icons">&#xE5C8;</i>
+									</a>
+								</td>
+	                    </tr> 
 					</c:forEach>
                 </tbody>
             </table>
+            
 			<div class="clearfix">
                 <!-- <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div> -->
                 <ul class="pagination">

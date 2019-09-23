@@ -177,17 +177,14 @@ public class AdminController {
 		
 	// 관리자 채널 페이지 이동
 	@RequestMapping(value = "channelManage.ad")
-	public String adminChannelView(Model model, HttpSession session) {
+	public String adminChannelView(ChannelBoard ch, Model model, HttpSession session) {
 		  
 		List<ChannelBoard> channelInfo = as.channelInfo();
-		List<ChannelBoard> info = as.info();
 		
-		model.addAttribute("channelInfo", channelInfo);
-		model.addAttribute("calInfo", info);
+		model.addAttribute("chInfo", channelInfo);
+		model.addAttribute("ch", ch);
 		
-		System.out.println("channelInfo : " + channelInfo);
-		System.out.println("calInfo : " + info);
-		
+		System.out.println("chInfo : " + channelInfo);
 		
 		return "admin/channelManage";
 	}
