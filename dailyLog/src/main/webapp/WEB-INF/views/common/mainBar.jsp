@@ -15,7 +15,8 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
 
 <style type="text/css">
    body{
@@ -278,6 +279,11 @@
    #navbarCollapse {
    	font-size:15px;
    }
+   #alramTable tr td{
+   	padding:5px;
+   	color:#525252;
+   
+   }
 </style>
 <script type="text/javascript">
    // Prevent dropdown menu from closing when click inside the form
@@ -428,10 +434,10 @@ $('#friendlist').click(function(){
          <a <%-- href="notification.mb" --%> data-toggle="dropdown" class="btn_global link_login" onclick="alram();"><!-- onclick="send2();" -->
             <img src="resources/images/bell.png" style="width:25px;">
          </a>
-            <ul class="dropdown-menu form-wrapper">               
+            <ul class="dropdown-menu form-wrapper" style="width:350px; border:2px solid #DDD0DA;">               
                <li>
                   <form action="" method="post">
-                     <div class="noti_text" align="center"><p>알림</p></div>
+                     <div class="noti_text" align="center" style="color:black;"><p><b>알림</b></p></div>
                      <div class="form-group">
                      <div id="inputArea" align="center" style="display:none;">
 						<input type="hidden" name="tryMoney" id="tryMoney" value="${sessionScope.loginUser.nickname}">
@@ -522,16 +528,14 @@ $('#friendlist').click(function(){
  		$.ajax({
  			url:"goAlram.mb",
  			type:"post",
- 			dateType:"json",
  			success:function(data){
  				console.log(data);
  				var $alramTable = $("#alramTable tbody");
 				$alramTable.html("");
-				 for(var i = 0; i < data["dateList"].length; i++){ 
+				 for(var i = 0; i < data["date"].length; i++){ 
 					var $tr = $("<tr>");
-					var $alCT = $("<td>").text(data["dateList"][i].alCT);
-					$tr.append($nNo);
-					$tr.append($td);
+					var $alCT = $("<td>").text(data["date"][i].alCT);
+					$tr.append($alCT);
 					$alramTable.append($tr); 
 				 }
  			},
