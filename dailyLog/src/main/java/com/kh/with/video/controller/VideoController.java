@@ -27,6 +27,7 @@ import com.kh.with.common.CommonUtils;
 import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.member.model.service.MemberService;
 import com.kh.with.member.model.vo.Member;
+import com.kh.with.report.model.vo.Report;
 import com.kh.with.video.model.service.VideoService;
 import com.kh.with.video.model.vo.Attachment;
 import com.kh.with.video.model.vo.Reply2;
@@ -62,25 +63,26 @@ public class VideoController {
 		
 		System.out.println("needs : " + userNo + ", " + vNo);
 		
+		//조회수
+		int countUp = vs.updateCount(map);
+		
+		
 		//정보 select
 		List<Video> list1 = vs.selectVideoInfo(map);
 		List<Loger> list2 = vs.selectLogerInfo(map);
+		List<Reply2> reply = vs.selectReply(map);
 		
 		System.out.println("list1 : " + list1);
 		System.out.println("list2 : " + list2);
+		System.out.println("reply : " + reply);
 		System.out.println("age : " + age);
 		
 		int chNo = (list2.get(0)).getChNo();
 		map.put("chNo", chNo);
-		System.out.println("chNo : " + chNo);
 		
 		//loger 썸넬, 프로필
 		String thumb = vs.selectThumb(map);
 		String profile = vs.selectProfile(map);
-		
-		List<Reply2> reply = vs.selectReply(map);
-		System.out.println("reply : " + reply);
-		
 		String userImg = vs.selectUserImg(map);
 		
 		model.addAttribute("m", m);
@@ -423,14 +425,54 @@ public class VideoController {
 		map.put("vTitle", vTitle);
 		
 		//select rcount, ccount
+		List<Report> count = vs.selectCount(map);
+		System.out.println(count);
+		System.out.println((count.get(0)).getCcount());
+		map.put("rCount", (count.get(0)).getRecount());
+		map.put("cCount", (count.get(0)).getCcount());
 		
 		int result = vs.report(map);
-//		if(Integer.toString(result) == 0) {
-//			
-//		}
+
 		System.out.println("result : " + result);
 		
 		int alram = vs.videoAlram(map);
+		
+		return Integer.toString(result);
+	}
+	
+	//replyReport
+	@RequestMapping(value = "replyReport.vd")
+	@ResponseBody
+	public String replyReport(HttpSession session, HttpServletRequest request) {
+		Member m = (Member) session.getAttribute("loginUser");
+		int loginUser = m.getUserNo();
+		int userNo = Integer.parseInt(request.getParameter("userNo"));
+		/* int repNo = Integer.parseInt(request.getParameter("repNo")); */
+		String check = request.getParameter("check");
+		String chNm = request.getParameter("chNm");
+		String vTitle = request.getParameter("vTitle");
+		System.out.println(loginUser + ", " + userNo +", " + check + ", " + chNm + ", " + vTitle);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("userNo", userNo);
+		map.put("loginUser", loginUser);
+		map.put("check", check);
+		/* map.put("repNo", repNo); */
+		map.put("chNm", chNm);
+		map.put("vTitle", vTitle);
+		
+		//select rcount, ccount
+		List<Report> count = vs.selectCount(map);
+		System.out.println(count);
+		System.out.println((count.get(0)).getCcount());
+		map.put("rCount", (count.get(0)).getRecount());
+		map.put("cCount", (count.get(0)).getCcount());
+		
+		int result = vs.replyReport(map);
+
+		System.out.println("result : " + result);
+		
+		int alram = vs.replyReprtAlram(map);
 		
 		return Integer.toString(result);
 	}
@@ -476,6 +518,7 @@ public class VideoController {
 		System.out.println("result : " + result);
 		
 		int alram = vs.insertSubAlram(map);
+		int subNum = vs.countSubNum(map);
 		
 		return Integer.toString(result);
 	}
@@ -502,10 +545,95 @@ public class VideoController {
 		System.out.println("result : " + result);
 		
 		int alram = vs.deleteSubAlram(map);
+		int subNum = vs.disCountSubNum(map);
 		
 		return Integer.toString(result);
 	}
+	//댓글좋아요
+	@RequestMapping(value = "insertReplyLike.vd")
+	@ResponseBody
+	public String insertReplyLike(HttpSession session, HttpServletRequest request) { 
+		Member loginUser = (Member) session.getAttribute("loginUser");
+		
+		int chNo = Integer.parseInt(request.getParameter("chNo"));
+		System.out.println(chNo);
+		int userNo = loginUser.getUserNo();
+		System.out.println(userNo);
+		int vNo = Integer.parseInt(request.getParameter("vNo"));
+		System.out.println(vNo);
+		System.out.println(userNo + "::" + vNo + "::" + chNo);
+		
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("userNo", userNo);
+		map.put("vNo", vNo);
+		map.put("chNo", chNo);
+		
+		int result = vs.insertLike(map);
+		System.out.println("result imgCheck : " + result);
+		return Integer.toString(result);
+	}
 	
+	//댓글좋아요
+	@RequestMapping(value = "deleteReplyLike.vd")
+	@ResponseBody
+	public String deleteReplyLike(HttpSession session, HttpServletRequest request) {
+		Member loginUser = (Member) session.getAttribute("loginUser");
+		
+		int userNo = loginUser.getUserNo();
+		int vNo = Integer.parseInt(request.getParameter("vNo"));
+		int chNo = Integer.parseInt(request.getParameter("chNo"));
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("userNo", userNo);
+		map.put("vNo", vNo);
+		map.put("chNo", chNo);
+		
+		int result = vs.deleteLike(map);
+		System.out.println("result imgCheck : " + result);
+		return Integer.toString(result);
+	}
+	
+	//댓글싫어요 insert
+	@RequestMapping(value = "insertReplyHate.vd")
+	@ResponseBody
+	public String insertReplyHate(HttpSession session, HttpServletRequest request) {
+		Member loginUser = (Member) session.getAttribute("loginUser");
+		
+		int chNo = Integer.parseInt(request.getParameter("chNo"));
+		System.out.println(chNo);
+		int userNo = loginUser.getUserNo();
+		System.out.println(userNo);
+		int vNo = Integer.parseInt(request.getParameter("vNo"));
+		System.out.println(vNo);
+		System.out.println(userNo + "::" + vNo + "::" + chNo);
+		
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("userNo", userNo);
+		map.put("vNo", vNo);
+		map.put("chNo", chNo);
+		
+		int result = vs.insertHate(map);
+		System.out.println("result imgCheck : " + result);
+		return Integer.toString(result);
+	}
+	
+	//댓글싫어요 delete
+	@RequestMapping(value = "deleteReplyHate.vd")
+	@ResponseBody
+	public String deleteReplyHate(HttpSession session, HttpServletRequest request) {
+		Member loginUser = (Member) session.getAttribute("loginUser");
+		
+		int userNo = loginUser.getUserNo();
+		int vNo = Integer.parseInt(request.getParameter("vNo"));
+		int chNo = Integer.parseInt(request.getParameter("chNo"));
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("userNo", userNo);
+		map.put("vNo", vNo);
+		map.put("chNo", chNo);
+		
+		int result = vs.deleteHate(map);
+		System.out.println("result imgCheck : " + result);
+		return Integer.toString(result);
+	}
 	// 영상 클릭시 동영상 페이지로 이동
 	@RequestMapping(value = "age.vd")
 	public String age() {
@@ -784,7 +912,7 @@ public class VideoController {
 		//로거스튜디오에서의 구독
 		@RequestMapping(value = "studeioSubInsert.vd")
 		@ResponseBody
-		public String studeioSubInsert(HttpSession session, HttpServletRequest request,@ModelAttribute Member m) {
+		public String studeioSubInsert(Model model, HttpSession session, HttpServletRequest request,@ModelAttribute Member m) {
 			
 			System.out.println("로거스튜디오의 구독으로 넘어왔나요?");
 		
@@ -814,11 +942,10 @@ public class VideoController {
 			int alram = vs.insertSubAlram(map);
 			
 			
-	
+			model.addAttribute("userNo", userNo);
 		/* return Integer.toString(result); */
 			
-			return "newHomeChannel.lo?userNo="+userNo;
-			
+			return "구독";
 		}
 
 	

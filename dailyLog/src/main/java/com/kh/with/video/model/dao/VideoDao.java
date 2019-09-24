@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 
 import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.member.model.vo.Member;
+import com.kh.with.report.model.vo.Report;
 import com.kh.with.video.model.vo.Attachment;
 import com.kh.with.video.model.vo.Reply2;
 import com.kh.with.video.model.vo.Video;
@@ -112,6 +113,12 @@ public interface VideoDao {
 	int insertReply(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	int replyAlram(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	int repNo(SqlSessionTemplate sqlSession, Map<String, Object> map);
+	int updateCount(SqlSessionTemplate sqlSession, Map<String, Object> map);
+	int countSubNum(SqlSessionTemplate sqlSession, Map<String, Object> map);
+	int disCountSubNum(SqlSessionTemplate sqlSession, Map<String, Object> map);
+	int replyReport(SqlSessionTemplate sqlSession, Map<String, Object> map);
+	int replyReportAlram(SqlSessionTemplate sqlSession, Map<String, Object> map);
+	List<Report> selectCount(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	
 
 }
