@@ -23,7 +23,8 @@
 
 
  	<div class="col-12 row justify-content-center align-items-center my-5 ">
-		<a href=""><img src="resources/images/newlogo.png"
+		<a href="">
+		<img src="resources/images/newlogo.png"
 			alt="Almom Logo" width="180px" class="img-fluid" /></a>
 	</div>
 	<div class="col-12">

@@ -36,8 +36,8 @@ public interface ChatDao {
 	
 	*/
 	//중복확인
-		public Chat  checkRoom(String name) throws Exception;
-		
+		public int  checkRoom(String name) throws Exception;
+	
 		//방만들기
 		public void createChatRoom(Chat dto) throws Exception;
 		

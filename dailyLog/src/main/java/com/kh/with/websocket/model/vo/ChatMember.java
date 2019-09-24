@@ -121,6 +121,8 @@ public class ChatMember implements java.io.Serializable{
 	private String Id;
 	private String room;
 	private String priroom;
+	
+	public ChatMember() {}
 	public int getNo() {
 		return No;
 	}

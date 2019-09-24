@@ -5,14 +5,26 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script
+
+          src="https://code.jquery.com/jquery-1.9.0.js"
+          integrity="sha256-TXsBwvYEO87oOjPQ9ifcb7wn3IrrW91dhj6EMEtRLvM="
+
+          crossorigin="anonymous"></script>
+
+
+
+        <!-- Web socket CDN -->
+
+        <script src="http://cdn.sockjs.org/sockjs-0.3.4.js"></script>
 </head>
 <body>
 <!-- 세팅 부분 init -->
-<input type="hidden" id="userId" value="${login}">  <!-- 유저아이디  -->
-<input type="hidden" id="room" value="${room}"> <!-- 현재 유저가 접속한 방이름 -->
+<input type="hidden" id="userId" value="${loginUser.userId }">  <!-- 유저아이디  -->
+<input type="text" id="room" value="${room}"> <!-- 현재 유저가 접속한 방이름 -->
 
 <!-- 방 이름 / 방 만들기 / 방 나가기  --> 
-<table style="width: 900px; background-image:url('image/chatBackGround.jpg');">
+<table style="width: 900px; background-image:url('resources/images/newlogo.png');">
 
 <tr>
 	<td align="center" style="width: 600px; color: white">
@@ -49,7 +61,7 @@
 	<!-- 채팅방 목록 -->  
 	<td style="width: 300px">
    	<!-- 채팅방 -->
-   	<form action="MoveChatRoom.do" method="post" id="moveChatForm">
+   	<form action="MoveChatRoom.mb" method="post" id="moveChatForm">
    	<input type="hidden" name="roomName" value="">
    	
    	<div class="ui message blue" style="width: 300px; height: 100px; overflow-y:scroll; overflow-x:inherit;" id="room">
@@ -69,12 +81,13 @@
 	  
    	<!-- 방만들기 form이용 --> 
     
-	<form action="createChatRoom.do" method="post" id="createForm">
+	<form action="createChatRoom.mb" method="post" id="createForm">
    		<!-- hidden 정보  -->
    		<input type="hidden" id="chkRoomName" value=""> <!-- 방 제목 중복 확인 여부 -->
    		
    	<!-- 방 만들기 버튼 클릭 시, 보여짐 -->
    	<div style="width:300px; height: 500px; display: none;" class="ui message" id="showCreateRoom"> 
+		
 		
 		<!-- 방만들기 테이블 -->
     	<table style="width: 100%;height: 100%">
@@ -89,24 +102,24 @@
       	</tr>
       	
       	<!-- 비밀번호 -->
-      	<tr>
+        <tr>
          	<th>비밀번호</th>
          	<td>
          		<input type="text" name="pwd" placeholder="방 비밀번호" size="8" class="ui message"
          		style=" font-weight: bold; width: 100%; height: 15px" title="작성하지않을시 공개방으로 생성됩니다">
          	</td>
-      	</tr>
+      	</tr>  
       	
       	<!-- 참여 인원 -->
       	<tr>
          	<th>참여인원</th>
          	<td>
-         		<a href="#none"><img src="image/paging/arrow_back.gif" onclick="count_back()" width="13px" title="1명 감소"></a>
+         		<a href="#none"><img   onclick="count_back()" width="13px" title="1명 감소"></a>
          		
            		<input type="text" name="totalcount" value="4" size="2" readonly="readonly" 
            		id="count" class="ui message" style="height: 15px; font-weight: bold;">
            		 
-           		<a href="#none"><img src="image/paging/arrow_next.gif" onclick="count_next()" width="13px" title="1명 증가"></a>
+           		<a href="#none"><img  onclick="count_next()" width="13px" title="1명 증가"></a>
            
          	</td>
       	</tr>
@@ -155,10 +168,13 @@
    		id="buttonMessage" style="width:100%; height: 100%" class="ui primary button" >
    	</td>
 </tr>
-</table>
-<script type="text/javascript">
+</table>  
+</body>
+ <script   > 
 var sock = null;
-var id = '${login.userId}';
+	 
+var id = '${loginUser.userId }';
+console.log(id);
 $(document).ready(function() {
    $("#textID").focus(); // 처음 접속시, 메세지 입력창에 focus 시킴
    
@@ -166,24 +182,26 @@ $(document).ready(function() {
    //서버로 접속할때는 localhost로 설정해줘야됨 (관리자)
    // 본인의 서버로 접속할경우, admin으로 들어가야만 채팅이 가능하다.
    if(id=='admin'){
-      ws = new WebSocket("ws://localhost:8001/with/echo.mb");
+	   ws = new WebSocket('ws://localhost:8001/with/broadcasting');
    }
    
    // 그 외 회원은 admin을 제외한 다른 아이디로 접속 시, 채팅참여가 가능하다.
    else{
-      ws = new WebSocket("ws://본인의 아이피주소:8001/with/echo.mb");   
+	   
+	   ws = new WebSocket('ws://192.168.0.7:8001/with/echo ');   
    }
    
    
    //서버로 메세지 보낼때
    ws.onopen = function() {
+	console.log("ㅇ");
 	//처음 접속 시에만 채팅방에 추가함(현재 방정보도 같이 출력)	   
       	$("#output").append("<b>채팅방에 참여했습니다.</b> : "+$("#room").val()+"<br>");
       	
       	//보내기 버튼 눌렀을때
       	$("#buttonMessage").click(function() {
          	var msg = $('input[name=chatInput]').val().trim("!%/"); //메시지
-         
+         	console.log(msg);
          	var wisper = $("#wisper").val().trim("!%/"); //귓속말 대상자
          
          	var room = $("#room").val().trim("!%/"); //방이름(전체단톡방이면 all)
@@ -227,7 +245,7 @@ $(document).ready(function() {
             	event.preventDefault();
             	
             	var msg = $('input[name=chatInput]').val().trim("!%/"); //메시지
-                
+                console.log(msg);
              	var wisper = $("#wisper").val().trim("!%/"); //귓속말 대상자
              
              	var room = $("#room").val().trim("!%/"); //방이름(전체단톡방이면 all)
@@ -238,7 +256,7 @@ $(document).ready(function() {
              		//소켓으로 메세지 전달
              		
                 	ws.send(msg+"!%/"+""+"!%/"+room);
-                	$("#output").append("<i class='user icon'></i>"+"<b style='color:blue'>[${login.userId}]</b> : "+msg+"<br>");
+                	$("#output").append("<i class='user icon'></i>"+"<b style='color:blue'>[${loginUser.userId}]</b> : "+msg+"<br>");
                 
                 	$("#output").scrollTop(99999999); //글 입력 시 무조건 하단으로 보냄
                 	$("#textID").val(""); //입력창 내용지우기
@@ -256,7 +274,7 @@ $(document).ready(function() {
                 		ws.send(msg+"!%/"+wisper+"!%/"+room); //현재 메세지 + 귓속말대상 + 방정보	
                 		
                 		$("#output").append("<i class='user icon'></i>"
-                	    	+"<b style='color:blue'>[${login.userId}]</b> : "
+                	    	+"<b style='color:blue'>[${loginUser.userId}]</b> : "
            	            	+"[<b style='color:green'>"+wisper+"</b>]님에게귓속말 : "+msg+"<br>");
            	            	$("#output").scrollTop(99999999);
            	            	$("#textID").val("");
@@ -381,22 +399,23 @@ $("#createRoom").click(function() {
 
 //방나가기
 $("#backBtn").click(function() {
-	location.href = "chat.do";
+	location.href = "echo.mb";
 });
 </script>
 
 
 <!-- 방제목 중복확인 -->
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 $("[name='name']").blur(function() {
 var name = $("[name='name']").val();
    if(name !=""){
       $.ajax({
-         type:"post",
+         type:"get",
          url:"./checkRoom.mb",
          async:true,
          data:"name="+name,
          success:function(msg){
+        	 
             if(msg=="1"){
                $("#chkRoomName").val(name);
             }
@@ -411,7 +430,7 @@ var name = $("[name='name']").val();
 
    }
 });
-</script>
+</script> -->
 <!-- 인원수 증가, 감소 버튼 클릭시, 실행되는 스크립트 -->
 <script type="text/javascript">
 function count_back() { 
@@ -441,7 +460,7 @@ $("#submitBtn").click(function() {
    }
    else if($("#chkRoomName").val() ==""){
       alert("이미 방이 존재합니다.");
-      $("[name='name']").focus();
+      $("#createForm").attr("target","_self").submit();
    }
    else if($("[name='content']").val().length<1){
       alert("방을 설명하기위한 내용을 입력하세요");
@@ -481,5 +500,5 @@ $("#wisper").click(function() {
 	$("#wisper").val("");
 });
 </script>
-</body>
+
 </html>

@@ -11,10 +11,12 @@ import java.util.Map;
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonWriter;
+import javax.websocket.server.ServerEndpoint;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
@@ -151,8 +153,8 @@ public class ChatWebSocketHandler  extends TextWebSocketHandler {
 
 		@Autowired
 		FriendChatService friendchatservice;
+		 
 		private static final Logger logger =LoggerFactory.getLogger(ChatWebSocketHandler.class);
-		
 		private List<WebSocketSession>sessionlist =new ArrayList<>(); //메세지를 날려주기위한웹소켓 전용 
 		private Map<WebSocketSession,String> mapList =new HashMap<>(); //실제 세션의 아이디 정보,소켓정보 
 		private Map<WebSocketSession,String> roomList =new HashMap<>(); //실제 세션의 아이디 정보,room정보 
@@ -160,16 +162,17 @@ public class ChatWebSocketHandler  extends TextWebSocketHandler {
 		
 		@Override
 	    public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-	    	
-	    	logger.info("채팅방 연결 성공 ! / Run Time: " + new Date());
+			System.out.println("1111"+session);
+			sessionlist.add(session);
+	    	logger.info("채팅방 연결 성공 ! / Run Time: " + new Date()+session.getId());
 	    	
 
 	    	
 	    	//1. 들어온 사람의 실제 로그인 아이디 정보를 가져온다.
 	    	Map<String, Object> map = session.getAttributes();
-	    	Member mem = (Member)map.get("login"); 
+	    	Member mem = (Member)map.get("loginUser"); 
 	    	String userId = mem.getUserId();
-	    	
+	    	System.out.println("user111"+userId);
 	    	//2. 들어온 아이디로 어느 방에 있는 지 확인한다.
 	    	ChatMember userRoom = friendchatservice.getRoomMember(new ChatMember (0, userId, "",""));
 	    	
@@ -187,7 +190,7 @@ public class ChatWebSocketHandler  extends TextWebSocketHandler {
 	    	mapList.put(session,userId); //세션:key, 유저아이디:value
 	    	
 	    	//5. map을 사용하지않아도 될경우를 위해서 session값도 넣도록함
-	    	sessionlist.add(session); //세션의 값 넣기(session : id=0~ , url:/ 주소/ echo.do)
+	    	 //세션의 값 넣기(session : id=0~ , url:/ 주소/ echo.do)
 	    	
 	    	logger.info("세션추가:"+session.getId()+"접속자아이디:"+mem.getUserId()+" 현재채팅접속자:"+sessionlist.size()+"명");
 	    	
@@ -230,7 +233,7 @@ public class ChatWebSocketHandler  extends TextWebSocketHandler {
 	  
 	    	//1. 현재 접속한 사람의 로그인한 id정보를 가져온다.
 	        Map<String, Object> map = session.getAttributes();
-	     	Member  mem = (Member)map.get("login");
+	     	Member  mem = (Member)map.get("loginUser");
 	     	String userId = mem.getUserId();
 	     	
 	    	//2. 접속을끊을 때 해당 아이디로 DB에서 어느 방에 존재하는지 확인한다.
@@ -288,7 +291,7 @@ public class ChatWebSocketHandler  extends TextWebSocketHandler {
 	    	
 	    	//1. 회원정보 가져오기
 	    	Map<String, Object> map = session.getAttributes();
-	    	Member  mem = (Member)map.get("login");
+	    	Member  mem = (Member)map.get("loginUser");
 	    	String userId = mem.getUserId();
 	    	
 	    	// 검색어로 들어왔을 경우,

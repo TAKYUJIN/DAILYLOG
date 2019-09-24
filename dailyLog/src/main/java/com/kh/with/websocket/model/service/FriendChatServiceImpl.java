@@ -15,7 +15,7 @@ import com.kh.with.websocket.model.vo.ChatMember;
 	ChatDao ChatDao;
 
 	@Override
-	public Chat  checkRoom(String name) throws Exception {
+	public int  checkRoom(String name) throws Exception {
 		return ChatDao.checkRoom(name);
 	}
 

@@ -1,87 +1,4 @@
-<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
  
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>소켓 서버</title>
- <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
- 
-<style>
-body{
-		font-family: 'Varela Round', sans-serif;
-		margin: 10px;
-		    height:100%;
-		    background:#fff;
-	}
-#chat_box {
-    width: 300px;
-    height: 500px;
-    border: 1px solid #bdb7b7;
-}
-#msg {
-    width: 300px;
-}
-#msg_process {
-    width: 90px;
-}
- 
-</style>
-</head>
-<body>
-<nav >
- 
-	<div >
-		<img src="resources/images/logo.png" style="width:90px; padding-top:10px;">	
-	</div><br><br>
-	
-    <div id="chat_box"></div>
-    <input type="text" id="msg">
-    <button id="msg_process" class="btn btn-default" >전송</button>
- 
-    <script src="http://localhost:82/socket.io/socket.io.js"></script>
-    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-    <script>
-        $(document).ready(function() {
-            var socket = io("http://localhost:82");
- 
-            //msg에서 키를 누를떄
-            $("#msg").keydown(function(key) {
-                //해당하는 키가 엔터키(13) 일떄
-                if (key.keyCode == 13) {
-                    //msg_process를 클릭해준다.
-                    msg_process.click();
-                }
-            });
- 
-            //msg_process를 클릭할 때
-            $("#msg_process").click(function() {
-                //소켓에 send_msg라는 이벤트로 input에 #msg의 벨류를 담고 보내준다.
-                socket.emit("send_msg", $("#msg").val());
-                //#msg에 벨류값을 비워준다.
-                $("#msg").val("");
-            });
- 
-            //소켓 서버로 부터 send_msg를 통해 이벤트를 받을 경우 
-            socket.on('send_msg', function(msg) {
-                //div 태그를 만들어 텍스트를 msg로 지정을 한뒤 #chat_box에 추가를 시켜준다.
-                $('<div></div>').text(msg).appendTo("#chat_box");
-                
-            });
-        });
-    </script>
-    </nav>
-</body>
-</html>
-
- --%>
  <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  
@@ -102,6 +19,18 @@ body{
  height:500px;
  
  }
+ 
+ .logo{
+/*  vertical-align: middle; */
+/* width:300px;
+height:300px;
+background-image:url('resources/images/newlogo.png');
+ */
+ width:400px;
+ border : 0.5px solid #9f9aa1;
+ background:#d1d1d1;
+ margin-bottom:10px;
+ }
  </style>
 <body>
 
@@ -112,25 +41,45 @@ body{
     </c:if> --%>
    
     <c:forEach var="l" items="${m}" >
-    
+  
       <input type="hidden" value="${loginUser.nickname}" id='chat_id' />
+      
         </c:forEach>
     <!--     채팅창 -->
-    <div id="_chatbox"  >
-        <fieldset>
-            <div id="messageWindow" style="width:100%; "> 
             
+     <!--        <img src="resources/images/newlogo.png"  style=" width:100px;height:50px;">
+    -->
+    <div id="_chatbox" class="logo" >
+   <%=request.getAttribute("${list}") %>
+     <c:forEach var="MailVo" items="${list}">
+     </c:forEach>
+        
+            <div id="messageWindow" style="width:600px; "> 
              </div>
            
-             <input id="inputMessage" type="text" onkeyup="enterkey()" />
+             <!-- <input id="inputMessage" type="text" onkeyup="enterkey()" />
             <input type="submit" value="보내기" onclick="send()" />
-          
-        </fieldset>
+           -->
+       
     </div>
+    
+    <tr height="100px;">
+    <td>
+   		<input type="text" id="inputMessage" size="50"  value="" style="width:400px; height: 100%; font-weight: bold;" 
+   		class="ui message blue" name="chatInput" placeholder="내용 입력" onkeyup="enterkey()">
+   	</td>
+   	
+   	<!-- 보내기 버튼 -->
+   	<td>
+   		<input type="submit" value="보내기" onclick="send()" >
+   		<!-- 
+   		<id="buttonMessage" style="width:100px; height: 100%" class="ui primary button" > -->
+   	</td>
+   	</tr>
  </body>
 
 <!-- 말풍선아이콘 클릭시 채팅창 열고 닫기 -->
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     $(".chat").on({
         "click" : function() {
             if ($(this).attr("src") == "resources/images/chat.png") {
@@ -142,11 +91,15 @@ body{
             }
         }
     });
-</script>
+</script> -->
 <script type="text/javascript">
+
+var socket;
+var login_ids={};
     var textarea = document.getElementById("messageWindow");
-    
-    var webSocket = new WebSocket('ws://localhost:8001/with/broadcasting');
+    var nickname="${loginUser.nickname}";
+    var webSocket = new WebSocket('ws://192.168.0.7:8001/with/broadcasting');
+    /* socket.emit('login','nickname'); */
     var inputMessage = document.getElementById('inputMessage');
     webSocket.onerror = function(event) {
         onError(event)
@@ -157,17 +110,22 @@ body{
     webSocket.onmessage = function(event) {
         onMessage(event)
     };
-    function onMessage(event) {
-    	
+   function onMessage(event) {
+	   var chat_id ="${loginUser.nickname}";
+/* 	   $("#messageWindow").html("  <p class='chat_content'>"+chat_id  +"님이 채팅에 참여하였습니다.</p> ");  
+ */	   console.log("event"+event);
         var message = event.data.split("|");
         var sender = message[0];
         var content = message[1];
+        alert("11");
+       
         if (content == "") {
-            
-        } else {
+        	 
+        } /* else {
             if (content.match("/")) {
                 if (content.match(("/" + $("#chat_id").val()))) {
                     var temp = content.replace("/" + $("#chat_id").val(), "(귓속말) :").split(":");
+                   
                     if (temp[1].trim() == "") {
                     } else {
                         $("#messageWindow").html($("#messageWindow").html() + "<p class='whisper'>"
@@ -175,8 +133,9 @@ body{
                     }
                 } else {
                 }
-            } else {
-                if (content.match("!")) {
+            }  */else {
+                if (content.match("/")) {
+                	
                     $("#messageWindow").html($("#messageWindow").html()
                         + "<p class='chat_content'><b class='impress'>" + sender + " : " + content + "</b></p>");
                 } else {
@@ -184,17 +143,30 @@ body{
                         + "<p class='chat_content'>" + sender + " : " + content + "</p>");
                 }
             }
-        }
-    }
+       
+    } 
     function onOpen(event) {
     	var chat_id ="${loginUser.nickname}";
     	console.log(chat_id);
-    	
-        $("#messageWindow").append("  <p class='chat_content'>"+chat_id  +"님이 채팅에 참여하였습니다.</p> ");
+    	console.log(event+"11");
+      $("#messageWindow").append("  <p class='chat_content'>"+chat_id  +"님이 채팅에 참여하였습니다.</p> ");  
+   
+        
+       /*  if (inputMessage.value == "") {
+        } else {
+            $("#messageWindow").html($("#messageWindow").html()
+            		("  <p class='chat_content'>" +chat_id+ "님이 채팅에 참여하였습니다."+"</p> "));
+            
+        } */
+        webSocket.send(chat_id  +"님이 채팅에 참여하였습니다." + inputMessage.value);
+      /*   inputMessage.value = ""; */
+        
+        
+        
     }
-    function onError(event) {
+  /*   function onError(event) {
         alert(event.data);
-    }
+    } */
     function send() {
     	var chat_id ="${loginUser.nickname}";
     	  
