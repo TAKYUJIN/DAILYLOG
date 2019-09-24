@@ -266,6 +266,11 @@ public class LogerDaoImpl implements LogerDao{
 		
 		return sqlSession.selectOne("Loger.subUserInfo", subUserInfo);
 	}
+	@Override
+	public ArrayList<Video> selectLogerVideo(SqlSessionTemplate sqlSession, Loger l) {
+		ArrayList<Video> vList = (ArrayList) sqlSession.selectList("Loger.selectLogerVideo", l);
+		return vList;
+	}
 	
 
 	

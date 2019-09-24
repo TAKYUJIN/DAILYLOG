@@ -57,8 +57,27 @@ public class LogerController {
 	}
 
 	// 로거 동영상 수정 페이지로 이동
-	@RequestMapping(value = "updateLogerVideo.lo")
-	public String updateLogerVideo() {
+	@RequestMapping(value = "selectLogerVideo.lo")
+	public String selectLogerVideo(HttpSession session, Model model, HttpServletRequest request,
+			@RequestParam(value="vNo") int vNo) {
+		Member m = (Member) session.getAttribute("loginUser");
+		int userNo = m.getUserNo();
+		ArrayList<Loger> loger = ls.selectLogerInfo(m);
+		
+		Loger l = new Loger();
+		l.setUserNo(userNo);
+		l.setvNo(vNo);
+		ArrayList<Video> vList = ls.selectLogerVideo(l);
+				
+		String adultAut = vList.get(0).getAdultAut();
+		String adYN = vList.get(0).getAdYn();
+		String openTY = vList.get(0).getOpenTy();
+		
+		model.addAttribute("vList", vList);
+		model.addAttribute("adultAut", adultAut);
+		model.addAttribute("adYN", adYN);
+		model.addAttribute("openTY", openTY);
+		
 		return "loger/updateLogerVideo";
 	}
 
@@ -101,10 +120,7 @@ public class LogerController {
 		// 로거 후원내역 조회
 		ArrayList<Loger> loger = ls.selectLogerInfo(m);
 		int chNo = loger.get(0).getChNo();
-		
-		
 		m.setChNo(chNo);
-		System.out.println(chNo);
 		ArrayList<Support> sList = ls.selectLogerSupport(s, m);
 		// 로거 마지막 계좌 조회
 		ArrayList<Calculate> aList = ls.logerLastAccount(c, m);

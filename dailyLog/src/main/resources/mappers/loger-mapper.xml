@@ -136,6 +136,29 @@
 	WHERE  L.USER_NO = #{userNo}
 	
 	</select>
+	
+	<!-- 로거 동영상 수정 페이지 출력 -->
+	<select id="selectLogerVideo" resultMap="VideoResultSet">
+	SELECT RANK, AFILE_NM, V_NO, USER_NO, V_TITLE, COUNT, CH_NM, TAG, VBL_YN, UPLOAD_DT, MODIFY_DT, ADULT_AUT, AD_YN, AD_INFO, LOCATION, INFO, FILE_NM, OPEN_TY
+		FROM (SELECT ROW_NUMBER() OVER(ORDER BY V.UPLOAD_DT DESC) RANK,	V.*, A.FILE_NM AFILE_NM
+		FROM VIDEO V
+		JOIN MEMBER M ON(V.USER_NO = M.USER_NO)
+		JOIN ATTACHMENT A ON(V.V_NO = A.V_NO)
+		WHERE V.V_NO = #{vNo})
+		ORDER BY RANK ASC
+	</select>
+	
+	<!-- 로거 동영상 출력 -->
+	<select id="showLogerVideo" resultMap="VideoResultSet">
+	SELECT RANK, AFILE_NM, V_NO, USER_NO, V_TITLE, COUNT, CH_NM, TAG, VBL_YN, UPLOAD_DT, MODIFY_DT, ADULT_AUT, AD_YN, AD_INFO, LOCATION, INFO, FILE_NM, OPEN_TY
+		FROM (SELECT ROW_NUMBER() OVER(ORDER BY V.UPLOAD_DT DESC) RANK,	V.*, A.FILE_NM AFILE_NM
+		FROM VIDEO V
+		JOIN MEMBER M ON(V.USER_NO = M.USER_NO)
+		JOIN ATTACHMENT A ON(V.V_NO = A.V_NO)
+		WHERE V.USER_NO = #{userNo})
+		ORDER BY RANK ASC
+	
+	</select>
 
 	<!-- 정산페이지 조회 -->
 	<select id="selectLogerCalculate" resultMap="calculateResultSet">
@@ -321,19 +344,6 @@
      AND RE_TARGET=#{userNo}
 
 	</select>
-	
-	<!-- 로거 동영상 출력 -->
-	<select id="showLogerVideo" resultMap="VideoResultSet">
-	SELECT RANK, AFILE_NM, V_NO, USER_NO, V_TITLE, COUNT, CH_NM, TAG, VBL_YN, UPLOAD_DT, MODIFY_DT, ADULT_AUT, AD_YN, AD_INFO, LOCATION, INFO, FILE_NM, OPEN_TY
-		FROM (SELECT ROW_NUMBER() OVER(ORDER BY V.UPLOAD_DT DESC) RANK,	V.*, A.FILE_NM AFILE_NM
-		FROM VIDEO V
-		JOIN MEMBER M ON(V.USER_NO = M.USER_NO)
-		JOIN ATTACHMENT A ON(V.V_NO = A.V_NO)
-		WHERE V.USER_NO = #{userNo})
-		ORDER BY RANK ASC
-	
-	</select>
-	
 	
 	<!-- 스튜디오 내  정보 -->
 	<select id="logerHomeInfo"  parameterType="Loger"  resultMap="logerResultSet2">
