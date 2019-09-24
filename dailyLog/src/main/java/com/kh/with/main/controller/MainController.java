@@ -111,30 +111,32 @@ public class MainController {
 			return "main/selectVideoLike";
 		}
 	
-	//알림 db
-	@RequestMapping(value="goAlram.mb")
-	@ResponseBody
-	public void selectAlram(HttpSession session, HttpServletResponse response) {
-		response.setContentType("text/html;charset=UTF-8");
-		Member m = (Member) session.getAttribute("loginUser");
-		
-		ArrayList<Alram> dateList = ms.selectAlram(m);
-		System.out.println(dateList);
-		
-		response.setContentType("application/json");
-		response.setCharacterEncoding("UTF-8");
-		try {
-			new Gson().toJson(dateList,response.getWriter());
-		} catch (JsonIOException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
+		//알림 db
+		@RequestMapping(value="goAlram.mb")
+		public void selectAlram(HttpSession session, HttpServletResponse response) {
+			response.setContentType("text/html;charset=UTF-8");
+			Member m = (Member) session.getAttribute("loginUser");
+			
+			ArrayList<Alram> date = ms.selectAlram(m);
+			HashMap<String, Object> hmap = new HashMap<String,Object>();
+			
+			response.setContentType("application/json");
+			response.setCharacterEncoding("UTF-8");
+			
+			hmap.put("date", date);
+			
+			try {
+				new Gson().toJson(hmap, response.getWriter());
+			} catch (JsonIOException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+//			mv.addObject("dateList", dateList);
+//			mv.setViewName("jsonView");
+			
 		}
-		
-//		mv.addObject("dateList", dateList);
-//		mv.setViewName("jsonView");
-		
-	}
 	
 	// 구독페이지로 이동
 	@RequestMapping(value="subscribe.mb")
