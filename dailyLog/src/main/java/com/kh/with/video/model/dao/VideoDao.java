@@ -112,6 +112,10 @@ public interface VideoDao {
 	int insertReply(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	int replyAlram(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	int repNo(SqlSessionTemplate sqlSession, Map<String, Object> map);
+	//기존 구독자수 셀렉
+	Loger resultSubnum(SqlSessionTemplate sqlSession, Loger loger);
+	//구독자수 업데이트
+	int subBumUpdate(SqlSessionTemplate sqlSession, Loger loger1);
 	
 
 }

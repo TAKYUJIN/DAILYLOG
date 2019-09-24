@@ -25,6 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.with.common.CommonUtils;
 import com.kh.with.loger.model.vo.Loger;
+import com.kh.with.loger.model.vo.Loger2;
 import com.kh.with.member.model.service.MemberService;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.video.model.service.VideoService;
@@ -784,7 +785,7 @@ public class VideoController {
 		//로거스튜디오에서의 구독
 		@RequestMapping(value = "studeioSubInsert.vd")
 		@ResponseBody
-		public String studeioSubInsert(HttpSession session, HttpServletRequest request,@ModelAttribute Member m) {
+		public String studeioSubInsert(Model model,HttpSession session, HttpServletRequest request,@ModelAttribute Member m) {
 			
 			System.out.println("로거스튜디오의 구독으로 넘어왔나요?");
 		
@@ -794,12 +795,12 @@ public class VideoController {
 			String nickName = (String) session.getAttribute("nickName");
 			String chNm = (String) session.getAttribute("chNm");
 			
+		/*
+		 * System.out.println("로거스튜디오에서의 구독에서의 정보::: " + "로거번호:::" +userNo + "로그인유저번호::"
+		 * + loginUserNo + "로거채널번호:::" + chNo + "로거닉네임:::" + nickName + "채널네임:::" +
+		 * chNm);
+		 */
 
-			System.out.println("로거스튜디오에서의 구독에서의 정보::: "  +
-					"로거번호:::" +userNo + "로그인유저번호::" + loginUserNo + "로거채널번호:::" + chNo + 
-					"로거닉네임:::" + nickName + "채널네임:::" + chNm);
-		
-		
 			
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("loginUser", loginUserNo);
@@ -809,19 +810,121 @@ public class VideoController {
 			map.put("userNo", userNo);
 			
 			int result = vs.subInsert(map);
-			System.out.println("result : " + result);
+
 			
 			int alram = vs.insertSubAlram(map);
 			
 			
-	
-		/* return Integer.toString(result); */
-			
-			return "newHomeChannel.lo?userNo="+userNo;
-			
-		}
-
-	
 		
+			//기존 구독자수 셀렉
+			Loger loger = new Loger();
+			loger.setUserNo(userNo);
+			
+			Loger resultSubnum = vs.resultSubnum(loger); 	
+			int subBums = resultSubnum.getSubNum();
+		
+
+			//구독자수 업데이트
+			int subNum = subBums + 1;
+			
+			Loger loger1 = new Loger();
+			loger1.setChNo(chNo);
+			loger1.setSubNum(subNum);
+			
+		
+			
+			int subBumUpdate = vs.subBumUpdate(loger1);
+			
+			System.out.println("subBumUpdate" + subBumUpdate);
+			
+			
+			
+			
+			
+			
 	
+			return Integer.toString(result);
+			
+
+		}
+	
+		//로거스튜디오에서의 구독취소
+		
+		@RequestMapping(value = "studeioSubDelete.vd")
+		@ResponseBody
+		public String studeioSubDelete(HttpSession session, HttpServletRequest request) {
+			
+
+			int userNo = (int) session.getAttribute("userNo");
+			int loginUserNo = (int) session.getAttribute("loginUserNo");
+			int chNo = (int) session.getAttribute("chNo");
+			String nickName = (String) session.getAttribute("nickName");
+			String chNm = (String) session.getAttribute("chNm");
+			
+			System.out.println("로거스튜디오에서의 구독취소에서의 정보::: "  +
+					"로거번호:::" +userNo + "로그인유저번호::" + loginUserNo + "로거채널번호:::" + chNo + 
+					"로거닉네임:::" + nickName + "채널네임:::" + chNm);
+
+			
+			
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("loginUser", loginUserNo);
+			map.put("chNo", chNo);
+			map.put("nickName", nickName);
+			map.put("chNm", chNm);
+			map.put("userNo", userNo);
+			
+			int result = vs.subDelete(map);
+			System.out.println("result : " + result);
+			
+			int alram = vs.deleteSubAlram(map);
+			
+			
+			
+
+			//기존 구독자수 셀렉
+			Loger loger = new Loger();
+			loger.setUserNo(userNo);
+			
+			Loger resultSubnum = vs.resultSubnum(loger); 	
+			int subBums = resultSubnum.getSubNum();
+		
+
+			//구독자수 업데이트
+			int subNum = subBums - 1;
+			
+			Loger loger1 = new Loger();
+			loger1.setChNo(chNo);
+			loger1.setSubNum(subNum);
+			
+		
+			
+			int subBumUpdate = vs.subBumUpdate(loger1);
+			
+			System.out.println("subBumUpdate" + subBumUpdate);
+			
+			
+			
+			
+			
+			
+			return Integer.toString(result);
+		}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

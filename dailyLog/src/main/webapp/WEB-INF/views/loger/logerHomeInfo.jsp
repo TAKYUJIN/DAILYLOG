@@ -1,29 +1,37 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-
-
-<title>Insert title here</title>
+<title>WITH</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Varela+Round"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <style>
 .mainpage {
-	width: 1024px;
-	height: 800px;
+width: 1600px;
 	margin-top: 30px;
-	/* border: 1px solid black; */
+	margin-left:70px;
 }
 
 .logerMainImg {
-	width: 900px;
-	height: 200px;
-	magin-top: -30px;
-	/* 	border: 1px solid black; */
+	margin-left: 30px;
 }
-
-
 
 .imInfoPic {
 	margin-top: 50px;
@@ -31,10 +39,6 @@
 	width: 70px;
 	height: 70px;
 	border-radius: 50%;
-}
-
-.container {
-	margin-top: 20px;
 }
 
 #subscribebtn {
@@ -113,7 +117,7 @@ body {
 	position: absolute;
 	height: 3px;
 	border-radius: 1px;
-	background: #FBC52C; /* #73bb2b 원래 색 */
+	background: #13334A; /* #73bb2b 원래 색 */
 	left: 0;
 	bottom: -15px;
 }
@@ -130,7 +134,7 @@ body {
 	position: absolute;
 	height: 3px;
 	border-radius: 1px;
-	background: #192466; /* #73bb2b 원래 색 */
+	background: #13334A; /* #73bb2b 원래 색 */
 	left: 0;
 	bottom: -15px;
 }
@@ -147,143 +151,209 @@ body {
 	position: absolute;
 	height: 3px;
 	border-radius: 1px;
-	background: #192466; /* #73bb2b 원래 색 */
+	background: #13334A; /* #73bb2b 원래 색 */
 	left: 0;
 	bottom: -15px;
 }
 
-.accordion .highlight .btn {
-	color: #74bd30;
-}
-
-.accordion .highlight i {
-	transform: rotate(180deg);
-}
-
-.search-box {
-	margin-top: -30px;
-	margin-left: 700px;
-}
-
-.newVideo {
-	width: 400px;
-	margin-top: 100px;
-	/* 	border: 1px solid black; */
-}
-
-.infoarea {
-	width: 1000px;
+#videoarea {
+	width: 900px;
 	margin-left: 30px;
 	margin-top: 20px;
 	/* 	border: 1px solid red; */
 }
 
 #videoarea1 {
-	width: 1000px;
+	width: 900px;
 	margin-left: 30px;
 	margin-top: 20px;
-	/* 	border: 1px solid blue; */
+	/* 	border: 1px solid red; */
 }
 
-#textInfo {
-	width: 300px;
-	margin-left: 5px;
-	margin-top: 50px;
-	/* border:1px solid green; */
+.newVideo {
+	margin-top: 100px;
 }
 
-#infoarea {
-	width: 800px;
-	/* border: 1px solid black; */
+.myInfo {
+	margin-left: 30px;
 }
-.myInfo{
-	margin-left:30px;
+
+#subscribe{
+	margin-left:430px;
 }
+
+.my-hr1 {
+	border: 0;
+	height: 1px;
+	background: #A8B7BC;
+}
+.my-hr1 {
+    border: 0;
+    height: 1px;
+    background:#A8B7BC;
+    width:1400px;
+    margin-right:1000px;
+  }
+  .my-hr2{
+  margin-left:70px;
+      border: 0;
+    height: 1px;
+    background:#A8B7BC;
+    width:1400px;
+    margin-right:1000px;
+  }
 </style>
-<script>
-	$(document).ready(function() {
-		// Add minus icon for collapse element which is open by default
-		$(".collapse.show").each(function() {
-			$(this).prev(".card-header").addClass("highlight");
-		});
 
-		// Highlight open collapsed element 
-		$(".card-header .btn").click(function() {
-			$(".card-header").not($(this).parents()).removeClass("highlight");
-			$(this).parents(".card-header").toggleClass("highlight");
-		});
-	});
-</script>
+
 </head>
 <body>
 	<jsp:include page="../common/logerBar.jsp"></jsp:include>
 
-
-	<form action="" method="post">
-		<div class="mainpage">
-
-			<div class="logerMainImg">
-				<img	src="resources/uploadFiles/${logertitleimg.fileNm}" >
+	<div class="mainpage">
+		<div class="logerMainImg">
+			<img src="resources/uploadFiles/${logertitleimg.fileNm}"
+				style="width:1000px; height: 200px; margin-left:130px;">
+		</div>
+		<br> <br>
+		<hr class="my-hr1">
+		<form class="navbar-form form-inline" action="search.mb" method="get">
+			<div class="input-group search-box" style="margin-left: 1200px">		
+				<input type="text" id="search" name="search"  class="form-control" placeholder="검색" >
+				  <span  class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span> 
 			</div>
-			<br> <br>
-			<div class="input-group search-box">
-				<input type="text" id="search" class="form-control" placeholder="검색">
-				<span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
-			</div>
-
-			<div class="myInfo">
-			 <img	src="resources/uploadFiles/${logerHomeInfo.fileNm}" width="100px" height="100px">
-			 
-				<div class="textInfo">
-					<p style="widht: 200px; margin-left: 130px; margin-top: -50px;">
-						<strong><c:out value="${logerHomeInfo.chNm}" /></strong>
-					</p>
-				</div>
-				<button id="subscribebtn" class="btn btn-primary">구독</button>
-				<p style="widht: 200px; margin-left: 130px; margin-top: -10px;"><c:out value="${logerHomeInfo.subNum}" />명</p>
-			</div>
-
-			<div class="row" style="margin-left: 30px;">
-				<div class="col-lg-15">
-					<a href="newHomeChannel.lo?userNo=${sessionScope.userNo}" class="noticeLink"
-						style="float: left; width: 15%;"><h4 class="page-title1">홈</h4></a>
-					<a href="logerHomeAllVideo.lo?userNo=${sessionScope.userNo}" class="noticeLink"
-						style="float: left; width: 15%;"><h4 class="page-title2">동영상</h4></a>
-					<a href="logerHomeInfo.lo?userNo=${sessionScope.userNo}" class="noticeLink"
-						style="float: left; width: 15%;"><h4 class="page-title3">정보</h4></a>
-				</div>
-
-				<br> <br> <br><br><br>
-			
-					<div class="table-wrapper" style="width: 300px">
-						<table class="table table-striped" >
-							<thead>
-								<tr>
-									<th>통계</th>
-
-								</tr>
-							</thead>
-						</table>
-					</div>
-				<P>가입일 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<c:out value="${logerHomeInfo.chDT}" /></P>
-		        <P>구독자수 &nbsp;&nbsp;<c:out value="${logerHomeInfo.subNum}" />명</P>
-					<br> <br> 
-					<p id="textInfo">
-						<strong>정보</strong>
-					</p>
-					<div id="infoarea"><c:out value="${logerHomeInfo.chInfo}" /></div>
-				</div>
-			</div>
+		</form>
 		
 
-	</form>
-
-	<br> <br> <br><br><br>
-
-
+	<div class="myInfo">
+			<img src="resources/uploadFiles/${logerHomeInfo.fileNm}" width="200px"
+				height="200px">
 
 
+			<div class="textInfo" style="font-size:30px">
+				<p style="widht: 200px; margin-left: 230px; margin-top: -90px;">
+					<strong><c:out value="${logerHomeInfo.chNm}" /></strong>
+				</p>
+			</div>
+			<input type="button" id="subscribe" class="btn btn-primary"
+				value="구독">
+			<p style="widht: 200px; margin-left: 230px;font-size:20px; margin-top: -30px;">
+				<c:out value="${logerHomeInfo.subNum}" />
+				명
+			</p>
+		</div>
 
+		<div class="row" style="margin-left: 30px;">
+			<div class="col-lg-15">
+				<a href="newHomeChannel.lo?userNo=${sessionScope.userNo}"
+					class="noticeLink" style="float: left; width: 15%;"><h4
+						class="page-title1">홈</h4></a> <a
+					href="logerHomeAllVideo.lo?userNo=${sessionScope.userNo}"
+					class="noticeLink" style="float: left; width: 15%;"><h4
+						class="page-title2">동영상</h4></a> <a
+					href="logerHomeInfo.lo?userNo=${sessionScope.userNo}"
+					class="noticeLink" style="float: left; width: 15%;"><h4
+						class="page-title3">정보</h4></a>
+			</div>
+			<div class="newVideo"></div>
+
+		</div>
+		<br>
+		<div class="infoarea" style="margin-left:30px">
+		<p id="textInfo">
+				<strong >통계</strong>
+			</p>
+			<P>
+				가입일 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<c:out value="${logerHomeInfo.chDT}" />
+			</P>
+			<P>
+				구독자수 &nbsp;&nbsp;
+				<c:out value="${logerHomeInfo.subNum}" />
+				명
+			</P>
+			<br><br><br>
+			</div>
+			<hr class="my-hr1">
+			<br><br>
+			<div class="infoarea" style="margin-left:30px">
+			<p id="textInfo">
+				<strong>채널소개</strong>
+			</p>
+			<div id="infoarea">
+				<c:out value="${logerHomeInfo.chInfo}" />
+			</div>
+		</div>
+		<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
+	</div>
+			<script>
+			function subOk() {
+
+				location.href = 'subOk.lo';
+
+			}
+			var message = '${msg}';
+			if (message == "자신의 채널은 구독 불가 입니다") {
+				alert(message);
+
+			}
+			var message = '${msg}';
+			if (message == "동영상이 업로드 되었습니다!") {
+				alert(message);
+			}
+
+			var state = 0;
+			$('#subscribe').click(function(){
+			
+
+				if(state == 0){
+					document.getElementById('subscribe').value = "구독중";
+					
+					$.ajax({
+						url:"subOk.lo",
+						type:"post",
+						data:{},
+						success:function(data){
+							console.log("insert성공!");
+
+							state = 1;
+						},
+						error:function(){
+							console.log("실패!");
+						}
+					});
+				}else {
+					document.getElementById('subscribe').value = "구독";
+					$.ajax({
+						url:"subCancle.lo",
+						type:"post",
+						data:{},
+						success:function(data){
+							console.log("delete성공!");
+
+							state = 0;
+						},
+						error:function(){
+							console.log("실패!");
+						}
+					});
+				}
+			});
+
+		</script>
+	
+<hr class="my-hr2">
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
 </html>
+
+
+

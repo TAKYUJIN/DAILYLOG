@@ -28,8 +28,7 @@ body {
 }
 
 .table-wrapper {
-	width: 700px;
-	margin: 30px auto;
+	width: 1000px;
 	background: white;
 	padding: 20px;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
@@ -65,7 +64,8 @@ table.table {
 }
 
 table.table tr th, table.table tr td {
-	border-color: gray;
+	border-color: 0;
+	border-color: red;
 }
 
 table.table th i {
@@ -127,25 +127,49 @@ table.table td .add {
 	width: 100px;
 }
 .mainpage {
-	width:1024px;
-	margin-top:-150px;
+	width: 1600px;
+	margin-top: 50px;
 }
 .button1 {
-	background-color: #f08080;
-	padding: 6px 24px;
-	font-color: white;
+	margin-left:50px;
+	background-color: #13334A;
+	padding: 10px 24px;
+	color: white;
 	border: none;
-	
-	
+	border-radius: 7px;
+	moz-border-radius: 7px;
+	khtml-border-radius: 7px;
+	webkit-border-radius: 7px;
 }
-
+.button2 {
+	margin-left:50px;
+	background-color: #A8B7BC ;
+	padding: 10px 24px;
+	color: white;
+	border: none;
+	border-radius: 7px;
+	moz-border-radius: 7px;
+	khtml-border-radius: 7px;
+	webkit-border-radius: 7px;
+}
+.button3 {
+	margin-left:50px;
+	background-color: red ;
+	padding: 10px 24px;
+	color: white;
+	border: none;
+	border-radius: 7px;
+	moz-border-radius: 7px;
+	khtml-border-radius: 7px;
+	webkit-border-radius: 7px;
+}
 .buttonarea {
-	width: 180px;
+	width: 300px;
 	margin-left: 950px;
 	margin-top: 20px;
 }
 #delete{
-	 margin-left:-1050px; 
+	 margin-left:-950px; 
 }
 #bNo {
 
@@ -162,8 +186,7 @@ table.table td .add {
 			<div class="table-wrapper">
 				<div class="table-title">
 					<div class="row"></div>
-				</div>
-			</div>
+
 			<table class="table table-bordered">
 				<thead>
 
@@ -201,18 +224,20 @@ table.table td .add {
 					</tr>
 					<tr>
 						<td colspan="2" align="center">
-						<textarea rows = "20"  cols="150"  wrap="soft"  id="bcontent" name="bcontent" 
+						<textarea rows = "20"  cols="120"  wrap="soft"  id="bcontent" name="bcontent" 
 						style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;"><c:out value="${result.bcontent}"/></textarea></td>
 					</tr>
 					
 				</tbody>
 			</table>
+							</div>
+			</div>
 		</div>
 	</div>
 	<div class="buttonarea">
-		<button class="button1" type= "button" onclick="location.href='adminNoticeList.ad'">확인</button>
+		<button class="button2" type= "button" onclick="location.href='adminNoticeList.ad'">취소</button>
 		<button class="button1" type= "submit" id ="NoticeChange">수정</button>
-		<button class="button1" type="submit"  id ="delete">삭제</button>
+		<button class="button3" type="submit"  id ="delete">삭제</button>
 	</div>
 
 	<br><br>

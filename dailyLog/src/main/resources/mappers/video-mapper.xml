@@ -198,6 +198,7 @@ WHERE TAG LIKE '%'||#{search}||'%'
 		SELECT *
 		FROM VIDEO
 		WHERE USER_NO = #{userNo}
+		
 	</select>
 	
 	<!-- 동영상번호 셀렉 -->

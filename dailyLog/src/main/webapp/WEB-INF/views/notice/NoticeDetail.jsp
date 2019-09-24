@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-	<% %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+	
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,8 +30,7 @@ body {
 }
 
 .table-wrapper {
-	width: 700px;
-	margin: 30px auto;
+	width: 1000px;
 	background: white;
 	padding: 20px;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
@@ -65,7 +66,8 @@ table.table {
 }
 
 table.table tr th, table.table tr td {
-	border-color: gray;
+	border-color: 0;
+	border-color: red;
 }
 
 table.table th i {
@@ -126,17 +128,22 @@ table.table td .add {
 #subject {
 	width: 100px;
 }
+
 .mainpage {
-	width:1600px;
-	margin-top:-150px;
+	width: 1600px;
+	margin-top: 100px;
 }
+
 .button1 {
-	background-color: #f08080;
-	padding: 6px 24px;
-	font-color: white;
+	margin-left:50px;
+	background-color: #13334A;
+	padding: 10px 24px;
+	color: white;
 	border: none;
-	
-	
+	border-radius: 7px;
+	moz-border-radius: 7px;
+	khtml-border-radius: 7px;
+	webkit-border-radius: 7px;
 }
 
 .buttonarea {
@@ -144,75 +151,80 @@ table.table td .add {
 	margin-left: 1050px;
 	margin-top: 20px;
 }
-
 </style>
 <body>
 
 	<jsp:include page="../common/mainBar.jsp"></jsp:include>
-	
+
 	<div class="mainpage">
 		<div class="container">
 			<div class="table-wrapper" >
 				<div class="table-title">
 					<div class="row"></div>
+
+					<table class="table table-bordered">
+						<thead>
+
+						</thead>
+
+						<tbody>
+
+							<tr>
+								<td><strong>NO</strong></td>
+								<td
+									style="border: none; border-right: 0px; border-top: 0px; boder-left: 0px; boder-bottom: 0px; width: 500px;">
+									<input disabled id="bNo" type="text"
+									style="border: none; width: 300px; background: none;"
+									value=<c:out value="${result.bNo}" />> <%-- <c:out value="${result.bNo}" /> --%>
+								</td>
+
+							</tr>
+							<tr>
+								<td><strong>Subject</strong></td>
+								<td><input disabled id="bNo" type="text"
+									style="border: none; width: 300px; background: none;"
+									value=<c:out  value="${result.bTitle}" />></td>
+
+							</tr>
+							<tr>
+								<td id="Writer"><strong>Writer</strong></td>
+								<td
+									style="border: none; border-right: 0px; border-top: 0px; boder-left: 0px; boder-bottom: 0px; width: 500px;">
+									<c:set var="name" value="${result.userNo}" /> <c:if
+										test="${name =v0 }" /> <c:out value="관리자" />
+								</td>
+							</tr>
+							<tr>
+								<td id="Date"><strong>Date</strong></td>
+								<td><c:out value="${result.createDt}" /></td>
+							</tr>
+							<tr>
+								<td colspan="2" align="center"><textarea disabled rows="20"
+										cols="150" wrap="soft" id="bcontent" name="bcontent"
+										style="border: none; background: none; border-right: 0px; border-top: 0px; boder-left: 0px; boder-bottom: 0px;">
+						<c:out value="${result.bcontent}" /></textarea></td>
+
+
+							</tr>
+
+						</tbody>
+					</table>
 				</div>
 			</div>
-			<table class="table table-bordered">
-				<thead>
-
-				</thead>
-				
-				<tbody>
-				
-				<tr>
-						<td><strong>NO</strong></td> 
-						<td    style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px; width:500px;">
-						<input  disabled id ="bNo" type="text"  style="border:none; width:300px; background:none;" value=<c:out value="${result.bNo}" />>
-						<%-- <c:out value="${result.bNo}" /> --%>
-						</td>
-
-					</tr>
-					<tr>
-						<td><strong>Subject</strong></td>
-						<td> 
-						<input  disabled id ="bNo" type="text"  style="border:none; width:300px; background:none; " value=<c:out  value="${result.bTitle}" />></td>
-
-					</tr>
-					<tr>
-						<td id="Writer"><strong>Writer</strong></td>
-						<td style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px; width:500px;">
-						<c:set var="name" value="${result.userNo}" />
-							<c:if test="${name =v0 }"/>
-  							  <c:out value="관리자" /></td>
-					</tr>
-					<tr>
-						<td id="Date" ><strong>Date</strong></td>
-						<td><c:out value="${result.createDt}"/>
-						</td>
-					</tr>
-					<tr>
-						<td colspan="2" align="center">
-						<textarea  disabled rows = "20"  cols="150"  wrap="soft"  id="bcontent" name="bcontent" 
-						style="border:none; background:none; border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;">
-						<c:out value="${result.bcontent}"/></textarea></td>
-						
-					
-					</tr>
-					
-				</tbody>
-			</table>
 		</div>
 	</div>
 	<div class="buttonarea">
-		
-		<button class="button1" type= "button" onclick="location.href='noticeList.no'">확인</button>
+
+		<button class="button1" type="button"
+			onclick="location.href='noticeList.no'">확인</button>
 
 	</div>
 
-	<br><br>
+	<br>
+	<br>
 
-	
-	
+
+
 	<jsp:include page="../common/footer.jsp" />
 
 </body>

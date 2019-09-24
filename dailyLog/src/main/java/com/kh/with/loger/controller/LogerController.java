@@ -31,6 +31,7 @@ import com.kh.with.loger.model.vo.Loger2;
 import com.kh.with.loger.model.vo.MyVideo;
 import com.kh.with.loger.model.vo.SubUserInfo;
 import com.kh.with.loger.model.vo.Support;
+import com.kh.with.main.model.service.MainService;
 import com.kh.with.main.model.vo.SubscribeVideo;
 import com.kh.with.main.model.vo.VideoLike;
 import com.kh.with.member.model.vo.Member;
@@ -43,6 +44,7 @@ public class LogerController {
 	@Autowired
 	private LogerService ls;
 
+	 
 	// 로거 동영상 페이지로 이동
 	@RequestMapping(value="logerVideo.lo")
 	public String selectLogerVideo(Model model, HttpSession session, Video v) {
@@ -499,15 +501,7 @@ public class LogerController {
 				int chNo = result.getChNo();
 				String chNm = result.getChNm(); 
 				
-		/*
-		 * System.out.println("최종정보입니다::: " + "로거번호:::" +userNo + "로그인유저번호::" +
-		 * loginUserNo + "로거채널번호:::" + chNo + "로거닉네임:::" + nickname + "채널네임:::" + chNm);
-		 */
-				
-				
-				
-				
-				
+
 				HttpSession session1 = request.getSession();
 				session.setAttribute("loginUserNo", loginUserNo);
 				session.setAttribute("userNo", userNo);
@@ -517,6 +511,49 @@ public class LogerController {
 				
 				return  "forward:/studeioSubInsert.vd" ;
 	}
+	
+	//구독등록취소
+		@RequestMapping(value="subCancle.lo")
+		public String subCancle(Model model,HttpServletRequest request,HttpSession session,@ModelAttribute Member m) {
+			
+
+				 int userNo =  (int) session.getAttribute("userNo");
+				 System.out.println("로거의 유저넘버 " + userNo);
+				
+				 //로그인한 유저번호 
+					int loginUserNo = ((Member) request.getSession().getAttribute("loginUser")).getUserNo();	
+					String nickName =  ((Member) request.getSession().getAttribute("loginUser")).getNickname();	
+
+					 System.out.println("로그인의 유저넘버 " + loginUserNo);
+					 
+					if(userNo == loginUserNo) {
+						model.addAttribute("msg", "자신의 채널은 구독 불가 입니다");
+
+						return "forward:/newHomeChannel.lo?userNo="+userNo;
+					}
+				
+					
+					SubUserInfo subUserInfo = new SubUserInfo();
+					subUserInfo.setUserNo(userNo);
+
+					
+					SubUserInfo result = ls.subUserInfo(subUserInfo); 
+					
+					int chNo = result.getChNo();
+					String chNm = result.getChNm(); 
+					
+
+					HttpSession session1 = request.getSession();
+					session.setAttribute("loginUserNo", loginUserNo);
+					session.setAttribute("userNo", userNo);
+					session.setAttribute("chNo", chNo);
+					session.setAttribute("nickName", nickName);
+					session.setAttribute("chNm", chNm);
+					
+					return  "forward:/studeioSubDelete.vd" ;
+		}
+		
+		
 	
 }
 

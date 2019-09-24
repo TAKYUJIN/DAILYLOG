@@ -16,10 +16,15 @@
 }
 
 .button1 {
-	background-color: #f08080;
-	padding: 6px 24px;
-	font-color: white;
+	margin-left:50px;
+	background-color: #13334A;
+	padding: 10px 24px;
+	color: white;
 	border: none;
+	border-radius: 7px;
+	moz-border-radius: 7px;
+	khtml-border-radius: 7px;
+	webkit-border-radius: 7px;
 }
 
 .buttonarea {
@@ -67,7 +72,6 @@
 
 	<div class="buttonarea">
 		<button class="button1" onclick="location.href='adminNoticeWrite.ad'">작성</button>
-		<button class="button1">취소</button>
 	</div>
 	<br>
 	<br>

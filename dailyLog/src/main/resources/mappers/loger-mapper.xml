@@ -356,4 +356,37 @@
     AND  L.USER_NO = #{userNo}
 	</select>
 
+ <!-- 기존 구독자수 셀렉 -->
+ <select id="resultSubnum" resultMap="logerResultSet">
+	    
+    SELECT SUBNUM
+    FROM LOGER 
+    WHERE USER_NO =  #{userNo}
+	</select>
+	
+	<!-- 구독시 구독자수 증가 -->
+	<update id="subBumUpdate" parameterType="Loger">
+	UPDATE LOGER SET SUBNUM =  #{subNum}
+    WHERE USER_NO =  #{chNo}
+    
+   </update>
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
