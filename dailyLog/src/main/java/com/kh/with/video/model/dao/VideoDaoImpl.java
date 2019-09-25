@@ -90,6 +90,7 @@ public class VideoDaoImpl implements VideoDao {
 		// TODO Auto-generated method stub
 		return sqlsession.selectList("Attachment.videosub",m);
 	}
+	//기존 구독자수 셀렉
 	@Override
 	public List<Attachment> videolike(SqlSessionTemplate sqlSession,Member m) {
 		// TODO Auto-generated method stub
@@ -379,6 +380,19 @@ public class VideoDaoImpl implements VideoDao {
 	public int replyAlram(SqlSessionTemplate sqlSession, Map<String, Object> map) {
 		
 		return sqlSession.insert("Video.replyAlram", map);
+	}
+
+	@Override
+	public Loger resultSubnum(SqlSessionTemplate sqlSession, Loger loger) {
+		
+		return sqlSession.selectOne("Loger.resultSubnum", loger);
+	}
+
+	@Override
+	public int subBumUpdate(SqlSessionTemplate sqlSession, Loger loger1) {
+		
+		
+		return sqlSession.update("Loger.subBumUpdate", loger1);
 	}
 	
 	@Override

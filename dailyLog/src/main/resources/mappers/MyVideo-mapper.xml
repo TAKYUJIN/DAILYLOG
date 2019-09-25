@@ -32,6 +32,7 @@
 	JOIN ATTACHMENT A
 	ON (A.V_NO = V.V_NO)
 	WHERE v.USER_NO =  #{userNo}
+	ORDER BY UPLOAD_DT DESC
 
 	</select>
 	

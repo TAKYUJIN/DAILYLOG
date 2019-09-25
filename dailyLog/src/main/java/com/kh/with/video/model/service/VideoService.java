@@ -129,6 +129,13 @@ public interface VideoService {
 
 	int repNo(Map<String, Object> map);
 
+
+	//기존구독자수 셀렉
+	Loger resultSubnum(Loger loger);
+
+	//구독자수 업데이트
+	int subBumUpdate(Loger loger1);
+
 	int updateCount(Map<String, Object> map);
 
 	int countSubNum(Map<String, Object> map);
@@ -140,6 +147,7 @@ public interface VideoService {
 	int replyReprtAlram(Map<String, Object> map);
 
 	List<Report> selectCount(Map<String, Object> map);
+
 
 
 	

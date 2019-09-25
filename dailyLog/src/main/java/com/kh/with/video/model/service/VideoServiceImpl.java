@@ -357,6 +357,22 @@ public class VideoServiceImpl implements VideoService{
 		
 		return vd.replyAlram(sqlSession, map);
 	}
+
+
+	//기존 구독자수 셀렉
+	@Override
+	public Loger resultSubnum(Loger loger) {
+		
+		return vd.resultSubnum(sqlSession, loger);
+	}
+
+
+	//구독자수 업데이트
+	@Override
+	public int subBumUpdate(Loger loger1) {
+		
+		return vd.subBumUpdate(sqlSession, loger1);
+	}
 	
 	@Override
 	public int updateCount(Map<String, Object> map) {

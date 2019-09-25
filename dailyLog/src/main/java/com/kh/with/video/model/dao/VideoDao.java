@@ -113,12 +113,19 @@ public interface VideoDao {
 	int insertReply(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	int replyAlram(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	int repNo(SqlSessionTemplate sqlSession, Map<String, Object> map);
+
+	//기존 구독자수 셀렉
+	Loger resultSubnum(SqlSessionTemplate sqlSession, Loger loger);
+	//구독자수 업데이트
+	int subBumUpdate(SqlSessionTemplate sqlSession, Loger loger1);
+
 	int updateCount(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	int countSubNum(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	int disCountSubNum(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	int replyReport(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	int replyReportAlram(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	List<Report> selectCount(SqlSessionTemplate sqlSession, Map<String, Object> map);
+
 	
 
 }

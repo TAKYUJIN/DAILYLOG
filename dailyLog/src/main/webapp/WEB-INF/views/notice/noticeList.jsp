@@ -15,10 +15,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style type="text/css">
-    body {
-        color: #666;
-        background: #f5f5f5;
-		font-family: 'Roboto', sans-serif;
+ 	body {
+		background: #fff;
+		font-family: 'Varela Round', sans-serif;
 	}
     table.table tr th, table.table tr td {
         border-color: #e9e9e9;
@@ -36,7 +35,7 @@
 	}
     .table-wrapper {
     	width:800px;
-        background: #fff;
+        background: none;
         padding: 20px;
         margin: 30px 0;
         box-shadow: 0 1px 1px rgba(0,0,0,.05);
@@ -123,6 +122,7 @@
 		left: 0;
 		bottom: -15px;
 	}
+
 </style>
 </head>
 <body>
@@ -135,7 +135,7 @@
 			</div>
 		<div class="table-wrapper">
 
-			<table class="table table-striped" style="">
+			<table class="table table-striped" >
 				<thead>
 					<tr>
 						<th>No</th>
