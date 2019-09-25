@@ -977,12 +977,6 @@ public class VideoController {
 
 
 
-
-
-			// 썸네일 업로드 및 파일이름바꾸기
-			String root = request.getSession().getServletContext().getRealPath("resources");
-
-
 			String filepath1 = root + "\\uploadFiles";
 
 			String beforeenrollNm = file2.getOriginalFilename();
