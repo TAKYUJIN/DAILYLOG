@@ -84,6 +84,44 @@ public class LogerController {
 		
 		return "loger/updateLogerVideo";
 	}
+	
+	// 로거 동영상 수정 update
+		@RequestMapping(value = "updateLogerVideo.lo")
+		public String updateLogerVideo(HttpSession session, Model model, HttpServletRequest request,
+				@RequestParam (value = "vNo", required=false) Integer vNo) {
+			Member m = (Member) session.getAttribute("loginUser");
+			int userNo = m.getUserNo();
+			
+			System.out.println(vNo);
+			String vTitle = request.getParameter("vTitle");
+			String tag = request.getParameter("vTag");
+			String adultAut = request.getParameter("adultAut");
+			String adYn = request.getParameter("adYN");
+			String openTy = request.getParameter("openTY");
+			String adInfo = request.getParameter("adInfo");
+			
+			if (adYn == null) {
+				adYn = "N";
+			}
+			
+			Video v = new Video();
+			v.setvNo(vNo);
+			v.setUserNo(userNo);
+			v.setvTitle(vTitle);
+			v.setTag(tag);
+			v.setOpenTy(openTy);
+			v.setAdultAut(adultAut);
+			v.setAdYn(adYn);
+			v.setAdInfo(adInfo);
+			
+			System.out.println("vvvvV:::::::::" + v);
+					
+			int result = ls.updateLogerVideo(v);
+			
+			return "loger/updateLogerVideo";
+		}
+
+
 
 	// 로거 동영상 삭제
 	@RequestMapping(value="videoDelete.lo")

@@ -190,7 +190,7 @@
 <body>
 <jsp:include page="../common/logerBar.jsp"></jsp:include>
     <div class="selectVideo">
-    <form action="" method="post" class="searchLogerVideoForm">
+    <form action="updateLogerVideo.lo" method="post" class="searchLogerVideoForm">
         <div class="table-wrapper">
             <div class="table-title" style="width:900px;">
                 <div class="row">
@@ -211,6 +211,7 @@
                 </thead>
                 <tbody>
                 	<c:forEach items="${vList}" var="v">
+							 <input type="hidden"  id="vNo" name="vNo" value="${v.vNo}"/>
                     <tr>
                 		<td style="vertical-align:middle"><video id='my-video' class='video-js' width="500px;"
 							height="300px;" controls loop poster='resources/uploadFiles/${v.afileNm}'
@@ -220,24 +221,24 @@
                     </tr>
                     <tr>
                     	<td>
-                    	<b><input type="text" class="video_td" id="videoTitle" placeholder="동영상제목" value="${v.vTitle}" 
-						style="border:none;background:transparent;font-size:20px;"></b>
+                    	<b><input type="text" class="video_td" id="videoTitle" name="vTitle" placeholder="동영상제목" value="${v.vTitle}" 
+						onfocus="this.select()" style="border:none;background:transparent;font-size:20px;"></b>
                     	</td>
                     </tr>
                     <tr>
-                    	<td><input type="text" class="video_td" id="videoTag" style="width:400px;border:none;background:transparent;" 
-                    	placeholder="태그(예:#일상기록 #여행 #강아지 #음식)" value="${v.tag}"></td>
+                    	<td><input type="text" class="video_td" id="videoTag" name="vTag" style="width:400px;border:none;background:transparent;" 
+                    	placeholder="태그(예:#일상기록 #여행 #강아지 #음식)" value="${v.tag}" onfocus="this.select()"></td>
                     </tr>
                     <tr>
                     	<td>
                     		<div style="float:right; width:40%;">정보보호여부
                     		<select id="selectOpen">
-	                    		<option id="openY" value="openY">공개</option>
-	                    		<option id="openN" value="openN">비공개</option>
+	                    		<option id="openY" value="Y" name="openTY">공개</option>
+	                    		<option id="openN" value="N" name="openTY">비공개</option>
                     		</select></div>
                     		<div style="float:right; width:60%;"><p>시청등급을 선택하세요</p>
-                    		<input type="checkbox" class="video_td" id="videoAllArea"> 전체 시청 가능<br>
-                    		<input type="checkbox" class="video_td" id="videoNineteenArea"> 19세 이상 시청 가능</div>
+                    		<input type="checkbox" class="video_td" id="videoAllArea" name="adultAut" value="Y"> 전체 시청 가능<br>
+                    		<input type="checkbox" class="video_td" id="videoNineteenArea" name="adultAut" value="N"> 19세 이상 시청 가능</div>
                     	</td>
                     </tr>
                     <tr>
@@ -245,9 +246,9 @@
                     		<p>광고 여부</p>
                     		<p>광고 여부 체크 시 아래의 문구가 자동으로 기재됩니다.<br>
                     		본 컨텐츠는 유료 제품 추천, 후원, 보증과 같은 유료 광고 내용이 포함되어 있습니다.</p>
-                    		<input type="checkbox" class="video_td" id="videoAdv"> 영상 내 유료 ppl 포함<br>
-                    		<input type="text" class="video_td" id="videoAdvInfo" placeholder="내용을 입력해주세요"
-                    		value="${v.adInfo}" style="border: none; background: transparent;">                    	
+                    		<input type="checkbox" class="video_td" id="videoAdv" name="adYN"> 영상 내 유료 ppl 포함<br>
+                    		<input type="text" class="video_td" id="videoAdvInfo" placeholder="내용을 입력해주세요" name="adInfo"
+                    		value="${v.adInfo}" style="border: none; background: transparent;" onfocus="this.select()">                    	
                     	</td>
                     </tr>
                     
@@ -294,6 +295,12 @@
     		}else{
     			$("#openN").prop("selected", false);
     		}
+    		
+    		if(openTY == "N"){
+   			 $("#openN").prop("selected", true); 
+   			}else{
+   			$("#openY").prop("selected", false);
+   			}
     	 
     	});
 
