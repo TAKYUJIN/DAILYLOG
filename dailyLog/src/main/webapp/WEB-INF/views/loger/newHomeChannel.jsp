@@ -194,7 +194,8 @@ body {
 					<strong><c:out value="${result.chNm}" /></strong>
 				</p>
 			</div>
-			<button id="subscribebtn" class="btn btn-primary" onclick="subOk();" >구독</button>  
+			<!-- <button id="subscribebtn" class="btn btn-primary" onclick="subOk();" >구독</button> -->
+			<input type="button" id="subscribebtn"  class="btn btn-primary" onclick="subOk();" value="구독">
 			<p style="widht: 200px; margin-left: 130px; margin-top: -10px;">
 				<c:out value="${result.subNum}" />
 				명
@@ -314,6 +315,7 @@ body {
 	    var message = '${msg}';
 	    if(message == "구독되었습니다"){
 			 alert(message); 
+			 document.getElementById('subscribebtn').value = "구독중";
 	    	
 	    }
 	</script>

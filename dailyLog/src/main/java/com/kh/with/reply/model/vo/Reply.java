@@ -9,10 +9,11 @@ public class Reply implements java.io.Serializable{
 	private Date repDt;		//작성날짜
 	private String repCt;	//댓글내용
 	private String repTy;	//댓글구분
+	private int parentNo;
 	
 	public Reply() {}
 
-	public Reply(int repNo, int userNo, int vNo, Date repDt, String repCt, String repTy) {
+	public Reply(int repNo, int userNo, int vNo, Date repDt, String repCt, String repTy, int parentNo) {
 		super();
 		this.repNo = repNo;
 		this.userNo = userNo;
@@ -20,6 +21,7 @@ public class Reply implements java.io.Serializable{
 		this.repDt = repDt;
 		this.repCt = repCt;
 		this.repTy = repTy;
+		this.parentNo = parentNo;
 	}
 
 	public int getRepNo() {
@@ -70,10 +72,18 @@ public class Reply implements java.io.Serializable{
 		this.repTy = repTy;
 	}
 
+	public int getParentNo() {
+		return parentNo;
+	}
+
+	public void setParentNo(int parentNo) {
+		this.parentNo = parentNo;
+	}
+
 	@Override
 	public String toString() {
 		return "Reply [repNo=" + repNo + ", userNo=" + userNo + ", vNo=" + vNo + ", repDt=" + repDt + ", repCt=" + repCt
-				+ ", repTy=" + repTy + "]";
+				+ ", repTy=" + repTy + ", parentNo=" + parentNo + "]";
 	}
-	
+
 }
