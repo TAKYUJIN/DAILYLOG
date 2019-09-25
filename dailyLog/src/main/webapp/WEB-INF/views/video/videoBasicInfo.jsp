@@ -91,12 +91,12 @@
 						aria-valuemax="100" style="width: 40%"></div>
 				</div>
 			</div>
-			<button id="uploadbtn" class="btn btn-primary" type="submit">게시하기</button>
+			
+			<button id="uploadbtn" class="btn btn-primary" type="submit" >다음으로</button>
+			
+			
 			<div id="innerbox">
-				<div class="infobtn">
-					<button type="button" class="btn">기본정보</button>
-					<button type="button" class="btn" onclick="addInfo();">추가정보</button>
-				</div>
+				
 				<br>
 				<div class="basicInfo">
 					<div class="container">
@@ -121,9 +121,31 @@
 						style="width: 400px" placeholder="광고정보"> <br> <br>
 						
 						
-					<a>공개여부</a> <br> <input type="checkbox" name="openTy"
-						value="Y">전체공개<br> <input type="checkbox"
-						name="openTy" value="N">비공개<br>
+					<a>공개여부</a> <br> 
+					<input type="checkbox" name="openTy" value="Y">전체공개<br>
+					<input type="checkbox" name="openTy" value="N">비공개<br>
+					<input type="checkbox" name="openTy" class="upload" value="U">게시 예정<br>
+					<div style="margin-left:5%;" class="uploadVideo">
+					       지금 시각으로부터
+					   	<input type="date" id="start" name="uploadDate" value="2019-09-25" min="2019-09-25" max="2019-10-31">
+						<input type="text" name="uploadTime" placeholder="00:00  24H 형식으로 작성">
+					</div>
+					<script>
+					$(document).ready(function(){
+						$(".uploadVideo").hide();
+						
+						var state = 0;
+						$(".upload").click(function(){
+							if(state == 0){
+								$(".uploadVideo").show();
+								state = 1;
+							}else {
+								$(".uploadVideo").hide();
+								state = 0;
+							}
+						})
+					});
+					</script>
 				</div>
 				<br>
 				<br> <a>썸네일이미지첨부</a> <input type="file" name="file2" value="file2" id="file2"/> 
@@ -161,17 +183,32 @@
 						traditional:true,
 					success:function(data){
 						console.log("성공!");
+
 					},
 					error:function(data){
 						console.log("실패!");
 					}
 				});
+
 			});
+			
+			/*
+			var message = "${msg}";
+			var addUserNo = "${addUserNo}";
+			var addvNo = "${addvNo}";
+			
+			if(message == addUserNo + addvNo){
+				console.log(addUserNo + ";;;;;;" +addvNo)
+				document.location.href="addInfo.vd?addUserNo="+addUserNo+"&addvNo="+addvNo;
+			
+			
+			} */
+			
 		});
 		
-		function addInfo(){
-			location.href="addInfo.vd";
-		}
+		
+		
+		
 	</script>
 
 

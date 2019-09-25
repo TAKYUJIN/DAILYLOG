@@ -2,12 +2,17 @@ package com.kh.with.video.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
@@ -25,7 +30,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.with.common.CommonUtils;
 import com.kh.with.loger.model.vo.Loger;
-import com.kh.with.loger.model.vo.Loger2;
 import com.kh.with.member.model.service.MemberService;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.report.model.vo.Report;
@@ -48,7 +52,7 @@ public class VideoController {
 
 	// 썸네일 클릭시 동영상 페이지로 이동
 	@RequestMapping(value = "video.vd")
-	public String showVideoView(HttpServletRequest request, Model model, HttpSession session) {
+	public String showVideoView(HttpServletRequest request, Model model, HttpSession session, HttpServletResponse response) {
 		Member m = (Member) session.getAttribute("loginUser");
 		int loginUser = m.getUserNo();
 		int age = m.getAge();
@@ -64,6 +68,92 @@ public class VideoController {
 
 		System.out.println("needs : " + userNo + ", " + vNo);
 
+		
+		//시간설정
+		String info = vs.selectInfo(map);
+		System.out.println(info);
+		
+		Date now = new Date();
+		
+		
+		
+		try {
+			if(!info.equals("info없음")) {
+				
+				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+				String nowStr = dateFormat.format(now);
+				Date infoTime;
+				infoTime = dateFormat.parse(info);
+				Date nowTime = dateFormat.parse(nowStr);
+	
+				if(infoTime.getTime() > nowTime.getTime()) {
+					System.out.println("infoTime이 더 작을떄");
+					System.out.println("now : " + nowTime.getTime());
+					System.out.println("infoTime : " + infoTime.getTime());
+					
+					response.setContentType("text/html; charset=UTF-8");
+					PrintWriter out = response.getWriter();
+		            out.println("<script>alert('최초 공개 전입니다.');</script>");
+		            out.flush();
+		            
+		            return "forward:home.mb";
+				}
+					
+				System.out.println("infoTime이 더 크거나 같을떄");
+				System.out.println("now : " + nowTime.getTime());
+				System.out.println("infoTime : " + infoTime.getTime());
+				
+			}
+				
+				//조회수
+				int countUp = vs.updateCount(map);
+				
+				
+				//정보 select
+				List<Video> list1 = vs.selectVideoInfo(map);
+				List<Loger> list2 = vs.selectLogerInfo(map);
+				List<Reply2> reply = vs.selectReply(map);
+				
+				System.out.println("list1 : " + list1);
+				System.out.println("list2 : " + list2);
+				System.out.println("reply : " + reply);
+				System.out.println("age : " + age);
+				
+				int chNo = (list2.get(0)).getChNo();
+				map.put("chNo", chNo);
+				
+				//loger 썸넬, 프로필
+				String thumb = vs.selectThumb(map);
+				String profile = vs.selectProfile(map);
+				String userImg = vs.selectUserImg(map);
+				
+				model.addAttribute("m", m);
+				model.addAttribute("list1", list1);
+				model.addAttribute("list2", list2);
+				model.addAttribute("age", age);
+				model.addAttribute("thumb", thumb);
+				model.addAttribute("profile", profile);
+				model.addAttribute("chNo", chNo);
+				model.addAttribute("reply", reply);
+				model.addAttribute("userImg", userImg);
+				
+				return "video/videoMain";
+			
+			
+			
+			
+		} catch (ParseException e) {
+			model.addAttribute("msg", "동영상실패");
+			return "common/errorPage";
+		} catch (IOException e) {
+			model.addAttribute("msg", "동영상실패");
+			return "common/errorPage";
+		}
+		
+		
+
+
+  /*
 		//조회수
 		int countUp = vs.updateCount(map);
 
@@ -97,6 +187,8 @@ public class VideoController {
 		model.addAttribute("userImg", userImg);
 
 		return "video/videoMain";
+    */
+
 	}
 
 	//비디오 정기후원 상태 조회
@@ -156,28 +248,25 @@ public class VideoController {
 	public String replyUpdate(HttpServletRequest request, Model model, HttpSession session) {
 		Member m = (Member) session.getAttribute("loginUser");
 		int loginUser = m.getUserNo();
-		int vNo = Integer.parseInt(request.getParameter("vNo"));
-		String content = request.getParameter("content");
-		int userNo = Integer.parseInt(request.getParameter("userNo"));
 		String nickName = m.getNickname(); 
+		String update = request.getParameter("update");
+		int vNo = Integer.parseInt(request.getParameter("vNo"));
+		int repNo = Integer.parseInt(request.getParameter("repNo"));
 		
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("vNo", vNo);
+		map.put("update", update);
 		map.put("loginUser", loginUser);
-		map.put("content", content);
-		map.put("userNo", userNo);
 		map.put("nickName", nickName);
+		map.put("vNo", vNo);
+		map.put("repNo", repNo);
 		
 		int result = vs.replyUpdate(map);
 		
 		List<Reply2> reply = vs.selectReply(map);
 		
-		int repNo = vs.repNo(map);
-		map.put("repNo", repNo);
-		
 		model.addAttribute("reply", reply);
-		model.addAttribute("result", result);
-		System.out.println("result : " + result);
+
+		System.out.println("map : " + map);
 		
 		return Integer.toString(result);
 	}
@@ -187,23 +276,18 @@ public class VideoController {
 		Member m = (Member) session.getAttribute("loginUser");
 		int loginUser = m.getUserNo();
 		int vNo = Integer.parseInt(request.getParameter("vNo"));
-		String content = request.getParameter("content");
-		int userNo = Integer.parseInt(request.getParameter("userNo"));
 		String nickName = m.getNickname(); 
+		int repNo = Integer.parseInt(request.getParameter("repNo"));
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("vNo", vNo);
 		map.put("loginUser", loginUser);
-		map.put("content", content);
-		map.put("userNo", userNo);
 		map.put("nickName", nickName);
+		map.put("repNo", repNo);
 		
 		int result = vs.replyDelete(map);
 		
 		List<Reply2> reply = vs.selectReply(map);
-		
-		int repNo = vs.repNo(map);
-		map.put("repNo", repNo);
 		
 		model.addAttribute("reply", reply);
 		model.addAttribute("result", result);
@@ -826,67 +910,117 @@ public class VideoController {
 	}
 
 	// 업로드할동영상 정보 insert메소드
-	@RequestMapping(value = "insertVideoInfo.vd")
-	public String insertVideoInfo(@ModelAttribute Member m, Model model, HttpServletRequest request,
-			HttpSession session, @RequestParam("file2") MultipartFile file2) {
 
+		@RequestMapping(value = "insertVideoInfo.vd")
+		public String insertVideoInfo(@ModelAttribute Member m, Model model, HttpServletRequest request,
+				HttpSession session, @RequestParam("file2") MultipartFile file2) {
 
 
 		// 썸네일 업로드 및 파일이름바꾸기
 		String root = request.getSession().getServletContext().getRealPath("resources");
 
-		String filepath1 = root + "\\uploadFiles";
-
-		String beforeenrollNm = file2.getOriginalFilename();
-		String ext = beforeenrollNm.substring(beforeenrollNm.lastIndexOf("."));
-		String enrollNm = CommonUtils.getRandomString()+ext;
 
 
 
-		// 파일 업로드 하는 구문
-		try {
-			file2.transferTo(new File(filepath1 + "\\" + enrollNm));
-		} catch (IllegalStateException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 
-		m = (Member) session.getAttribute("loginUser");
-		String fileName = (String) session.getAttribute("fileName");
-		String vTitle = request.getParameter("vTitle");
-		String beforetag = request.getParameter("tag");
-		String adultAut = request.getParameter("adultAut");
-		String adYn = request.getParameter("adYn");
-		String openTy = request.getParameter("openTy");
-		String adInfo = request.getParameter("adInfo");
-		int getUserNo = ((Member) request.getSession().getAttribute("loginUser")).getUserNo();
-		String chNm = ((Member) request.getSession().getAttribute("loginUser")).getNickname(); // 닉네임이 채널명
-
-		if (adYn == null) {
-			adYn = "N";
-		}
-
-		// 해시태그추가
-		String tag = " ";
-
-		String[] Tags = beforetag.split(",");
-		for (int i = 0; i < Tags.length; i++) {
-			tag += "#" + Tags[i];
-		}
-
-		//동영상 
-		Video video = new Video();
-		video.setvTitle(vTitle);
-		video.setTag(tag);
-		video.setAdultAut(adultAut);
-		video.setAdYn(adYn);
-		video.setOpenTy(openTy);
-		video.setUserNo(getUserNo);
-		video.setFileNm(fileName);
-		video.setAdInfo(adInfo);
-		video.setChNm(chNm);
+			// 썸네일 업로드 및 파일이름바꾸기
+			String root = request.getSession().getServletContext().getRealPath("resources");
 
 
+			String filepath1 = root + "\\uploadFiles";
+
+			String beforeenrollNm = file2.getOriginalFilename();
+			String ext = beforeenrollNm.substring(beforeenrollNm.lastIndexOf("."));
+			String enrollNm = CommonUtils.getRandomString()+ext;
+
+
+
+			// 파일 업로드 하는 구문
+			try {
+				file2.transferTo(new File(filepath1 + "\\" + enrollNm));
+			} catch (IllegalStateException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			m = (Member) session.getAttribute("loginUser");
+			String fileName = (String) session.getAttribute("fileName");
+			String vTitle = request.getParameter("vTitle");
+			String beforetag = request.getParameter("tag");
+			String adultAut = request.getParameter("adultAut");
+			String adYn = request.getParameter("adYn");
+			String openTy = request.getParameter("openTy");
+			String adInfo = request.getParameter("adInfo");
+			int getUserNo = ((Member) request.getSession().getAttribute("loginUser")).getUserNo();
+			String chNm = ((Member) request.getSession().getAttribute("loginUser")).getNickname(); // 닉네임이 채널명
+			String info = request.getParameter("uploadDate") + " " + request.getParameter("uploadTime");
+			System.out.println("upload : " + info);
+			
+			if (adYn == null) {
+				adYn = "N";
+			}
+
+			// 해시태그추가
+			String tag = " ";
+
+			String[] Tags = beforetag.split(",");
+			for (int i = 0; i < Tags.length; i++) {
+				tag += "#" + Tags[i];
+			}
+
+			//동영상 
+			Video video = new Video();
+			video.setvTitle(vTitle);
+			video.setTag(tag);
+			video.setAdultAut(adultAut);
+			video.setAdYn(adYn);
+			video.setOpenTy(openTy);
+			video.setUserNo(getUserNo);
+			video.setFileNm(fileName);
+			video.setAdInfo(adInfo);
+			video.setChNm(chNm);
+			video.setInfo(info);
+
+
+			int result = vs.insertVideoInfo(video);
+
+
+			//동영상번호 select 
+			int UserNo = ((Member) request.getSession().getAttribute("loginUser")).getUserNo();
+			Video result2 = vs.selectvNo(UserNo);
+
+			//썸네일
+			Attachment attachment = new Attachment();
+			attachment.setFileNm(enrollNm);
+			attachment.setUserNo(getUserNo);
+			attachment.setvNo(result2.getvNo());
+			
+			int addUserNo = attachment.getUserNo();
+			int addvNo = attachment.getvNo();
+			System.out.println(addUserNo + "::::: " + addvNo);
+			
+			
+
+
+			int result1 = vs.insertAttachment(attachment);
+
+			System.out.println("result1" + result1);
+
+			if(result > 0  && result1 > 0 ) {
+				
+				model.addAttribute("msg", addUserNo + addvNo);
+				//return "forward:/newHomeChannel.lo?userNo="+UserNo;
+				model.addAttribute("addUserNo", addUserNo);
+				model.addAttribute("addvNo", addvNo);
+				return "video/videoAddInfo";
+				
+				
+			}else {
+				model.addAttribute("msg", "동영상 업로드실패");
+				return "common/errorPage";
+			}
+
+    /*
 		int result = vs.insertVideoInfo(video);
 
 
@@ -914,10 +1048,11 @@ public class VideoController {
 		}else {
 			model.addAttribute("msg", "동영상 업로드실패");
 			return "common/errorPage";
+		} */
+
+
+
 		}
-
-
-	}
 
 	// 동영상업로드
 	@RequestMapping("/upload")

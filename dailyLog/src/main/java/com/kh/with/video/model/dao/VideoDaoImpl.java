@@ -457,6 +457,12 @@ public class VideoDaoImpl implements VideoDao {
 		return sqlSession.delete("Video.replyDelete", map);
 	}
 
+	@Override
+	public String selectInfo(SqlSessionTemplate sqlSession, Map<String, Object> map) {
+		
+		return sqlSession.selectOne("Video.selectInfo", map);
+
+  }
 
 	@Override
 	public int disCountSubNums(SqlSessionTemplate sqlSession, Map<String, Object> map) {
