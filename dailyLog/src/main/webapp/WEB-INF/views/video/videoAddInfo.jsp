@@ -16,17 +16,12 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1bbe6319293d273f5cc3cd430eba39d2"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=LIBRARY"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1bbe6319293d273f5cc3cd430eba39d2&libraries=services"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services,clusterer,drawing"></script>
 
 
 </head>
 <style>
 .mainpage {
-	width: 1024px;
+	width: 1600px;
 	margin-top: 100px;
 }
 
@@ -77,8 +72,8 @@
 }
 
 #map {
-	height: 400px;
-	width: 400px;
+	height: 400px; !important;
+	width: 500px; !important;
 }
 
 .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
@@ -123,45 +118,27 @@
 <body>
 
 	<jsp:include page="../common/mainBar.jsp"></jsp:include>
-
-
-
-
-	<form action="insertVideoInfo.vd" method="post"
-		enctype="multipart/form-data">
-		<div class="mainpage">
-			<br> <br> <br>
-			<div class="container">
-				<div class="progress" style="width: 950px; margin-left: 90px;">
+	<br><br><br><br><br>
+	<p id="result"></p>
+	<div class="container">
+	<div class="row">
+				<div class="progress" style="width: 970px; margin-left:-182px;">
 					<div class="progress-bar progress-bar-striped active"
 						role="progressbar" aria-valuenow="40" aria-valuemin="0"
 						aria-valuemax="100" style="width: 40%"></div>
 				</div>
 			</div>
-			<button id="uploadbtn" class="btn btn-primary" type="submit">게시하기</button>
-			<div id="innerbox">
-				<div class="infobtn">
-					<button type="button" class="btn">기본정보</button>
-					<button type="button" class="btn">추가정보</button>
-				</div>
-				<br>
-				<div class="basicInfo">
-					<div class="container">
-						<div class="form-group">
-							<input type="text" id="vTitle" name="vTitle" style="width: 400px"
-								placeholder="동영상제목">
-						</div>
+			<button id="uploadbtn" class="btn btn-primary" type="submit" style="margin-top:-75px; margin-left:860px;">게시하기</button>
+</div>
+<div class="map_wrap" style="margin-left:100px">
+	<div class="row">
+    <div id="map" style="width:1000px;height:500px;position:relative;overflow:hidden;"></div>
 
-					</div>
-
-					<div class="map_wrap">
-    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
-
-    <div id="menu_wrap" class="bg_white">
+    <div id="menu_wrap" class="bg_white" style="margin-left:-10px;">
         <div class="option">
             <div>
                 <form onsubmit="searchPlaces(); return false;">
-                    키워드 : <input type="text" value="이태원 맛집" id="keyword" size="15"> 
+                    키워드 : <input type="text" id="keyword" size="15"> 
                     <button type="submit">검색하기</button> 
                 </form>
             </div>
@@ -170,7 +147,18 @@
         <ul id="placesList"></ul>
         <div id="pagination"></div>
     </div>
+    </div>
 </div>
+<br><br><br>
+<input type="text" id="adInfo" name="adInfo" style="width: 960px; height:100px; margin-left:86px;" placeholder="추가정보를 입력해주세요 ">
+
+<div id="minor" style="margin-left:1200px; width:300px; ">
+					<img id="minorimg" src="resources/images/family.png"
+						style="width: 100px; "> <br> <a>동영상에 미성년자가 등장하는지
+						살펴주세요<br> DailyLog에서의 아동 안전에 대한 정책과 <br>거주 지역의 모든 노동법
+						의무를 준수해야합니다
+					</a>
+				</div>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1bbe6319293d273f5cc3cd430eba39d2&libraries=services"></script>
 <script>
@@ -179,8 +167,8 @@ var markers = [];
 
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
-        center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
+        center: new kakao.maps.LatLng(37.499012, 127.032869), // 지도의 중심좌표
+        level: 2 // 지도의 확대 레벨
     };  
 
 // 지도를 생성합니다    
@@ -199,9 +187,11 @@ searchPlaces();
 function searchPlaces() {
 
     var keyword = document.getElementById('keyword').value;
+   	console.log(keyword);
+   	
 
     if (!keyword.replace(/^\s+|\s+$/g, '')) {
-        alert('키워드를 입력해주세요!');
+        //alert('키워드를 입력해주세요!');
         return false;
     }
 
@@ -390,29 +380,113 @@ function removeAllChildNods(el) {
         el.removeChild (el.lastChild);
     }
 }
+ 
+
+
+//지도에 클릭 이벤트를 등록합니다
+//지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
+kakao.maps.event.addListener(map, 'click', function(mouseEvent) {        
+ 
+ // 클릭한 위도, 경도 정보를 가져옵니다 
+ var latlng = mouseEvent.latLng;
+ 
+ var message = '클릭한 위치의 위도는 ' + latlng.getLat() + ' 이고, ';
+ message += '경도는 ' + latlng.getLng() + ' 입니다';
+ 
+ var resultDiv = document.getElementById('result'); 
+ resultDiv.innerHTML = message;
+ 
+});
+
+//주소-좌표 변환 객체를 생성합니다
+var geocoder = new kakao.maps.services.Geocoder();
+
+var marker = new kakao.maps.Marker(), // 클릭한 위치를 표시할 마커입니다
+    infowindow = new kakao.maps.InfoWindow({zindex:1}); // 클릭한 위치에 대한 주소를 표시할 인포윈도우입니다
+
+// 현재 지도 중심좌표로 주소를 검색해서 지도 좌측 상단에 표시합니다
+searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+    
+ 
+
+// 지도를 클릭했을 때 클릭 위치 좌표에 대한 주소정보를 표시하도록 이벤트를 등록합니다
+kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
+    searchDetailAddrFromCoords(mouseEvent.latLng, function(result, status) {
+        if (status === kakao.maps.services.Status.OK) {
+            var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
+            detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
+            
+            var content = '<div class="bAddr">' +
+                            '<span class="title">법정동 주소정보</span>' + 
+                            detailAddr + 
+                        '</div>';
+
+            // 마커를 클릭한 위치에 표시합니다 
+            marker.setPosition(mouseEvent.latLng);
+            marker.setMap(map);
+
+            // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
+          infowindow.setContent(content);
+            infowindow.open(map, marker);
+        }   
+    });
+});
+
+// 중심 좌표나 확대 수준이 변경됐을 때 지도 중심 좌표에 대한 주소 정보를 표시하도록 이벤트를 등록합니다
+kakao.maps.event.addListener(map, 'idle', function() {
+    searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+});
+
+function searchAddrFromCoords(coords, callback) {
+    // 좌표로 행정동 주소 정보를 요청합니다
+    geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);         
+}
+
+function searchDetailAddrFromCoords(coords, callback) {
+    // 좌표로 법정동 상세 주소 정보를 요청합니다
+    geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
+}
+
+// 지도 좌측상단에 지도 중심좌표에 대한 주소정보를 표출하는 함수입니다
+function displayCenterInfo(result, status) {
+    if (status === kakao.maps.services.Status.OK) {
+        var infoDiv = document.getElementById('centerAddr');
+
+        for(var i = 0; i < result.length; i++) {
+            // 행정동의 region_type 값은 'H' 이므로
+            if (result[i].region_type === 'H') {
+                infoDiv.innerHTML = result[i].address_name;
+                break;
+            }
+        }
+    }    
+}
+
+
 </script>
 
-				</div>
-				<br>
-
-				<div id="minor">
-					<img id="minorimg" src="resources/images/family.png"
-						style="width: 100px; margin-top: 200px;"> <br> <a>동영상에
-						미성년자가 등장하는지 살펴주세요<br> DailyLog에서의 아동 안전에 대한 정책과 <br>거주
-						지역의 모든 노동법 의무를 준수해야합니다
-					</a>
-				</div>
-			</div>
-		</div>
-	</form>
-
-	<%-- 	<input type="text" value="${filepath}" id="filepath" name="filepath">
-		<input type="text" value="${fileName}" id="fileName" name="fileName"> --%>
 
 	
 
 
 	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+		<br>
 	<br>
 	<br>
 	<br>
