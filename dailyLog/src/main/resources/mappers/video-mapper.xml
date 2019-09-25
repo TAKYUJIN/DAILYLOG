@@ -459,6 +459,12 @@ WHERE TAG LIKE '%'||#{search}||'%'
 		WHERE USER_NO = #{loginUser}
 		AND V_NO = #{vNo}
 	</delete>
+	
+	<select id="adinfo" resultMap="videoResultSet">
+	select * from VIDEO
+     where NOT AD_INFO IS NULL
+	</select>
+	
 </mapper>
 
 
