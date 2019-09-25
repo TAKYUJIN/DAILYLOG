@@ -437,7 +437,7 @@ public class VideoServiceImpl implements VideoService{
 		return vd.replyDelete(sqlSession, map);
 	}
 
-
+	}
 
 
 	@Override

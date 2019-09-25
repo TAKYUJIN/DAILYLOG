@@ -11,6 +11,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,6 +39,7 @@ import com.kh.with.main.model.vo.SubscribeVideo;
 import com.kh.with.main.model.vo.VideoLike;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.report.model.vo.Report;
+import com.kh.with.video.model.service.VideoService;
 import com.kh.with.video.model.vo.Attachment;
 import com.kh.with.video.model.vo.Video;
 
@@ -45,8 +47,11 @@ import com.kh.with.video.model.vo.Video;
 public class LogerController {
 	@Autowired
 	private LogerService ls;
+	private DataSource dataSource;
+	@Autowired
+	private VideoService vs;
 
-	 
+
 	// 로거 동영상 페이지로 이동
 	@RequestMapping(value="logerVideo.lo")
 	public String selectLogerVideo(Model model, HttpSession session, Video v) {
@@ -55,8 +60,8 @@ public class LogerController {
 		ArrayList<Video> vList = ls.showLogerVideo(m);
 
 		model.addAttribute("vList", vList);	
-		
-		
+
+
 		return "loger/searchLogerVideo";
 	}
 
@@ -67,21 +72,21 @@ public class LogerController {
 		Member m = (Member) session.getAttribute("loginUser");
 		int userNo = m.getUserNo();
 		ArrayList<Loger> loger = ls.selectLogerInfo(m);
-		
+
 		Loger l = new Loger();
 		l.setUserNo(userNo);
 		l.setvNo(vNo);
 		ArrayList<Video> vList = ls.selectLogerVideo(l);
-				
+
 		String adultAut = vList.get(0).getAdultAut();
 		String adYN = vList.get(0).getAdYn();
 		String openTY = vList.get(0).getOpenTy();
-		
+
 		model.addAttribute("vList", vList);
 		model.addAttribute("adultAut", adultAut);
 		model.addAttribute("adYN", adYN);
 		model.addAttribute("openTY", openTY);
-		
+
 		return "loger/updateLogerVideo";
 	}
 	
@@ -130,10 +135,10 @@ public class LogerController {
 		int loginUser = m.getUserNo();
 		int vNo = Integer.parseInt(request.getParameter("vNo"));
 
-		
+
 		int result1 = ls.videoDelete(vNo);
 		int result2 = ls.attachmentDelete(vNo);
-		
+
 		if(result1 > 0 && result2 > 0) {
 			return "forward:/logerVideo.lo";			
 		}else {
@@ -227,7 +232,7 @@ public class LogerController {
 			HttpServletResponse response) {
 		response.setContentType("text/html;charset=UTF-8");
 		Member m = (Member) session.getAttribute("loginUser");
-		
+
 		ArrayList<Loger> loger = ls.selectLogerInfo(m);
 		int chNo = loger.get(0).getChNo();
 
@@ -236,39 +241,39 @@ public class LogerController {
 		m.setDay(day);
 
 		ArrayList<Support> dateList = ls.selectLogerSupportDate(s, m);
-		
+
 		mv.addObject("dateList", dateList);
 		mv.setViewName("jsonView");
 
 		return mv;
 	}
 
-	
+
 	// 후원 내역 기간 선택 후 정산 신청
 	@RequestMapping(value="logerCalculateApply.lo")
 	public String selectLogerCalculateApply(HttpSession session, HttpServletRequest request,
 			@RequestParam(value = "monthDate", required = false) Date mon,
 			@RequestParam(value = "todayDate", required = false) Date day, Support s, Calculate c, Model model,
 			HttpServletResponse response) {
-		
+
 		response.setContentType("text/html;charset=UTF-8");
 		Member m = (Member) session.getAttribute("loginUser");
 		m.setMon(mon);
 		m.setDay(day);
-		
+
 		//기간별 후원내역 조회의 총 금액
 		ArrayList<Support> pList = ls.selectLogerSupportPrice(s, m);
-		
+
 		//loger정보 가져오기
 		ArrayList<Loger> loger = ls.selectLogerInfo(m);
-		
+
 		int calPrice = 0;
 		for(int i =0; i < pList.size(); i++){
-			
+
 			calPrice += pList.get(i).getSupPrice();
-		
+
 		}
-				
+
 		int calVAT = (int) (calPrice * 0.3);	//수수료
 		int amountPrice = (int) (calPrice * 0.7);	//실수령액
 		int userNo = m.getUserNo();
@@ -276,7 +281,7 @@ public class LogerController {
 		String accNm = loger.get(0).getAccNm();
 		String bankNm = loger.get(0).getBankNm();
 		String account = loger.get(0).getAccount();
-		
+
 		c.setUserNo(userNo);
 		c.setCalPrice(calPrice);
 		c.setCalVAT(calVAT);
@@ -285,14 +290,14 @@ public class LogerController {
 		c.setBankNm(bankNm);
 		c.setAccount(account);
 		c.setChNo(chNo);
-		
+
 		//정산내역 insert
 		int result = ls.insertLogerCalculate(c);
-		
+
 		//후원내역에 정산유무 update
 		int result2 = ls.updateSupportCalculate(m);
 		System.out.println(result2);
-		
+
 		if (result > 0 && result2 > 0) {
 			model.addAttribute("msg", "정산 신청이 완료되셨습니다.");
 		} 
@@ -300,107 +305,106 @@ public class LogerController {
 		return "forward:/logerCalculate.lo";
 	}
 
-	
-	
+
+
 	// 로거스튜디오
 	@RequestMapping(value = "newHomeChannel.lo")
-		public ModelAndView  newHomeChannel(ModelAndView mv,HttpSession session, 
-				HttpServletRequest request, Model model,@ModelAttribute Member m){
-		
+	public ModelAndView  newHomeChannel(ModelAndView mv,HttpSession session, 
+			HttpServletRequest request, Model model,@ModelAttribute Member m){
+
 		int userNo = Integer.parseInt(request.getParameter("userNo")); 
-		
+
+
+		int getUserNo = ((Member) request.getSession().getAttribute("loginUser")).getUserNo();
+
 		//로거스튜디오채널번호 받기 
 		Loger loger = new Loger();
-		
 		Loger chNos = ls.selectChNo(userNo);
-		
+
+
 		int chNo = chNos.getChNo();
-		System.out.println("채널번호왔니?" +chNo);
-		
-		
-		//셀렉트카운트 해서 user_no와 ch_no가 해당열이 있는지 ?
-		
-			System.out.println("로거스튜디오에서의 유저 넘버 !!!:::" + userNo);
-			
-			
-			Subscribe subscibe = new Subscribe();
-			subscibe.setChNo(chNo);
-			subscibe.setUserNo(userNo);
-			
-			//구독유무확인
-			int subcount = ls.subcount(subscibe);
-			
-			System.out.println("subcount" + subcount);
-			
-			
-			//채널타이틀이미지 
-			Attachment attachment = new Attachment();
-			attachment.setUserNo(userNo);
-			
-			Attachment logertitleimg = ls.logertitleimg(attachment);
-			
-			System.out.println("logertitleimg" + logertitleimg);
-			
-
-			//프로필정보
-			Loger2 loger2 = new Loger2();
-			loger2.setUserNo(userNo);
-			
-			System.out.println("loger2:::" + loger2);
-	
-			Loger2 result = ls.newHomeChannel(userNo); 
-			
-		
-			
-			//로거스튜디오 홈 하단의 동영상정보
-			MyVideo myvideo = new MyVideo();
-			myvideo.setUserNo(userNo);
-			
-			//최근동영상
-			ArrayList<MyVideo> newHomeChannellVideo = ls.newHomeChannellVideo(myvideo);
-			
-		
-			
-			//인기동영상
-			ArrayList<MyVideo> favHomeChannellVideo = ls.favHomeChannellVideo(myvideo);
-	
-			
-			
-			
-			//최신동영상 1개 
-			Video favOne = ls.favOne(myvideo);
-			
-			System.out.println("최신동영상" + favOne);
-			
-			//최신동영상 1개 썸네일 
-			
-			Attachment favOnesum = ls.favOnesum(myvideo);
-			
-			System.out.println("최신동영상" + favOne);
-			
-			
-			HttpSession session1 = request.getSession();
-			session.setAttribute("userNo", userNo);
-			
-			
-			mv.addObject("result", result); 
-			mv.addObject("newHomeChannellVideo", newHomeChannellVideo); 
-			mv.addObject("favHomeChannellVideo", favHomeChannellVideo); 
-			mv.addObject("logertitleimg", logertitleimg); 
-			mv.addObject("favOne", favOne); 
-			mv.addObject("favOnesum", favOnesum); 
-			mv.addObject("subcount", subcount); 
-		
-			
-			
-			
-			mv.setViewName("loger/newHomeChannel"); 
 
 
-			return mv; 
+		System.out.println("채널번호:::" + chNo + "로그인한 유저번호:::" + getUserNo);
+
+		Subscribe subscibe = new Subscribe();
+		subscibe.setChNo(chNo);
+		subscibe.setUserNo(getUserNo);
 
 
-		
+		//구독유무확인
+		int subcount = ls.subcount(subscibe);
+		System.out.println("subcount구독유무확인" + subcount);
+
+
+		//채널타이틀이미지 
+		Attachment attachment = new Attachment();
+		attachment.setUserNo(userNo);
+
+		Attachment logertitleimg = ls.logertitleimg(attachment);
+
+		System.out.println("logertitleimg" + logertitleimg);
+
+
+		//프로필정보
+		Loger2 loger2 = new Loger2();
+		loger2.setUserNo(userNo);
+
+		System.out.println("loger2:::" + loger2);
+
+		Loger2 result = ls.newHomeChannel(userNo); 
+
+
+
+		//로거스튜디오 홈 하단의 동영상정보
+		MyVideo myvideo = new MyVideo();
+		myvideo.setUserNo(userNo);
+
+		//최근동영상
+		ArrayList<MyVideo> newHomeChannellVideo = ls.newHomeChannellVideo(myvideo);
+
+
+
+		//인기동영상
+		ArrayList<MyVideo> favHomeChannellVideo = ls.favHomeChannellVideo(myvideo);
+
+
+
+
+		//최신동영상 1개 
+		Video favOne = ls.favOne(myvideo);
+
+		System.out.println("최신동영상" + favOne);
+
+		//최신동영상 1개 썸네일 
+
+		Attachment favOnesum = ls.favOnesum(myvideo);
+
+		System.out.println("최신동영상" + favOne);
+
+
+		HttpSession session1 = request.getSession();
+		session.setAttribute("userNo", userNo);
+
+
+		mv.addObject("result", result); 
+		mv.addObject("newHomeChannellVideo", newHomeChannellVideo); 
+		mv.addObject("favHomeChannellVideo", favHomeChannellVideo); 
+		mv.addObject("logertitleimg", logertitleimg); 
+		mv.addObject("favOne", favOne); 
+		mv.addObject("favOnesum", favOnesum); 
+		mv.addObject("subcount", subcount); 
+
+
+
+
+		mv.setViewName("loger/newHomeChannel"); 
+
+
+		return mv; 
+
+
+
 
 	}
 
@@ -408,43 +412,60 @@ public class LogerController {
 	@RequestMapping(value = "logerHomeAllVideo.lo")
 	public String  logerHomeAllVideo(ModelAndView mv,HttpSession session, 
 			HttpServletRequest request, Model model){
-		
-		/* int userNo = Integer.parseInt(request.getParameter("userNo")); */
-		
-		 int userNo =  (int) session.getAttribute("userNo");
 
-			System.out.println("세션으로 잘 넘어왔ㅆ니?" + userNo);
-			
-		 
-		//모든영상
-		MyVideo myvideo = new MyVideo();
-		myvideo.setUserNo(userNo);
-		
-		ArrayList<MyVideo> logerHomeAllVideo = ls.logerHomeAllVideo(myvideo);
-		
+		/* int userNo = Integer.parseInt(request.getParameter("userNo")); */
+
+		int userNo =  (int) session.getAttribute("userNo");
+
+		int getUserNo = ((Member) request.getSession().getAttribute("loginUser")).getUserNo();	
+
 		//프로필 
 
 		Loger2 loger2 = new Loger2();
 		loger2.setUserNo(userNo);
 		Loger2 result = ls.homeProfile(loger2); 
-		
-		
+
+		int chNo = result.getChNo();
+
+		System.out.println("채널번호:::" + chNo + "로그인한 유저번호:::" + getUserNo);
+
+		Subscribe subscibe = new Subscribe();
+		subscibe.setChNo(chNo);
+		subscibe.setUserNo(getUserNo);
+
+
+		//구독유무확인
+		int subcount = ls.subcount(subscibe);
+		System.out.println("subcount구독유무확인" + subcount);
+
+
+
+		//모든영상
+		MyVideo myvideo = new MyVideo();
+		myvideo.setUserNo(userNo);
+
+		ArrayList<MyVideo> logerHomeAllVideo = ls.logerHomeAllVideo(myvideo);
+
+
+
+
 		//채널타이틀이미지 
 		Attachment attachment = new Attachment();
 		attachment.setUserNo(userNo);
-		
+
 		Attachment logertitleimg = ls.logertitleimg(attachment);
-	
-		
+
+
 		HttpSession session2 = request.getSession();
-		
+
 		session.setAttribute("userNo", userNo);
-		
+
 		model.addAttribute("logerHomeAllVideo", logerHomeAllVideo);
 		model.addAttribute("result", result);
 		model.addAttribute("logertitleimg", logertitleimg);
-		
-		
+		model.addAttribute("subcount", subcount); 
+
+
 		return "loger/logerHomeAllVideo";
 	}
 
@@ -452,28 +473,48 @@ public class LogerController {
 	@RequestMapping(value = "logerHomeInfo.lo")
 	public String logerHomeInfo(ModelAndView mv,HttpSession session, 
 			HttpServletRequest request, Model model){
+
+		int userNo =  (int) session.getAttribute("userNo");
 		
-		 int userNo =  (int) session.getAttribute("userNo");
-		 
-		/* System.out.println("로거스튜디오로 넘어왔니??" + userNo); */
-		
+		int getUserNo = ((Member) request.getSession().getAttribute("loginUser")).getUserNo();	
+
+
+
 		Loger2 loger2 = new Loger2();
 		loger2.setUserNo(userNo);
-		
+
 		Loger2 logerHomeInfo = ls.logerHomeInfo(loger2);
 		
+		int chNo = logerHomeInfo.getChNo();
+		
+		
+		System.out.println("채널번호:::" + chNo + "로그인한 유저번호:::" + getUserNo);
+
+		Subscribe subscibe = new Subscribe();
+		subscibe.setChNo(chNo);
+		subscibe.setUserNo(getUserNo);
+
+
+		//구독유무확인
+		int subcount = ls.subcount(subscibe);
+		System.out.println("subcount구독유무확인" + subcount);
+
+		
+		
+
 		//채널타이틀이미지 
-				Attachment attachment = new Attachment();
-				attachment.setUserNo(userNo);
-				
-				Attachment logertitleimg = ls.logertitleimg(attachment);
-		
-	
-		
+		Attachment attachment = new Attachment();
+		attachment.setUserNo(userNo);
+
+		Attachment logertitleimg = ls.logertitleimg(attachment);
+
+
+
 		model.addAttribute("logerHomeInfo", logerHomeInfo);
 		model.addAttribute("logertitleimg", logertitleimg);
-		
-		
+		model.addAttribute("subcount", subcount); 
+
+
 		return "loger/logerHomeInfo";
 
 	}
@@ -485,40 +526,42 @@ public class LogerController {
 	}
 
 	// 로거채널개설
-		@RequestMapping(value = "createChannel.lo")
-		public String insertcreateChannel(@ModelAttribute Member m, Model model, HttpServletRequest request,
-				HttpSession session) {
-
-			int userNo = ((Member) request.getSession().getAttribute("loginUser")).getUserNo();
-			String chNm = request.getParameter("chNm");
-			String chInfo = request.getParameter("chInfo");
-
+	@RequestMapping(value = "createChannel.lo")
+	public String insertcreateChannel(@ModelAttribute Member m, Model model, HttpServletRequest request,
+			HttpSession session) {
+	
+		int userNo = ((Member) request.getSession().getAttribute("loginUser")).getUserNo();
+		String chNm = request.getParameter("chNm");
+		String chInfo = request.getParameter("chInfo");
+		
+		
+		
 		/* System.out.println("로거정보가 들어왔나요::::" + userNo + chNm + chInfo); */
 
-			Loger loger = new Loger();
-			loger.setUserNo(userNo);
-			loger.setChNm(chNm);
-			loger.setChInfo(chInfo);
+		Loger loger = new Loger();
+		loger.setUserNo(userNo);
+		loger.setChNm(chNm);
+		loger.setChInfo(chInfo);
 
-			int result = ls.insertcreateChannel(loger);
-			
-			Member member = new Member();
-			member.setUserNo(userNo);
-			member.setNickname(chNm);
-			
-			
-			
-			int result1 = ls.updatechyn(member); 
-			
-			
+		int result = ls.insertcreateChannel(loger);
 
-			if (result > 0 && result1 > 0) {
-				return "redirect:index.jsp";
-			} else {
-				model.addAttribute("msg", "채널개설 실패");
-				return "common/errorPage";
-			}
+		Member member = new Member();
+		member.setUserNo(userNo);
+		member.setNickname(chNm);
+
+
+
+		int result1 = ls.updatechyn(member); 
+
+
+
+		if (result > 0 && result1 > 0) {
+			return "redirect:index.jsp";
+		} else {
+			model.addAttribute("msg", "채널개설 실패");
+			return "common/errorPage";
 		}
+	}
 
 
 	//로거 신고내역
@@ -526,112 +569,112 @@ public class LogerController {
 	public String declarationlist(Report report,Model model,HttpSession session)
 	{
 		Member m = (Member) session.getAttribute("loginUser");
-		
+
 		// ArrayList<Report> reportcount =ls.reportcount(report,m);
-	 ArrayList<Report> reportlist =ls.reportlist(report,m);
-		 model.addAttribute("reportlist", reportlist);
+		ArrayList<Report> reportlist =ls.reportlist(report,m);
+		model.addAttribute("reportlist", reportlist);
 		// model.addAttribute("reportcount", reportcount);
 		// System.out.println("reportcount"+reportcount);
 		return "loger/declarationlist";
-		
+
 	}
-	 //채널 정지
+	//채널 정지
 	@RequestMapping(value="cstop.lo", method = RequestMethod.GET )
 	public String cstop(@ModelAttribute Loger r,Model model,HttpServletRequest request,
 			@RequestParam(name="userNo", required=false)int userNo,HttpSession session) {
-	
+
 		userNo=Integer.parseInt(request.getParameter("userNo"));
 		r.setUserNo(userNo);
 		ls.cstop(r);
-		
+
 		return "redirect:/cblacklist.ad";
-		
+
 	}		
-		
+
 	//구독등록
 	@RequestMapping(value="subOk.lo")
 	public String subOk(Model model,HttpServletRequest request,HttpSession session,@ModelAttribute Member m) {
-		
 
-			 int userNo =  (int) session.getAttribute("userNo");
-			 System.out.println("로거의 유저넘버 " + userNo);
-			
-			 //로그인한 유저번호 
-				int loginUserNo = ((Member) request.getSession().getAttribute("loginUser")).getUserNo();	
-				String nickName =  ((Member) request.getSession().getAttribute("loginUser")).getNickname();	
 
-				 System.out.println("로그인의 유저넘버 " + loginUserNo);
-				 
-				if(userNo == loginUserNo) {
-					model.addAttribute("msg", "자신의 채널은 구독 불가 입니다");
+		int userNo =  (int) session.getAttribute("userNo");
+		System.out.println("로거의 유저넘버 " + userNo);
 
-					return "forward:/newHomeChannel.lo?userNo="+userNo;
-				}
-			
-				
-				SubUserInfo subUserInfo = new SubUserInfo();
-				subUserInfo.setUserNo(userNo);
+		//로그인한 유저번호 
+		int loginUserNo = ((Member) request.getSession().getAttribute("loginUser")).getUserNo();	
+		String nickName =  ((Member) request.getSession().getAttribute("loginUser")).getNickname();	
 
-				
-				SubUserInfo result = ls.subUserInfo(subUserInfo); 
-				
-				int chNo = result.getChNo();
-				String chNm = result.getChNm(); 
-				
+		System.out.println("로그인의 유저넘버 " + loginUserNo);
 
-				HttpSession session1 = request.getSession();
-				session.setAttribute("loginUserNo", loginUserNo);
-				session.setAttribute("userNo", userNo);
-				session.setAttribute("chNo", chNo);
-				session.setAttribute("nickName", nickName);
-				session.setAttribute("chNm", chNm);
-				
-				return  "forward:/studeioSubInsert.vd" ;
-	}
-	
-	//구독등록취소
-		@RequestMapping(value="subCancle.lo")
-		public String subCancle(Model model,HttpServletRequest request,HttpSession session,@ModelAttribute Member m) {
-			
+		if(userNo == loginUserNo) {
+			model.addAttribute("msg", "자신의 채널은 구독 불가 입니다");
 
-				 int userNo =  (int) session.getAttribute("userNo");
-				 System.out.println("로거의 유저넘버 " + userNo);
-				
-				 //로그인한 유저번호 
-					int loginUserNo = ((Member) request.getSession().getAttribute("loginUser")).getUserNo();	
-					String nickName =  ((Member) request.getSession().getAttribute("loginUser")).getNickname();	
-
-					 System.out.println("로그인의 유저넘버 " + loginUserNo);
-					 
-					if(userNo == loginUserNo) {
-						model.addAttribute("msg", "자신의 채널은 구독 불가 입니다");
-
-						return "forward:/newHomeChannel.lo?userNo="+userNo;
-					}
-				
-					
-					SubUserInfo subUserInfo = new SubUserInfo();
-					subUserInfo.setUserNo(userNo);
-
-					
-					SubUserInfo result = ls.subUserInfo(subUserInfo); 
-					
-					int chNo = result.getChNo();
-					String chNm = result.getChNm(); 
-					
-
-					HttpSession session1 = request.getSession();
-					session.setAttribute("loginUserNo", loginUserNo);
-					session.setAttribute("userNo", userNo);
-					session.setAttribute("chNo", chNo);
-					session.setAttribute("nickName", nickName);
-					session.setAttribute("chNm", chNm);
-					
-					return  "forward:/studeioSubDelete.vd" ;
+			return "forward:/newHomeChannel.lo?userNo="+userNo;
 		}
-		
-	
-	 
+
+
+		SubUserInfo subUserInfo = new SubUserInfo();
+		subUserInfo.setUserNo(userNo);
+
+
+		SubUserInfo result = ls.subUserInfo(subUserInfo); 
+
+		int chNo = result.getChNo();
+		String chNm = result.getChNm(); 
+
+
+		HttpSession session1 = request.getSession();
+		session.setAttribute("loginUserNo", loginUserNo);
+		session.setAttribute("userNo", userNo);
+		session.setAttribute("chNo", chNo);
+		session.setAttribute("nickName", nickName);
+		session.setAttribute("chNm", chNm);
+
+		return  "forward:/studeioSubInsert.vd" ;
+	}
+
+	//구독등록취소
+	@RequestMapping(value="subCancle.lo")
+	public String subCancle(Model model,HttpServletRequest request,HttpSession session,@ModelAttribute Member m) {
+
+
+		int userNo =  (int) session.getAttribute("userNo");
+		System.out.println("로거의 유저넘버 " + userNo);
+
+		//로그인한 유저번호 
+		int loginUserNo = ((Member) request.getSession().getAttribute("loginUser")).getUserNo();	
+		String nickName =  ((Member) request.getSession().getAttribute("loginUser")).getNickname();	
+
+		System.out.println("로그인의 유저넘버 " + loginUserNo);
+
+		if(userNo == loginUserNo) {
+			model.addAttribute("msg", "자신의 채널은 구독 불가 입니다");
+
+			return "forward:/newHomeChannel.lo?userNo="+userNo;
+		}
+
+
+		SubUserInfo subUserInfo = new SubUserInfo();
+		subUserInfo.setUserNo(userNo);
+
+
+		SubUserInfo result = ls.subUserInfo(subUserInfo); 
+
+		int chNo = result.getChNo();
+		String chNm = result.getChNm(); 
+
+
+		HttpSession session1 = request.getSession();
+		session.setAttribute("loginUserNo", loginUserNo);
+		session.setAttribute("userNo", userNo);
+		session.setAttribute("chNo", chNo);
+		session.setAttribute("nickName", nickName);
+		session.setAttribute("chNm", chNm);
+
+		return  "forward:/studeioSubDelete.vd" ;
+	}
+
+
+
 }
 
 
