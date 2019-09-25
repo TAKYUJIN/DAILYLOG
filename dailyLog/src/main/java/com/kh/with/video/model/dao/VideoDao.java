@@ -9,6 +9,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.report.model.vo.Report;
+import com.kh.with.video.model.vo.AddInfo;
+import com.kh.with.video.model.vo.AddPlace;
 import com.kh.with.video.model.vo.Attachment;
 import com.kh.with.video.model.vo.Reply2;
 import com.kh.with.video.model.vo.Video;
@@ -134,6 +136,8 @@ public interface VideoDao {
 	int replyDelete(SqlSessionTemplate sqlSession, Map<String, Object> map);
 
 	int disCountSubNums(SqlSessionTemplate sqlSession, Map<String, Object> map);
+	int insertAddPlace(SqlSessionTemplate sqlSession, AddPlace addPlace);
+	int insertAddInfo(SqlSessionTemplate sqlSession, AddInfo addInfo);
 
 
 	

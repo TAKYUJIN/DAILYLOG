@@ -13,6 +13,8 @@ import org.springframework.stereotype.Repository;
 import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.report.model.vo.Report;
+import com.kh.with.video.model.vo.AddInfo;
+import com.kh.with.video.model.vo.AddPlace;
 import com.kh.with.video.model.vo.Attachment;
 import com.kh.with.video.model.vo.Reply2;
 import com.kh.with.video.model.vo.Video;
@@ -52,6 +54,20 @@ public class VideoDaoImpl implements VideoDao {
 		return sqlSession.insert("Video.insertVideoInfo", video);
 	}
 
+	@Override
+	public int insertAddPlace(SqlSessionTemplate sqlSession, AddPlace addPlace) {
+		System.out.println("장소 정보 다오 " + addPlace);
+		
+		return sqlSession.insert("AddPlace.insertAddPlace", addPlace);
+	}
+	
+	@Override
+	public int insertAddInfo(SqlSessionTemplate sqlSession, AddInfo addInfo) {
+		// TODO Auto-generated method stub
+		System.out.println("장소 상세 내용 다오 ;;; " + addInfo);
+		return sqlSession.insert("AddInfo.insertAddInfo", addInfo);
+	}
+	
 	@Inject
 	SqlSession sqlsession;
 
@@ -455,7 +471,7 @@ public class VideoDaoImpl implements VideoDao {
 	public int replyDelete(SqlSessionTemplate sqlSession, Map<String, Object> map) {
 		
 		return sqlSession.delete("Video.replyDelete", map);
-
+	}
 
 	@Override
 	public int disCountSubNums(SqlSessionTemplate sqlSession, Map<String, Object> map) {
@@ -463,4 +479,8 @@ public class VideoDaoImpl implements VideoDao {
 		return sqlSession.update("Video.disCountSubNums", map);
 
 	}
+
+	
+
+	
 }
