@@ -10,7 +10,7 @@ public class AddInfo implements java.io.Serializable{
 	private Date uploadDt;	//작성
 	private Date modifyDt;	//수정일 
 	
-	public AddInfo() {}
+	public AddInfo() {} 
 
 	public AddInfo(int aNo, int vNo, int userNo, String addCt, Date uploadDt, Date modifyDt) {
 		super();

@@ -39,7 +39,7 @@ import com.kh.with.video.model.vo.Video;
 @Controller
 @SessionAttributes("loginUser")
 public class VideoController {
-	@Inject
+	@Inject 
 	VideoService videoservice;
 	private DataSource dataSource;
 	@Autowired

@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-	<typeAliases>
+	<typeAliases> 
 		<typeAlias type="com.kh.with.member.model.vo.Member" alias="Member" />
 		<typeAlias type="com.kh.with.loger.model.vo.Loger" alias="Loger" />
 		<typeAlias type="com.kh.with.loger.model.vo.Loger2" alias="Loger2" />

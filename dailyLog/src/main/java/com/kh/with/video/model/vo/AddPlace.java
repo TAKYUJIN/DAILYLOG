@@ -16,7 +16,7 @@ public class AddPlace implements java.io.Serializable{
 		this.vNo = vNo;
 		this.userNo = userNo;
 		this.apXY = apXY;
-		this.apNm = apNm;
+		this.apNm = apNm; 
 		this.apAd = apAd;
 	}
 	

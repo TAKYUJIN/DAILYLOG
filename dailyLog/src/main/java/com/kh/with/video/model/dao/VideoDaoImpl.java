@@ -18,7 +18,7 @@ import com.kh.with.video.model.vo.AddPlace;
 import com.kh.with.video.model.vo.Attachment;
 import com.kh.with.video.model.vo.Reply2;
 import com.kh.with.video.model.vo.Video;
-
+ 
 @Repository
 public class VideoDaoImpl implements VideoDao {
 

@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="AddPlace">
+<mapper namespace="AddPlace"> 
 
 	<resultMap type="AddPlace" id="addPlaceResultSet">
 		<id property="apNo" column="AP_NO" />

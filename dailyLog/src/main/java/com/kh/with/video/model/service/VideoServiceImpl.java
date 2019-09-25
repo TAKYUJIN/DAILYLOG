@@ -26,7 +26,7 @@ public class VideoServiceImpl implements VideoService{
 	private SqlSessionTemplate sqlSession;
 	@Autowired
 	private VideoDao vd;
-	
+	 
 	//동영상 페이지 포인트 조회
 	@Override
 	public int selectPoint(int userNo) {
