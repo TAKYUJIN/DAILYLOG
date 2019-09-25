@@ -322,6 +322,7 @@ body {
 						type:"post",
 						data:{},
 						success:function(data){
+							 window.location.reload();
 							console.log("insert성공!");
 
 							state = 1;
@@ -337,6 +338,7 @@ body {
 						type:"post",
 						data:{},
 						success:function(data){
+							 window.location.reload();
 							console.log("delete성공!");
 
 							state = 0;
@@ -347,13 +349,29 @@ body {
 					});
 				}
 			});
+			//구독중 유지
+			$(document).ready(function(){
+				var chNo = "<c:out value='${result.chNo}'/>";
+				console.log()
+				
+				$.ajax({
+					url:"fastenSub.lo",
+					type:"post",
+					data:{chNo:chNo},  
+					success:function(data){
+						console.log("채널번호넘김성공!");
 
+						document.getElementById('subscribe').value = "구독중";
+					},
+					error:function(){
+						console.log("실패!");
+					}
+				});
+			});
 		</script>
-	
+
 <hr class="my-hr2">
-	<jsp:include page="../common/footer.jsp"></jsp:include>
+
+		<jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
 </html>
-
-
-

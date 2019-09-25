@@ -405,6 +405,7 @@ public class VideoServiceImpl implements VideoService{
 		
 		return vd.selectCount(sqlSession, map);
 	}
+
 	@Override
 	public int insertReplyLike(Map<String, Integer> map) {
 		
@@ -434,6 +435,15 @@ public class VideoServiceImpl implements VideoService{
 	public int replyDelete(Map<String, Object> map) {
 		
 		return vd.replyDelete(sqlSession, map);
+
+
+
+
+	@Override
+	public int disCountSubNums(Map<String, Object> map) {
+		
+		return vd.disCountSubNums(sqlSession, map);
+
 	}
 }
 

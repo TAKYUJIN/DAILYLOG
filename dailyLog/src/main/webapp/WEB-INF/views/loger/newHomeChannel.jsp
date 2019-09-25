@@ -238,15 +238,22 @@ body {
 					<strong><c:out value="${result.chNm}" /></strong>
 				</p>
 			</div>
-
-			<input type="button" id="subscribe" class="btn btn-primary"
-				value="구독">
+			<div>
+				<c:if test="${subcount == 0}" >
+					<input type="button" id="subscribe" class="btn btn-primary"
+				value="구독">	
+				</c:if>
+				<c:if test="${subcount == 1}" >
+				<input type="button" id="subscribecancel" class="btn btn-primary" 
+				value="구독취소">	
+				</c:if>
+				</div>
+			<!-- 	<input type="button" id="subscribe" class="btn btn-primary"
+				value="구독">	
+				<input type="button" id="subscribecancel" class="btn btn-primary" 
+				value="구독취소">	 -->
+				
 			<p style="widht: 200px; margin-left: 230px;font-size:20px; margin-top: -30px;">
-
-			<!-- <button id="subscribebtn" class="btn btn-primary" onclick="subOk();" >구독</button> -->
-			<input type="button" id="subscribebtn"  class="btn btn-primary" onclick="subOk();" value="구독">
-			<p style="widht: 200px; margin-left: 130px; margin-top: -10px;">
-
 				<c:out value="${result.subNum}" />
 				명
 			</p>
@@ -362,8 +369,32 @@ border-radius: 7px;
 </div>
 <hr class="my-hr2">
 		<script>
-			
 
+
+
+/* 		
+		$(document).ready(function(){
+
+		    $('#subscribe').show();
+		    $('#subscribecancel').hide();
+		    
+		    
+		    $('#subscribe').click(function(){
+		       $('#subscribe').hide();
+		       $('#subscribecancel').show();
+
+		       return false;
+		    });
+		    $('#subscribecancel').click(function(){
+		       $('#subscribe').show();
+		       $('#subscribecancel').hide();
+		       
+		    });
+		    
+		 });
+		
+ */
+			
 			var message = '${msg}';
 			if (message == "자신의 채널은 구독 불가 입니다") {
 				alert(message);
@@ -374,67 +405,60 @@ border-radius: 7px;
 				alert(message);
 			}
 
-			var state = 0;
+			
 			$('#subscribe').click(function(){
 			
-
-				if(state == 0){
-					document.getElementById('subscribe').value = "구독중";
-					
 					$.ajax({
 						url:"subOk.lo",
 						type:"post",
 						data:{},
 						success:function(data){
+							window.onload
 							console.log("insert성공!");
+							
+							
+							
+							
+							
+							
+							
+							
 
-							state = 1;
 						},
 						error:function(){
 							console.log("실패!");
-						}
-					});
-				}else {
-					document.getElementById('subscribe').value = "구독";
+			               }
+		            });
+		         }); 
+			
+			
+					$('#subscribecancel').click(function(){
 					$.ajax({
 						url:"subCancle.lo",
 						type:"post",
 						data:{},
 						success:function(data){
+							window.onload
 							console.log("delete성공!");
 
-							state = 0;
+							
+							
+							
+							
+							
+							
+							
+							
 						},
 						error:function(){
 							console.log("실패!");
-						}
-					});
-				}
-			});
-
+			               }
+		            });
+		         }); 
+			
 		</script>
 
 
-  <!--
-		}
-		var message = '${msg}';
-	    if(message == "자신의 채널은 구독 불가 입니다"){
-			 alert(message); 
-	    	
-	    }
-	    var message = '${msg}';
-	    if(message == "동영상이 업로드 되었습니다!"){
-			 alert(message); 
-	    }
-	
-	    var message = '${msg}';
-	    if(message == "구독되었습니다"){
-			 alert(message); 
-			 document.getElementById('subscribebtn').value = "구독중";
-	    	
-	    }
-	</script> -->
-	
 
 
 

@@ -667,6 +667,13 @@ public class MemberController {
 		System.out.println("탈퇴인가요 ?");
 		return "forward:logout.me";
 	}
+	
+	//알림설정
+		@RequestMapping(value = "alram.me", method = RequestMethod.GET)
+		public String alram(Model model, HttpServletRequest request) {
+			
+			return "member/alram";
+		}
 
 	// 회원 중지
 	@RequestMapping(value = "ustop.me", method = RequestMethod.GET)
