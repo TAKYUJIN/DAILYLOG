@@ -903,6 +903,9 @@ public class VideoController {
 		int result1 = vs.insertAttachment(attachment);
 
 		System.out.println("result1" + result1);
+		
+		
+	
 
 		if(result > 0  && result1 > 0 ) {
 
