@@ -34,6 +34,8 @@ import com.kh.with.member.model.service.MemberService;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.report.model.vo.Report;
 import com.kh.with.video.model.service.VideoService;
+import com.kh.with.video.model.vo.AddInfo;
+import com.kh.with.video.model.vo.AddPlace;
 import com.kh.with.video.model.vo.Attachment;
 import com.kh.with.video.model.vo.Reply2;
 import com.kh.with.video.model.vo.Video;
@@ -41,7 +43,7 @@ import com.kh.with.video.model.vo.Video;
 @Controller
 @SessionAttributes("loginUser")
 public class VideoController {
-	@Inject
+	@Inject 
 	VideoService videoservice;
 	private DataSource dataSource;
 	@Autowired
@@ -877,6 +879,60 @@ public class VideoController {
 		}
 
 	}
+	//장소 정보 insert 메소드
+	@RequestMapping(value = "insertaddPlace.vd", method= RequestMethod.POST)
+	public String insertAddPlace(HttpServletRequest request) {
+		String apXY = request.getParameter("apXY");
+		String apNm = request.getParameter("apNm");
+		String apAd = request.getParameter("apAd");
+		int vNo = Integer.parseInt(request.getParameter("vNo"));
+		int userNo = Integer.parseInt(request.getParameter("userNo"));
+		
+		AddPlace addPlace = new AddPlace();
+		
+		addPlace.setvNo(vNo);
+		addPlace.setuserNo(userNo);
+		addPlace.setapXY(apXY);
+		addPlace.setapNm(apNm);
+		addPlace.setapAd(apAd);
+		
+		System.out.println("controller vNo ;;;; " + vNo);
+		
+		int result = vs.insertAddPlace(addPlace);
+		
+		return "video/videoAddInfo";
+	}
+	
+	//더보기 상세 내용 insert 메소드
+	@RequestMapping(value = "addInfo.vd", method= RequestMethod.POST)
+	public String insertAddInfo(HttpServletRequest request, Model model) {
+		int userNo = Integer.parseInt(request.getParameter("userNo"));
+		int vNo = Integer.parseInt(request.getParameter("vNo"));
+		String addCt = request.getParameter("addCt");
+		
+		
+		System.out.println("상세정보 입력 : 여기까지;;;;; " + addCt + ";;;;; "  + userNo + ";;;; " + vNo);
+		
+		AddInfo addInfo = new AddInfo();
+		addInfo.setvNo(vNo);
+		addInfo.setAddCt(addCt);
+		addInfo.setUserNo(userNo);
+		
+		int result = vs.insertAddInfo(addInfo);
+		
+		
+		 if(result > 0 ) {
+
+	         model.addAttribute("msg", "동영상이 업로드 되었습니다!");
+	         model.addAttribute("userNo", userNo);
+	         
+	        return "video/videoAddInfo";
+	         
+	      }else {
+	         model.addAttribute("msg", "동영상 업로드실패");
+	         return "common/errorPage";
+	      }
+	}
 
 	// 동영상 업로드 insert 메소드
 	@RequestMapping(value = "insertvideo.vd")
@@ -1033,6 +1089,12 @@ public class VideoController {
 		attachment.setFileNm(enrollNm);
 		attachment.setUserNo(getUserNo);
 		attachment.setvNo(result2.getvNo());
+		
+		int addUserNo = attachment.getUserNo();
+		int addvNo = attachment.getvNo();
+		System.out.println(addUserNo + "::::: " + addvNo);
+		
+		
 
 		int result1 = vs.insertAttachment(attachment);
 
@@ -1042,9 +1104,14 @@ public class VideoController {
 	
 
 		if(result > 0  && result1 > 0 ) {
-
-			model.addAttribute("msg", "동영상이 업로드 되었습니다!");
-			return "forward:/newHomeChannel.lo?userNo="+UserNo;
+			
+			model.addAttribute("msg", addUserNo + addvNo);
+			//return "forward:/newHomeChannel.lo?userNo="+UserNo;
+			model.addAttribute("addUserNo", addUserNo);
+			model.addAttribute("addvNo", addvNo);
+			return "video/videoAddInfo";
+			
+			
 		}else {
 			model.addAttribute("msg", "동영상 업로드실패");
 			return "common/errorPage";

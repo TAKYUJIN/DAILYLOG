@@ -13,6 +13,8 @@ import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.report.model.vo.Report;
 import com.kh.with.video.model.dao.VideoDao;
+import com.kh.with.video.model.vo.AddInfo;
+import com.kh.with.video.model.vo.AddPlace;
 import com.kh.with.video.model.vo.Attachment;
 import com.kh.with.video.model.vo.Reply2;
 import com.kh.with.video.model.vo.Video;
@@ -24,7 +26,7 @@ public class VideoServiceImpl implements VideoService{
 	private SqlSessionTemplate sqlSession;
 	@Autowired
 	private VideoDao vd;
-	
+	 
 	//동영상 페이지 포인트 조회
 	@Override
 	public int selectPoint(int userNo) {
@@ -60,6 +62,19 @@ public class VideoServiceImpl implements VideoService{
 		
 		return vd.insertVideoInfo(sqlSession,video);
 	}
+	
+	@Override
+	public int insertAddPlace(AddPlace addPlace) {
+		System.out.println("service ;;;;; " + addPlace);
+		return vd.insertAddPlace(sqlSession, addPlace);
+	}
+	
+	@Override
+	public int insertAddInfo(AddInfo addInfo) {
+		// TODO Auto-generated method stub
+		return vd.insertAddInfo(sqlSession, addInfo);
+	}
+
 
 	@Override
 	public List<Attachment> videoimagelist(Member m){
@@ -453,6 +468,13 @@ public class VideoServiceImpl implements VideoService{
 
 
 	}
+
+
+
+	
+
+
+	
 }
 
 
