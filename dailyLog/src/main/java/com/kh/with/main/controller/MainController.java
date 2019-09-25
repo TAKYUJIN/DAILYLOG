@@ -133,8 +133,6 @@ public class MainController {
 				e.printStackTrace();
 			}
 			
-//			mv.addObject("dateList", dateList);
-//			mv.setViewName("jsonView");
 			
 		}
 	

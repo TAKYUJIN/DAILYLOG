@@ -91,13 +91,22 @@ public interface AdminService {
 
 	List<ChannelBoard> channelInfo();
 
-	int monthMemberListCount();
+	String monthMemberListCount();
 
 
-	int weekMemberListCount();
+	String weekMemberListCount();
 
 
-	int dayMemberListCount();
+	String dayMemberListCount();
+
+
+	int monthRevenueListCount();
+
+
+	int weekRevenueListCount();
+
+
+	int dayRevenueListCount();
 
 
 	

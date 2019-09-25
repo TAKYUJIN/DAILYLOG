@@ -244,24 +244,51 @@ public class AdminDaoImpl implements AdminDao {
 	}
 
 	@Override
-	public int monthMemberListCount(SqlSessionTemplate sqlSession) {
-		int mMonth = sqlSession.selectOne("Calculate2.monthMemberListCount");
+	public String monthMemberListCount(SqlSessionTemplate sqlSession) {
+		String mMonth = sqlSession.selectOne("Calculate2.monthMemberListCount");
 		
 		return mMonth;
 	}
 
 	@Override
-	public int weekMemberListCount(SqlSessionTemplate sqlSession) {
-		int mWeek = sqlSession.selectOne("Calculate2.weekMemberListCount");
+	public String weekMemberListCount(SqlSessionTemplate sqlSession) {
+		String mWeek = sqlSession.selectOne("Calculate2.weekMemberListCount");
 		
 		return mWeek;
 	}
 
 	@Override
-	public int dayMemberListCount(SqlSessionTemplate sqlSession) {
-		int mDay = sqlSession.selectOne("Calculate2.dayMemberListCount");
+	public String dayMemberListCount(SqlSessionTemplate sqlSession) {
+		String mDay = sqlSession.selectOne("Calculate2.dayMemberListCount");
 		
 		return mDay;
+	}
+
+
+
+	@Override
+	public int monthRevenueListCount(SqlSessionTemplate sqlSession) {
+		int rMonth = sqlSession.selectOne("Calculate2.monthRevenueListCount");
+		
+		return rMonth;
+	}
+
+
+
+	@Override
+	public int weekRevenueListCount(SqlSessionTemplate sqlSession) {
+		int rWeek = sqlSession.selectOne("Calculate2.weekRevenueListCount");
+		
+		return rWeek;
+	}
+
+
+
+	@Override
+	public int dayRevenueListCount(SqlSessionTemplate sqlSession) {
+		int rDay = sqlSession.selectOne("Calculate2.dayRevenueListCount");
+		
+		return rDay;
 	}
 
 }

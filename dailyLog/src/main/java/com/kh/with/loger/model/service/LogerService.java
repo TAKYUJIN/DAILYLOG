@@ -98,6 +98,9 @@ public interface LogerService {
 
 	//구독시 원하는 정보 셀렉
 	SubUserInfo subUserInfo(SubUserInfo subUserInfo);
+	
+	//로거 동영상 수정 페이지 출력
+	ArrayList<Video> selectLogerVideo(Loger l);
 
 	
 	

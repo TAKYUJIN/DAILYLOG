@@ -104,23 +104,41 @@
 		ORDER BY RANK ASC
   	</select>
   	
-	<!-- <select id="monthMemberListCount" resultMap="memberResultSet">
+	<select id="monthMemberListCount" parameterType="java.lang.String" resultType="java.lang.String">
 		SELECT COUNT(*)
    		FROM MEMBER
-   		WHERE ENROLL_DT BETWEEN	TO_CHAR(TO_DATE(add_months(sysdate,-1),'YYYY-MM-DD')) AND TO_CHAR(TO_DATE(SYSDATE,'YYYY-MM-DD'))
+   		WHERE ENROLL_DT BETWEEN add_months(SYSDATE, -1) AND SYSDATE
   	</select>
   	
-  	<select id="weekMemberListCount" resultMap="memberResultSet">
+  	<select id="weekMemberListCount" parameterType="java.lang.String" resultType="java.lang.String">
 		SELECT COUNT(*)
    		FROM MEMBER
-   		WHERE ENROLL_DT BETWEEN	TO_CHAR(TO_DATE(sysdate-7,'YYYY-MM-DD')) AND TO_CHAR(TO_DATE(SYSDATE,'YYYY-MM-DD'))
+   		WHERE ENROLL_DT BETWEEN (SYSDATE - 7) AND SYSDATE
   	</select>
   	
-  	<select id="dayMemberListCount" resultMap="memberResultSet">
+  	<select id="dayMemberListCount" parameterType="java.lang.String" resultType="java.lang.String">
 		SELECT COUNT(*)
    		FROM MEMBER
-   		WHERE ENROLL_DT BETWEEN	TO_CHAR(TO_DATE(SYSDATE,'YYYY-MM-DD')) AND TO_CHAR(TO_DATE(SYSDATE,'YYYY-MM-DD'))
-  	</select> -->
+   		WHERE ENROLL_DT BETWEEN (SYSDATE - 1) AND SYSDATE
+  	</select>
+  	
+  	<select id="monthRevenueListCount" parameterType="int" resultType="int">
+		SELECT SUM(CAL_VAT)
+		FROM CALCULATE
+		WHERE CAL_EDT BETWEEN add_months(SYSDATE, -1) AND SYSDATE
+  	</select>
+  	
+  	<select id="weekRevenueListCount" parameterType="int" resultType="int">
+		SELECT SUM(CAL_VAT)
+		FROM CALCULATE
+		WHERE CAL_EDT BETWEEN (SYSDATE - 7) AND SYSDATE
+  	</select>
+  	
+  	<select id="dayRevenueListCount" parameterType="int" resultType="int">
+		SELECT SUM(CAL_VAT)
+		FROM CALCULATE
+		WHERE CAL_EDT BETWEEN (SYSDATE - 1) AND SYSDATE
+  	</select>
 
   	
 </mapper>
