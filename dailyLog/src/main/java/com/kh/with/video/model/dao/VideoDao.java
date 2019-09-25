@@ -125,6 +125,7 @@ public interface VideoDao {
 	int replyReport(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	int replyReportAlram(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	List<Report> selectCount(SqlSessionTemplate sqlSession, Map<String, Object> map);
+	int disCountSubNums(SqlSessionTemplate sqlSession, Map<String, Object> map);
 
 	
 

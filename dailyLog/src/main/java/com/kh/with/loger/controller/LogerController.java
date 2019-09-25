@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -32,6 +33,7 @@ import com.kh.with.loger.model.vo.MyVideo;
 import com.kh.with.loger.model.vo.SubUserInfo;
 import com.kh.with.loger.model.vo.Support;
 import com.kh.with.main.model.service.MainService;
+import com.kh.with.main.model.vo.Subscribe;
 import com.kh.with.main.model.vo.SubscribeVideo;
 import com.kh.with.main.model.vo.VideoLike;
 import com.kh.with.member.model.vo.Member;
@@ -269,8 +271,29 @@ public class LogerController {
 		
 		int userNo = Integer.parseInt(request.getParameter("userNo")); 
 		
-	
+		//로거스튜디오채널번호 받기 
+		Loger loger = new Loger();
+		
+		Loger chNos = ls.selectChNo(userNo);
+		
+		int chNo = chNos.getChNo();
+		System.out.println("채널번호왔니?" +chNo);
+		
+		
+		//셀렉트카운트 해서 user_no와 ch_no가 해당열이 있는지 ?
+		
 			System.out.println("로거스튜디오에서의 유저 넘버 !!!:::" + userNo);
+			
+			
+			Subscribe subscibe = new Subscribe();
+			subscibe.setChNo(chNo);
+			subscibe.setUserNo(userNo);
+			
+			//구독유무확인
+			int subcount = ls.subcount(subscibe);
+			
+			System.out.println("subcount" + subcount);
+			
 			
 			//채널타이틀이미지 
 			Attachment attachment = new Attachment();
@@ -328,8 +351,8 @@ public class LogerController {
 			mv.addObject("logertitleimg", logertitleimg); 
 			mv.addObject("favOne", favOne); 
 			mv.addObject("favOnesum", favOnesum); 
-			
-			
+			mv.addObject("subcount", subcount); 
+		
 			
 			
 			
@@ -569,9 +592,26 @@ public class LogerController {
 					return  "forward:/studeioSubDelete.vd" ;
 		}
 		
-		
 	
+	 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -405,6 +405,14 @@ public class VideoServiceImpl implements VideoService{
 		
 		return vd.selectCount(sqlSession, map);
 	}
+
+
+
+	@Override
+	public int disCountSubNums(Map<String, Object> map) {
+		
+		return vd.disCountSubNums(sqlSession, map);
+	}
 }
 
 

@@ -148,6 +148,8 @@ public interface VideoService {
 
 	List<Report> selectCount(Map<String, Object> map);
 
+	int disCountSubNums(Map<String, Object> map);
+
 
 
 	
