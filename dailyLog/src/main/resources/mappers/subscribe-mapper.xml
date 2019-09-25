@@ -56,10 +56,23 @@
 	ORDER BY UPLOAD_DT DESC
 	</select>
 	
-	
-	
+	  <!-- 구독중 고정 -->
+    <select id="fastenSub" resultMap="SubscribeResultSet">
+   SELECT SUB_NO
+	FROM SUBSCRIBE
+	WHERE USER_NO =  #{userNo}
+	AND CH_NO = #{chNo}
 
-     
+	</select>
+	
+ 	<!-- 구독유무확인 -->
+       <select id="subcount" resultType="_int">
+		 SELECT COUNT (*) 
+		FROM SUBSCRIBE
+		WHERE USER_NO = #{userNo}
+		AND CH_NO=  #{chNo}
+		</select>
+	
 </mapper>
 
 

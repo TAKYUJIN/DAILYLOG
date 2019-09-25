@@ -125,6 +125,7 @@ public interface VideoDao {
 	int replyReport(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	int replyReportAlram(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	List<Report> selectCount(SqlSessionTemplate sqlSession, Map<String, Object> map);
+
 	int insertReplyLike(SqlSessionTemplate sqlSession, Map<String, Integer> map);
 	int deleteReplyLike(SqlSessionTemplate sqlSession, Map<String, Integer> map);
 	int insertReplyHate(SqlSessionTemplate sqlSession, Map<String, Integer> map);
@@ -132,6 +133,9 @@ public interface VideoDao {
 	int replyUpdate(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	int replyDelete(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	String selectInfo(SqlSessionTemplate sqlSession, Map<String, Object> map);
+
+	int disCountSubNums(SqlSessionTemplate sqlSession, Map<String, Object> map);
+
 
 	
 

@@ -145,6 +145,23 @@
 		left: 0;
 		bottom: -15px;
 	}
+	.page-title6 {
+		margin: 1rem 0 3rem 1rem;
+		font-family: 'Varela Round', sans-serif;
+		position: relative;
+	}
+	.page-title6::after {
+		content: "";
+		width: 91px;
+		position: absolute;
+		height: 3px;
+		border-radius: 1px;
+		background: #192466; /* #73bb2b 원래 색 */
+		left: 0;
+		bottom: -15px;
+	}
+	
+	
 </style>
 </head>
 <body>
@@ -157,7 +174,10 @@
 			</div>
 			<div>
 			<a href="selectNoticeQuestion.no" class="noticeLink" style="float:right; width:40%;"><h4 class="page-title4">나의 문의내역</h4></a>
+			
 			<a href="noticeChattingQuestion.no" class="noticeLink" style="float:right; width:15%;"><h4 class="page-title5">1:1문의</h4></a>
+			<a href="noticeEmail.no" class="noticeLink" style="float:right;width:15%;"><h4 class="page-title6">이메일 문의</h4></a>
+			
 			</div>
 			<!-- <div class="">
 			<a href="noticeChattingQuestion.no" class="noticeLink" style="float:left;"><h5>실시간 문의</h5></a>

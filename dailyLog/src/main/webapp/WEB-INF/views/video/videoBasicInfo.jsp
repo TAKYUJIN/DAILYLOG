@@ -183,14 +183,12 @@
 						traditional:true,
 					success:function(data){
 						console.log("성공!");
-						
+
 					},
 					error:function(data){
 						console.log("실패!");
 					}
 				});
-				
-				
 
 			});
 			

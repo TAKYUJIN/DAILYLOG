@@ -148,6 +148,14 @@
 		ORDER BY RANK ASC
 	</select>
 	
+	<!-- 로거 동영상 수정 update -->
+	<update id="updateLogerVideo" parameterType="Loger">
+		UPDATE VIDEO SET V_TITLE = #{vTitle}, TAG = #{tag}, OPEN_TY = #{openTy}, ADULT_AUT = #{adultAut},
+		AD_YN = #{adYn}, AD_INFO = #{adInfo}
+		WHERE V_NO = #{vNo}
+	</update>
+	
+	
 	<!-- 로거 동영상 출력 -->
 	<select id="showLogerVideo" resultMap="VideoResultSet">
 	SELECT RANK, AFILE_NM, V_NO, USER_NO, V_TITLE, COUNT, CH_NM, TAG, VBL_YN, UPLOAD_DT, MODIFY_DT, ADULT_AUT, AD_YN, AD_INFO, LOCATION, INFO, FILE_NM, OPEN_TY
@@ -277,7 +285,7 @@
 
    <!--로거스튜디오 메인 select (프로필,채널명, 구독자) -->
    <select id="newHomeChannel" resultMap="logerResultSet2">
-      SELECT l.ch_nm,l.subnum, a.file_nm
+      SELECT l.ch_nm,l.subnum, a.file_nm ,l.ch_no
       FROM LOGER L
       JOIN ATTACHMENT A
       ON (L.USER_NO = A.USER_NO)
@@ -380,6 +388,13 @@
     WHERE USER_NO =  #{chNo}
     
    </update>
+   <!--로거스튜디오채널번호 받기 -->
+ 	<select id="selectChNo" resultMap="logerResultSet">
+	SELECT CH_NO
+	FROM LOGER
+	WHERE USER_NO =  #{userNo}
+	</select>
+ 
 </mapper>
 
 

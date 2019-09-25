@@ -2,6 +2,7 @@ package com.kh.with.loger.model.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
@@ -11,6 +12,7 @@ import com.kh.with.loger.model.vo.Loger2;
 import com.kh.with.loger.model.vo.MyVideo;
 import com.kh.with.loger.model.vo.SubUserInfo;
 import com.kh.with.loger.model.vo.Support;
+import com.kh.with.main.model.vo.Subscribe;
 import com.kh.with.main.model.vo.SubscribeVideo;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.report.model.vo.Report;
@@ -102,6 +104,19 @@ public interface LogerDao {
 
 	//로거 동영상 수정 페이지 출력
 	ArrayList<Video> selectLogerVideo(SqlSessionTemplate sqlSession, Loger l);
+
+	//로거 동영상 수정 update
+	int updateLogerVideo(SqlSessionTemplate sqlSession, Video v);
+
+	//구독중 클릭시 구독중으로 고정
+	Subscribe fastenSub(SqlSessionTemplate sqlSession, Subscribe subscribe);
+
+	//로거스튜디오채널번호 받기
+	Loger selectChNo(SqlSessionTemplate sqlSession, int userNo);
+
+	//구독유무확인
+	int subcount(SqlSessionTemplate sqlSession, Subscribe subscibe);
+
 
 	
 

@@ -15,6 +15,7 @@ import com.kh.with.loger.model.vo.Loger2;
 import com.kh.with.loger.model.vo.MyVideo;
 import com.kh.with.loger.model.vo.SubUserInfo;
 import com.kh.with.loger.model.vo.Support;
+import com.kh.with.main.model.vo.Subscribe;
 import com.kh.with.main.model.vo.SubscribeVideo;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.report.model.vo.Report;
@@ -270,6 +271,30 @@ public class LogerDaoImpl implements LogerDao{
 	public ArrayList<Video> selectLogerVideo(SqlSessionTemplate sqlSession, Loger l) {
 		ArrayList<Video> vList = (ArrayList) sqlSession.selectList("Loger.selectLogerVideo", l);
 		return vList;
+	}
+
+	@Override
+	public Subscribe fastenSub(SqlSessionTemplate sqlSession, Subscribe subscribe) {
+		
+		return sqlSession.selectOne("Subscribe.fastenSub", subscribe);
+	}
+	//로거스튜디오채널번호 받기
+	@Override
+	public Loger selectChNo(SqlSessionTemplate sqlSession, int userNo) {
+		
+		return sqlSession.selectOne("Loger.selectChNo", userNo);
+	}
+	//구독유무확인
+	@Override
+	public int subcount(SqlSessionTemplate sqlSession, Subscribe subscibe) {
+		
+		return sqlSession.selectOne("Subscribe.subcount", subscibe);
+	}
+	
+	//로거 동영상 수정 update
+	@Override
+	public int updateLogerVideo(SqlSessionTemplate sqlSession, Video v) {
+		return sqlSession.update("Loger.updateLogerVideo", v);
 	}
 	
 

@@ -6,11 +6,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-x.y.z.js"></script>
+<script src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js" type="text/javascript"></script>
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.2.js"></script>
 </head>
 <body>
-<form id="pay" name="f1" action="point.me" method="post">
+<form id="pay" name="f1" action="point1.me" method="post">
 <input type="hidden" name="IMP_UID"/>		<!-- 아임포트고유번호 -->
 <input type="hidden" name="MERCHANT_UID"/>		<!-- 고유주문번호 -->
 <input type="hidden" name="PAID_AMOUNT"/>		<!-- 결제금액 -->
@@ -20,24 +20,31 @@
 <input type="hidden" name="PAID_AT"/>	<!-- 결제승인시각 -->
 
 <script type="text/javascript">
-	var name = '${sessionScope.loginUser.userNm}';
-	var id = '${sessionScope.loginUser.userId}';
-	var phone = '${sessionScope.loginUser.phone}';
+
 	IMP.init('imp51812845');
 	IMP.request_pay({
-	    pg : 'html5_inicis', //ActiveX 결제창은 inicis를 사용
+	    pg : 'jtnet', //ActiveX 결제창은 inicis를 사용
 	    pay_method : 'card', //card(신용카드), trans(실시간계좌이체), vbank(가상계좌), phone(휴대폰소액결제)
-	    merchant_uid : 'merchant_' + new Date().getTime(), //상점에서 관리하시는 고유 주문번호를 전달
-	    name : '주문명:결제테스트',
-	    amount : 100,
-	    buyer_email : id,
-	    buyer_name : name,
-	    buyer_tel : phone, //누락되면 이니시스 결제창에서 오류
+	    merchant_uid : 'issue_billingkey_monthly_0001', //상점에서 관리하시는 고유 주문번호를 전달
+	    customer_uid: 'gildong_0001_1234',
+	    name: "최초인증결제",
+	    amount : 0,
+	    buyer_email : 'eunju9503@naver.com',
+	    buyer_name : '정은주',
+	    buyer_tel : '010-9923-0092', //누락되면 이니시스 결제창에서 오류
 	    buyer_addr : '서울특별시 강남구 삼성동',
 	    buyer_postcode : '123-456'
 	}, function(rsp) {
 	    if ( rsp.success ) {
-	    	
+	    	/* 
+	    	jQuery.ajax({
+	            url: "https://www.myservice.com/billings/", // 서비스 웹서버
+	            method: "POST",
+	            headers: { "Content-Type": "application/json" },
+	            data: {
+	              customer_uid: "gildong_0001_1234", // 카드(빌링키)와 1:1로 대응하는 값
+	            }
+	          }); */
 	    	//var data = "IMP_UID=" + rsp.imp_uid + "&MERCHANT_UID=" + rsp.merchant_uid;
 	    	$("input[name='IMP_UID']").val(rsp.imp_uid);
 	    	$("input[name='MERCHANT_UID']").val(rsp.merchant_uid);

@@ -148,6 +148,7 @@ public interface VideoService {
 
 	List<Report> selectCount(Map<String, Object> map);
 
+
 	int insertReplyLike(Map<String, Integer> map);
 
 	int deleteReplyLike(Map<String, Integer> map);
@@ -160,7 +161,11 @@ public interface VideoService {
 
 	int replyDelete(Map<String, Object> map);
 
+
 	String selectInfo(Map<String, Object> map);
+
+
+	int disCountSubNums(Map<String, Object> map);
 
 
 

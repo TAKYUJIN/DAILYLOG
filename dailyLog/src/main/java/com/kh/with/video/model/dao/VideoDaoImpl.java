@@ -425,6 +425,7 @@ public class VideoDaoImpl implements VideoDao {
 		
 		return sqlSession.selectList("Video.selectCount", map);
 	}
+
 	@Override
 	public int insertReplyLike(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
 		
@@ -455,9 +456,18 @@ public class VideoDaoImpl implements VideoDao {
 		
 		return sqlSession.delete("Video.replyDelete", map);
 	}
+
 	@Override
 	public String selectInfo(SqlSessionTemplate sqlSession, Map<String, Object> map) {
 		
 		return sqlSession.selectOne("Video.selectInfo", map);
+
+  }
+
+	@Override
+	public int disCountSubNums(SqlSessionTemplate sqlSession, Map<String, Object> map) {
+		
+		return sqlSession.update("Video.disCountSubNums", map);
+
 	}
 }
