@@ -163,11 +163,16 @@ public interface VideoService {
 
 	int replyDelete(Map<String, Object> map);
 
+
+	String selectInfo(Map<String, Object> map);
+
+
 	int disCountSubNums(Map<String, Object> map);
 
 	int insertAddPlace(AddPlace addPlace);
 
 	int insertAddInfo(AddInfo addInfo);
+
 
 
 

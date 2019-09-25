@@ -104,6 +104,9 @@ public interface LogerService {
 	//로거 동영상 수정 페이지 출력
 	ArrayList<Video> selectLogerVideo(Loger l);
 
+	//로거 동영상 수정 update
+	int updateLogerVideo(Video v);
+
 	//구독중 클릭시 구독중으로 고정
 	Subscribe fastenSub(Subscribe subscribe);
 
@@ -112,6 +115,7 @@ public interface LogerService {
 
 	//구독유무확인
 	int subcount(Subscribe subscibe);
+
 
 	
 	

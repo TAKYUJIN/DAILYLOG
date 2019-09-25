@@ -118,7 +118,7 @@
     <insert id="insertVideoInfo" parameterType="Video">       
    INSERT INTO VIDEO
    VALUES(V_NO.NEXTVAL, #{userNo}, #{vTitle}, 0, #{chNm}, #{tag},'N', SYSDATE, NULL, #{adultAut}, #{adYn}  ,#{adInfo},
-   NULL, NULL, #{fileNm}, #{openTy}, DEFAULT)
+   NULL, #{info}, #{fileNm}, #{openTy}, DEFAULT)
    
    </insert>
    
@@ -449,16 +449,32 @@ WHERE TAG LIKE '%'||#{search}||'%'
 	
 	<update id="replyUpdate">
 		UPDATE REPLY
-		SET REP_CT = #{content} 
+		SET REP_CT = #{update} 
 		WHERE USER_NO = #{loginUser}
 		AND V_NO = #{vNo}
+		AND REP_NO = #{repNo}
 	</update>
 	
 	<delete id="replyDelete">
 		DELETE FROM REPLY
 		WHERE USER_NO = #{loginUser}
 		AND V_NO = #{vNo}
+		AND REP_NO = #{repNo}
 	</delete>
+	
+
+	<select id="selectInfo" parameterType="map" resultType="String">
+		SELECT NVL(INFO, 'info없음')
+		FROM VIDEO
+		WHERE V_NO = #{vNo}
+
+  <!-- 
+	<select id="adinfo" resultMap="videoResultSet">
+	select * from VIDEO
+     where NOT AD_INFO IS NULL -->
+
+	</select>
+	
 </mapper>
 
 

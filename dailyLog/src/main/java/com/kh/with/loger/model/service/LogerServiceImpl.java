@@ -251,6 +251,12 @@ public class LogerServiceImpl implements LogerService{
 		return ld.subcount(sqlSession, subscibe);
 	}
 
+	//로거 동영상 수정 update
+	@Override
+	public int updateLogerVideo(Video v) {
+		return ld.updateLogerVideo(sqlSession, v);
+	}
+
 	
 
 

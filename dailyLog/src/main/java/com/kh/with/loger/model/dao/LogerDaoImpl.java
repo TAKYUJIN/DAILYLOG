@@ -291,6 +291,12 @@ public class LogerDaoImpl implements LogerDao{
 		return sqlSession.selectOne("Subscribe.subcount", subscibe);
 	}
 	
+	//로거 동영상 수정 update
+	@Override
+	public int updateLogerVideo(SqlSessionTemplate sqlSession, Video v) {
+		return sqlSession.update("Loger.updateLogerVideo", v);
+	}
+	
 
 	
 	

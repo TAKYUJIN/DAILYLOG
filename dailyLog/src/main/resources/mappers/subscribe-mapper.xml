@@ -71,7 +71,6 @@
 		FROM SUBSCRIBE
 		WHERE USER_NO = #{userNo}
 		AND CH_NO=  #{chNo}
-
 		</select>
 	
 </mapper>

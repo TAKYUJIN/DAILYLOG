@@ -26,11 +26,11 @@
 .mainpage {
 	width: 1600px;
 	margin-top: 30px;
-	margin-left:70px;
+	margin-left: 70px;
 }
 
 .logerMainImg {
-	margin-left:30px;
+	margin-left: 30px;
 }
 
 .imInfoPic {
@@ -175,29 +175,32 @@ body {
 }
 
 .myInfo {
-
 	margin-left: 30px;
+}
 
+#subscribe {
+	margin-left: 430px;
 }
-#subscribe{
-		margin-left:430px;
-}
+
 .my-hr1 {
-        border: 0;
-    height: 1px;
-    background:#A8B7BC;
-    width:1400px;
-    margin-right:1000px;
-  }
-    .my-hr2{
-  margin-left:70px;
-      border: 0;
-    height: 1px;
-    background:#A8B7BC;
-    width:1400px;
-    margin-right:1000px;
-  }
+	border: 0;
+	height: 1px;
+	background: #A8B7BC;
+	width: 1400px;
+	margin-right: 1000px;
+}
 
+.my-hr2 {
+	margin-left: 70px;
+	border: 0;
+	height: 1px;
+	background: #A8B7BC;
+	width: 1400px;
+	margin-right: 1000px;
+}
+#subscribecancel {
+	margin-left: 450px;
+}
 </style>
 
 
@@ -207,30 +210,41 @@ body {
 
 	<div class="mainpage">
 		<div class="logerMainImg">
-			<img src="resources/uploadFiles/${logertitleimg.fileNm}" style="width:1000px; height: 200px; margin-left:130px;">
+			<img src="resources/uploadFiles/${logertitleimg.fileNm}"
+				style="width: 1000px; height: 200px; margin-left: 130px;">
 		</div>
 		<br> <br>
 		<hr class="my-hr1">
 		<form class="navbar-form form-inline" action="search.mb" method="get">
-			<div class="input-group search-box" style="margin-left: 1200px">		
-				<input type="text" id="search" name="search"  class="form-control" placeholder="검색" >
-				  <span  class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span> 
+			<div class="input-group search-box" style="margin-left: 1200px">
+				<input type="text" id="search" name="search" class="form-control"
+					placeholder="검색"> <span class="input-group-addon"><i
+					class="material-icons">&#xE8B6;</i></span>
 			</div>
 		</form>
-		
+
 		<div class="myInfo">
 			<img src="resources/uploadFiles/${result.fileNm}" width="200px"
-				height="200px" >
+				height="200px">
 
 
-			<div class="textInfo" style="font-size:30px">
+			<div class="textInfo" style="font-size: 30px">
 				<p style="widht: 200px; margin-left: 230px; margin-top: -90px;">
-					<strong><c:out value="${result.chNm}" /></strong>
+					<strong><c:out value="${result.chNm}" /><c:out value="${subcount}" /></strong>
 				</p>
 			</div>
-			<input type="button" id="subscribe" class="btn btn-primary"
-				value="구독">
-			<p style="widht: 200px; margin-left: 230px;font-size:20px; margin-top: -30px;">
+			<div id="subDiv">
+				<c:if test="${subcount == 0}">
+					<input type="button" id="subscribe" class="btn btn-primary"
+						value="구독">
+				</c:if>
+				<c:if test="${subcount == 1}">
+					<input type="button" id="subscribecancel" class="btn btn-primary"
+						value="구독취소">
+				</c:if>
+			</div>
+			<p
+				style="widht: 200px; margin-left: 230px; font-size: 20px; margin-top: -30px;">
 				<c:out value="${result.subNum}" />
 				명
 			</p>
@@ -257,117 +271,113 @@ body {
 		</p>
 		<br>
 		<table id="videoarea">
-			<c:forEach items="${logerHomeAllVideo}" var="av" >
+			<c:forEach items="${logerHomeAllVideo}" var="av">
 
 				<div class="col-sm-4">
 
-					<a href="video.vd?userNo=${av.userNo}&vNo=${hv.vNo}"> <img  style="
-		
-border-radius: 7px;
--moz-border-radius: 7px;
--khtml-border-radius: 7px;
--webkit-border-radius: 7px;
-"
+					<a href="video.vd?userNo=${av.userNo}&vNo=${hv.vNo}"> <img
+						style="border-radius: 7px; -moz-border-radius: 7px; -khtml-border-radius: 7px; -webkit-border-radius: 7px;"
 						src="resources/uploadFiles/${av.fileNm}" width="250px"
-						height="200px"></a> <br><br>
+						height="200px"></a> <br>
+					<br>
 					<div class="ch_cnt">
 						<strong style="font-size: 15px;"><c:out
-								value="${av.vTitle}" /></strong> <br><img
-							src="resources/images/playbtn.png" style="width: 15px;"> <span
-							class="hit"> <strong class="blind">조회수</strong> <em><c:out
+								value="${av.vTitle}" /></strong> <br>
+						<img src="resources/images/playbtn.png" style="width: 15px;">
+						<span class="hit"> <strong class="blind">조회수</strong> <em><c:out
 									value="${av.count}" />회</em> &nbsp;
 						</span> <span class="bar"> </span> <span class="date"> <strong>등록</strong>
 							<em><c:out value="${av.uploadDt}" /></em>
 						</span> <br> <span class="tag"><em><c:out
 									value="${av.tag}" /></em> </span>
 					</div>
-	<br><br><br>
+					<br>
+					<br>
+					<br>
 				</div>
 			</c:forEach>
 
 		</table>
 
-		
-</div>
-		<script>
-			function subOk() {
 
-				location.href = 'subOk.lo';
+	</div>
+	<script>
 
-			}
-			var message = '${msg}';
-			if (message == "자신의 채널은 구독 불가 입니다") {
-				alert(message);
+         
+         var message = '${msg}';
+         if (message == "자신의 채널은 구독 불가 입니다") {
+            alert(message);
 
-			}
-			var message = '${msg}';
-			if (message == "동영상이 업로드 되었습니다!") {
-				alert(message);
-			}
+         }
+         var message = '${msg}';
+         if (message == "동영상이 업로드 되었습니다!") {
+            alert(message);
+         }
 
-			var state = 0;
-			$('#subscribe').click(function(){
-			
+         
+         $('#subscribe').click(function(){
+         
+               $.ajax({
+                  url:"subOk.lo",
+                  type:"post",
+                  data:{},
+                  success:function(data){
+                     window.onload
+                     console.log("insert성공!");
+                     
+                     
+                     var $subDiv=$('#subDiv');
+                     var $subOk=$('#subscribe');
+                     
+                     $subOk.remove();
+                     
+                     var $subOk2=
+                        ('  <input type="button" id="subscribecancel" class="btn btn-primary" value="구독취소">   ');
+                       
+                        $subDiv.append($subOk2);
 
-				if(state == 0){
-					document.getElementById('subscribe').value = "구독중";
-					
-					$.ajax({
-						url:"subOk.lo",
-						type:"post",
-						data:{},
-						success:function(data){
-							 window.location.reload();
-							console.log("insert성공!");
+                  },
+                  error:function(){
+                     console.log("실패!");
+                        }
+                  });
+               }); 
+         
+         
+               $('#subscribecancel').click(function(){
+               $.ajax({
+                  url:"subCancle.lo",
+                  type:"post",
+                  data:{},
+                  success:function(data){
+                     window.onload
+                     console.log("delete성공!");
 
-							state = 1;
-						},
-						error:function(){
-							
-							console.log("실패!");
-						}
-					});
-				}else {
-					document.getElementById('subscribe').value = "구독";
-					$.ajax({
-						url:"subCancle.lo",
-						type:"post",
-						data:{},
-						success:function(data){
-							 window.location.reload();
-							console.log("delete성공!");
+                     
+                     var $subDiv=$('#subDiv');
+                     var $subOk=$('#subscribecancel');
+                     
+                     $subOk.remove();
+                     
+                     var $subOk2=
+                        ('  <input type="button" id="subscribe" class="btn btn-primary" value="구독">   ');
+                       
+                        $subDiv.append($subOk2);
+                      
 
-							state = 0;
-						},
-						error:function(){
-							console.log("실패!");
-						}
-					});
-				}
-			});
-			//구독중 유지
-			$(document).ready(function(){
-				var chNo = "<c:out value='${result.chNo}'/>";
-				console.log()
-				
-				$.ajax({
-					url:"fastenSub.lo",
-					type:"post",
-					data:{chNo:chNo},  
-					success:function(data){
-						console.log("채널번호넘김성공!");
+                  },
+                  error:function(){
+                     console.log("실패!");
+                        }
+                  });
+               }); 
+         
+      </script>
 
-						document.getElementById('subscribe').value = "구독중";
-					},
-					error:function(){
-						console.log("실패!");
-					}
-				});
-			});
-		</script>
 
-<hr class="my-hr2">
 
-		<jsp:include page="../common/footer.jsp"></jsp:include>
+
+
+	<jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
 </html>

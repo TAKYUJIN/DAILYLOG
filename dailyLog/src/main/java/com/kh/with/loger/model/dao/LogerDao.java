@@ -105,6 +105,9 @@ public interface LogerDao {
 	//로거 동영상 수정 페이지 출력
 	ArrayList<Video> selectLogerVideo(SqlSessionTemplate sqlSession, Loger l);
 
+	//로거 동영상 수정 update
+	int updateLogerVideo(SqlSessionTemplate sqlSession, Video v);
+
 	//구독중 클릭시 구독중으로 고정
 	Subscribe fastenSub(SqlSessionTemplate sqlSession, Subscribe subscribe);
 
@@ -113,6 +116,7 @@ public interface LogerDao {
 
 	//구독유무확인
 	int subcount(SqlSessionTemplate sqlSession, Subscribe subscibe);
+
 
 	
 

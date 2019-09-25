@@ -791,27 +791,87 @@
 						<div style="margin-top:1%;"><small>조회수  ${ list1[0].count }</small></div>
 						<div style="margin-top:1%;"><small>게시일 ${ list1[0].uploadDt }</small></div>
 					</div>
-					<div style="margin-right:8%;">
+					<div>
 						<hr style="border-color:#A8B7BC; height:30px;">
 					</div>
 				</td>
 			</tr>
 			<tr>
 				<!-- 더보기 -->
-				<td colspan="4" height="130px">
-					더보기
+				<td colspan="4">
+					<div class="moreInfo" style="margin-left:3%; cursor:pointer;">더보기 < </div>
+					<div class="moreLocation" style="margin-left:6%;">지도
+					</div>
 				</td>
 			</tr>
+			<script>
+				$(document).ready(function(){
+					var state = 0;
+					$(".moreLocation").hide();
+					$(".moreInfo").click(function(){
+						if(state == 0){
+							$(".moreLocation").show();
+							state = 1;
+							$(".moreInfo").text("더보기 >");
+						}
+						else {
+							$(".moreLocation").hide();
+							state = 0;
+							$(".moreInfo").text("더보기 <");
+						}
+					});
+					$(".chatForm").hide();
+					$("#runtimeChat").click(function(){
+						if(state == 0){
+							$(".chatForm").show();
+							state = 1;
+						}
+						else {
+							$(".chatForm").hide();
+							state = 0;
+						}
+					});
+				});
+			</script>
 		</table>
 	</div>
-	<!-- <div style="border-left:1px solid #A8B7BC;height:500px;"></div> -->  
-	<div style="align:center; display:inline-block; margin-left:3%; margin-top:10%; position:absolute;">
+	<!-- <div style="border-left:1px solid #A8B7BC;height:500px;"></div> -->
+	<div style="align:center; display:inline-block; margin-left:3%; margin-top:5%; position:absolute;">
 		<!-- 댓글 -->
-<!-- 		<div style="align:top;">
-			<a href="#none" data-toggle="dropdown" id="runtimeChat">
-				<img src="resources/images/chat.png" style="width:30px; align:right;">
-			</a>
-		</div>	 -->	
+		<div style="margin-bottom:7%; margin-left:3%;">
+			<div style="pointer:cursor !important;" data-toggle="dropdown" id="runtimeChat">
+				<img src="resources/images/chat.png" style="width:30px; align:right;">&emsp; 실시간 채팅 다시보기
+			</div>
+		</div>
+		<div class="chatForm" style="margin-top:5%;color:white; width:430px; height:350px; text-align:center; background-color:#13334A; border-radius:10%; margin-bottom:10%; opacity:0.6;">
+			<div style="overflow:auto; padding:10px; width:425px; height:260px;">
+				<div style="margin:5%;">
+					
+					채팅 폼overflow:auto;않는다.여기는 DIV 스타일에 overflow: auto; 속성을 주었다. 내용의 양이 DIV 영역보다 많으면 스클롤바가 표시되고 적으면 표시되지 않는다.여기는 DIV 스타일에 overflow: auto; 속성을 주었다. 내용의 양이 DIV 영역보다 많으면 스클롤바가 표시되고 적으면 표시되지 않는다.
+				</div> 
+			</div>
+			<div style="margin-top:4%; opacity:1;">
+           		<div style="width:50px; display:inline-block;">
+       			    <div>
+						<c:if test="${userImg != null}">
+							<img class="userImg" src="resources/images/${userImg}" style="margin-bottom:30px;">
+						</c:if>
+						<c:if test="${userImg == null}">
+							<img class="userImg" src="resources/images/newlogo3.png" style="margin-bottom:30px;">
+						</c:if>	
+					</div>
+           		</div>
+         		<div style="display:inline-block; margin-left:1%; margin-right:1%;">
+     			    <div class="input-group">
+						<input type="text" id="content" class="form-control" placeholder="Search&hellip;" style="background:none !important; width:250px;">
+					</div>
+           		</div>
+           		<div style="display:inline-block;">
+           			<input type="button" id="insertReply" style="width:60px; margin-bottom:30px; background:#A8B7BC;" class="btn" value="작성">
+					<!-- <a><i class="material-icons">&#xE876;</i></a> -->
+           		</div>
+			</div>
+		</div>	
 		<nav class="navbar navbar-default navbar-expand-lg navbar-light"style="background:none; border:none;">
 			<ul class="nav navbar-nav navbar-right ml-auto">					
 		       <table class="table table-striped table-hover">
@@ -932,6 +992,50 @@
 		                    </td>
 		                    <td>
 		                    	<c:if test="${r.userNo == loginUser.userNo}">
+                    	          	<!-- Edit Modal HTML -->
+									<div id="editEmployeeModal" class="modal fade">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<form>
+													<div class="modal-header">						
+														<h4 class="modal-title">댓글 수정</h4>
+														<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+													</div>
+													<div class="modal-body">					
+														<div class="form-group">
+															<label><%-- #{ reply.nickName } --%></label>
+															<input type="text" class="form-control" id="replyUpdateText" required>
+														</div>	
+													</div>
+													<div class="modal-footer">
+													<input class="repNoThis3" style="display:none;"value="${r.repNo }" >
+														<input id="replyUpdate" class="btn" value="Save">
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
+										<!-- Delete Modal HTML -->
+									<div id="deleteEmployeeModal" class="modal fade">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<form>
+													<div class="modal-header">						
+														<h4 class="modal-title">댓글 삭제</h4>
+														<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+													</div>
+													<div class="modal-body">					
+														<p> <br> 정말 삭제하시겠습니까?</p>
+														<p class="text-warning"><small>삭제하시면 복구할 수 없습니다.</small></p>
+													</div>
+													<div class="modal-footer">
+													<input class="repNoThis4" style="display:none;"value="${r.repNo }" >
+														<input id="replyDelete" class="btn btn-danger" value="Delete">
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
 			                    	<li class="nav-item" >
 										<a href="#none" data-toggle="dropdown" id="threeMore">
 										<img src="resources/images/more.png"  style="width:18px; align:right;">
@@ -970,12 +1074,12 @@
 									<a href="#none" data-toggle="dropdown" id="threeMore">
 										<img src="resources/images/more.png" class="plusImg" style="width:18px; align:right;">
 									</a>
-									<script>
+<!-- 									<script>
 										$(".replyReportNext").click(function(){
 											var a = $(this).siblings().eq(0).val();
 											console.log("나는 대머리" + a);
 										});
-									</script>
+									</script> -->
 									<ul class="dropdown-menu form-wrapper" style="width:350px;border:1px solid #A8B7BC;">					
 										<li>
 											<!-- 신고 -->
@@ -1044,50 +1148,7 @@
 		</nav>
 	</div>
 
-	<!-- Edit Modal HTML -->
-	<div id="editEmployeeModal" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form>
-					<div class="modal-header">						
-						<h4 class="modal-title">댓글 수정</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					</div>
-					<div class="modal-body">					
-						<div class="form-group">
-							<label><%-- #{ reply.nickName } --%></label>
-							<input type="text" class="form-control" id="replyUpdateText" required>
-						</div>	
-					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-						<input type="submit" id="replyUpdate" class="btn btn-info" value="Save">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	<!-- Delete Modal HTML -->
-	<div id="deleteEmployeeModal" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form>
-					<div class="modal-header">						
-						<h4 class="modal-title">댓글 삭제</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					</div>
-					<div class="modal-body">					
-						<p> <br> 정말 삭제하시겠습니까?</p>
-						<p class="text-warning"><small>삭제하시면 복구할 수 없습니다.</small></p>
-					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-						<input type="submit" id="replyDelete" class="btn btn-danger" value="Delete">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
+
 	</div>
 	<!-- Modal HTML -->
 	<div id="myModal" class="modal fade">
@@ -1113,18 +1174,21 @@
 	//좋아요 조회
 	$("#replyUpdate").click(function(){
 		var vNo = "<c:out value='${list1[0].vNo}'/>";
-		var content = document.getElementById("replyUpdateText").value;
-		var userNo = "<c:out value='${list2[0].userNo}'/>";
+		var update = document.getElementById("replyUpdateText").value;
 		
-		console.log(vNo + content);
+        var repNo = $(this).siblings().eq(0).val();
+		console.log("일까:" + repNo);
+		
+		console.log(vNo  + update);
 		$.ajax({
 	        	url:"replyUpdate.vd",
 				type:"post",
 				data:{vNo:vNo,
-					  content:content},
+					  update:update,
+					  repNo:repNo},
 				success:function(data){
 					console.log("성공!");
-					$("#content").val("");
+					
 					window.location.reload();
 				},
 				error:function(){
@@ -1134,18 +1198,19 @@
 	});
 	$("#replyDelete").click(function(){
 		var vNo = "<c:out value='${list1[0].vNo}'/>";
-		var content = document.getElementById("content").value;
-		var userNo = "<c:out value='${list2[0].userNo}'/>";
 		
-		console.log(vNo + content);
+        var repNo = $(this).siblings().eq(0).val();
+		console.log(":" + repNo);
+		
+		console.log(vNo);
+		alert("d");
 		$.ajax({
 	        	url:"replyDelete.vd",
 				type:"post",
 				data:{vNo:vNo,
-					  content:content},
+					  repNo:repNo},
 				success:function(data){
 					console.log("성공!");
-					$("#content").val("");
 					window.location.reload();
 				},
 				error:function(){
@@ -1891,7 +1956,7 @@
 		 });
 	</script>
 
-	<br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 	<jsp:include page="../common/footer.jsp"></jsp:include> 
 </body>
 </html>

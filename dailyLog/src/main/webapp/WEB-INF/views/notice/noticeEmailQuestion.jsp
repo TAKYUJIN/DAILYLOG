@@ -158,10 +158,14 @@
 			<div>
 			<a href="selectNoticeQuestion.no" class="noticeLink" style="float:right; width:40%;"><h4 class="page-title4">나의 문의내역</h4></a>
 			<a href="noticeEmailQuestion.no" class="noticeLink" style="float:right; width:15%;"><h4 class="page-title5">1:1문의</h4></a>
+			<a href="noticeEmail.no" class="noticeLink" style="float:right;width:15%;"><h4 class="page-title6">이메일 문의</h4></a>
+			
 			</div>
 			<div class="">
 			<a href="selectNoticeQuestion.no" class="noticeLink" style="float:right; width:10%;"><h5>실시간 문의</h5></a>
 			<a href="noticeEmailQuestion.no" class="noticeLink" style="float:right; width:90%;"><h5>이메일 문의</h5></a>
+			<a href="noticeEmail.no" class="noticeLink" style="float:right;width:15%;"><h5>이메일 문의</h5></a>
+			
 			</div>
 		<div class="table-wrapper">
 			
