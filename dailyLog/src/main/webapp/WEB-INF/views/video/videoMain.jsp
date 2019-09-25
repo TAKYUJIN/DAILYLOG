@@ -819,6 +819,7 @@
 		           	<c:forEach var="r" items="${reply}" >
 		           		<c:if test="${r.parentNo == 0 }">
 		                <tr  style="background:none !important;">
+		                	<td><input type="text" class="repNoThis" style="display:none;"value="${r.repNo }" ></td>
 		                    <td width="60px">
 		                    	<div style="margin-top:10px;">
 									<c:if test="${r.fileNm != null}">
@@ -842,17 +843,22 @@
 		                    		</div>
 		                    		<div style="display:inline-block;">
 		                    			<div style="display:inline-block;">
-					                   		<li class="nav-item">
-												<a href="#none">
-												<img src="resources/images/heart_black.png" id="replyLike" style="width:14px;" onclick="replyLike()">
-											</a>
+		                    				<input type="text" class="repNoThis2" style="display:none;"value="${r.repNo }" >
+		                    			</div>
+		                    			<div style="display:inline-block;">
+		                    				<li class="nav-item" >
+												<!-- <a href="#none">
+												<img src="resources/images/heart_black.png"  class="replyLike" style="width:14px;" >
+											</a> -->
+											<button style="background:none; border:none;" class="replyLike"><img src="resources/images/heart_black.png" id="replyLikeImg" style="width:14px;"></button>
 											</li>
 		                    			</div>
 		                    			<div style="display:inline-block;">
-											<li class="nav-item">
-												<a href="#none">
-												<img src="resources/images/broken.png" id="replyHate" style="width:14px;" onclick="replyHate()">
-											</a>
+		                    				<li class="nav-item" >
+ 												<!-- <a href="#none">
+												<img src="resources/images/broken.png" id="replyHate" style="width:14px;">
+											</a> -->
+											<button style="background:none; border:none;" class="replyHate"><img src="resources/images/heart_black.png" id="replyHateImg" style="width:14px;"></button>
 											</li>
 		                    			</div>
 		                    			<div style="display:inline-block;">
@@ -867,7 +873,6 @@
 										<div style="display:block;">
 											<table class="table table-striped table-hover" style="background:none;">
 										           <tbody>
-										           	<c:forEach var="r" items="${reply}" >
  		                    			<c:if test="${r.parentNo != 0 }">
 										                <tr  style="background:none !important;">
 										                    <td width="60px">
@@ -915,7 +920,6 @@
 										                    </td>
 										                </tr>
 		                    		</c:if>	
-													</c:forEach>
 										           </tbody>
 										       </table>
 										</div>
@@ -964,15 +968,20 @@
 		                    	<c:if test="${r.userNo != loginUser.userNo}">
 		                        <li class="nav-item" >
 									<a href="#none" data-toggle="dropdown" id="threeMore">
-									<img src="resources/images/more.png"  style="width:18px; align:right;">
+										<img src="resources/images/more.png" class="plusImg" style="width:18px; align:right;">
 									</a>
+									<script>
+										$(".replyReportNext").click(function(){
+											var a = $(this).siblings().eq(0).val();
+											console.log("나는 대머리" + a);
+										});
+									</script>
 									<ul class="dropdown-menu form-wrapper" style="width:350px;border:1px solid #A8B7BC;">					
 										<li>
 											<!-- 신고 -->
 											<div>
 												<div class="noti_text" style="margin-top:5%; width:350px;"><b style="text-align:center;">동영상신고</b></div>
-												<div align="left" style="margin-left:10%; margin-right:10%;">
-													<input type="text" class="repNoThis" style="display:none;"value="${r.repNo }" >
+												<div align="left" style="margin-left:10%; margin-right:10%;"><!-- onclick="repNoThis(this.value);" -->
 													<table class="noti_table">
 														<tr><td>
 															<div class="checks1" style="display:inline-block;">
@@ -990,6 +999,7 @@
 														</td></tr>
 														<tr>
 															<td>
+																<input type="text" class="repNoThis" style="display:none;"value="${r.repNo }" >
 																<button style="background:#A8B7BC;display:inline-block;width:100px;margin-right:5% !important;" class="btn" id="cancle4">취소</button>
 																<button class="btn replyReportNext" style="width:100px;display:inline-block;" class="btn">다음</button><br><br>
 															</td>
@@ -1046,12 +1056,12 @@
 					<div class="modal-body">					
 						<div class="form-group">
 							<label><%-- #{ reply.nickName } --%></label>
-							<input type="text" class="form-control" required>
+							<input type="text" class="form-control" id="replyUpdateText" required>
 						</div>	
 					</div>
 					<div class="modal-footer">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-						<input type="submit" class="btn btn-info" value="Save">
+						<input type="submit" id="replyUpdate" class="btn btn-info" value="Save">
 					</div>
 				</form>
 			</div>
@@ -1067,12 +1077,12 @@
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">					
-						<p>삭제하시면 복구할 수 없습니다. <br> 정말 삭제하시겠습니까?</p>
-						<p class="text-warning"><small>This action cannot be undone.</small></p>
+						<p> <br> 정말 삭제하시겠습니까?</p>
+						<p class="text-warning"><small>삭제하시면 복구할 수 없습니다.</small></p>
 					</div>
 					<div class="modal-footer">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-						<input type="submit" class="btn btn-danger" value="Delete">
+						<input type="submit" id="replyDelete" class="btn btn-danger" value="Delete">
 					</div>
 				</form>
 			</div>
@@ -1101,17 +1111,65 @@
 	</div> 
 	<script>
 	//좋아요 조회
-	function replyLike(){
+	$("#replyUpdate").click(function(){
+		var vNo = "<c:out value='${list1[0].vNo}'/>";
+		var content = document.getElementById("replyUpdateText").value;
+		var userNo = "<c:out value='${list2[0].userNo}'/>";
+		
+		console.log(vNo + content);
+		$.ajax({
+	        	url:"replyUpdate.vd",
+				type:"post",
+				data:{vNo:vNo,
+					  content:content},
+				success:function(data){
+					console.log("성공!");
+					$("#content").val("");
+					window.location.reload();
+				},
+				error:function(){
+					console.log("실패!");
+				}
+	        });
+	});
+	$("#replyDelete").click(function(){
+		var vNo = "<c:out value='${list1[0].vNo}'/>";
+		var content = document.getElementById("content").value;
+		var userNo = "<c:out value='${list2[0].userNo}'/>";
+		
+		console.log(vNo + content);
+		$.ajax({
+	        	url:"replyDelete.vd",
+				type:"post",
+				data:{vNo:vNo,
+					  content:content},
+				success:function(data){
+					console.log("성공!");
+					$("#content").val("");
+					window.location.reload();
+				},
+				error:function(){
+					console.log("실패!");
+				}
+	        });
+	});
+	$(".replyLike").click(function(){
 		var chNo = "<c:out value='${list2[0].chNo}'/>";
 		var vNo = "<c:out value='${list1[0].vNo}'/>";
 		console.log(chNo + "::" + vNo);
+		
+        var repNo = $(this).parent().parent().siblings().eq(0).children().val();
+		console.log("나는 대머리일까:" + repNo);
+		/* var rn = $(this).parent().sibling().eq(0).parent().parent().eq(0).children().val();
+		console.log(rn); */
 		if(state == 0){
-			document.getElementById('replyLike').src = "resources/images/heart_red.png";
-			document.getElementById('replyHate').src = "resources/images/broken.png";
+				
+			$('#replyLikeImg').attr("src", "resources/images/heart_red.png");
+			$('#replyHateImg').attr("src", "resources/images/broken.png");
 			$.ajax({
 				url:"insertReplyLike.vd",
 				type:"post",
-				data:{chNo:chNo, vNo:vNo},
+				data:{chNo:chNo, vNo:vNo, repNo:repNo},
 				success:function(data){
 					console.log("insert성공!");
 					state = 1;
@@ -1123,7 +1181,7 @@
 			$.ajax({
 				url:"deleteReplyHate.vd",
 				type:"post",
-				data:{chNo:chNo, vNo:vNo},
+				data:{chNo:chNo, vNo:vNo, repNo:repNo},
 				success:function(data){
 					console.log("delete성공!");
 					state = 0;
@@ -1133,12 +1191,12 @@
 				}
 			});
 		}else {
-			document.getElementById('replyLike').src = "resources/images/heart_black.png";
+			$('#replyLikeImg').attr("src", "resources/images/heart_black.png");
 			
 			$.ajax({
 				url:"deleteReplyLike.vd",
 				type:"post",
-				data:{chNo:chNo, vNo:vNo},
+				data:{chNo:chNo, vNo:vNo, repNo:repNo},
 				success:function(data){
 					console.log("delete성공!");
 					state = 0;
@@ -1148,19 +1206,23 @@
 				}
 			});
 		}
-	}
+	});
 	//싫어요 조회
-	function replyHate(){
+	$(".replyHate").click(function(){
 		var chNo = "<c:out value='${list2[0].chNo}'/>";
 		var vNo = "<c:out value='${list1[0].vNo}'/>";
 		console.log(chNo + "::" + vNo);
+		
+		var repNo = $(this).parent().parent().siblings().eq(0).children().val();
+		console.log("나는 대머리일까:" + repNo);
+		
 		if(state == 0){
-			document.getElementById('replyHate').src = "resources/images/broken_color.png";
-			document.getElementById('replyLike').src = "resources/images/heart_black.png";
+			$('#replyHateImg').attr("src", "resources/images/broken_color.png");
+			$('#replyLikeImg').attr("src", "resources/images/heart_black.png");
 			$.ajax({
 				url:"insertReplyHate.vd",
 				type:"post",
-				data:{chNo:chNo, vNo:vNo},
+				data:{chNo:chNo, vNo:vNo, repNo:repNo},
 				success:function(data){
 					console.log("insert성공!");
 					state = 1;
@@ -1172,7 +1234,7 @@
 			$.ajax({
 				url:"deleteReplyLike.vd",
 				type:"post",
-				data:{chNo:chNo, vNo:vNo},
+				data:{chNo:chNo, vNo:vNo, repNo:repNo},
 				success:function(data){
 					console.log("delete성공!");
 					state = 0;
@@ -1182,12 +1244,11 @@
 				}
 			});
 		}else {
-			document.getElementById('replyHate').src = "resources/images/broken.png";
-			
+			$('#replyHateImg').attr("src", "resources/images/broken.png");
 			$.ajax({
 				url:"deleteReplyHate.vd",
 				type:"post",
-				data:{chNo:chNo, vNo:vNo},
+				data:{chNo:chNo, vNo:vNo, repNo:repNo},
 				success:function(data){
 					console.log("delete성공!");
 					state = 0;
@@ -1197,7 +1258,7 @@
 				}
 			});
 		}
-	}
+	});
 	$("#insertReply").click(function(){
 		var vNo = "<c:out value='${list1[0].vNo}'/>";
 		var content = document.getElementById("content").value;
@@ -1259,13 +1320,16 @@
 			$("input[name='replyReport']:checked").each(function(i){   //jQuery로 for문 돌면서 check 된값 배열에 담는다
 		  		lists.push($(this).val());
 		 	});
-			
+
+			var repNo = $(".repNoThis").val();
+			console.log("::"+repNo);
 			
 	        var userNo = "<c:out value='${list2[0].userNo}'/>";
 			var check = lists[0];
 	        var chNm = "<c:out value='${list2[0].chNm}'/>";
 	        var vTitle = "<c:out value='${list1[0].vTitle}'/>";
-			
+	        var a = $(this).siblings().eq(0).val();
+			console.log("나는 대머리다" + a);
 			console.log(lists);
 	        $.ajax({
 	        	url:"replyReport.vd",
@@ -1273,7 +1337,8 @@
 				data:{check:check, 
 					  userNo:userNo,
 					  chNm:chNm,
-					  vTitle:vTitle},
+					  vTitle:vTitle,
+					  repNo:repNo},
 				success:function(data){
 					console.log("성공!");
 					if(data == 1){
@@ -1638,6 +1703,8 @@
 			}); 
 		//후원 div 
 		 $(document).ready(function(){
+
+			 
 				$(".replyPlus").hide();
 				var check = 0;
 				$(".plus").click(function(){

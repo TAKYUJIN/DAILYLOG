@@ -427,8 +427,40 @@ public class VideoDaoImpl implements VideoDao {
 	}
 
 	@Override
+	public int insertReplyLike(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
+		
+		return sqlSession.insert("Video.insertReplyLike", map);
+	}
+	@Override
+	public int deleteReplyLike(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
+		
+		return sqlSession.delete("Video.deleteReplyLike", map);
+	}
+	@Override
+	public int insertReplyHate(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
+		
+		return sqlSession.insert("Video.insertReplyHate", map);
+	}
+	@Override
+	public int deleteReplyHate(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
+		
+		return sqlSession.delete("Video.deleteReplyHate", map);
+	}
+	@Override
+	public int replyUpdate(SqlSessionTemplate sqlSession, Map<String, Object> map) {
+		
+		return sqlSession.update("Video.replyUpdate", map);
+	}
+	@Override
+	public int replyDelete(SqlSessionTemplate sqlSession, Map<String, Object> map) {
+		
+		return sqlSession.delete("Video.replyDelete", map);
+
+
+	@Override
 	public int disCountSubNums(SqlSessionTemplate sqlSession, Map<String, Object> map) {
 		
 		return sqlSession.update("Video.disCountSubNums", map);
+
 	}
 }

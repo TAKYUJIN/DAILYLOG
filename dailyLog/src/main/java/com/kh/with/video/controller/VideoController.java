@@ -151,6 +151,68 @@ public class VideoController {
 		return Integer.toString(result);
 	}
 
+	@RequestMapping(value = "replyUpdate.vd")
+	@ResponseBody
+	public String replyUpdate(HttpServletRequest request, Model model, HttpSession session) {
+		Member m = (Member) session.getAttribute("loginUser");
+		int loginUser = m.getUserNo();
+		int vNo = Integer.parseInt(request.getParameter("vNo"));
+		String content = request.getParameter("content");
+		int userNo = Integer.parseInt(request.getParameter("userNo"));
+		String nickName = m.getNickname(); 
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("vNo", vNo);
+		map.put("loginUser", loginUser);
+		map.put("content", content);
+		map.put("userNo", userNo);
+		map.put("nickName", nickName);
+		
+		int result = vs.replyUpdate(map);
+		
+		List<Reply2> reply = vs.selectReply(map);
+		
+		int repNo = vs.repNo(map);
+		map.put("repNo", repNo);
+		
+		model.addAttribute("reply", reply);
+		model.addAttribute("result", result);
+		System.out.println("result : " + result);
+		
+		return Integer.toString(result);
+	}
+	@RequestMapping(value = "replyDelete.vd")
+	@ResponseBody
+	public String replyDelete(HttpServletRequest request, Model model, HttpSession session) {
+		Member m = (Member) session.getAttribute("loginUser");
+		int loginUser = m.getUserNo();
+		int vNo = Integer.parseInt(request.getParameter("vNo"));
+		String content = request.getParameter("content");
+		int userNo = Integer.parseInt(request.getParameter("userNo"));
+		String nickName = m.getNickname(); 
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("vNo", vNo);
+		map.put("loginUser", loginUser);
+		map.put("content", content);
+		map.put("userNo", userNo);
+		map.put("nickName", nickName);
+		
+		int result = vs.replyDelete(map);
+		
+		List<Reply2> reply = vs.selectReply(map);
+		
+		int repNo = vs.repNo(map);
+		map.put("repNo", repNo);
+		
+		model.addAttribute("reply", reply);
+		model.addAttribute("result", result);
+		System.out.println("result : " + result);
+		
+		return Integer.toString(result);
+	}
+	
+
 	// like
 	@RequestMapping(value = "selectLike.vd")
 	@ResponseBody
@@ -452,7 +514,13 @@ public class VideoController {
 		String check = request.getParameter("check");
 		String chNm = request.getParameter("chNm");
 		String vTitle = request.getParameter("vTitle");
+
+		int repNo = Integer.parseInt(request.getParameter("repNo"));
+		String nickName = m.getNickname();
+		
+
 		System.out.println(loginUser + ", " + userNo +", " + check + ", " + chNm + ", " + vTitle);
+
 
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("userNo", userNo);
@@ -462,12 +530,19 @@ public class VideoController {
 		map.put("chNm", chNm);
 		map.put("vTitle", vTitle);
 
+		map.put("repNo", repNo);
+		map.put("nickName", nickName);
+		
+
 		//select rcount, ccount
 		List<Report> count = vs.selectCount(map);
 		System.out.println(count);
 		System.out.println((count.get(0)).getCcount());
 		map.put("rCount", (count.get(0)).getRecount());
 		map.put("cCount", (count.get(0)).getCcount());
+
+		
+		System.out.println(map);
 
 		int result = vs.replyReport(map);
 
@@ -564,12 +639,18 @@ public class VideoController {
 		System.out.println(vNo);
 		System.out.println(userNo + "::" + vNo + "::" + chNo);
 
+		int repNo = Integer.parseInt(request.getParameter("repNo"));
+		
+
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("userNo", userNo);
 		map.put("vNo", vNo);
 		map.put("chNo", chNo);
 
-		int result = vs.insertLike(map);
+		map.put("repNo", repNo);
+		
+		int result = vs.insertReplyLike(map);
+
 		System.out.println("result imgCheck : " + result);
 		return Integer.toString(result);
 	}
@@ -583,12 +664,17 @@ public class VideoController {
 		int userNo = loginUser.getUserNo();
 		int vNo = Integer.parseInt(request.getParameter("vNo"));
 		int chNo = Integer.parseInt(request.getParameter("chNo"));
+		int repNo = Integer.parseInt(request.getParameter("repNo"));
+		
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("userNo", userNo);
 		map.put("vNo", vNo);
 		map.put("chNo", chNo);
 
-		int result = vs.deleteLike(map);
+		map.put("repNo", repNo);
+		
+		int result = vs.deleteReplyLike(map);
+
 		System.out.println("result imgCheck : " + result);
 		return Integer.toString(result);
 	}
@@ -604,6 +690,8 @@ public class VideoController {
 		int userNo = loginUser.getUserNo();
 		System.out.println(userNo);
 		int vNo = Integer.parseInt(request.getParameter("vNo"));
+		int repNo = Integer.parseInt(request.getParameter("repNo"));
+		
 		System.out.println(vNo);
 		System.out.println(userNo + "::" + vNo + "::" + chNo);
 
@@ -612,7 +700,10 @@ public class VideoController {
 		map.put("vNo", vNo);
 		map.put("chNo", chNo);
 
-		int result = vs.insertHate(map);
+		map.put("repNo", repNo);
+		
+		int result = vs.insertReplyHate(map);
+
 		System.out.println("result imgCheck : " + result);
 		return Integer.toString(result);
 	}
@@ -626,12 +717,17 @@ public class VideoController {
 		int userNo = loginUser.getUserNo();
 		int vNo = Integer.parseInt(request.getParameter("vNo"));
 		int chNo = Integer.parseInt(request.getParameter("chNo"));
+		int repNo = Integer.parseInt(request.getParameter("repNo"));
+		
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("userNo", userNo);
 		map.put("vNo", vNo);
 		map.put("chNo", chNo);
 
-		int result = vs.deleteHate(map);
+		map.put("repNo", repNo);
+		
+		int result = vs.deleteReplyHate(map);
+
 		System.out.println("result imgCheck : " + result);
 		return Integer.toString(result);
 	}

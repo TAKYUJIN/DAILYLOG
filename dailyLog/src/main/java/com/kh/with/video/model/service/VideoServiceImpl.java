@@ -406,12 +406,44 @@ public class VideoServiceImpl implements VideoService{
 		return vd.selectCount(sqlSession, map);
 	}
 
+	@Override
+	public int insertReplyLike(Map<String, Integer> map) {
+		
+		return vd.insertReplyLike(sqlSession, map);
+	}
+	@Override
+	public int deleteReplyLike(Map<String, Integer> map) {
+		
+		return vd.deleteReplyLike(sqlSession, map);
+	}
+	@Override
+	public int insertReplyHate(Map<String, Integer> map) {
+		
+		return vd.insertReplyHate(sqlSession, map);
+	}
+	@Override
+	public int deleteReplyHate(Map<String, Integer> map) {
+		
+		return vd.deleteReplyHate(sqlSession, map);
+	}
+	@Override
+	public int replyUpdate(Map<String, Object> map) {
+		
+		return vd.replyUpdate(sqlSession, map);
+	}
+	@Override
+	public int replyDelete(Map<String, Object> map) {
+		
+		return vd.replyDelete(sqlSession, map);
+
+
 
 
 	@Override
 	public int disCountSubNums(Map<String, Object> map) {
 		
 		return vd.disCountSubNums(sqlSession, map);
+
 	}
 }
 

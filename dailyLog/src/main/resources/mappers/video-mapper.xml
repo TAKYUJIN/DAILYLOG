@@ -95,6 +95,7 @@
 		<result property="uploadDT" column="UPLOAD_DT" />
 		<result property="fileNm" column="FILE_NM" />
 		<result property="vfileNm" column="VFILE_NM" />
+		<result property="repNo" column="REP_NO" />
 	</resultMap>
 	
 	  <resultMap type="Report" id="ReportResultSet"> 
@@ -150,7 +151,7 @@
 	
 	<insert id="insertLike" parameterType="map">
 		INSERT INTO VIDEO_LIKE
-		VALUES(LIKE_NO.NEXTVAL, #{userNo}, #{vNo}, #{chNo}, SYSDATE, '좋아요')
+		VALUES(LIKE_NO.NEXTVAL, #{userNo}, #{vNo}, #{chNo}, SYSDATE, '좋아요', NULL)
 	</insert>
 	
 	<delete id="deleteLike">
@@ -163,7 +164,7 @@
 	
 	<insert id="insertHate" parameterType="map">
 		INSERT INTO VIDEO_LIKE
-		VALUES(LIKE_NO.NEXTVAL, #{userNo}, #{vNo}, #{chNo}, SYSDATE, '싫어요')
+		VALUES(LIKE_NO.NEXTVAL, #{userNo}, #{vNo}, #{chNo}, SYSDATE, '싫어요', NULL)
 	</insert>
 	
 	<delete id="deleteHate">
@@ -176,7 +177,7 @@
 
 	<insert id="insertBookmark" parameterType="map">
 		INSERT INTO VIDEO_LIKE
-		VALUES(LIKE_NO.NEXTVAL, #{userNo}, #{vNo}, #{chNo}, SYSDATE, '북마크')
+		VALUES(LIKE_NO.NEXTVAL, #{userNo}, #{vNo}, #{chNo}, SYSDATE, '북마크', NULL)
 	</insert>
 	
 	<delete id="deleteBookmark">
@@ -401,22 +402,63 @@ WHERE TAG LIKE '%'||#{search}||'%'
 	
 	<insert id="replyReport" parameterType="map">
 		INSERT INTO REPORT
-		VALUES(RE_NO.NEXTVAL, #{loginUser}, #{userNo}, SYSDATE, #{check}, '댓글',
-		, NULL, NULL, #{chNm}, #{rCount} + 1, #{cCount} + 1)
+		VALUES(RE_NO.NEXTVAL, #{loginUser}, #{userNo}, SYSDATE, #{check}, '댓글', NULL, #{repNo}, #{chNm}, #{rCount} + 1, #{cCount} + 1)
 	</insert>
 	
 	<insert id="replyReportAlram" parameterType="map">
 		INSERT INTO ALRAM
 		VALUES(AL_NO.NEXTVAL, #{userNo}, SYSDATE, 
-		#{nickName} || '님이 댓글을 남기셨습니다.', '댓글', NULL, #{repNo}, #{vNo}, NULL)
+		#{nickName} || '님이 댓글을 남기셨습니다.', '댓글', NULL, #{repNo}, NULL, NULL)
 	</insert>
 	
+	<insert id="insertReplyLike" parameterType="map">
+		INSERT INTO VIDEO_LIKE
+		VALUES(LIKE_NO.NEXTVAL, #{userNo}, #{vNo}, #{chNo}, SYSDATE, '좋아요', #{repNo})
+	</insert>
+	
+
+	<delete id="deleteReplyLike">
+		DELETE FROM VIDEO_LIKE
+		WHERE USER_NO = #{userNo}
+		AND V_NO = #{vNo}
+		AND CH_NO = #{chNo}
+		AND V_TY = '좋아요'
+		AND REP_NO = #{repNo}
+	</delete>
+	
+	<insert id="insertReplyHate" parameterType="map">
+		INSERT INTO VIDEO_LIKE
+		VALUES(LIKE_NO.NEXTVAL, #{userNo}, #{vNo}, #{chNo}, SYSDATE, '싫어요', #{repNo})
+	</insert>
+
 	<update id="disCountSubNums" parameterType="map">
 		UPDATE LOGER
 		SET SUBNUM = SUBNUM - 1
 		WHERE CH_NO = #{chNo}
 	</update>
+
 	
+	<delete id="deleteReplyHate">
+		DELETE FROM VIDEO_LIKE
+		WHERE USER_NO = #{userNo}
+		AND V_NO = #{vNo}
+		AND CH_NO = #{chNo}
+		AND V_TY = '싫어요'
+		AND REP_NO = #{repNo}
+	</delete>
+	
+	<update id="replyUpdate">
+		UPDATE REPLY
+		SET REP_CT = #{content} 
+		WHERE USER_NO = #{loginUser}
+		AND V_NO = #{vNo}
+	</update>
+	
+	<delete id="replyDelete">
+		DELETE FROM REPLY
+		WHERE USER_NO = #{loginUser}
+		AND V_NO = #{vNo}
+	</delete>
 </mapper>
 
 
