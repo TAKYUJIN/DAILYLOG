@@ -24,9 +24,9 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <style>
 .mainpage {
-width: 1600px;
+	width: 1600px;
 	margin-top: 30px;
-	margin-left:70px;
+	margin-left: 70px;
 }
 
 .logerMainImg {
@@ -178,8 +178,8 @@ body {
 	margin-left: 30px;
 }
 
-#subscribe{
-	margin-left:430px;
+#subscribe {
+	margin-left: 430px;
 }
 
 .my-hr1 {
@@ -187,22 +187,28 @@ body {
 	height: 1px;
 	background: #A8B7BC;
 }
+
 .my-hr1 {
-    border: 0;
-    height: 1px;
-    background:#A8B7BC;
-    width:1400px;
-    margin-right:1000px;
-  }
-  .my-hr2{
-  margin-left:70px;
-      border: 0;
-    height: 1px;
-    background:#A8B7BC;
-    width:1400px;
-    margin-right:1000px;
-  }
+	border: 0;
+	height: 1px;
+	background: #A8B7BC;
+	width: 1400px;
+	margin-right: 1000px;
+}
+
+.my-hr2 {
+	margin-left: 70px;
+	border: 0;
+	height: 1px;
+	background: #A8B7BC;
+	width: 1400px;
+	margin-right: 1000px;
+}
+#subscribecancel {
+	margin-left: 450px;
+}
 </style>
+
 
 
 </head>
@@ -212,31 +218,41 @@ body {
 	<div class="mainpage">
 		<div class="logerMainImg">
 			<img src="resources/uploadFiles/${logertitleimg.fileNm}"
-				style="width:1000px; height: 200px; margin-left:130px;">
+				style="width: 1000px; height: 200px; margin-left: 130px;">
 		</div>
 		<br> <br>
 		<hr class="my-hr1">
 		<form class="navbar-form form-inline" action="search.mb" method="get">
-			<div class="input-group search-box" style="margin-left: 1200px">		
-				<input type="text" id="search" name="search"  class="form-control" placeholder="검색" >
-				  <span  class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span> 
+			<div class="input-group search-box" style="margin-left: 1200px">
+				<input type="text" id="search" name="search" class="form-control"
+					placeholder="검색"> <span class="input-group-addon"><i
+					class="material-icons">&#xE8B6;</i></span>
 			</div>
 		</form>
-		
-
-	<div class="myInfo">
-			<img src="resources/uploadFiles/${logerHomeInfo.fileNm}" width="200px"
-				height="200px">
 
 
-			<div class="textInfo" style="font-size:30px">
+		<div class="myInfo">
+			<img src="resources/uploadFiles/${logerHomeInfo.fileNm}"
+				width="200px" height="200px">
+
+
+			<div class="textInfo" style="font-size: 30px">
 				<p style="widht: 200px; margin-left: 230px; margin-top: -90px;">
 					<strong><c:out value="${logerHomeInfo.chNm}" /></strong>
 				</p>
 			</div>
-			<input type="button" id="subscribe" class="btn btn-primary"
-				value="구독">
-			<p style="widht: 200px; margin-left: 230px;font-size:20px; margin-top: -30px;">
+			<div id="subDiv">
+				<c:if test="${subcount == 0}">
+					<input type="button" id="subscribe" class="btn btn-primary"
+						value="구독">
+				</c:if>
+				<c:if test="${subcount == 1}">
+					<input type="button" id="subscribecancel" class="btn btn-primary"
+						value="구독취소">
+				</c:if>
+			</div>
+			<p
+				style="widht: 200px; margin-left: 230px; font-size: 20px; margin-top: -30px;">
 				<c:out value="${logerHomeInfo.subNum}" />
 				명
 			</p>
@@ -258,9 +274,9 @@ body {
 
 		</div>
 		<br>
-		<div class="infoarea" style="margin-left:30px">
-		<p id="textInfo">
-				<strong >통계</strong>
+		<div class="infoarea" style="margin-left: 30px">
+			<p id="textInfo">
+				<strong>통계</strong>
 			</p>
 			<P>
 				가입일 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -271,11 +287,14 @@ body {
 				<c:out value="${logerHomeInfo.subNum}" />
 				명
 			</P>
-			<br><br><br>
-			</div>
-			<hr class="my-hr1">
-			<br><br>
-			<div class="infoarea" style="margin-left:30px">
+			<br>
+			<br>
+			<br>
+		</div>
+		<hr class="my-hr1">
+		<br>
+		<br>
+		<div class="infoarea" style="margin-left: 30px">
 			<p id="textInfo">
 				<strong>채널소개</strong>
 			</p>
@@ -283,95 +302,87 @@ body {
 				<c:out value="${logerHomeInfo.chInfo}" />
 			</div>
 		</div>
-		<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+		<br> <br> <br> <br> <br> <br> <br>
+		<br> <br>
 
 	</div>
-			<script>
-			function subOk() {
+	<script>
 
-				location.href = 'subOk.lo';
+         
+         var message = '${msg}';
+         if (message == "자신의 채널은 구독 불가 입니다") {
+            alert(message);
 
-			}
-			var message = '${msg}';
-			if (message == "자신의 채널은 구독 불가 입니다") {
-				alert(message);
+         }
+         var message = '${msg}';
+         if (message == "동영상이 업로드 되었습니다!") {
+            alert(message);
+         }
 
-			}
-			var message = '${msg}';
-			if (message == "동영상이 업로드 되었습니다!") {
-				alert(message);
-			}
+         
+         $('#subscribe').click(function(){
+         
+               $.ajax({
+                  url:"subOk.lo",
+                  type:"post",
+                  data:{},
+                  success:function(data){
+                     
+                     console.log("insert성공!");
+                     
+                     
+                     var $subDiv=$('#subDiv');
+                     var $subOk=$('#subscribe');
+                     
+                     $subOk.remove();
+                     
+                     var $subOk2=
+                        ('  <input type="button" id="subscribecancel" class="btn btn-primary" value="구독취소">   ');
+                       
+                        $subDiv.append($subOk2);
 
-			var state = 0;
-			$('#subscribe').click(function(){
-			
+                  },
+                  error:function(){
+                     console.log("실패!");
+                        }
+                  });
+               }); 
+         
+         
+               $('#subscribecancel').click(function(){
+               $.ajax({
+                  url:"subCancle.lo",
+                  type:"post",
+                  data:{},
+                  success:function(data){
+                  
+                     console.log("delete성공!");
 
-				if(state == 0){
-					document.getElementById('subscribe').value = "구독중";
-					
-					$.ajax({
-						url:"subOk.lo",
-						type:"post",
-						data:{},
-						success:function(data){
-							 window.location.reload();
-							console.log("insert성공!");
+                     
+                     var $subDiv=$('#subDiv');
+                     var $subOk=$('#subscribecancel');
+                     
+                     $subOk.remove();
+                     
+                     var $subOk2=
+                        ('  <input type="button" id="subscribe" class="btn btn-primary" value="구독">   ');
+                       
+                        $subDiv.append($subOk2);
+                      
 
-							state = 1;
-						},
-						error:function(){
-							console.log("실패!");
-						}
-					});
-				}else {
-					document.getElementById('subscribe').value = "구독";
-					$.ajax({
-						url:"subCancle.lo",
-						type:"post",
-						data:{},
-						success:function(data){
-							 window.location.reload();
-							console.log("delete성공!");
+                  },
+                  error:function(){
+                     console.log("실패!");
+                        }
+                  });
+               }); 
+         
+      </script>
 
-							state = 0;
-						},
-						error:function(){
-							console.log("실패!");
-						}
-					});
-				}
-			});
-			//구독중 유지
-			$(document).ready(function(){
-				var chNo = "<c:out value='${result.chNo}'/>";
-				console.log()
-				
-				$.ajax({
-					url:"fastenSub.lo",
-					type:"post",
-					data:{chNo:chNo},  
-					success:function(data){
-						console.log("채널번호넘김성공!");
 
-						document.getElementById('subscribe').value = "구독중";
-					},
-					error:function(){
-						console.log("실패!");
-					}
-				});
-			});
-		</script>
 
-<hr class="my-hr2">
 
-		<jsp:include page="../common/footer.jsp"></jsp:include>
+
+	<jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
 </html>
