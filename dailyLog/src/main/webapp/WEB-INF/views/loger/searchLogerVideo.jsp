@@ -384,7 +384,7 @@ $(document).ready(function(){
 						<td style="vertical-align:middle"><c:out value="${v.count}"/></td>
                         <td style="vertical-align:middle">
 							<a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-                            <a class="edit" title="Edit" data-toggle="tooltip" href="updateLogerVideo.lo"><i class="material-icons">&#xE254;</i></a>
+                            <a class="edit" title="Edit" data-toggle="tooltip" onclick="location.href='selectLogerVideo.lo?userNo=${v.userNo}&vNo=${v.vNo}'"><i class="material-icons">&#xE254;</i></a>
                             <a href="#myModal" class="delete" title="Delete" data-toggle="modal"><i class="material-icons">&#xE872;</i></a>
                             
                         </td>

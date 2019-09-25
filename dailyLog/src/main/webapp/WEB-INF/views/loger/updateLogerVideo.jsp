@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,16 +18,16 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style type="text/css">
 	.table-wrapper {
-		width: 80%;
+		width: 90%;
         padding: 20px;
-        margin: 30px 0;
+       	margin-left:250px;
     }
     .selectVideo {
-		width:80%;
-		margin-left:30px;
+		width:90%;
+		margin:0 auto;
 	}
     .searchLogerVideoForm {
-		width:80%;
+		width:90%;
 		margin-top:50px;
 		text-align:left;
 	}
@@ -57,11 +60,11 @@
         table-layout: fixed;
     }
     table.table tr th, table.table tr td {
- 	   width:80%;
+ 	   width:90%;
         border-color: #e9e9e9;
     }
     table.table-striped tbody tr:nth-of-type(odd) {
-    	
+    	background:none;
 	}
     table.table th i {
         font-size: 13px;
@@ -96,7 +99,7 @@
         top: 3px;
     }    
     table.table .form-control {
-    	width:80%;
+    	width:90%;
         height: 32px;
         line-height: 32px;
         box-shadow: none;
@@ -154,15 +157,30 @@
         margin: 0 2px;
     }
     
-	input:focus {outline:none;}
 	
 	.infobtn {
 		margin-top:20px;
 		margin-bottom:20px;
-		background:#FFF;
-		border:1px solid black;
-		padding:3px;
+		width:100px;
+		border:1px solid #13334A;
+		border-radius:5px;
+		background:#13334A;
+		padding:8px;
+		color:#FFF;
 	}
+	
+	.infobtn2 {
+		margin-top:20px;
+		margin-bottom:20px;
+		width:100px;
+		border:1px solid #A8B7BC;
+		border-radius:5px;
+		background:#A8B7BC;
+		padding:8px;
+		color:#FFF;
+	}
+	
+	input:focus {outline:none;}
 	
 	.video_th {
 		vertical-align:middle;
@@ -172,7 +190,7 @@
 <body>
 <jsp:include page="../common/logerBar.jsp"></jsp:include>
     <div class="selectVideo">
-    <form action="" method="" class="searchLogerVideoForm">
+    <form action="" method="post" class="searchLogerVideoForm">
         <div class="table-wrapper">
             <div class="table-title" style="width:900px;">
                 <div class="row">
@@ -183,33 +201,41 @@
             
             <table class="table table-striped">
                 <thead>
-					<div class="info_btn col-sm-10">
+					<div class="info_btn col-sm-7">
 						<button type="button" class="infobtn">기본정보</button>
-						<button type="button" class="infobtn" onclick="addUploadVideo.lo">추가정보</button>
+						<button type="button" class="infobtn2" onclick="addUploadVideo.lo">추가정보</button>
 					</div>
-					<div class="col-sm-2">
-						<button id="uploadbtn" class="infobtn">게시</button>
+					<div class="col-sm-5">
+						<button type="submit" id="uploadbtn" class="infobtn">수정</button>
                     </div>
                 </thead>
                 <tbody>
+                	<c:forEach items="${vList}" var="v">
                     <tr>
-                		<td align="center" style="vertical-align:middle"><video width="400px;" height="250px;" controls loop>
-							<source src="" type=""><source src="nature.ogg" type=""></video>
-						<input type="text" class="video_td" id="videoTitle" placeholder="동영상제목" value=""></td>
-                    <tr>
-                    	
-                    </tr>
-                    <tr>
-                    	<td><input type="text" class="video_td" id="videoTag" style="width:400px" placeholder="태그(예:일상기록,여행,강아지,음식)" value=""></td>
+                		<td style="vertical-align:middle"><video id='my-video' class='video-js' width="500px;"
+							height="300px;" controls loop poster='resources/uploadFiles/${v.afileNm}'
+							onclick="location.href='video.vd?userNo=${v.userNo}&vNo=${v.vNo}'">
+							 <source src="resources/uploadFiles/${v.fileNm}" type='video/mp4'></video>
+						</td>
                     </tr>
                     <tr>
                     	<td>
-                    		<div style="float:right; width:50%;">정보보호여부
-                    		<select>
-	                    		<option>공개</option>
-	                    		<option>비공개</option>
+                    	<b><input type="text" class="video_td" id="videoTitle" placeholder="동영상제목" value="${v.vTitle}" 
+						style="border:none;background:transparent;font-size:20px;"></b>
+                    	</td>
+                    </tr>
+                    <tr>
+                    	<td><input type="text" class="video_td" id="videoTag" style="width:400px;border:none;background:transparent;" 
+                    	placeholder="태그(예:#일상기록 #여행 #강아지 #음식)" value="${v.tag}"></td>
+                    </tr>
+                    <tr>
+                    	<td>
+                    		<div style="float:right; width:40%;">정보보호여부
+                    		<select id="selectOpen">
+	                    		<option id="openY" value="openY">공개</option>
+	                    		<option id="openN" value="openN">비공개</option>
                     		</select></div>
-                    		<div style="float:right; width:50%;"><p>시청등급을 선택하세요</p>
+                    		<div style="float:right; width:60%;"><p>시청등급을 선택하세요</p>
                     		<input type="checkbox" class="video_td" id="videoAllArea"> 전체 시청 가능<br>
                     		<input type="checkbox" class="video_td" id="videoNineteenArea"> 19세 이상 시청 가능</div>
                     	</td>
@@ -220,16 +246,60 @@
                     		<p>광고 여부 체크 시 아래의 문구가 자동으로 기재됩니다.<br>
                     		본 컨텐츠는 유료 제품 추천, 후원, 보증과 같은 유료 광고 내용이 포함되어 있습니다.</p>
                     		<input type="checkbox" class="video_td" id="videoAdv"> 영상 내 유료 ppl 포함<br>
-                    		<input type="text" class="video_td" id="videoAdvInfo" placeholder="내용을 입력해주세요">                    	
+                    		<input type="text" class="video_td" id="videoAdvInfo" placeholder="내용을 입력해주세요"
+                    		value="${v.adInfo}" style="border: none; background: transparent;">                    	
                     	</td>
                     </tr>
                     
-                    
+                    </c:forEach>
                 </tbody>
             </table>
              
         </div>
         </form>
     </div>     
+    <script>
+
+    $(function(){
+    	var adultAut = '${adultAut}';
+    	var adYN = '${adYN}';
+    	var openTY = '${openTY}';
+    	
+    	if(adultAut == "Y"){
+    		$("input:checkbox[id='videoAllArea']").prop("checked", true);
+    		$("input:checkbox[id='videoNineteenArea']").prop("checked",false);
+    	}else{
+    		$("input:checkbox[id='videoNineteenArea']").prop("checked",true);
+    		$("input:checkbox[id='videoAllArea']").prop("checked", false);
+    	}
+    	
+    	if(adYN == "Y"){
+    		$("input:checkbox[id='videoAdv']").prop("checked", true);
+    	}else{
+    		$("input:checkbox[id='videoAdv']").prop("checked", false);
+    	}
+    	
+    	/*   if(openTY == "Y"){
+    		$("#selectOpen option:eq(0)").prop("selected", true);
+    		 $("#openY").prop("selected", true); 
+    	}else{
+    		$("#selectOpen option:eq(1)").prop("selected", false);
+    		 $("#openN").prop("selected", false);
+    	} 
+    	 */ 
+    	
+    	$("#selectOpen").on("change", function(){
+    		if(openTY == "Y"){
+    			 $("#openY").prop("selected", true); 
+    		}else{
+    			$("#openN").prop("selected", false);
+    		}
+    	 
+    	});
+
+    	
+    });
+    
+    </script>
 </body>
 </html>

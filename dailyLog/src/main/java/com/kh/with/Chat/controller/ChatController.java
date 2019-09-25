@@ -1,4 +1,4 @@
-/*package com.kh.with.Chat.controller;
+package com.kh.with.Chat.controller;
 
 import java.util.Date;
 
@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.kh.with.Chat.model.service.ChatService;
 import com.kh.with.Chat.model.vo.friend;
 import com.kh.with.member.model.vo.Member;
 
@@ -21,10 +20,8 @@ import com.kh.with.member.model.vo.Member;
 public class ChatController {
 	private static final org.slf4j.Logger logger= LoggerFactory.getLogger(ChatController.class);
 	
-	@Autowired
-	ChatService chatservice;
-	
-	@RequestMapping(value="chat.mb",method= {RequestMethod.GET,RequestMethod.POST})
+ 	
+	/*	@RequestMapping(value="chat.mb",method= {RequestMethod.GET,RequestMethod.POST})
 	public String chat (Model model,HttpServletRequest request) {
 		
 		logger.info("chat.mb Run!!!  /Run Time:"+new Date());
@@ -134,29 +131,17 @@ public class ChatController {
 		return "chat.tiles";
 	}
 	*/
+	 
 	
 
-	
-/*
- * //친구 채팅
- * 
- * @RequestMapping(value="FriendChat.mb",method=RequestMethod.GET) public String
- * frichat(HttpSession session,Model model) { Member m = (Member)
- * session.getAttribute("loginUser");
- * 
- * model.addAttribute("m"+m); System.out.println("m333"+m);
- * System.out.println("model11"+model); return "friends/FriendChatTest"; }
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * }
- */
+  //친구 채팅
+  
+  @RequestMapping(value="FriendChat.mb",method=RequestMethod.GET) public String
+  frichat(HttpSession session,Model model) { Member m = (Member)
+  session.getAttribute("loginUser");
+  
+  model.addAttribute("m"+m); System.out.println("m333"+m);
+  System.out.println("model11"+model); return "friends/frichat"; }
+  
+  
+}

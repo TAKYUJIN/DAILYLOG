@@ -133,8 +133,6 @@ public class MainController {
 				e.printStackTrace();
 			}
 			
-//			mv.addObject("dateList", dateList);
-//			mv.setViewName("jsonView");
 			
 		}
 	
@@ -390,7 +388,7 @@ public class MainController {
 		public String friendconfirm(Model model,Friend f,HttpSession session,HttpServletRequest request) {
 			  
 			  ms.friendconfirm(f);
-		      
+		/* model.addAttribute("list",friendconfirm); */
 		 	return "friends/friendconfirm"; 
 			
 			

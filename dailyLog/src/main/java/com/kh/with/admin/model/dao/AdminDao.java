@@ -78,11 +78,17 @@ public interface AdminDao {
 
 	List<ChannelBoard> channelInfo(SqlSessionTemplate sqlSession);
 
-	int monthMemberListCount(SqlSessionTemplate sqlSession);
+	String monthMemberListCount(SqlSessionTemplate sqlSession);
 
-	int weekMemberListCount(SqlSessionTemplate sqlSession);
+	String weekMemberListCount(SqlSessionTemplate sqlSession);
 
-	int dayMemberListCount(SqlSessionTemplate sqlSession);
+	String dayMemberListCount(SqlSessionTemplate sqlSession);
+
+	int monthRevenueListCount(SqlSessionTemplate sqlSession);
+
+	int weekRevenueListCount(SqlSessionTemplate sqlSession);
+
+	int dayRevenueListCount(SqlSessionTemplate sqlSession);
 
 
 

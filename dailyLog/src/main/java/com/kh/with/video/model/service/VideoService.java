@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.member.model.vo.Member;
+import com.kh.with.report.model.vo.Report;
 import com.kh.with.video.model.vo.Attachment;
 import com.kh.with.video.model.vo.Reply2;
 import com.kh.with.video.model.vo.Video;
@@ -128,11 +129,25 @@ public interface VideoService {
 
 	int repNo(Map<String, Object> map);
 
+
 	//기존구독자수 셀렉
 	Loger resultSubnum(Loger loger);
 
 	//구독자수 업데이트
 	int subBumUpdate(Loger loger1);
+
+	int updateCount(Map<String, Object> map);
+
+	int countSubNum(Map<String, Object> map);
+
+	int disCountSubNum(Map<String, Object> map);
+
+	int replyReport(Map<String, Object> map);
+
+	int replyReprtAlram(Map<String, Object> map);
+
+	List<Report> selectCount(Map<String, Object> map);
+
 
 
 	

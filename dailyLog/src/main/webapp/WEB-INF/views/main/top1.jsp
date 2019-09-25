@@ -578,7 +578,7 @@ color: black; text-decoration: none;
 					 <input type="hidden"  id="vNo" name="vNo" value="${videoimage.vNo}"/>
 					  <input type="hidden"  id="chNm" name="chNm" value="${videoimage.chNm}" > 
 					  <input type="hidden" id="vTitle" name="vTitle" value="${videoimage.vTitle}">
-				    <input type="submit" value="완료" class="btn btn-info">
+				    <input type="submit" value="완료" class="btn btn-info" id="alram">
         			<input type="reset" value="취소" class="btn btn-default"> 	</form> </div></li>
 					<li><div  id="blockch">
 					<form action="blockvi.rp" method="post" >
@@ -627,7 +627,7 @@ color: black; text-decoration: none;
 					 <input type="hidden"  id="vNo" name="vNo" value="${videoimage.vNo}"/>
 					 <input type="hidden" id="vTitle" name="vTitle" value="${videoimage.vTitle}">
 					  <input type="hidden"  id="chNm" name="chNm" value="${videoimage.chNm}" > 
-				    <input type="submit" value="완료" class="btn btn-info">
+				    <input type="submit" value="완료" class="btn btn-info" id="alram">
         			<input type="reset" value="취소" class="btn btn-default"> 	</form> </div></li>
 					<li><div  id="blockch">
 					<form action="blockvi.rp" method="post" >
@@ -678,7 +678,7 @@ color: black; text-decoration: none;
 					 <input type="hidden"  id="vNo" name="vNo" value="${videoimage.vNo}"/>
 					 <input type="hidden" id="vTitle" name="vTitle" value="${videoimage.vTitle}">
 					  <input type="hidden"  id="chNm" name="chNm" value="${videoimage.chNm}" > 
-				    <input type="submit" value="완료" class="btn btn-info">
+				    <input type="submit" value="완료" class="btn btn-info" id="alram">
         			<input type="reset" value="취소" class="btn btn-default"> 	</form> </div></li>
 					<li><div  id="blockch">
 					<form action="blockvi.rp" method="post" >
@@ -731,7 +731,7 @@ color: black; text-decoration: none;
 					 <input type="text"  id="vNo" name="vNo" value="${videoimage.vNo}"/>
 					 <input type="hidden" id="vTitle" name="vTitle" value="${videoimage.vTitle}">
 					  <input type="hidden"  id="chNm" name="chNm" value="${videoimage.chNm}" > 
-				    <input type="submit" value="완료" class="btn btn-info">
+				    <input type="submit" value="완료" class="btn btn-info" id="alram">
         			<input type="reset" value="취소" class="btn btn-default"> 	</form> </div></li>
 					<li><div  id="blockch">
 					<form action="blockvi.rp" method="post" >

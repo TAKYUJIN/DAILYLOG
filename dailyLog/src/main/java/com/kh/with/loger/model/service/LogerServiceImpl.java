@@ -221,6 +221,12 @@ public class LogerServiceImpl implements LogerService{
 		return ld.subUserInfo(sqlSession, subUserInfo);
 	}
 
+
+	@Override
+	public ArrayList<Video> selectLogerVideo(Loger l) {
+		return ld.selectLogerVideo(sqlSession, l);
+	}
+
 	
 
 

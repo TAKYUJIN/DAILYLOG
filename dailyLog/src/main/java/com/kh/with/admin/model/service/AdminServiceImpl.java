@@ -196,19 +196,35 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	
+	//통계
 	@Override
-	public int monthMemberListCount() {
+	public String monthMemberListCount() {
 		return ad.monthMemberListCount(sqlSession);
 	}
 
 	@Override
-	public int weekMemberListCount() {
+	public String weekMemberListCount() {
 		return ad.weekMemberListCount(sqlSession);
 	}
 
 	@Override
-	public int dayMemberListCount() {
+	public String dayMemberListCount() {
 		return ad.dayMemberListCount(sqlSession);
+	}
+
+	@Override
+	public int monthRevenueListCount() {
+		return ad.monthRevenueListCount(sqlSession);
+	}
+
+	@Override
+	public int weekRevenueListCount() {
+		return ad.weekRevenueListCount(sqlSession);
+	}
+
+	@Override
+	public int dayRevenueListCount() {
+		return ad.dayRevenueListCount(sqlSession);
 	}
 	
 

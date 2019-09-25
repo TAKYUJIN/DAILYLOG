@@ -155,12 +155,12 @@
                             </tr>
                         </thead>
                             <tbody>
-                           
+                         
                              <c:forEach var="MailVo" items="${list}">
                              <tr>
-                             <td><input type="checkbox" name="list" id="ex_chk3" value="${MailVo.friId}">
+                             <td><input type="checkbox" name="list" id="ex_chk3" value="${MailVo.nickname}">
  			   
- 		     		 ${MailVo.friId}
+ 		     		 ${MailVo.nickname}
  				   </td> 
  				 		</tr>
  				 		</c:forEach>

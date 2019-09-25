@@ -42,6 +42,7 @@
 		<id property="repNo" column="REP_NO" />
 		<result property="userNo" column="USER_NO" />
 		<result property="vNo" column="V_NO" />
+		<result property="parentNo" column="PARENT_NO" />
 		<result property="repDt" column="REP_DT" />
 		<result property="repCt" column="REP_CT" />
 		<result property="repTy" column="REP_TY" />
@@ -51,6 +52,7 @@
 		<id property="repNo" column="REP_NO" />
 		<result property="userNo" column="USER_NO" />
 		<result property="vNo" column="V_NO" />
+		<result property="parentNo" column="PARENT_NO" />
 		<result property="repDt" column="REP_DT" />
 		<result property="repCt" column="REP_CT" />
 		<result property="repTy" column="REP_TY" />
@@ -94,6 +96,22 @@
 		<result property="fileNm" column="FILE_NM" />
 		<result property="vfileNm" column="VFILE_NM" />
 	</resultMap>
+	
+	  <resultMap type="Report" id="ReportResultSet"> 
+	    <id property="reno" column="RE_NO"/>
+		<result property="userNo" column="USER_NO" />
+		<result property="chNm" column="CH_NM" />
+        <result property="retarget" column="RE_TARGET"/>
+        <result property="redt" column="RE_DT"/>
+        <result property="rewhy" column="RE_WHY"/>
+        <result property="rety" column="RE_TY"/>
+        <result property="vNo" column="V_NO"/>
+        <result property="repno" column="REP_NO"/>
+          <result property="recount" column="RE_COUNT"/>
+          <result property="ccount" column="C_COUNT"/>
+     </resultMap> 
+     
+     
 	<!-- 업로드할 동영상 정보 insert 쿼리 -->
  
     <insert id="insertVideoInfo" parameterType="Video">       
@@ -242,7 +260,7 @@ WHERE TAG LIKE '%'||#{search}||'%'
 	<insert id="insertReport" parameterType="map">
 		INSERT INTO REPORT
 		VALUES(RE_NO.NEXTVAL, #{loginUser}, #{userNo}, SYSDATE, #{check}, '동영상', #{vNo}
-		, NULL, NULL, #{rCount} + 1, #{cCount} + 1)
+		, NULL, #{chNm}, #{rCount} + 1, #{cCount} + 1)
 	</insert>
 	
 	<insert id="insertBlock" parameterType="map">
@@ -266,9 +284,12 @@ WHERE TAG LIKE '%'||#{search}||'%'
 	
 	<select id="selectThumb" parameterType="map" resultType="String">
 		SELECT FILE_NM
-		FROM ATTACHMENT
-		WHERE AM_TY = '썸네일'
-		AND V_NO = #{vNo}
+		FROM (SELECT FILE_NM,
+		      RANK() OVER(ORDER BY FILE_NM ASC) AS R
+		      FROM ATTACHMENT
+		      WHERE AM_TY = '썸네일'
+		      AND V_NO = #{vNo})
+		WHERE R = 1
 	</select>
 	
 	<select id="selectProfile" parameterType="map" resultType="String">
@@ -334,7 +355,7 @@ WHERE TAG LIKE '%'||#{search}||'%'
 	
 	<insert id="insertReply" parameterType="map">
 		INSERT INTO REPLY
-		VALUES(REP_NO.NEXTVAL, #{loginUser}, #{vNo}, SYSDATE, #{content}, DEFAULT)
+		VALUES(REP_NO.NEXTVAL, #{loginUser}, #{vNo}, NULL, SYSDATE, #{content}, DEFAULT)
 	</insert>
 	
 	<select id="repNo" parameterType="map" resultType="int">
@@ -353,6 +374,42 @@ WHERE TAG LIKE '%'||#{search}||'%'
 		#{nickName} || '님이 댓글을 남기셨습니다.', '댓글', NULL, #{repNo}, #{vNo}, NULL)
 	</insert>
 	
+	<update id="updateCount" parameterType="map">
+		UPDATE VIDEO
+		SET COUNT = COUNT + 1
+		WHERE V_NO = #{vNo}
+	</update>
+	
+	<update id="countSubNum" parameterType="map">
+		UPDATE LOGER
+		SET SUBNUM = SUBNUM + 1
+		WHERE CH_NO = #{chNo}
+	</update>
+	
+	<update id="disCountSubNum" parameterType="map">
+		UPDATE LOGER
+		SET SUBNUM = SUBNUM - 1
+		WHERE CH_NO = #{chNo}
+	</update>
+	
+	<select id="selectCount" parameterType="map" resultMap="ReportResultSet">
+		SELECT RE_COUNT, C_COUNT
+		FROM (SELECT NVL(SUM(RE_COUNT), 0) AS RE_COUNT, NVL(SUM(C_COUNT), 0) AS C_COUNT
+		      FROM REPORT
+		      WHERE RE_TARGET = #{userNo})
+	</select>
+	
+	<insert id="replyReport" parameterType="map">
+		INSERT INTO REPORT
+		VALUES(RE_NO.NEXTVAL, #{loginUser}, #{userNo}, SYSDATE, #{check}, '댓글',
+		, NULL, NULL, #{chNm}, #{rCount} + 1, #{cCount} + 1)
+	</insert>
+	
+	<insert id="replyReportAlram" parameterType="map">
+		INSERT INTO ALRAM
+		VALUES(AL_NO.NEXTVAL, #{userNo}, SYSDATE, 
+		#{nickName} || '님이 댓글을 남기셨습니다.', '댓글', NULL, #{repNo}, #{vNo}, NULL)
+	</insert>
 	
 	
 </mapper>

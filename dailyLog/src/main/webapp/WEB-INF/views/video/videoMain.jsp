@@ -440,7 +440,7 @@
 											</c:if>
 										</div>
 									</a>
-									<ul class="dropdown-menu form-wrapper" style="width:280px;border:1px solid #A8B7BC;">					
+									<%-- <ul class="dropdown-menu form-wrapper" style="width:280px;border:1px solid #A8B7BC;">					
 										<li>
 											<div class="form-group" id="pro">
 												<table class="noti_table">
@@ -511,7 +511,7 @@
 											</div>
 											
 										</li>
-									</ul>
+									</ul> --%>
 								</li>
 
 
@@ -817,6 +817,7 @@
 		       <table class="table table-striped table-hover">
 		           <tbody>
 		           	<c:forEach var="r" items="${reply}" >
+		           		<c:if test="${r.parentNo == 0 }">
 		                <tr  style="background:none !important;">
 		                    <td width="60px">
 		                    	<div style="margin-top:10px;">
@@ -862,12 +863,12 @@
 		                    			<div style="margin-top:5%;">
 		                    				<input type="button" class="plus" style="background:none;  margin-right:10%; border:none;" value="답글 ${fn:length(reply)}개 더보기">
 		                    			</div>
-<%-- 		                    			
  										<div class="replyPlus">
 										<div style="display:block;">
 											<table class="table table-striped table-hover" style="background:none;">
 										           <tbody>
-										           	<c:forEach var="re" items="${reReply}" >
+										           	<c:forEach var="r" items="${reply}" >
+ 		                    			<c:if test="${r.parentNo != 0 }">
 										                <tr  style="background:none !important;">
 										                    <td width="60px">
 										                    	<div style="margin-top:10px;">
@@ -913,13 +914,12 @@
 										                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><img src="resources/images/more.png" style="width:18px;"></a>
 										                    </td>
 										                </tr>
+		                    		</c:if>	
 													</c:forEach>
 										           </tbody>
 										       </table>
 										</div>
 									</div>                     			
-		                    			
-		                    			 --%>
 		                    			
 		                    			
 		                    		</div>
@@ -969,28 +969,29 @@
 									<ul class="dropdown-menu form-wrapper" style="width:350px;border:1px solid #A8B7BC;">					
 										<li>
 											<!-- 신고 -->
-											<div id="report1">
+											<div>
 												<div class="noti_text" style="margin-top:5%; width:350px;"><b style="text-align:center;">동영상신고</b></div>
 												<div align="left" style="margin-left:10%; margin-right:10%;">
+													<input type="text" class="repNoThis" style="display:none;"value="${r.repNo }" >
 													<table class="noti_table">
 														<tr><td>
-															<div class="checks" style="display:inline-block;">
-										                      <div style="display:inline-block;"><input type="radio" id="more1" value="원치 않는 상업적 콘텐츠 또는 스팸" name="more" onclick="oneCheckbox(this)"></div>
+															<div class="checks1" style="display:inline-block;">
+										                      <div style="display:inline-block;"><input type="radio" id="more1" value="원치 않는 상업적 콘텐츠 또는 스팸" name="replyReport" onclick="oneCheckbox(this)"></div>
 										                      <div style="display:inline-block;"><label for="more1">원치 않는 상업적 콘텐츠 또는 스팸</label></div><br>
-										                      <div style="display:inline-block;"><input type="radio" id="more2" value="포르노 또는 음란물" name="more" onclick="oneCheckbox(this)"></div> 
+										                      <div style="display:inline-block;"><input type="radio" id="more2" value="포르노 또는 음란물" name="replyReport" onclick="oneCheckbox(this)"></div> 
 										                      <div style="display:inline-block;"><label for="more2">포르노 또는 음란물</label></div><br>
-										                      <div style="display:inline-block;"><input type="radio" id="more5" value="아동 학대" name="more" onclick="oneCheckbox(this)"></div> 
-										                      <div style="display:inline-block;"><label for="more2">아동 학대</label></div><br>
-										                      <div style="display:inline-block;"><input type="radio" id="more8" value="증오심 표현 또는 노골적인 폭력" name="more" onclick="oneCheckbox(this)"></div> 
-										                      <div style="display:inline-block;"><label for="more2">증오심 표현 또는 노골적인 폭력</label></div><br>
-										                      <div style="display:inline-block;"><input type="radio" value="희롱 또는 괴롭힘" id="more9" name="more" onclick="oneCheckbox(this)"></div> 
-										                      <div style="display:inline-block;"><label for="more3">희롱 또는 괴롭힘</label></div><br>
+										                      <div style="display:inline-block;"><input type="radio" id="more5" value="아동 학대" name="replyReport" onclick="oneCheckbox(this)"></div> 
+										                      <div style="display:inline-block;"><label for="more5">아동 학대</label></div><br>
+										                      <div style="display:inline-block;"><input type="radio" id="more8" value="증오심 표현 또는 노골적인 폭력" name="replyReport" onclick="oneCheckbox(this)"></div> 
+										                      <div style="display:inline-block;"><label for="more8">증오심 표현 또는 노골적인 폭력</label></div><br>
+										                      <div style="display:inline-block;"><input type="radio" value="희롱 또는 괴롭힘" id="more9" name="replyReport" onclick="oneCheckbox(this)"></div> 
+										                      <div style="display:inline-block;"><label for="more9">희롱 또는 괴롭힘</label></div><br>
 										                    </div>
 														</td></tr>
 														<tr>
 															<td>
 																<button style="background:#A8B7BC;display:inline-block;width:100px;margin-right:5% !important;" class="btn" id="cancle4">취소</button>
-																<button id="reportNext" style="width:100px;display:inline-block;" class="btn">다음</button><br><br>
+																<button class="btn replyReportNext" style="width:100px;display:inline-block;" class="btn">다음</button><br><br>
 															</td>
 														</tr>
 													</table>
@@ -1002,6 +1003,7 @@
 								</c:if>
 		                    </td>
 		                </tr>
+		                </c:if>
 					</c:forEach>
 		           </tbody>
 		           <tfoot>
@@ -1043,7 +1045,7 @@
 					</div>
 					<div class="modal-body">					
 						<div class="form-group">
-							<label>#{ reply.nickName }</label>
+							<label><%-- #{ reply.nickName } --%></label>
 							<input type="text" class="form-control" required>
 						</div>	
 					</div>
@@ -1251,6 +1253,41 @@
 	        var check = a.value;
 	        return check;
 	    }
+	    //댓글신고
+	    $('.replyReportNext').click(function(){
+			var lists = [];
+			$("input[name='replyReport']:checked").each(function(i){   //jQuery로 for문 돌면서 check 된값 배열에 담는다
+		  		lists.push($(this).val());
+		 	});
+			
+			
+	        var userNo = "<c:out value='${list2[0].userNo}'/>";
+			var check = lists[0];
+	        var chNm = "<c:out value='${list2[0].chNm}'/>";
+	        var vTitle = "<c:out value='${list1[0].vTitle}'/>";
+			
+			console.log(lists);
+	        $.ajax({
+	        	url:"replyReport.vd",
+				type:"post",
+				data:{check:check, 
+					  userNo:userNo,
+					  chNm:chNm,
+					  vTitle:vTitle},
+				success:function(data){
+					console.log("성공!");
+					if(data == 1){
+						alert("신고가 정상접수 되었습니다.");
+					}else {
+						alert("신고 접수 실패하였습니다.");
+					}
+				},
+				error:function(){
+					console.log("실패!");
+				}
+	        });
+	        
+		});
 	  //신고
 		$('#reportNext').click(function(){
 			var lists = [];
@@ -1334,8 +1371,6 @@
 						userNo:userNo},
 					success:function(data){
 						console.log("insert성공!");
-						$("#subscribe1").hide();
-						$("#subscribe2").show();
 						state = 1;
 					},
 					error:function(){
@@ -1352,8 +1387,6 @@
 						userNo:userNo},
 					success:function(data){
 						console.log("delete성공!");
-						$("#subscribe1").show();
-						$("#subscribe2").hide();
 						state = 0;
 					},
 					error:function(){
@@ -1605,7 +1638,7 @@
 			}); 
 		//후원 div 
 		 $(document).ready(function(){
-				$(".replyPlus").click().hide();
+				$(".replyPlus").hide();
 				var check = 0;
 				$(".plus").click(function(){
 					if(check == 0){
@@ -1791,7 +1824,7 @@
 		 });
 	</script>
 
-	<br><br>
+	<br><br><br><br><br><br><br><br>
 	<jsp:include page="../common/footer.jsp"></jsp:include> 
 </body>
 </html>

@@ -7,7 +7,7 @@ import com.kh.with.websocket.model.vo.ChatMember;
 
 public interface FriendChatService {
 
-public Chat checkRoom(String name) throws Exception;
+public int checkRoom(String name) throws Exception;
 	
 	public void createChatRoom(Chat dto) throws Exception;
 	

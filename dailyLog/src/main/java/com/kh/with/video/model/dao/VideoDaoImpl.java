@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.member.model.vo.Member;
+import com.kh.with.report.model.vo.Report;
 import com.kh.with.video.model.vo.Attachment;
 import com.kh.with.video.model.vo.Reply2;
 import com.kh.with.video.model.vo.Video;
@@ -394,5 +395,34 @@ public class VideoDaoImpl implements VideoDao {
 		return sqlSession.update("Loger.subBumUpdate", loger1);
 	}
 	
-	
+	@Override
+	public int updateCount(SqlSessionTemplate sqlSession, Map<String, Object> map) {
+		
+		return sqlSession.update("Video.updateCount", map);
+	}
+	@Override
+	public int countSubNum(SqlSessionTemplate sqlSession, Map<String, Object> map) {
+		
+		return sqlSession.update("Video.countSubNum", map);
+	}
+	@Override
+	public int disCountSubNum(SqlSessionTemplate sqlSession, Map<String, Object> map) {
+		
+		return sqlSession.update("Video.disCountSubNum", map);
+	}
+	@Override
+	public int replyReport(SqlSessionTemplate sqlSession, Map<String, Object> map) {
+		
+		return sqlSession.insert("Video.replyReport", map);
+	}
+	@Override
+	public int replyReportAlram(SqlSessionTemplate sqlSession, Map<String, Object> map) {
+		
+		return sqlSession.insert("Video.replyReportAlram", map);
+	}
+	@Override
+	public List<Report> selectCount(SqlSessionTemplate sqlSession, Map<String, Object> map) {
+		
+		return sqlSession.selectList("Video.selectCount", map);
+	}
 }

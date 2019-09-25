@@ -440,7 +440,7 @@ $('#friendlist').click(function(){
                      <div class="noti_text" align="center" style="color:black;"><p><b>알림</b></p></div>
                      <div class="form-group">
                      <div id="inputArea" align="center" style="display:none;">
-						<input type="hidden" name="tryMoney" id="tryMoney" value="${sessionScope.loginUser.nickname}">
+						<input type="hidden" name="tryMoney" id="tryMoney" value="${sessionScope.loginUser.userNo}">
 					</div>
                      <div id="history">
                      <table id="alramTable">
@@ -545,6 +545,12 @@ $('#friendlist').click(function(){
  		});
  	}
  	
+ 	$("#alram").click(function(){
+ 		var userNo = tryMoney.val();
+ 		console.log(userNo);
+ 	});
+ 	
+ 	
 		$(function(){
 			getConnection2();
 			
@@ -557,7 +563,8 @@ $('#friendlist').click(function(){
 				}
 				//서버로부터 메세지를 전달 받을 때 동작하는 메소드
 				ws.onmessage = function(event){
-					onMessage(event);
+					onMessage(event); 
+					
 				}
 				
 				//서버에서 에러가 발생할 경우 동작할 메소드
@@ -567,7 +574,8 @@ $('#friendlist').click(function(){
 				
 				//서버와의 연결이 종료될 경우 동작하는 메소드
 				ws.onclose = function(event){
-					onClose(event);
+					/* onClose(event); */
+					$("#alram").css("-webkit-transform", "scale(1)");
 				}
 			
 			}
@@ -580,7 +588,7 @@ $('#friendlist').click(function(){
 			}
 			
 			function onMessage(event){
-				var serverMessage = event.data.split(":");
+				/* var serverMessage = event.data.split(":");
 				
 				var productName = serverMessage[0];
 				var startPrice = serverMessage[1];
@@ -597,7 +605,25 @@ $('#friendlist').click(function(){
 				$productName.html(productName);
 				$startPrice.html(startPrice);
 				$currentPrice.html(currentPrice);
-				$remainTime.html(remainHour + " : " + remainMin + " : " + remainSec);
+				$remainTime.html(remainHour + " : " + remainMin + " : " + remainSec); */
+				var result = event.data;
+				console.log(result);
+				if(result != null){
+					var set = setInterval(function()
+			  			    {
+			  			    	  $("#alram").css("-webkit-transform", "scale(1)");
+			  			    },500);
+
+			  		 var set2 = setInterval(function()
+			   			    {
+			  			 $("#alram").css("-webkit-transform", "scale(1.2)");
+			   			    },1000);
+
+			  		$("#alram").click(function(){
+				    		clearInterval(set);
+				    		clearInterval(set2);
+				    	  });
+				}
 				
 				
 			} 
@@ -641,11 +667,30 @@ $('#friendlist').click(function(){
 			}
 			
 			function onMessage2(event){
-				var msg = event.data.split(":");
+				/* var msg = event.data.split(":");
 				var user = msg[0];
 				var contents = msg[1];
-				/* $("#currentPrice").html(price); */
-				$("#history").append("<span>" + contents + "님이 " + "구독하셨습니다.</span><br>");
+				$("#currentPrice").html(price);
+				$("#history").append("<span>" + contents + "님이 " + "구독하셨습니다.</span><br>"); */
+				
+				var result = event.data;
+				console.log(result);
+				if(result != null){
+					var set = setInterval(function()
+			  			    {
+			  			    	  $("#alram").css("-webkit-transform", "scale(1)");
+			  			    },500);
+
+			  		 var set2 = setInterval(function()
+			   			    {
+			  			 $("#alram").css("-webkit-transform", "scale(1.2)");
+			   			    },1000);
+
+			  		$("#alram").click(function(){
+				    		clearInterval(set);
+				    		clearInterval(set2);
+				    	  });
+				}
 			}
 			
 			function onError2(event){

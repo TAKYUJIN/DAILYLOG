@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <style>
 	
@@ -34,9 +37,9 @@
       function drawChart() {
           var data = google.visualization.arrayToDataTable([
             ['Date', '매출 (만)', '회원수'],
-            ['month', 150, 150],
-            ['week', 50, 100],
-            ['day', 12, 30]
+            ['month', ${rrMonth}, ${mMonth}],
+            ['week', ${rrWeek}, ${mWeek}],
+            ['day', ${rrDay}, ${mDay}]
           ]);
 
           var options = {
@@ -53,11 +56,10 @@
       
       function drawChart1() {
         var data = google.visualization.arrayToDataTable([
-          ['Date', '매출 (만)', '회원수'],
-          ['3month', 300, 200],
-          ['month', 150, 150],
-          ['week', 50, 100],
-          ['day', 12, 30]
+          ['Date', '매출 (만)'],
+          ['month', ${rrMonth}],
+          ['week', ${rrWeek}],
+          ['day', ${rrDay}]
         ]);
 
         var options = {
@@ -74,11 +76,10 @@
 
       function drawChart2() {
         var data = google.visualization.arrayToDataTable([
-          ['Date', '매출 (만)', '회원수'],
-          ['3month', 300, 200],
-          ['month', 150, 150],
-          ['week', 50, 100],
-          ['day', 12, 30]
+          ['Date', '회원수'],
+          ['month', ${mMonth}],
+          ['week', ${mWeek}],
+          ['day', ${mDay}]
         ]);
 
         var options = {
@@ -96,10 +97,10 @@
   </head>
   <body>
   	<div class="statisDiv">
-  	<h3 style="margin-left:250px;">DailyLog Chart</h3>
-  	<div id="columnchart_material" style="width:800px; height:500px; background:none;"></div>
-    <!-- <div id="columnchart_material1" style="height:500px; background:none; float:right; width:50%;"></div>
-    <div id="columnchart_material2" style="height:500px; background:none; float:right; width:50%;"></div> -->
+  	<h3 style="margin-left:60px;">DailyLog Chart (회원수, 매출)</h3>
+  	<!-- <div id="columnchart_material" style="width:800px; height:500px; background:none;"></div> -->
+    <div id="columnchart_material1" style="height:500px; background:none; float:right; width:43%;margin-right:50px;"></div>
+    <div id="columnchart_material2" style="height:500px; background:none; float:right; width:43%;margin-right:100px;"></div>
     </div>
   </body>
 </html>

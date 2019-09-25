@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.member.model.vo.Member;
+import com.kh.with.report.model.vo.Report;
 import com.kh.with.video.model.dao.VideoDao;
 import com.kh.with.video.model.vo.Attachment;
 import com.kh.with.video.model.vo.Reply2;
@@ -373,8 +374,37 @@ public class VideoServiceImpl implements VideoService{
 		return vd.subBumUpdate(sqlSession, loger1);
 	}
 	
+	@Override
+	public int updateCount(Map<String, Object> map) {
+		
+		return vd.updateCount(sqlSession, map);
+	}
 	
-	
+	@Override
+	public int countSubNum(Map<String, Object> map) {
+		
+		return vd.countSubNum(sqlSession, map);
+	}
+	@Override
+	public int disCountSubNum(Map<String, Object> map) {
+		
+		return vd.disCountSubNum(sqlSession, map);
+	}
+	@Override
+	public int replyReport(Map<String, Object> map) {
+		
+		return vd.replyReport(sqlSession, map);
+	}
+	@Override
+	public int replyReprtAlram(Map<String, Object> map) {
+		
+		return vd.replyReportAlram(sqlSession, map);
+	}
+	@Override
+	public List<Report> selectCount(Map<String, Object> map) {
+		
+		return vd.selectCount(sqlSession, map);
+	}
 }
 
 

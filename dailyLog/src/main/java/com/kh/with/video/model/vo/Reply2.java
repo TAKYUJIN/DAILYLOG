@@ -11,11 +11,12 @@ public class Reply2 implements java.io.Serializable{
 	private String repTy;	//댓글구분
 	private String fileNm;
 	private String nickName;
+	private int parentNo;
 	
 	public Reply2() {}
 
 	public Reply2(int repNo, int userNo, int vNo, Date repDt, String repCt, String repTy, String fileNm,
-			String nickName) {
+			String nickName, int parentNo) {
 		super();
 		this.repNo = repNo;
 		this.userNo = userNo;
@@ -25,6 +26,7 @@ public class Reply2 implements java.io.Serializable{
 		this.repTy = repTy;
 		this.fileNm = fileNm;
 		this.nickName = nickName;
+		this.parentNo = parentNo;
 	}
 
 	public int getRepNo() {
@@ -91,10 +93,19 @@ public class Reply2 implements java.io.Serializable{
 		this.nickName = nickName;
 	}
 
+	public int getParentNo() {
+		return parentNo;
+	}
+
+	public void setParentNo(int parentNo) {
+		this.parentNo = parentNo;
+	}
+
 	@Override
 	public String toString() {
 		return "Reply2 [repNo=" + repNo + ", userNo=" + userNo + ", vNo=" + vNo + ", repDt=" + repDt + ", repCt="
-				+ repCt + ", repTy=" + repTy + ", fileNm=" + fileNm + ", nickName=" + nickName + "]";
+				+ repCt + ", repTy=" + repTy + ", fileNm=" + fileNm + ", nickName=" + nickName + ", parentNo="
+				+ parentNo + "]";
 	}
 
 }

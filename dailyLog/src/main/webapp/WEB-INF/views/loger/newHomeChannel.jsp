@@ -238,9 +238,15 @@ body {
 					<strong><c:out value="${result.chNm}" /></strong>
 				</p>
 			</div>
+
 			<input type="button" id="subscribe" class="btn btn-primary"
 				value="구독">
 			<p style="widht: 200px; margin-left: 230px;font-size:20px; margin-top: -30px;">
+
+			<!-- <button id="subscribebtn" class="btn btn-primary" onclick="subOk();" >구독</button> -->
+			<input type="button" id="subscribebtn"  class="btn btn-primary" onclick="subOk();" value="구독">
+			<p style="widht: 200px; margin-left: 130px; margin-top: -10px;">
+
 				<c:out value="${result.subNum}" />
 				명
 			</p>
@@ -357,6 +363,7 @@ border-radius: 7px;
 <hr class="my-hr2">
 		<script>
 			
+
 			var message = '${msg}';
 			if (message == "자신의 채널은 구독 불가 입니다") {
 				alert(message);
@@ -408,6 +415,26 @@ border-radius: 7px;
 		</script>
 
 
+  <!--
+		}
+		var message = '${msg}';
+	    if(message == "자신의 채널은 구독 불가 입니다"){
+			 alert(message); 
+	    	
+	    }
+	    var message = '${msg}';
+	    if(message == "동영상이 업로드 되었습니다!"){
+			 alert(message); 
+	    }
+	
+	    var message = '${msg}';
+	    if(message == "구독되었습니다"){
+			 alert(message); 
+			 document.getElementById('subscribebtn').value = "구독중";
+	    	
+	    }
+	</script> -->
+	
 
 
 
