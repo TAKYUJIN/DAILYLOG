@@ -155,8 +155,10 @@ SqlSession sqlSession;
 private String ns = "FriendChat.";
 
 @Override
-public Chat  checkRoom(String name) throws Exception {
+public int  checkRoom(String name) throws Exception {
+	System.out.println("name111"+name);
 	return sqlSession.selectOne(ns+"getRoom", name);
+	
 }
 
 @Override

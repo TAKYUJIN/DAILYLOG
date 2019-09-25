@@ -9,6 +9,8 @@ public class Chat {
 	private int Totalcount;
 	private int remaincount;
 	private String content;
+	
+	public Chat() {}
 	public Chat(int num, String name, String pwd, int totalcount, int remaincount, String content) {
 		super();
 		this.num = num;
