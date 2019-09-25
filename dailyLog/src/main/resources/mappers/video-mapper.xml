@@ -411,6 +411,11 @@ WHERE TAG LIKE '%'||#{search}||'%'
 		#{nickName} || '님이 댓글을 남기셨습니다.', '댓글', NULL, #{repNo}, #{vNo}, NULL)
 	</insert>
 	
+	<update id="disCountSubNums" parameterType="map">
+		UPDATE LOGER
+		SET SUBNUM = SUBNUM - 1
+		WHERE CH_NO = #{chNo}
+	</update>
 	
 </mapper>
 

@@ -2,6 +2,7 @@ package com.kh.with.loger.model.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.kh.with.loger.model.vo.Calculate;
 import com.kh.with.loger.model.vo.Loger;
@@ -9,6 +10,7 @@ import com.kh.with.loger.model.vo.Loger2;
 import com.kh.with.loger.model.vo.MyVideo;
 import com.kh.with.loger.model.vo.SubUserInfo;
 import com.kh.with.loger.model.vo.Support;
+import com.kh.with.main.model.vo.Subscribe;
 import com.kh.with.main.model.vo.SubscribeVideo;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.report.model.vo.Report;
@@ -101,6 +103,15 @@ public interface LogerService {
 	
 	//로거 동영상 수정 페이지 출력
 	ArrayList<Video> selectLogerVideo(Loger l);
+
+	//구독중 클릭시 구독중으로 고정
+	Subscribe fastenSub(Subscribe subscribe);
+
+	//로거스튜디오채널번호 받기 
+	Loger selectChNo(int userNo);
+
+	//구독유무확인
+	int subcount(Subscribe subscibe);
 
 	
 	
