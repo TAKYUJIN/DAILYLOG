@@ -131,6 +131,7 @@ public interface VideoDao {
 	int deleteReplyHate(SqlSessionTemplate sqlSession, Map<String, Integer> map);
 	int replyUpdate(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	int replyDelete(SqlSessionTemplate sqlSession, Map<String, Object> map);
+	String selectInfo(SqlSessionTemplate sqlSession, Map<String, Object> map);
 
 	
 

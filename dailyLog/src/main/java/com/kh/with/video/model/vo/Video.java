@@ -211,5 +211,4 @@ public class Video implements java.io.Serializable {
 				+ afileNm + ", vStatus=" + vStatus + "]";
 	}
 
-	
 }
