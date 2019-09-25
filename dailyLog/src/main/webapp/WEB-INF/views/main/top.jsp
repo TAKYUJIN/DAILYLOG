@@ -244,8 +244,25 @@ color: black; text-decoration: none;
 }
 .img {width:325px; height:280px; overflow:hidden }    
 	 
-	 
+	 #rain{
+	 width:500px;
+	 }
 </style>
+ 
+<link href="https://vjs.zencdn.net/7.6.0/video-js.css" rel="stylesheet">
+
+<!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
+<script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+<script src='https://vjs.zencdn.net/7.6.0/video.js'></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+ <%-- <meta property="fb:app_id" content="488886948633143" />
+ 	  <meta property="og:type"          content="website" />
+		  <meta property="og:title"         content="일상 영상 공유 플랫폼 Daily Log - WITH" />
+		  <meta property="og:url"           content="http://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:8001/with/video.vd?userNo=${list1[0].userNo}&vNo=${list1[0].vNo}" />
+		  <meta property="og:description"   content="영상 플랫폼 Daily Log" />
+		  <meta property="og:image"         content="http://127.0.0.1:8001/with/resources/images/logo.png" />
+	 --%>
+ 
 </head>
 <body>
   <jsp:include page="../common/guest.jsp"></jsp:include>  
@@ -272,6 +289,53 @@ color: black; text-decoration: none;
 				</script> --> 
 			 
 	   --%>
+	 >
+ <!--  <video  onmouseover="this.play()" onmouseout="this.pause()" width="400px" height="300px">
+    <source src="resources/uploadFiles/jhj11.mp4" type="video/mp4">
+  </video> -->
+  
+ <!--   <video  id='my-video' class='video-js' controls  preload='auto' width='300' height='200' onmouseover="this.play()" onmouseout="this.pause()"  
+     data-setup='{}'  >
+    <source src='resources/uploadFiles/rain.mp4'type='video/mp4'>
+     
+  </video> -->
+   
+       
+<!-- 	   <video id="movies"  onmouseover="this.play()" onmouseout="this.pause()"  
+    autobuffer="true" width='600' height='300'>
+    <source src="resources/uploadFiles/rain.mp4" id="rain" type='video/mp4'>
+  </video>
+	   
+	   <div class="row"><br><br><br><br>
+		<div class="col-md-10 col-center m-auto"><br><br><br><br><br><br>
+			<h3>  <span><div id="vid"><b> 인기 동영상 </b></div>  </span></h3>  <br>
+			<div id="myCarousel1" class="carousel slide" data-ride="carousel" data-interval="0">
+				  
+				<div class="carousel-inner">
+						<div class="row">
+						 
+						<div class="col-sm-4 "><div class="img-box"><div id="sty" class="scale"style=" float:left;text-decoration: none;  color: black; "> 
+						<a  style=" text-decoration: none;" href="loginbutton.me">
+
+<video id="movies"  controls  preload='auto' onmouseover="this.play()" onmouseout="this.pause()"  
+    width='600' height='300'>
+   <source src="resources/uploadFiles/oceans.mp4" type='video/mp4' >
+    <source src="resources/uploadFiles/rain.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+  </video>
+
+							 
+				</a></div></div></div> 
+						  
+						  </div></div>
+				</div>
+  </div></div>
+	   
+	    -->
+	   
+	   
+	   
+	   
+	   
 	   
 	  
 	 <div class="row"><br><br><br><br>
@@ -286,7 +350,8 @@ color: black; text-decoration: none;
 						<a  style=" text-decoration: none;" href="loginbutton.me">
 						<img style=" border-radius:10px;  color: black; text-decoration: none; margin:10px;" src="resources/uploadFiles/${videoimage.fileNm}" width = "300px"  height="200px"  >
 							<div id="sty1"><h4><b>  ${videoimage.vTitle}</b></h4>
-							<div id="sty2"><h5><b> ${videoimage.chNm }</b> &nbsp;&nbsp;<b>  ${videoimage.tag }</b> <b>  ${videoimage.uploadDt }</b></h5>
+							<div id="sty2"><h5><b> ${videoimage.chNm }</b> &nbsp;&nbsp;<b>  ${videoimage.tag }</b>
+							 <b>  ${videoimage.uploadDt }</b></h5>
 							 </div></div>
 				</a></div></div></div> 
 						  

@@ -455,7 +455,7 @@ public class VideoDaoImpl implements VideoDao {
 	public int replyDelete(SqlSessionTemplate sqlSession, Map<String, Object> map) {
 		
 		return sqlSession.delete("Video.replyDelete", map);
-
+	}
 
 	@Override
 	public int disCountSubNums(SqlSessionTemplate sqlSession, Map<String, Object> map) {

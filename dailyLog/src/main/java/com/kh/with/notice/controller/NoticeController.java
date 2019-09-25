@@ -1,26 +1,35 @@
 package com.kh.with.notice.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.with.admin.model.vo.Board;
 import com.kh.with.member.model.vo.Member;
+import com.kh.with.notice.model.vo.noticeEmail;
 import com.kh.with.notice.model.service.NoticeService;
 
 @Controller
+@SessionAttributes("loginUser")
 public class NoticeController {
 
 	@Autowired
 	private NoticeService ns;
-
+    @Autowired
+    private JavaMailSender mailSender;
 	
 	//메인 -> 이용약관
 	@RequestMapping(value="terms.no")
@@ -141,5 +150,48 @@ public class NoticeController {
 		
 		return "notice/selectNoticeQuestion";
 	}
+	
+	@RequestMapping(value="noticeEmail.no")
+	public String noticeEmail( ) {
+		return "notice/noticeEmail";
+	}
+	
+	
+	@RequestMapping(value="noticeEmailsending.no")
+	public String noticeEmailsending(HttpServletRequest request,Member m,HttpSession session,noticeEmail ne) {
+			String userId=request.getParameter("userId");
+			String tomail =request.getParameter("tomail");
+		String title =request.getParameter("title");
+		String content =request.getParameter("content");
+		
+		
+		
+		try {
+			MimeMessage message =mailSender.createMimeMessage();
+			MimeMessageHelper messageHelper;
+			messageHelper = new MimeMessageHelper(message,true,"UTF-8");
+			messageHelper.setFrom(userId);
+			messageHelper.setTo(tomail);
+			messageHelper.setSubject(title);
+			messageHelper.setText(content);
+			
+			mailSender.send(message);
+			
+		} catch (Exception e) {
+				System.out.println(e);
+		
+		}
+		ne.setUserId(userId);
+		ne.setTomail(tomail);
+		ne.setTitle(title);
+		ne.setContent(content);
+		
+		
+	    int list =ns.noticeEmail(ne);
+		return "redirect:/noticeEmail.no";
+		
+		
+	}
+	
 
 }
