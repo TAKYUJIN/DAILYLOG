@@ -1,9 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Varela+Round"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <title>Insert title here</title>
 <style>
 .mainpage {
@@ -57,7 +72,7 @@
 	<jsp:include page="../common/mainBar.jsp"></jsp:include>
 
 
-	<form action="createChannel.lo" method="post">
+	<form action="createChannel.lo" method="post" enctype="multipart/form-data">
 		<div class="mainpage">
 
 			<div class="text1">
@@ -83,13 +98,40 @@
 						<textarea class="form-control" rows="5" id="comment" id="chInfo"
 							name="chInfo" style="width: 700px"></textarea>
 					</div>
+					<br><br>
+					<label for="usr">채널타이틀이미지 (1000*200)</label>
+					<div class="form-group">
+					 <input type="file" name="file2" value="file2" id="file2"/> 
+					</div>
 					<br> <br> <br> <br> <br> <br>
 					<button type="submit" id="submit" class="btn btn-primary btn-lg">채널개설</button>
 				</div>
 			</div>
 		</div>
 	</form>
+<script>
+		$(document).ready(function(){
+			$("#submit").click(function(){
+				var chInfo = $("#chInfo").val();
+				var chNm = $("#chNm").val();
+				var file2 = $("#file2").val();
+				
+				$.ajax({
+					url:"createChannel.lo",
+					type:"post",
+					data:{chInfo:chInfo,chNm:chNm,file2:file2,'allView':lists},
+						traditional:true,
+					success:function(data){
+						console.log("성공!");
 
+					},
+					error:function(data){
+						console.log("실패!");
+					}
+				});
+			});
+		});
+			</script>
 	<br>
 	<br>
 	<br>

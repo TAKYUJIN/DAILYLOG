@@ -394,6 +394,13 @@
 	FROM LOGER
 	WHERE USER_NO =  #{userNo}
 	</select>
+	
+	
+	<!-- 채널설명 업데이트 -->
+	<update id="updateInfo"  parameterType="Loger">
+	UPDATE LOGER SET CH_INFO = #{chInfo}
+    WHERE USER_NO = #{userNo}
+   </update>
  
 </mapper>
 

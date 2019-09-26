@@ -230,7 +230,7 @@ body {
 
 			<div class="textInfo" style="font-size: 30px">
 				<p style="widht: 200px; margin-left: 230px; margin-top: -90px;">
-					<strong><c:out value="${result.chNm}" /><c:out value="${subcount}" /></strong>
+					<strong><c:out value="${result.chNm}" /></strong>
 				</p>
 			</div>
 			<div id="subDiv">

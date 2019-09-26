@@ -117,6 +117,18 @@ public interface LogerDao {
 	//구독유무확인
 	int subcount(SqlSessionTemplate sqlSession, Subscribe subscibe);
 
+	//채널타이틀 이미지 insert
+	int insertAttachmentTitle(SqlSessionTemplate sqlSession, Attachment attachment);
+
+	//채널타이틀 이미지 update
+	int updateAttachmentTitle(SqlSessionTemplate sqlSession, Attachment attachment);
+
+	//채널설명 변경
+	int updateInfo(SqlSessionTemplate sqlSession, Loger loger);
+
+	int updatetitle(SqlSessionTemplate sqlSession, Attachment attachment);
+
+
 
 	
 
