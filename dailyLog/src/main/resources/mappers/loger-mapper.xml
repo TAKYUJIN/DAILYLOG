@@ -126,7 +126,21 @@
 	
 		
 	</resultMap>
-
+	<resultMap type="AddVideo" id="addVideoResultSet">
+		<id property="aNo" column="A_NO" />
+		<result property="vNo" column="V_NO" />
+		<result property="userNo" column="USER_NO" />
+		<result property="addCt" column="ADD_CT" />
+		<result property="uploadDt" column="UPLOAD_DT" />
+		<result property="modifyDt" column="MODIFY_DT" />
+		<result property="apNo" column="AP_NO" />
+		<result property="vNo" column="V_NO" />
+		<result property="userNo" column="USER_NO" />
+		<result property="apXY" column="AP_XY" />
+		<result property="apNm" column="AP_NM" />
+		<result property="apAd" column="AP_AD" />
+	</resultMap>
+	
 	<!-- 구독시 값 가지고 오는 셀렉트 -->
 	<select id="subUserInfo"  resultMap="SubUserInfoResultSet">
 		SELECT L.CH_NO, M.NICKNAME , L.CH_NM 
@@ -137,13 +151,26 @@
 	
 	</select>
 	
-	<!-- 로거 동영상 수정 페이지 출력 -->
+	<!-- 로거 동영상 수정 기본 정보 페이지 출력 -->
 	<select id="selectLogerVideo" resultMap="VideoResultSet">
 	SELECT RANK, AFILE_NM, V_NO, USER_NO, V_TITLE, COUNT, CH_NM, TAG, VBL_YN, UPLOAD_DT, MODIFY_DT, ADULT_AUT, AD_YN, AD_INFO, LOCATION, INFO, FILE_NM, OPEN_TY
 		FROM (SELECT ROW_NUMBER() OVER(ORDER BY V.UPLOAD_DT DESC) RANK,	V.*, A.FILE_NM AFILE_NM
 		FROM VIDEO V
 		JOIN MEMBER M ON(V.USER_NO = M.USER_NO)
 		JOIN ATTACHMENT A ON(V.V_NO = A.V_NO)
+		WHERE V.V_NO = #{vNo})
+		ORDER BY RANK ASC
+	</select>
+	
+	<!-- 로거 동영상 수정 추가 정보 페이지 출력 -->
+	<select id="selectLogerAddVideo" resultMap="addVideoResultSet">
+	SELECT RANK, A_NO, V_NO, USER_NO, ADD_CT, UPLOAD_DT, MODIFY_DT, AP_NO, AP_XY, AP_NM, AP_AD
+		FROM (SELECT ROW_NUMBER() OVER(ORDER BY AI.UPLOAD_DT DESC) RANK,
+		A_NO, AI.V_NO, AI.USER_NO, ADD_CT, AI.UPLOAD_DT, AI.MODIFY_DT, AP_NO, AP_XY, AP_NM, AP_AD
+		FROM ADDINFO AI
+		JOIN MEMBER M ON(AI.USER_NO = M.USER_NO)
+		JOIN ADDPLACE AP ON(AI.USER_NO = AP.USER_NO)
+		JOIN VIDEO V ON(AI.V_NO = V.V_NO)
 		WHERE V.V_NO = #{vNo})
 		ORDER BY RANK ASC
 	</select>

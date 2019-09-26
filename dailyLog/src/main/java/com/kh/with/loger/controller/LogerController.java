@@ -24,6 +24,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonIOException;
 import com.kh.with.admin.model.vo.Board;
 import com.kh.with.common.CommonUtils;
 import com.kh.with.loger.model.service.LogerService;
@@ -65,7 +67,7 @@ public class LogerController {
 		return "loger/searchLogerVideo";
 	}
 
-	// 로거 동영상 수정 페이지로 이동
+	// 로거 동영상 수정 기본정보 페이지로 이동
 	@RequestMapping(value = "selectLogerVideo.lo")
 	public String selectLogerVideo(HttpSession session, Model model, HttpServletRequest request,
 			@RequestParam(value="vNo") int vNo) {
@@ -79,16 +81,89 @@ public class LogerController {
 		ArrayList<Video> vList = ls.selectLogerVideo(l);
 
 		String adultAut = vList.get(0).getAdultAut();
-		String adYN = vList.get(0).getAdYn();
-		String openTY = vList.get(0).getOpenTy();
+		String adYn = vList.get(0).getAdYn();
+		String openTy = vList.get(0).getOpenTy();
 
 		model.addAttribute("vList", vList);
 		model.addAttribute("adultAut", adultAut);
-		model.addAttribute("adYN", adYN);
-		model.addAttribute("openTY", openTY);
+		model.addAttribute("adYn", adYn);
+		model.addAttribute("openTy", openTy);
 
 		return "loger/updateLogerVideo";
 	}
+	
+	
+	// 로거 동영상 수정 추가정보 페이지로 이동
+		@RequestMapping(value="addVideoUpdate.lo", produces="application/text; charset=UTF-8")
+		public ModelAndView addVideoUpdate(HttpSession session, HttpServletRequest request,
+				ModelAndView mv, HttpServletResponse response, @RequestParam(value="vNo") int vNo) {
+			response.setContentType("text/html;charset=UTF-8");
+			Member m = (Member) session.getAttribute("loginUser");
+			int userNo = m.getUserNo();
+			ArrayList<Loger> loger = ls.selectLogerInfo(m);
+			
+			String vTitle = request.getParameter("vTitle");
+			String tag = request.getParameter("tag");
+			String allArea = request.getParameter("allArea");
+			String adultArea = request.getParameter("adultArea");
+			String adultAut = "";
+			String adYn = request.getParameter("adYn");
+			String openY = request.getParameter("openY");
+			String openN = request.getParameter("openN");
+			String openTy = "";
+			String adInfo = request.getParameter("adInfo");
+			
+			System.out.println("전체공개:::::::::" + allArea);
+			System.out.println("성인공개:::::::::" + adultArea);
+			System.out.println("오픈Y:::::::::" + openY);
+			System.out.println("오픈N:::::::::" + openN);
+			
+			if(allArea != null) {
+				adultAut = allArea;
+			}else if(adultArea != null){
+				adultAut = adultArea;
+			}
+			
+			if(openY != null) {
+				openTy = openY;
+			}else if(openN != null){
+				openTy = openN;
+			}
+			
+			Video v = new Video();
+			v.setvTitle(vTitle);
+			v.setTag(tag);
+			v.setAdultAut(adultAut);
+			v.setAdYn(adYn);
+			v.setOpenTy(openTy);
+			v.setAdInfo(adInfo);
+
+			Loger l = new Loger();
+			l.setUserNo(userNo);
+			l.setvNo(vNo);
+			ArrayList<Video> dateList = ls.selectLogerAddVideo(l);
+
+			//추가정보 페이지에 v 넘겨주고 거기서 다시 컨트롤러로 받아와보자..
+			HashMap<String, Object> hmap = new HashMap<String, Object>();
+			hmap.put("v", v);
+			
+			mv.addObject("v", v);
+			mv.addObject("dateList", dateList);
+			mv.setViewName("jsonView");
+
+
+//			try {
+//				new Gson().toJson(hmap, response.getWriter());
+//			} catch (JsonIOException e) {
+//				e.printStackTrace();
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
+//			
+			
+			
+			return mv;
+		}
 	
 	// 로거 동영상 수정 update
 		@RequestMapping(value = "updateLogerVideo.lo")
@@ -97,16 +172,21 @@ public class LogerController {
 			Member m = (Member) session.getAttribute("loginUser");
 			int userNo = m.getUserNo();
 			
-			System.out.println(vNo);
 			String vTitle = request.getParameter("vTitle");
-			String tag = request.getParameter("vTag");
+			String tag = request.getParameter("tag");
 			String adultAut = request.getParameter("adultAut");
-			String adYn = request.getParameter("adYN");
-			String openTy = request.getParameter("openTY");
+			String adYn = request.getParameter("adYn");
+			String openTy = request.getParameter("openTy");
 			String adInfo = request.getParameter("adInfo");
+			
 			
 			if (adYn == null) {
 				adYn = "N";
+			}else {
+				adYn = "Y";
+			}
+			if(openTy == null) {
+				openTy = "N";
 			}
 			
 			Video v = new Video();
@@ -119,7 +199,6 @@ public class LogerController {
 			v.setAdYn(adYn);
 			v.setAdInfo(adInfo);
 			
-			System.out.println("vvvvV:::::::::" + v);
 					
 			int result = ls.updateLogerVideo(v);
 			

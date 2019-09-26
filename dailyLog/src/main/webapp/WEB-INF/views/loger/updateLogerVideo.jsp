@@ -203,7 +203,7 @@
                 <thead>
 					<div class="info_btn col-sm-7">
 						<button type="button" class="infobtn">기본정보</button>
-						<button type="button" class="infobtn2" onclick="addUploadVideo.lo">추가정보</button>
+						<button type="button" class="infobtn2" id="addInfoBtn">추가정보</button>
 					</div>
 					<div class="col-sm-5">
 						<button type="submit" id="uploadbtn" class="infobtn">수정</button>
@@ -221,24 +221,27 @@
                     </tr>
                     <tr>
                     	<td>
-                    	<b><input type="text" class="video_td" id="videoTitle" name="vTitle" placeholder="동영상제목" value="${v.vTitle}" 
+                    	<b><input type="text" class="video_td" id="vTitle" name="vTitle" placeholder="동영상제목" value="${v.vTitle}" 
 						onfocus="this.select()" style="border:none;background:transparent;font-size:20px;"></b>
                     	</td>
                     </tr>
                     <tr>
-                    	<td><input type="text" class="video_td" id="videoTag" name="vTag" style="width:400px;border:none;background:transparent;" 
+                    	<td><input type="text" class="video_td" id="tag" name="tag" style="width:400px;border:none;background:transparent;" 
                     	placeholder="태그(예:#일상기록 #여행 #강아지 #음식)" value="${v.tag}" onfocus="this.select()"></td>
                     </tr>
                     <tr>
                     	<td>
-                    		<div style="float:right; width:40%;">정보보호여부
-                    		<select id="selectOpen">
+                    		<div style="float:right; width:40%;">정보보호여부<br>
+                    		<!-- <select id="selectOpen">
 	                    		<option id="openY" value="Y" name="openTY">공개</option>
 	                    		<option id="openN" value="N" name="openTY">비공개</option>
-                    		</select></div>
+                    		</select> -->
+                    		<input type="checkbox" id="openY" name="openTy" value="Y">전체공개<br>
+							<input type="checkbox" id="openN" name="openTy" value="N">비공개<br>
+                    		</div>
                     		<div style="float:right; width:60%;"><p>시청등급을 선택하세요</p>
-                    		<input type="checkbox" class="video_td" id="videoAllArea" name="adultAut" value="Y"> 전체 시청 가능<br>
-                    		<input type="checkbox" class="video_td" id="videoNineteenArea" name="adultAut" value="N"> 19세 이상 시청 가능</div>
+                    		<input type="checkbox" class="video_td" id="allArea" name="adultAut" value="Y"> 전체 시청 가능<br>
+                    		<input type="checkbox" class="video_td" id="adultArea" name="adultAut" value="N"> 19세 이상 시청 가능</div>
                     	</td>
                     </tr>
                     <tr>
@@ -246,8 +249,8 @@
                     		<p>광고 여부</p>
                     		<p>광고 여부 체크 시 아래의 문구가 자동으로 기재됩니다.<br>
                     		본 컨텐츠는 유료 제품 추천, 후원, 보증과 같은 유료 광고 내용이 포함되어 있습니다.</p>
-                    		<input type="checkbox" class="video_td" id="videoAdv" name="adYN"> 영상 내 유료 ppl 포함<br>
-                    		<input type="text" class="video_td" id="videoAdvInfo" placeholder="내용을 입력해주세요" name="adInfo"
+                    		<input type="checkbox" class="video_td" id="adYn" name="adYn"> 영상 내 유료 ppl 포함<br>
+                    		<input type="text" class="video_td" id="adInfo" placeholder="내용을 입력해주세요" name="adInfo"
                     		value="${v.adInfo}" style="border: none; background: transparent;" onfocus="this.select()">                    	
                     	</td>
                     </tr>
@@ -263,21 +266,30 @@
 
     $(function(){
     	var adultAut = '${adultAut}';
-    	var adYN = '${adYN}';
-    	var openTY = '${openTY}';
+    	var adYn = '${adYn}';
+    	var openTy = '${openTy}';
     	
-    	if(adultAut == "Y"){
-    		$("input:checkbox[id='videoAllArea']").prop("checked", true);
-    		$("input:checkbox[id='videoNineteenArea']").prop("checked",false);
+    	
+    	if(openTy == "Y"){
+    		$("input:checkbox[id='openY']").prop("checked", true);
+    		$("input:checkbox[id='openN']").prop("checked",false);
     	}else{
-    		$("input:checkbox[id='videoNineteenArea']").prop("checked",true);
-    		$("input:checkbox[id='videoAllArea']").prop("checked", false);
+    		$("input:checkbox[id='openN']").prop("checked",true);
+    		$("input:checkbox[id='openY']").prop("checked", false);
     	}
     	
-    	if(adYN == "Y"){
-    		$("input:checkbox[id='videoAdv']").prop("checked", true);
+    	if(adultAut == "Y"){
+    		$("input:checkbox[id='allArea']").prop("checked", true);
+    		$("input:checkbox[id='adultArea']").prop("checked",false);
     	}else{
-    		$("input:checkbox[id='videoAdv']").prop("checked", false);
+    		$("input:checkbox[id='adultArea']").prop("checked",true);
+    		$("input:checkbox[id='allArea']").prop("checked", false);
+    	}
+    	
+    	if(adYn == "Y"){
+    		$("input:checkbox[id='adYn']").prop("checked", true);
+    	}else{
+    		$("input:checkbox[id='adYn']").prop("checked", false);
     	}
     	
     	/*   if(openTY == "Y"){
@@ -289,21 +301,38 @@
     	} 
     	 */ 
     	
-    	$("#selectOpen").on("change", function(){
-    		if(openTY == "Y"){
-    			 $("#openY").prop("selected", true); 
-    		}else{
-    			$("#openN").prop("selected", false);
-    		}
-    		
-    		if(openTY == "N"){
-   			 $("#openN").prop("selected", true); 
-   			}else{
-   			$("#openY").prop("selected", false);
-   			}
     	 
-    	});
 
+		$("#addInfoBtn").click(function(){
+			var vTitle = $("#vTitle").val();
+			var tag = $("#tag").val();
+			var vNo = $("#vNo").val();
+			var openY = $("#openY").val();
+			var openN = $("#openN").val();
+			var allArea = $("#allArea").val();
+			var adultArea = $("#adultArea").val();
+			var adYn = $("#adYn").val();
+			var adInfo = $("#adInfo").val();
+			
+			$.ajax({
+				url:"addVideoUpdate.lo",
+				type:"post",
+				data:{vTitle:vTitle,tag:tag,vNo:vNo,openY:openY,openN:openN,allArea:allArea,
+					adultArea:adultArea, adYn:adYn, adInfo:adInfo},
+					traditional:true,
+				success:function(data){
+					console.log("성공!");
+
+				},
+				error:function(data){
+					console.log("실패!");
+				}
+			});
+
+		});
+		
+    	 
+    	 
     	
     });
     

@@ -267,6 +267,7 @@ public class LogerDaoImpl implements LogerDao{
 		
 		return sqlSession.selectOne("Loger.subUserInfo", subUserInfo);
 	}
+	//로거 동영상 수정 기본정보 출력 페이지
 	@Override
 	public ArrayList<Video> selectLogerVideo(SqlSessionTemplate sqlSession, Loger l) {
 		ArrayList<Video> vList = (ArrayList) sqlSession.selectList("Loger.selectLogerVideo", l);
@@ -319,6 +320,12 @@ public class LogerDaoImpl implements LogerDao{
 	@Override
 	public int updatetitle(SqlSessionTemplate sqlSession, Attachment attachment) {
 		return sqlSession.update("Attachment.updatetitle", attachment);
+	}
+	//로거 동영상 수정 추가정보 페이지 출력
+	@Override
+	public ArrayList<Video> selectLogerAddVideo(SqlSessionTemplate sqlSession, Loger l) {
+		ArrayList<Video> vList = (ArrayList) sqlSession.selectList("Loger.selectLogerAddVideo", l);
+		return vList;
 	}
 	
 	
