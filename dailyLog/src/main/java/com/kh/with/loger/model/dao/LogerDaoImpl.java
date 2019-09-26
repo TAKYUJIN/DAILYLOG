@@ -296,7 +296,33 @@ public class LogerDaoImpl implements LogerDao{
 	public int updateLogerVideo(SqlSessionTemplate sqlSession, Video v) {
 		return sqlSession.update("Loger.updateLogerVideo", v);
 	}
+	//채널타이틀 이미지 insert
+	@Override
+	public int insertAttachmentTitle(SqlSessionTemplate sqlSession, Attachment attachment) {
+		
+		return sqlSession.insert("Attachment.insertAttachmentTitle",attachment);
+	}
+	//채널타이틀 이미지 update
+	@Override
+	public int updateAttachmentTitle(SqlSessionTemplate sqlSession, Attachment attachment) {
+		
+		System.out.println(attachment);
+		return sqlSession.update("Attachment.updateAttachmentTitle", attachment);
+		
+	}
 	
+	//채널설명변경
+	@Override
+	public int updateInfo(SqlSessionTemplate sqlSession, Loger loger) {
+		return sqlSession.update("Loger.updateInfo", loger);
+	}
+	@Override
+	public int updatetitle(SqlSessionTemplate sqlSession, Attachment attachment) {
+		return sqlSession.update("Attachment.updatetitle", attachment);
+	}
+	
+	
+
 
 	
 	

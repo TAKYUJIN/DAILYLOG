@@ -242,7 +242,7 @@ body {
 						value="구독">
 				</c:if>
 				<c:if test="${subcount == 1}">
-					<input type="button" id="subscribecancel" class="btn btn-primary"
+					<input type="button" id="subscribe" class="btn btn-primary"
 						value="구독취소">
 				</c:if>
 			</div>
@@ -354,9 +354,12 @@ body {
 				<br>
 				<br>
 			</div>
+			<input type="hidden" id="userNo" value="${loginUser.userNo}">
+			
+			<input type="hidden" id="chNo" value="${result.chNo}">
 		</c:forEach>
 	</div>
-	<hr class="my-hr2">
+	<!-- <hr class="my-hr2"> -->
 	<script>
 
          
@@ -370,27 +373,50 @@ body {
             alert(message);
          }
 
-         
+         	var subcount  =  $('#subcount').val();
+         	
+         	var userNo  =  $('#userNo').val();
+         	
+         	
+         	var chNo  =  $('#chNo').val();
+         	
          $('#subscribe').click(function(){
+         console.log(subcount)
+         console.log(userNo)
+         console.log(chNo)
          
                $.ajax({
                   url:"subOk.lo",
                   type:"post",
-                  data:{},
+                  data:{userNo:userNo,chNo:chNo},
+                  datatype:"json",
                   success:function(data){
-                     window.onload
+                     console.log(":::::::::"+data)
                      console.log("insert성공!");
                      
-                     
-                     var $subDiv=$('#subDiv');
-                     var $subOk=$('#subscribe');
-                     
-                     $subOk.remove();
-                     
-                     var $subOk2=
-                        ('  <input type="button" id="subscribecancel" class="btn btn-primary" value="구독취소">   ');
-                       
-                        $subDiv.append($subOk2);
+                    if(data == 0 ){
+                    	  var $subDiv=$('#subDiv');
+                          var $subOk=$('#subscribe');
+                          
+                          $subOk.remove();
+                          
+                          var $subOk2=
+                             ('  <input type="button" id="subscribe" class="btn btn-primary" value="구독취소">   ');
+                            
+                             $subDiv.append($subOk2);
+                    }else{
+                        var $subDiv=$('#subDiv');
+                        var $subOk=$('#subscribe');
+                        
+                        $subOk.remove();
+                        
+                        var $subOk2=
+                           ('  <input type="button" id="subscribe" class="btn btn-primary" value="구독">   ');
+                          
+                           $subDiv.append($subOk2);
+                    	
+                    } 
+                   
 
                   },
                   error:function(){
@@ -398,36 +424,7 @@ body {
                         }
                   });
                }); 
-         
-         
-               $('#subscribecancel').click(function(){
-               $.ajax({
-                  url:"subCancle.lo",
-                  type:"post",
-                  data:{},
-                  success:function(data){
-                     window.onload
-                     console.log("delete성공!");
 
-                     
-                     var $subDiv=$('#subDiv');
-                     var $subOk=$('#subscribecancel');
-                     
-                     $subOk.remove();
-                     
-                     var $subOk2=
-                        ('  <input type="button" id="subscribe" class="btn btn-primary" value="구독">   ');
-                       
-                        $subDiv.append($subOk2);
-                      
-
-                  },
-                  error:function(){
-                     console.log("실패!");
-                        }
-                  });
-               }); 
-         
       </script>
 
 

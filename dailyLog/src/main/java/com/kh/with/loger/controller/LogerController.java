@@ -524,38 +524,127 @@ public class LogerController {
 	public String logerChannelSet() {
 		return "loger/logerChannelSet";
 	}
+	
+	//로거스튜디오 - 채널정보변경으로 이동
+	@RequestMapping(value = "goChannelChangeInfo.lo")
+	public String goChannelChangeInfo() {
+		
+		
+		
+		return "loger/logerChannelChangeInfo";
+	}
+	
 
+	// 로거스튜디오 - 채널정보변경으로 이동
+	@RequestMapping(value = "logerChannelChangeInfo.lo")
+	public String logerChannelChangeInfo(@ModelAttribute Member m, Model model, HttpServletRequest request,
+			HttpSession session, @RequestParam(name = "file3", required = false) MultipartFile file3) {
+		
+		System.out.println("로거스튜디오 채널정보변경으로 이동되었니?");
+		int userNo = ((Member) request.getSession().getAttribute("loginUser")).getUserNo();
+		String chInfo = request.getParameter("chInfo");
+		
+		
+		  //채널설명 변경 
+			Loger loger = new Loger();
+			loger.setUserNo(userNo);
+			loger.setChInfo(chInfo);
+		 
+		 int result = ls.updateInfo(loger);
+		 
+
+		System.out.println(result);
+		
+
+		
+
+		// 썸네일 업로드 및 파일이름바꾸기
+		String root = request.getSession().getServletContext().getRealPath("resources");
+
+			String filepath1 = root + "\\uploadFiles";
+			String beforeenrollNm = file3.getOriginalFilename();
+			String ext = beforeenrollNm.substring(beforeenrollNm.lastIndexOf("."));
+			String fileNm = CommonUtils.getRandomString()+ext;
+
+			
+		System.out.println(userNo + chInfo + fileNm + fileNm );
+
+			//채널타이틀 이미지 update
+			Attachment attachment = new Attachment();
+			attachment.setFileNm(fileNm);
+			attachment.setUserNo(userNo);
+			
+			System.out.println("어태치 담겼니? " + attachment);
+			
+			
+			int result1 = ls.updatetitle(attachment);
+			
+			
+			System.out.println("result1" + result1);
+	
+			
+		
+			if (result>0 && result1 > 0 ) {
+			return "redirect:index.jsp";
+			/* return "forward:/logerHomeInfo.lo?userNo="+userNo; */
+			} else {
+				model.addAttribute("msg", "정보수정실패");
+				return "common/errorPage";
+			}
+	}
+	
 	// 로거채널개설
 	@RequestMapping(value = "createChannel.lo")
 	public String insertcreateChannel(@ModelAttribute Member m, Model model, HttpServletRequest request,
-			HttpSession session) {
-	
+			HttpSession session , @RequestParam("file2") MultipartFile file2) {
+
+		// 썸네일 업로드 및 파일이름바꾸기
+		String root = request.getSession().getServletContext().getRealPath("resources");
+
+			String filepath1 = root + "\\uploadFiles";
+			String beforeenrollNm = file2.getOriginalFilename();
+			String ext = beforeenrollNm.substring(beforeenrollNm.lastIndexOf("."));
+			String fileNm = CommonUtils.getRandomString()+ext;
+
+			// 파일 업로드 하는 구문
+			try {
+				file2.transferTo(new File(filepath1 + "\\" + fileNm));
+			} catch (IllegalStateException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 		int userNo = ((Member) request.getSession().getAttribute("loginUser")).getUserNo();
 		String chNm = request.getParameter("chNm");
 		String chInfo = request.getParameter("chInfo");
 		
-		
-		
-		/* System.out.println("로거정보가 들어왔나요::::" + userNo + chNm + chInfo); */
+	
 
+		//로거채널 inset
 		Loger loger = new Loger();
 		loger.setUserNo(userNo);
 		loger.setChNm(chNm);
 		loger.setChInfo(chInfo);
-
 		int result = ls.insertcreateChannel(loger);
 
+		//member채널유무 update 
 		Member member = new Member();
 		member.setUserNo(userNo);
 		member.setNickname(chNm);
-
-
-
 		int result1 = ls.updatechyn(member); 
 
+		//채널타이틀 이미지 insert
+		Attachment attachment = new Attachment();
+		attachment.setFileNm(fileNm);
+		attachment.setUserNo(userNo);
+		
+		System.out.println("파일이름:" +fileNm + "유저넘버" + userNo);
+	
+		int result2 = ls.insertAttachmentTitle(attachment);
+		
+		
 
-
-		if (result > 0 && result1 > 0) {
+		if (result > 0 && result1 > 0 && result2 > 0) {
 			return "redirect:index.jsp";
 		} else {
 			model.addAttribute("msg", "채널개설 실패");
@@ -605,11 +694,11 @@ public class LogerController {
 
 		System.out.println("로그인의 유저넘버 " + loginUserNo);
 
-		if(userNo == loginUserNo) {
-			model.addAttribute("msg", "자신의 채널은 구독 불가 입니다");
-
-			return "forward:/newHomeChannel.lo?userNo="+userNo;
-		}
+		
+		 if(userNo == loginUserNo) { model.addAttribute("msg", "자신의 채널은 구독 불가 입니다");
+		  
+		 return "forward:/newHomeChannel.lo?userNo="+userNo; }
+		
 
 
 		SubUserInfo subUserInfo = new SubUserInfo();
@@ -632,47 +721,7 @@ public class LogerController {
 		return  "forward:/studeioSubInsert.vd" ;
 	}
 
-	//구독등록취소
-	@RequestMapping(value="subCancle.lo")
-	public String subCancle(Model model,HttpServletRequest request,HttpSession session,@ModelAttribute Member m) {
-
-
-		int userNo =  (int) session.getAttribute("userNo");
-		System.out.println("로거의 유저넘버 " + userNo);
-
-		//로그인한 유저번호 
-		int loginUserNo = ((Member) request.getSession().getAttribute("loginUser")).getUserNo();	
-		String nickName =  ((Member) request.getSession().getAttribute("loginUser")).getNickname();	
-
-		System.out.println("로그인의 유저넘버 " + loginUserNo);
-
-		if(userNo == loginUserNo) {
-			model.addAttribute("msg", "자신의 채널은 구독 불가 입니다");
-
-			return "forward:/newHomeChannel.lo?userNo="+userNo;
-		}
-
-
-		SubUserInfo subUserInfo = new SubUserInfo();
-		subUserInfo.setUserNo(userNo);
-
-
-		SubUserInfo result = ls.subUserInfo(subUserInfo); 
-
-		int chNo = result.getChNo();
-		String chNm = result.getChNm(); 
-
-
-		HttpSession session1 = request.getSession();
-		session.setAttribute("loginUserNo", loginUserNo);
-		session.setAttribute("userNo", userNo);
-		session.setAttribute("chNo", chNo);
-		session.setAttribute("nickName", nickName);
-		session.setAttribute("chNm", chNm);
-
-		return  "forward:/studeioSubDelete.vd" ;
-	}
-
+	
 
 
 }

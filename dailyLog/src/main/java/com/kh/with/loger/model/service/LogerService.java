@@ -116,6 +116,18 @@ public interface LogerService {
 	//구독유무확인
 	int subcount(Subscribe subscibe);
 
+	//채널타이틀 이미지 insert
+	int insertAttachmentTitle(Attachment attachment);
+
+	//채널타이틀 이미지 update
+	int updateAttachmentTitle(Attachment attachment);
+
+	//채널설명 변경
+	int updateInfo(Loger loger);
+
+	int updatetitle(Attachment attachment);
+
+
 
 	
 	

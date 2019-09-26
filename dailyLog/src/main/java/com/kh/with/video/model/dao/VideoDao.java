@@ -141,6 +141,7 @@ public interface VideoDao {
 	int insertAddInfo(SqlSessionTemplate sqlSession, AddInfo addInfo);
 
 
+
 	
 
 }

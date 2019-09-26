@@ -55,15 +55,8 @@ h4 {
 
 
 	<div class="mainpage">
-		<h4 style="margin-left: 120px">
-			<strong>채널정보</strong>
-		</h4>
-		<div id="line"></div>
-		<textarea rows="10" cols="100" id="textarea" style="margin-top: 26px"></textarea>
-
-		<button id="Revisbtn" class="btn btn-primary">수정</button>
-		<br> <br> <br> <br> <br>
-
+	
+	
 		<h4 style="margin-left: 120px">
 			<strong>채널전체구성</strong>
 		</h4>
