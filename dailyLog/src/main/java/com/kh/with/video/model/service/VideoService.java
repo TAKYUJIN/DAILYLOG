@@ -175,6 +175,10 @@ public interface VideoService {
 
 	int selectReReply(Map<String, Object> map);
 
+	List<AddInfo> selectAddInfo(Map<String, Object> map);
+
+	List<AddPlace> selectAddPlace(Map<String, Object> map);
+
 
 
 

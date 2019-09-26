@@ -119,10 +119,13 @@ public class VideoController {
 				List<Video> list1 = vs.selectVideoInfo(map);
 				List<Loger> list2 = vs.selectLogerInfo(map);
 				List<Reply2> reply = vs.selectReply(map);
-				
+				List<AddInfo> addInfo = vs.selectAddInfo(map);
+				List<AddPlace> addPlace = vs.selectAddPlace(map);
 				
 				System.out.println("list1 : " + list1);
 				System.out.println("list2 : " + list2);
+				System.out.println("addInfo : " + addInfo);
+				System.out.println("addPlace : " + addPlace);
 				System.out.println("reply : " + reply);
 				System.out.println("age : " + age);
 				
@@ -137,6 +140,8 @@ public class VideoController {
 				model.addAttribute("m", m);
 				model.addAttribute("list1", list1);
 				model.addAttribute("list2", list2);
+				model.addAttribute("addInfo", addInfo);
+				model.addAttribute("addPlace", addPlace);
 				model.addAttribute("age", age);
 				model.addAttribute("thumb", thumb);
 				model.addAttribute("profile", profile);
@@ -828,39 +833,7 @@ public class VideoController {
 		System.out.println("result imgCheck : " + result);
 		return Integer.toString(result);
 	}
-	// 영상 클릭시 동영상 페이지로 이동
-	@RequestMapping(value = "age.vd")
-	public String age() {
 
-		return "video/age";
-	}
-	// 영상 클릭시 동영상 페이지로 이동
-	@RequestMapping(value = "age2.vd")
-	public String age2() {
-
-		return "video/age2";
-	}
-
-	// 영상 클릭시 동영상 페이지로 이동
-	@RequestMapping(value = "regular.vd")
-	public String regularView() {
-
-		return "video/videoMain";
-	}
-
-	// 영상 클릭시 동영상 페이지로 이동
-	@RequestMapping(value = "once.vd")
-	public String onceView() {
-
-		return "video/videoMain";
-	}
-
-	// 영상 클릭시 동영상 페이지로 이동
-	@RequestMapping(value = "test.vd")
-	public String test() {
-
-		return "video/test22";
-	}
 
 	// 더보기 입력 페이지로 이동
 	@RequestMapping(value = "addInfo.vd")
@@ -1220,7 +1193,7 @@ public class VideoController {
 	@RequestMapping(value = "studeioSubInsert.vd")
 	@ResponseBody
 
-	public int studeioSubInsert(ModelAndView mav,Model model,HttpSession session, HttpServletRequest request,@ModelAttribute Member m) {
+	public ModelAndView studeioSubInsert(ModelAndView mav,Model model,HttpSession session, HttpServletRequest request,@ModelAttribute Member m) {
 
 
 		System.out.println("로거스튜디오의 구독으로 넘어왔나요?");
