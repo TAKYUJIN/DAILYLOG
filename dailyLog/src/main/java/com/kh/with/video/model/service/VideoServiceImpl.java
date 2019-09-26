@@ -477,8 +477,16 @@ public class VideoServiceImpl implements VideoService{
 		return vd.selectReReply(sqlSession,map);
 	}
 
-
-
+	@Override
+	public List<AddInfo> selectAddInfo(Map<String, Object> map) {
+		
+		return vd.selectAddInfo(sqlSession, map);
+	}
+	@Override
+	public List<AddPlace> selectAddPlace(Map<String, Object> map) {
+		
+		return vd.selectAddPlace(sqlSession, map);
+	}
 	
 
 

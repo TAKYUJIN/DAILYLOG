@@ -495,7 +495,16 @@ public class VideoDaoImpl implements VideoDao {
 		return sqlSession.selectOne("Video.selectReReply",map);
 	}
 
-	
+	@Override
+	public List<AddInfo> selectAddInfo(SqlSessionTemplate sqlSession, Map<String, Object> map) {
+		
+		return sqlSession.selectList("Video.selectAddInfo", map);
+	}
+	@Override
+	public List<AddPlace> selectAddPlace(SqlSessionTemplate sqlSession, Map<String, Object> map) {
+		
+		return sqlSession.selectList("Video.selectAddPlace", map);
+	}
 
 	
 
