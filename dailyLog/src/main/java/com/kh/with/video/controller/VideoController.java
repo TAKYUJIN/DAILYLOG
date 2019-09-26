@@ -67,6 +67,7 @@ public class VideoController {
 		map.put("userNo", userNo);
 		map.put("vNo", vNo);
 		map.put("loginUser", loginUser);
+		System.out.println("map111"+map);
 
 		System.out.println("needs : " + userNo + ", " + vNo);
 
@@ -116,6 +117,7 @@ public class VideoController {
 				List<Loger> list2 = vs.selectLogerInfo(map);
 				List<Reply2> reply = vs.selectReply(map);
 				
+				
 				System.out.println("list1 : " + list1);
 				System.out.println("list2 : " + list2);
 				System.out.println("reply : " + reply);
@@ -137,6 +139,7 @@ public class VideoController {
 				model.addAttribute("profile", profile);
 				model.addAttribute("chNo", chNo);
 				model.addAttribute("reply", reply);
+			
 				model.addAttribute("userImg", userImg);
 				
 				return "video/videoMain";
@@ -200,11 +203,15 @@ public class VideoController {
 		Member m = (Member) session.getAttribute("loginUser");
 		int loginUser = m.getUserNo();
 		int chNo = Integer.parseInt(request.getParameter("chNo"));		
-
+		int vNo = Integer.parseInt(request.getParameter("vNo"));	
+		
+		
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("loginUser", loginUser);
 		map.put("chNo", chNo);
-
+		map.put("vNo", vNo);
+		System.out.println("map"+map);
+		
 		int status = vs.selectRegStatus(map);
 		System.out.println("status : " + status);
 		model.addAttribute("status" + status);
@@ -212,7 +219,7 @@ public class VideoController {
 		return Integer.toString(status);
 	}
 	//댓글
-	@RequestMapping(value = "insertReply.vd")
+	@RequestMapping(value = "insertReply.vd",  method= RequestMethod.POST)
 	@ResponseBody
 	public String insertReply(HttpServletRequest request, Model model, HttpSession session) {
 		Member m = (Member) session.getAttribute("loginUser");
@@ -230,17 +237,18 @@ public class VideoController {
 		map.put("nickName", nickName);
 
 		int result = vs.insertReply(map);
-
+		
 		List<Reply2> reply = vs.selectReply(map);
-
+		
+		System.out.println("reply"+reply);
 		int repNo = vs.repNo(map);
 		map.put("repNo", repNo);
-
+		int rereply = vs.selectReReply(map);
 		int alram = vs.replyAlram(map);
 
 		model.addAttribute("reply", reply);
+		model.addAttribute("rereply", rereply);
 		model.addAttribute("result", result);
-		System.out.println("result : " + result);
 
 		return Integer.toString(result);
 	}

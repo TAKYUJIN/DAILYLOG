@@ -255,14 +255,6 @@ color: black; text-decoration: none;
 <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
 <script src='https://vjs.zencdn.net/7.6.0/video.js'></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
- <%-- <meta property="fb:app_id" content="488886948633143" />
- 	  <meta property="og:type"          content="website" />
-		  <meta property="og:title"         content="일상 영상 공유 플랫폼 Daily Log - WITH" />
-		  <meta property="og:url"           content="http://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:8001/with/video.vd?userNo=${list1[0].userNo}&vNo=${list1[0].vNo}" />
-		  <meta property="og:description"   content="영상 플랫폼 Daily Log" />
-		  <meta property="og:image"         content="http://127.0.0.1:8001/with/resources/images/logo.png" />
-	 --%>
- 
 </head>
 <body>
   <jsp:include page="../common/guest.jsp"></jsp:include>  
@@ -289,7 +281,7 @@ color: black; text-decoration: none;
 				</script> --> 
 			 
 	   --%>
-	 >
+ 
  <!--  <video  onmouseover="this.play()" onmouseout="this.pause()" width="400px" height="300px">
     <source src="resources/uploadFiles/jhj11.mp4" type="video/mp4">
   </video> -->
