@@ -346,6 +346,19 @@ WHERE TAG LIKE '%'||#{search}||'%'
 		AND A.AM_TY = '회원'
 	</select>
 	
+	<select id="selectReReply" parameterType="map" resultMap="replyResultSet2">
+		SELECT R.*, A.FILE_NM, M.NICKNAME
+		FROM REPLY R
+		JOIN ATTACHMENT A ON(R.USER_NO = A.USER_NO)
+		JOIN MEMBER M ON(A.USER_NO = M.USER_NO)
+		WHERE R.V_NO = #{vNo}
+		AND A.AM_TY = '회원'
+		AND PARENT_NO=#{repNo}
+	</select>
+	
+	
+	
+	
 	<select id="selectUserImg" parameterType="map" resultType="String">
 		SELECT A.FILE_NM
 		FROM MEMBER M

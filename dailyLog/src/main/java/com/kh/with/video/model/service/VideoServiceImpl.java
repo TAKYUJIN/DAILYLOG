@@ -471,6 +471,14 @@ public class VideoServiceImpl implements VideoService{
 
 
 
+	@Override
+	public int selectReReply(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return vd.selectReReply(sqlSession,map);
+	}
+
+
+
 	
 
 

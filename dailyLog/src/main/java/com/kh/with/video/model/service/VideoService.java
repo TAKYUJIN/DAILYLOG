@@ -173,7 +173,9 @@ public interface VideoService {
 
 	int insertAddInfo(AddInfo addInfo);
 
-	
+	int selectReReply(Map<String, Object> map);
+
+
 
 
 
