@@ -127,6 +127,9 @@ public interface LogerService {
 
 	int updatetitle(Attachment attachment);
 
+	//로거 동영상 추가 정보 출력 페이지
+	ArrayList<Video> selectLogerAddVideo(Loger l);
+
 
 
 	
