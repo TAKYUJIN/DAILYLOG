@@ -175,6 +175,10 @@ public interface VideoService {
 
 	int selectReReply(Map<String, Object> map);
 
+	int writeReReply(Map<String, Object> map);
+
+	int ReReplyAlram(Map<String, Object> map);
+
 
 
 

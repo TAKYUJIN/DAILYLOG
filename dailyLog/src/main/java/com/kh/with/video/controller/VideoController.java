@@ -256,6 +256,47 @@ public class VideoController {
 		return Integer.toString(result);
 	}
 
+	@RequestMapping(value="writeReReply.vd")
+	@ResponseBody
+	public String writeReReply (HttpSession session,Model model,HttpServletRequest request) {
+		Member m=(Member )session.getAttribute("loginUser");
+		int loginUser = m.getUserNo();
+		int vNo = Integer.parseInt(request.getParameter("vNo"));
+		String content = request.getParameter("content");
+		int userNo = Integer.parseInt(request.getParameter("userNo"));
+		int repNo = Integer.parseInt(request.getParameter("repNo"));
+		int parentNo = Integer.parseInt(request.getParameter("parentNo"));
+		String nickName=m.getNickname();
+		System.out.println(loginUser+","+vNo+","+content+","+userNo+","+repNo+","+parentNo+","+nickName);
+		
+		 Map<String,Object> map= new HashMap<String,Object>();
+		map.put("vNo",vNo);
+		map.put("userNo",userNo);
+		map.put("content",content);
+		map.put("loginUser",loginUser);
+		map.put("repNo",repNo);
+		map.put("parentNo",parentNo);
+		map.put("nickName",nickName);
+		
+		
+		List<Reply2>  reply =vs.selectReply(map);
+		int result=vs.writeReReply(map); 
+		int alram =vs.ReReplyAlram(map);
+		 
+		model.addAttribute("reply"+reply);
+		model.addAttribute("result", result);
+		model.addAttribute("alram", alram);
+		
+		
+		return Integer.toString(result);
+	}
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping(value = "replyUpdate.vd")
 	@ResponseBody
 	public String replyUpdate(HttpServletRequest request, Model model, HttpSession session) {
@@ -1215,6 +1256,9 @@ public class VideoController {
 		return mav;
 	}	
 
+	
+	
+	
 
 	//로거스튜디오에서의 구독
 	@RequestMapping(value = "studeioSubInsert.vd")

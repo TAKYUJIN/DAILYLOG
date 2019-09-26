@@ -495,6 +495,18 @@ public class VideoDaoImpl implements VideoDao {
 		return sqlSession.selectOne("Video.selectReReply",map);
 	}
 
+	@Override
+	public int writeReReply(SqlSessionTemplate sqlSession, Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("Video.writeReReply",map);
+	}
+
+	@Override
+	public int ReReplyAlram(SqlSessionTemplate sqlSession, Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		 return sqlSession.insert("Video.ReReplyAlram",map);
+	}
+
 	
 
 	
