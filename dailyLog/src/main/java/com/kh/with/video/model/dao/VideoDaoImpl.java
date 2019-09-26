@@ -496,6 +496,7 @@ public class VideoDaoImpl implements VideoDao {
 	}
 
 	@Override
+
 	public int writeReReply(SqlSessionTemplate sqlSession, Map<String, Object> map) {
 		// TODO Auto-generated method stub
 		return sqlSession.insert("Video.writeReReply",map);
@@ -508,6 +509,17 @@ public class VideoDaoImpl implements VideoDao {
 	}
 
 	
+
+	public List<AddInfo> selectAddInfo(SqlSessionTemplate sqlSession, Map<String, Object> map) {
+		
+		return sqlSession.selectList("Video.selectAddInfo", map);
+	}
+	@Override
+	public List<AddPlace> selectAddPlace(SqlSessionTemplate sqlSession, Map<String, Object> map) {
+		
+		return sqlSession.selectList("Video.selectAddPlace", map);
+	}
+
 
 	
 

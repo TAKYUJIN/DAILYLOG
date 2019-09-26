@@ -128,6 +128,9 @@ public interface LogerDao {
 
 	int updatetitle(SqlSessionTemplate sqlSession, Attachment attachment);
 
+	//로거 동영상 수정 추가정보 페이지 출력
+	ArrayList<Video> selectLogerAddVideo(SqlSessionTemplate sqlSession, Loger l);
+
 
 
 	

@@ -286,6 +286,12 @@ public class LogerServiceImpl implements LogerService{
 	}
 
 
+	@Override
+	public ArrayList<Video> selectLogerAddVideo(Loger l) {
+		return ld.selectLogerAddVideo(sqlSession, l);
+	}
+
+
 	
 
 

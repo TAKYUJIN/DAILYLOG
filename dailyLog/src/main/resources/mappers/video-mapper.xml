@@ -112,6 +112,23 @@
           <result property="ccount" column="C_COUNT"/>
      </resultMap> 
      
+    <resultMap type="AddInfo" id="AddInfoResultSet">
+		<id property="aNo" column="A_NO" />
+		<result property="vNo" column="V_NO" />
+		<result property="userNo" column="USER_NO" />
+		<result property="addCt" column="ADD_CT" />
+		<result property="uploadDt" column="UPLOAD_DT" />
+		<result property="modifyDt" column="MODIFY_DT" />
+	</resultMap>
+     
+    <resultMap type="AddPlace" id="AddPlaceResultSet">
+		<id property="apNo" column="AP_NO" />
+		<result property="vNo" column="V_NO" />
+		<result property="userNo" column="USER_NO" />
+		<result property="apXY" column="AP_XY" />
+		<result property="apNm" column="AP_NM" />
+		<result property="apAd" column="AP_AD" />
+	</resultMap> 
      
 	<!-- 업로드할 동영상 정보 insert 쿼리 -->
  
@@ -488,6 +505,7 @@ WHERE TAG LIKE '%'||#{search}||'%'
 
 	</select>
 	
+
 	
 	<insert id="writeReReply" parameterType="map" >
 	INSERT INTO REPLY
@@ -498,6 +516,21 @@ WHERE TAG LIKE '%'||#{search}||'%'
 		VALUES(AL_NO.NEXTVAL, #{userNo}, SYSDATE, 
 		#{nickName} || '님이 댓글을 남기셨습니다.', '댓글', NULL, #{repNo}, #{vNo}, NULL)	
 	</insert>
+
+	<select id="selectAddInfo" parameterType="map" resultMap="AddInfoResultSet">
+		SELECT *
+		FROM ADDINFO
+		WHERE USER_NO = #{userNo}
+		AND V_NO = #{vNo}
+	</select>
+	
+	<select id="selectAddPlace" parameterType="map" resultMap="AddPlaceResultSet">
+		SELECT *
+		FROM ADDPLACE
+		WHERE USER_NO = #{userNo}
+		AND V_NO = #{vNo}
+	</select>
+
 	
 </mapper>
 
