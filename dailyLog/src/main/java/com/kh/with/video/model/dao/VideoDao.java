@@ -139,6 +139,7 @@ public interface VideoDao {
 	int disCountSubNums(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	int insertAddPlace(SqlSessionTemplate sqlSession, AddPlace addPlace);
 	int insertAddInfo(SqlSessionTemplate sqlSession, AddInfo addInfo);
+	int selectReReply(SqlSessionTemplate sqlSession, Map<String, Object> map);
 
 
 	

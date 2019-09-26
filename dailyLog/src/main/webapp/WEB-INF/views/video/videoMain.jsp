@@ -850,11 +850,12 @@
 					채팅 폼overflow:auto;않는다.여기는 DIV 스타일에 overflow: auto; 속성을 주었다. 내용의 양이 DIV 영역보다 많으면 스클롤바가 표시되고 적으면 표시되지 않는다.여기는 DIV 스타일에 overflow: auto; 속성을 주었다. 내용의 양이 DIV 영역보다 많으면 스클롤바가 표시되고 적으면 표시되지 않는다.
 				</div> 
 			</div>
+			<!-- 채팅 -->
 			<div style="margin-top:4%; opacity:1;">
            		<div style="width:50px; display:inline-block;">
        			    <div>
 						<c:if test="${userImg != null}">
-							<img class="userImg" src="resources/images/${userImg}" style="margin-bottom:30px;">
+							<img class="userImg" src="resources/uploadFiles/${userImg}" style="margin-bottom:30px;">
 						</c:if>
 						<c:if test="${userImg == null}">
 							<img class="userImg" src="resources/images/newlogo3.png" style="margin-bottom:30px;">
@@ -867,7 +868,7 @@
 					</div>
            		</div>
            		<div style="display:inline-block;">
-           			<input type="button" id="insertReply" style="width:60px; margin-bottom:30px; background:#A8B7BC;" class="btn" value="작성">
+           			<input type="button" id="insertChat" style="width:60px; margin-bottom:30px; background:#A8B7BC;" class="btn" value="작성">
 					<!-- <a><i class="material-icons">&#xE876;</i></a> -->
            		</div>
 			</div>
@@ -915,19 +916,20 @@
 		                    			</div>
 		                    			<div style="display:inline-block;">
 		                    				<li class="nav-item" >
- 												<!-- <a href="#none">
+ 									 			<!-- <a href="#none">
 												<img src="resources/images/broken.png" id="replyHate" style="width:14px;">
 											</a> -->
 											<button style="background:none; border:none;" class="replyHate"><img src="resources/images/heart_black.png" id="replyHateImg" style="width:14px;"></button>
 											</li>
 		                    			</div>
 		                    			<div style="display:inline-block;">
-											<a href="#none">
-												<img src="resources/images/plus.png" class="reReply" style="width:14px;" >
+											<a href="# ">
+												<input type="hidden" value="${r.repNo }" class="rereplyrepno" >
+												<img src="resources/images/plus.png" class="reReply"  style="width:14px;" >
 											</a>
 		                    			</div>
 		                    			<div style="margin-top:5%;">
-		                    				<input type="button" class="plus" style="background:none;  margin-right:10%; border:none;" value="답글 ${fn:length(reply)}개 더보기">
+ 		                    				<input type="button" class="plus" style="background:none;  margin-right:10%; border:none;" value="답글 ${fn:length(reply)}개 더보기">
 		                    			</div>
  										<div class="replyPlus">
 										<div style="display:block;">
@@ -989,6 +991,12 @@
 		                    		</div>
 		                    		
 		                    	</div>
+		                    	
+		                    	
+		                    	
+		                    	
+		                    	
+		                    	
 		                    </td>
 		                    <td>
 		                    	<c:if test="${r.userNo == loginUser.userNo}">
@@ -1133,11 +1141,11 @@
 		           		</div>
 		         		<div style="display:inline-block; margin-left:1%; margin-right:1%;">
 		     			    <div class="input-group">
-								<input type="text" id="content" class="form-control" placeholder="Search&hellip;" style="background:none !important; width:250px;">
+								<input type="text" id="replycontent" class="form-control" placeholder="Search&hellip;" style="background:none !important; width:250px;">
 							</div>
 		           		</div>
 		           		<div style="display:inline-block;">
-		           			<input type="button" id="insertReply" style="width:60px; margin-bottom:30px; background:#A8B7BC;" class="btn" value="작성">
+		           			<input type="button" id="insertReply" style="width:100%; margin-bottom:30px; background:#A8B7BC;" class="btn" value="댓글 작성">
 							<!-- <a><i class="material-icons">&#xE876;</i></a> -->
 		           		</div>
 		           </tfoot>
@@ -1218,6 +1226,20 @@
 				}
 	        });
 	});
+	//대댓글
+  	$("#reReply").click(function(){
+		var vNo ="<c:out value='${list1[0].vNo}'/>";
+		 
+		console.log(vNo+repNo);
+		console.log( repNo1);
+		$.ajax({
+			
+		});
+		
+	});  
+	
+	
+	
 	$(".replyLike").click(function(){
 		var chNo = "<c:out value='${list2[0].chNo}'/>";
 		var vNo = "<c:out value='${list1[0].vNo}'/>";
@@ -1326,15 +1348,17 @@
 	});
 	$("#insertReply").click(function(){
 		var vNo = "<c:out value='${list1[0].vNo}'/>";
-		var content = document.getElementById("content").value;
+		var content = document.getElementById("replycontent").value;
 		var userNo = "<c:out value='${list2[0].userNo}'/>";
+		//var repNo = $(this).siblings().eq(0).val();
+	 
+		console.log(vNo +","+ content+","+userNo);
 		
-		console.log(vNo + content);
 		$.ajax({
 	        	url:"insertReply.vd",
 				type:"post",
 				data:{vNo:vNo,
-					  content:content,
+					content:content,
 					  userNo:userNo},
 				success:function(data){
 					console.log("성공!");
@@ -1527,6 +1551,7 @@
 		});
 		//좋아요 조회
 		function selectLike(){
+			alert("1");
 			var chNo = "<c:out value='${list2[0].chNo}'/>";
 			var vNo = "<c:out value='${list1[0].vNo}'/>";
 			console.log(chNo + "::" + vNo);
@@ -1802,7 +1827,8 @@
 					type:"post",
 					data:{vNo:vNo},
 					success:function(data){
-						if(data == 1){
+						 
+						if(data ==1){
 							document.getElementById('like').src = "resources/images/heart_red.png";
 						}else {
 							document.getElementById('hate').src = "resources/images/broken_color.png";
