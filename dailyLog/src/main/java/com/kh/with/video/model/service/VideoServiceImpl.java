@@ -477,6 +477,21 @@ public class VideoServiceImpl implements VideoService{
 		return vd.selectReReply(sqlSession,map);
 	}
 
+
+	@Override
+	public int writeReReply(Map<String, Object> map) {
+		return vd.writeReReply(sqlSession,map);
+	}
+
+
+
+	@Override
+	public int ReReplyAlram(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return vd.ReReplyAlram(sqlSession,map);
+	}
+
+
 	@Override
 	public List<AddInfo> selectAddInfo(Map<String, Object> map) {
 		
@@ -487,6 +502,7 @@ public class VideoServiceImpl implements VideoService{
 		
 		return vd.selectAddPlace(sqlSession, map);
 	}
+
 	
 
 

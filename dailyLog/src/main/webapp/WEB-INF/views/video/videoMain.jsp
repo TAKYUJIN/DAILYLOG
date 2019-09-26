@@ -1000,7 +1000,7 @@
 		<nav class="navbar navbar-default navbar-expand-lg navbar-light"style="background:none; border:none;">
 			<ul class="nav navbar-nav navbar-right ml-auto">					
 		       <table class="table table-striped table-hover">
-		           <tbody>
+		        <tbody> 
 		           	<c:forEach var="r" items="${reply}" >
 		           		<c:if test="${r.parentNo == 0 }">
 		                <tr  style="background:none !important;">
@@ -1017,6 +1017,8 @@
 		                    </td>
 		                    <td width="100px">
 		                    	<div style="margin-top:20px;">${ r.nickName }</div>
+		                    	<div style="margin-top:20px;">${ r.repNo }</div>
+		                    	
 		                    </td>
 		                    <td width="200px">
 		                    	<div>
@@ -1046,20 +1048,38 @@
 											<button style="background:none; border:none;" class="replyHate"><img src="resources/images/heart_black.png" id="replyHateImg" style="width:14px;"></button>
 											</li>
 		                    			</div>
-		                    			<div style="display:inline-block;">
-											<a href="# ">
+		                    				<a href="# ">
 												<input type="hidden" value="${r.repNo }" class="rereplyrepno" >
-												<img src="resources/images/plus.png" class="reReply"  style="width:14px;" >
+												<img src="resources/images/plus.png" class="replyplus"  style="width:14px;" >
 											</a>
+											
+											<!-- plus -->
+										<!-- 대댓글 작성 창 -->
+		                    			<div style="display:inline-block;" class="writeReReply1">
+												 <input type="hidden" name="rereplyrepno" class="rereplyrepno"value= "${r.repNo}" >
+												 <input type="text" name="rereplycontent" id="rereplycontent"  style="border:1px solid #A8B7BC; background:none;" >
+												 
+												<input type="submit" class="writeReReply" style="background:none;  margin-right:10%; border:none;" value="대댓글 등록">
+		        			
 		                    			</div>
 		                    			<div style="margin-top:5%;">
  		                    				<input type="button" class="plus" style="background:none;  margin-right:10%; border:none;" value="답글 ${fn:length(reply)}개 더보기">
 		                    			</div>
- 										<div class="replyPlus">
+		                    			
+		                    			<!-- 답글 더보기 -->
+ 										<div style="margin-top:5%;">
+		                    			 <input type="button" class="plus" style="background:none;  margin-right:10%; border:none;" value="답글  더보기">
+		                    			</div>
+ 										
+ 										
+ 									  <div class="replyPlus">
 										<div style="display:block;">
 											<table class="table table-striped table-hover" style="background:none;">
 										           <tbody>
- 		                    			<c:if test="${r.parentNo != 0 }">
+									       
+ 		                    			<c:if test="${r.parentNo ==r.repNo }"> 
+ 		                    			          <h5>${r.parentNo}</h5>
+										          <h5>${r.repNo}</h5>
 										                <tr  style="background:none !important;">
 										                    <td width="60px">
 										                    	<div style="margin-top:10px;">
@@ -1109,18 +1129,9 @@
 										           </tbody>
 										       </table>
 										</div>
-									</div>                     			
-		                    			
-		                    			
+									</div>                      
 		                    		</div>
-		                    		
 		                    	</div>
-		                    	
-		                    	
-		                    	
-		                    	
-		                    	
-		                    	
 		                    </td>
 		                    <td>
 		                    	<c:if test="${r.userNo == loginUser.userNo}">
@@ -1135,7 +1146,7 @@
 													</div>
 													<div class="modal-body">					
 														<div class="form-group">
-															<label><%-- #{ reply.nickName } --%></label>
+															<%-- <label>#{ reply.nickName }</label> --%>
 															<input type="text" class="form-control" id="replyUpdateText" required>
 														</div>	
 													</div>
@@ -1249,9 +1260,10 @@
 								</c:if>
 		                    </td>
 		                </tr>
-		                </c:if>
+		                 	</c:if>
 					</c:forEach>
-		           </tbody>
+		           </tbody>  
+  
 		           <tfoot>
 		           		<div style="width:50px; display:inline-block;">
 		       			    <div>
@@ -1279,8 +1291,6 @@
 			</ul>
 		</nav>
 	</div>
-
-
 	</div>
 	<!-- Modal HTML -->
 	<div id="myModal" class="modal fade">
@@ -1350,20 +1360,54 @@
 				}
 	        });
 	});
+	
 	//대댓글
-  	$("#reReply").click(function(){
-		var vNo ="<c:out value='${list1[0].vNo}'/>";
-		 
-		console.log(vNo+repNo);
-		console.log( repNo1);
-		$.ajax({
-			
-		});
-		
+		$(".writeReReply1").hide();
+	 
+  	$(".replyplus").click(function(){
+	 if(state==0){
+		 $(".writeReReply1").show();
+		 state=1;
+	 } else{
+		 $(".writeReReply1").hide();
+		 state=0;
+	 }
 	});  
-	
-	
-	
+  //대댓글 더보기
+  	 	$(".plus").click(function(){
+	 if(state==0){
+		 $(".replyPlus").show();
+		 state=1;
+	 } else{
+		 $(".replyPlus").hide();
+		 state=0;
+	 }
+	}); 
+  	
+  	//대댓글 작성
+  	$(".writeReReply").click(function(){
+  	 
+  		var vNo = "<c:out value='${list1[0].vNo}'/>";
+		var content = document.getElementById("rereplycontent").value;
+		var userNo = "<c:out value='${list2[0].userNo}'/>";
+  		var repNo=$(".rereplyrepno").val();
+  		var parentNo =$(".rereplyrepno").val();
+  		
+  		console.log(vNo+","+content+","+userNo+","+","+repNo);
+  		$.ajax({
+  			url:"writeReReply.vd",
+  			type:"post",
+  			data:{vNo:vNo,repNo:repNo,content:content,userNo:userNo,parentNo:parentNo},
+  			success:function(data){
+  				alert("성공");
+  				$("#rereplycontent").val("");
+  				window.location.reload();
+  			},error:function(){
+  				alert("실패ㅠㅠ");
+  			}
+  			
+  		});
+  	});	
 	$(".replyLike").click(function(){
 		var chNo = "<c:out value='${list2[0].chNo}'/>";
 		var vNo = "<c:out value='${list1[0].vNo}'/>";
@@ -1921,8 +1965,17 @@
 			 
 				$(".replyPlus").hide();
 				var check = 0;
-				$(".plus").click(function(){
+				/* $(".plus").click(function(){
 					if(check == 0){
+						$(".replyPlus").show();
+						check=1;
+					}else {
+						$(".replyPlus").hide();
+						check=0;
+					}
+				}); */
+				$(".replyPlus").click(function(){
+					if(check == 0){ 
 						$(".replyPlus").show();
 						check=1;
 					}else {
@@ -1977,7 +2030,7 @@
 					}					
 				});
 			 
-			 
+			
 			$('#subtitle').click(function(){
 				 $('#sub').show();
 				 $('#rSub').hide();
@@ -2105,6 +2158,24 @@
 
 		 });
 	</script>
+
+
+<script>
+//대댓글 가져오기
+var repNo=$(".rereplyrepno").val();
+function Rereplylist(){
+	$.ajax({
+		url:''
+	});
+	
+}
+
+
+
+
+</script>
+
+
 <script>
 	$(document).ready(function(){
 		var state = 0;
@@ -2134,6 +2205,7 @@
 		});
 	});
 </script>
+
 	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 	<jsp:include page="../common/footer.jsp"></jsp:include> 
 </body>

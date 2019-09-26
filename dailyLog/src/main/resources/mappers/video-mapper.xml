@@ -505,6 +505,18 @@ WHERE TAG LIKE '%'||#{search}||'%'
 
 	</select>
 	
+
+	
+	<insert id="writeReReply" parameterType="map" >
+	INSERT INTO REPLY
+	VALUES (REP_NO.NEXTVAL,#{loginUser},#{vNo},#{parentNo},SYSDATE,#{content},DEFAULT)
+	</insert>
+	<insert id="ReReplyAlram" parameterType="map" >
+		INSERT INTO ALRAM
+		VALUES(AL_NO.NEXTVAL, #{userNo}, SYSDATE, 
+		#{nickName} || '님이 댓글을 남기셨습니다.', '댓글', NULL, #{repNo}, #{vNo}, NULL)	
+	</insert>
+
 	<select id="selectAddInfo" parameterType="map" resultMap="AddInfoResultSet">
 		SELECT *
 		FROM ADDINFO
@@ -518,6 +530,7 @@ WHERE TAG LIKE '%'||#{search}||'%'
 		WHERE USER_NO = #{userNo}
 		AND V_NO = #{vNo}
 	</select>
+
 	
 </mapper>
 

@@ -140,8 +140,13 @@ public interface VideoDao {
 	int insertAddPlace(SqlSessionTemplate sqlSession, AddPlace addPlace);
 	int insertAddInfo(SqlSessionTemplate sqlSession, AddInfo addInfo);
 	int selectReReply(SqlSessionTemplate sqlSession, Map<String, Object> map);
+
+	int writeReReply(SqlSessionTemplate sqlSession, Map<String, Object> map);
+	int ReReplyAlram(SqlSessionTemplate sqlSession, Map<String, Object> map);
+
 	List<AddInfo> selectAddInfo(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	List<AddPlace> selectAddPlace(SqlSessionTemplate sqlSession, Map<String, Object> map);
+
 
 
 
