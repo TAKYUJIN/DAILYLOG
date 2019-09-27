@@ -18,6 +18,7 @@ import com.kh.with.loger.model.vo.Support;
 import com.kh.with.main.model.vo.Subscribe;
 import com.kh.with.main.model.vo.SubscribeVideo;
 import com.kh.with.member.model.vo.Member;
+import com.kh.with.reply.model.vo.Reply;
 import com.kh.with.report.model.vo.Report;
 import com.kh.with.video.model.vo.Attachment;
 import com.kh.with.video.model.vo.Video;
@@ -162,6 +163,17 @@ public class LogerDaoImpl implements LogerDao{
 
 		return vList;
 	}
+	
+	@Override
+	public ArrayList<Reply> showLogerReply(SqlSessionTemplate sqlSession, Member m) {
+		ArrayList<Reply> rList = null;
+		
+		rList = (ArrayList) sqlSession.selectList("Reply.showLogerReply", m);
+		
+		return rList;
+	}
+	
+	
 	@Override
 	public int videoDelete(SqlSessionTemplate sqlSession, int vNo) {
 		return sqlSession.delete("Loger.videoDelete", vNo);
@@ -317,12 +329,14 @@ public class LogerDaoImpl implements LogerDao{
 		ArrayList<Video> vList = (ArrayList) sqlSession.selectList("Loger.selectLogerAddVideo", l);
 		return vList;
 	}
+
 	//로거스튜디오 타이틀 이미지 변경
 	@Override
 	public int updateTitle(SqlSessionTemplate sqlSession, Attachment attachment) {
 		
 		return sqlSession.update("Attachment.updateTitle", attachment);
 	}
+
 }
 
 

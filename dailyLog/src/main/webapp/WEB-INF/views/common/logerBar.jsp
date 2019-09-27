@@ -301,12 +301,12 @@
 				<a data-toggle="dropdown" class="nav-link dropdown-toggle" style="padding-right:0px;">채널설정 <b class="caret"></b></a>
 				<ul class="dropdown-menu">					
 						<li><a href="goChannelChangeInfo.lo" class="dropdown-item">채널정보수정</a></li>
-					<li><a href="logerChannelSet.lo" class="dropdown-item">채널구성설정</a></li>
+					<li><a href="goChannelChangeSet.lo" class="dropdown-item">채널구성설정</a></li>
 				</ul>
 			<li class="nav-item"><a href="logerVideo.lo" class="nav-link" style="padding-right:0px;">동영상</a></li>			
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">분석</a></li>	
 			<li class="nav-item"><a href="logerCalculate.lo" class="nav-link" style="padding-right:0px;">정산</a></li>	
-			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">댓글</a></li>
+			<li class="nav-item"><a href="logerReply.lo" class="nav-link" style="padding-right:0px;">댓글</a></li>
 			<li class="nav-item"><a href="logerdeclarationlist.lo" class="nav-link" style="padding-right:0px;">신고기록</a></li>
 		</ul>
 		<form class="navbar-form form-inline" style="width:240px; margin-top:10px; margin-left:120px;">

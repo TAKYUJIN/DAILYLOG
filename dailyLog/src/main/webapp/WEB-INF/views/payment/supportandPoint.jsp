@@ -160,11 +160,9 @@
             <i class="fa fa-camera"></i> 알림
         </a>
         <a href="point.me" class="list-group-item list-group-item-action active">
-            <i class="fa fa-music"></i> 후원&포인트 충전
+            <i class="fa fa-money"></i> 후원&포인트 충전
         </a>
-        <a href="refund.me" class="list-group-item list-group-item-action">
-            <i class="fa fa-film"></i> 환불
-        </a>
+       
     </div>
 </div>
 <form id="point" action="point.me" method="post">
@@ -173,6 +171,7 @@
        <a>정기후원</a>
        <a href="#">문의하기</a>
        </h1>
+       <input type="button" id="re" name="re" value="정기결제" onclick="location.href='pay1.me'">
        <hr>
        <br>
             <table class="table table-striped table-hover">
@@ -216,9 +215,8 @@
             
             <h1>
        <a>포인트</a>
-      <input type="button" id="pay" name="pay" value="결제" onclick="location.href='pay.me'">
-       <input type="button" id="re" name="re" value="환불">
        </h1>
+       <input type="button" id="pay" name="pay" value="결제" onclick="location.href='pay.me'">
        <hr>
        <br>
               <table class="table table-striped table-hover">

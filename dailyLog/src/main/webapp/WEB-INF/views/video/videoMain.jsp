@@ -399,7 +399,7 @@
 	.overlaybox div, ul {overflow:hidden;margin:0;padding:0;}
 	.overlaybox li {list-style: none;}
 	.overlaybox .boxtitle {color:#fff;font-size:16px;font-weight:bold;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png') no-repeat right 120px center;margin-bottom:8px;}
-	.overlaybox .first {position:relative;width:247px;height:136px;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/thumb.png') no-repeat;margin-bottom:8px;}
+	.overlaybox .first {position:relative;width:247px;height:136px;background: url('http://127.0.0.1:8001/with/resources/images/newlogo3.png') no-repeat;margin-bottom:8px;}
 	.first .text {color:#fff;font-weight:bold;}
 	.first .triangle {position:absolute;width:48px;height:48px;top:0;left:0;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/triangle.png') no-repeat; padding:6px;font-size:18px;}
 	.first .movietitle {position:absolute;width:100%;bottom:0;background:rgba(0,0,0,0.4);padding:7px 15px;font-size:14px;}
@@ -450,6 +450,14 @@
 	
 </head>
 <body>
+<script>
+$("#reportCh").hide();
+$("#moveChannel").click(){
+	$("#reportChCh").show();
+	
+}
+
+</script>
  	<jsp:include page="../common/mainBar.jsp"></jsp:include>
 	<br>
 	<%-- <c:forEach items="${list}" --%>
@@ -475,17 +483,21 @@
 											</c:if>
 										</div>
 									</a>
+
 									  <ul class="dropdown-menu form-wrapper" style="width:280px;border:1px solid #A8B7BC;">					
+
+									<!--
+									<ul class="dropdown-menu form-wrapper" style="width:280px;border:1px solid #A8B7BC;">			-->		
+
 										<li>
-											<div class="form-group" id="pro">
+											<div class="form-group" id="chch">
 												<table class="noti_table">
 													<tr><a id="moveChannel">채널로 이동</a></tr><br>
 													<tr><a id="reportChannel">신고</a></tr><br>
-													<tr><a id="blockChannel">차단</a></tr><br>
 												</table>
 											</div>
 											<!-- 신고-->
-											<div id="reportCh">
+											<div id="reportChCh">
 												<div class="noti_text" align="center" style="margin-top:5%; width:350px;"><b>동영상신고</b></div>
 												<div align="left" style="margin-left:10%; margin-right:10%;">
 													<table class="noti_table">
@@ -521,32 +533,14 @@
 													</table>
 												</div>
 											</div>
-											<!-- 차단 -->
-											<div id="blockCh">
-												<div class="noti_text" align="center" style="margin-top:5%;">
-													<img src="resources/images/caution.png" style="width:30px; margin:5%;"><br>
-												</div>
-												<div align="center" style="margin-left:10%; margin-right:10%; text-align:center">
-													<table class="noti_table">
-														<tr><td><b>채널 차단에 관한 공지</b></td></tr>
-														<tr>
-															<td>
-																<small>앞으로 <b>${ list1[0].chNm }</b>채널에 대한 영상을<br> 추천 받지 않게 됩니다.</small>
-															</td>
-														</tr>
-														<tr><td style="color:red;"><small><b>*자세한 내용은 공지사항을 참고해 주세요</b></small></td></tr>
-														<tr>
-															<td>
-																<button class="btn" style="width:100px;margin-right:5% !important;background:#A8B7BC;" id="cancle5">취소</button>
-																<button id="blockOk" style="width:100px;"class="btn">확인</button><br><br>
-															</td>
-														</tr>
-													</table>
-												</div>
-											</div>
+											
 											
 										</li>
+
 									</ul> 
+
+							<!--		</ul> -->
+
 								</li>
 
 
@@ -835,22 +829,38 @@
 			<tr>
 				<!-- 더보기 -->
 				<td colspan="4">
-					<div class="moreInfo" style="margin-left:3%; cursor:pointer;">더보기 < </div>
-					<div class="moreLocation" style="margin-left:6%;">
-						<div id="map1" style="width:100%;height:350px;"></div>
-						<div id="map2" style="width:100%;height:350px;"></div>
+					<div class="moreInfo" style="margin-left:2%; cursor:pointer; font-weight:bold;">영상에 나오는 정보 자세히 보기 V </div>
+					<div style="margin-bottom:5%;"></div>
+					<div class="moreLocation" style="margin-left:5%;">
+						<div>
+							<div style="margin-top:5%; margin-bottom:5%; align:center;"><hr style="border-color:#A8B7BC;"></div>
+							<c:forEach items="${addPlace }" var="ap">
+								<b><c:out value="${ap.apNm }"/></b>&emsp;&emsp;&emsp;&emsp;
+								<c:out value="${ap.apAd }"/><hr>
+							</c:forEach>
+							
+							<%-- <b><c:out value="${addInfo[0].addCt }"/></b> --%>
+						</div>
+						<div style="margin:5%; align:center;"></div>
+						<div id="map" style="width:95%;height:350px;"></div>
+						<c:set var="addCt" value="${ fn:split(addInfo[0].addCt, ' ') }"/>
+						<div style="margin:5%; align:center;"></div>
+						<c:forEach var="ac" items="${ addCt }">
+							${ac }<br><br><br>
+						</c:forEach>
 					</div>
 				</td>
 			</tr>
 			
 		</table>
 	</div>
+	
 		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1bbe6319293d273f5cc3cd430eba39d2&libraries=services"></script>
 		<script>
-			var mapContainer = document.getElementById('map1'), // 지도를 표시할 div 
+			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 			    mapOption = { 
 			        center: new kakao.maps.LatLng(37.502, 127.026581), // 지도의 중심좌표
-			        level: 4 // 지도의 확대 레벨
+			        level: 6 // 지도의 확대 레벨
 			    };
 			
 			var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
@@ -863,32 +873,6 @@
 			    '        <div class="triangle text">1</div>' +
 			    '        <div class="movietitle text">드래곤 길들이기2</div>' +
 			    '    </div>' +
-			    '    <ul>' +
-			    '        <li class="up">' +
-			    '            <span class="number">2</span>' +
-			    '            <span class="title">명량</span>' +
-			    '            <span class="arrow up"></span>' +
-			    '            <span class="count">2</span>' +
-			    '        </li>' +
-			    '        <li>' +
-			    '            <span class="number">3</span>' +
-			    '            <span class="title">해적(바다로 간 산적)</span>' +
-			    '            <span class="arrow up"></span>' +
-			    '            <span class="count">6</span>' +
-			    '        </li>' +
-			    '        <li>' +
-			    '            <span class="number">4</span>' +
-			    '            <span class="title">해무</span>' +
-			    '            <span class="arrow up"></span>' +
-			    '            <span class="count">3</span>' +
-			    '        </li>' +
-			    '        <li>' +
-			    '            <span class="number">5</span>' +
-			    '            <span class="title">안녕, 헤이즐</span>' +
-			    '            <span class="arrow down"></span>' +
-			    '            <span class="count">1</span>' +
-			    '        </li>' +
-			    '    </ul>' +
 			    '</div>';
 			
 			// 커스텀 오버레이가 표시될 위치입니다 
@@ -904,20 +888,69 @@
 			
 			// 커스텀 오버레이를 지도에 표시합니다
 			customOverlay.setMap(map);
+			
+			// 지도에 마커를 표시합니다 
+			var marker = new kakao.maps.Marker({
+			    map: map, 
+			    position: new kakao.maps.LatLng(37.4989347355231,127.032854329609)
+			});
+			
+			
+			
+			// 커스텀 오버레이에 표시할 컨텐츠 입니다
+			// 커스텀 오버레이는 아래와 같이 사용자가 자유롭게 컨텐츠를 구성하고 이벤트를 제어할 수 있기 때문에
+			// 별도의 이벤트 메소드를 제공하지 않습니다 
+			var content = '<div class="wrap">' + 
+			            '    <div class="info">' + 
+			            '        <div class="title">' + 
+			            '			${addPlace[0].apNm}' + 
+			            '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
+			            '        </div>' + 
+			            '        <div class="body">' + 
+			            '            <div class="img">' +
+			            '                <img src="http://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
+			            '           </div>' + 
+			            '            <div class="desc">' + 
+			            '                <div class="ellipsis">${addPlace[0].apAd}</div>' + 
+			            '                <div class="jibun ellipsis">(우) 63309 (지번) 영평동 2181</div>' + 
+			            '                <div><a href="http://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' + 
+			            '            </div>' + 
+			            '        </div>' + 
+			            '    </div>' +    
+			            '</div>';
+			
+			// 마커 위에 커스텀오버레이를 표시합니다
+			// 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
+			var overlay = new kakao.maps.CustomOverlay({
+			    content: content,
+			    map: map,
+			    position: marker.getPosition()       
+			});
+			
+			// 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
+			kakao.maps.event.addListener(marker, 'click', function() {
+			    overlay.setMap(map);
+			});
+			
+			// 커스텀 오버레이를 닫기 위해 호출되는 함수입니다 
+			function closeOverlay() {
+			    overlay.setMap(null);     
+			}
 		</script>
-		<script>
-			var mapContainer = document.getElementById('map2'), // 지도의 중심좌표
+		
+<!-- 		<script>
+ 			var mapContainer = document.getElementById('map2'), // 지도의 중심좌표
 			    mapOption = { 
-			        center: new kakao.maps.LatLng(33.451475, 126.570528), // 지도의 중심좌표
-			        level: 3 // 지도의 확대 레벨
-			    }; 
+			        center: new kakao.maps.LatLng(37.49887, 127.026581), // 지도의 중심좌표
+			        level: 2 // 지도의 확대 레벨
+			    };  
 			
 			var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 			
 			// 지도에 마커를 표시합니다 
 			var marker = new kakao.maps.Marker({
 			    map: map, 
-			    position: new kakao.maps.LatLng(33.450701, 126.570667)
+			    position: new kakao.maps.LatLng(37.4991408445888,127.03031219445)
 			});
 			
 			// 커스텀 오버레이에 표시할 컨텐츠 입니다
@@ -959,8 +992,10 @@
 			function closeOverlay() {
 			    overlay.setMap(null);     
 			}
-		</script>
+		</script> -->
+		
 	<!-- <div style="border-left:1px solid #A8B7BC;height:500px;"></div> -->
+
 	<div style="align:center; display:inline-block; margin-left:3%; margin-top:5%; height:100%;position:absolute;">
 		<!-- 댓글 -->
 		<div style="margin-bottom:7%; margin-left:3%;">
@@ -968,11 +1003,11 @@
 				<img src="resources/images/chat.png" style="width:30px; align:right;">&emsp; 실시간 채팅 다시보기
 			</div>
 		</div>
-		<div class="chatForm" style="margin-top:5%;color:white; width:430px; height:350px; text-align:center; background-color:#13334A; border-radius:10%; margin-bottom:10%; opacity:0.6;">
+		<div id="chatForm" style="margin-top:5%;color:white; width:430px; height:350px; text-align:center; background-color:#13334A; border-radius:10%; margin-bottom:10%; opacity:0.6;">
 			<div style="overflow:auto; padding:10px; width:425px; height:260px;">
-				<div style="margin:5%;">
+				<div id="messageWindow" style="margin:5%;">
 					
-					채팅 폼overflow:auto;않는다.여기는 DIV 스타일에 overflow: auto; 속성을 주었다. 내용의 양이 DIV 영역보다 많으면 스클롤바가 표시되고 적으면 표시되지 않는다.여기는 DIV 스타일에 overflow: auto; 속성을 주었다. 내용의 양이 DIV 영역보다 많으면 스클롤바가 표시되고 적으면 표시되지 않는다.
+					
 				</div> 
 			</div>
 			<!-- 채팅 -->
@@ -989,11 +1024,12 @@
            		</div>
          		<div style="display:inline-block; margin-left:1%; margin-right:1%;">
      			    <div class="input-group">
-						<input type="text" id="content" class="form-control" placeholder="Search&hellip;" style="background:none !important; width:250px;">
+						<input type="text" id="inputMessage" name="chatInput" value="" placeholder="실시간 채팅에 참여하세요" style="background:none !important; width:250px; color:white;" onkeyup="enterkey()">
 					</div>
            		</div>
            		<div style="display:inline-block;">
-           			<input type="button" id="insertChat" style="width:60px; margin-bottom:30px; background:#A8B7BC;" class="btn" value="작성">
+           			<input type="button" id="insertChat" class="btn" value="작성" onclick="send();" style="width:60px; margin-bottom:30px; background:#A8B7BC;">
+           			
 					<!-- <a><i class="material-icons">&#xE876;</i></a> -->
            		</div>
 			</div>
@@ -2199,12 +2235,12 @@ function Rereplylist(){
 			if(state == 0){
 				$(".moreLocation").show();
 				state = 1;
-				$(".moreInfo").text("더보기 >");
+				$(".moreInfo").text("영상에 나오는 정보 자세히 보기 ㅡ");
 			}
 			else {
 				$(".moreLocation").hide();
 				state = 0;
-				$(".moreInfo").text("더보기 <");
+				$(".moreInfo").text("영상에 나오는 정보 자세히 보기 V");
 			}
 		});
 		$(".chatForm").hide();
@@ -2249,7 +2285,109 @@ function Rereplylist(){
 		});
 	});
 </script>
+<script type="text/javascript">
 
+var socket;
+var login_ids={};
+    var textarea = document.getElementById("messageWindow");
+    var nickname="${loginUser.nickname}";
+    var webSocket = new WebSocket('ws://192.168.0.24:8001/with/broadcasting');
+    /* socket.emit('login','nickname'); */
+    var inputMessage = document.getElementById('inputMessage');
+    console.log(inputMessage);
+    webSocket.onerror = function(event) {
+        onError(event)
+    };
+    webSocket.onopen = function(event) {
+        onOpen(event)
+    };
+    webSocket.onmessage = function(event) {
+        onMessage(event)
+    };
+   function onMessage(event) {
+	   var chat_id ="${loginUser.nickname}";
+/* 	   $("#messageWindow").html("  <p class='chat_content'>"+chat_id  +"님이 채팅에 참여하였습니다.</p> ");  
+ */	   console.log("event"+event);
+        var message = event.data.split("|");
+        var sender = message[0];
+        var content = message[1];
+        alert("11");
+       
+        if (content == "") {
+        	 
+        } /* else {
+            if (content.match("/")) {
+                if (content.match(("/" + $("#chat_id").val()))) {
+                    var temp = content.replace("/" + $("#chat_id").val(), "(귓속말) :").split(":");
+                   
+                    if (temp[1].trim() == "") {
+                    } else {
+                        $("#messageWindow").html($("#messageWindow").html() + "<p class='whisper'>"
+                            + sender + content.replace("/" + $("#chat_id").val(), "(귓속말) :") + "</p>");
+                    }
+                } else {
+                }
+            }  */else {
+                if (content.match("/")) {
+                	
+                    $("#messageWindow").html($("#messageWindow").html()
+                        + "<p class='chat_content'><b class='impress'>" + sender + " : " + content + "</b></p>");
+                } else {
+                    $("#messageWindow").html($("#messageWindow").html()
+                        + "<p class='chat_content'>" + sender + " : " + content + "</p>");
+                }
+            }
+       
+    } 
+    function onOpen(event) {
+    	var chat_id ="${loginUser.nickname}";
+    	console.log(chat_id);
+    	console.log(event+"11");
+      $("#messageWindow").append("  <p class='chat_content'>"+chat_id  +"님이 채팅에 참여하였습니다.</p> ");  
+   
+        
+       /*  if (inputMessage.value == "") {
+        } else {
+            $("#messageWindow").html($("#messageWindow").html()
+            		("  <p class='chat_content'>" +chat_id+ "님이 채팅에 참여하였습니다."+"</p> "));
+            
+        } */
+        webSocket.send(chat_id  +"님이 채팅에 참여하였습니다." + inputMessage.value);
+      /*   inputMessage.value = ""; */
+        
+        
+        
+    }
+  /*   function onError(event) {
+        alert(event.data);
+    } */
+    function send() {
+    	var chat_id ="${loginUser.nickname}";
+    	var message = inputMessage.value;
+    	
+        if (inputMessage.value == "") {
+        } else {
+            $("#messageWindow").html($("#messageWindow").html()
+                + "<p class='chat_content'>  "+"<b>"+chat_id+"<b>" + inputMessage.value + "</p>");
+            
+        }
+        
+        
+        webSocket.send(chat_id + "|" + inputMessage.value);
+        inputMessage.value = "";
+    }
+    //     엔터키를 통해 send함
+    function enterkey() {
+        if (window.event.keyCode == 13) {
+            send();
+        }
+    }
+    //     채팅이 많아져 스크롤바가 넘어가더라도 자동적으로 스크롤바가 내려가게함
+    /* window.setInterval(function() {
+        var elem = document.getElementById('messageWindow');
+        elem.scrollTop = elem.scrollHeight;
+    }, 0); */
+</script>
 	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 	<jsp:include page="../common/footer.jsp"></jsp:include> 
 </body>
