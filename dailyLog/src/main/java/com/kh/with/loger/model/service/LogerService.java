@@ -13,6 +13,7 @@ import com.kh.with.loger.model.vo.Support;
 import com.kh.with.main.model.vo.Subscribe;
 import com.kh.with.main.model.vo.SubscribeVideo;
 import com.kh.with.member.model.vo.Member;
+import com.kh.with.reply.model.vo.Reply;
 import com.kh.with.report.model.vo.Report;
 import com.kh.with.video.model.vo.Attachment;
 import com.kh.with.video.model.vo.Video;
@@ -65,6 +66,9 @@ public interface LogerService {
 
 	//로거 동영상 출력
 	ArrayList<Video> showLogerVideo(Member m);
+	
+	//로거 댓글  출력 
+	ArrayList<Reply> showLogerReply(Member m);
 
 	//로거 동영상 삭제 video, attachment 
 	int videoDelete(int vNo);
@@ -127,6 +131,7 @@ public interface LogerService {
 
 	//로거스튜디오 타이틀 이미지 변경
 	int updateTitle(Attachment attachment);
+
 
 
 

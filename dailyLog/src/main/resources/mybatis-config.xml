@@ -41,6 +41,7 @@
 
 	     <typeAlias type="com.kh.with.notice.model.vo.noticeEmail" alias="noticeEmail" />
 	     <typeAlias type="com.kh.with.loger.model.vo.AddVideo" alias="AddVideo" />
+	     <typeAlias type="com.kh.with.reply.model.vo.Reply" alias="Reply" />
 	     
 
 	</typeAliases>
@@ -68,6 +69,6 @@
 		<mapper resource="mappers/addInfo-mapper.xml"/>
 
 		<mapper resource="mappers/notice-mapper.xml"/>
-
+		<mapper resource="mappers/reply-mapper.xml"/>
 	</mappers>
 </configuration>

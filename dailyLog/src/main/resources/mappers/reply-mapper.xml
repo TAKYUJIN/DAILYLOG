@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Reply">
+
+	<resultMap type="Reply" id="replyResultSet">
+		<id property="repNo" column="REP_NO" />
+		<result property="userNo" column="USER_NO" />
+		<result property="vNo" column="V_NO" />
+		<result property="repDt" column="REP_DT" />
+		<result property="repCt" column="REP_CT" />
+		<result property="repTy" column="REP_TY" />
+		<result property="parentNo" column="PARENT_NO" />
+		<result property="nickname" column="NICKNAME" />
+		<result property="vfileNm" column="FILE_NM" />
+		<result property="mfileNm" column="MFILE_NM" />
+		<result property="count" column="COUNT" />
+	</resultMap>
+	
+  	<!-- 로거 댓글 출력 -->
+	<select id="showLogerReply" resultMap="replyResultSet">
+	SELECT RANK, MFILE_NM, V_NO, USER_NO
+		FROM (SELECT ROW_NUMBER() OVER(ORDER BY R.REP_DT DESC) RANK, R.*, A.FILE_NM MFILE_NM
+		FROM REPLY R
+		JOIN MEMBER M ON(R.USER_NO = M.USER_NO)
+		full outer JOIN ATTACHMENT A ON(R.v_NO = A.v_NO)
+		WHERE R.USER_NO = 5)
+		ORDER BY RANK ASC
+	
+	</select>
+     
+	
+	
+</mapper>
+
+
