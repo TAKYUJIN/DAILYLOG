@@ -281,51 +281,8 @@ table.table-striped tbody tr:nth-of-type(odd) {
     				console.log('error');
     			}
     	})
-	 });$("#selectDate").click(function(){
- 		var monthDate =$("#monthDate").val();
-		var todayDate = $("#todayDate").val();
-		$.ajax({
-			url:"datepic.lo",
-			data:{"monthDate":monthDate,"todayDate":todayDate},
-			type:"post",
-			success:function(data){
-				console.log('succ');
-				console.log(data);
-				var $logerTable = $("#logerTable .test");
-				var $test = $(".test");
-				/* $logerTable.hide(); */
-				$logerTable.html("");
-				/* console.log($logerTable); */
-				/* $test.hide(); */
-				/* $logerTable[0].html("");
-				console.log($logerTable);
-				console.log($test); */
-				/* $test.html(""); */
-				/* var $pagingDiv1 = $("#pagingArea div"); */
-				 for(var i = 0; i < data["dateList"].length; i++){ 
-					var $tr = $("<tr>");
-					var $nNo = $("<td>").text(data["dateList"][i].nNo);
-					var $supTY = $("<td>").text(data["dateList"][i].supTY);
-					var $nickname = $("<td>").text(data["dateList"][i].nickname);
-					var $supPrice = $("<td>").text(numeral(data["dateList"][i].supPrice).format('0,0')+"원");
-					var $supSTDT = $("<td>").text(data["dateList"][i].supSTDT);
-					var $td = $("<td>");
-					var result = $supSTDT.text().substr(0,10);
-					$td.append(result)
-					$tr.append($nNo);
-					$tr.append($supTY);
-					$tr.append($nickname);
-					$tr.append($supPrice);
-					$tr.append($td);
-					$logerTable.append($tr); 
-				 } 
-			},
-			error : function(){
-				console.log('error');
-			}
-	})
- });
-		 
+	 });
+			 
 		 
 		 function logerCalculate(){
 				location.href="logerCalculate.lo";

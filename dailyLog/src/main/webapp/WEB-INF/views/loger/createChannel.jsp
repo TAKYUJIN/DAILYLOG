@@ -122,6 +122,7 @@
 					data:{chInfo:chInfo,chNm:chNm,file2:file2,'allView':lists},
 						traditional:true,
 					success:function(data){
+						window.location.reload();
 						console.log("성공!");
 
 					},

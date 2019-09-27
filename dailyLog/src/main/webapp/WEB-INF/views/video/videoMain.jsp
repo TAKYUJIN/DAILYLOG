@@ -450,6 +450,14 @@
 	
 </head>
 <body>
+<script>
+$("#reportCh").hide();
+$("#moveChannel").click(){
+	$("#reportChCh").show();
+	
+}
+
+</script>
  	<jsp:include page="../common/mainBar.jsp"></jsp:include>
 	<br>
 	<%-- <c:forEach items="${list}" --%>
@@ -475,17 +483,21 @@
 											</c:if>
 										</div>
 									</a>
-									<%-- <ul class="dropdown-menu form-wrapper" style="width:280px;border:1px solid #A8B7BC;">					
+
+									  <ul class="dropdown-menu form-wrapper" style="width:280px;border:1px solid #A8B7BC;">					
+
+									<!--
+									<ul class="dropdown-menu form-wrapper" style="width:280px;border:1px solid #A8B7BC;">			-->		
+
 										<li>
-											<div class="form-group" id="pro">
+											<div class="form-group" id="chch">
 												<table class="noti_table">
 													<tr><a id="moveChannel">채널로 이동</a></tr><br>
 													<tr><a id="reportChannel">신고</a></tr><br>
-													<tr><a id="blockChannel">차단</a></tr><br>
 												</table>
 											</div>
 											<!-- 신고-->
-											<div id="reportCh">
+											<div id="reportChCh">
 												<div class="noti_text" align="center" style="margin-top:5%; width:350px;"><b>동영상신고</b></div>
 												<div align="left" style="margin-left:10%; margin-right:10%;">
 													<table class="noti_table">
@@ -521,32 +533,14 @@
 													</table>
 												</div>
 											</div>
-											<!-- 차단 -->
-											<div id="blockCh">
-												<div class="noti_text" align="center" style="margin-top:5%;">
-													<img src="resources/images/caution.png" style="width:30px; margin:5%;"><br>
-												</div>
-												<div align="center" style="margin-left:10%; margin-right:10%; text-align:center">
-													<table class="noti_table">
-														<tr><td><b>채널 차단에 관한 공지</b></td></tr>
-														<tr>
-															<td>
-																<small>앞으로 <b>${ list1[0].chNm }</b>채널에 대한 영상을<br> 추천 받지 않게 됩니다.</small>
-															</td>
-														</tr>
-														<tr><td style="color:red;"><small><b>*자세한 내용은 공지사항을 참고해 주세요</b></small></td></tr>
-														<tr>
-															<td>
-																<button class="btn" style="width:100px;margin-right:5% !important;background:#A8B7BC;" id="cancle5">취소</button>
-																<button id="blockOk" style="width:100px;"class="btn">확인</button><br><br>
-															</td>
-														</tr>
-													</table>
-												</div>
-											</div>
+											
 											
 										</li>
-									</ul> --%>
+
+									</ul> 
+
+							<!--		</ul> -->
+
 								</li>
 
 
@@ -785,7 +779,7 @@
 					</div>
 				</td>
 			</tr>
-			<tr>
+		  <tr>
 				<!-- 비디오 -->
 				<td colspan="4" height="500px"><!-- autoplay="autoplay" -->
 					<c:if test="${list1[0].adultAut eq 'Y' }">
@@ -815,7 +809,7 @@
 					</c:if>
 				</td>
 			<!-- 댓글 -->
-			</tr>
+			</tr >
 			<tr>
 				<!-- 영상 제목, 태그 -->
 				<td colspan="4" height="130px">
@@ -839,22 +833,28 @@
 					<div style="margin-bottom:5%;"></div>
 					<div class="moreLocation" style="margin-left:5%;">
 						<div>
-
-							<b><c:out value="${addInfo[0].addCt }"/></b>
 							<div style="margin-top:5%; margin-bottom:5%; align:center;"><hr style="border-color:#A8B7BC;"></div>
 							<c:forEach items="${addPlace }" var="ap">
-								<b><c:out value="${ap.apNm }"/></b>
-								<b><c:out value="${ap.apAd }"/></b><hr>
+								<b><c:out value="${ap.apNm }"/></b>&emsp;&emsp;&emsp;&emsp;
+								<c:out value="${ap.apAd }"/><hr>
 							</c:forEach>
+							
+							<%-- <b><c:out value="${addInfo[0].addCt }"/></b> --%>
 						</div>
 						<div style="margin:5%; align:center;"></div>
 						<div id="map" style="width:95%;height:350px;"></div>
+						<c:set var="addCt" value="${ fn:split(addInfo[0].addCt, ' ') }"/>
+						<div style="margin:5%; align:center;"></div>
+						<c:forEach var="ac" items="${ addCt }">
+							${ac }<br><br><br>
+						</c:forEach>
 					</div>
 				</td>
 			</tr>
 			
 		</table>
 	</div>
+	
 		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1bbe6319293d273f5cc3cd430eba39d2&libraries=services"></script>
 		<script>
 			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -903,7 +903,7 @@
 			var content = '<div class="wrap">' + 
 			            '    <div class="info">' + 
 			            '        <div class="title">' + 
-			            '			${list2[0].chNm}' + 
+			            '			${addPlace[0].apNm}' + 
 			            '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
 			            '        </div>' + 
 			            '        <div class="body">' + 
@@ -911,7 +911,7 @@
 			            '                <img src="http://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
 			            '           </div>' + 
 			            '            <div class="desc">' + 
-			            '                <div class="ellipsis">제주특별자치도 제주시 첨단로 242</div>' + 
+			            '                <div class="ellipsis">${addPlace[0].apAd}</div>' + 
 			            '                <div class="jibun ellipsis">(우) 63309 (지번) 영평동 2181</div>' + 
 			            '                <div><a href="http://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' + 
 			            '            </div>' + 
@@ -995,6 +995,7 @@
 		</script> -->
 		
 	<!-- <div style="border-left:1px solid #A8B7BC;height:500px;"></div> -->
+
 	<div style="align:center; display:inline-block; margin-left:3%; margin-top:5%; height:100%;position:absolute;">
 		<!-- 댓글 -->
 		<div style="margin-bottom:7%; margin-left:3%;">
@@ -1002,11 +1003,11 @@
 				<img src="resources/images/chat.png" style="width:30px; align:right;">&emsp; 실시간 채팅 다시보기
 			</div>
 		</div>
-		<div class="chatForm" style="margin-top:5%;color:white; width:430px; height:350px; text-align:center; background-color:#13334A; border-radius:10%; margin-bottom:10%; opacity:0.6;">
+		<div id="chatForm" style="margin-top:5%;color:white; width:430px; height:350px; text-align:center; background-color:#13334A; border-radius:10%; margin-bottom:10%; opacity:0.6;">
 			<div style="overflow:auto; padding:10px; width:425px; height:260px;">
-				<div style="margin:5%;">
+				<div id="messageWindow" style="margin:5%;">
 					
-					채팅 폼overflow:auto;않는다.여기는 DIV 스타일에 overflow: auto; 속성을 주었다. 내용의 양이 DIV 영역보다 많으면 스클롤바가 표시되고 적으면 표시되지 않는다.여기는 DIV 스타일에 overflow: auto; 속성을 주었다. 내용의 양이 DIV 영역보다 많으면 스클롤바가 표시되고 적으면 표시되지 않는다.
+					
 				</div> 
 			</div>
 			<!-- 채팅 -->
@@ -1023,11 +1024,12 @@
            		</div>
          		<div style="display:inline-block; margin-left:1%; margin-right:1%;">
      			    <div class="input-group">
-						<input type="text" id="content" class="form-control" placeholder="Search&hellip;" style="background:none !important; width:250px;">
+						<input type="text" id="inputMessage" name="chatInput" value="" placeholder="실시간 채팅에 참여하세요" style="background:none !important; width:250px; color:white;" onkeyup="enterkey()">
 					</div>
            		</div>
            		<div style="display:inline-block;">
-           			<input type="button" id="insertChat" style="width:60px; margin-bottom:30px; background:#A8B7BC;" class="btn" value="작성">
+           			<input type="button" id="insertChat" class="btn" value="작성" onclick="send();" style="width:60px; margin-bottom:30px; background:#A8B7BC;">
+           			
 					<!-- <a><i class="material-icons">&#xE876;</i></a> -->
            		</div>
 			</div>
@@ -1112,18 +1114,18 @@
 											<table class="table table-striped table-hover" style="background:none;">
 										           <tbody>
 									       
- 		                    			<%--  <c:if test="${r.parentNo !=0 }">    --%>
+ 		                    			   <c:if test="${r.parentNo !=0 }">     
  		                    		 
  		                    			 
- 		                    			 	<c:forEach var="l" items="${reply}" >
+ 		                    			 <%-- 	<c:forEach var="l" items="${reply}" >
  		                    			 
 		           							<c:if test="${l.parentNo eq l.parentNo}">
 										      <h5>${l.parentNo} ,${l.repNo}</h5>
  		                    			
  		                    			
  		                    			
- 		                    			</c:if></c:forEach>
- 		                    			<%-- <h3>12</h3>
+ 		                    			</c:if></c:forEach> --%>
+ 		                    			  <h3>12</h3>
  		                    			          <h5>${r.parentNo}</h5>
 										          <h5>${r.repNo}</h5>
 										                <tr  style="background:none !important;">
@@ -1171,7 +1173,7 @@
 										                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><img src="resources/images/more.png" style="width:18px;"></a>
 										                    </td>
 										                </tr>
-		                    		</c:if>	 --%>
+		                    		</c:if>	 
 		                    
 										           </tbody>
 										       </table>
@@ -1310,7 +1312,7 @@
 		                 	</c:if>
 		                 	
 					</c:forEach>
-		           </tbody>  </table></ul></nav></div></div> 
+		           </tbody>  </table></ul></nav>  
   
 
 		           <tfoot>
@@ -2283,7 +2285,109 @@ function Rereplylist(){
 		});
 	});
 </script>
+<script type="text/javascript">
 
+var socket;
+var login_ids={};
+    var textarea = document.getElementById("messageWindow");
+    var nickname="${loginUser.nickname}";
+    var webSocket = new WebSocket('ws://192.168.0.24:8001/with/broadcasting');
+    /* socket.emit('login','nickname'); */
+    var inputMessage = document.getElementById('inputMessage');
+    console.log(inputMessage);
+    webSocket.onerror = function(event) {
+        onError(event)
+    };
+    webSocket.onopen = function(event) {
+        onOpen(event)
+    };
+    webSocket.onmessage = function(event) {
+        onMessage(event)
+    };
+   function onMessage(event) {
+	   var chat_id ="${loginUser.nickname}";
+/* 	   $("#messageWindow").html("  <p class='chat_content'>"+chat_id  +"님이 채팅에 참여하였습니다.</p> ");  
+ */	   console.log("event"+event);
+        var message = event.data.split("|");
+        var sender = message[0];
+        var content = message[1];
+        alert("11");
+       
+        if (content == "") {
+        	 
+        } /* else {
+            if (content.match("/")) {
+                if (content.match(("/" + $("#chat_id").val()))) {
+                    var temp = content.replace("/" + $("#chat_id").val(), "(귓속말) :").split(":");
+                   
+                    if (temp[1].trim() == "") {
+                    } else {
+                        $("#messageWindow").html($("#messageWindow").html() + "<p class='whisper'>"
+                            + sender + content.replace("/" + $("#chat_id").val(), "(귓속말) :") + "</p>");
+                    }
+                } else {
+                }
+            }  */else {
+                if (content.match("/")) {
+                	
+                    $("#messageWindow").html($("#messageWindow").html()
+                        + "<p class='chat_content'><b class='impress'>" + sender + " : " + content + "</b></p>");
+                } else {
+                    $("#messageWindow").html($("#messageWindow").html()
+                        + "<p class='chat_content'>" + sender + " : " + content + "</p>");
+                }
+            }
+       
+    } 
+    function onOpen(event) {
+    	var chat_id ="${loginUser.nickname}";
+    	console.log(chat_id);
+    	console.log(event+"11");
+      $("#messageWindow").append("  <p class='chat_content'>"+chat_id  +"님이 채팅에 참여하였습니다.</p> ");  
+   
+        
+       /*  if (inputMessage.value == "") {
+        } else {
+            $("#messageWindow").html($("#messageWindow").html()
+            		("  <p class='chat_content'>" +chat_id+ "님이 채팅에 참여하였습니다."+"</p> "));
+            
+        } */
+        webSocket.send(chat_id  +"님이 채팅에 참여하였습니다." + inputMessage.value);
+      /*   inputMessage.value = ""; */
+        
+        
+        
+    }
+  /*   function onError(event) {
+        alert(event.data);
+    } */
+    function send() {
+    	var chat_id ="${loginUser.nickname}";
+    	var message = inputMessage.value;
+    	
+        if (inputMessage.value == "") {
+        } else {
+            $("#messageWindow").html($("#messageWindow").html()
+                + "<p class='chat_content'>  "+"<b>"+chat_id+"<b>" + inputMessage.value + "</p>");
+            
+        }
+        
+        
+        webSocket.send(chat_id + "|" + inputMessage.value);
+        inputMessage.value = "";
+    }
+    //     엔터키를 통해 send함
+    function enterkey() {
+        if (window.event.keyCode == 13) {
+            send();
+        }
+    }
+    //     채팅이 많아져 스크롤바가 넘어가더라도 자동적으로 스크롤바가 내려가게함
+    /* window.setInterval(function() {
+        var elem = document.getElementById('messageWindow');
+        elem.scrollTop = elem.scrollHeight;
+    }, 0); */
+</script>
 	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 	<jsp:include page="../common/footer.jsp"></jsp:include> 
 </body>

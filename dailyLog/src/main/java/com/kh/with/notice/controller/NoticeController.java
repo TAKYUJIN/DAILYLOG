@@ -1,9 +1,9 @@
 package com.kh.with.notice.controller;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
-import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -19,8 +19,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.with.admin.model.vo.Board;
 import com.kh.with.member.model.vo.Member;
-import com.kh.with.notice.model.vo.noticeEmail;
 import com.kh.with.notice.model.service.NoticeService;
+import com.kh.with.notice.model.vo.noticeEmail;
+import com.kh.with.video.model.service.VideoService;
+import com.kh.with.video.model.vo.Attachment;
 
 @Controller
 @SessionAttributes("loginUser")
@@ -137,10 +139,29 @@ public class NoticeController {
 //			return "notice/noticeEmailQuestion";
 //	}
 		
-		
+	@Autowired
+	private VideoService vs;
 	//footer -> 채팅 1:1 문의로 이동
 	@RequestMapping(value="noticeChattingQuestion.no")
-	public String showNoticeChattingQuestion() {
+	public String showNoticeChattingQuestion(HttpSession session, HttpServletRequest request, Model model) {
+		Member m = (Member) session.getAttribute("loginUser");
+		int userNo = m.getUserNo();
+
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("userNo", userNo);
+		
+		/* ArrayList<Attachment> aList = ns.selectUserImg(userNo); */
+		String userImg = ns.selectUserImg(map);
+		System.out.println(userImg);
+		model.addAttribute("userImg", userImg);
+		
+		
+		return "notice/noticeChattingQuestion";
+	}
+	@RequestMapping(value="insertChatting.no")
+	public String insertChatting() {
+		
 		return "notice/noticeChattingQuestion";
 	}
 	

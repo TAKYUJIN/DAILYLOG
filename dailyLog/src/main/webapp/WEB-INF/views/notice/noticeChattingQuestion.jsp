@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -160,8 +162,17 @@
 		left: 0;
 		bottom: -15px;
 	}
-	
-	
+	.chatForm {
+		margin-left:300px;
+		margin-top:500px;
+	}
+		.userImg {
+		width:40px; 
+		height:40px;
+		/* border:1px dashed gray; */
+		border-radius: 50%;
+		/* vertical-align: middle; */
+	}
 </style>
 </head>
 <body>
@@ -171,46 +182,161 @@
 			<a href="noticeMain.no" class="noticeLink" style="float:left; width:25%;"><h1 class="page-title1">FAQs</h1></a> 
 			<a href="noticeList.no" class="noticeLink" style="float:left; width:25%;"><h1 class="page-title2">Notice</h1></a>
 			<a href="noticeEmailQuestion.no" class="noticeLink" style="float:left; width:25%;"><h1 class="page-title3">question</h1></a>
-			</div>
-			<div>
+		</div>
+		<div>
 			<a href="selectNoticeQuestion.no" class="noticeLink" style="float:right; width:40%;"><h4 class="page-title4">나의 문의내역</h4></a>
 			
 			<a href="noticeChattingQuestion.no" class="noticeLink" style="float:right; width:15%;"><h4 class="page-title5">1:1문의</h4></a>
 			<a href="noticeEmail.no" class="noticeLink" style="float:right;width:15%;"><h4 class="page-title6">이메일 문의</h4></a>
-			
+			<input type="hidden" value="${ sessionScope.loginUser.userNo }" id="chattingUserNo">
+		</div>
+
+		</div>
+				<div class="chatForm" style="margin-top:15%;color:white; width:430px; height:350px; text-align:center; background-color:#13334A; border-radius:10%; margin-bottom:10%; opacity:0.6;">
+			<div style="padding:10px; width:425px; height:260px;" align="center">
+				<div id="messageWindow" style="margin-top:25%;">
+				</div> 
 			</div>
-			<!-- <div class="">
-			<a href="noticeChattingQuestion.no" class="noticeLink" style="float:left;"><h5>실시간 문의</h5></a>
-			<a href="noticeEmailQuestion.no" class="noticeLink" style="float:right; width:90%;"><h5>이메일 문의</h5></a>
-			</div> -->
-		<div class="table-wrapper">
-			
-            <table class="table table-striped">
-            	
-                <thead>
-                    <tr>
-                        <th>채팅을</th>
-                        <th>할 거랍니다</th>
-                        <th>제발요</th>
-                        <th>City</th>
-                        <th>Pin Code</th>
-                        <th>Country</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Thomas Hardy</td>
-                        <td>89 Chiaroscuro Rd.</td>
-                        <td>Portland</td>
-                        <td>97219</td>
-                        <td>USA</td>
-                    </tr>
-                         
-                </tbody>
-            </table>
-            <button style="float:right;">상담 완료하기</button>
-			</div></div>
+			<!-- 채팅 -->
+			<div style="margin-top:4%; opacity:1;">
+           		<div style="width:50px; display:inline-block;">
+       			    <div>
+						<c:if test="${userImg != null}">
+							<img class="userImg" src="resources/uploadFiles/${userImg}" style="margin-bottom:30px;">
+						</c:if>
+						<c:if test="${userImg == null}">
+							<img class="userImg" src="resources/images/newlogo3.png" style="margin-bottom:30px;">
+						</c:if>	
+					</div>
+           		</div>
+         		<div style="display:inline-block; margin-left:1%; margin-right:1%;">
+     			    <div class="input-group">
+						<input type="text" id="inputMessage" name="chatInput" class="form-control" placeholder="Search&hellip;" style="background:none !important; width:250px;" onkeyup="enterkey()">
+					</div>
+           		</div>
+           		<div style="display:inline-block;">
+           			<input type="button" id="insertChat" style="width:60px; margin-bottom:30px; background:#A8B7BC;" class="btn" value="작성" onclick="send();">
+					<!-- <a><i class="material-icons">&#xE876;</i></a> -->
+           		</div>
+			</div>
+		</div>	
 <jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
+
+<script type="text/javascript">
+
+var socket;
+var login_ids={};
+    var textarea = document.getElementById("messageWindow");
+    var nickname="${loginUser.nickname}";
+    var webSocket = new WebSocket('ws://192.168.0.22:8001/with/broadcasting');
+    /* socket.emit('login','nickname'); */
+    var inputMessage = document.getElementById('inputMessage');
+    webSocket.onerror = function(event) {
+        onError(event)
+    };
+    webSocket.onopen = function(event) {
+        onOpen(event)
+    };
+    webSocket.onmessage = function(event) {
+        onMessage(event)
+    };
+   function onMessage(event) {
+	   var chat_id ="${loginUser.nickname}";
+/* 	   $("#messageWindow").html("  <p class='chat_content'>"+chat_id  +"님이 채팅에 참여하였습니다.</p> ");  
+ */	   console.log("event"+event);
+        var message = event.data.split("|");
+        var sender = message[0];
+        var content = message[1];
+        alert("11");
+       
+        if (content == "") {
+        	 
+        } /* else {
+            if (content.match("/")) {
+                if (content.match(("/" + $("#chat_id").val()))) {
+                    var temp = content.replace("/" + $("#chat_id").val(), "(귓속말) :").split(":");
+                   
+                    if (temp[1].trim() == "") {
+                    } else {
+                        $("#messageWindow").html($("#messageWindow").html() + "<p class='whisper'>"
+                            + sender + content.replace("/" + $("#chat_id").val(), "(귓속말) :") + "</p>");
+                    }
+                } else {
+                }
+            }  */else {
+                if (content.match("/")) {
+                	
+                    $("#messageWindow").html($("#messageWindow").html()
+                        + "<p class='chat_content'><b class='impress'>" + sender + " : " + content + "</b></p>");
+                } else {
+                    $("#messageWindow").html($("#messageWindow").html()
+                        + "<p class='chat_content'>" + sender + " : " + content + "</p>");
+                }
+            }
+       
+    } 
+    function onOpen(event) {
+    	var chat_id ="${loginUser.nickname}";
+    	console.log(chat_id);
+    	console.log(event+"11");
+      $("#messageWindow").append("  <p class='chat_content'>"+chat_id  +"님이 채팅에 참여하였습니다.</p> ");  
+   
+        
+       /*  if (inputMessage.value == "") {
+        } else {
+            $("#messageWindow").html($("#messageWindow").html()
+            		("  <p class='chat_content'>" +chat_id+ "님이 채팅에 참여하였습니다."+"</p> "));
+            
+        } */
+        webSocket.send(chat_id  +"님이 채팅에 참여하였습니다." + inputMessage.value);
+      /*   inputMessage.value = ""; */
+        
+        
+        
+    }
+  /*   function onError(event) {
+        alert(event.data);
+    } */
+    function send() {
+    	var chat_id ="${loginUser.nickname}";
+    	var message = inputMessage.value;
+    	  
+        if (inputMessage.value == "") {
+        } else {
+            $("#messageWindow").html($("#messageWindow").html()
+                + "<p class='chat_content'>  "+"<b>"+chat_id+"<b>" + inputMessage.value + "</p>");
+            
+        }
+        
+        
+        webSocket.send(chat_id + "|" + inputMessage.value);
+        inputMessage.value = "";
+        
+        $.ajax({
+			url:"insertChatting.no",
+			data:{"chat_id":chat_id,"message":message},
+			type:"post",
+			success:function(data){
+				console.log('succ');
+				
+			},
+			error : function(){
+				console.log('error');
+			}
+	})
+        
+    }
+    //     엔터키를 통해 send함
+    function enterkey() {
+        if (window.event.keyCode == 13) {
+            send();
+        }
+    }
+    //     채팅이 많아져 스크롤바가 넘어가더라도 자동적으로 스크롤바가 내려가게함
+/*     window.setInterval(function() {
+        var elem = document.getElementById('messageWindow');
+        elem.scrollTop = elem.scrollHeight;
+    }, 0); */
+</script>
 </html>

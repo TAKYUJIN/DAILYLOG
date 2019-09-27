@@ -12,15 +12,29 @@
 		<result property="title" column="TITLE" />
 		<result property="content" column="CONTENT" />
 	</resultMap>
-		
-		
+		<resultMap type="Attachment" id="attachmentResultSet">
+		<id property="userNo" column="USER_NO" />
+		<result property="amNo" column="AM_NO" />
+		<result property="vNo" column="V_NO" />
+		<result property="amDt" column="AM_DT" />
+		<result property="fileNm" column="FILE_NM" />
+		<result property="amTY" column="AM_TY" />
+	</resultMap>
+	
 	<insert id="noticeEmail" parameterType="map">
 		INSERT INTO NOTICEEMAIL
 		VALUES( NOTICE_NO.NEXTVAL ,#{userId}, #{tomail}, #{title}, #{content}, SYSDATE)
 	
 	</insert>	
+
 		
-		
+	<select id="selectUserImg" parameterType="map" resultType="String">
+		SELECT A.FILE_NM
+		FROM MEMBER M
+		JOIN ATTACHMENT A ON(M.USER_NO = A.USER_NO)
+		WHERE M.USER_NO = #{userNo}
+		AND A.AM_TY = '회원'
+	</select>
 		
 		
 		
