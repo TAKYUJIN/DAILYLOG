@@ -57,7 +57,8 @@
 		JOIN MEMBER M ON(VL.USER_NO = M.USER_NO)
 		JOIN VIDEO V ON(VL.V_NO = V.V_NO)
 		JOIN ATTACHMENT A ON(V.V_NO = A.V_NO)
-		WHERE VL.USER_NO = #{userNo})
+		WHERE VL.USER_NO = #{userNo}
+		AND V_TY = '좋아요')
 		ORDER BY RANK ASC
 	</select>
 

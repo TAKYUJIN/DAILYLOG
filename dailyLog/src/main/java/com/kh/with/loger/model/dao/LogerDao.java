@@ -15,6 +15,7 @@ import com.kh.with.loger.model.vo.Support;
 import com.kh.with.main.model.vo.Subscribe;
 import com.kh.with.main.model.vo.SubscribeVideo;
 import com.kh.with.member.model.vo.Member;
+import com.kh.with.reply.model.vo.Reply;
 import com.kh.with.report.model.vo.Report;
 import com.kh.with.video.model.vo.Attachment;
 import com.kh.with.video.model.vo.Video;
@@ -130,6 +131,9 @@ public interface LogerDao {
 
 	//로거 동영상 수정 추가정보 페이지 출력
 	ArrayList<Video> selectLogerAddVideo(SqlSessionTemplate sqlSession, Loger l);
+
+	//로거 댓글 출력 
+	ArrayList<Reply> showLogerReply(SqlSessionTemplate sqlSession, Member m);
 
 
 

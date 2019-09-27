@@ -306,7 +306,7 @@
 			<li class="nav-item"><a href="logerVideo.lo" class="nav-link" style="padding-right:0px;">동영상</a></li>			
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">분석</a></li>	
 			<li class="nav-item"><a href="logerCalculate.lo" class="nav-link" style="padding-right:0px;">정산</a></li>	
-			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">댓글</a></li>
+			<li class="nav-item"><a href="logerReply.lo" class="nav-link" style="padding-right:0px;">댓글</a></li>
 			<li class="nav-item"><a href="logerdeclarationlist.lo" class="nav-link" style="padding-right:0px;">신고기록</a></li>
 		</ul>
 		<form class="navbar-form form-inline" style="width:240px; margin-top:10px; margin-left:120px;">

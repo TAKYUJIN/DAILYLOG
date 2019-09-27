@@ -19,6 +19,7 @@ import com.kh.with.loger.model.vo.Support;
 import com.kh.with.main.model.vo.Subscribe;
 import com.kh.with.main.model.vo.SubscribeVideo;
 import com.kh.with.member.model.vo.Member;
+import com.kh.with.reply.model.vo.Reply;
 import com.kh.with.report.model.vo.Report;
 import com.kh.with.video.model.vo.Attachment;
 import com.kh.with.video.model.vo.Video;
@@ -138,6 +139,13 @@ public class LogerServiceImpl implements LogerService{
 	@Override
 	public ArrayList<Video> showLogerVideo(Member m) {
 		return ld.showLogerVideo(sqlSession, m);
+	}
+	
+	//로거 댓글 출력 
+	@Override
+	public ArrayList<Reply> showLogerReply(Member m) {
+		// TODO Auto-generated method stub
+		return ld.showLogerReply(sqlSession, m);
 	}
 
 
@@ -290,6 +298,9 @@ public class LogerServiceImpl implements LogerService{
 	public ArrayList<Video> selectLogerAddVideo(Loger l) {
 		return ld.selectLogerAddVideo(sqlSession, l);
 	}
+
+
+	
 
 
 	

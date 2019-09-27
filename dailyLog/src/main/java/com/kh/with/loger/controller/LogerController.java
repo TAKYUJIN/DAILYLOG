@@ -40,6 +40,7 @@ import com.kh.with.main.model.vo.Subscribe;
 import com.kh.with.main.model.vo.SubscribeVideo;
 import com.kh.with.main.model.vo.VideoLike;
 import com.kh.with.member.model.vo.Member;
+import com.kh.with.reply.model.vo.Reply;
 import com.kh.with.report.model.vo.Report;
 import com.kh.with.video.model.service.VideoService;
 import com.kh.with.video.model.vo.Attachment;
@@ -66,6 +67,21 @@ public class LogerController {
 
 		return "loger/searchLogerVideo";
 	}
+	
+	
+	// 로거 댓글  페이지로 이동
+		@RequestMapping(value="logerReply.lo")
+		public String selectLogerReply(Model model, HttpSession session, Reply r) {
+			Member m = (Member) session.getAttribute("loginUser");
+
+			ArrayList<Reply> rList = ls.showLogerReply(m);
+
+			model.addAttribute("rList", rList);	
+
+
+			return "loger/searchLogerReply";
+		}
+	
 
 	// 로거 동영상 수정 기본정보 페이지로 이동
 	@RequestMapping(value = "selectLogerVideo.lo")
