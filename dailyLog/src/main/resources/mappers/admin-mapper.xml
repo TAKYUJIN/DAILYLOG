@@ -104,19 +104,19 @@
 		ORDER BY RANK ASC
   	</select>
   	
-	<select id="monthMemberListCount" parameterType="java.lang.String" resultType="java.lang.String">
+	<select id="monthMemberListCount" parameterType="int" resultType="int">
 		SELECT COUNT(*)
    		FROM MEMBER
    		WHERE ENROLL_DT BETWEEN add_months(SYSDATE, -1) AND SYSDATE
   	</select>
   	
-  	<select id="weekMemberListCount" parameterType="java.lang.String" resultType="java.lang.String">
+  	<select id="weekMemberListCount" parameterType="int" resultType="int">
 		SELECT COUNT(*)
    		FROM MEMBER
    		WHERE ENROLL_DT BETWEEN (SYSDATE - 7) AND SYSDATE
   	</select>
   	
-  	<select id="dayMemberListCount" parameterType="java.lang.String" resultType="java.lang.String">
+  	<select id="dayMemberListCount" parameterType="int" resultType="int">
 		SELECT COUNT(*)
    		FROM MEMBER
    		WHERE ENROLL_DT BETWEEN (SYSDATE - 1) AND SYSDATE

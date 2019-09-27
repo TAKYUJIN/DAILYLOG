@@ -244,22 +244,22 @@ public class AdminDaoImpl implements AdminDao {
 	}
 
 	@Override
-	public String monthMemberListCount(SqlSessionTemplate sqlSession) {
-		String mMonth = sqlSession.selectOne("Calculate2.monthMemberListCount");
+	public int monthMemberListCount(SqlSessionTemplate sqlSession) {
+		int mMonth = sqlSession.selectOne("Calculate2.monthMemberListCount");
 		
 		return mMonth;
 	}
 
 	@Override
-	public String weekMemberListCount(SqlSessionTemplate sqlSession) {
-		String mWeek = sqlSession.selectOne("Calculate2.weekMemberListCount");
+	public int weekMemberListCount(SqlSessionTemplate sqlSession) {
+		int mWeek = sqlSession.selectOne("Calculate2.weekMemberListCount");
 		
 		return mWeek;
 	}
 
 	@Override
-	public String dayMemberListCount(SqlSessionTemplate sqlSession) {
-		String mDay = sqlSession.selectOne("Calculate2.dayMemberListCount");
+	public int dayMemberListCount(SqlSessionTemplate sqlSession) {
+		int mDay = sqlSession.selectOne("Calculate2.dayMemberListCount");
 		
 		return mDay;
 	}
