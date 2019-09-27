@@ -77,7 +77,7 @@ public class LogerController {
 
 			model.addAttribute("rList", rList);	
 
-
+			System.out.println(rList);
 			return "loger/searchLogerReply";
 		}
 	

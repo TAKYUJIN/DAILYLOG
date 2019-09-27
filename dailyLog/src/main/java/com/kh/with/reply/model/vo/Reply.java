@@ -10,17 +10,18 @@ public class Reply implements java.io.Serializable{
 	private String repCt;	//댓글내용
 	private String repTy;	//댓글구분
 	private int parentNo;
-	private String nickname;	//회원닉네
-	private String vfileNm;		//동영상썸네일 
-	private String mfileNm;		//회원프로필 
+	private String chNm;	//회원닉네
+	private String userFile;		//동영상썸네일 
+	private String thumbnail;		//회원프로필 
 	private int count;			//영상 조회수 
+	private String vtitle;		//영상 제목 
 	
 	
 	public Reply() {}
 
 
-	public Reply(int repNo, int userNo, int vNo, Date repDt, String repCt, String repTy, int parentNo, String nickname,
-			String vfileNm, String mfileNm, int count) {
+	public Reply(int repNo, int userNo, int vNo, Date repDt, String repCt, String repTy, int parentNo, String chNm,
+			String userFile, String thumbnail, int count, String vtitle) {
 		super();
 		this.repNo = repNo;
 		this.userNo = userNo;
@@ -29,10 +30,11 @@ public class Reply implements java.io.Serializable{
 		this.repCt = repCt;
 		this.repTy = repTy;
 		this.parentNo = parentNo;
-		this.nickname = nickname;
-		this.vfileNm = vfileNm;
-		this.mfileNm = mfileNm;
+		this.chNm = chNm;
+		this.userFile = userFile;
+		this.thumbnail = thumbnail;
 		this.count = count;
+		this.vtitle = vtitle;
 	}
 
 
@@ -106,33 +108,33 @@ public class Reply implements java.io.Serializable{
 	}
 
 
-	public String getNickname() {
-		return nickname;
+	public String getChNm() {
+		return chNm;
 	}
 
 
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void setChNm(String chNm) {
+		this.chNm = chNm;
 	}
 
 
-	public String getVfileNm() {
-		return vfileNm;
+	public String getUserFile() {
+		return userFile;
 	}
 
 
-	public void setVfileNm(String vfileNm) {
-		this.vfileNm = vfileNm;
+	public void setUserFile(String userFile) {
+		this.userFile = userFile;
 	}
 
 
-	public String getMfileNm() {
-		return mfileNm;
+	public String getThumbnail() {
+		return thumbnail;
 	}
 
 
-	public void setMfileNm(String mfileNm) {
-		this.mfileNm = mfileNm;
+	public void setThumbnail(String thumbnail) {
+		this.thumbnail = thumbnail;
 	}
 
 
@@ -146,12 +148,23 @@ public class Reply implements java.io.Serializable{
 	}
 
 
+	public String getVtitle() {
+		return vtitle;
+	}
+
+
+	public void setVtitle(String vtitle) {
+		this.vtitle = vtitle;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Reply [repNo=" + repNo + ", userNo=" + userNo + ", vNo=" + vNo + ", repDt=" + repDt + ", repCt=" + repCt
-				+ ", repTy=" + repTy + ", parentNo=" + parentNo + ", nickname=" + nickname + ", vfileNm=" + vfileNm
-				+ ", mfileNm=" + mfileNm + ", count=" + count + "]";
+				+ ", repTy=" + repTy + ", parentNo=" + parentNo + ", chNm=" + chNm + ", userFile=" + userFile
+				+ ", thumbnail=" + thumbnail + ", count=" + count + ", vtitle=" + vtitle + "]";
 	}
+
 	
 	
 
