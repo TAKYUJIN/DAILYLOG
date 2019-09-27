@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Chat2">
+
+	<resultMap type="ChatContent" id="chatContentResultSet">
+		<id property="ccNo" column="CC_NO" />
+		<result property="chatNo" column="CHAT_NO" />
+		<result property="userNo" column="USER_NO" />
+		<result property="ccDt" column="CC_DT" />
+		<result property="ccCt" column="CC_CT" />
+	</resultMap>
+		
+	<resultMap type="Chat2" id="chatReqResultSet">
+		<id property="chatNo" column="CHAT_NO" />
+		<result property="userNo" column="USER_NO" />
+		<result property="chatDt" column="CHAT_DT" />
+		<result property="status" column="Q_STATUS" />
+	</resultMap>
+	
+	<select id="selectWaitCount" parameterType="int" resultType="int">
+		SELECT count(*)
+			FROM CHAT
+			WHERE Q_STATUS = '대기'
+	</select>
+	
+	<select id="selectSuccCount" parameterType="int" resultType="int">
+		SELECT count(*)
+			FROM CHAT
+			WHERE Q_STATUS = '완료'
+	</select>
+	
+	<select id="selectChatWaitList" resultMap="chatReqResultSet">
+		SELECT *
+		FROM CHAT
+		WHERE Q_STATUS = '대기'
+	</select>
+	
+	<update id="updateSuccChat" parameterType="int">
+		UPDATE CHAT SET Q_STATUS = '완료'
+		WHERE CHAT_NO = #{chatNo}	
+	</update>
+
+
+	<select id="selectChatSuccList" resultMap="chatReqResultSet">
+		SELECT *
+		FROM CHAT
+		WHERE Q_STATUS = '완료'
+	</select>
+
+
+
+</mapper>

@@ -1,11 +1,13 @@
 package com.kh.with.notice.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +19,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonIOException;
 import com.kh.with.admin.model.vo.Board;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.notice.model.service.NoticeService;
+import com.kh.with.notice.model.vo.ChatContent;
 import com.kh.with.notice.model.vo.noticeEmail;
 import com.kh.with.video.model.service.VideoService;
-import com.kh.with.video.model.vo.Attachment;
 
 @Controller
 @SessionAttributes("loginUser")
@@ -151,7 +155,6 @@ public class NoticeController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("userNo", userNo);
 		
-		/* ArrayList<Attachment> aList = ns.selectUserImg(userNo); */
 		String userImg = ns.selectUserImg(map);
 		System.out.println(userImg);
 		model.addAttribute("userImg", userImg);
@@ -213,6 +216,59 @@ public class NoticeController {
 		
 		
 	}
+	
+	
+	@RequestMapping(value="insertChat.no")
+	public void insertChatting(HttpSession session, HttpServletResponse response) {
+		response.setContentType("text/html;charset=UTF-8");
+		Member m = (Member) session.getAttribute("loginUser");
+		
+		int userNo = m.getUserNo();
+		int result = ns.insertChat(userNo);
+		
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+		
+		
+		try {
+			new Gson().toJson(result, response.getWriter());
+		} catch (JsonIOException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	
+	@RequestMapping(value="insertChatContent.no")
+	public void insertChatContent(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+		Member m = (Member) session.getAttribute("loginUser");
+		int userNo = m.getUserNo();
+		String ccCt = request.getParameter("message");
+		
+		int chatNo = ns.selectChatNo(userNo);
+		ChatContent c = new ChatContent();
+		c.setUserNo(userNo);
+		c.setCcCt(ccCt);
+		c.setChatNo(chatNo);
+		
+		
+		int result = ns.insertChatContent(c);
+		
+		
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+		
+		
+		try {
+			new Gson().toJson(result, response.getWriter());
+		} catch (JsonIOException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}	
 	
 
 }

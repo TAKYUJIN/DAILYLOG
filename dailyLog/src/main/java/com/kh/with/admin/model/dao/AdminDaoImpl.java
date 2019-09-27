@@ -14,6 +14,7 @@ import com.kh.with.block.model.vo.Blockch;
 import com.kh.with.block.model.vo.Blockrep;
 import com.kh.with.block.model.vo.Blockvi;
 import com.kh.with.member.model.vo.Member;
+import com.kh.with.notice.model.vo.Chat;
 import com.kh.with.report.model.vo.Report;
 import com.kh.with.report.model.vo.Report2;
 
@@ -289,6 +290,49 @@ public class AdminDaoImpl implements AdminDao {
 		int rDay = sqlSession.selectOne("Calculate2.dayRevenueListCount");
 		
 		return rDay;
+	}
+
+
+
+	@Override
+	public int selectWaitCount(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectOne("Chat2.selectWaitCount");
+	}
+
+
+
+	@Override
+	public int selectSuccCount(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectOne("Chat2.selectSuccCount");
+	}
+
+
+
+	@Override
+	public ArrayList<Chat> selectChatWaitList(SqlSessionTemplate sqlSession) {
+		ArrayList<Chat> cList = null;
+
+		cList = (ArrayList)sqlSession.selectList("Chat2.selectChatWaitList");
+
+		return cList;
+	}
+
+
+
+	@Override
+	public int updateSuccChat(SqlSessionTemplate sqlSession, int chatNo) {
+		return sqlSession.update("Chat2.updateSuccChat", chatNo);
+	}
+
+
+
+	@Override
+	public ArrayList<Chat> selectSuccChatList(SqlSessionTemplate sqlSession) {
+		ArrayList<Chat> cList = null;
+
+		cList = (ArrayList)sqlSession.selectList("Chat2.selectChatSuccList");
+
+		return cList;
 	}
 
 }

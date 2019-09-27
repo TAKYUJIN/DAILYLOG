@@ -13,6 +13,7 @@ import com.kh.with.block.model.vo.Blockch;
 import com.kh.with.block.model.vo.Blockrep;
 import com.kh.with.block.model.vo.Blockvi;
 import com.kh.with.member.model.vo.Member;
+import com.kh.with.notice.model.vo.Chat;
 import com.kh.with.report.model.vo.Report;
 import com.kh.with.report.model.vo.Report2;
 
@@ -89,6 +90,16 @@ public interface AdminDao {
 	int weekRevenueListCount(SqlSessionTemplate sqlSession);
 
 	int dayRevenueListCount(SqlSessionTemplate sqlSession);
+
+	int selectWaitCount(SqlSessionTemplate sqlSession);
+
+	int selectSuccCount(SqlSessionTemplate sqlSession);
+
+	ArrayList<Chat> selectChatWaitList(SqlSessionTemplate sqlSession);
+
+	int updateSuccChat(SqlSessionTemplate sqlSession, int chatNo);
+
+	ArrayList<Chat> selectSuccChatList(SqlSessionTemplate sqlSession);
 
 
 

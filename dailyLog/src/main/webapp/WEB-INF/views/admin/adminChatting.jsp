@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,31 +17,25 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <style type="text/css">
 	
-    body {
-        color: #666;
-        background: #f5f5f5;
-		font-family: 'Roboto', sans-serif;
-	}
     table.table tr th, table.table tr td {
+    	background:none;
         border-color: #e9e9e9;
         text-align:center;
         /* text-align:center; */
     }
     table.table-striped tbody tr:nth-of-type(odd) {
-    	background-color: #fcfcfc;
+    	background:none;
 	}
 	.noticeList {
 		margin-top:50px;
 		margin-left:100px;
-		width:1000px;
+		width:90%;
 		margin-bottom:50px;
 	}
     .table-wrapper {
-    	width:800px;
-        background: #fff;
+    	width:80%;
         padding: 20px;
-        margin: 30px 0;
-        box-shadow: 0 1px 1px rgba(0,0,0,.05);
+        margin:0 auto;
     }
     .pagination {
         margin: 10px 0 5px;
@@ -90,7 +87,13 @@
 		left: 0;
 		bottom: -15px;
 	}
-	
+	.userImg {
+		width:40px; 
+		height:40px;
+		/* border:1px dashed gray; */
+		border-radius: 50%;
+		/* vertical-align: middle; */
+	}
 </style>
 </head>
 <body>
@@ -111,41 +114,165 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>1</td>
-						<td>깜찍은주</td>
-						<td>2019-09-02</td>
-						<td>N</td>
+					<c:forEach items="${cList}" var="c">
+					<tr id="test" onclick="chatResult(${c.chatNo},${c.userNo});">
+						<td><c:out value="${c.chatNo}"/></td>
+						<td><c:out value="${c.userNo}"/></td>
+						<td><c:out value="${c.chatDt}"/></td>
+						<td><c:out value="${c.status}"/></td>
 					</tr>
-					<tr>
-						<td>2</td>
-						<td>기분좋은 채빈언니</td>
-						<td>2019-09-03</td>
-						<td>N</td>
-					</tr>
-					<tr>
-						<td>3</td>
-						<td>막내</td>
-						<td>2019-09-02</td>
-						<td>N</td>
-					</tr>
+					</c:forEach>
 				</tbody>
 			</table>
-			<div class="text-center">
-				<ul class="pagination justify-content-center">
-					<li class="page-item disabled"><a href="#"><i
-							class="fa fa-long-arrow-left"></i> Previous</a></li>
-					<li class="page-item"><a href="#" class="page-link">1</a></li>
-					<li class="page-item"><a href="#" class="page-link">2</a></li>
-					<li class="page-item active"><a href="#" class="page-link">3</a></li>
-					<li class="page-item"><a href="#" class="page-link">4</a></li>
-					<li class="page-item"><a href="#" class="page-link">5</a></li>
-					<li class="page-item"><a href="#" class="page-link">Next <i
-							class="fa fa-long-arrow-right"></i></a></li>
-				</ul>
-			</div>
+			
 		</div>
 	</div>
+				<div class="chatForm" id="startChat" style="display:none;margin-top:5%;margin-left:35%;color:white; width:430px; height:350px; text-align:center; background-color:#13334A; border-radius:10%; margin-bottom:10%; opacity:0.6;">
+			<div style="overflow:auto;padding:10px; width:425px; height:260px;" align="center">
+				<div id="messageWindow" style="margin-top:25%;">
+				</div> 
+			</div>
+			<!-- 채팅 -->
+			<div style="margin-top:4%; opacity:1;">
+           		<div style="width:50px; display:inline-block;">
+       			    <div>
+							<img class="userImg" src="resources/images/newlogo3.png" style="margin-bottom:30px;">
+					</div>
+           		</div>
+         		<div style="display:inline-block; margin-left:1%; margin-right:1%;">
+     			    <div class="input-group">
+						<input type="text" id="inputMessage" name="chatInput" class="form-control" placeholder="Search&hellip;" style="background:none !important; width:250px;" onkeyup="enterkey()">
+					</div>
+           		</div>
+           		<div style="display:inline-block;">
+           			<input type="button" id="insertChat" style="width:60px; margin-bottom:30px; background:#A8B7BC;" class="btn" value="작성" onclick="send();">
+           		</div>
+			</div>
+		<input type="button" id="updateChat" style="width:90px; margin-top:50px;margin-bottom:30px; background:#A8B7BC;" class="btn" value="상담 완료">
+		</div>
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
+<script>
+
+	$("#updateChat").click(function(){
+	/* var chatNo = $(this).parent().parent().children("#test").val(); */
+	var chatNo = 1;
+	console.log(chatNo);
+	
+	location.href='succChat.ad?chatNo='+chatNo;
+		
+	});
+	
+
+
+
+function chatResult(chatNo, userNo){
+	var chatNo = chatNo;
+	var userNo = userNo;
+	
+	console.log(chatNo);
+	console.log(userNo);
+	$.ajax({
+		url:"goChat.ad",
+		type:"post",
+		data:{userNo:userNo, chatNo:chatNo},
+		success:function(data){
+			console.log("성공인가");
+			$(".noticeList").hide();
+			$(".chatForm").show(); 
+		},
+		error:function(data){
+			console.log("제발");
+		}
+		
+	});
+	
+	
+}
+
+var socket;
+var login_ids={};
+    var textarea = document.getElementById("messageWindow");
+    var nickname="${loginUser.nickname}";
+    var webSocket = new WebSocket('ws://192.168.0.22:8001/with/broadcasting');
+    var inputMessage = document.getElementById('inputMessage');
+    webSocket.onerror = function(event) {
+        onError(event)
+    };
+    webSocket.onopen = function(event) {
+        onOpen(event)
+    };
+    webSocket.onmessage = function(event) {
+        onMessage(event)
+    };
+   function onMessage(event) {
+	   var chat_id ="${loginUser.nickname}";
+	   console.log("event"+event);
+        var message = event.data.split("|");
+        var sender = message[0];
+        var content = message[1];
+       
+        if (content == "") {
+        	 
+        }else {
+                if (content.match("/")) {
+                	
+                    $("#messageWindow").html($("#messageWindow").html()
+                        + "<p class='chat_content'><b class='impress'>" + sender + " : " + content + "</b></p>");
+                } else {
+                    $("#messageWindow").html($("#messageWindow").html()
+                        + "<p class='chat_content'>" + sender + " : " + content + "</p>");
+                }
+            }
+       
+    } 
+    function onOpen(event) {
+    	var chat_id ="${loginUser.nickname}";
+    	console.log(chat_id);
+    	console.log(event+"11");
+      $("#messageWindow").append("  <p class='chat_content'>"+chat_id  +"님이 채팅에 참여하였습니다.</p> ");  
+   
+
+        webSocket.send(chat_id  +"님이 채팅에 참여하였습니다." + inputMessage.value);
+        
+        
+        
+    }
+    function send() {
+    	var chat_id ="${loginUser.nickname}";
+    	var message = inputMessage.value;
+    	  
+        if (inputMessage.value == "") {
+        } else {
+            $("#messageWindow").html($("#messageWindow").html()
+                + "<p class='chat_content'>  "+"<b>"+chat_id+"<b>" + " : " + inputMessage.value + "</p>");
+            
+        }
+        
+        
+        webSocket.send(chat_id + "|" + inputMessage.value);
+        inputMessage.value = "";
+        
+        $.ajax({
+			url:"insertChatContent.no",
+			data:{"message":message},
+			type:"post",
+			success:function(data){
+				console.log('succ');
+				
+			},
+			error : function(){
+				console.log('error');
+			}
+	})
+        
+    }
+    //     엔터키를 통해 send함
+    function enterkey() {
+        if (window.event.keyCode == 13) {
+            send();
+        }
+    }
+    //     채팅이 많아져 스크롤바가 넘어가더라도 자동적으로 스크롤바가 내려가게함
+</script>
 </html>       

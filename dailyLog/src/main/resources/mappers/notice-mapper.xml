@@ -21,6 +21,14 @@
 		<result property="amTY" column="AM_TY" />
 	</resultMap>
 	
+	<resultMap type="ChatContent" id="chatContentResultSet">
+		<id property="ccNo" column="CC_NO" />
+		<result property="chatNo" column="CHAT_NO" />
+		<result property="userNo" column="USER_NO" />
+		<result property="ccDt" column="CC_DT" />
+		<result property="ccCt" column="CC_CT" />
+		</resultMap>
+	
 	<insert id="noticeEmail" parameterType="map">
 		INSERT INTO NOTICEEMAIL
 		VALUES( NOTICE_NO.NEXTVAL ,#{userId}, #{tomail}, #{title}, #{content}, SYSDATE)
@@ -36,8 +44,22 @@
 		AND A.AM_TY = '회원'
 	</select>
 		
+	<insert id="insertChat" parameterType="int">
+		INSERT INTO CHAT
+		VALUES(CHAT_NO.NEXTVAL, #{userNo}, SYSDATE, DEFAULT)
+	</insert>
 		
-		
+	<insert id="insertChatContent" parameterType="ChatContent">
+	INSERT INTO CHAT_CONTENT VALUES (CC_NO.NEXTVAL, #{chatNo}, #{userNo}, SYSDATE, #{ccCt})
+	</insert>
+	
+	<select id="selectChatNo" parameterType="int" resultType="int">
+		SELECT CHAT_NO
+		FROM(SELECT CHAT_NO, ROW_NUMBER() OVER(ORDER BY CHAT_NO DESC) AS RNUM
+		FROM CHAT
+		WHERE USER_NO = #{userNo})
+		WHERE RNUM = 1
+	</select>
 		
 </mapper>
 
