@@ -198,7 +198,6 @@
 		</div>
 			<div id="startDiv" style="margin-top:18%; margin-left:30%;margin-bottom:10%;background:#13334A;opacity:0.6;width:400px;border-radius:5px;height:300px;text-align:center;">
 			<input type="hidden" id="chatUserNo" value="${sessionScope.loginUser.userNo}"/>
-			<input type="hidden" id="userNo" name="userNo"  value="${sessionScope.loginUser.userNo}"/>
 			<p style="line-height:160px;color:#FFF;">실시간 1:1문의를 시작하시겠습니까?</p>
 			<input type="button" id="startBtn" style="height:40px; color:black; background:#EDEAD7;border:1px solid #EDEAD7;border-radius:3px;" value="상담 신청"/></div>
 				<div class="chatForm" id="startChat" style="display:none;margin-top:18%;margin-left:28%;color:white; width:430px; height:350px; text-align:center; background-color:#13334A; border-radius:10%; margin-bottom:10%; opacity:0.6;">
@@ -233,16 +232,9 @@
 </body>
 
 <script type="text/javascript">
-
-
-
 	$(function(){
 		$("#startBtn").click(function(){
 		var chatUserNo = $(this).parent().children("#chatUserNo").val();
-		var videoUserNo = 0;
-		var loginUserNo = $(this).parent().children("#userNo").val();
-		var msg = loginUserNo + "&" + videoUserNo;
-		ws2.send(msg);
 			 $.ajax({
 					url:"insertChat.no",
 					type:"post",

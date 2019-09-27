@@ -24,7 +24,6 @@
      </resultMap>
      
      <resultMap type="Member" id="memberResultSet">
-
 		<id property="userNo" column="USER_NO" />
 		<result property="userNm" column="USER_NM" />
 		<result property="userId" column="USER_ID" />

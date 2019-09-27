@@ -17,6 +17,7 @@ import com.kh.with.block.model.vo.Blockch;
 import com.kh.with.block.model.vo.Blockrep;
 import com.kh.with.block.model.vo.Blockvi;
 import com.kh.with.member.model.vo.Member;
+import com.kh.with.notice.model.vo.Chat;
 import com.kh.with.report.model.vo.Report;
 import com.kh.with.report.model.vo.Report2;
 
@@ -225,6 +226,31 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public int dayRevenueListCount() {
 		return ad.dayRevenueListCount(sqlSession);
+	}
+
+	@Override
+	public int selectWaitCount() {
+		return ad.selectWaitCount(sqlSession);
+	}
+
+	@Override
+	public int selectSuccCount() {
+		return ad.selectSuccCount(sqlSession);
+	}
+
+	@Override
+	public ArrayList<Chat> selectChatWaitList() {
+		return ad.selectChatWaitList(sqlSession);
+	}
+
+	@Override
+	public int updateSuccChat(int chatNo) {
+		return ad.updateSuccChat(sqlSession, chatNo);
+	}
+
+	@Override
+	public ArrayList<Chat> selectChatSuccList() {
+		return ad.selectSuccChatList(sqlSession);
 	}
 	
 

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.with.admin.model.vo.Board;
 import com.kh.with.notice.model.dao.NoticeDao;
+import com.kh.with.notice.model.vo.ChatContent;
 import com.kh.with.notice.model.vo.noticeEmail;
 import com.kh.with.video.model.vo.Attachment;
 @Service
@@ -49,6 +50,21 @@ public class NoticeServiceImpl implements NoticeService {
 	public String selectUserImg(Map<String, Object> map) {
 		
 		return nd.selectUserImg(sqlSession, map);
+	}
+
+	@Override
+	public int insertChat(int userNo) {
+		return nd.insertChat(sqlSession, userNo);
+	}
+
+	@Override
+	public int insertChatContent(ChatContent c) {
+		return nd.insertChatContent(sqlSession, c);
+	}
+
+	@Override
+	public int selectChatNo(int userNo) {
+		return nd.selectChatNo(sqlSession, userNo);
 	}
 
 	

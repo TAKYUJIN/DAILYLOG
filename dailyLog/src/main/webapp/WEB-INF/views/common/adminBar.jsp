@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -315,10 +318,10 @@
 			</li>		
 			<li class="nav-item dropdown">
 				<a data-toggle="dropdown" class="btn_global link_login dropdown-toggle" href="adminChatting.ad">
-				<img src="resources/images/admin.png" style="width:25px;"></a>
+				<img id="alramImg" src="resources/images/admin.png" style="width:25px;"></a>
 				<ul class="dropdown-menu">					
-					<li><a href="adminChatting.ad" class="dropdown-item">상담대기{}</a></li>
-					<li><a href="adminChattingComplete.ad" class="dropdown-item">상담완료{}</a></li>
+					<li><a href="adminChatting.ad" class="dropdown-item">상담대기 : <c:out value="${waitCount}"/></a></li>
+					<li><a href="adminChattingComplete.ad" class="dropdown-item">상담완료 : <c:out value="${succCount}"/></a></li>
 				</ul>
 			</li>		
 			
@@ -327,29 +330,6 @@
 </nav>
 </body>
 <script>
- 	var alramUserNo = $("#alramUserNo").val();
- 	
- 	function alram(){
- 		$.ajax({
- 			url:"goAlram.mb",
- 			type:"post",
- 			success:function(data){
- 				console.log(data);
- 				var $alramTable = $("#alramTable tbody");
-				$alramTable.html("");
-				 for(var i = 0; i < data["date"].length; i++){ 
-					var $tr = $("<tr>");
-					var $alCT = $("<td>").text(data["date"][i].alCT);
-					$tr.append($alCT);
-					$alramTable.append($tr); 
-				 }
- 			},
- 			error:function(){
- 				console.log("실패");
- 			}
- 		});
- 	}
- 	
 		$(function(){
 			getConnection2();
 			
@@ -386,20 +366,17 @@
 			}
 			
 			function onMessage2(event){
-				
 				var result = event.data;
 				console.log("result :: " + result);
 				if(result != null){
 					var set = setInterval(function()
 			  			    {
-								  $("#alramImg1").hide();
-			  			    	  $("#alramImg").show().css("-webkit-transform", "scale(1)");
+			  			    	  $("#alramImg").css("-webkit-transform", "scale(1)");
 			  			    },500);
 
 			  		 var set2 = setInterval(function()
 			   			    {
-			  			 $("#alramImg").hide();
-			  			 $("#alramImg1").show().css("-webkit-transform", "scale(1.3)");
+			  			 $("#alramImg").css("-webkit-transform", "scale(1.3)");
 			   			    },1000);
 
 			  		$("#alramImg").click(function(){
@@ -421,5 +398,8 @@
 			function home(){
 				location.href="home.mb";
 			}
+			
 		</script>
+		
+	
 </html>                                                                                    

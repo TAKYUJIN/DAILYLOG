@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.kh.with.admin.model.vo.Board;
+import com.kh.with.notice.model.vo.ChatContent;
 import com.kh.with.notice.model.vo.noticeEmail;
 import com.kh.with.video.model.vo.Attachment;
 
@@ -20,6 +21,12 @@ public interface NoticeService {
 
 	//공지사항 채팅 이미지 가져오기
 	String selectUserImg(Map<String, Object> map);
+
+	int insertChat(int userNo);
+
+	int insertChatContent(ChatContent c);
+
+	int selectChatNo(int userNo);
 	
 	
 

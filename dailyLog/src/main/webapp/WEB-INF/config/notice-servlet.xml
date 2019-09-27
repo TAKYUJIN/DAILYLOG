@@ -23,6 +23,15 @@
 	
 	<context:component-scan base-package="com.kh.with" />
 	
-	
+		<!-- 뷰 리졸버에 대한 설정 -->
+	<beans:bean id="jsonView"
+		class="net.sf.json.spring.web.servlet.view.JsonView" />
+
+	<!-- 위에 설정한 뷰 리졸버는 기존에 있는 jsp에 대해 view를 보여주는 템플릿 뷰 -->
+	<!-- 여기 설정한 BeanNameViewResolver는 없는 자원에 대해서 논리적 이름을 가지고 view를 지정 -->
+	<beans:bean id="viewResolver"
+		class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<beans:property name="order" value="1" />
+	</beans:bean>
 	
 </beans:beans>

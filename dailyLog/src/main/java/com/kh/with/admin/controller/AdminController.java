@@ -1,10 +1,12 @@
 package com.kh.with.admin.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +15,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonIOException;
 import com.kh.with.admin.model.service.AdminService;
 import com.kh.with.admin.model.vo.Board;
 import com.kh.with.admin.model.vo.Calculate;
@@ -25,6 +30,7 @@ import com.kh.with.block.model.vo.Blockch;
 import com.kh.with.block.model.vo.Blockrep;
 import com.kh.with.block.model.vo.Blockvi;
 import com.kh.with.member.model.vo.Member;
+import com.kh.with.notice.model.vo.Chat;
 import com.kh.with.report.model.service.ReportService;
 import com.kh.with.report.model.vo.Report;
 import com.kh.with.report.model.vo.Report2;
@@ -298,15 +304,76 @@ public class AdminController {
 
 	}
 
+	// 관리자 메인바
+	@RequestMapping(value="adminBar.ad")
+	public String mainBarPage(Model model) {
+		int waitCount = as.selectWaitCount();
+		int succCount = as.selectSuccCount();
+		
+		System.out.println("waitCount :: " + waitCount);
+		System.out.println("succCount :: " + succCount);
+		
+		model.addAttribute("waitCount", waitCount);
+		model.addAttribute("succCount", succCount);
+		
+		return "common/adminBar";
+	}
 	// 관리자 채팅 대기 페이지
 	@RequestMapping(value = "adminChatting.ad")
-	public String adminChatting() {
+	public String adminChatting(HttpSession session, HttpServletRequest request, HttpServletResponse response,
+			Model model) {
+		
+		ArrayList<Chat> cList = as.selectChatWaitList();
+		
+		model.addAttribute("cList", cList);
+
+		
 		return "admin/adminChatting";
 	}
 
+	//관리자 채팅 페이지
+	@RequestMapping(value = "goChat.ad")
+	public void adminGoChat(HttpServletRequest request, HttpServletResponse response) {
+		int userNo = Integer.parseInt(request.getParameter("userNo"));
+		int chatNo = Integer.parseInt(request.getParameter("chatNo"));
+		
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+		
+		int result = 0;
+		
+		try {
+			new Gson().toJson(result, response.getWriter());
+		} catch (JsonIOException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	//관리자 채팅 update
+	@RequestMapping(value="succChat.ad")
+	public String succChat(HttpServletRequest request, HttpServletResponse response, Model model,
+			@RequestParam (value="chatNo") int chatNo) {
+		/* int chatNo = Integer.parseInt(request.getParameter("chatNo")); */
+		
+		System.out.println(chatNo);
+
+		int result = as.updateSuccChat(chatNo);
+		
+		
+		
+		return "forward:/adminChatting.ad";
+	}
+	
 	// 관리자 채팅 완료 페이지
 	@RequestMapping(value = "adminChattingComplete.ad")
-	public String adminChattingComplete() {
+	public String adminChattingComplete(HttpSession session, HttpServletRequest request, HttpServletResponse response,
+			Model model) {
+		
+			ArrayList<Chat> cList = as.selectChatSuccList();
+		
+			model.addAttribute("cList", cList);
 
 		return "admin/adminChattingComplete";
 

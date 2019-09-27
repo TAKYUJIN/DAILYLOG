@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,32 +16,26 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <style type="text/css">
-	
-    body {
-        color: #666;
-        background: #f5f5f5;
-		font-family: 'Roboto', sans-serif;
-	}
+
     table.table tr th, table.table tr td {
+   		background:none;
         border-color: #e9e9e9;
         text-align:center;
         /* text-align:center; */
     }
     table.table-striped tbody tr:nth-of-type(odd) {
-    	background-color: #fcfcfc;
+    	background:none;
 	}
 	.noticeList {
 		margin-top:50px;
 		margin-left:100px;
-		width:1000px;
+		width:90%;
 		margin-bottom:50px;
 	}
     .table-wrapper {
-    	width:800px;
-        background: #fff;
+    	width:80%;
         padding: 20px;
-        margin: 30px 0;
-        box-shadow: 0 1px 1px rgba(0,0,0,.05);
+        margin:0 auto;
     }
     .pagination {
         margin: 10px 0 5px;
@@ -111,24 +108,14 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>1</td>
-						<td>깜찍은주</td>
-						<td>2019-09-02</td>
-						<td>Y</td>
+					<c:forEach items="${cList}" var="c">
+					<tr id="test" onclick="chatResult(${c.chatNo},${c.userNo});">
+						<td><c:out value="${c.chatNo}"/></td>
+						<td><c:out value="${c.userNo}"/></td>
+						<td><c:out value="${c.chatDt}"/></td>
+						<td><c:out value="${c.status}"/></td>
 					</tr>
-					<tr>
-						<td>2</td>
-						<td>기분좋은 채빈언니</td>
-						<td>2019-09-03</td>
-						<td>Y</td>
-					</tr>
-					<tr>
-						<td>3</td>
-						<td>막내</td>
-						<td>2019-09-02</td>
-						<td>Y</td>
-					</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 			<div class="text-center">

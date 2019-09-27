@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.with.admin.model.vo.Board;
+import com.kh.with.notice.model.vo.ChatContent;
 import com.kh.with.notice.model.vo.noticeEmail;
 import com.kh.with.video.model.vo.Attachment;
 
@@ -49,5 +50,20 @@ public class NoticeDaoImple implements NoticeDao{
 	public String selectUserImg(SqlSessionTemplate sqlSession, Map<String, Object> map) {
 		
 		return sqlSession.selectOne("Notice.selectUserImg", map);
+	}
+
+	@Override
+	public int insertChat(SqlSessionTemplate sqlSession, int userNo) {
+		return sqlSession.insert("Notice.insertChat", userNo);
+	}
+
+	@Override
+	public int insertChatContent(SqlSessionTemplate sqlSession, ChatContent c) {
+		return sqlSession.insert("Notice.insertChatContent", c);
+	}
+
+	@Override
+	public int selectChatNo(SqlSessionTemplate sqlSession, int userNo) {
+		return sqlSession.selectOne("Notice.selectChatNo", userNo);
 	}
 }
