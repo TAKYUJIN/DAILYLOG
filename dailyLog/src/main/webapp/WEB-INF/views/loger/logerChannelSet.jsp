@@ -69,18 +69,9 @@ h4 {
 	<!-- 		<a href="allVideoPopup.lo">팝업화면보이기</a>
 			 -->
 			<button id="editbtn" class="btn btn-primary">편집</button>
-
 		</div>
+		
 	</form>
-	<script>
-	
-	var loginUser = ${sessionScope.loginUser.userNo};
-		$('#editbtn').click(loginUser){
-			console.log(loginUser)
-			location.href="logerChannelSet.lo";
-		}
-	
-	</script>
 
 
 

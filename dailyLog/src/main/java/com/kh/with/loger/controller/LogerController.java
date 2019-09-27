@@ -803,7 +803,7 @@ public class LogerController {
 		String preview = request.getParameter("preview");
 		System.out.println("인기순 로거 스튜디오로 이동했니?" + preview);
 		
-		//로그인유저의 NO select 
+
 		
 		
 		
