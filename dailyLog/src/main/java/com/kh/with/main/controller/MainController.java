@@ -138,6 +138,16 @@ public class MainController {
 			
 		}
 	
+	//채팅 페이지 이동
+	@RequestMapping(value="chattingPage.mb")
+	public ModelAndView chattingPage(ModelAndView mv, HttpSession session, HttpServletRequest request) {
+		int userNo = ((Member) request.getSession().getAttribute("loginUser")).getUserNo();
+
+		
+		mv.setViewName("jsonView");
+		
+		return mv;
+	}
 	// 구독페이지로 이동
 	@RequestMapping(value="subscribe.mb")
 

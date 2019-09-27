@@ -2,12 +2,14 @@ package com.kh.with.notice.model.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.with.admin.model.vo.Board;
 import com.kh.with.notice.model.vo.noticeEmail;
+import com.kh.with.video.model.vo.Attachment;
 
 @Repository
 public class NoticeDaoImple implements NoticeDao{
@@ -41,5 +43,11 @@ public class NoticeDaoImple implements NoticeDao{
 	public int noticeEmail(SqlSessionTemplate sqlSession, noticeEmail ne) {
 		// TODO Auto-generated method stub
 		return sqlSession.insert("Notice.noticeEmail",ne);
+	}
+
+	@Override
+	public String selectUserImg(SqlSessionTemplate sqlSession, Map<String, Object> map) {
+		
+		return sqlSession.selectOne("Notice.selectUserImg", map);
 	}
 }
