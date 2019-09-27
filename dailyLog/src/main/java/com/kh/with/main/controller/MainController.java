@@ -125,6 +125,8 @@ public class MainController {
 			
 			hmap.put("date", date);
 			
+			System.out.println("date :: " + date);
+			
 			try {
 				new Gson().toJson(hmap, response.getWriter());
 			} catch (JsonIOException e) {

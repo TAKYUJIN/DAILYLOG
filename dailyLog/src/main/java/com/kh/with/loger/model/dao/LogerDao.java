@@ -121,19 +121,20 @@ public interface LogerDao {
 	//채널타이틀 이미지 insert
 	int insertAttachmentTitle(SqlSessionTemplate sqlSession, Attachment attachment);
 
-	//채널타이틀 이미지 update
-	int updateAttachmentTitle(SqlSessionTemplate sqlSession, Attachment attachment);
-
 	//채널설명 변경
 	int updateInfo(SqlSessionTemplate sqlSession, Loger loger);
 
-	int updatetitle(SqlSessionTemplate sqlSession, Attachment attachment);
 
 	//로거 동영상 수정 추가정보 페이지 출력
 	ArrayList<Video> selectLogerAddVideo(SqlSessionTemplate sqlSession, Loger l);
 
+
 	//로거 댓글 출력 
 	ArrayList<Reply> showLogerReply(SqlSessionTemplate sqlSession, Member m);
+
+	//로거스튜디오 타이틀 이미지 변경
+	int updateTitle(SqlSessionTemplate sqlSession, Attachment attachment);
+
 
 
 

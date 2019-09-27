@@ -24,7 +24,7 @@
 	width: 1600px;
 	/* height: 800px; */
 	margin-top: 50px;
-	margin-left:300px;
+	margin-left: 300px;
 	/* border: 1px solid black; */
 }
 
@@ -63,7 +63,6 @@ h4 {
 	moz-border-radius: 7px;
 	khtml-border-radius: 7px;
 	webkit-border-radius: 7px;
-
 }
 </style>
 
@@ -73,16 +72,16 @@ h4 {
 
 
 	<form action="logerChannelChangeInfo.lo" method="post"
-		enctype="multipart/form-data">
+		enctype="multipart/form-data" id="fileUploadForm">
 		<div class="mainpage">
 			<h4 style="margin-left: 120px">
 				<strong>채널정보</strong>
 			</h4>
 			<div id="line"></div>
 			<div class="form-group">
-						<textarea class="form-control" rows="7" id="comment" id="chInfo"
-							name="chInfo" style="width: 750px; margin-top:30px;margin-left:100px;"></textarea>
-					</div>
+				<textarea class="form-control" rows="7" id="chInfo" name="chInfo"
+					style="width: 750px; margin-top: 30px; margin-left: 100px;"></textarea>
+			</div>
 
 
 			<br> <br> <br> <br> <br>
@@ -99,20 +98,20 @@ h4 {
 		</div>
 
 	</form>
-<script>
+	<script>
 		$(document).ready(function(){
 			$("#submit").click(function(){
-				var chInfo = $("#chInfo").val();
-				var file3 = $("#file3").val();
-				
-				console.log("chInfo" + chInfo);
-				console.log("file3" + file3);
+				   var form = $('#fileUploadForm')[0];
+		           var data = new FormData(form);
+					
 				
 				$.ajax({
 					url:"logerChannelChangeInfo.lo",
 					type:"post",
-					data:{file3:file3,chInfo:chInfo},
-						traditional:true,
+					  enctype: 'multipart/form-data',
+					  contentType: false,
+					  processData: false,
+					data:data,
 					success:function(data){
 						console.log("성공!");
 

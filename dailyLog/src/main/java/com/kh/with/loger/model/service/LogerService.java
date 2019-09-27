@@ -123,18 +123,15 @@ public interface LogerService {
 	//채널타이틀 이미지 insert
 	int insertAttachmentTitle(Attachment attachment);
 
-	//채널타이틀 이미지 update
-	int updateAttachmentTitle(Attachment attachment);
-
 	//채널설명 변경
 	int updateInfo(Loger loger);
-
-	int updatetitle(Attachment attachment);
 
 	//로거 동영상 추가 정보 출력 페이지
 	ArrayList<Video> selectLogerAddVideo(Loger l);
 
-	
+	//로거스튜디오 타이틀 이미지 변경
+	int updateTitle(Attachment attachment);
+
 
 
 
