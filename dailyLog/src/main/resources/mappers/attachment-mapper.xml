@@ -135,14 +135,6 @@
 		VALUES(#{userNo}, AM_NO.NEXTVAL, NULL,SYSDATE, #{fileNm}, '채널')
 	</insert>
 
-	<!-- 채널타이틀이미지 update -->
-	<update id="updatetitle" >
-	UPDATE ATTACHMENT
-    SET FILE_NM =  #{fileNm}
-    WHERE AM_TY = '채널'
-    AND USER_NO = #{userNo}
-	</update>
-
 
 
 	<select id="videoimagelist1" resultMap="videoRSet">
@@ -282,8 +274,17 @@
 		FROM ATTACHMENT A
 		JOIN VIDEO V ON(V.V_NO = A.V_NO)
 		WHERE V.USER_NO=6
-
 	</select>
+	
+	
+	<!-- 채널타이틀이미지 update -->
+	<update id="updateTitle" parameterType="Attachment">
+	UPDATE ATTACHMENT
+    SET FILE_NM =  #{fileNm} , AM_DT = SYSDATE
+    WHERE AM_TY = '채널'
+    AND USER_NO = #{userNo}
+	</update>
+	
 
 </mapper>
 

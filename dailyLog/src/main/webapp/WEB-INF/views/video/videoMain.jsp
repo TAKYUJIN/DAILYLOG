@@ -560,9 +560,10 @@
 						<div style="display:inline-block; margin-right:3%;">
 							<label id="regsubTY" style="color:#525252;"></label>
 						</div>
+							<input type="hidden" id="userNo" name="userNo"  value="${loginUser.userNo}"/>
+					  		<input type="hidden"  id="retarget" name="retarget" value="${list1[0].userNo}"/>
 							<input type="button" class="btn" id="subscribe" value="구독"><br>
 						<small style="display:inline-block;">구독자 <b> ${ list2[0].subNum }명 </b><br></small>
-						
 					</div>
 				</td>
 				<td width="240px" height="60px">
@@ -1277,6 +1278,36 @@
 					</c:forEach>
 		           </tbody>  </table></ul></nav></div></div> 
   
+
+		           <tfoot>
+		           		<div style="width:50px; display:inline-block;">
+		       			    <div>
+								<c:if test="${userImg != null}">
+									<img class="userImg" src="resources/images/${userImg}" style="margin-bottom:30px;">
+								</c:if>
+								<c:if test="${userImg == null}">
+									<img class="userImg" src="resources/images/newlogo3.png" style="margin-bottom:30px;">
+								</c:if>	
+							</div>
+		           		</div>
+		         		<div style="display:inline-block; margin-left:1%; margin-right:1%;">
+		     			    <div class="input-group">
+								<input type="text" id="replycontent" class="form-control" placeholder="Search&hellip;" style="background:none !important; width:250px;">
+							</div>
+		           		</div>
+		           		<div style="display:inline-block;">
+		           			<input type="hidden" id="userNo" name="userNo"  value="${loginUser.userNo}"/>
+			  				<input type="hidden"  id="retarget" name="retarget" value="${list1[0].userNo}"/>
+		           			<input type="button" id="insertReply" style="width:100%; margin-bottom:30px; background:#A8B7BC;" class="btn" value="댓글 작성">
+							<!-- <a><i class="material-icons">&#xE876;</i></a> -->
+		           		</div>
+		           </tfoot>
+		       </table>
+			</ul>
+		</nav>
+	</div>
+	</div>
+
 	<!-- Modal HTML -->
 	<div id="myModal" class="modal fade">
 		<div class="modal-dialog modal-confirm">
@@ -2186,6 +2217,35 @@ function Rereplylist(){
 				$(".chatForm").hide();
 				state = 0;
 			}
+		});
+	});
+</script>
+
+ <script>
+      $(function(){
+   	   var sub = $("#subscribe").val();
+		$("#subscribe").click(function(){
+			
+			if(sub == "구독"){
+				console.log(sub);
+				var videoUserNo = $(this).parent().children("#retarget").val();
+				var loginUserNo = $(this).parent().children("#userNo").val();
+				console.log(videoUserNo);
+				console.log(loginUserNo);
+				var msg = loginUserNo + "&" + videoUserNo;
+				ws2.send(msg);
+			}
+		});
+   	   
+		$("#insertReply").click(function(){
+			
+				var videoUserNo = $(this).parent().children("#retarget").val();
+				var loginUserNo = $(this).parent().children("#userNo").val();
+				console.log(videoUserNo);
+				console.log(loginUserNo);
+				var msg = loginUserNo + "&" + videoUserNo;
+				ws2.send(msg);
+			
 		});
 	});
 </script>

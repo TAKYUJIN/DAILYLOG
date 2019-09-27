@@ -25,6 +25,7 @@ public class ServerStart {
 	public void onOpen(Session session) {
 		//서버 연결한 시점에 동작하는 메소드
 		//기존 사용자 리스트에 새로 연결 요청이 들어온 사용자를 추가한다
+		System.out.println("server websocket :: " + session);
 		loginUser.add(session);
 	}
 
