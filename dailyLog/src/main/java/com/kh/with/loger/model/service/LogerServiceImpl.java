@@ -263,32 +263,23 @@ public class LogerServiceImpl implements LogerService{
 		return ld.insertAttachmentTitle(sqlSession, attachment);
 	}
 
-	//채널타이틀 이미지 update
-	@Override
-	public int updateAttachmentTitle(Attachment attachment) {
-		return ld.updateAttachmentTitle(sqlSession, attachment);
-	}
-
-
-
-
-
 	//채널설명변경
 	@Override
 	public int updateInfo(Loger loger) {
 		return ld.updateInfo(sqlSession, loger);
 	}
 
-
-	@Override
-	public int updatetitle(Attachment attachment) {
-		return ld.updatetitle(sqlSession, attachment);
-	}
-
-
 	@Override
 	public ArrayList<Video> selectLogerAddVideo(Loger l) {
 		return ld.selectLogerAddVideo(sqlSession, l);
+	}
+
+	//로거스튜디오 타이틀 이미지 변경
+	@Override
+	public int updateTitle(Attachment attachment) {
+	
+		return ld.updateTitle(sqlSession, attachment);
+	
 	}
 
 

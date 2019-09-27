@@ -178,10 +178,6 @@ body {
 	margin-left: 30px;
 }
 
-#subscribe {
-	margin-left: 430px;
-}
-
 .my-hr1 {
 	border: 0;
 	height: 1px;
@@ -198,8 +194,12 @@ body {
 	width: 1400px;
 	margin-right: 1000px;
 }
+#subscribe {
+	margin-left: 230px;
+}
+
 #subscribecancel {
-	margin-left: 450px;
+	margin-left: 230px;
 }
 </style>
 
@@ -243,11 +243,7 @@ body {
 						value="구독취소">
 				</c:if>
 			</div>
-			<p
-				style="widht: 200px; margin-left: 230px; font-size: 20px; margin-top: -30px;">
-				<c:out value="${result.subNum}" />
-				명
-			</p>
+			
 		</div>
 		<div class="row" style="margin-left: 30px;">
 			<div class="col-lg-15">
