@@ -10,7 +10,7 @@
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.2.js"></script>
 </head>
 <body>
-<form id="pay" name="f1" action="point1.me" method="post">
+<form id="pay" name="f1" action="point.me" method="post">
 <input type="hidden" name="IMP_UID"/>		<!-- 아임포트고유번호 -->
 <input type="hidden" name="MERCHANT_UID"/>		<!-- 고유주문번호 -->
 <input type="hidden" name="PAID_AMOUNT"/>		<!-- 결제금액 -->
@@ -28,7 +28,7 @@
 	    merchant_uid : 'issue_billingkey_monthly_0001', //상점에서 관리하시는 고유 주문번호를 전달
 	    customer_uid: 'gildong_0001_1234',
 	    name: "최초인증결제",
-	    amount : 0,
+	    amount : 200,
 	    buyer_email : 'eunju9503@naver.com',
 	    buyer_name : '정은주',
 	    buyer_tel : '010-9923-0092', //누락되면 이니시스 결제창에서 오류
