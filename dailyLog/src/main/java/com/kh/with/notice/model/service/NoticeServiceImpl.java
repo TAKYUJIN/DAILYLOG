@@ -2,6 +2,7 @@ package com.kh.with.notice.model.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.kh.with.admin.model.vo.Board;
 import com.kh.with.notice.model.dao.NoticeDao;
 import com.kh.with.notice.model.vo.noticeEmail;
+import com.kh.with.video.model.vo.Attachment;
 @Service
 public class NoticeServiceImpl implements NoticeService {
 	
@@ -41,6 +43,12 @@ public class NoticeServiceImpl implements NoticeService {
 	public int noticeEmail(noticeEmail ne) {
 		// TODO Auto-generated method stub
 		return nd.noticeEmail(sqlSession, ne);
+	}
+
+	@Override
+	public String selectUserImg(Map<String, Object> map) {
+		
+		return nd.selectUserImg(sqlSession, map);
 	}
 
 	

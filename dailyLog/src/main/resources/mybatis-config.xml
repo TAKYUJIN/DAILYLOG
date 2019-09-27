@@ -35,10 +35,8 @@
 	    <typeAlias type="com.kh.with.loger.model.vo.SubUserInfo" alias="SubUserInfo" />
 	    <typeAlias type="com.kh.with.websocket.model.vo.ChatMember" alias="ChatMember" />
 	     <typeAlias type="com.kh.with.websocket.model.vo.Chat" alias="Chat" />
-
 	     <typeAlias type="com.kh.with.video.model.vo.AddPlace" alias="AddPlace" />
 	     <typeAlias type="com.kh.with.video.model.vo.AddInfo" alias="AddInfo" />
-
 	     <typeAlias type="com.kh.with.notice.model.vo.noticeEmail" alias="noticeEmail" />
 	     <typeAlias type="com.kh.with.loger.model.vo.AddVideo" alias="AddVideo" />
 	     <typeAlias type="com.kh.with.reply.model.vo.Reply" alias="Reply" />
@@ -64,10 +62,8 @@
 		<mapper resource="mappers/MyVideo-mapper.xml"/>
 		<mapper resource="mappers/payment-mapper.xml"/>
 		<mapper resource="mappers/alram-mapper.xml"/>
-
 		<mapper resource="mappers/addPlace-mapper.xml"/>
 		<mapper resource="mappers/addInfo-mapper.xml"/>
-
 		<mapper resource="mappers/notice-mapper.xml"/>
 		<mapper resource="mappers/reply-mapper.xml"/>
 	</mappers>
