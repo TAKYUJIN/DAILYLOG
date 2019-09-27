@@ -9,9 +9,10 @@
 <title>Insert title here</title>
 <style>
 .mainpage {
-	width: 1024px;
+	width: 1600px;
 	/* height: 800px; */
-	margin-top: 30px;
+	margin-top: 50px;
+	margin-left: 180px;
 	/* border: 1px solid black; */
 }
 
@@ -31,8 +32,7 @@
 }
 
 #editbtn {
-	margin-top: -85px;
-	margin-left: 830px;
+	
 }
 
 h4 {
@@ -40,12 +40,8 @@ h4 {
 	/* border: 1px solid black; */
 }
 
-.dropdown {
-	width: 150px;
-	margin-top: -70px;
-	margin-left: 600px;
-	/* border: 1px solid black; */
-}
+
+
 </style>
 
 </head>
@@ -53,35 +49,43 @@ h4 {
 	<jsp:include page="../common/logerBar.jsp"></jsp:include>
 
 
+	<form action="logerChannelSet.lo" method="post">
 
-	<div class="mainpage">
+		<div class="mainpage">
+
+
+			<h4 style="margin-left: 120px;">
+				<strong>채널전체구성</strong>
+			</h4>
+				<select name="preview" style=" margin-left:800px;">
+					<option value="newlist">최신순</option>
+					<option value="favlist">인기순</option>
+					<option value="pickme" onclick="location.href='allVideoPopup.lo'"></option>
+				</select>
+			<div id="line"></div>
+
+			
 	
-	
-		<h4 style="margin-left: 120px">
-			<strong>채널전체구성</strong>
-		</h4>
-		<div id="line"></div>
-		<button id="editbtn" class="btn btn-primary">편집</button>
+	<!-- 		<a href="allVideoPopup.lo">팝업화면보이기</a>
+			 -->
+			<button id="editbtn" class="btn btn-primary">편집</button>
 
-
-		<div class="dropdown">
-			<button class="btn btn-primary dropdown-toggle" type="button"
-				data-toggle="dropdown">
-				사용자임의지정 <span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu">
-				<li><a href="#">인기동영상</a></li>
-				<li><a href="#">최신순</a></li>
-			</ul>
 		</div>
+	</form>
+	<script>
+	
+	var loginUser = ${sessionScope.loginUser.userNo};
+		$('#editbtn').click(loginUser){
+			console.log(loginUser)
+			location.href="logerChannelSet.lo";
+		}
+	
+	</script>
 
 
-	</div>
 
-
-
-
-
+	<br>
+	<Br>
 	<br>
 	<Br>
 	<jsp:include page="../common/footer.jsp"></jsp:include>

@@ -66,21 +66,21 @@ public class LogerController {
 
 		return "loger/searchLogerVideo";
 	}
-	
-	
+
+
 	// 로거 댓글  페이지로 이동
-		@RequestMapping(value="logerReply.lo")
-		public String selectLogerReply(Model model, HttpSession session, Reply r) {
-			Member m = (Member) session.getAttribute("loginUser");
+	@RequestMapping(value="logerReply.lo")
+	public String selectLogerReply(Model model, HttpSession session, Reply r) {
+		Member m = (Member) session.getAttribute("loginUser");
 
-			ArrayList<Reply> rList = ls.showLogerReply(m);
+		ArrayList<Reply> rList = ls.showLogerReply(m);
 
-			model.addAttribute("rList", rList);	
+		model.addAttribute("rList", rList);	
 
 
-			return "loger/searchLogerReply";
-		}
-	
+		return "loger/searchLogerReply";
+	}
+
 
 	// 로거 동영상 수정 기본정보 페이지로 이동
 	@RequestMapping(value = "selectLogerVideo.lo")
@@ -561,12 +561,7 @@ public class LogerController {
 
 	}
 
-	// 로거스튜디오 - 채널설정으로 이동
-	@RequestMapping(value = "logerChannelSet.lo")
-	public String logerChannelSet() {
 
-		return "loger/logerChannelSet";
-	}
 
 	// 로거스튜디오 - 채널정보변경으로 이동
 	@RequestMapping(value = "goChannelChangeInfo.lo")
@@ -580,54 +575,54 @@ public class LogerController {
 	public String logerChannelChangeInfo(@ModelAttribute Member m, Model model, HttpSession session,
 			MultipartHttpServletRequest request, Loger loger) {
 		System.out.println("로거스튜디오 채널정보변경으로 이동되었니?");
-		
+
 		//정보 update
 		int userNo = ((Member) request.getSession().getAttribute("loginUser")).getUserNo();		
 		loger.setUserNo(userNo);
-		 int result = ls.updateInfo(loger);
-		 
-		 
-		
+		int result = ls.updateInfo(loger);
+
+
+
 		List<MultipartFile> mf = request.getFiles("file3");
-		
+
 		System.out.println("파일?" + mf);
 
-	    String root = request.getSession().getServletContext().getRealPath("resources");
-	      String filepath = root + "\\uploadFiles";
-	      String originalfileName = mf.get(0).getOriginalFilename();
-	      String ext = originalfileName.substring(originalfileName.lastIndexOf("."));
-	      String fileNmss = CommonUtils.getRandomString() + ext;
-	      String fileNm = fileNmss.substring(1, 10) + ext;
-	      
+		String root = request.getSession().getServletContext().getRealPath("resources");
+		String filepath = root + "\\uploadFiles";
+		String originalfileName = mf.get(0).getOriginalFilename();
+		String ext = originalfileName.substring(originalfileName.lastIndexOf("."));
+		String fileNmss = CommonUtils.getRandomString() + ext;
+		String fileNm = fileNmss.substring(1, 10) + ext;
 
-	      System.out.println("root:::" + root );
-	      System.out.println( "filepath:::" + filepath );
-	      System.out.println("originalfileName:::" + originalfileName);
-	      System.out.println("ext::: " +ext);
-	      System.out.println("fileNmss::: " +fileNmss);
-	      System.out.println("fileNm::: " +fileNm);
-	      
-	      
-	  	// 파일 업로드 하는 구문
-			try {
-				mf.get(0).transferTo(new File(filepath+ "\\" + fileNm));
-			} catch (IllegalStateException | IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	      
-	      Attachment attachment = new Attachment();
-	      attachment.setUserNo(userNo);
-	      attachment.setFileNm(fileNm);
-	      
-	      System.out.println("파일들어갔나요?" + attachment);
-	      int updateTitle = ls.updateTitle(attachment);
 
-	      
-	      	System.out.println("updateTitle"  + updateTitle);
-	      
+		System.out.println("root:::" + root );
+		System.out.println( "filepath:::" + filepath );
+		System.out.println("originalfileName:::" + originalfileName);
+		System.out.println("ext::: " +ext);
+		System.out.println("fileNmss::: " +fileNmss);
+		System.out.println("fileNm::: " +fileNm);
 
-	return " ";
+
+		// 파일 업로드 하는 구문
+		try {
+			mf.get(0).transferTo(new File(filepath+ "\\" + fileNm));
+		} catch (IllegalStateException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		Attachment attachment = new Attachment();
+		attachment.setUserNo(userNo);
+		attachment.setFileNm(fileNm);
+
+		System.out.println("파일들어갔나요?" + attachment);
+		int updateTitle = ls.updateTitle(attachment);
+
+
+		System.out.println("updateTitle"  + updateTitle);
+
+
+		return " ";
 	}
 
 
@@ -680,6 +675,7 @@ public class LogerController {
 		int result2 = ls.insertAttachmentTitle(attachment);
 
 		if (result > 0 && result1 > 0 && result2 > 0) {
+
 			return "redirect:index.jsp";
 		} else {
 			model.addAttribute("msg", "채널개설 실패");
@@ -788,4 +784,70 @@ public class LogerController {
 		return "forward:/studeioSubDelete.vd";
 	}
 
+
+
+	// 로거스튜디오 - 채널뷰변경으로 이동
+	@RequestMapping(value = "goChannelChangeSet.lo")
+	public String goChannelChangeSet () {
+
+		return "loger/logerChannelSet";
+	}
+
+
+
+	// 로거스튜디오 채널설정 
+	@RequestMapping(value = "logerChannelSet.lo")
+	public String logerChannelSet(HttpSession session, HttpServletRequest request, Model model, @ModelAttribute Member m) {
+		String preview = request.getParameter("preview");
+		System.out.println("인기순 로거 스튜디오로 이동했니?" + preview);
+		
+		//로그인유저의 NO select 
+		
+		
+		
+		
+		
+		
+		if(preview.equals("newlist")) {
+			System.out.println("최신순으로 들어왔나요?");
+
+		}
+
+
+
+
+
+
+
+
+		return "";
+	}
+
+	//전체동영상 팝업
+	@RequestMapping(value="allVideoPopup.lo")
+	public String allVideoPopup() {
+
+		return  "loger/allVideoPopup";
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
