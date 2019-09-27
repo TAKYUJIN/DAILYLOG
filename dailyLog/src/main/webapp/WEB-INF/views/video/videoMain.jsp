@@ -483,8 +483,12 @@ $("#moveChannel").click(){
 											</c:if>
 										</div>
 									</a>
-									
-									<ul class="dropdown-menu form-wrapper" style="width:280px;border:1px solid #A8B7BC;">					
+
+									  <ul class="dropdown-menu form-wrapper" style="width:280px;border:1px solid #A8B7BC;">					
+
+									<!--
+									<ul class="dropdown-menu form-wrapper" style="width:280px;border:1px solid #A8B7BC;">			-->		
+
 										<li>
 											<div class="form-group" id="chch">
 												<table class="noti_table">
@@ -532,7 +536,11 @@ $("#moveChannel").click(){
 											
 											
 										</li>
-									</ul>
+
+									</ul> 
+
+							<!--		</ul> -->
+
 								</li>
 
 
@@ -771,7 +779,7 @@ $("#moveChannel").click(){
 					</div>
 				</td>
 			</tr>
-			<tr>
+		  <tr>
 				<!-- 비디오 -->
 				<td colspan="4" height="500px"><!-- autoplay="autoplay" -->
 					<c:if test="${list1[0].adultAut eq 'Y' }">
@@ -801,7 +809,7 @@ $("#moveChannel").click(){
 					</c:if>
 				</td>
 			<!-- 댓글 -->
-			</tr>
+			</tr >
 			<tr>
 				<!-- 영상 제목, 태그 -->
 				<td colspan="4" height="130px">
@@ -1106,18 +1114,18 @@ $("#moveChannel").click(){
 											<table class="table table-striped table-hover" style="background:none;">
 										           <tbody>
 									       
- 		                    			<%--  <c:if test="${r.parentNo !=0 }">    --%>
+ 		                    			   <c:if test="${r.parentNo !=0 }">     
  		                    		 
  		                    			 
- 		                    			 	<c:forEach var="l" items="${reply}" >
+ 		                    			 <%-- 	<c:forEach var="l" items="${reply}" >
  		                    			 
 		           							<c:if test="${l.parentNo eq l.parentNo}">
 										      <h5>${l.parentNo} ,${l.repNo}</h5>
  		                    			
  		                    			
  		                    			
- 		                    			</c:if></c:forEach>
- 		                    			<%-- <h3>12</h3>
+ 		                    			</c:if></c:forEach> --%>
+ 		                    			  <h3>12</h3>
  		                    			          <h5>${r.parentNo}</h5>
 										          <h5>${r.repNo}</h5>
 										                <tr  style="background:none !important;">
@@ -1165,7 +1173,7 @@ $("#moveChannel").click(){
 										                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><img src="resources/images/more.png" style="width:18px;"></a>
 										                    </td>
 										                </tr>
-		                    		</c:if>	 --%>
+		                    		</c:if>	 
 		                    
 										           </tbody>
 										       </table>
@@ -1304,7 +1312,7 @@ $("#moveChannel").click(){
 		                 	</c:if>
 		                 	
 					</c:forEach>
-		           </tbody>  </table></ul></nav></div></div> 
+		           </tbody>  </table></ul></nav>  
   
 
 		           <tfoot>
