@@ -395,7 +395,7 @@
 		font-weight: normal;
 	}	
 	/*********************************************/
-	.overlaybox {position:relative;width:360px;height:350px;background:url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/box_movie.png') no-repeat;padding:15px 10px;}
+	.overlaybox {position:relative;width:265px;height:160px;background:white;padding:15px 10px;}
 	.overlaybox div, ul {overflow:hidden;margin:0;padding:0;}
 	.overlaybox li {list-style: none;}
 	.overlaybox .boxtitle {color:#fff;font-size:16px;font-weight:bold;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png') no-repeat right 120px center;margin-bottom:8px;}
@@ -868,9 +868,7 @@ $("#moveChannel").click(){
 			// 커스텀 오버레이에 표시할 내용입니다     
 			// HTML 문자열 또는 Dom Element 입니다 
 			var content = '<div class="overlaybox">' +
-			    '    <div class="boxtitle">금주 영화순위</div>' +
 			    '    <div class="first">' +
-			    '        <div class="triangle text">1</div>' +
 			    '        <div class="movietitle text">드래곤 길들이기2</div>' +
 			    '    </div>' +
 			    '</div>';
@@ -1000,14 +998,14 @@ $("#moveChannel").click(){
 		<!-- 댓글 -->
 		<div style="margin-bottom:7%; margin-left:3%;">
 			<div style="pointer:cursor !important;" data-toggle="dropdown" id="runtimeChat">
-				<img src="resources/images/chat.png" style="width:30px; align:right;">&emsp; 실시간 채팅 다시보기
+				<img src="resources/images/chat.png" style="width:30px; align:right;">&emsp; 실시간 채팅
 			</div>
 		</div>
 		<div id="chatForm" style="margin-top:5%;color:white; width:430px; height:350px; text-align:center; background-color:#13334A; border-radius:10%; margin-bottom:10%; opacity:0.6;">
-			<div style="overflow:auto; padding:10px; width:425px; height:260px;">
-				<div id="messageWindow" style="margin:5%;">
-					
-					
+			<div class="scrollChat" style="overflow:auto;  padding:10px; width:425px; height:260px;">
+				<div id="messageWindow" style="margin:5%; text-align:right !important;">
+						
+						
 				</div> 
 			</div>
 			<!-- 채팅 -->
@@ -1024,7 +1022,7 @@ $("#moveChannel").click(){
            		</div>
          		<div style="display:inline-block; margin-left:1%; margin-right:1%;">
      			    <div class="input-group">
-						<input type="text" id="inputMessage" name="chatInput" value="" placeholder="실시간 채팅에 참여하세요" style="background:none !important; width:250px; color:white;" onkeyup="enterkey()">
+						<input type="text" id="inputMessage" name="chatInput" value=""  autofocus placeholder="실시간 채팅에 참여하세요" style="background:none !important; width:250px; color:white;" onkeyup="enterkey()">
 					</div>
            		</div>
            		<div style="display:inline-block;">
@@ -2209,7 +2207,16 @@ $("#moveChannel").click(){
 
 		 });
 	</script>
+<script>
+var objDiv = document.getElementById("scrollChat");
+objDiv.scrollTop = objDiv.scrollHeight;
 
+$("#scrollChat").scrollTop($("#scrollChat")[0].scrollHeight);
+
+
+$("#scrollChat").scrollTop($("#scrollChat").prop('scrollHeight'));
+
+</script>
 
 <script>
 //대댓글 가져오기
@@ -2311,8 +2318,9 @@ var login_ids={};
         var message = event.data.split("|");
         var sender = message[0];
         var content = message[1];
-        alert("11");
-       
+       /*  alert("11"); */
+       var d = new Date();
+        
         if (content == "") {
         	 
         } /* else {
@@ -2333,8 +2341,9 @@ var login_ids={};
                     $("#messageWindow").html($("#messageWindow").html()
                         + "<p class='chat_content'><b class='impress'>" + sender + " : " + content + "</b></p>");
                 } else {
-                    $("#messageWindow").html($("#messageWindow").html()
-                        + "<p class='chat_content'>" + sender + " : " + content + "</p>");
+                    /* 다른 채팅자 */
+                	$("#messageWindow").html($("#messageWindow").html()
+                		 + "<div style='text-align:left !important; float:left; clear:both; margin-bottom:3%;'><table style='text-align:left;'><tr><td rowspan='2'><img class='userImg' src='resources/uploadFiles/${userImg}' style='align:left;'></td><td><p class='chat_content'>" + sender + "</p></td></tr><tr><td><div class='chat_content'>" + content + "</div></td></tr><tr><td></td><td><small>" + d.getFullYear() +"."+ (d.getMonth() + 1) +"."+ d.getDate() +" "+ d.getHours() +":"+ d.getMinutes() + "</small></td></tr><table></div>");
                 }
             }
        
@@ -2364,14 +2373,22 @@ var login_ids={};
     function send() {
     	var chat_id ="${loginUser.nickname}";
     	var message = inputMessage.value;
+    	var d = new Date();
+/*     	var currentDate = d.getFullYear() + (d.getMonth() + 1) + d.getDate();
+    	var currentTime = d.getHours() + d.getMinutes() + d.getSeconds();
+    	alert(surrentDate + currentTime); */
     	
         if (inputMessage.value == "") {
         } else {
+        /*     $("#messageWindow").html($("#messageWindow").html()
+            	+ "<div style='text-align:right;'>" + 	 
+                + "<p class='chat_content'>"+ chat_id + ":::" + inputMessage.value + "</p>" + "</div>")
+               
+                ; */
             $("#messageWindow").html($("#messageWindow").html()
-                + "<p class='chat_content'>  "+"<b>"+chat_id+"<b>" + inputMessage.value + "</p>");
-            
+                	+ "<div style='align:right !important; clear:both; float:right; text-align:right !important; margin-bottom:3%;'><table><tr><td><p class='chat_content'>" + chat_id + "</p></td><td rowspan='2'><img class='userImg' src='resources/uploadFiles/${userImg}' style='align:right; margin-left:7% !important;'></td></tr><tr><td><div class='chat_content'>" + inputMessage.value + "</div></td></tr><tr><td><small>" + d.getFullYear() +"."+ (d.getMonth() + 1) +"."+ d.getDate() +" "+ d.getHours() +":"+ d.getMinutes() + "</small></td></tr></table></div>");
         }
-        
+        /*  */
         
         webSocket.send(chat_id + "|" + inputMessage.value);
         inputMessage.value = "";
