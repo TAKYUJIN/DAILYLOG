@@ -193,22 +193,22 @@
 			<div class="form-group">
 			 	<label for="friId">친구 이메일</label>
 					<input  style="float:left;"type="text" class="form-control" id="friId" name="friId" placeholder="친구 이메일" required>
-				  <!-- <button type="button" id ="fricheck" class="btn btn-default" style="background:#13334A; color:#fff;  float:left;"   >이메일 확인</button>
+				 <!--  <button type="button" id ="fricheck" class="btn btn-default" style="background:#13334A; color:#fff;  float:left;"   >이메일 확인</button>
 	  -->
-		<div class="check" id="id_check"></div>
-		<!-- <p id="result">
+		<!-- <div class="check" id="id_check"></div>
+	  <p id="result">
 			<span class="msg">친구 이메일을 다시 한번 확인 해주세요.</span>
 		
-		</p> -->
+		</p>   -->
 		
 		 
 		
 			</div><br><br>
       <div align="center">
         
-        <!-- <input type="submit" id=" joinBtn"value="메일 보내기"  class="btn btn-default" style="background:#13334A; color:#fff;">
-         -->
-         <input type="submit" id=" joinBtn"value="친구 요청 보내기"  class="btn btn-default" style="background:#13334A; color:#fff;">
+         <input type="submit" id=" joinBtn"value="친구 요청 메일 보내기"  class="btn btn-default" style="background:#13334A; color:#fff;">
+         
+         <!-- <input type="submit" id=" joinBtn"value="친구 요청 보내기"  class="btn btn-default" style="background:#13334A; color:#fff;"> -->
         <input type="reset" value="취소" class="btn btn-default" id="reset" style="background:#A8B7BC; color:#fff;">
       </div></c:forEach>
   </form></table></div></div></div></div></div></div>

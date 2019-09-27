@@ -93,7 +93,6 @@ background-image:url('resources/images/newlogo.png');
     });
 </script> -->
 <script type="text/javascript">
-
 var socket;
 var login_ids={};
     var textarea = document.getElementById("messageWindow");
