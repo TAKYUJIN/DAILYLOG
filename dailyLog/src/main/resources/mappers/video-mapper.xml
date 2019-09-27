@@ -135,7 +135,14 @@
     <insert id="insertVideoInfo" parameterType="Video">       
    INSERT INTO VIDEO
    VALUES(V_NO.NEXTVAL, #{userNo}, #{vTitle}, 0, #{chNm}, #{tag},'N', SYSDATE, NULL, #{adultAut}, #{adYn}  ,#{adInfo},
-   NULL, #{info}, #{fileNm}, #{openTy}, DEFAULT)
+   NULL,
+    <if test="info != null">
+	    #{info}    
+    </if>
+    <if test="info == null">
+	    NULL    
+    </if>
+    , #{fileNm}, #{openTy}, DEFAULT)
    
    </insert>
    
