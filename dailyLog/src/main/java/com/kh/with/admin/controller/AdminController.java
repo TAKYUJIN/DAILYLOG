@@ -486,20 +486,21 @@ public class AdminController {
 	// 관리자 메인 페이지 이동 통계
 	@RequestMapping(value = "adminStatisticsChart.ad")
 	public String adminStatisticsChart(Model model) {
-		String mMonth = as.monthMemberListCount();
-		String mWeek = as.weekMemberListCount();
-		String mDay = as.dayMemberListCount();
+		int mMonth = as.monthMemberListCount();
+		int mWeek = as.weekMemberListCount();
+		int mDay = as.dayMemberListCount();
 		int rMonth = as.monthRevenueListCount();
 		int rWeek = as.weekRevenueListCount();
 		int rDay = as.dayRevenueListCount();
 
-		System.out.println(rMonth);
+		System.out.println(rDay);
 		
 		int rrMonth = (int) (rMonth * 0.0001);
 		int rrWeek = (int) (rWeek * 0.0001);
 		int rrDay = (int) (rDay * 0.0001);
 		
 		System.out.println(rrMonth);
+		
 		
 		model.addAttribute("mMonth", mMonth);
 		model.addAttribute("mWeek", mWeek);

@@ -328,6 +328,7 @@
 		<form class="navbar-form form-inline" action="search.mb" method="get" style="width:240px; margin-top:10px; margin-left:120px;">
 			<div class="input-group search-box">		
 				<input type="text" id="search" name="search"  class="form-control" placeholder="검색" >
+				<input type="hidden" value="${ sessionScope.loginUser.userNo }" id="alramUserNo">
 				  <span  class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span> 
 			<!-- 	 <select class="form-control form-control-sm" name="searchType" id="searchType">
 					<option value="title">제목</option>
@@ -431,8 +432,9 @@ $('#friendlist').click(function(){
   
  
          <li class="nav-item">
-         <a <%-- href="notification.mb" --%> data-toggle="dropdown" class="btn_global link_login" onclick="alram();"><!-- onclick="send2();" -->
-            <img src="resources/images/bell.png" style="width:25px;">
+         <a data-toggle="dropdown" class="btn_global link_login" onclick="alram();">
+            <img id="alramImg" src="resources/images/bell.png" style="width:25px;" onclick="alram();">
+            <img id="alramImg1" style="display:none;width:25px;" src="resources/images/bell2.png" onclick="alram();">
          </a>
             <ul class="dropdown-menu form-wrapper" style="width:350px; border:2px solid #DDD0DA;">               
                <li>
@@ -445,13 +447,10 @@ $('#friendlist').click(function(){
                      <div id="history">
                      <table id="alramTable">
 						<tbody>
+						<!-- 여기가 알림 내용 출력되는 곳이다 -->
 						</tbody>
                      </table>
 					</div>
-                        <!-- <table class="noti_table">
-                           <tr>님을 구독하셨습니다.</tr><br>
-                           <tr>댓글에 답글이 달렸습니다.</tr><br>
-                        </table> -->
                      </div>
                      <img src="resources/images/settings.png" align="right">
                   </form>
@@ -467,62 +466,9 @@ $('#friendlist').click(function(){
    </div>
 </nav>
  </body>
- <script>
- /* $(document).ready(function(){
-    $('#frilist').show();
-    $('#myDiv').hide();
-    
-    $('#addfri').click(function(){
-       $('#frilist').hide();
-       $('#myDiv').show();
-       return false;
-    });
-    $('#reset').click(function(){
-       $('#frilist').show();
-       $('#myDiv').hide();
-       
-    });
-    
- }); */
- 
- 
- /* $("#notification").click(function(){
-	 $.ajax({
-		url:"notification.mb",
-		type:"post",
-		success:function(data){
-			console.log("성공!");
-			
-		},
-		error:function(){
-			console.log("실패!");
-		}
-	}); 
-		
-	}); */
- 	/* function notification(){
- 		location.href="notification.mb";
-		 $.ajax({
-			url:"notification.mb",
-			type:"post",
-			success:function(data){
-				console.log("성공!");
-				
-			},
-			error:function(){
-				console.log("실패!");
-			}
-		}); 
-	} */
- 
-	$(function(){
-		$("#tryMoney").select();
-			
-			
-	});
- 
-	</script>
+
  	<script>
+ 	var alramUserNo = $("#alramUserNo").val();
  	
  	function alram(){
  		$.ajax({
@@ -545,99 +491,13 @@ $('#friendlist').click(function(){
  		});
  	}
  	
- 	$("#alram").click(function(){
- 		var userNo = tryMoney.val();
- 		console.log(userNo);
- 	});
- 	
- 	
 		$(function(){
 			getConnection2();
 			
 		})
-			function getConnection(){
-				ws = new WebSocket("ws://localhost:8001" + '<%=request.getContextPath()%>/serverStart');
-				//서버 시작할 때 동작
-				ws.onopen = function(event){
-
-				}
-				//서버로부터 메세지를 전달 받을 때 동작하는 메소드
-				ws.onmessage = function(event){
-					onMessage(event); 
-					
-				}
-				
-				//서버에서 에러가 발생할 경우 동작할 메소드
-				ws.onerror = function(event){
-					onError(event);
-				}
-				
-				//서버와의 연결이 종료될 경우 동작하는 메소드
-				ws.onclose = function(event){
-					/* onClose(event); */
-					$("#alram").css("-webkit-transform", "scale(1)");
-				}
-			
-			}
-			
-			function send(msg){
-				
-				ws.send(msg);
-				
-				
-			}
-			
-			function onMessage(event){
-				/* var serverMessage = event.data.split(":");
-				
-				var productName = serverMessage[0];
-				var startPrice = serverMessage[1];
-				var currentPrice = serverMessage[1];
-				var remainHour = serverMessage[2];
-				var remainMin = serverMessage[3];
-				var remainSec = serverMessage[4];
-				
-				$productName = $("#productName");
-				$startPrice = $("#startPrice");
-				$currentPrice = $("#currentPrice");
-				$remainTime = $("#remainTime");
-							
-				$productName.html(productName);
-				$startPrice.html(startPrice);
-				$currentPrice.html(currentPrice);
-				$remainTime.html(remainHour + " : " + remainMin + " : " + remainSec); */
-				var result = event.data;
-				console.log(result);
-				if(result != null){
-					var set = setInterval(function()
-			  			    {
-			  			    	  $("#alram").css("-webkit-transform", "scale(1)");
-			  			    },500);
-
-			  		 var set2 = setInterval(function()
-			   			    {
-			  			 $("#alram").css("-webkit-transform", "scale(1.2)");
-			   			    },1000);
-
-			  		$("#alram").click(function(){
-				    		clearInterval(set);
-				    		clearInterval(set2);
-				    	  });
-				}
-				
-				
-			} 
-			
-			function onError(event){
-				/* alert(event.data); */
-			}
-			
-			function onClose(event){
-				/* alert(event); */
-			}
 			
 			function getConnection2(){
-				ws2 = new WebSocket("ws://localhost:8001" + "<%=request.getContextPath()%>/alramStart");
+				ws2 = new WebSocket("ws://localhost:8001" + "<%=request.getContextPath()%>/alramStart?userNo="+alramUserNo);
 				
 				ws2.onopen2 = function(event){
 					
@@ -667,28 +527,26 @@ $('#friendlist').click(function(){
 			}
 			
 			function onMessage2(event){
-				/* var msg = event.data.split(":");
-				var user = msg[0];
-				var contents = msg[1];
-				$("#currentPrice").html(price);
-				$("#history").append("<span>" + contents + "님이 " + "구독하셨습니다.</span><br>"); */
 				
 				var result = event.data;
-				console.log(result);
+				console.log("result :: " + result);
 				if(result != null){
 					var set = setInterval(function()
 			  			    {
-			  			    	  $("#alram").css("-webkit-transform", "scale(1)");
+								  $("#alramImg1").hide();
+			  			    	  $("#alramImg").show().css("-webkit-transform", "scale(1)");
 			  			    },500);
 
 			  		 var set2 = setInterval(function()
 			   			    {
-			  			 $("#alram").css("-webkit-transform", "scale(1.2)");
+			  			 $("#alramImg").hide();
+			  			 $("#alramImg1").show().css("-webkit-transform", "scale(1.3)");
 			   			    },1000);
 
-			  		$("#alram").click(function(){
+			  		$("#alramImg").click(function(){
 				    		clearInterval(set);
 				    		clearInterval(set2);
+				    		
 				    	  });
 				}
 			}
@@ -705,120 +563,5 @@ $('#friendlist').click(function(){
 				location.href="home.mb";
 			}
 		</script>
-		
- <%-- <script>
- 	var wsUri = new WebSocket("ws://localhost:8001" + '<%=request.getContextPath()%>/serverStart');
-	
- 	
- 	function sendMessage(msg){
-		/* location.href="notification.mb"; */
-		var wsUri = "ws://localhost:8001" + '<%=request.getContextPath()%>/alramStart?userNo='+userNo;
-		ws2 = new WebSocket(wsUri);
-		var userNo = $("#tryMoney").val();
-		var userId = "${m.userNm}";
-		var sendMsg = userId + ":" + userNo;
-		ws2.send(sendMsg);
-	}
- 	
- 	function goReport(userNo){
-		var userNo = userNo
-		var wsUri = "ws://localhost:8001" + '<%=request.getContextPath()%>/alramStart?userNo='+userNo;
-			/* "ws://localhost:8002/sixDestiny/start?userNo:"+userNo+"&kind:user"; */
-		ws2 = new WebSocket(wsUri);
-		//서버 시작할 때 동작
-		ws2.onopen = function(evt){
 
-		}
-
-		//서버로부터 메세지를 전달 받을 때 동작하는 메소드
-		ws2.onmessage = function(event){
-			onMessage2(event);
-		}
-
-		//서버에서 에러가 발생할 경우 동작할 메소드
-		ws2.onerror = function(event){
-			onError2(event);
-		}
-
-		//서버와의 연결이 종료될 경우 동작하는 메소드
-		ws2.onclose = function(event){
-			onClose2(event);
-		}
-
-		$("#message").keydown(function (key) {
-	        if(key.keyCode == 13){
-	        	console.log("엔터!");
-	        	var message = $("#message").val();
-				var result = userNo + "#" +userNo + " 회원님 : " + message
-				console.log(result);
-				ws2.send(result);
-				$("#message").val('');
-				$("#message").focus();
-	        }
-
-	    });
-
-		$("#gomesseage").click(function(){
-			console.log("클릭!");
-
-				var message = $("#message").val();
-				var result = userNo + "#" + userNo + " 회원님 : " + message
-				console.log(result);
-				ws2.send(result);
-				$("#message").val('');
-				$("#message").focus();
-
-		});
-	}
-
-
-	function onMessage2(event){
-		var content = event.data;
-		console.log(content);
-		var $chat = $("#cahtarea");
-		$br = $("<br>");
-
-		$chat.append(content);
-		$chat.append("&#10;");
-
-
-	}
- 	
- 	
- 	
- 	
- 	
- 	
- 	
- 	
- 	$(function(){
-		getConnection();
-	});
-		function getConnection() {
-			websocket = new Websoket(wsUri);
-			websocket.onopen = function(evt) {
-				onOpen(evt);
-
-				websocket.onmessage = function(evt) {
-					onMessage(evt);
-				};
-
-				websocket.onerror = function(evt) {
-				};
-
-				websocket.onclose = function(event) {
-				}
-			}
-		}
-
-		function onOpen(evt) {
-
-		}
-
-		function onMessage(evt) {
-			var result = evt.data;
-			console.log(result);
-
-		}
-	</script> --%>
 </html>               

@@ -767,6 +767,18 @@ color: black; text-decoration: none;
 
 	}
 	
+	$(function(){
+		$("#alram").each(function(){
+			$(this).click(function(){
+				var videoUserNo = $(this).parent().children("#retarget").val();
+				var loginUserNo = $(this).parent().children("#userNo").val();
+				console.log(videoUserNo);
+				var msg = loginUserNo + "&" + videoUserNo;
+				ws2.send(msg);
+			});
+		});
+	});
+	
     
     </script>
   <jsp:include page="../common/footer.jsp"></jsp:include>

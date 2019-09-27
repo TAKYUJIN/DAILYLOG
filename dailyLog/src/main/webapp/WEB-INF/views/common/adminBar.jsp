@@ -326,4 +326,100 @@
 	</div>
 </nav>
 </body>
+<script>
+ 	var alramUserNo = $("#alramUserNo").val();
+ 	
+ 	function alram(){
+ 		$.ajax({
+ 			url:"goAlram.mb",
+ 			type:"post",
+ 			success:function(data){
+ 				console.log(data);
+ 				var $alramTable = $("#alramTable tbody");
+				$alramTable.html("");
+				 for(var i = 0; i < data["date"].length; i++){ 
+					var $tr = $("<tr>");
+					var $alCT = $("<td>").text(data["date"][i].alCT);
+					$tr.append($alCT);
+					$alramTable.append($tr); 
+				 }
+ 			},
+ 			error:function(){
+ 				console.log("실패");
+ 			}
+ 		});
+ 	}
+ 	
+		$(function(){
+			getConnection2();
+			
+		})
+			
+			function getConnection2(){
+				ws2 = new WebSocket("ws://localhost:8001" + "<%=request.getContextPath()%>/alramStart?userNo="+alramUserNo);
+				
+				ws2.onopen2 = function(event){
+					
+				}
+				//서버로부터 메세지를 전달 받을 때 동작하는 메소드
+				ws2.onmessage = function(event){
+					onMessage2(event);
+				}
+				
+				//서버에서 에러가 발생할 경우 동작할 메소드
+				ws2.onerror = function(event){
+					onError2(event);
+				}
+				
+				//서버와의 연결이 종료될 경우 동작하는 메소드
+				ws2.onclose = function(event){
+					onClose2(event);
+				}
+			}
+			
+			function send2(msg){
+				/* location.href="notification.mb"; */
+				var tryMoney = $("#tryMoney").val();
+				var userId = "${m.userNm}";
+				var sendMsg = userId + ":" + tryMoney;
+				ws2.send(sendMsg);
+			}
+			
+			function onMessage2(event){
+				
+				var result = event.data;
+				console.log("result :: " + result);
+				if(result != null){
+					var set = setInterval(function()
+			  			    {
+								  $("#alramImg1").hide();
+			  			    	  $("#alramImg").show().css("-webkit-transform", "scale(1)");
+			  			    },500);
+
+			  		 var set2 = setInterval(function()
+			   			    {
+			  			 $("#alramImg").hide();
+			  			 $("#alramImg1").show().css("-webkit-transform", "scale(1.3)");
+			   			    },1000);
+
+			  		$("#alramImg").click(function(){
+				    		clearInterval(set);
+				    		clearInterval(set2);
+				    		
+				    	  });
+				}
+			}
+			
+			function onError2(event){
+				/* alert(event.data); */
+			}
+			
+			function onClose2(event){
+				/* alert(event); */
+			}
+			
+			function home(){
+				location.href="home.mb";
+			}
+		</script>
 </html>                                                                                    
