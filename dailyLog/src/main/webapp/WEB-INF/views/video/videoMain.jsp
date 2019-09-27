@@ -961,7 +961,7 @@
 			}
 		</script>
 	<!-- <div style="border-left:1px solid #A8B7BC;height:500px;"></div> -->
-	<div style="align:center; display:inline-block; margin-left:3%; margin-top:5%; position:absolute;">
+	<div style="align:center; display:inline-block; margin-left:3%; margin-top:5%; height:100%;position:absolute;">
 		<!-- 댓글 -->
 		<div style="margin-bottom:7%; margin-left:3%;">
 			<div style="pointer:cursor !important;" data-toggle="dropdown" id="runtimeChat">
@@ -1001,11 +1001,11 @@
 		<nav class="navbar navbar-default navbar-expand-lg navbar-light"style="background:none; border:none;">
 			<ul class="nav navbar-nav navbar-right ml-auto">					
 		       <table class="table table-striped table-hover">
-		        <tbody> 
+		      <tbody> 
 		           	<c:forEach var="r" items="${reply}" >
-		           		<c:if test="${r.parentNo == 0 }">
+		           		<c:if test="${r.parentNo == 0}">
 		                <tr  style="background:none !important;">
-		                	<td><input type="text" class="repNoThis" style="display:none;"value="${r.repNo }" ></td>
+		                	<td><input type="hidden" class="repNoThis" style="display:none;"value="${r.repNo }" ></td>
 		                    <td width="60px">
 		                    	<div style="margin-top:10px;">
 									<c:if test="${r.fileNm != null}">
@@ -1031,7 +1031,7 @@
 		                    		</div>
 		                    		<div style="display:inline-block;">
 		                    			<div style="display:inline-block;">
-		                    				<input type="text" class="repNoThis2" style="display:none;"value="${r.repNo }" >
+		                    				<input type="hidden" class="repNoThis2" style="display:none;"value="${r.repNo }" >
 		                    			</div>
 		                    			<div style="display:inline-block;">
 		                    				<li class="nav-item" >
@@ -1078,16 +1078,27 @@
 											<table class="table table-striped table-hover" style="background:none;">
 										           <tbody>
 									       
- 		                    			<c:if test="${r.parentNo ==r.repNo }"> 
+ 		                    			<%--  <c:if test="${r.parentNo !=0 }">    --%>
+ 		                    		 
+ 		                    			 
+ 		                    			 	<c:forEach var="l" items="${reply}" >
+ 		                    			 
+		           							<c:if test="${l.parentNo eq l.parentNo}">
+										      <h5>${l.parentNo} ,${l.repNo}</h5>
+ 		                    			
+ 		                    			
+ 		                    			
+ 		                    			</c:if></c:forEach>
+ 		                    			<%-- <h3>12</h3>
  		                    			          <h5>${r.parentNo}</h5>
 										          <h5>${r.repNo}</h5>
 										                <tr  style="background:none !important;">
 										                    <td width="60px">
 										                    	<div style="margin-top:10px;">
-																	<c:if test="${r.fileNm != null}">
+																	 <c:if test="${r.fileNm != null}">
 																		<img class="userImg" src="resources/images/${r.fileNm}">
 																	</c:if>
-																	<c:if test="${r.fileNm == null}">
+																	  <c:if test="${r.fileNm == null}"> 
 																		<img class="userImg" src="resources/images/newlogo3.png">
 																	</c:if>	
 																</div>
@@ -1126,7 +1137,8 @@
 										                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><img src="resources/images/more.png" style="width:18px;"></a>
 										                    </td>
 										                </tr>
-		                    		</c:if>	
+		                    		</c:if>	 --%>
+		                    
 										           </tbody>
 										       </table>
 										</div>
@@ -1262,9 +1274,11 @@
 		                    </td>
 		                </tr>
 		                 	</c:if>
+		                 	
 					</c:forEach>
-		           </tbody>  
+		           </tbody>  </table></ul></nav></div></div> 
   
+
 		           <tfoot>
 		           		<div style="width:50px; display:inline-block;">
 		       			    <div>
@@ -1293,6 +1307,7 @@
 		</nav>
 	</div>
 	</div>
+
 	<!-- Modal HTML -->
 	<div id="myModal" class="modal fade">
 		<div class="modal-dialog modal-confirm">
@@ -1346,7 +1361,6 @@
 		console.log(":" + repNo);
 		
 		console.log(vNo);
-		alert("d");
 		$.ajax({
 	        	url:"replyDelete.vd",
 				type:"post",
@@ -1720,7 +1734,7 @@
 		});
 		//좋아요 조회
 		function selectLike(){
-			alert("1");
+ 
 			var chNo = "<c:out value='${list2[0].chNo}'/>";
 			var vNo = "<c:out value='${list1[0].vNo}'/>";
 			console.log(chNo + "::" + vNo);
