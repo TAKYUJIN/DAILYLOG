@@ -84,6 +84,7 @@ public class VideoController {
 		
 		
 		try {
+			System.out.println("여기까지1");
 			if(!info.equals("info없음")) {
 				
 				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -110,7 +111,7 @@ public class VideoController {
 				System.out.println("infoTime : " + infoTime.getTime());
 				
 			}
-				
+			System.out.println("여기까지2");
 				//조회수
 				int countUp = vs.updateCount(map);
 				
@@ -1032,8 +1033,8 @@ public class VideoController {
 			String adInfo = request.getParameter("adInfo");
 			int getUserNo = ((Member) request.getSession().getAttribute("loginUser")).getUserNo();
 			String chNm = ((Member) request.getSession().getAttribute("loginUser")).getNickname(); // 닉네임이 채널명
-			String info = request.getParameter("uploadDate") + " " + request.getParameter("uploadTime");
-			System.out.println("upload : " + info);
+			String info = "NULL";
+			
 			
 			if (adYn == null) {
 				adYn = "N";
@@ -1058,8 +1059,12 @@ public class VideoController {
 			video.setFileNm(fileName);
 			video.setAdInfo(adInfo);
 			video.setChNm(chNm);
-			video.setInfo(info);
 
+			if(openTy == "U") {
+				info = request.getParameter("uploadDate") + " " + request.getParameter("uploadTime");
+				System.out.println("upload : " + info);
+				video.setInfo(info);
+			}
 
 			int result = vs.insertVideoInfo(video);
 
