@@ -24,20 +24,20 @@
 		<result property="openTy" column="OPEN_TY" />
 		<result property="vStatus" column="v_STATUS" />
 	</resultMap>
-	
-  	<resultMap type="Loger" id="logerResultSet">
-  		<id property="chNo" column="CH_NO"/>
-  		<result property="userNo" column="USER_NO"/>
-  		<result property="chNm" column="CH_NM"/>
-  		<result property="vNo" column="V_NO"/>
-  		<result property="chDT" column="CH_DT"/>
-  		<result property="chInfo" column="CH_INFO"/>
-  		<result property="accNm" column="ACC_NM"/>
-  		<result property="bankNm" column="BANK_NM"/>
-  		<result property="account" column="ACCOUNT"/>
-  		<result property="subNum" column="SUBNUM"/>
-  	</resultMap>
-  	
+
+	<resultMap type="Loger" id="logerResultSet">
+		<id property="chNo" column="CH_NO" />
+		<result property="userNo" column="USER_NO" />
+		<result property="chNm" column="CH_NM" />
+		<result property="vNo" column="V_NO" />
+		<result property="chDT" column="CH_DT" />
+		<result property="chInfo" column="CH_INFO" />
+		<result property="accNm" column="ACC_NM" />
+		<result property="bankNm" column="BANK_NM" />
+		<result property="account" column="ACCOUNT" />
+		<result property="subNum" column="SUBNUM" />
+	</resultMap>
+
 	<resultMap type="Reply" id="replyResultSet">
 		<id property="repNo" column="REP_NO" />
 		<result property="userNo" column="USER_NO" />
@@ -47,7 +47,7 @@
 		<result property="repCt" column="REP_CT" />
 		<result property="repTy" column="REP_TY" />
 	</resultMap>
-	
+
 	<resultMap type="Reply2" id="replyResultSet2">
 		<id property="repNo" column="REP_NO" />
 		<result property="userNo" column="USER_NO" />
@@ -59,7 +59,7 @@
 		<result property="fileNm" column="FILE_NM" />
 		<result property="nickName" column="NICKNAME" />
 	</resultMap>
-	
+
 	<resultMap type="com.kh.with.video.model.vo.Attachment"
 		id="attachmentResultSet">
 
@@ -71,19 +71,19 @@
 		<result property="modifyNm" column="MODIFY_NM" />
 		<result property="amTY" column="AM_TY" />
 	</resultMap>
-	
-	     <resultMap type="Support" id="supportResultSet">
-        <id property="supNo" column="SUP_NO"/>
-        <result property="userNo" column="USER_NO"/>
-        <result property="chNo" column="CH_NO"/>
-        <result property="supSTDT" column="SUP_STDT"/>
-        <result property="supPrice" column="SUP_PRICE"/>
-        <result property="supTY" column="SUP_TY"/>
-        <result property="nNo" column="RANK"/>
-        <result property="nickname" column="NICKNAME"/>
-        <result property="regEDT" column="REG_EDT"/>
-        <result property="regStatus" column="REG_STATUS"/>
-     </resultMap>
+
+	<resultMap type="Support" id="supportResultSet">
+		<id property="supNo" column="SUP_NO" />
+		<result property="userNo" column="USER_NO" />
+		<result property="chNo" column="CH_NO" />
+		<result property="supSTDT" column="SUP_STDT" />
+		<result property="supPrice" column="SUP_PRICE" />
+		<result property="supTY" column="SUP_TY" />
+		<result property="nNo" column="RANK" />
+		<result property="nickname" column="NICKNAME" />
+		<result property="regEDT" column="REG_EDT" />
+		<result property="regStatus" column="REG_STATUS" />
+	</resultMap>
 
 	<resultMap type="VideoLike" id="videoLikeResultSet">
 		<id property="likeNo" column="LIKE_NO" />
@@ -97,22 +97,22 @@
 		<result property="vfileNm" column="VFILE_NM" />
 		<result property="repNo" column="REP_NO" />
 	</resultMap>
-	
-	  <resultMap type="Report" id="ReportResultSet"> 
-	    <id property="reno" column="RE_NO"/>
+
+	<resultMap type="Report" id="ReportResultSet">
+		<id property="reno" column="RE_NO" />
 		<result property="userNo" column="USER_NO" />
 		<result property="chNm" column="CH_NM" />
-        <result property="retarget" column="RE_TARGET"/>
-        <result property="redt" column="RE_DT"/>
-        <result property="rewhy" column="RE_WHY"/>
-        <result property="rety" column="RE_TY"/>
-        <result property="vNo" column="V_NO"/>
-        <result property="repno" column="REP_NO"/>
-          <result property="recount" column="RE_COUNT"/>
-          <result property="ccount" column="C_COUNT"/>
-     </resultMap> 
-     
-    <resultMap type="AddInfo" id="AddInfoResultSet">
+		<result property="retarget" column="RE_TARGET" />
+		<result property="redt" column="RE_DT" />
+		<result property="rewhy" column="RE_WHY" />
+		<result property="rety" column="RE_TY" />
+		<result property="vNo" column="V_NO" />
+		<result property="repno" column="REP_NO" />
+		<result property="recount" column="RE_COUNT" />
+		<result property="ccount" column="C_COUNT" />
+	</resultMap>
+
+	<resultMap type="AddInfo" id="AddInfoResultSet">
 		<id property="aNo" column="A_NO" />
 		<result property="vNo" column="V_NO" />
 		<result property="userNo" column="USER_NO" />
@@ -120,132 +120,152 @@
 		<result property="uploadDt" column="UPLOAD_DT" />
 		<result property="modifyDt" column="MODIFY_DT" />
 	</resultMap>
-     
-    <resultMap type="AddPlace" id="AddPlaceResultSet">
+
+	<resultMap type="AddPlace" id="AddPlaceResultSet">
 		<id property="apNo" column="AP_NO" />
 		<result property="vNo" column="V_NO" />
 		<result property="userNo" column="USER_NO" />
 		<result property="apXY" column="AP_XY" />
 		<result property="apNm" column="AP_NM" />
 		<result property="apAd" column="AP_AD" />
-	</resultMap> 
-     
+	</resultMap>
+
+	<resultMap type="NewlyVideo" id="NewlyVideoResultSet">
+		<id property="vNo" column="V_NO" />
+		<result property="userNo" column="USER_NO" />
+		<result property="newlyDt" column="NEWLY_DT" />
+	</resultMap>
+
 	<!-- 업로드할 동영상 정보 insert 쿼리 -->
- 
-    <insert id="insertVideoInfo" parameterType="Video">       
-   INSERT INTO VIDEO
-   VALUES(V_NO.NEXTVAL, #{userNo}, #{vTitle}, 0, #{chNm}, #{tag},'N', SYSDATE, NULL, #{adultAut}, #{adYn}  ,#{adInfo},
-   NULL,
-    <if test="info != null">
-	    #{info}    
-    </if>
-    <if test="info == null">
-	    NULL    
-    </if>
-    , #{fileNm}, #{openTy}, DEFAULT)
-   
-   </insert>
-   
- 
+
+	<insert id="insertVideoInfo" parameterType="Video">
+		INSERT INTO VIDEO
+		VALUES(V_NO.NEXTVAL, #{userNo}, #{vTitle}, 0, #{chNm}, #{tag},'N', SYSDATE, NULL,
+		#{adultAut}, #{adYn} ,#{adInfo},
+		NULL,
+		<if test="info != null">
+			#{info}
+		</if>
+		<if test="info == null">
+			NULL
+		</if>
+		, #{fileNm}, #{openTy}, DEFAULT)
+
+	</insert>
+
+
 	<!-- 동영상페이지 비디오 정보 -->
-	<select id="selectVideoInfo" parameterType="map" resultMap="videoResultSet">
+	<select id="selectVideoInfo" parameterType="map"
+		resultMap="videoResultSet">
 		SELECT *
 		FROM VIDEO
 		WHERE USER_NO = #{userNo}
 		AND V_NO = #{vNo}
 	</select>
 	<!-- 동영상페이지 로거 정보 -->
-	<select id="selectLogerInfo" parameterType="map" resultMap="logerResultSet">
+	<select id="selectLogerInfo" parameterType="map"
+		resultMap="logerResultSet">
 		SELECT *
 		FROM LOGER
 		WHERE USER_NO = #{userNo}
 	</select>
-	
+
 	<!-- 동영상페이지 후원 내역 추가 -->
 	<insert id="insertReg" parameterType="map">
 		INSERT INTO SUPPORT
-		VALUES(SUP_NO.NEXTVAL, #{userNo}, #{chNo}, SYSDATE, 
+		VALUES(SUP_NO.NEXTVAL, #{userNo}, #{chNo}, SYSDATE,
 		#{price}, '정기', TO_CHAR(ADD_MONTHS(SYSDATE, 1), 'YYYY-MM-DD'), 1, 0)
 	</insert>
 
 	<insert id="insertOnce" parameterType="map">
 		INSERT INTO SUPPORT
-		VALUES(SUP_NO.NEXTVAL, #{userNo}, #{chNo}, SYSDATE, #{price}, DEFAULT, SYSDATE, 1, 0)
+		VALUES(SUP_NO.NEXTVAL, #{userNo}, #{chNo}, SYSDATE, #{price}, DEFAULT,
+		SYSDATE, 1, 0)
 	</insert>
-	
+
 	<insert id="insertLike" parameterType="map">
 		INSERT INTO VIDEO_LIKE
-		VALUES(LIKE_NO.NEXTVAL, #{userNo}, #{vNo}, #{chNo}, SYSDATE, '좋아요', NULL)
+		VALUES(LIKE_NO.NEXTVAL, #{userNo}, #{vNo}, #{chNo}, SYSDATE, '좋아요',
+		NULL)
 	</insert>
-	
+
 	<delete id="deleteLike">
 		DELETE FROM VIDEO_LIKE
 		WHERE USER_NO = #{userNo}
-		AND V_NO = #{vNo}
+		AND
+		V_NO = #{vNo}
 		AND CH_NO = #{chNo}
 		AND V_TY = '좋아요'
 	</delete>
-	
+
 	<insert id="insertHate" parameterType="map">
 		INSERT INTO VIDEO_LIKE
-		VALUES(LIKE_NO.NEXTVAL, #{userNo}, #{vNo}, #{chNo}, SYSDATE, '싫어요', NULL)
+		VALUES(LIKE_NO.NEXTVAL, #{userNo}, #{vNo}, #{chNo}, SYSDATE, '싫어요',
+		NULL)
 	</insert>
-	
+
 	<delete id="deleteHate">
 		DELETE FROM VIDEO_LIKE
 		WHERE USER_NO = #{userNo}
-		AND V_NO = #{vNo}
+		AND
+		V_NO = #{vNo}
 		AND CH_NO = #{chNo}
 		AND V_TY = '싫어요'
 	</delete>
 
 	<insert id="insertBookmark" parameterType="map">
 		INSERT INTO VIDEO_LIKE
-		VALUES(LIKE_NO.NEXTVAL, #{userNo}, #{vNo}, #{chNo}, SYSDATE, '북마크', NULL)
+		VALUES(LIKE_NO.NEXTVAL, #{userNo}, #{vNo}, #{chNo}, SYSDATE, '북마크',
+		NULL)
 	</insert>
-	
+
 	<delete id="deleteBookmark">
 		DELETE FROM VIDEO_LIKE
 		WHERE USER_NO = #{userNo}
-		AND V_NO = #{vNo}
+		AND
+		V_NO = #{vNo}
 		AND CH_NO = #{chNo}
 		AND V_TY = '북마크'
 	</delete>
-	<select id="searchch" resultMap="videoResultSet" parameterType="com.kh.with.main.model.vo.Video">
-	
-<!-- 	SELECT * FROM VIDEO
-WHERE CH_NM LIKE '%${searchId}%' -->
-	SELECT V_TITLE,V.CH_NM,V.TAG,A.FILE_NM,V.UPLOAD_DT FROM VIDEO V
-JOIN ATTACHMENT A ON (V.V_NO=A.V_NO)
-	WHERE CH_NM LIKE '%'||#{search}||'%'
-	
-<!-- 	<include refid="search"></include> -->
-	
+	<select id="searchch" resultMap="videoResultSet"
+		parameterType="com.kh.with.main.model.vo.Video">
+
+		<!-- SELECT * FROM VIDEO WHERE CH_NM LIKE '%${searchId}%' -->
+		SELECT V_TITLE,V.CH_NM,V.TAG,A.FILE_NM,V.UPLOAD_DT FROM VIDEO V
+		JOIN ATTACHMENT A ON (V.V_NO=A.V_NO)
+		WHERE CH_NM LIKE '%'||#{search}||'%'
+
+		<!-- <include refid="search"></include> -->
+
 	</select>
-	<select id="searchtitle" resultMap="videoResultSet" parameterType="com.kh.with.main.model.vo.Video">
-	
-	SELECT V_TITLE,V.CH_NM,V.TAG,A.FILE_NM,V.UPLOAD_DT FROM VIDEO V
-JOIN ATTACHMENT A ON (V.V_NO=A.V_NO)
-WHERE V_TITLE LIKE '%'||#{search}||'%'
+	<select id="searchtitle" resultMap="videoResultSet"
+		parameterType="com.kh.with.main.model.vo.Video">
+
+		SELECT V_TITLE,V.CH_NM,V.TAG,A.FILE_NM,V.UPLOAD_DT FROM VIDEO V
+		JOIN ATTACHMENT A ON (V.V_NO=A.V_NO)
+		WHERE V_TITLE LIKE '%'||#{search}||'%'
 	</select>
-	<select id="searchtag" resultMap="videoResultSet" parameterType="com.kh.with.main.model.vo.Video">
-	
-	SELECT V_TITLE,V.CH_NM,V.TAG,A.FILE_NM,V.UPLOAD_DT FROM VIDEO V
-JOIN ATTACHMENT A ON (V.V_NO=A.V_NO)
-WHERE TAG LIKE '%'||#{search}||'%'
-	
+	<select id="searchtag" resultMap="videoResultSet"
+		parameterType="com.kh.with.main.model.vo.Video">
+
+		SELECT V_TITLE,V.CH_NM,V.TAG,A.FILE_NM,V.UPLOAD_DT FROM VIDEO V
+		JOIN ATTACHMENT A ON (V.V_NO=A.V_NO)
+		WHERE TAG LIKE '%'||#{search}||'%'
+
 	</select>
 
 	<!-- 로거스튜디오내 동영상 -->
-		<select id="logerHomeAllVideo" resultMap="videoResultSet" parameterType="com.kh.with.main.model.vo.Video">
+	<select id="logerHomeAllVideo" resultMap="videoResultSet"
+		parameterType="com.kh.with.main.model.vo.Video">
 		SELECT *
 		FROM VIDEO
 		WHERE USER_NO = #{userNo}
-		
+
 	</select>
-	
+
 	<!-- 동영상번호 셀렉 -->
-	<select id="selectvNo" resultMap="videoResultSet" parameterType="Video">
+	<select id="selectvNo" resultMap="videoResultSet"
+		parameterType="Video">
 	<![CDATA[ SELECT V_NO
 	FROM(SELECT *
 	FROM VIDEO
@@ -253,9 +273,10 @@ WHERE TAG LIKE '%'||#{search}||'%'
 	ORDER BY UPLOAD_DT DESC)
 	WHERE ROWNUM <= 1 ]]>
 	</select>
-	
+
 	<!-- 최근동영상1개 셀렉 -->
-	<select id="favOne" resultMap="videoResultSet" parameterType="Video">
+	<select id="favOne" resultMap="videoResultSet"
+		parameterType="Video">
 	<![CDATA[ SELECT *
 	FROM(SELECT *
 	FROM VIDEO
@@ -263,282 +284,333 @@ WHERE TAG LIKE '%'||#{search}||'%'
 	ORDER BY UPLOAD_DT DESC)
 	WHERE ROWNUM <= 1 ]]>
 	</select>
-	
-	<insert id="insertSub"  parameterType="map">
+
+	<insert id="insertSub" parameterType="map">
 		INSERT INTO SUBSCRIBE
 		VALUES(SUB_NO.NEXTVAL, #{chNo}, #{loginUser})
 	</insert>
-	
+
 	<delete id="deleteSub">
 		DELETE FROM SUBSCRIBE
 		WHERE USER_NO = #{loginUser}
-		AND CH_NO = #{chNo}
+		AND
+		CH_NO = #{chNo}
 	</delete>
-	
+
 	<insert id="videoAlram" parameterType="map">
 		INSERT INTO ALRAM
-		VALUES(AL_NO.NEXTVAL, #{userNo}, SYSDATE, 
+		VALUES(AL_NO.NEXTVAL, #{userNo}, SYSDATE,
 		#{vTitle} || ' 동영상이 ' || #{check} || '의 사유로 신고되었습니다.',
-		 DEFAULT, NULL, NULL, #{vNo}, NULL)
+		DEFAULT, NULL, NULL, #{vNo}, NULL)
 	</insert>
-	
+
 	<insert id="insertReport" parameterType="map">
 		INSERT INTO REPORT
-		VALUES(RE_NO.NEXTVAL, #{loginUser}, #{userNo}, SYSDATE, #{check}, '동영상', #{vNo}
+		VALUES(RE_NO.NEXTVAL, #{loginUser}, #{userNo}, SYSDATE, #{check},
+		'동영상', #{vNo}
 		, NULL, #{chNm}, #{rCount} + 1, #{cCount} + 1)
 	</insert>
-	
+
 	<insert id="insertBlock" parameterType="map">
 		INSERT INTO BLOCK_VIDEO
 		VALUES(#{loginUser}, #{vNo})
 	</insert>
-	
+
 	<insert id="insertSubAlram" parameterType="map">
 		INSERT INTO ALRAM
-		VALUES(AL_NO.NEXTVAL, #{userNo}, SYSDATE, 
+		VALUES(AL_NO.NEXTVAL, #{userNo}, SYSDATE,
 		#{nickName} || ' 님이 ' || #{chNm} || '님을 구독하셨습니다.',
-		 DEFAULT, NULL, NULL, NULL, #{chNo})
+		DEFAULT, NULL, NULL, NULL, #{chNo})
 	</insert>
-	
+
 	<delete id="deleteSubAlram">
 		DELETE FROM ALRAM
 		WHERE USER_NO = #{userNo}
-		AND CH_NO = #{chNo}
+		AND CH_NO =
+		#{chNo}
 		AND AL_CT LIKE #{nickName}||'%'
 	</delete>
-	
+
 	<select id="selectThumb" parameterType="map" resultType="String">
-		SELECT FILE_NM
+		SELECT
+		FILE_NM
 		FROM (SELECT FILE_NM,
-		      RANK() OVER(ORDER BY FILE_NM ASC) AS R
-		      FROM ATTACHMENT
-		      WHERE AM_TY = '썸네일'
-		      AND V_NO = #{vNo})
+		RANK() OVER(ORDER BY FILE_NM ASC) AS R
+		FROM ATTACHMENT
+		WHERE AM_TY = '썸네일'
+		AND V_NO = #{vNo})
 		WHERE R = 1
 	</select>
-	
-	<select id="selectProfile" parameterType="map" resultType="String">
+
+	<select id="selectProfile" parameterType="map"
+		resultType="String">
 		SELECT FILE_NM
-		FROM (SELECT FILE_NM, AM_TY, 
-		      RANK() OVER(ORDER BY FILE_NM ASC) AS R
-		      FROM ATTACHMENT
-		      WHERE USER_NO = #{userNo}
-		      AND AM_TY = '회원')
+		FROM (SELECT FILE_NM, AM_TY,
+		RANK() OVER(ORDER BY FILE_NM ASC) AS R
+		FROM ATTACHMENT
+		WHERE USER_NO = #{userNo}
+		AND AM_TY = '회원')
 		WHERE R = 1
 	</select>
-	
-	<select id="selectRegStatus" parameterType="map" resultType="int">
+
+	<select id="selectRegStatus" parameterType="map"
+		resultType="int">
 		SELECT NVL(SUP_NO, 0)
 		FROM SUPPORT
 		WHERE SUP_TY = '정기'
-		AND SYSDATE BETWEEN SUP_STDT AND REG_EDT
+		AND
+		SYSDATE BETWEEN SUP_STDT AND REG_EDT
 		AND USER_NO = #{loginUser}
-		AND CH_NO = #{chNo}
+		AND
+		CH_NO = #{chNo}
 	</select>
 
 	<select id="selectLike" parameterType="map" resultType="int">
-		SELECT NVL(LIKE_NO, 0)
+		SELECT
+		NVL(LIKE_NO, 0)
 		FROM VIDEO_LIKE
 		WHERE V_NO = #{vNo}
-		AND USER_NO = #{loginUser} 
+		AND USER_NO =
+		#{loginUser}
 		AND V_TY = '좋아요'
 	</select>
 
 	<select id="selectHate" parameterType="map" resultType="int">
-		SELECT LIKE_NO
+		SELECT
+		LIKE_NO
 		FROM VIDEO_LIKE
 		WHERE V_NO = #{vNo}
-		AND USER_NO = #{loginUser} 
+		AND USER_NO = #{loginUser}
 		AND V_TY = '싫어요'
 	</select>
 
 
 	<select id="selectBook" parameterType="map" resultType="int">
-		SELECT LIKE_NO
+		SELECT
+		LIKE_NO
 		FROM VIDEO_LIKE
 		WHERE V_NO = #{vNo}
-		AND USER_NO = #{loginUser} 
+		AND USER_NO = #{loginUser}
 		AND V_TY = '북마크'
 	</select>
-	
-	<select id="selectReply" parameterType="map" resultMap="replyResultSet2">
+
+	<select id="selectReply" parameterType="map"
+		resultMap="replyResultSet2">
 		SELECT R.*, A.FILE_NM, M.NICKNAME
 		FROM REPLY R
-		JOIN ATTACHMENT A ON(R.USER_NO = A.USER_NO)
+		JOIN ATTACHMENT
+		A ON(R.USER_NO = A.USER_NO)
 		JOIN MEMBER M ON(A.USER_NO = M.USER_NO)
 		WHERE R.V_NO = #{vNo}
 		AND A.AM_TY = '회원'
 	</select>
-	
-	<select id="selectReReply" parameterType="map" resultMap="replyResultSet2">
+
+	<select id="selectReReply" parameterType="map"
+		resultMap="replyResultSet2">
 		SELECT R.*, A.FILE_NM, M.NICKNAME
 		FROM REPLY R
-		JOIN ATTACHMENT A ON(R.USER_NO = A.USER_NO)
+		JOIN ATTACHMENT
+		A ON(R.USER_NO = A.USER_NO)
 		JOIN MEMBER M ON(A.USER_NO = M.USER_NO)
 		WHERE R.V_NO = #{vNo}
 		AND A.AM_TY = '회원'
 		AND PARENT_NO=#{repNo}
 	</select>
-	
-	
-	
-	
-	<select id="selectUserImg" parameterType="map" resultType="String">
+
+
+
+
+	<select id="selectUserImg" parameterType="map"
+		resultType="String">
 		SELECT A.FILE_NM
 		FROM MEMBER M
-		JOIN ATTACHMENT A ON(M.USER_NO = A.USER_NO)
+		JOIN ATTACHMENT A ON(M.USER_NO
+		= A.USER_NO)
 		WHERE M.USER_NO = #{loginUser}
 		AND A.AM_TY = '회원'
 	</select>
-	
+
 	<insert id="insertReply" parameterType="map">
 		INSERT INTO REPLY
-		VALUES(REP_NO.NEXTVAL, #{loginUser}, #{vNo}, NULL, SYSDATE, #{content}, DEFAULT)
+		VALUES(REP_NO.NEXTVAL, #{loginUser}, #{vNo}, NULL, SYSDATE,
+		#{content}, DEFAULT)
 	</insert>
-	
+
 	<select id="repNo" parameterType="map" resultType="int">
 		SELECT REP_NO
 		FROM (SELECT REP_NO, RANK() OVER(ORDER BY REP_NO ASC) AS R
-				FROM REPLY
-				WHERE USER_NO = #{loginUser}
-				AND V_NO = #{vNo}
-				AND REP_CT = #{content})
+		FROM REPLY
+		WHERE USER_NO = #{loginUser}
+		AND V_NO = #{vNo}
+		AND REP_CT = #{content})
 		WHERE R = 1
 	</select>
-	
+
 	<insert id="replyAlram" parameterType="map">
 		INSERT INTO ALRAM
-		VALUES(AL_NO.NEXTVAL, #{userNo}, SYSDATE, 
+		VALUES(AL_NO.NEXTVAL, #{userNo}, SYSDATE,
 		#{nickName} || '님이 댓글을 남기셨습니다.', '댓글', NULL, #{repNo}, #{vNo}, NULL)
 	</insert>
-	
+
 	<update id="updateCount" parameterType="map">
 		UPDATE VIDEO
-		SET COUNT = COUNT + 1
+		SET COUNT =
+		COUNT + 1
 		WHERE V_NO = #{vNo}
 	</update>
-	
+
 	<update id="countSubNum" parameterType="map">
 		UPDATE LOGER
-		SET SUBNUM = SUBNUM + 1
+		SET SUBNUM =
+		SUBNUM + 1
 		WHERE CH_NO = #{chNo}
 	</update>
-	
+
 	<update id="disCountSubNum" parameterType="map">
 		UPDATE LOGER
-		SET SUBNUM = SUBNUM - 1
+		SET SUBNUM
+		= SUBNUM - 1
 		WHERE CH_NO = #{chNo}
 	</update>
-	
-	<select id="selectCount" parameterType="map" resultMap="ReportResultSet">
+
+	<select id="selectCount" parameterType="map"
+		resultMap="ReportResultSet">
 		SELECT RE_COUNT, C_COUNT
-		FROM (SELECT NVL(SUM(RE_COUNT), 0) AS RE_COUNT, NVL(SUM(C_COUNT), 0) AS C_COUNT
-		      FROM REPORT
-		      WHERE RE_TARGET = #{userNo})
+		FROM (SELECT NVL(SUM(RE_COUNT), 0)
+		AS RE_COUNT, NVL(SUM(C_COUNT), 0) AS C_COUNT
+		FROM REPORT
+		WHERE RE_TARGET = #{userNo})
 	</select>
-	
+
 	<insert id="replyReport" parameterType="map">
 		INSERT INTO REPORT
-		VALUES(RE_NO.NEXTVAL, #{loginUser}, #{userNo}, SYSDATE, #{check}, '댓글', NULL, #{repNo}, #{chNm}, #{rCount} + 1, #{cCount} + 1)
+		VALUES(RE_NO.NEXTVAL, #{loginUser}, #{userNo}, SYSDATE, #{check},
+		'댓글', NULL, #{repNo}, #{chNm}, #{rCount} + 1, #{cCount} + 1)
 	</insert>
-	
+
 	<insert id="replyReportAlram" parameterType="map">
 		INSERT INTO ALRAM
-		VALUES(AL_NO.NEXTVAL, #{userNo}, SYSDATE, 
+		VALUES(AL_NO.NEXTVAL, #{userNo}, SYSDATE,
 		#{nickName} || '님이 댓글을 남기셨습니다.', '댓글', NULL, #{repNo}, NULL, NULL)
 	</insert>
-	
+
 	<insert id="insertReplyLike" parameterType="map">
-		INSERT INTO VIDEO_LIKE
-		VALUES(LIKE_NO.NEXTVAL, #{userNo}, #{vNo}, #{chNo}, SYSDATE, '좋아요', #{repNo})
+		INSERT INTO
+		VIDEO_LIKE
+		VALUES(LIKE_NO.NEXTVAL, #{userNo}, #{vNo}, #{chNo}, SYSDATE,
+		'좋아요', #{repNo})
 	</insert>
-	
+
 
 	<delete id="deleteReplyLike">
 		DELETE FROM VIDEO_LIKE
 		WHERE USER_NO = #{userNo}
-		AND V_NO = #{vNo}
+		AND
+		V_NO = #{vNo}
 		AND CH_NO = #{chNo}
 		AND V_TY = '좋아요'
 		AND REP_NO = #{repNo}
 	</delete>
-	
+
 	<insert id="insertReplyHate" parameterType="map">
-		INSERT INTO VIDEO_LIKE
-		VALUES(LIKE_NO.NEXTVAL, #{userNo}, #{vNo}, #{chNo}, SYSDATE, '싫어요', #{repNo})
+		INSERT INTO
+		VIDEO_LIKE
+		VALUES(LIKE_NO.NEXTVAL, #{userNo}, #{vNo}, #{chNo}, SYSDATE,
+		'싫어요', #{repNo})
 	</insert>
 
 	<update id="disCountSubNums" parameterType="map">
 		UPDATE LOGER
-		SET SUBNUM = SUBNUM - 1
+		SET
+		SUBNUM = SUBNUM - 1
 		WHERE CH_NO = #{chNo}
 	</update>
 
-	
+
 	<delete id="deleteReplyHate">
 		DELETE FROM VIDEO_LIKE
 		WHERE USER_NO = #{userNo}
-		AND V_NO = #{vNo}
+		AND
+		V_NO = #{vNo}
 		AND CH_NO = #{chNo}
 		AND V_TY = '싫어요'
 		AND REP_NO = #{repNo}
 	</delete>
-	
+
 	<update id="replyUpdate">
 		UPDATE REPLY
-		SET REP_CT = #{update} 
+		SET REP_CT = #{update}
 		WHERE USER_NO = #{loginUser}
 		AND V_NO = #{vNo}
 		AND REP_NO = #{repNo}
 	</update>
-	
+
 	<delete id="replyDelete">
 		DELETE FROM REPLY
 		WHERE USER_NO = #{loginUser}
-		AND V_NO = #{vNo}
+		AND V_NO
+		= #{vNo}
 		AND REP_NO = #{repNo}
 	</delete>
-	
+
 
 	<select id="selectInfo" parameterType="map" resultType="String">
 		SELECT NVL(INFO, 'info없음')
 		FROM VIDEO
 		WHERE V_NO = #{vNo}
 
-  <!-- 
-	<select id="adinfo" resultMap="videoResultSet">
-	select * from VIDEO
-     where NOT AD_INFO IS NULL -->
+		<!-- <select id="adinfo" resultMap="videoResultSet"> select * from VIDEO 
+			where NOT AD_INFO IS NULL -->
 
 	</select>
-	
 
-	
-	<insert id="writeReReply" parameterType="map" >
-	INSERT INTO REPLY
-	VALUES (REP_NO.NEXTVAL,#{loginUser},#{vNo},#{parentNo},SYSDATE,#{content},DEFAULT)
+
+
+	<insert id="writeReReply" parameterType="map">
+		INSERT INTO REPLY
+		VALUES
+		(REP_NO.NEXTVAL,#{loginUser},#{vNo},#{parentNo},SYSDATE,#{content},DEFAULT)
 	</insert>
-	<insert id="ReReplyAlram" parameterType="map" >
+	<insert id="ReReplyAlram" parameterType="map">
 		INSERT INTO ALRAM
-		VALUES(AL_NO.NEXTVAL, #{userNo}, SYSDATE, 
-		#{nickName} || '님이 댓글을 남기셨습니다.', '댓글', NULL, #{repNo}, #{vNo}, NULL)	
+		VALUES(AL_NO.NEXTVAL, #{userNo}, SYSDATE,
+		#{nickName} || '님이 댓글을 남기셨습니다.', '댓글', NULL, #{repNo}, #{vNo}, NULL)
 	</insert>
 
-	<select id="selectAddInfo" parameterType="map" resultMap="AddInfoResultSet">
+	<select id="selectAddInfo" parameterType="map"
+		resultMap="AddInfoResultSet">
 		SELECT *
 		FROM ADDINFO
 		WHERE USER_NO = #{userNo}
-		AND V_NO = #{vNo}
+		AND V_NO =
+		#{vNo}
 	</select>
-	
-	<select id="selectAddPlace" parameterType="map" resultMap="AddPlaceResultSet">
+
+	<select id="selectAddPlace" parameterType="map"
+		resultMap="AddPlaceResultSet">
 		SELECT *
 		FROM ADDPLACE
 		WHERE USER_NO = #{userNo}
-		AND V_NO = #{vNo}
+		AND V_NO =
+		#{vNo}
 	</select>
 
-	
+	<select id="newActionList" resultMap="NewlyVideoResultSet">
+		SELECT ROW_NUMBER()
+		OVER(ORDER BY nv.newly_dt DESC)
+		RANK,NV.*,L.CH_NO,V_TITLE,V.CH_NM,FILE_NM
+		FROM NEWLY_VIDEO NV
+		,LOGER L
+		,VIDEO V
+		WHERE NV.USER_NO = L.USER_NO(+)
+		AND NV.USER_NO = V.USER_NO(+)
+		AND NV.USER_NO='1'
+		AND NEWLY_DT=SYSDATE
+		ORDER BY NEWLY_DT DESC
+
+	</select>
+
+
 </mapper>
 
 

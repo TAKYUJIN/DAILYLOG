@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%
+	String checkNo = Integer.toString((int) (Math.random() * 999999) + 100000);
+	System.out.println(checkNo);
+%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,6 +20,12 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
+$(function() {
+    var idx = false;
+    var ndx = false;
+    var pdx = false;
+    var smsPn = false;
+    
 	$("#mypage").submit(
 			function() {
 				if ($("#userPwd").val() !== $("#userPwd2").val()) {
@@ -33,7 +43,13 @@
 								.val()) {
 					alert("공백은 입력이 불가능합니다.");
 					return false;
-				}
+				} else if (pdx == false) {
+	                  alert("휴대폰 번호 중복체크를 해주세요 ");
+	                  return false;
+	               } else if (smsPn == false) {
+	                   alert("인증번호 입력 후 확인을 눌러주세요 ");
+	                   return false;
+	               }
 			});
 	
 	$("pro").change(function(){
@@ -51,6 +67,81 @@
 			return false;
 		}
 	});
+	 $("#ckPn").click(function() {
+         $.ajax({
+            url : "phoneCheck.me",
+            type : "GET",
+            data : {
+               "phone" : $("#phone").val()
+            },
+            success : function(data) {
+               if (data == 0 && $.trim($("#phone").val()) != '') {
+                  pdx = true;
+                  alert("사용가능한 휴대폰번호입니다 .");
+                  $("#ckPn").hide();
+                  $("#sendPn").show();
+                  $("#showsms").show();
+                  
+                  $("#joinBtn").removeAttr("disabled");
+               } else {
+                  alert("이미 가입되어 있는 휴대폰번호 입니다.  ")
+                  $("#joinBtn").attr("disabled", "disabled");
+               }
+            },
+            error : function() {
+               alert("서버에러 ");
+            }
+         });
+      });
+      
+      $("#sendPn").click(function() {
+         var rphone = $('#phone').val();
+         var msg = $('input[name=msg]').val();
+         var sphone1 = $("#sphone1").val();
+         var sphone2 = $("#sphone2").val();
+         var sphone3 = $("#sphone3").val();
+         var action = $("#action").val();
+         console.log(rphone);
+         console.log(action);
+         console.log(msg);
+         
+         $.ajax({
+            url : "smssend.me",
+            type:"post",
+            data:{rphone:rphone, sphone1:sphone1, sphone2:sphone2, sphone3:sphone3, msg:msg, action:action},
+            success : function(data) {
+				alert("인증번호가 발송되었습니다.");			
+			
+          },
+          error : function() {
+             //alert("서버에러 ");
+          }
+       });
+    });	
+		
+				$("#cksmsPn").click(function(){
+					
+					var checkNo = $("input[name='msg']").val();
+					var checkPhone = $("input[name='phone1']").val();		
+					
+					console.log("checkNo :::: " + checkNo);
+					console.log("checkPhone ::::" + checkPhone);
+					
+					if(checkNo == checkPhone){
+						$("#checkNo").attr({"readonly":"true"});
+						$("#cksmsPn").hide();
+						smsPn = true;
+						alert("인증이 완료되었습니다.");
+						$("#joinBtn").removeAttr("disabled");
+						
+					}else{
+						alert("인증번호가 틀렸습니다. 다시 입력하세요.");
+						$("#joinBtn").attr("disabled", "disabled");
+					}	
+			
+		
+	});
+});
 </script>
 <style type="text/css">
 
@@ -231,13 +322,49 @@ body{
 						name="userPwd2" required="required">
 				</div>
 			</div>
-			<div class="form-group">
+			<%-- <div class="form-group">
 				<label class="control-label col-xs-4">Phone</label>
 				<div class="col-xs-6">
 					<input type="text" class="form-control" id="phone" name="phone"
 						required="required" value="${memberList.phone}">
 				</div>
-			</div>
+			<input type="button" value="휴대폰 인증" />
+			</div> --%>
+			<div class="form-group">
+					<div class="row">
+						<div class="col-xs-9">
+							<input type="tel" class="form-control" name="phone" id="phone" placeholder="Phone"
+							 required="required" style="color: black;" value="${memberList.phone}">
+						</div>
+						<div class="col-xs-3">
+							<button id="ckPn"
+								style="height: 35px; border-radius: 5px; background: #13334A; color: white; border: solid 1px;"
+								name="btncheck">중복확인</button>
+							<button id="sendPn"
+								style="height: 35px; border-radius: 5px; background: #13334A; color: white; border: solid 1px;"
+								name="btncheck" hidden>문자전송</button>
+						</div>
+
+					</div>
+				</div>
+				<div class="form-group" id="showsms" hidden>
+					<div class="row">
+						<div class="col-xs-9">
+							<input type="text" class="form-control" name="phone1"id="phone1" placeholder="required"style="color: black;">
+							 <input type="hidden" id="action" name="action" value="go"> 
+							 <input type="hidden" name="msg" value="<%=checkNo%>">
+							  <input type="hidden"id="sphone1" name="sphone1" value="010">
+							   <input type="hidden" id="sphone2" name="sphone2" value="4560">
+							<input type="hidden" id="sphone3" name="sphone3" value="1780">
+						</div>
+						<div class="col-xs-3">
+							<button id="cksmsPn"
+								style="height: 35px; border-radius: 5px; background: #13334A; color: white; border: solid 1px;"
+								name="cksmsPn">인증확인</button>
+
+						</div>
+					</div>
+				</div>
 
 
 			<div class="form-group" style=" margin-left: 5%;">

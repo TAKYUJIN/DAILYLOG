@@ -31,6 +31,7 @@ import com.kh.with.main.model.service.regService;
 import com.kh.with.main.model.vo.Alram;
 import com.kh.with.main.model.vo.Friend;
 import com.kh.with.main.model.vo.MailVo;
+import com.kh.with.main.model.vo.NewlyVideo;
 import com.kh.with.main.model.vo.Subscribe;
 import com.kh.with.main.model.vo.SubscribeVideo;
 import com.kh.with.main.model.vo.Video;
@@ -311,10 +312,28 @@ public class MainController {
 	
 	//최근영상이동
 		@RequestMapping(value="newAction.mb")
-		public String selectnewAction() {
+		public String selectnewAction(Model model, HttpSession session, NewlyVideo nv) {
 			
+			Member m =(Member) session.getAttribute("loginUser");
+			//최근영상조회
+			ArrayList<NewlyVideo> vlist = ms.newAction(m);
+			
+			model.addAttribute("vlist", vlist);
 			return "main/newAction";
 		}
+	/*
+	 * // 좋아요 페이지로 이동
+	 * 
+	 * @RequestMapping(value="videoLike.mb")
+	 *  public String showVideoLike(Modelmodel, HttpSession session, VideoLike vl) { 
+	 *  Member m = (Member) session.getAttribute("loginUser"); 
+	 *  // 좋아 조회
+	 *   ArrayList<VideoLike> bList = ms.showVideoLike(m);
+	 * 
+	 * model.addAttribute("bList", bList);
+	 * 
+	 * return "main/videoLike"; }
+	 */
 	
 		
 		

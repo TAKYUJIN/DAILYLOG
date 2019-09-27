@@ -6,6 +6,7 @@ import java.util.List;
 import com.kh.with.main.model.vo.Alram;
 import com.kh.with.main.model.vo.Friend;
 import com.kh.with.main.model.vo.MailVo;
+import com.kh.with.main.model.vo.NewlyVideo;
 import com.kh.with.main.model.vo.Subscribe;
 import com.kh.with.main.model.vo.SubscribeVideo;
 import com.kh.with.main.model.vo.Video;
@@ -47,6 +48,9 @@ public interface MainService {
 	int friendSending2(Friend f);
 
 	List<Friend> friendconfirm(Friend f);
+
+	ArrayList<NewlyVideo> newAction(Member m);
+
 	
 
 	/*int friendSending1(MailVo mailVo);

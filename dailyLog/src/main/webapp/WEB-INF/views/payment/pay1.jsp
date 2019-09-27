@@ -25,8 +25,7 @@
 	IMP.request_pay({
 	    pg : 'jtnet', //ActiveX 결제창은 inicis를 사용
 	    pay_method : 'card', //card(신용카드), trans(실시간계좌이체), vbank(가상계좌), phone(휴대폰소액결제)
-	    merchant_uid : 'merchant_' + new Date().getTime()', //상점에서 관리하시는 고유 주문번호를 전달
-	    customer_uid: 'gildong_0001_1234',
+	    merchant_uid : 'merchant_' + new Date().getTime(), //상점에서 관리하시는 고유 주문번호를 전달
 	    name: "정기결제",
 	    amount : 1100,
 	    buyer_email : 'eunju9503@naver.com',
