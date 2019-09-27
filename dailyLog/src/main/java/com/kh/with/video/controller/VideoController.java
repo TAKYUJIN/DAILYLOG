@@ -288,12 +288,12 @@ public class VideoController {
 		int result=vs.writeReReply(map); 
 		int alram =vs.ReReplyAlram(map);
 		 
-		model.addAttribute("reply"+reply);
-		model.addAttribute("result", result);
+		model.addAttribute("writeReReplylist"+reply);
+		model.addAttribute("writeReReplyresult", result);
 		model.addAttribute("alram", alram);
 		
 		
-		return Integer.toString(result);
+		return "redirect:/video.vd";
 	}
 	
 	
