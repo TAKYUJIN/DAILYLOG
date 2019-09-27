@@ -254,7 +254,9 @@ public class VideoController {
 		map.put("repNo", repNo);
 		int rereply = vs.selectReReply(map);
 		int alram = vs.replyAlram(map);
-
+		
+		System.out.println("alram : " + alram);
+		
 		model.addAttribute("reply", reply);
 		model.addAttribute("rereply", rereply);
 		model.addAttribute("result", result);
@@ -1059,7 +1061,7 @@ public class VideoController {
 			video.setFileNm(fileName);
 			video.setAdInfo(adInfo);
 			video.setChNm(chNm);
-
+			System.out.println("openTy : " + openTy);
 			if(openTy == "U") {
 				info = request.getParameter("uploadDate") + " " + request.getParameter("uploadTime");
 				System.out.println("upload : " + info);
