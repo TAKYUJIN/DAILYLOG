@@ -29,7 +29,7 @@
 	    pay_method : 'card', //card(신용카드), trans(실시간계좌이체), vbank(가상계좌), phone(휴대폰소액결제)
 	    merchant_uid : 'merchant_' + new Date().getTime(), //상점에서 관리하시는 고유 주문번호를 전달
 	    name : '주문명:결제테스트',
-	    amount : 100,
+	    amount : 1000,
 	    buyer_email : id,
 	    buyer_name : name,
 	    buyer_tel : phone, //누락되면 이니시스 결제창에서 오류
