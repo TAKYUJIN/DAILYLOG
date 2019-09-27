@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import com.kh.with.main.model.vo.Alram;
 import com.kh.with.main.model.vo.Friend;
 import com.kh.with.main.model.vo.MailVo;
+import com.kh.with.main.model.vo.NewlyVideo;
 import com.kh.with.main.model.vo.Subscribe;
 import com.kh.with.main.model.vo.SubscribeVideo;
 import com.kh.with.main.model.vo.Video;
@@ -48,6 +49,9 @@ public interface MainDao {
 	int friendSending2(SqlSessionTemplate sqlSession, Friend f);
 
 	List<Friend> friendconfirm(SqlSessionTemplate sqlSession, Friend f);
+
+	ArrayList<NewlyVideo> newAction(SqlSessionTemplate sqlSession, Member m);
+
 
 
 	/*int friendSending1(SqlSessionTemplate sqlSession, MailVo mailVo);

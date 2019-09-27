@@ -13,6 +13,7 @@ import com.kh.with.main.model.dao.MainDao;
 import com.kh.with.main.model.vo.Alram;
 import com.kh.with.main.model.vo.Friend;
 import com.kh.with.main.model.vo.MailVo;
+import com.kh.with.main.model.vo.NewlyVideo;
 import com.kh.with.main.model.vo.Subscribe;
 import com.kh.with.main.model.vo.SubscribeVideo;
 import com.kh.with.main.model.vo.Video;
@@ -123,6 +124,14 @@ public class MainServiceImpl implements MainService{
 		// TODO Auto-generated method stub
 		return md.friendconfirm(sqlSession,f);
 	}
+
+	@Override
+	public ArrayList<NewlyVideo> newAction(Member m) {
+		// TODO Auto-generated method stub
+		return md.newAction(sqlSession,m);
+	}
+
+
 
 	/*@Override
 	public int friendSending1(MailVo mailVo) {

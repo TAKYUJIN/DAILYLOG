@@ -20,6 +20,7 @@ import com.kh.with.member.model.vo.Member;
 import com.kh.with.payment.model.service.PaymentService;
 import com.kh.with.payment.model.vo.Payment;
 import com.siot.IamportRestClient.Iamport;
+import com.siot.IamportRestClient.IamportClient;
 import com.siot.IamportRestClient.request.ScheduleEntry;
 import com.siot.IamportRestClient.request.escrow.EscrowLogisInvoiceData;
 import com.siot.IamportRestClient.response.PaymentBalanceEntry;
@@ -42,6 +43,9 @@ public class PaymentController {
 
 	@Autowired
 	private PaymentService ps;
+	
+	IamportClient importClient = new IamportClient("0737210203808908",
+			"Wdkzj93nWo8exbwAxpFnlJbSV00aPuJLI3l1dop9NynkJUVgkBDFkPxfPxqF2aqKdMMqabAYJYjsSfJc");
 
 	// 포인트충전페이지
 	@RequestMapping(value = "point.me", method = { RequestMethod.GET, RequestMethod.POST })

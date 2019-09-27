@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.kh.with.main.model.vo.Alram;
 import com.kh.with.main.model.vo.Friend;
 import com.kh.with.main.model.vo.MailVo;
+import com.kh.with.main.model.vo.NewlyVideo;
 import com.kh.with.main.model.vo.Subscribe;
 import com.kh.with.main.model.vo.SubscribeVideo;
 import com.kh.with.main.model.vo.Video;
@@ -143,6 +144,17 @@ public class MainDaoImpl implements MainDao{
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("friend.friendconfirm",f);
 	}
+
+	@Override
+	public ArrayList<NewlyVideo> newAction(SqlSessionTemplate sqlSession, Member m) {
+		// TODO Auto-generated method stub
+		
+		ArrayList<NewlyVideo> vlist = null;
+		vlist=(ArrayList)sqlSession.selectList("newlyVideo.newActionList", m);
+		return vlist;
+	}
+
+
 
 	/*@Override
 	public int friendSending1(SqlSessionTemplate sqlSession,MailVo mailVo) {

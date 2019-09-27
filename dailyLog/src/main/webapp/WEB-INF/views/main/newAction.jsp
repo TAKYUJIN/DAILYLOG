@@ -1,17 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-
-
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
+<link href="https://vjs.zencdn.net/7.6.0/video-js.css" rel="stylesheet">
+
+<!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
+<script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+<script src='https://vjs.zencdn.net/7.6.0/video.js'></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
 <style>
 body {
-	background: #fff;
-	font-family: 'Varela Round', sans-serif;
+	color:#525252;
 }
 
 #accordionExample {
@@ -181,23 +187,50 @@ body {
 </style>
 </head>
 <body>
-	<jsp:include page="../common/mainBar.jsp"/>
+	<jsp:include page="../common/mainBar.jsp" />
 
 
 	<form action="selectnewAction.mb" method="post">
 
-				<p id="newvideos">
-					<h3>시청기록</h3>
-					
-				</p>
-				<div id="select">
-					<select>
-						<option href="newAction.mb">시청기록</option>
-						<option href="#">댓글</option>
-					</select>
-				</div>
-				<table id="videoarea">
-					<tr>
+		<p id="newvideos">
+		<h3>시청기록</h3>
+
+		</p>
+		<div id="select">
+			<select>
+				<option href="newAction.mb">시청기록</option>
+				<option href="#">댓글</option>
+			</select>
+		</div>
+		<table id="videoarea">
+			<tbody id="newvideo">
+				<c:set var="i" value="0" />
+				<c:set var="j" value="3" />
+					<!-- 비디오 -->
+				<c:choose>
+					<c:when test="${vlist ne null && fn:length(vlist) gt 0 }">
+				<c:forEach items="${vlist}" var="vl" varStatus="status">
+					<c:if test="{i%}" eq 0}">
+						<tr>
+					</c:if>
+					<td><video id='new_video' class=video_js' sidth="300px;"
+					height="200px;" controls loop poster='resources/uploadFiles/${vl.fileNm}' data-setup='{}'
+					onclick="location.href='video.vd?userNo=${vl.userNo}&vNo=${vl.vNo}'">
+					<source src="resources/uploadFiles/${vl.fileNm }" type="video/mp4">
+					</video><br>
+					<input type="text" value="${vl.vTitle}" class="video_td" id="videoTitle" readonly onfocus="this.blur();"> 
+						<input type="text" value="업데이트  ${fn:substring(b.uploadDT,0,10)}" class="video_td" id="videoDate" readonly onfocus="this.blur();"></td>
+					<c:if test="${i%j eq j-1}">
+						</tr>
+					</c:if>
+					<c:set var="i" value="${i+1}"/>
+						</c:forEach>
+					</c:when>
+				</c:choose>
+				</tbody>
+
+	
+			<%-- <tr>
 						<td><video width="200px;" height="150px;" controls loop>
 								<source src="${pageContext.request.contextPath }${url }">
 								<source src="nature.ogg" type="">
@@ -345,16 +378,15 @@ body {
 							</div></td>
 					</tr>
 				</table>
-			</div>
-		</div>
-	</form>
+			</div> 
+		</div>--%>
+			</form>
 
 
 
 
 
-	<jsp:include page="../common/footer.jsp"></jsp:include>
-
-
+			<jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
+
 </html>
