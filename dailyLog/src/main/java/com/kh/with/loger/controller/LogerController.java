@@ -78,8 +78,10 @@ public class LogerController {
 		model.addAttribute("rList", rList);	
 
 
-		return "loger/searchLogerReply";
-	}
+			System.out.println(rList);
+			return "loger/searchLogerReply";
+		}
+	
 
 
 	// 로거 동영상 수정 기본정보 페이지로 이동

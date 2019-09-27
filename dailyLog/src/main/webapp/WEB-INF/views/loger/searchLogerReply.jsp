@@ -348,7 +348,7 @@ $(document).ready(function(){
                     </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${vList}" var="v">
+                <c:forEach items="${rList}" var="r">
 					<div id="myModal" class="modal fade">
 						<div class="modal-dialog modal-confirm">
 							<div class="modal-content">
@@ -367,24 +367,25 @@ $(document).ready(function(){
 									<button type="button" class="btn btn-info"
 										data-dismiss="modal">취소</button>
 									<button type="button" class="btn btn-danger"
-										onclick="location.href='videoDelete.lo?userNo=${v.userNo}&vNo=${v.vNo}'">삭제</button>
+										onclick="location.href='videoDelete.lo?userNo=${r.userNo}&vNo=${r.vNo}'">삭제</button>
 								</div>
 							</div>
 						</div>
 					</div>
 							<tr style="vertical-align:middle">
-						<td style="vertical-align:middle"><c:out value="${v.openTy}"/></td>
-						<td style="vertical-align:middle"><c:out value="${v.openTy}"/></td>
+						<td style="vertical-align:middle"><c:out value="${r.chNm}"/></td>
+						<td style="vertical-align:middle"><c:out value="${r.repCt}"/></td>
                         <td align="center" style="vertical-align:middle">
-							<video id='my-video'  width="200px;"
-							height="200px;" controls loop poster='resources/uploadFiles/${v.afileNm}'
-							onclick="location.href='video.vd?userNo=${v.userNo}&vNo=${v.vNo}'">
-							 <source src="resources/uploadFiles/${v.fileNm}" type='video/mp4'></video><br>
-							<input type="text" value="${v.vTitle}" class="video_td" id="videoTitle"></td>
+							<!--  <video id='my-video'  width="200px;"
+							height="200px;" controls loop poster='resources/uploadFiles/${r.thumbnail}'
+							onclick="location.href='video.vd?userNo=${r.userNo}&vNo=${r.vNo}'">
+							 <source src="resources/uploadFiles/${r.thumbnail}" type='video/mp4'></video><br> -->
+							<a href="video.vd?userNo=${r.userNo}&vNo=${r.vNo}">
+							<input type="text" value="${r.vtitle}" class="video_td" id="videoTitle"></a></td>
 						
 						
-						<td style="vertical-align:middle"><c:out value="${v.uploadDt}"/></td>
-						<td style="vertical-align:middle"><c:out value="${v.count}"/></td>
+						<td style="vertical-align:middle"><c:out value="${r.repDt}"/></td>
+						<td style="vertical-align:middle"><c:out value="${r.count}"/></td>
                         <td style="vertical-align:middle">
 							<a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
                             

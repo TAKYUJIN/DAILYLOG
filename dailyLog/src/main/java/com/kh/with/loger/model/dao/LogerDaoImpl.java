@@ -164,6 +164,7 @@ public class LogerDaoImpl implements LogerDao{
 		return vList;
 	}
 	
+	//로거 댓글 출력 
 	@Override
 	public ArrayList<Reply> showLogerReply(SqlSessionTemplate sqlSession, Member m) {
 		ArrayList<Reply> rList = null;

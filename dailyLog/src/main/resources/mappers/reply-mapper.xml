@@ -13,21 +13,27 @@
 		<result property="repCt" column="REP_CT" />
 		<result property="repTy" column="REP_TY" />
 		<result property="parentNo" column="PARENT_NO" />
-		<result property="nickname" column="NICKNAME" />
-		<result property="vfileNm" column="FILE_NM" />
-		<result property="mfileNm" column="MFILE_NM" />
+		<result property="chNm" column="CH_NM" />
+		<result property="userFile" column="VFILENM" />
+		<result property="thumbnail" column="THUMBNAIL" />
 		<result property="count" column="COUNT" />
+		<result property="vtitle" column="V_TITLE" />
 	</resultMap>
 	
   	<!-- 로거 댓글 출력 -->
 	<select id="showLogerReply" resultMap="replyResultSet">
-	SELECT RANK, MFILE_NM, V_NO, USER_NO
-		FROM (SELECT ROW_NUMBER() OVER(ORDER BY R.REP_DT DESC) RANK, R.*, A.FILE_NM MFILE_NM
-		FROM REPLY R
-		JOIN MEMBER M ON(R.USER_NO = M.USER_NO)
-		full outer JOIN ATTACHMENT A ON(R.v_NO = A.v_NO)
-		WHERE R.USER_NO = 5)
-		ORDER BY RANK ASC
+	SELECT * 
+	FROM (SELECT L.CH_NM, V.V_TITLE, V.COUNT, V.FILE_NM VFILENM, A2.FILE_NM THUMBNAIL, R.*,
+             RANK() OVER(ORDER BY R.REP_NO DESC) AS R
+     	 FROM MEMBER M
+     	 JOIN VIDEO V ON(M.USER_NO = V.USER_NO)
+    	 JOIN ATTACHMENT A1 ON(M.USER_NO = A1.USER_NO)	
+     	 JOIN ATTACHMENT A2 ON(V.V_NO = A2.V_NO)
+      	JOIN REPLY R ON(V.V_NO = R.V_NO)
+      	JOIN LOGER L ON(R.USER_NO = L.USER_NO)
+      	WHERE A1.AM_TY = '회원'
+      	AND A2.AM_TY = '썸네일'
+      	AND V.USER_NO = #{userNo})
 	
 	</select>
      
