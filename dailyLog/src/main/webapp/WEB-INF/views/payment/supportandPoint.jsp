@@ -160,7 +160,7 @@
             <i class="fa fa-camera"></i> 알림
         </a>
         <a href="point.me" class="list-group-item list-group-item-action active">
-            <i class="fa fa-coin"></i> 후원&포인트 충전
+            <i class="fa fa-money"></i> 후원&포인트 충전
         </a>
        
     </div>

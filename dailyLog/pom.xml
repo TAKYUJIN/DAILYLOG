@@ -14,6 +14,12 @@
 		<org.aspectj-version>1.9.2</org.aspectj-version>
 		<org.slf4j-version>1.7.25</org.slf4j-version>
 	</properties>
+	<repositories>
+   <repository>
+       <id>jitpack.io</id>
+       <url>https://jitpack.io</url>
+   </repository>
+</repositories>
 	<dependencies>
 		<!-- Spring -->
 		<dependency>
@@ -343,7 +349,13 @@
       <artifactId>google-api-services-analytics</artifactId>
       <version>v3-rev161-1.25.0</version>
     </dependency>
-
+    
+ <dependency>
+       <groupId>com.github.iamport</groupId>
+       <artifactId>iamport-rest-client-java</artifactId>
+       <version>0.2.5</version>
+   </dependency>
+   
 	</dependencies>
 	<build>
 		<plugins>
