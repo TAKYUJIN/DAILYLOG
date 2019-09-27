@@ -179,7 +179,6 @@ body {
 	margin-left: 30px;
 }
 
-
 .my-hr1 {
 	border: 0;
 	height: 1px;
@@ -196,6 +195,7 @@ body {
 	width: 1400px;
 	margin-right: 1000px;
 }
+
 #subscribe {
 	margin-left: 230px;
 }
@@ -246,8 +246,6 @@ body {
 						value="구독취소">
 				</c:if>
 			</div>
-
-			
 		</div>
 
 		<div class="row" style="margin-left: 30px;">
@@ -298,22 +296,19 @@ body {
 					<a href="video.vd?userNo=${hv.userNo}&vNo=${hv.vNo}"> <img
 						style="border-radius: 7px; -moz-border-radius: 7px; -khtml-border-radius: 7px; -webkit-border-radius: 7px;"
 						src="resources/uploadFiles/${hv.fileNm}" width="250px"
-						height="200px"></a> <br>
-					<br>
+						height="200px"></a> <br> <br>
 					<div class="ch_cnt">
 						<strong style="font-size: 15px;"><c:out
-								value="${hv.vTitle}" /></strong> <br>
-						<img src="resources/images/playbtn.png" style="width: 15px;">
-						<span class="hit"> <strong class="blind">조회수</strong> <em><c:out
+								value="${hv.vTitle}" /></strong> <br> <img
+							src="resources/images/playbtn.png" style="width: 15px;"> <span
+							class="hit"> <strong class="blind">조회수</strong> <em><c:out
 									value="${hv.count}" />회</em> &nbsp;
 						</span> <span class="bar"> </span> <span class="date"> <strong>등록</strong>
 							<em><c:out value="${hv.uploadDt}" /></em>
 						</span> <br> <span class="tag"><em><c:out
 									value="${hv.tag}" /></em> </span>
 					</div>
-					<br>
-					<br>
-					<br>
+					<br> <br> <br>
 				</div>
 			</c:forEach>
 
@@ -326,6 +321,7 @@ body {
 			<strong>인기동영상</strong>
 		</p>
 		<br>
+		<c:if test="">
 		<c:forEach items="${favHomeChannellVideo}" var="fv" begin="0" end="2">
 
 			<div class="col-sm-4">
@@ -333,8 +329,7 @@ body {
 				<a href="video.vd?userNo=${fv.userNo}&vNo=${fv.vNo}"> <img
 					style="border-radius: 7px; -moz-border-radius: 7px; -khtml-border-radius: 7px; -webkit-border-radius: 7px;"
 					src="resources/uploadFiles/${fv.fileNm}" width="250px"
-					height="200px"></a> <br>
-				<br>
+					height="200px"></a> <br> <br>
 				<div class="ch_cnt">
 					<strong style="font-size: 15px;"><c:out
 							value="${fv.vTitle}" /></strong> <br> <img
@@ -346,17 +341,17 @@ body {
 					</span> <br> <span class="tag"><em><c:out
 								value="${fv.tag}" /></em> </span>
 				</div>
-				<br>
-				<br>
-				<br>
+				<br> <br> <br>
 			</div>
-			<input type="hidden" id="userNo" value="${loginUser.userNo}">
 			
+			<input type="hidden" id="userNo" value="${loginUser.userNo}">
+
 			<input type="hidden" id="chNo" value="${result.chNo}">
 		</c:forEach>
+		</c:if>
 	</div>
 	<!-- <hr class="my-hr2"> -->
-		<script>
+	<script>
 
          
          var message = '${msg}';
