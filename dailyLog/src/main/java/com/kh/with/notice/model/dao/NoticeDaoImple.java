@@ -1,3 +1,4 @@
+
 package com.kh.with.notice.model.dao;
 
 import java.util.ArrayList;
@@ -8,6 +9,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.with.admin.model.vo.Board;
+import com.kh.with.notice.model.vo.Chat;
 import com.kh.with.notice.model.vo.ChatContent;
 import com.kh.with.notice.model.vo.noticeEmail;
 import com.kh.with.video.model.vo.Attachment;
@@ -52,6 +54,7 @@ public class NoticeDaoImple implements NoticeDao{
 		return sqlSession.selectOne("Notice.selectUserImg", map);
 	}
 
+	//고객센터 채팅
 	@Override
 	public int insertChat(SqlSessionTemplate sqlSession, int userNo) {
 		return sqlSession.insert("Notice.insertChat", userNo);
@@ -65,5 +68,13 @@ public class NoticeDaoImple implements NoticeDao{
 	@Override
 	public int selectChatNo(SqlSessionTemplate sqlSession, int userNo) {
 		return sqlSession.selectOne("Notice.selectChatNo", userNo);
+	}
+
+	//고객센터 나의 문의내역
+	@Override
+	public ArrayList<Chat> selectUserQuestion(SqlSessionTemplate sqlSession, int userNo) {
+		ArrayList<Chat> cList = (ArrayList) sqlSession.selectList("Notice.selectUserQuestion", userNo);
+		
+		return cList;
 	}
 }

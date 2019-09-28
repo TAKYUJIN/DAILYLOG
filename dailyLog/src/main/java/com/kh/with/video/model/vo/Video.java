@@ -22,12 +22,14 @@ public class Video implements java.io.Serializable {
 	private int nNo;
 	private String afileNm; //일부러 넣은 겁니다 주석하지말아주세요ㅠㅠ
 	private int vStatus;
+	private String apNm;
+	private String apAd;
 	
 	public Video () {}
 
 	public Video(int vNo, int userNo, String vTitle, int count, String chNm, String tag, String vblYn, Date uploadDt,
 			Date modifyDt, String adultAut, String adYn, String adInfo, String location, String info, String fileNm,
-			String openTy, int nNo, String afileNm, int vStatus) {
+			String openTy, int nNo, String afileNm, int vStatus, String apNm, String apAd) {
 		super();
 		this.vNo = vNo;
 		this.userNo = userNo;
@@ -48,6 +50,8 @@ public class Video implements java.io.Serializable {
 		this.nNo = nNo;
 		this.afileNm = afileNm;
 		this.vStatus = vStatus;
+		this.apNm = apNm;
+		this.apAd = apAd;
 	}
 
 	public int getvNo() {
@@ -202,13 +206,32 @@ public class Video implements java.io.Serializable {
 		this.vStatus = vStatus;
 	}
 
+	public String getApNm() {
+		return apNm;
+	}
+
+	public void setApNm(String apNm) {
+		this.apNm = apNm;
+	}
+
+	public String getApAd() {
+		return apAd;
+	}
+
+	public void setApAd(String apAd) {
+		this.apAd = apAd;
+	}
+
 	@Override
 	public String toString() {
 		return "Video [vNo=" + vNo + ", userNo=" + userNo + ", vTitle=" + vTitle + ", count=" + count + ", chNm=" + chNm
 				+ ", tag=" + tag + ", vblYn=" + vblYn + ", uploadDt=" + uploadDt + ", modifyDt=" + modifyDt
 				+ ", adultAut=" + adultAut + ", adYn=" + adYn + ", adInfo=" + adInfo + ", location=" + location
 				+ ", info=" + info + ", fileNm=" + fileNm + ", openTy=" + openTy + ", nNo=" + nNo + ", afileNm="
-				+ afileNm + ", vStatus=" + vStatus + "]";
+				+ afileNm + ", vStatus=" + vStatus + ", apNm=" + apNm + ", apAd=" + apAd + "]";
 	}
+
+	
+	
 
 }

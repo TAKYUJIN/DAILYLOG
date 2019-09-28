@@ -28,6 +28,16 @@
 		<result property="ccDt" column="CC_DT" />
 		<result property="ccCt" column="CC_CT" />
 		</resultMap>
+		
+		<resultMap type="Chat2" id="chatReqResultSet">
+		<id property="chatNo" column="CHAT_NO" />
+		<result property="userNo" column="USER_NO" />
+		<result property="chatDt" column="CHAT_DT" />
+		<result property="status" column="Q_STATUS" />
+		<result property="nNo" column="RANK" />
+		<result property="userNm" column="USER_NM" />
+		
+	</resultMap>
 	
 	<insert id="noticeEmail" parameterType="map">
 		INSERT INTO NOTICEEMAIL
@@ -61,5 +71,11 @@
 		WHERE RNUM = 1
 	</select>
 		
+	<select id="selectUserQuestion" resultMap="chatReqResultSet" parameterType="Chat2">
+	SELECT ROW_NUMBER() OVER(ORDER BY CHAT_DT DESC) RANK,C.*, M.USER_NM
+        FROM CHAT C
+        JOIN MEMBER M ON(C.USER_NO = M.USER_NO)
+        WHERE C.USER_NO = #{userNo}
+	</select>
 </mapper>
 

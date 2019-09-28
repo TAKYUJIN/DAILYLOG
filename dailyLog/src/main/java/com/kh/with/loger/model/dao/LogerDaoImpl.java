@@ -20,6 +20,7 @@ import com.kh.with.main.model.vo.SubscribeVideo;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.reply.model.vo.Reply;
 import com.kh.with.report.model.vo.Report;
+import com.kh.with.video.model.vo.AddPlace;
 import com.kh.with.video.model.vo.Attachment;
 import com.kh.with.video.model.vo.Video;
 
@@ -130,11 +131,7 @@ public class LogerDaoImpl implements LogerDao{
 		return result;
 	}
 
-
-
-
 	//로거 신고내역
-
 	@Override public ArrayList<Report> reportlist(SqlSessionTemplate
 			sqlSession,Report report, Member m)
 	{ ArrayList<Report> reportlist=
@@ -162,6 +159,32 @@ public class LogerDaoImpl implements LogerDao{
 		vList = (ArrayList) sqlSession.selectList("Loger.showLogerVideo", m);
 
 		return vList;
+	}
+	
+	//로거 동영상 수정 기본정보 출력 페이지
+	@Override
+	public ArrayList<Video> selectLogerVideo(SqlSessionTemplate sqlSession, Loger l) {
+		ArrayList<Video> vList = (ArrayList) sqlSession.selectList("Loger.selectLogerVideo", l);
+		return vList;
+	}
+	
+	//로거 동영상 수정 update
+	@Override
+	public int updateLogerVideo(SqlSessionTemplate sqlSession, Video v) {
+		return sqlSession.update("Loger.updateLogerVideo", v);
+	}
+	
+	//로거 동영상 수정 추가정보 페이지 출력
+	@Override
+	public ArrayList<Video> selectLogerAddVideo(SqlSessionTemplate sqlSession, Loger l) {
+		ArrayList<Video> vList = (ArrayList) sqlSession.selectList("Loger.selectLogerAddVideo", l);
+		return vList;
+	}
+	
+	//로거 동영상 썸네일 수정 update
+	@Override
+	public int updateLogerAttachment(SqlSessionTemplate sqlSession, Attachment a) {
+		return sqlSession.update("Loger.updateLogerAttachment", a);
 	}
 	
 	//로거 댓글 출력 
@@ -280,12 +303,6 @@ public class LogerDaoImpl implements LogerDao{
 
 		return sqlSession.selectOne("Loger.subUserInfo", subUserInfo);
 	}
-	//로거 동영상 수정 기본정보 출력 페이지
-	@Override
-	public ArrayList<Video> selectLogerVideo(SqlSessionTemplate sqlSession, Loger l) {
-		ArrayList<Video> vList = (ArrayList) sqlSession.selectList("Loger.selectLogerVideo", l);
-		return vList;
-	}
 
 	@Override
 	public Subscribe fastenSub(SqlSessionTemplate sqlSession, Subscribe subscribe) {
@@ -305,11 +322,6 @@ public class LogerDaoImpl implements LogerDao{
 		return sqlSession.selectOne("Subscribe.subcount", subscibe);
 	}
 
-	//로거 동영상 수정 update
-	@Override
-	public int updateLogerVideo(SqlSessionTemplate sqlSession, Video v) {
-		return sqlSession.update("Loger.updateLogerVideo", v);
-	}
 	//채널타이틀 이미지 insert
 	@Override
 	public int insertAttachmentTitle(SqlSessionTemplate sqlSession, Attachment attachment) {
@@ -324,18 +336,16 @@ public class LogerDaoImpl implements LogerDao{
 		return sqlSession.update("Loger.updateInfo", loger);
 	}
 
-	//로거 동영상 수정 추가정보 페이지 출력
-	@Override
-	public ArrayList<Video> selectLogerAddVideo(SqlSessionTemplate sqlSession, Loger l) {
-		ArrayList<Video> vList = (ArrayList) sqlSession.selectList("Loger.selectLogerAddVideo", l);
-		return vList;
-	}
 
 	//로거스튜디오 타이틀 이미지 변경
 	@Override
 	public int updateTitle(SqlSessionTemplate sqlSession, Attachment attachment) {
 		
 		return sqlSession.update("Attachment.updateTitle", attachment);
+	}
+	@Override
+	public int deleteAddplace(SqlSessionTemplate sqlSession, AddPlace addPlace) {
+		return sqlSession.delete("Loger.delectAddplace", addPlace);
 	}
 
 }
