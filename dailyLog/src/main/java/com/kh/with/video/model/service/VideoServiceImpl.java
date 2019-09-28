@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.kh.with.loger.model.vo.Loger;
+import com.kh.with.loger.model.vo.Support;
+import com.kh.with.main.model.vo.VideoLike;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.report.model.vo.Report;
 import com.kh.with.video.model.dao.VideoDao;
@@ -133,9 +135,9 @@ public class VideoServiceImpl implements VideoService{
 	}
 	
 	@Override
-	public int selectRegStatus(int userNo, int chNo) {
+	public List<Support> selectRegStatus(Map<String, Integer> map) {
 		
-		return vd.selectRegStatus(sqlSession, userNo, chNo);
+		return vd.selectRegStatus(sqlSession, map);
 	}
 
 
@@ -322,28 +324,22 @@ public class VideoServiceImpl implements VideoService{
 	}
 	
 	@Override
-	public int selectLike(Map<String, Integer> map) {
+	public List<VideoLike> selectLike(Map<String, Integer> map) {
 		
 		return vd.selectLike(sqlSession, map);
 	}
 	
 	@Override
-	public int selectHate(Map<String, Integer> map) {
+	public List<VideoLike> selectHate(Map<String, Integer> map) {
 		
 		return vd.selectHate(sqlSession, map);
 	}
 	@Override
-	public int selectBook(Map<String, Integer> map) {
+	public List<VideoLike> selectBook(Map<String, Integer> map) {
 		
 		return vd.selectBook(sqlSession, map);
 	}
-	@Override
-	public int selectRegStatus(Map<String, Integer> map) {
-		int  result = vd.selectRegStatus(sqlSession, map);
-		if(result == 0) result = 0;
-		
-		return result;
-	}
+
 	
 	@Override
 	public List<Reply2> selectReply(Map<String, Object> map) {
@@ -502,13 +498,43 @@ public class VideoServiceImpl implements VideoService{
 		
 		return vd.selectAddPlace(sqlSession, map);
 	}
-
+	@Override
+	public List<Attachment> selectFiles() {
+		
+		return vd.selectFiles(sqlSession);
+	}
 	
+	@Override
+	public int vStatus(Map<String, Integer> map) {
+		
+		return vd.vStatus(sqlSession, map);
+	}
+	@Override
+	public int channelReport(Map<String, Object> map) {
 
-
+		return vd.channelReport(sqlSession, map);
+	}
+	@Override
+	public int channelReportAlram(Map<String, Object> map) {
+		
+		return vd.channelReportAlram(sqlSession, map);
+	}
 	
-
-
+	@Override
+	public List<VideoLike> selectReplyLike(Map<String, Integer> map) {
+		
+		return vd.selectReplyLike(sqlSession, map);
+	}
+	@Override
+	public List<VideoLike> selectReplyHate(Map<String, Integer> map) {
+		
+		return vd.selectReplyHate(sqlSession, map);
+	}
+	@Override
+	public int selectSubtitle(Map<String, Object> map) {
+		
+		return vd.selectSubtitle(sqlSession, map);
+	}
 	
 }
 

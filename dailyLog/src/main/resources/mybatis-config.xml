@@ -43,8 +43,8 @@
 	     <typeAlias type="com.kh.with.notice.model.vo.ChatContent" alias="ChatContent" />
 	     <typeAlias type="com.kh.with.notice.model.vo.Chat" alias="Chat2" />
 	     <typeAlias type="com.kh.with.main.model.vo.NewlyVideo" alias="NewlyVideo" />
-
-	     
+		<typeAlias type="com.kh.with.video.model.vo.Attach" alias="Attach" />
+	     <typeAlias type="com.kh.with.video.model.vo.Sub" alias="Sub" />
 
 	</typeAliases>
 	<mappers>
