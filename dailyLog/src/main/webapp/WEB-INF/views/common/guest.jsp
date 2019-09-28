@@ -105,7 +105,7 @@ body{
    }   
 	.navbar .nav .btn-primary, .navbar .nav .btn-primary:active {
 		color: #fff;
-		background: #192466; /* 버튼 색  #FBC52C 노랑  #192466 남*/
+		background: #13334A; /* 버튼 색  #FBC52C 노랑  #192466 남*/
 		padding-top: 8px;
 		padding-bottom: 6px;
 		vertical-align: middle;
@@ -114,7 +114,7 @@ body{
 	.navbar .nav .btn-primary:hover, .navbar .nav .btn-primary:focus {		
 		color: #fff;
 		outline: none;
-		background: #FBC52C; /* 버튼 호버 */
+		background: #DDD0DA; /* 버튼 호버 */
 	}
 	.navbar .navbar-right li:first-child a {
 		padding-right: 20px;
@@ -136,7 +136,7 @@ body{
 	}
 	.navbar ul.nav li.open > a.get-started-btn {
 		color: #fff;
-		background: #192466 !important;
+		background: #13334A !important;
 	}
 	.navbar .dropdown-menu {
 		border-radius: 1px;
@@ -186,16 +186,16 @@ body{
 		text-decoration: none;
     }	
 	.navbar .social-btn .btn-primary {
-		background: #192466;
+		background: #13334A;
 	}
 	.navbar .social-btn .btn-primary:hover {
-		background: #192466;
+		background: #13334A;
 	}
 	.navbar .social-btn .btn-info {
-		background: #192466;
+		background: #13334A;
 	}
 	.navbar .social-btn .btn-info:hover {
-		background: #192466;
+		background: #13334A;
 	}
 	.navbar .social-btn .btn i {
 		margin-right: 5px;

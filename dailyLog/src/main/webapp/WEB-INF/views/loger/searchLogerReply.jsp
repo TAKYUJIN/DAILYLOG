@@ -330,21 +330,21 @@ $(document).ready(function(){
         <div class="table-wrapper">
             <div class="table-title" style="width:900px;">
                 <div class="row">
-                    <div class="col-sm-3"><h2>Loger <b>댓글 </b></h2></div>
+                    <div class="col-sm-3"><h2 style="color:#525252; margin-left:10px;"> Loger <b>댓글 </b></h2></div>
                     <div class="col-sm-9">
                         
                     </div>
                 </div>
-            </div>
+            </div><br><br>
             <table class="table table-striped">
                 <thead>
-                    <tr>
-                    	<th class="video_th" style="width:120px;">작성자</th>
-                    	<th class="video_th" style="width:200px;">댓글</th>
-                        <th class="video_th" style="width:450px;">동영상</th>
-						<th class="video_th" style="width:120px;">날짜</th>
-						<th class="video_th" style="width:90px;">조회수</th>
-                        <th class="video_th" style="width:100px;">Actions</th>
+                    <tr >
+                    	<th class="video_th" style="width:120px; text-align: left; ">작성자</th>
+                    	<th class="video_th" style="width:350px; text-align: left;">댓글</th>
+                        <th class="video_th" style="width:450px; text-align: left;">동영상</th>
+						<th class="video_th" style="width:120px; text-align: left;">날짜</th>
+						<th class="video_th" style="width:120px; text-align: left;">조회수</th>
+                        <th class="video_th" style="width:100px; text-align: center;">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -356,37 +356,37 @@ $(document).ready(function(){
 									<div class="icon-box">
 										<i class="material-icons">&#xE5CD;</i>
 									</div>
-									<h4 class="modal-title">동영상을 삭제하시겠습니까?</h4>
+									<h4 class="modal-title">댓글을 삭제하시겠습니까?</h4>
 									<button type="button" class="close" data-dismiss="modal"
 										aria-hidden="true">&times;</button>
 								</div>
 								<div class="modal-body">
-									<p>DailyLog에서 동영상이 영구적으로 삭제되며, 영상 및 정보는 복구되지 않습니다.</p>
+									<p>해당 동영상에서 댓글이 영구적으로 삭제되며, 복구되지 않습니다.</p>
 								</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-info"
 										data-dismiss="modal">취소</button>
 									<button type="button" class="btn btn-danger"
-										onclick="location.href='videoDelete.lo?userNo=${r.userNo}&vNo=${r.vNo}'">삭제</button>
+										onclick="location.href='replyDelete.lo?repNo=${r.repNo}'">삭제</button>
 								</div>
 							</div>
 						</div>
 					</div>
-							<tr style="vertical-align:middle">
-						<td style="vertical-align:middle"><c:out value="${r.chNm}"/></td>
-						<td style="vertical-align:middle"><c:out value="${r.repCt}"/></td>
-                        <td align="center" style="vertical-align:middle">
+							<tr style="">
+						<td style="text-align:left"><c:out value="${r.chNm}"/></td>
+						<td style="text-align:left"><c:out value="${r.repCt}"/></td>
+                        <td align="center" style="text-align:left">
 							<!--  <video id='my-video'  width="200px;"
 							height="200px;" controls loop poster='resources/uploadFiles/${r.thumbnail}'
 							onclick="location.href='video.vd?userNo=${r.userNo}&vNo=${r.vNo}'">
 							 <source src="resources/uploadFiles/${r.thumbnail}" type='video/mp4'></video><br> -->
 							<a href="video.vd?userNo=${r.userNo}&vNo=${r.vNo}">
-							<input type="text" value="${r.vtitle}" class="video_td" id="videoTitle"></a></td>
+							<input type="text" value="${r.vtitle}" class="video_td" id="videoTitle" style="text-align: left;"></a></td>
 						
 						
-						<td style="vertical-align:middle"><c:out value="${r.repDt}"/></td>
-						<td style="vertical-align:middle"><c:out value="${r.count}"/></td>
-                        <td style="vertical-align:middle">
+						<td style="text-align:left"><c:out value="${r.repDt}"/></td>
+						<td style="text-align:left"><c:out value="${r.count}"/></td>
+                        <td style="text-align:center">
 							<a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
                             
                             <a href="#myModal" class="delete" title="Delete" data-toggle="modal"><i class="material-icons">&#xE872;</i></a>
@@ -400,6 +400,7 @@ $(document).ready(function(){
         </div>
         </form>
     </div>     
+    <br><br><br><br><br><br><br><br><br>
     <jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
 <script>

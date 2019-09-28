@@ -53,6 +53,9 @@ public class MemberController {
 	private BCryptPasswordEncoder passwordEncoder;
 	@Autowired
 	private MailSendService mailSender;
+	
+	private final static String K_CLIENT_ID = "1e22f32092c3079107e81e3fbc6512ed";
+    private final static String K_REDIRECT_URI = "loginbutton.me";
 
 	public static String nullcheck(String str, String Defaultvalue) throws Exception {
 		String ReturnDefault = "";
@@ -102,6 +105,8 @@ public class MemberController {
 		return "member/findPwd";
 
 	}
+	
+
 
 	
 //   @ResponseBody

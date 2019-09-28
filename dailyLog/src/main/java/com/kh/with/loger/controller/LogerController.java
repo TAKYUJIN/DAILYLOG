@@ -234,6 +234,23 @@ public class LogerController {
 			return "common/errorPage";
 		}
 	}
+	
+	// 로거 댓 삭제
+		@RequestMapping(value = "replyDelete.lo")
+		public String replyDelete(HttpServletRequest request, Model model, HttpSession session) {
+			Member m = (Member) session.getAttribute("loginUser");
+			int loginUser = m.getUserNo();
+			int repNo = Integer.parseInt(request.getParameter("repNo"));
+
+			int result1 = ls.replyDelete(repNo);
+
+			if (result1 > 0 ) {
+				return "forward:/logerReply.lo";
+			} else {
+				model.addAttribute("msg", "알 수 없는 에러입니다.");
+				return "common/errorPage";
+			}
+		}
 
 	// 로거 -> 분석
 	@RequestMapping(value = "analysis.lo")

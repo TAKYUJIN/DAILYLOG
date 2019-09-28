@@ -166,10 +166,11 @@
 		<jsp:include page="/WEB-INF/views/common/guest.jsp"></jsp:include>
 	<div class="signin-form">
 		<form action="login.me" method="post">
-			
+			<br><br><br><br><br><br><br>
 			<img src="resources/images/newlogo3.png" style="border-radius: 55%; margin-left:30px;">
 			
-			<br><br>
+			<br><br><br><br>
+			<!--  
 			<p class="hint-text">Sign in with your social media account</p>
 			<br>
 			<div class="social-btn text-center">
@@ -179,11 +180,12 @@
 					class="fa fa-kakaotalk" style="font-weight: 900">K</i></a> <a href="#"
 					class="btn btn-danger btn-lg" title="Google"><i
 					class="fa fa-google"></i></a>
-			</div>
+			</div> 
 			<br>
 			<div class="or-seperator">
 				<b>or</b>
-			</div>
+			</div>-->
+			
 			<br>
 			<div class="formlogin-group">
 				<input type="text" class="form-control input-lg" name="userId"
@@ -208,7 +210,7 @@
 		</form>
 		<br>
 		<br>
-		<br>
+		<br><br><br><br><br>
 		<br>
 
 	</div>
