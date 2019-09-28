@@ -1,5 +1,6 @@
 package com.kh.with.video.model.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -515,10 +516,7 @@ public class VideoDaoImpl implements VideoDao {
 
 	@Override
 
-	public int insertnewAction(SqlSessionTemplate sqlSession, HashMap map) {
-		// TODO Auto-generated method stub
-		return sqlSession.insert("Video.newAction", map);
-	}
+
 
 
 	public List<Attachment> selectFiles(SqlSessionTemplate sqlSession) {
@@ -556,5 +554,11 @@ public class VideoDaoImpl implements VideoDao {
 	public int selectSubtitle(SqlSessionTemplate sqlSession, Map<String, Object> map) {
 		
 		return sqlSession.selectOne("Video.selectSubtitle", map);
+	}
+
+	@Override
+	public int insertnewAction(SqlSessionTemplate sqlSession, HashMap map) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }
