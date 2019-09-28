@@ -1,6 +1,7 @@
 package com.kh.with.video.model.dao;
 
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -146,6 +147,8 @@ public interface VideoDao {
 
 	List<AddInfo> selectAddInfo(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	List<AddPlace> selectAddPlace(SqlSessionTemplate sqlSession, Map<String, Object> map);
+	
+	int insertnewAction(SqlSessionTemplate sqlSession, HashMap map);
 
 
 

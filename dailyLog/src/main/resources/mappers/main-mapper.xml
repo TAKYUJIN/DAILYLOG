@@ -31,6 +31,13 @@
         <result property="chNo" column="CH_NO"/>
         <result property="nNo" column="RANK" />
      </resultMap> 
+     
+     <resultMap type="NewlyVideo" id="NewlyVideoResultSet">
+		<id property="vNo" column="V_NO" />
+		<result property="userNo" column="USER_NO" />
+		<result property="newlyDt" column="NEWLY_DT" />
+	</resultMap>
+     
 
 	<!-- 북마크 조회 -->
 	<select id="showBookmark" resultMap="videoLikeResultSet">
@@ -97,6 +104,21 @@
  	    WHERE USER_NO = #{userNo})
 		WHERE RANK BETWEEN 1 AND 10
 		ORDER BY RANK ASC
+	</select>
+	
+	<select id="newActionList" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT ROW_NUMBER()
+		OVER(ORDER BY nv.newly_dt DESC)
+		RANK,NV.*,L.CH_NO,V_TITLE,V.CH_NM,FILE_NM
+		FROM NEWLY_VIDEO NV
+		,LOGER L
+		,VIDEO V
+		WHERE NV.USER_NO = L.USER_NO(+)
+		AND NV.USER_NO = V.USER_NO(+)
+		AND NV.USER_NO= #{userNo}
+		AND NEWLY_DT=SYSDATE
+		ORDER BY NEWLY_DT DESC
+
 	</select>
 
 </mapper>

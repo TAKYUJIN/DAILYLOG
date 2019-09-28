@@ -520,6 +520,12 @@ public class VideoDaoImpl implements VideoDao {
 		return sqlSession.selectList("Video.selectAddPlace", map);
 	}
 
+	@Override
+	public int insertnewAction(SqlSessionTemplate sqlSession, HashMap map) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("Video.newAction", map);
+	}
+
 
 	
 

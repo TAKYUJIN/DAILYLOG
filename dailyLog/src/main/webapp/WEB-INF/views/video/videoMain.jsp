@@ -780,7 +780,7 @@ $("#moveChannel").click(){
 				</td>
 			</tr>
 		  <tr>
-				<!-- 비디오 -->
+				<!-- 비디오 -->/
 				<td colspan="4" height="500px"><!-- autoplay="autoplay" -->
 					<c:if test="${list1[0].adultAut eq 'Y' }">
 						<video id='my-video' class='video-js' controls  preload='auto' width='700' height='500'

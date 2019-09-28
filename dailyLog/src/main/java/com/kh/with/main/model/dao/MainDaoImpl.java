@@ -1,6 +1,7 @@
 package com.kh.with.main.model.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -148,9 +149,12 @@ public class MainDaoImpl implements MainDao{
 	@Override
 	public ArrayList<NewlyVideo> newAction(SqlSessionTemplate sqlSession, Member m) {
 		// TODO Auto-generated method stub
-		
-		ArrayList<NewlyVideo> vlist = null;
-		vlist=(ArrayList)sqlSession.selectList("newlyVideo.newActionList", m);
+		System.out.println("111111111111111111111111111");
+		ArrayList vlist = null;
+		HashMap map = new HashMap();
+		map.put("userNo", m.getUserNo());
+		vlist=(ArrayList)sqlSession.selectList("VideoLike.newActionList", map);
+		System.out.println("vlist : " + vlist);
 		return vlist;
 	}
 

@@ -482,6 +482,26 @@ public class VideoController {
 
 		return result;
 	}
+	
+	//최근 본 영상
+	@RequestMapping(value="insertnewAction.vd", method=RequestMethod.GET)
+	public String insertnewAction(HttpSession session, HttpServletRequest request) {
+	
+		Member m =(Member) session.getAttribute("loginUser");
+		
+		int vNo =Integer.parseInt(request.getParameter("vNo"));
+		int userNo =m.getUserNo();
+		
+		HashMap map = new HashMap();
+		map.put("userNo", userNo);
+		map.put("vNo",vNo);
+		
+		int result = vs.insertnewAction(map);
+		
+		
+		return Integer.toString(result) ;
+	}
+
 
 	//좋아요
 	@RequestMapping(value = "insertLike.vd")

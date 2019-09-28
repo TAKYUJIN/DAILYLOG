@@ -156,9 +156,6 @@
         <a href="myPage.me" class="list-group-item list-group-item-action">
             <i class="fa fa-home"></i> 
         </a>
-        <a href="allim.me" class="list-group-item list-group-item-action">
-            <i class="fa fa-camera"></i> 알림
-        </a>
         <a href="point.me" class="list-group-item list-group-item-action active">
             <i class="fa fa-money"></i> 후원&포인트 충전
         </a>
@@ -261,7 +258,7 @@
             </div>
         </div>
         <div id="rep">
-        	<p style="color :red;">경고! 필독해주세요</p>
+        	<h4 style="color :red;"><b>경고! 필독해주세요</b></h4>
         	<br>
         	<p>
 			포인트 충전후 사용하지 않았을시에 전액 환불되며, 정기/일회성 후원시에는 화불이 불가합니다.
