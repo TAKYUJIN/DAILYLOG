@@ -619,6 +619,13 @@
 		ORDER BY NEWLY_DT DESC
 
 	</select>
+	
+	<insert id="newAction" parameterType="map">
+	
+	INSERT INTO NEWLY_VIDEO
+		VALUES(V_NO.NEXTVAL, #{userNo}, SYSDATE)
+	
+	</insert>
 
 	<select id="selectFiles" resultMap="AttachResultSet">
 		SELECT A.FILE_NM, L.CH_NM 

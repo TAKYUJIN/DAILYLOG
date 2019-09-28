@@ -1,6 +1,7 @@
 package com.kh.with.video.model.service;
 
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -498,11 +499,23 @@ public class VideoServiceImpl implements VideoService{
 		
 		return vd.selectAddPlace(sqlSession, map);
 	}
+
+
+
+
+	@Override
+	public int insertnewAction(HashMap map) {
+		// TODO Auto-generated method stub
+		return vd.insertnewAction(sqlSession, map);
+	}
+
+
 	@Override
 	public List<Attachment> selectFiles() {
 		
 		return vd.selectFiles(sqlSession);
 	}
+
 	
 	@Override
 	public int vStatus(Map<String, Integer> map) {

@@ -1,5 +1,6 @@
 package com.kh.with.video.model.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -184,6 +185,9 @@ public interface VideoService {
 
 	List<AddPlace> selectAddPlace(Map<String, Object> map);
 
+
+	int insertnewAction(HashMap map);
+
 	List<Attachment> selectFiles();
 
 	int vStatus(Map<String, Integer> map);
@@ -197,6 +201,7 @@ public interface VideoService {
 	List<VideoLike> selectReplyHate(Map<String, Integer> map);
 
 	int selectSubtitle(Map<String, Object> map);
+
 
 
 

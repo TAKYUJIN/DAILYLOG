@@ -514,6 +514,13 @@ public class VideoDaoImpl implements VideoDao {
 	}
 
 	@Override
+
+	public int insertnewAction(SqlSessionTemplate sqlSession, HashMap map) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("Video.newAction", map);
+	}
+
+
 	public List<Attachment> selectFiles(SqlSessionTemplate sqlSession) {
 		
 		return sqlSession.selectList("Video.selectFiles");
@@ -523,6 +530,7 @@ public class VideoDaoImpl implements VideoDao {
 		
 		return sqlSession.update("Video.vStatus", map);
 	}
+
 
 	@Override
 	public int channelReport(SqlSessionTemplate sqlSession, Map<String, Object> map) {

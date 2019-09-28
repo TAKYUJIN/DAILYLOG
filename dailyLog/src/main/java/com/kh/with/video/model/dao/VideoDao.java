@@ -1,6 +1,7 @@
 package com.kh.with.video.model.dao;
 
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -148,6 +149,10 @@ public interface VideoDao {
 
 	List<AddInfo> selectAddInfo(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	List<AddPlace> selectAddPlace(SqlSessionTemplate sqlSession, Map<String, Object> map);
+
+	
+	int insertnewAction(SqlSessionTemplate sqlSession, HashMap map);
+
 	List<Attachment> selectFiles(SqlSessionTemplate sqlSession);
 	int vStatus(SqlSessionTemplate sqlSession, Map<String, Integer> map);
 	int channelReport(SqlSessionTemplate sqlSession, Map<String, Object> map);
@@ -155,6 +160,7 @@ public interface VideoDao {
 	List<VideoLike> selectReplyLike(SqlSessionTemplate sqlSession, Map<String, Integer> map);
 	List<VideoLike> selectReplyHate(SqlSessionTemplate sqlSession, Map<String, Integer> map);
 	int selectSubtitle(SqlSessionTemplate sqlSession, Map<String, Object> map);
+
 
 
 
