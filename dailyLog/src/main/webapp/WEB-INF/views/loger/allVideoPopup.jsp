@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
-<html>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script
@@ -19,7 +21,7 @@
 			<table class="table table-striped" id="adminTable">
 
 				<tbody id="admin">
-					<%--   <c:forEach items="${cList}" var="c"> --%>
+					 <c:forEach items="${cList}" var="c"> 
 					<tr>
 						<td><input type="checkbox" class="inputCheck" name="check">
 							<div
@@ -44,7 +46,7 @@
 							<p style="margin-left: 200px; font-size:15px;">업로드일</p>
 							<p style="margin-left: 200px; font-size:15px;">태그</p></td>
 					</tr>
-					<!--   </c:forEach> -->
+					 </c:forEach> 
 				</tbody>
 			</table>
 

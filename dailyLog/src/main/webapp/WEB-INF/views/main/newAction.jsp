@@ -210,7 +210,7 @@ body {
 				<c:choose>
 					<c:when test="${vlist ne null && fn:length(vlist) gt 0 }">
 				<c:forEach items="${vlist}" var="vl" varStatus="status">
-					<c:if test="{i%}" eq 0}">
+					<c:if test="${i%j eq 0}">
 						<tr>
 					</c:if>
 					<td><video id='new_video' class=video_js' sidth="300px;"

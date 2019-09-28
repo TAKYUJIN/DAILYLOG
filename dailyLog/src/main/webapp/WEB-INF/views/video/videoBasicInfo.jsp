@@ -126,9 +126,8 @@
 					<input type="checkbox" name="openTy" value="N">비공개<br>
 					<input type="checkbox" name="openTy" class="upload" value="U">게시 예정<br>
 					<div style="margin-left:5%;" class="uploadVideo">
-					       지금 시각으로부터
-					   	<input type="date" id="start" name="uploadDate" value="2019-09-25" min="2019-09-25" max="2019-10-31">
-						<input type="text" name="uploadTime" placeholder="00:00  24H 형식으로 작성">
+					   	<input type="date" id="start" name="uploadDate" min="2019-09-25" max="2019-10-31">
+						<input type="text" name="uploadTime" placeholder="00:00 ( 12H )"> 시에 게시하겠습니다.
 					</div>
 					<script>
 					$(document).ready(function(){

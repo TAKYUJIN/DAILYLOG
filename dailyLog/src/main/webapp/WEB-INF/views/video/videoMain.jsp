@@ -394,28 +394,8 @@
 	.modal form label {
 		font-weight: normal;
 	}	
-	/*********************************************/
-	.overlaybox {position:relative;width:265px;height:160px;background:white;padding:15px 10px;}
-	.overlaybox div, ul {overflow:hidden;margin:0;padding:0;}
-	.overlaybox li {list-style: none;}
-	.overlaybox .boxtitle {color:#fff;font-size:16px;font-weight:bold;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png') no-repeat right 120px center;margin-bottom:8px;}
-	.overlaybox .first {position:relative;width:247px;height:136px;background: url('http://127.0.0.1:8001/with/resources/images/newlogo3.png') no-repeat;margin-bottom:8px;}
-	.first .text {color:#fff;font-weight:bold;}
-	.first .triangle {position:absolute;width:48px;height:48px;top:0;left:0;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/triangle.png') no-repeat; padding:6px;font-size:18px;}
-	.first .movietitle {position:absolute;width:100%;bottom:0;background:rgba(0,0,0,0.4);padding:7px 15px;font-size:14px;}
-	.overlaybox ul {width:247px;}
-	.overlaybox li {position:relative;margin-bottom:2px;background:#2b2d36;padding:5px 10px;color:#aaabaf;line-height: 1;}
-	.overlaybox li span {display:inline-block;}
-	.overlaybox li .number {font-size:16px;font-weight:bold;}
-	.overlaybox li .title {font-size:13px;}
-	.overlaybox ul .arrow {position:absolute;margin-top:8px;right:25px;width:5px;height:3px;background:url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/updown.png') no-repeat;} 
-	.overlaybox li .up {background-position:0 -40px;}
-	.overlaybox li .down {background-position:0 -60px;}
-	.overlaybox li .count {position:absolute;margin-top:5px;right:15px;font-size:10px;}
-	.overlaybox li:hover {color:#fff;background:#d24545;}
-	.overlaybox li:hover .up {background-position:0 0px;}
-	.overlaybox li:hover .down {background-position:0 -20px;}   
-    .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
+	/************************************************/
+	    .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
     .wrap * {padding: 0;margin: 0;}
     .wrap .info {width: 286px;height: 120px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
     .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
@@ -429,6 +409,7 @@
     .info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
     .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
     .info .link {color: #5085BB;}
+	
 </style>
 <script type="text/javascript">
 	$(document).on("click", ".navbar-right .dropdown-menu", function(e){
@@ -450,14 +431,6 @@
 	
 </head>
 <body>
-<script>
-$("#reportCh").hide();
-$("#moveChannel").click(){
-	$("#reportChCh").show();
-	
-}
-
-</script>
  	<jsp:include page="../common/mainBar.jsp"></jsp:include>
 	<br>
 	<%-- <c:forEach items="${list}" --%>
@@ -471,76 +444,73 @@ $("#moveChannel").click(){
 					<div align="right" style="margin-top:15%;">
 						 <nav class="navbar navbar-default navbar-expand-lg navbar-light" style="background:none;">
 							<ul class="nav navbar-nav navbar-right ml-auto">	 <!-- style="width:300px;" -->		
-								<li class="nav-item" stlye="border:1px solid #A8B7BC;"> 
+
+								<li class="nav-item" > 
 									<a href="#none" data-toggle="dropdown" id="profile">
+
+                    <!-- 
+								<li class="nav-item" stlye="border:1px solid #A8B7BC;"> 
+									<a href="" data-toggle="dropdown" id="profile"> -->
+
 										<!-- <img src="resources/images/chat.png" style="width:18px; align:right;"> -->
 										<div>
 											<c:if test="${profile != null}">
-												<img class="chImg" src="resources/images/${profile}">
+												<a href="newHomeChannel.lo?userNo=${list2[0].userNo}">
+												<img class="chImg" src="resources/images/${profile}"></a>
 											</c:if>
 											<c:if test="${profile == null}">
-												<img class="chImg" src="resources/images/newlogo3.png">
+											<a href="newHomeChannel.lo?userNo=${list2[0].userNo}">
+												<img class="chImg" src="resources/images/newlogo3.png"></a>
 											</c:if>
 										</div>
 									</a>
-
-									  <ul class="dropdown-menu form-wrapper" style="width:280px;border:1px solid #A8B7BC;">					
-
-									<!--
-									<ul class="dropdown-menu form-wrapper" style="width:280px;border:1px solid #A8B7BC;">			-->		
-
+									<ul class="dropdown-menu form-wrapper" style="width:280px;border:1px solid #A8B7BC; margin-left:10%;">					
 										<li>
-											<div class="form-group" id="chch">
+											<div class="form-group" id="chchch">
 												<table class="noti_table">
-													<tr><a id="moveChannel">채널로 이동</a></tr><br>
-													<tr><a id="reportChannel">신고</a></tr><br>
+													<tr><td><a id="moveChannel">채널로 이동</a></td></tr>
+													<tr><td><a id="reportChannel">신고</a></td></tr>
 												</table>
 											</div>
 											<!-- 신고-->
-											<div id="reportChCh">
+											<div id="reportCh">
 												<div class="noti_text" align="center" style="margin-top:5%; width:350px;"><b>동영상신고</b></div>
 												<div align="left" style="margin-left:10%; margin-right:10%;">
 													<table class="noti_table">
 														<tr><td>
 															<div class="checks" style="display:inline-block;">
-										                      <div style="display:inline-block;"><input type="radio" id="more1" value="성적인 콘텐츠" name="more" onclick="oneCheckbox(this)"></div>
+										                      <div style="display:inline-block;"><input type="radio" id="more1" value="성적인 콘텐츠" name="reason" onclick="oneCheckbox(this)"></div>
 										                      <div style="display:inline-block;"><label for="more1">성적인 콘텐츠</label></div><br>
-										                      <div style="display:inline-block;"><input type="radio" id="more2" value="폭력적 또는 혐오스러운 콘텐츠" name="more" onclick="oneCheckbox(this)"></div> 
+										                      <div style="display:inline-block;"><input type="radio" id="more2" value="폭력적 또는 혐오스러운 콘텐츠" name="reason" onclick="oneCheckbox(this)"></div> 
 										                      <div style="display:inline-block;"><label for="more2">폭력적 또는 혐오스러운 콘텐츠</label></div><br>
-										                      <div style="display:inline-block;"><input type="radio" value="증오 또는 악의적인 콘텐츠" id="more3" name="more" onclick="oneCheckbox(this)"></div> 
+										                      <div style="display:inline-block;"><input type="radio" value="증오 또는 악의적인 콘텐츠" id="more3" name="reason" onclick="oneCheckbox(this)"></div> 
 										                      <div style="display:inline-block;"><label for="more3">증오 또는 악의적인 콘텐츠</label></div><br>
-										                      <div style="display:inline-block;"><input type="radio" id="more4" value="유해한 위험 행위" name="more" onclick="oneCheckbox(this)"></div>
+										                      <div style="display:inline-block;"><input type="radio" id="more4" value="유해한 위험 행위" name="reason" onclick="oneCheckbox(this)"></div>
 										                      <div style="display:inline-block;"><label for="more1">유해한 위험 행위</label></div><br>
-										                      <div style="display:inline-block;"><input type="radio" id="more5" value="아동 학대" name="more" onclick="oneCheckbox(this)"></div> 
+										                      <div style="display:inline-block;"><input type="radio" id="more5" value="아동 학대" name="reason" onclick="oneCheckbox(this)"></div> 
 										                      <div style="display:inline-block;"><label for="more2">아동 학대</label></div><br>
-										                      <div style="display:inline-block;"><input type="radio" value="테러 조장" id="more6" name="more" onclick="oneCheckbox(this)"></div> 
+										                      <div style="display:inline-block;"><input type="radio" value="테러 조장" id="more6" name="reason" onclick="oneCheckbox(this)"></div> 
 										                      <div style="display:inline-block;"><label for="more3">테러 조장</label></div><br>
-										                      <div style="display:inline-block;"><input type="radio" id="more7" value="스팸 또는 사용자 현혹 콘텐츠" name="more" onclick="oneCheckbox(this)"></div>
+										                      <div style="display:inline-block;"><input type="radio" id="more7" value="스팸 또는 사용자 현혹 콘텐츠" name="reason" onclick="oneCheckbox(this)"></div>
 										                      <div style="display:inline-block;"><label for="more1">스팸 또는 사용자 현혹 콘텐츠</label></div><br>
-										                      <div style="display:inline-block;"><input type="radio" id="more8" value="권리 침해" name="more" onclick="oneCheckbox(this)"></div> 
+										                      <div style="display:inline-block;"><input type="radio" id="more8" value="권리 침해" name="reason" onclick="oneCheckbox(this)"></div> 
 										                      <div style="display:inline-block;"><label for="more2">권리 침해</label></div><br>
-										                      <div style="display:inline-block;"><input type="radio" value="자막 문제" id="more9" name="more" onclick="oneCheckbox(this)"></div> 
+										                      <div style="display:inline-block;"><input type="radio" value="자막 문제" id="more9" name="reason" onclick="oneCheckbox(this)"></div> 
 										                      <div style="display:inline-block;"><label for="more3">자막 문제</label></div><br>
-										                      <small>Daily log<br> 커뮤니티 가이드를 위반한 계정을 제재를 받게 되며 심각하거나 반복적인 위반 행위에 대해서는 계정 해지 조치가 취해질 수 있습니다. <a href="" style="color:red;">채널 신고하기</a></small>	
 										                    </div>
 														</td></tr>
 														<tr>
 															<td>
 																<button style="background:#A8B7BC;display:inline-block;width:100px;margin-right:5% !important;" class="btn" id="cancle4">취소</button>
-																<button id="reportNext" style="width:100px;display:inline-block;" class="btn">다음</button><br><br>
+																<button class="btn channelReportNext" style="width:100px;display:inline-block;" >다음</button><br><br>
 															</td>
 														</tr>
 													</table>
 												</div>
 											</div>
 											
-											
 										</li>
-
-									</ul> 
-
-							<!--		</ul> -->
-
+									</ul>
 								</li>
 
 
@@ -554,26 +524,25 @@ $("#moveChannel").click(){
 						<div style="display:inline-block; margin-right:3%;">
 							<label id="regsubTY" style="color:#525252;"></label>
 						</div>
-							<input type="hidden" id="userNo" name="userNo"  value="${loginUser.userNo}"/>
-					  		<input type="hidden"  id="retarget" name="retarget" value="${list1[0].userNo}"/>
 							<input type="button" class="btn" id="subscribe" value="구독"><br>
 						<small style="display:inline-block;">구독자 <b> ${ list2[0].subNum }명 </b><br></small>
+						
 					</div>
 				</td>
 				<td width="240px" height="60px">
 					<div align="right" style="margin-top:15%;">
 						<nav class="navbar navbar-default navbar-expand-lg navbar-light"style="background:none;">
 							<ul class="nav navbar-nav navbar-right ml-auto" style="width:300px;">			
-								<li class="nav-item" stlye="border:1px solid #A8B7BC;">
+								<li class="nav-item">
 									<a href="#none" data-toggle="dropdown" id="subtitle">
 										<img src="resources/images/money.png" style="width:18px; align:right;">
 									</a>
 									<ul class="dropdown-menu form-wrapper" style="width:280px;border:1px solid #A8B7BC;">					
 										<li>
 											<div class="form-group" id="sub">
-												<table class="noti_table">
-													<tr><a id="regSub">정기후원</a></tr><br>
-													<tr><a id="onceSub">일시후원</a></tr><br>
+												<table class="noti_table" align="center">
+													<tr><td><a id="regSub">정기후원</a></td></tr>
+													<tr><td><a id="onceSub">일시후원</a></td></tr>
 												</table>
 											</div>
 											<!-- 정기후원 -->
@@ -584,7 +553,7 @@ $("#moveChannel").click(){
 														<tr><td><small>채널명</small></td></tr>
 														<tr><td><b>${ list1[0].chNm }</b></td></tr>
 														<tr><td><small>포인트조회</small></td></tr>
-														<tr><td><input type="text" class="form-control" id="rPoint" placehold="포인트를 조회하세요" readonly></td></tr>
+														<tr><td><input type="text" class="form-control" id="rPoint" placeholder="포인트를 조회하세요" readonly></td></tr>
 														<tr>
 															<td>
 																<input type="button" id="selectPoint" style="width:75px;margin-right:2% !important;background:#A8B7BC;margin-top:5%;margin-bottom:5%;" class="btn" value="조회">
@@ -593,7 +562,7 @@ $("#moveChannel").click(){
 														</tr>
 																											
 														<tr><td><small>후원</small></td></tr>
-														<tr><td><input type="text" class="form-control" id="rPrice" placehold="후원금액을 입력하세요"></td></tr>
+														<tr><td><input type="text" class="form-control" id="rPrice" placeholder="후원금액을 입력하세요"></td></tr>
 														<tr>
 															<td>
 																<button style="width:75px;margin-right:2% !important;text-align:center;background:#A8B7BC;margin-top:5%;margin-bottom:5%;" class="btn" id="cancle1">취소</button>
@@ -612,7 +581,7 @@ $("#moveChannel").click(){
 														<tr><td><small>채널명</small></td></tr>
 														<tr><td><b>${ list1[0].chNm }</b></td></tr>
 														<tr><td><small>포인트조회</small></td></tr>
-														<tr><td><input type="text" class="form-control" id="oPoint" placehold="포인트를 조회하세요" readonly></td></tr>
+														<tr><td><input type="text" class="form-control" id="oPoint" placeholder="포인트를 조회하세요" readonly></td></tr>
 														<tr>
 															<td>
 																<input type="button" id="selectPoint2" style="width:75px;margin-right:2% !important;background:#A8B7BC;margin-top:5%;margin-bottom:5%;" class="btn" value="조회">
@@ -621,7 +590,7 @@ $("#moveChannel").click(){
 														</tr>
 																											
 														<tr><td><small>후원</small></td></tr>
-														<tr><td><input type="text" class="form-control" id="oPrice" placehold="후원금액을 입력하세요"></td></tr>
+														<tr><td><input type="text" class="form-control" id="oPrice" placeholder="후원금액을 입력하세요"></td></tr>
 														<tr>
 															<td>
 																<button style="width:75px;margin-right:2% !important;background:#A8B7BC;margin-top:5%;margin-bottom:5%;" class="btn" id="cancle2">취소</button>
@@ -766,7 +735,7 @@ $("#moveChannel").click(){
 													</a>
 												</div>
 												<br>
-												<input type="botton" onclick="copyUrl(value)" id="clipboard" style="width:200px;" 
+												<input type="button" onclick="copyUrl(value)" id="clipboard" style="width:200px;" 
 													value="http://127.0.0.1:8001/with/video.vd?userNo=${list1[0].userNo}&vNo=${list1[0].vNo}" readonly>
 												<br><br>
 											</div>
@@ -779,7 +748,7 @@ $("#moveChannel").click(){
 					</div>
 				</td>
 			</tr>
-		  <tr>
+			<tr>
 				<!-- 비디오 -->
 				<td colspan="4" height="500px"><!-- autoplay="autoplay" -->
 					<c:if test="${list1[0].adultAut eq 'Y' }">
@@ -809,7 +778,7 @@ $("#moveChannel").click(){
 					</c:if>
 				</td>
 			<!-- 댓글 -->
-			</tr >
+			</tr>
 			<tr>
 				<!-- 영상 제목, 태그 -->
 				<td colspan="4" height="130px">
@@ -821,7 +790,7 @@ $("#moveChannel").click(){
 						<div style="margin-top:1%;"><small>조회수  ${ list1[0].count }</small></div>
 						<div style="margin-top:1%;"><small>게시일 ${ list1[0].uploadDt }</small></div>
 					</div>
-					<div>
+					<div style="margin-right:8%;">
 						<hr style="border-color:#A8B7BC; height:30px;">
 					</div>
 				</td>
@@ -851,150 +820,206 @@ $("#moveChannel").click(){
 					</div>
 				</td>
 			</tr>
-			
 		</table>
 	</div>
+			<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1bbe6319293d273f5cc3cd430eba39d2&libraries=services"></script>
+		
+ 		<script>
+	 		var mapContainer = document.getElementById('map'), // 지도의 중심좌표
+	 	    mapOption = { 
+	 	        center: new kakao.maps.LatLng(${addPlace[0].apXY}), // 지도의 중심좌표
+	 	        level: 3 // 지도의 확대 레벨
+	 	    }; 
 	
-		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1bbe6319293d273f5cc3cd430eba39d2&libraries=services"></script>
-		<script>
-			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-			    mapOption = { 
-			        center: new kakao.maps.LatLng(37.502, 127.026581), // 지도의 중심좌표
-			        level: 6 // 지도의 확대 레벨
-			    };
-			
-			var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-			
-			// 커스텀 오버레이에 표시할 내용입니다     
-			// HTML 문자열 또는 Dom Element 입니다 
-			var content = '<div class="overlaybox">' +
-			    '    <div class="first">' +
-			    '        <div class="movietitle text">드래곤 길들이기2</div>' +
-			    '    </div>' +
-			    '</div>';
-			
-			// 커스텀 오버레이가 표시될 위치입니다 
-			var position = new kakao.maps.LatLng(37.49887, 127.026581);  
-			
-			// 커스텀 오버레이를 생성합니다
-			var customOverlay = new kakao.maps.CustomOverlay({
-			    position: position,
-			    content: content,
-			    xAnchor: 0.3,
-			    yAnchor: 0.91
-			});
-			
-			// 커스텀 오버레이를 지도에 표시합니다
-			customOverlay.setMap(map);
-			
-			// 지도에 마커를 표시합니다 
-			var marker = new kakao.maps.Marker({
-			    map: map, 
-			    position: new kakao.maps.LatLng(37.4989347355231,127.032854329609)
-			});
-			
-			
-			
-			// 커스텀 오버레이에 표시할 컨텐츠 입니다
-			// 커스텀 오버레이는 아래와 같이 사용자가 자유롭게 컨텐츠를 구성하고 이벤트를 제어할 수 있기 때문에
-			// 별도의 이벤트 메소드를 제공하지 않습니다 
-			var content = '<div class="wrap">' + 
-			            '    <div class="info">' + 
-			            '        <div class="title">' + 
-			            '			${addPlace[0].apNm}' + 
-			            '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
-			            '        </div>' + 
-			            '        <div class="body">' + 
-			            '            <div class="img">' +
-			            '                <img src="http://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
-			            '           </div>' + 
-			            '            <div class="desc">' + 
-			            '                <div class="ellipsis">${addPlace[0].apAd}</div>' + 
-			            '                <div class="jibun ellipsis">(우) 63309 (지번) 영평동 2181</div>' + 
-			            '                <div><a href="http://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' + 
-			            '            </div>' + 
-			            '        </div>' + 
-			            '    </div>' +    
-			            '</div>';
-			
-			// 마커 위에 커스텀오버레이를 표시합니다
-			// 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
-			var overlay = new kakao.maps.CustomOverlay({
-			    content: content,
-			    map: map,
-			    position: marker.getPosition()       
-			});
-			
-			// 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
-			kakao.maps.event.addListener(marker, 'click', function() {
-			    overlay.setMap(map);
-			});
-			
-			// 커스텀 오버레이를 닫기 위해 호출되는 함수입니다 
-			function closeOverlay() {
-			    overlay.setMap(null);     
-			}
-		</script>
-		
-<!-- 		<script>
- 			var mapContainer = document.getElementById('map2'), // 지도의 중심좌표
-			    mapOption = { 
-			        center: new kakao.maps.LatLng(37.49887, 127.026581), // 지도의 중심좌표
-			        level: 2 // 지도의 확대 레벨
-			    };  
-			
-			var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-			
-			// 지도에 마커를 표시합니다 
-			var marker = new kakao.maps.Marker({
-			    map: map, 
-			    position: new kakao.maps.LatLng(37.4991408445888,127.03031219445)
-			});
-			
-			// 커스텀 오버레이에 표시할 컨텐츠 입니다
-			// 커스텀 오버레이는 아래와 같이 사용자가 자유롭게 컨텐츠를 구성하고 이벤트를 제어할 수 있기 때문에
-			// 별도의 이벤트 메소드를 제공하지 않습니다 
-			var content = '<div class="wrap">' + 
-			            '    <div class="info">' + 
-			            '        <div class="title">' + 
-			            '			${list2[0].chNm}' + 
-			            '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
-			            '        </div>' + 
-			            '        <div class="body">' + 
-			            '            <div class="img">' +
-			            '                <img src="http://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
-			            '           </div>' + 
-			            '            <div class="desc">' + 
-			            '                <div class="ellipsis">제주특별자치도 제주시 첨단로 242</div>' + 
-			            '                <div class="jibun ellipsis">(우) 63309 (지번) 영평동 2181</div>' + 
-			            '                <div><a href="http://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' + 
-			            '            </div>' + 
-			            '        </div>' + 
-			            '    </div>' +    
-			            '</div>';
-			
-			// 마커 위에 커스텀오버레이를 표시합니다
-			// 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
-			var overlay = new kakao.maps.CustomOverlay({
-			    content: content,
-			    map: map,
-			    position: marker.getPosition()       
-			});
-			
-			// 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
-			kakao.maps.event.addListener(marker, 'click', function() {
-			    overlay.setMap(map);
-			});
-			
-			// 커스텀 오버레이를 닫기 위해 호출되는 함수입니다 
-			function closeOverlay() {
-			    overlay.setMap(null);     
-			}
-		</script> -->
-		
-	<!-- <div style="border-left:1px solid #A8B7BC;height:500px;"></div> -->
+		 	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+		 	
+		 	
+			//////////////////////////////
+			 // 지도에 마커를 표시합니다 
+		 	var marker1 = new kakao.maps.Marker({
+		 	    map: map, 
+		 	    position: new kakao.maps.LatLng(${addPlace[0].apXY})
+		 	});
 
-	<div style="align:center; display:inline-block; margin-left:3%; margin-top:5%; height:100%;position:absolute;">
+		 	// 커스텀 오버레이에 표시할 컨텐츠 입니다
+		 	// 커스텀 오버레이는 아래와 같이 사용자가 자유롭게 컨텐츠를 구성하고 이벤트를 제어할 수 있기 때문에
+		 	// 별도의 이벤트 메소드를 제공하지 않습니다 
+		 	var content1 = '<div class="wrap">' + 
+		 	            '    <div class="info">' + 
+		 	            '        <div class="title">' + 
+		 	            '            ${addPlace[0].apNm}' + 
+		 	            '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
+		 	            '        </div>' + 
+		 	            '        <div class="body">' + 
+		 	            '            <div class="img">' +
+		 	            '                <img src="http://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
+		 	            '           </div>' + 
+		 	            '            <div class="desc">' + 
+		 	            '                <div class="ellipsis">${addPlace[0].apAd}</div>' + 
+		 	            '                <div class="jibun ellipsis">${addPlace[0].apXY}</div>' + 
+		 	            '                <div><a href="http://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' + 
+		 	            '            </div>' + 
+		 	            '        </div>' + 
+		 	            '    </div>' +    
+		 	            '</div>';
+
+		 	// 마커 위에 커스텀오버레이를 표시합니다
+		 	// 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
+		 	var overlay1 = new kakao.maps.CustomOverlay({
+		 	    content: content1,
+		 	    map: map,
+		 	    position: marker1.getPosition()       
+		 	});
+
+		 	// 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
+		 	kakao.maps.event.addListener(marker1, 'click', function() {
+		 	    overlay1.setMap(map);
+		 	});
+			//////////////////////////////////
+			
+			//////////////////////////////
+			 // 지도에 마커를 표시합니다 
+		 	var marker2 = new kakao.maps.Marker({
+		 	    map: map, 
+		 	    position: new kakao.maps.LatLng(${addPlace[1].apXY})
+		 	});
+
+		 	// 커스텀 오버레이에 표시할 컨텐츠 입니다
+		 	// 커스텀 오버레이는 아래와 같이 사용자가 자유롭게 컨텐츠를 구성하고 이벤트를 제어할 수 있기 때문에
+		 	// 별도의 이벤트 메소드를 제공하지 않습니다 
+		 	var content2 = '<div class="wrap">' + 
+		 	            '    <div class="info">' + 
+		 	            '        <div class="title">' + 
+		 	            '            ${addPlace[1].apNm}' + 
+		 	            '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
+		 	            '        </div>' + 
+		 	            '        <div class="body">' + 
+		 	            '            <div class="img">' +
+		 	            '                <img src="http://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
+		 	            '           </div>' + 
+		 	            '            <div class="desc">' + 
+		 	            '                <div class="ellipsis">${addPlace[1].apAd}</div>' + 
+		 	            '                <div class="jibun ellipsis">${addPlace[1].apXY}</div>' + 
+		 	            '                <div><a href="http://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' + 
+		 	            '            </div>' + 
+		 	            '        </div>' + 
+		 	            '    </div>' +    
+		 	            '</div>';
+
+		 	// 마커 위에 커스텀오버레이를 표시합니다
+		 	// 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
+		 	var overlay2 = new kakao.maps.CustomOverlay({
+		 	    content: content2,
+		 	    map: map,
+		 	    position: marker2.getPosition()       
+		 	});
+
+		 	// 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
+		 	kakao.maps.event.addListener(marker2, 'click', function() {
+		 	    overlay2.setMap(map);
+		 	});
+			//////////////////////////////////
+			
+			
+			//////////////////////////////
+			 // 지도에 마커를 표시합니다 
+		 	var marker3 = new kakao.maps.Marker({
+		 	    map: map, 
+		 	    position: new kakao.maps.LatLng(${addPlace[2].apXY})
+		 	});
+
+		 	// 커스텀 오버레이에 표시할 컨텐츠 입니다
+		 	// 커스텀 오버레이는 아래와 같이 사용자가 자유롭게 컨텐츠를 구성하고 이벤트를 제어할 수 있기 때문에
+		 	// 별도의 이벤트 메소드를 제공하지 않습니다 
+		 	var content3 = '<div class="wrap">' + 
+		 	            '    <div class="info">' + 
+		 	            '        <div class="title">' + 
+		 	            '            ${addPlace[2].apNm}' + 
+		 	            '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
+		 	            '        </div>' + 
+		 	            '        <div class="body">' + 
+		 	            '            <div class="img">' +
+		 	            '                <img src="http://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
+		 	            '           </div>' + 
+		 	            '            <div class="desc">' + 
+		 	            '                <div class="ellipsis">${addPlace[2].apAd}</div>' + 
+		 	            '                <div class="jibun ellipsis">${addPlace[2].apXY}</div>' + 
+		 	            '                <div><a href="http://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' + 
+		 	            '            </div>' + 
+		 	            '        </div>' + 
+		 	            '    </div>' +    
+		 	            '</div>';
+
+		 	// 마커 위에 커스텀오버레이를 표시합니다
+		 	// 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
+		 	var overlay3 = new kakao.maps.CustomOverlay({
+		 	    content: content3,
+		 	    map: map,
+		 	    position: marker3.getPosition()       
+		 	});
+
+		 	// 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
+		 	kakao.maps.event.addListener(marker3, 'click', function() {
+		 	    overlay3.setMap(map);
+		 	});
+			//////////////////////////////////
+			
+			//////////////////////////////
+			 // 지도에 마커를 표시합니다 
+		 	var marker4 = new kakao.maps.Marker({
+		 	    map: map, 
+		 	    position: new kakao.maps.LatLng(${addPlace[3].apXY})
+		 	});
+
+		 	// 커스텀 오버레이에 표시할 컨텐츠 입니다
+		 	// 커스텀 오버레이는 아래와 같이 사용자가 자유롭게 컨텐츠를 구성하고 이벤트를 제어할 수 있기 때문에
+		 	// 별도의 이벤트 메소드를 제공하지 않습니다 
+		 	var content4 = '<div class="wrap">' + 
+		 	            '    <div class="info">' + 
+		 	            '        <div class="title">' + 
+		 	            '            ${addPlace[3].apNm}' + 
+		 	            '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
+		 	            '        </div>' + 
+		 	            '        <div class="body">' + 
+		 	            '            <div class="img">' +
+		 	            '                <img src="http://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
+		 	            '           </div>' + 
+		 	            '            <div class="desc">' + 
+		 	            '                <div class="ellipsis">${addPlace[3].apAd}</div>' + 
+		 	            '                <div class="jibun ellipsis">${addPlace[3].apXY}</div>' + 
+		 	            '                <div><a href="http://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' + 
+		 	            '            </div>' + 
+		 	            '        </div>' + 
+		 	            '    </div>' +    
+		 	            '</div>';
+
+		 	// 마커 위에 커스텀오버레이를 표시합니다
+		 	// 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
+		 	var overlay4 = new kakao.maps.CustomOverlay({
+		 	    content: content4,
+		 	    map: map,
+		 	    position: marker4.getPosition()       
+		 	});
+
+		 	// 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
+		 	kakao.maps.event.addListener(marker4, 'click', function() {
+		 	    overlay4.setMap(map);
+		 	});
+			//////////////////////////////////
+			
+		 	// 커스텀 오버레이를 닫기 위해 호출되는 함수입니다 
+		 	function closeOverlay() {
+		 	    overlay1.setMap(null);     
+		 	    overlay2.setMap(null);     
+		 	    overlay3.setMap(null);     
+		 	    overlay4.setMap(null);     
+		 	}
+		</script> 
+	<!-- <div style="border-left:1px solid #A8B7BC;height:500px;"></div> -->  
+	<div style="align:center; display:inline-block; margin-left:3%; margin-top:10%; position:absolute;">
+		<c:if test="${ list1[0].vStatus == 1 }">
+		</c:if>
+		<c:if test="${ list1[0].vStatus == 0 }">
 		<!-- 댓글 -->
 		<div style="margin-bottom:7%; margin-left:3%;">
 			<div style="pointer:cursor !important;" data-toggle="dropdown" id="runtimeChat">
@@ -1032,14 +1057,43 @@ $("#moveChannel").click(){
            		</div>
 			</div>
 		</div>	
+		</c:if>
 		<nav class="navbar navbar-default navbar-expand-lg navbar-light"style="background:none; border:none;">
 			<ul class="nav navbar-nav navbar-right ml-auto">					
 		       <table class="table table-striped table-hover">
-		      <tbody> 
+		       	<thead>
+		           		<tr width="400px">
+		           			<td >
+		           				<div style="width:50px; display:inline-block;">
+				       			    <div>
+										<c:if test="${userImg != null}">
+											<img class="userImg" src="resources/images/${userImg}" style="margin-bottom:30px;">
+										</c:if>
+										<c:if test="${userImg == null}">
+											<img class="userImg" src="resources/images/newlogo3.png" style="margin-bottom:30px;">
+										</c:if>	
+									</div>
+		           				</div>
+		           			</td>
+		           			<td colspan="2">
+			         			<div style="display:inline-block; margin-left:1%; margin-right:1%;">
+			     			    	<div class="input-group">
+										<input type="text" id="content" class="form-control" placeholder="Search&hellip;" style="background:none !important; width:260px;">
+									</div>
+			           			</div>
+			           		</td>
+			           		<td>
+			           			<div style="display:inline-block;">
+			           				<input type="button" id="insertReply" style="display:inline-block;width:55px; margin-bottom:30px; background:#A8B7BC;" class="btn" value="작성">
+									<!-- <a><i class="material-icons">&#xE876;</i></a> -->
+			           			</div>
+			           		</td>
+		           		</tr>
+		           </thead>
+		           <tbody>
 		           	<c:forEach var="r" items="${reply}" >
-		           		<c:if test="${r.parentNo == 0}">
+		           		<c:if test="${r.parentNo == 0 }">
 		                <tr  style="background:none !important;">
-		                	<td><input type="hidden" class="repNoThis" style="display:none;"value="${r.repNo }" ></td>
 		                    <td width="60px">
 		                    	<div style="margin-top:10px;">
 									<c:if test="${r.fileNm != null}">
@@ -1050,10 +1104,8 @@ $("#moveChannel").click(){
 									</c:if>	
 								</div>
 		                    </td>
-		                    <td width="100px">
+		                    <td width="40px;">
 		                    	<div style="margin-top:20px;">${ r.nickName }</div>
-		                    	<div style="margin-top:20px;">${ r.repNo }</div>
-		                    	
 		                    </td>
 		                    <td width="200px">
 		                    	<div>
@@ -1065,124 +1117,36 @@ $("#moveChannel").click(){
 		                    		</div>
 		                    		<div style="display:inline-block;">
 		                    			<div style="display:inline-block;">
-		                    				<input type="hidden" class="repNoThis2" style="display:none;"value="${r.repNo }" >
+		                    				<input type="text" class="repNoThis" style="display:none;"value="${r.repNo }" >
 		                    			</div>
 		                    			<div style="display:inline-block;">
-		                    				<li class="nav-item" >
-												<!-- <a href="#none">
-												<img src="resources/images/heart_black.png"  class="replyLike" style="width:14px;" >
-											</a> -->
 											<button style="background:none; border:none;" class="replyLike"><img src="resources/images/heart_black.png" id="replyLikeImg" style="width:14px;"></button>
-											</li>
 		                    			</div>
 		                    			<div style="display:inline-block;">
-		                    				<li class="nav-item" >
- 									 			<!-- <a href="#none">
-												<img src="resources/images/broken.png" id="replyHate" style="width:14px;">
-											</a> -->
 											<button style="background:none; border:none;" class="replyHate"><img src="resources/images/heart_black.png" id="replyHateImg" style="width:14px;"></button>
-											</li>
 		                    			</div>
-		                    				<a href="# ">
-												<input type="hidden" value="${r.repNo }" class="rereplyrepno" >
-												<img src="resources/images/plus.png" class="replyplus"  style="width:14px;" >
+		                    			<div style="display:inline-block;">
+											<a href="#none">
+												<img src="resources/images/plus.png" class="reReply" style="width:14px;" >
 											</a>
-											
-											<!-- plus -->
-										<!-- 대댓글 작성 창 -->
-		                    			<div style="display:inline-block;" class="writeReReply1">
-												 <input type="hidden" name="rereplyrepno" class="rereplyrepno"value= "${r.repNo}" >
-												 <input type="text" name="rereplycontent" id="rereplycontent"  style="border:1px solid #A8B7BC; background:none;" >
-												 
-												<input type="submit" class="writeReReply" style="background:none;  margin-right:10%; border:none;" value="대댓글 등록">
-		        			
 		                    			</div>
 		                    			<div style="margin-top:5%;">
- 		                    				<input type="button" class="plus" style="background:none;  margin-right:10%; border:none;" value="답글 ${fn:length(reply)}개 더보기">
+		                    				<input type="button" class="plus" style="background:none;  margin-right:10%; border:none;" value="답글 ${fn:length(reply)}개 더보기">
 		                    			</div>
-		                    			
-		                    			<!-- 답글 더보기 -->
- 										<div style="margin-top:5%;">
-		                    			 <input type="button" class="plus" style="background:none;  margin-right:10%; border:none;" value="답글  더보기">
-		                    			</div>
- 										
- 										
- 									  <div class="replyPlus">
+ 										<div class="replyPlus">
 										<div style="display:block;">
-											<table class="table table-striped table-hover" style="background:none;">
-										           <tbody>
-									       
- 		                    			   <c:if test="${r.parentNo !=0 }">     
- 		                    		 
- 		                    			 
- 		                    			 <%-- 	<c:forEach var="l" items="${reply}" >
- 		                    			 
-		           							<c:if test="${l.parentNo eq l.parentNo}">
-										      <h5>${l.parentNo} ,${l.repNo}</h5>
- 		                    			
- 		                    			
- 		                    			
- 		                    			</c:if></c:forEach> --%>
- 		                    			  <h3>12</h3>
- 		                    			          <h5>${r.parentNo}</h5>
-										          <h5>${r.repNo}</h5>
-										                <tr  style="background:none !important;">
-										                    <td width="60px">
-										                    	<div style="margin-top:10px;">
-																	 <c:if test="${r.fileNm != null}">
-																		<img class="userImg" src="resources/images/${r.fileNm}">
-																	</c:if>
-																	  <c:if test="${r.fileNm == null}"> 
-																		<img class="userImg" src="resources/images/newlogo3.png">
-																	</c:if>	
-																</div>
-										                    </td>
-										                    <td width="100px">
-										                    	<div style="margin-top:20px;">${ r.nickName }</div>
-										                    </td>
-										                    <td width="200px">
-										                    	<div>
-										                    		<div style="font-size:15px;margin-top:5%;margin-bottom:5%;">
-										                     		 	${ r.repCt }
-										                    		</div>
-										                    		<div style="display:inline-block;">
-										                    			<div style="display:inline-block;">
-													                   		<li class="nav-item">
-																				<a href="#none">
-																				<img src="resources/images/heart_black.png" id="like" style="width:14px;" onclick="selectLike()">
-																			</a>
-																			</li>
-										                    			</div>
-										                    			<div style="display:inline-block;">
-																			<li class="nav-item">
-																				<a href="#none">
-																				<img src="resources/images/broken.png" id="hate" style="width:14px;" onclick="selectHate()">
-																			</a>
-																			</li>
-										                    			</div>
-										                    		</div>
-										                    		<div style="font-size:12px;margin-top:5%;margin-bottom:5%;">
-										                    			${ r.repDt }
-										                    		</div>
-										                    	</div>
-										                    </td>
-										                    <td>
-										                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"></a>
-										                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><img src="resources/images/more.png" style="width:18px;"></a>
-										                    </td>
-										                </tr>
-		                    		</c:if>	 
-		                    
-										           </tbody>
-										       </table>
+											
 										</div>
-									</div>                      
+									</div>                     			
+		                    			
+		                    			
 		                    		</div>
+		                    		
 		                    	</div>
 		                    </td>
 		                    <td>
 		                    	<c:if test="${r.userNo == loginUser.userNo}">
-                    	          	<!-- Edit Modal HTML -->
+		                    		<!-- Edit Modal HTML -->
 									<div id="editEmployeeModal" class="modal fade">
 										<div class="modal-dialog">
 											<div class="modal-content">
@@ -1264,12 +1228,6 @@ $("#moveChannel").click(){
 									<a href="#none" data-toggle="dropdown" id="threeMore">
 										<img src="resources/images/more.png" class="plusImg" style="width:18px; align:right;">
 									</a>
-<!-- 									<script>
-										$(".replyReportNext").click(function(){
-											var a = $(this).siblings().eq(0).val();
-											console.log("나는 대머리" + a);
-										});
-									</script> -->
 									<ul class="dropdown-menu form-wrapper" style="width:350px;border:1px solid #A8B7BC;">					
 										<li>
 											<!-- 신고 -->
@@ -1307,39 +1265,12 @@ $("#moveChannel").click(){
 								</c:if>
 		                    </td>
 		                </tr>
-		                 	</c:if>
-		                 	
+		                </c:if>
 					</c:forEach>
-		           </tbody>  </table></ul></nav>  
-  
-
-		           <tfoot>
-		           		<div style="width:50px; display:inline-block;">
-		       			    <div>
-								<c:if test="${userImg != null}">
-									<img class="userImg" src="resources/images/${userImg}" style="margin-bottom:30px;">
-								</c:if>
-								<c:if test="${userImg == null}">
-									<img class="userImg" src="resources/images/newlogo3.png" style="margin-bottom:30px;">
-								</c:if>	
-							</div>
-		           		</div>
-		         		<div style="display:inline-block; margin-left:1%; margin-right:1%;">
-		     			    <div class="input-group">
-								<input type="text" id="replycontent" class="form-control" placeholder="Search&hellip;" style="background:none !important; width:250px;">
-							</div>
-		           		</div>
-		           		<div style="display:inline-block;">
-		           			<input type="hidden" id="userNo" name="userNo"  value="${loginUser.userNo}"/>
-			  				<input type="hidden"  id="retarget" name="retarget" value="${list1[0].userNo}"/>
-		           			<input type="button" id="insertReply" style="width:100%; margin-bottom:30px; background:#A8B7BC;" class="btn" value="댓글 작성">
-							<!-- <a><i class="material-icons">&#xE876;</i></a> -->
-		           		</div>
-		           </tfoot>
+		           </tbody>
 		       </table>
 			</ul>
 		</nav>
-	</div>
 	</div>
 
 	<!-- Modal HTML -->
@@ -1363,7 +1294,6 @@ $("#moveChannel").click(){
 		</div>
 	</div> 
 	<script>
-	//좋아요 조회
 	$("#replyUpdate").click(function(){
 		var vNo = "<c:out value='${list1[0].vNo}'/>";
 		var update = document.getElementById("replyUpdateText").value;
@@ -1409,64 +1339,17 @@ $("#moveChannel").click(){
 				}
 	        });
 	});
-	
-	//대댓글
-		$(".writeReReply1").hide();
-	 
-  	$(".replyplus").click(function(){
-	 if(state==0){
-		 $(".writeReReply1").show();
-		 state=1;
-	 } else{
-		 $(".writeReReply1").hide();
-		 state=0;
-	 }
-	});  
-  //대댓글 더보기
-  	 	$(".plus").click(function(){
-	 if(state==0){
-		 $(".replyPlus").show();
-		 state=1;
-	 } else{
-		 $(".replyPlus").hide();
-		 state=0;
-	 }
-	}); 
-  	
-  	//대댓글 작성
-  	$(".writeReReply").click(function(){
-  	 
-  		var vNo = "<c:out value='${list1[0].vNo}'/>";
-		var content = document.getElementById("rereplycontent").value;
-		var userNo = "<c:out value='${list2[0].userNo}'/>";
-  		var repNo=$(".rereplyrepno").val();
-  		var parentNo =$(".rereplyrepno").val();
-  		
-  		console.log(vNo+","+content+","+userNo+","+","+repNo);
-  		$.ajax({
-  			url:"writeReReply.vd",
-  			type:"post",
-  			data:{vNo:vNo,repNo:repNo,content:content,userNo:userNo,parentNo:parentNo},
-  			success:function(data){
-  				alert("성공");
-  				$("#rereplycontent").val("");
-  				window.location.reload();
-  			},error:function(){
-  				alert("실패ㅠㅠ");
-  			}
-  			
-  		});
-  	});	
+	var tt = 0;
 	$(".replyLike").click(function(){
 		var chNo = "<c:out value='${list2[0].chNo}'/>";
 		var vNo = "<c:out value='${list1[0].vNo}'/>";
 		console.log(chNo + "::" + vNo);
 		
-        var repNo = $(this).parent().parent().siblings().eq(0).children().val();
-		console.log("나는 대머리일까:" + repNo);
-		/* var rn = $(this).parent().sibling().eq(0).parent().parent().eq(0).children().val();
-		console.log(rn); */
-		if(state == 0){
+/* 		 var rn = $(this).parent().sibling().eq(0).parent().parent().eq(0).children().val();
+		console.log(":::"+rn);  */
+         var repNo = $(this).parent().siblings().eq(0).children().val();
+		console.log("나는 대머리일까:" + repNo); 
+		if(tt == 0){
 				
 			$('#replyLikeImg').attr("src", "resources/images/heart_red.png");
 			$('#replyHateImg').attr("src", "resources/images/broken.png");
@@ -1476,7 +1359,7 @@ $("#moveChannel").click(){
 				data:{chNo:chNo, vNo:vNo, repNo:repNo},
 				success:function(data){
 					console.log("insert성공!");
-					state = 1;
+					tt = 1;
 				},
 				error:function(){
 					console.log("실패!");
@@ -1488,7 +1371,7 @@ $("#moveChannel").click(){
 				data:{chNo:chNo, vNo:vNo, repNo:repNo},
 				success:function(data){
 					console.log("delete성공!");
-					state = 0;
+					tt = 0;
 				},
 				error:function(){
 					console.log("실패!");
@@ -1503,7 +1386,7 @@ $("#moveChannel").click(){
 				data:{chNo:chNo, vNo:vNo, repNo:repNo},
 				success:function(data){
 					console.log("delete성공!");
-					state = 0;
+					tt = 0;
 				},
 				error:function(){
 					console.log("실패!");
@@ -1511,16 +1394,17 @@ $("#moveChannel").click(){
 			});
 		}
 	});
+	var yy = 0;
 	//싫어요 조회
 	$(".replyHate").click(function(){
 		var chNo = "<c:out value='${list2[0].chNo}'/>";
 		var vNo = "<c:out value='${list1[0].vNo}'/>";
 		console.log(chNo + "::" + vNo);
 		
-		var repNo = $(this).parent().parent().siblings().eq(0).children().val();
+		var repNo = $(this).parent().siblings().eq(0).children().val();
 		console.log("나는 대머리일까:" + repNo);
 		
-		if(state == 0){
+		if(yy == 0){
 			$('#replyHateImg').attr("src", "resources/images/broken_color.png");
 			$('#replyLikeImg').attr("src", "resources/images/heart_black.png");
 			$.ajax({
@@ -1529,7 +1413,7 @@ $("#moveChannel").click(){
 				data:{chNo:chNo, vNo:vNo, repNo:repNo},
 				success:function(data){
 					console.log("insert성공!");
-					state = 1;
+					yy = 1;
 				},
 				error:function(){
 					console.log("실패!");
@@ -1541,7 +1425,7 @@ $("#moveChannel").click(){
 				data:{chNo:chNo, vNo:vNo, repNo:repNo},
 				success:function(data){
 					console.log("delete성공!");
-					state = 0;
+					yy = 0;
 				},
 				error:function(){
 					console.log("실패!");
@@ -1555,7 +1439,7 @@ $("#moveChannel").click(){
 				data:{chNo:chNo, vNo:vNo, repNo:repNo},
 				success:function(data){
 					console.log("delete성공!");
-					state = 0;
+					yy = 0;
 				},
 				error:function(){
 					console.log("실패!");
@@ -1565,18 +1449,17 @@ $("#moveChannel").click(){
 	});
 	$("#insertReply").click(function(){
 		var vNo = "<c:out value='${list1[0].vNo}'/>";
-		var content = document.getElementById("replycontent").value;
+		var content = document.getElementById("content").value;
 		var userNo = "<c:out value='${list2[0].userNo}'/>";
-		//var repNo = $(this).siblings().eq(0).val();
-	 
-		console.log(vNo +","+ content+","+userNo);
+		var repNo = $(this).siblings().eq(0).val();
 		
+		console.log(vNo + content);
 		$.ajax({
 	        	url:"insertReply.vd",
 				type:"post",
 				data:{vNo:vNo,
-					content:content,
-					  userNo:userNo},
+					  content:content,
+					  userNo:userNo, repNo:repNo},
 				success:function(data){
 					console.log("성공!");
 					$("#content").val("");
@@ -1620,6 +1503,39 @@ $("#moveChannel").click(){
 	        var check = a.value;
 	        return check;
 	    }
+	    //채널신고
+	    $('.channelReportNext').click(function(){
+			var lists = [];
+			$("input[name='reason']:checked").each(function(i){   //jQuery로 for문 돌면서 check 된값 배열에 담는다
+		  		lists.push($(this).val());
+		 	});
+
+	        var userNo = "<c:out value='${list2[0].userNo}'/>";
+			var check = lists[0];
+	        var chNm = "<c:out value='${list2[0].chNm}'/>";
+	        var chNo = "<c:out value='${list2[0].chNo}'/>";
+	        
+	        $.ajax({
+	        	url:"channelReport.vd",
+				type:"post",
+				data:{check:check, 
+					  userNo:userNo,
+					  chNm:chNm,
+					  chNo:chNo},
+				success:function(data){
+					console.log("성공!");
+					if(data == 1){
+						alert("신고가 정상접수 되었습니다.");
+					}else {
+						alert("신고 접수 실패하였습니다.");
+					}
+				},
+				error:function(){
+					console.log("실패!");
+				}
+	        });
+	        
+		});
 	    //댓글신고
 	    $('.replyReportNext').click(function(){
 			var lists = [];
@@ -1724,6 +1640,8 @@ $("#moveChannel").click(){
 	        
 		});
 		var state = 0;
+		var q1 = 0;
+		var q2 = 0;
 		$('#subscribe').click(function(){
 			var chNo = "<c:out value='${list2[0].chNo}'/>";
 			var chNm = "<c:out value='${list2[0].chNm}'/>";
@@ -1766,13 +1684,13 @@ $("#moveChannel").click(){
 				});
 			}
 		});
+
 		//좋아요 조회
 		function selectLike(){
- 
 			var chNo = "<c:out value='${list2[0].chNo}'/>";
 			var vNo = "<c:out value='${list1[0].vNo}'/>";
 			console.log(chNo + "::" + vNo);
-			if(state == 0){
+			if(q1 == 0){
 				document.getElementById('like').src = "resources/images/heart_red.png";
 				document.getElementById('hate').src = "resources/images/broken.png";
 				$.ajax({
@@ -1781,7 +1699,7 @@ $("#moveChannel").click(){
 					data:{chNo:chNo, vNo:vNo},
 					success:function(data){
 						console.log("insert성공!");
-						state = 1;
+						q1 = 1;
 					},
 					error:function(){
 						console.log("실패!");
@@ -1793,7 +1711,7 @@ $("#moveChannel").click(){
 					data:{chNo:chNo, vNo:vNo},
 					success:function(data){
 						console.log("delete성공!");
-						state = 0;
+						q1 = 0;
 					},
 					error:function(){
 						console.log("실패!");
@@ -1808,7 +1726,7 @@ $("#moveChannel").click(){
 					data:{chNo:chNo, vNo:vNo},
 					success:function(data){
 						console.log("delete성공!");
-						state = 0;
+						q1 = 0;
 					},
 					error:function(){
 						console.log("실패!");
@@ -1821,7 +1739,7 @@ $("#moveChannel").click(){
 			var chNo = "<c:out value='${list2[0].chNo}'/>";
 			var vNo = "<c:out value='${list1[0].vNo}'/>";
 			console.log(chNo + "::" + vNo);
-			if(state == 0){
+			if(q2 == 0){
 				document.getElementById('hate').src = "resources/images/broken_color.png";
 				document.getElementById('like').src = "resources/images/heart_black.png";
 				$.ajax({
@@ -1830,7 +1748,7 @@ $("#moveChannel").click(){
 					data:{chNo:chNo, vNo:vNo},
 					success:function(data){
 						console.log("insert성공!");
-						state = 1;
+						q2 = 1;
 					},
 					error:function(){
 						console.log("실패!");
@@ -1842,7 +1760,7 @@ $("#moveChannel").click(){
 					data:{chNo:chNo, vNo:vNo},
 					success:function(data){
 						console.log("delete성공!");
-						state = 0;
+						q2 = 0;
 					},
 					error:function(){
 						console.log("실패!");
@@ -1857,7 +1775,7 @@ $("#moveChannel").click(){
 					data:{chNo:chNo, vNo:vNo},
 					success:function(data){
 						console.log("delete성공!");
-						state = 0;
+						q2 = 0;
 					},
 					error:function(){
 						console.log("실패!");
@@ -1865,12 +1783,13 @@ $("#moveChannel").click(){
 				});
 			}
 		}
+		var q3 = 0
 		//북마크 조회
 		function selectBookmark(){
 			var chNo = "<c:out value='${list2[0].chNo}'/>";
 			var vNo = "<c:out value='${list1[0].vNo}'/>";
 			console.log(chNo + "::" + vNo);
-			if(state == 0){
+			if(q3 == 0){
 				document.getElementById('bookmark').src = "resources/images/bookmark_color.png";
 				
 				$.ajax({
@@ -1879,7 +1798,7 @@ $("#moveChannel").click(){
 					data:{chNo:chNo, vNo:vNo},
 					success:function(data){
 						console.log("insert성공!");
-						state = 1;
+						q3 = 1;
 						alert("북마크에 추가되었습니다.");
 					},
 					error:function(){
@@ -1896,7 +1815,7 @@ $("#moveChannel").click(){
 					success:function(data){
 						console.log("delete성공!");
 						alert("북마크에서 삭제되었습니다.");
-						state = 0;
+						q3 = 0;
 					},
 					error:function(){
 						console.log("실패!");
@@ -2010,76 +1929,6 @@ $("#moveChannel").click(){
 			}); 
 		//후원 div 
 		 $(document).ready(function(){
-
-			 
-				$(".replyPlus").hide();
-				var check = 0;
-				/* $(".plus").click(function(){
-					if(check == 0){
-						$(".replyPlus").show();
-						check=1;
-					}else {
-						$(".replyPlus").hide();
-						check=0;
-					}
-				}); */
-				$(".replyPlus").click(function(){
-					if(check == 0){ 
-						$(".replyPlus").show();
-						check=1;
-					}else {
-						$(".replyPlus").hide();
-						check=0;
-					}
-				});
-				
-				
-			 var chNo = "<c:out value='${list2[0].chNo}'/>";
-			 var vNo = "<c:out value='${list1[0].vNo}'/>";
-				$.ajax({
-					url:"regStatus.vd",
-					type:"post",
-					data:{chNo:chNo},
-					success:function(data){
-						$('#regsubTY').text("정기후원증");
-						console.log("success reg " +data);
-					},
-					error:function(){
-						console.log('실패!');
-					}					
-				});
-				$.ajax({
-					url:"selectLike.vd",
-					type:"post",
-					data:{vNo:vNo},
-					success:function(data){
-						 
-						if(data ==1){
-							document.getElementById('like').src = "resources/images/heart_red.png";
-						}else {
-							document.getElementById('hate').src = "resources/images/broken_color.png";
-						}
-						console.log("success " +data);
-					},
-					error:function(){
-						console.log('실패!');
-					}					
-				});
-			 
-				$.ajax({
-					url:"selectBook.vd",
-					type:"post",
-					data:{vNo:vNo},
-					success:function(data){
-						document.getElementById('bookmark').src = "resources/images/bookmark_color.png";
-						console.log("success book " +data);
-					},
-					error:function(){
-						console.log('실패!');
-					}					
-				});
-			 
-			
 			$('#subtitle').click(function(){
 				 $('#sub').show();
 				 $('#rSub').hide();
@@ -2204,101 +2053,21 @@ $("#moveChannel").click(){
 				 $('#share1').hide();
 				 return false;
 			 });
-
+			 $('#reportCh').hide();
+			 $('#reportChannel').click(function(){
+				 $('#reportCh').show();
+				 $('#chchch').hide();
+				 return false;
+			 });
 		 });
 	</script>
-<script>
-var objDiv = document.getElementById("scrollChat");
-objDiv.scrollTop = objDiv.scrollHeight;
-
-$("#scrollChat").scrollTop($("#scrollChat")[0].scrollHeight);
-
-
-$("#scrollChat").scrollTop($("#scrollChat").prop('scrollHeight'));
-
-</script>
-
-<script>
-//대댓글 가져오기
-var repNo=$(".rereplyrepno").val();
-function Rereplylist(){
-	$.ajax({
-		url:''
-	});
-	
-}
-
-
-
-
-</script>
-
-
-<script>
-	$(document).ready(function(){
-		var state = 0;
-		$(".moreLocation").hide();
-		$(".moreInfo").click(function(){
-			if(state == 0){
-				$(".moreLocation").show();
-				state = 1;
-				$(".moreInfo").text("영상에 나오는 정보 자세히 보기 ㅡ");
-			}
-			else {
-				$(".moreLocation").hide();
-				state = 0;
-				$(".moreInfo").text("영상에 나오는 정보 자세히 보기 V");
-			}
-		});
-		$(".chatForm").hide();
-		$("#runtimeChat").click(function(){
-			if(state == 0){
-				$(".chatForm").show();
-				state = 1;
-			}
-			else {
-				$(".chatForm").hide();
-				state = 0;
-			}
-		});
-	});
-</script>
-
- <script>
-      $(function(){
-   	   var sub = $("#subscribe").val();
-		$("#subscribe").click(function(){
-			
-			if(sub == "구독"){
-				console.log(sub);
-				var videoUserNo = $(this).parent().children("#retarget").val();
-				var loginUserNo = $(this).parent().children("#userNo").val();
-				console.log(videoUserNo);
-				console.log(loginUserNo);
-				var msg = loginUserNo + "&" + videoUserNo;
-				ws2.send(msg);
-			}
-		});
-   	   
-		$("#insertReply").click(function(){
-			
-				var videoUserNo = $(this).parent().children("#retarget").val();
-				var loginUserNo = $(this).parent().children("#userNo").val();
-				console.log(videoUserNo);
-				console.log(loginUserNo);
-				var msg = loginUserNo + "&" + videoUserNo;
-				ws2.send(msg);
-			
-		});
-	});
-</script>
 <script type="text/javascript">
 
 var socket;
 var login_ids={};
     var textarea = document.getElementById("messageWindow");
     var nickname="${loginUser.nickname}";
-    var webSocket = new WebSocket('ws://192.168.0.24:8001/with/broadcasting');
+    var webSocket = new WebSocket('ws://192.168.200.173:8001/with/broadcasting');
     /* socket.emit('login','nickname'); */
     var inputMessage = document.getElementById('inputMessage');
     console.log(inputMessage);
@@ -2321,6 +2090,9 @@ var login_ids={};
        /*  alert("11"); */
        var d = new Date();
         
+       
+      
+       
         if (content == "") {
         	 
         } /* else {
@@ -2343,7 +2115,8 @@ var login_ids={};
                 } else {
                     /* 다른 채팅자 */
                 	$("#messageWindow").html($("#messageWindow").html()
-                		 + "<div style='text-align:left !important; float:left; clear:both; margin-bottom:3%;'><table style='text-align:left;'><tr><td rowspan='2'><img class='userImg' src='resources/uploadFiles/${userImg}' style='align:left;'></td><td><p class='chat_content'>" + sender + "</p></td></tr><tr><td><div class='chat_content'>" + content + "</div></td></tr><tr><td></td><td><small>" + d.getFullYear() +"."+ (d.getMonth() + 1) +"."+ d.getDate() +" "+ d.getHours() +":"+ d.getMinutes() + "</small></td></tr><table></div>");
+                		 + "<div style='text-align:left !important; float:left; clear:both; margin-bottom:3%;'><table style='text-align:left;'><tr><td rowspan='2'><img class='userImg' src='resources/uploadFiles/newlogo3.png' style='align:left;'></td><td><p class='chat_content'>" + sender + "</p></td></tr><tr><td><div class='chat_content'>" + content + "</div></td></tr><tr><td></td><td><small>" + d.getHours() +":"+ d.getMinutes() + "</small></td></tr><table></div>"); 
+                		 
                 }
             }
        
@@ -2399,13 +2172,173 @@ var login_ids={};
             send();
         }
     }
-    //     채팅이 많아져 스크롤바가 넘어가더라도 자동적으로 스크롤바가 내려가게함
-    /* window.setInterval(function() {
-        var elem = document.getElementById('messageWindow');
-        elem.scrollTop = elem.scrollHeight;
-    }, 0); */
+
+</script>
+<script>
+	$(document).ready(function(){
+		var state = 0;
+		var state1 = 0;
+		$(".moreLocation").hide();
+		$(".moreInfo").click(function(){
+			if(state == 0){
+				$(".moreLocation").show();
+				state = 1;
+				$(".moreInfo").text("영상에 나오는 정보 자세히 보기 ㅡ");
+			}
+			else {
+				$(".moreLocation").hide();
+				state = 0;
+				$(".moreInfo").text("영상에 나오는 정보 자세히 보기 V");
+			}
+		});
+		$("#chatForm").hide();
+		$("#runtimeChat").click(function(){
+			if(state1 == 0){
+				$("#chatForm").show();
+				state1 = 1;
+				
+				var vNo = "<c:out value='${list1[0].vNo}'/>";
+				
+				$.ajax({
+					url:"updateVstatus.vd",
+					type:"post",
+					data:{vNo:vNo},
+					success:function(data){
+						console.log("success " +data);
+					},
+					error:function(){
+						console.log('실패!');
+					}					
+				});
+				
+			}else {
+				$("#chatForm").hide();
+				state1 = 0;
+			}
+		});
+		
+	}	
+		});
+	
+</script>
+<script>
+	$(document).ready(function(){
+		 var chNo = "<c:out value='${list2[0].chNo}'/>";
+		 var vNo = "<c:out value='${list1[0].vNo}'/>";
+		 console.log("제발제발 : "+ chNo + vNo );
+		 	$.ajax({
+				url:"selectSubtitle.vd",
+				type:"post",
+				data:{chNo:chNo,
+					  vNo:vNo},
+				success:function(data){
+				   if(data == 1){
+					   document.getElementById('subscribe').value = "구독중";
+					   console.log("success selectSubtitle " +data);
+				   }
+				},
+				error:function(){
+					console.log('selectSubtitle실패!');
+				}					
+			});
+			$.ajax({
+				url:"regStatus.vd",
+				type:"post",
+				data:{chNo:chNo,
+					  vNo:vNo},
+				success:function(data){
+				   if(data == 1){
+					   
+					$('#regsubTY').text("정기후원증");
+					console.log("success reg " +data);
+				   }
+				},
+				error:function(){
+					console.log('regStatus실패!');
+				}					
+			});
+			$.ajax({
+				url:"selectLike.vd",
+				type:"post",
+				data:{vNo:vNo},
+				success:function(data){
+					if(data == 1){
+						
+						document.getElementById('like').src = "resources/images/heart_red.png";
+						document.getElementById('hate').src = "resources/images/broken.png"; 
+					}
+				
+					console.log("success selectLike " +data);
+				},
+				error:function(){
+					console.log('selectLike실패!');
+				}					
+			});
+			$.ajax({
+				url:"selectHate.vd",
+				type:"post",
+				data:{vNo:vNo},
+				success:function(data){
+					if(data == 1){
+						
+						 document.getElementById('like').src = "resources/images/heart_black.png"; 
+						document.getElementById('hate').src = "resources/images/broken_color.png";
+					}
+					
+					console.log("success selectHate " +data);
+				},
+				error:function(){
+					console.log('selectHate실패!');
+				}					
+			});
+			$.ajax({
+				url:"selectReplyLike.vd",
+				type:"post",
+				data:{vNo:vNo},
+				success:function(data){
+					if(data == 1){
+						$('#replyLikeImg').attr("src", "resources/images/heart_red.png");
+						 $('#replyHateImg').attr("src", "resources/images/broken.png"); 
+					}
+				
+					console.log("success selectReplyLike " +data);
+				},
+				error:function(){
+					console.log('selectReplyLike실패!');
+				}					
+			});
+			$.ajax({
+				url:"selectReplyHate.vd",
+				type:"post",
+				data:{vNo:vNo},
+				success:function(data){
+					if(data == 1){
+						 $('#replyLikeImg').attr("src", "resources/images/heart_black.png"); 
+						$('#replyHateImg').attr("src", "resources/images/broken_color.png");
+					}
+					
+					console.log("success selectReplyHate " +data);
+				},
+				error:function(){
+					console.log('selectReplyLike실패!');
+				}					
+			});
+			$.ajax({
+				url:"selectBook.vd",
+				type:"post",
+				data:{vNo:vNo},
+				success:function(data){
+					document.getElementById('bookmark').src = "resources/images/bookmark_color.png";
+					console.log("success book " +data);
+				},
+				error:function(){
+					console.log('selectBook실패!');
+				}					
+			});
+	});
 </script>
 	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 	<jsp:include page="../common/footer.jsp"></jsp:include> 
 </body>
+
 </html>

@@ -17,6 +17,7 @@ import com.kh.with.main.model.vo.SubscribeVideo;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.reply.model.vo.Reply;
 import com.kh.with.report.model.vo.Report;
+import com.kh.with.video.model.vo.AddPlace;
 import com.kh.with.video.model.vo.Attachment;
 import com.kh.with.video.model.vo.Video;
 
@@ -109,6 +110,9 @@ public interface LogerDao {
 	//로거 동영상 수정 update
 	int updateLogerVideo(SqlSessionTemplate sqlSession, Video v);
 
+	//로거 동영상 썸네일 수정 update
+	int updateLogerAttachment(SqlSessionTemplate sqlSession, Attachment a);
+
 	//구독중 클릭시 구독중으로 고정
 	Subscribe fastenSub(SqlSessionTemplate sqlSession, Subscribe subscribe);
 
@@ -135,9 +139,14 @@ public interface LogerDao {
 	//로거스튜디오 타이틀 이미지 변경
 	int updateTitle(SqlSessionTemplate sqlSession, Attachment attachment);
 
+
 	
 	//댓글 삭제 
 	int replyDelete(SqlSessionTemplate sqlSession, int repNo);
+
+	int deleteAddplace(SqlSessionTemplate sqlSession, AddPlace addPlace);
+
+
 
 
 

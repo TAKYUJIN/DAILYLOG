@@ -1,30 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-	body {
-        color: #666;
-        background: #f5f5f5;
-		font-family: 'Roboto', sans-serif;
-	}
     table.table tr th, table.table tr td {
         border-color: #e9e9e9;
         text-align:center;
     }
     table.table-striped tbody tr:nth-of-type(odd) {
-    	background-color: #fcfcfc;
+    	background:none;
 	}
     .table-wrapper {
     	
     	width:800px;
-        background: #fff;
         padding: 20px;
         margin: 30px 0;
-        box-shadow: 0 1px 1px rgba(0,0,0,.05);
     }
     .pagination {
         margin: 10px 0 5px;
@@ -171,7 +167,7 @@
 		<div class="col-lg-15">
 			<a href="noticeMain.no" class="noticeLink" style="float:left; width:25%;"><h1 class="page-title1">FAQs</h1></a> 
 			<a href="noticeList.no" class="noticeLink" style="float:left; width:25%;"><h1 class="page-title2">Notice</h1></a>
-			<a href="noticeChattingQuestion.no" class="noticeLink" style="float:left; width:25%;"><h1 class="page-title3">question</h1></a>
+			<a href="noticeEmail.no" class="noticeLink" style="float:left; width:25%;"><h1 class="page-title3">question</h1></a>
 			</div>
 			<div class="">
 			
@@ -189,42 +185,52 @@
                         <th>회원명</th>
                         <th>제목</th>
                         <th>문의 날짜</th>
+                        <th>상태</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Thomas Hardy</td>
-                        <td>89 Chiaroscuro Rd.</td>
-                        <td>Portland</td>
+	                <c:forEach items="${cList}" var="c">
+                    <tr id="test" onclick="chatResult(${c.chatNo},${c.userNo});">
+                        <td><c:out value="${c.nNo}"/></td>
+                        <td><c:out value="${c.userNm}"/></td>
+                        <td><c:out value="${c.qTitle}"/></td>
+                        <td><c:out value="${fn:substring(c.chatDt,0,10)}"/></td>
+                        <td><c:out value="${c.status}"/></td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Maria Anders</td>
-                        <td>Obere Str. 57</td>
-                        <td>Berlin</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Fran Wilson</td>
-                        <td>C/ Araquil, 67</td>
-                        <td>Madrid</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Dominique Perrier</td>
-                        <td>25, rue Lauriston</td>
-                        <td>Paris</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Martin Blank</td>
-                        <td>Via Monte Bianco 34</td>
-                        <td>Turin</td>
-                    </tr>        
+                    </c:forEach>
                 </tbody>
             </table>
 			</div></div>
 <jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
+<script>
+$(function(){
+	
+	function chatResult(chatNo, userNo){
+		var chatNo = chatNo;
+		var userNo = userNo;
+		
+		console.log(chatNo);
+		console.log(userNo);
+		
+		$.ajax({
+			url:"goUserChatList.no",
+			type:"post",
+			data:{userNo:userNo, chatNo:chatNo},
+			success:function(data){
+				console.log("성공인가");
+				/* $(".noticeList").hide();
+				$(".chatForm").show();  */
+			},
+			error:function(data){
+				console.log("제발");
+			}
+			
+		});
+		
+		
+	}
+});
+
+</script>
 </html>

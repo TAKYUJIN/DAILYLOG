@@ -407,7 +407,8 @@ public class MemberController {
 
 	// 휴대폰 인증번호 체크
 	@RequestMapping("smssend.me")
-	public ModelAndView phoneMe(ModelAndView mv, HttpServletRequest request) throws IOException, Exception {
+	@ResponseBody
+	public String phoneMe(ModelAndView mv, HttpServletRequest request) throws IOException, Exception {
 
 		String msg2 = "";
 
@@ -582,11 +583,11 @@ public class MemberController {
 			ex.printStackTrace();
 		}
 
-		mv.addObject("msgRnd", msgRnd);
-		mv.setViewName("jsonView");
-
-		System.out.println("넘어가기전 mv 값 : " + mv);
-		return mv;
+		//mv.addObject("msgRnd", msgRnd);
+		//mv.setViewName("jsonView");
+		//System.out.println("msgRnd : " + msgRnd);
+		//System.out.println("넘어가기전 mv 값 : " + mv);
+		return msgRnd;
 	}
 
 	// 마이페이지 이동
