@@ -15,17 +15,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style type="text/css">
- 	body {
-		background: #fff;
-		font-family: 'Varela Round', sans-serif;
-	}
     table.table tr th, table.table tr td {
         border-color: #e9e9e9;
         text-align:center;
         /* text-align:center; */
     }
     table.table-striped tbody tr:nth-of-type(odd) {
-    	background-color: #fcfcfc;
 	}
 	.noticeList {
 		margin-top:50px;
@@ -131,7 +126,7 @@
 			<div class="col-lg-15">
 				<a href="noticeMain.no" class="noticeLink" style="float: left; width: 25%;"><h1 class="page-title1">FAQs</h1></a>
 				<a href="noticeList.no" class="noticeLink" style="float: left; width: 25%;"><h1 class="page-title2">Notice</h1></a>
-				<a href="noticeChattingQuestion.no" class="noticeLink" style="float: left; width: 25%;"><h1 class="page-title3">question</h1></a>
+				<a href="noticeEmail.no" class="noticeLink" style="float: left; width: 25%;"><h1 class="page-title3">question</h1></a>
 			</div>
 		<div class="table-wrapper">
 

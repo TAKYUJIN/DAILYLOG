@@ -8,6 +8,8 @@ import java.util.Map;
 import org.mybatis.spring.SqlSessionTemplate;
 
 import com.kh.with.loger.model.vo.Loger;
+import com.kh.with.loger.model.vo.Support;
+import com.kh.with.main.model.vo.VideoLike;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.report.model.vo.Report;
 import com.kh.with.video.model.vo.AddInfo;
@@ -56,7 +58,7 @@ public interface VideoDao {
 	
 	List<Loger> selectLogerInfo(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	
-	int selectRegStatus(SqlSessionTemplate sqlSession, int userNo, int chNo);
+	List<Support> selectRegStatus(SqlSessionTemplate sqlSession, Map<String, Integer> map);
 	
 	int insertReg(SqlSessionTemplate sqlSession, Map<String, Integer> map);
 
@@ -107,10 +109,10 @@ public interface VideoDao {
 	int deleteSubAlram(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	String selectThumb(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	String selectProfile(SqlSessionTemplate sqlSession, Map<String, Object> map);
-	int selectLike(SqlSessionTemplate sqlSession, Map<String, Integer> map);
-	int selectHate(SqlSessionTemplate sqlSession, Map<String, Integer> map);
-	int selectBook(SqlSessionTemplate sqlSession, Map<String, Integer> map);
-	int selectRegStatus(SqlSessionTemplate sqlSession, Map<String, Integer> map);
+	List<VideoLike> selectLike(SqlSessionTemplate sqlSession, Map<String, Integer> map);
+	List<VideoLike> selectHate(SqlSessionTemplate sqlSession, Map<String, Integer> map);
+	List<VideoLike> selectBook(SqlSessionTemplate sqlSession, Map<String, Integer> map);
+	
 	List<Reply2> selectReply(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	String selectUserImg(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	int insertReply(SqlSessionTemplate sqlSession, Map<String, Object> map);
@@ -147,8 +149,18 @@ public interface VideoDao {
 
 	List<AddInfo> selectAddInfo(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	List<AddPlace> selectAddPlace(SqlSessionTemplate sqlSession, Map<String, Object> map);
+
 	
 	int insertnewAction(SqlSessionTemplate sqlSession, HashMap map);
+
+	List<Attachment> selectFiles(SqlSessionTemplate sqlSession);
+	int vStatus(SqlSessionTemplate sqlSession, Map<String, Integer> map);
+	int channelReport(SqlSessionTemplate sqlSession, Map<String, Object> map);
+	int channelReportAlram(SqlSessionTemplate sqlSession, Map<String, Object> map);
+	List<VideoLike> selectReplyLike(SqlSessionTemplate sqlSession, Map<String, Integer> map);
+	List<VideoLike> selectReplyHate(SqlSessionTemplate sqlSession, Map<String, Integer> map);
+	int selectSubtitle(SqlSessionTemplate sqlSession, Map<String, Object> map);
+
 
 
 

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.with.admin.model.vo.Board;
 import com.kh.with.notice.model.dao.NoticeDao;
+import com.kh.with.notice.model.vo.Chat;
 import com.kh.with.notice.model.vo.ChatContent;
 import com.kh.with.notice.model.vo.noticeEmail;
 import com.kh.with.video.model.vo.Attachment;
@@ -52,6 +53,7 @@ public class NoticeServiceImpl implements NoticeService {
 		return nd.selectUserImg(sqlSession, map);
 	}
 
+	//채팅
 	@Override
 	public int insertChat(int userNo) {
 		return nd.insertChat(sqlSession, userNo);
@@ -65,6 +67,12 @@ public class NoticeServiceImpl implements NoticeService {
 	@Override
 	public int selectChatNo(int userNo) {
 		return nd.selectChatNo(sqlSession, userNo);
+	}
+
+	//나의 문의내역
+	@Override
+	public ArrayList<Chat> selectUserQuestion(int userNo) {
+		return nd.selectUserQuestion(sqlSession, userNo);
 	}
 
 	

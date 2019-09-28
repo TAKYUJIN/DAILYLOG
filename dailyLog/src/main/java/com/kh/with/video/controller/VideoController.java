@@ -31,7 +31,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.kh.with.common.CommonUtils;
 import com.kh.with.loger.model.service.LogerService;
 import com.kh.with.loger.model.vo.Loger;
-import com.kh.with.main.model.vo.Subscribe;
+import com.kh.with.loger.model.vo.Support;
+import com.kh.with.main.model.vo.VideoLike;
 import com.kh.with.member.model.service.MemberService;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.report.model.vo.Report;
@@ -84,7 +85,6 @@ public class VideoController {
 		
 		
 		try {
-			System.out.println("여기까지1");
 			if(!info.equals("info없음")) {
 				
 				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -111,7 +111,6 @@ public class VideoController {
 				System.out.println("infoTime : " + infoTime.getTime());
 				
 			}
-			System.out.println("여기까지2");
 				//조회수
 				int countUp = vs.updateCount(map);
 				
@@ -137,6 +136,10 @@ public class VideoController {
 				String thumb = vs.selectThumb(map);
 				String profile = vs.selectProfile(map);
 				String userImg = vs.selectUserImg(map);
+				List<Attachment> files = vs.selectFiles();
+				
+				
+				System.out.println("files : " + files);
 				
 				model.addAttribute("m", m);
 				model.addAttribute("list1", list1);
@@ -148,7 +151,7 @@ public class VideoController {
 				model.addAttribute("profile", profile);
 				model.addAttribute("chNo", chNo);
 				model.addAttribute("reply", reply);
-			
+				model.addAttribute("files", files);
 				model.addAttribute("userImg", userImg);
 				
 				return "video/videoMain";
@@ -164,45 +167,22 @@ public class VideoController {
 			return "common/errorPage";
 		}
 		
+	
+	}
+	
+	@RequestMapping(value = "updateVstatus.vd")
+	@ResponseBody
+	public String updateVstatus(HttpServletRequest request, Model model, HttpSession session) {
+		int vNo = Integer.parseInt(request.getParameter("vNo"));	
 		
+		
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("vNo", vNo);
+		System.out.println("map"+map);
+		
+		int vStatus = vs.vStatus(map);
 
-
-  /*
-		//조회수
-		int countUp = vs.updateCount(map);
-
-
-		//정보 select
-		List<Video> list1 = vs.selectVideoInfo(map);
-		List<Loger> list2 = vs.selectLogerInfo(map);
-		List<Reply2> reply = vs.selectReply(map);
-
-		System.out.println("list1 : " + list1);
-		System.out.println("list2 : " + list2);
-		System.out.println("reply : " + reply);
-		System.out.println("age : " + age);
-
-		int chNo = (list2.get(0)).getChNo();
-		map.put("chNo", chNo);
-
-		//loger 썸넬, 프로필
-		String thumb = vs.selectThumb(map);
-		String profile = vs.selectProfile(map);
-		String userImg = vs.selectUserImg(map);
-
-		model.addAttribute("m", m);
-		model.addAttribute("list1", list1);
-		model.addAttribute("list2", list2);
-		model.addAttribute("age", age);
-		model.addAttribute("thumb", thumb);
-		model.addAttribute("profile", profile);
-		model.addAttribute("chNo", chNo);
-		model.addAttribute("reply", reply);
-		model.addAttribute("userImg", userImg);
-
-		return "video/videoMain";
-    */
-
+		return Integer.toString(vStatus);
 	}
 
 	//비디오 정기후원 상태 조회
@@ -213,19 +193,23 @@ public class VideoController {
 		int loginUser = m.getUserNo();
 		int chNo = Integer.parseInt(request.getParameter("chNo"));		
 		int vNo = Integer.parseInt(request.getParameter("vNo"));	
-		
+		System.out.println(loginUser + " : " + chNo + "::" + vNo);
 		
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("loginUser", loginUser);
 		map.put("chNo", chNo);
 		map.put("vNo", vNo);
-		System.out.println("map"+map);
+		System.out.println("map : " + map);
 		
-		int status = vs.selectRegStatus(map);
+		List<Support> status = vs.selectRegStatus(map);
 		System.out.println("status : " + status);
 		model.addAttribute("status" + status);
 
-		return Integer.toString(status);
+		int result = 0;
+		if(!status.isEmpty()) {
+			result = 1;
+		}
+		return Integer.toString(result);
 	}
 	//댓글
 	@RequestMapping(value = "insertReply.vd",  method= RequestMethod.POST)
@@ -248,60 +232,20 @@ public class VideoController {
 		int result = vs.insertReply(map);
 		
 		List<Reply2> reply = vs.selectReply(map);
-		
 		System.out.println("reply"+reply);
+		
 		int repNo = vs.repNo(map);
 		map.put("repNo", repNo);
-		int rereply = vs.selectReReply(map);
 		int alram = vs.replyAlram(map);
 		
 		System.out.println("alram : " + alram);
 		
 		model.addAttribute("reply", reply);
-		model.addAttribute("rereply", rereply);
 		model.addAttribute("result", result);
 
 		return Integer.toString(result);
 	}
 
-	@RequestMapping(value="writeReReply.vd")
-	@ResponseBody
-	public String writeReReply (HttpSession session,Model model,HttpServletRequest request) {
-		Member m=(Member )session.getAttribute("loginUser");
-		int loginUser = m.getUserNo();
-		int vNo = Integer.parseInt(request.getParameter("vNo"));
-		String content = request.getParameter("content");
-		int userNo = Integer.parseInt(request.getParameter("userNo"));
-		int repNo = Integer.parseInt(request.getParameter("repNo"));
-		int parentNo = Integer.parseInt(request.getParameter("parentNo"));
-		String nickName=m.getNickname();
-		System.out.println(loginUser+","+vNo+","+content+","+userNo+","+repNo+","+parentNo+","+nickName);
-		
-		 Map<String,Object> map= new HashMap<String,Object>();
-		map.put("vNo",vNo);
-		map.put("userNo",userNo);
-		map.put("content",content);
-		map.put("loginUser",loginUser);
-		map.put("repNo",repNo);
-		map.put("parentNo",parentNo);
-		map.put("nickName",nickName);
-		
-		
-		List<Reply2>  reply =vs.selectReply(map);
-		int result=vs.writeReReply(map); 
-		int alram =vs.ReReplyAlram(map);
-		 
-		model.addAttribute("writeReReplylist"+reply);
-		model.addAttribute("writeReReplyresult", result);
-		model.addAttribute("alram", alram);
-		
-		
-		return "redirect:/video.vd";
-	}
-	
-	
-	
-	
 	
 	
 	
@@ -366,29 +310,98 @@ public class VideoController {
 		Member m = (Member) session.getAttribute("loginUser");
 		int loginUser = m.getUserNo();
 		int vNo = Integer.parseInt(request.getParameter("vNo"));
+		System.out.println("****" + loginUser + " ** " + vNo + " ** ");
+		
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("vNo", vNo);
+		map.put("loginUser", loginUser);
+
+		//좋/싫/북
+		List<VideoLike> like = vs.selectLike(map);
+		System.out.println("like : " + like);
+		model.addAttribute("result", like);
+		
+		int result = 0;
+		if(!like.isEmpty()) {
+			result = 1;
+		}
+		System.out.println("like result : " + result);
+		return Integer.toString(result);
+	}
+	// like
+	@RequestMapping(value = "selectHate.vd")
+	@ResponseBody
+	public String selectHate(HttpServletRequest request, Model model, HttpSession session) {
+		Member m = (Member) session.getAttribute("loginUser");
+		int loginUser = m.getUserNo();
+		int vNo = Integer.parseInt(request.getParameter("vNo"));
 
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("vNo", vNo);
 		map.put("loginUser", loginUser);
 
 		//좋/싫/북
-		int like = vs.selectLike(map);
-		int hate = vs.selectHate(map);
-
-		System.out.println("## : " + hate);
+		List<VideoLike> hate = vs.selectHate(map);
+		System.out.println("hate : " + hate);
+		model.addAttribute("result", hate);
+		
 
 		int result = 0;
-		if(like > 0) {
+		if(!hate.isEmpty()) {
 			result = 1;
-		}else {
-			result = 0;
 		}
-
-		model.addAttribute("result", result);
-
-
+		System.out.println("hate result : " + result);
 		return Integer.toString(result);
 	}
+	
+	// like
+	@RequestMapping(value = "selectReplyLike.vd")
+	@ResponseBody
+	public String selectReplyLike(HttpServletRequest request, HttpSession session) {
+		Member m = (Member) session.getAttribute("loginUser");
+		int loginUser = m.getUserNo();
+		int vNo = Integer.parseInt(request.getParameter("vNo"));
+		System.out.println("****" + loginUser + " ** " + vNo + " ** ");
+		
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("vNo", vNo);
+		map.put("loginUser", loginUser);
+
+		//좋/싫/북
+		List<VideoLike> replyLike = vs.selectReplyLike(map);
+		System.out.println("replyLike : " + replyLike);
+		
+		int result = 0;
+		if(!replyLike.isEmpty()) {
+			result = 1;
+		}
+		System.out.println("replyLike result : " + result);
+		return Integer.toString(result);
+	}
+	// like
+	@RequestMapping(value = "selectReplyHate.vd")
+	@ResponseBody
+	public String selectReplyHate(HttpServletRequest request, HttpSession session) {
+		Member m = (Member) session.getAttribute("loginUser");
+		int loginUser = m.getUserNo();
+		int vNo = Integer.parseInt(request.getParameter("vNo"));
+
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("vNo", vNo);
+		map.put("loginUser", loginUser);
+
+		//좋/싫/북
+		List<VideoLike> replyHate = vs.selectReplyHate(map);
+		System.out.println("replyHate : " + replyHate);
+
+		int result = 0;
+		if(!replyHate.isEmpty()) {
+			result = 1;
+		}
+		System.out.println("replyHate result : " + result);
+		return Integer.toString(result);
+	}
+	
 	// like
 	@RequestMapping(value = "selectBook.vd")
 	@ResponseBody
@@ -402,14 +415,16 @@ public class VideoController {
 		map.put("loginUser", loginUser);
 
 		//좋/싫/북
-		int book = vs.selectBook(map);
+		List<VideoLike> book = vs.selectBook(map);
 
-		System.out.println("## : " + book);
+		System.out.println("book : " + book);
 
-		model.addAttribute("book", book);
-
-
-		return Integer.toString(book);
+		int result = 0;
+		if(!book.isEmpty()) {
+			result = 1;
+		}
+		System.out.println("book result : " + result);
+		return Integer.toString(result);
 	}
 
 	// 동영상 페이지 포인트 조회
@@ -715,9 +730,50 @@ public class VideoController {
 		System.out.println("result : " + result);
 
 		int alram = vs.replyReprtAlram(map);
+		System.out.println("alram : " + alram);
 
 		return Integer.toString(result);
 	}
+	
+	//replyReport
+		@RequestMapping(value = "channelReport.vd")
+		@ResponseBody
+		public String channelReport(HttpSession session, HttpServletRequest request) {
+			Member m = (Member) session.getAttribute("loginUser");
+			int loginUser = m.getUserNo();
+			int userNo = Integer.parseInt(request.getParameter("userNo"));
+			String check = request.getParameter("check");
+			String chNm = request.getParameter("chNm");
+			int chNo = Integer.parseInt(request.getParameter("chNo"));
+
+
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("userNo", userNo);
+			map.put("loginUser", loginUser);
+			map.put("check", check);
+			map.put("chNm", chNm);
+			map.put("chNo", chNo);
+			
+
+			//select rcount, ccount
+			List<Report> count = vs.selectCount(map);
+			System.out.println(count);
+			System.out.println((count.get(0)).getCcount());
+			map.put("rCount", (count.get(0)).getRecount());
+			map.put("cCount", (count.get(0)).getCcount());
+
+			
+			System.out.println(map);
+
+			int result = vs.channelReport(map);
+
+			System.out.println("result : " + result);
+
+			int alram = vs.channelReportAlram(map);
+			System.out.println("alram : " + alram);
+
+			return Integer.toString(result);
+		}
 
 	//block
 	@RequestMapping(value = "block.vd")
@@ -738,6 +794,27 @@ public class VideoController {
 		return Integer.toString(result);
 	}
 
+	//구독
+	@RequestMapping(value = "selectSubtitle.vd")
+	@ResponseBody
+	public String selectSubtitle(HttpSession session, HttpServletRequest request) {
+		Member m = (Member) session.getAttribute("loginUser");
+		int loginUser = m.getUserNo();
+		int chNo = Integer.parseInt(request.getParameter("chNo"));
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("loginUser", loginUser);
+		map.put("chNo", chNo);
+		System.out.println("PP " + loginUser + " p " + chNo);
+		int sub = 0;
+		sub = vs.selectSubtitle(map);
+		int result = 0;
+		if(sub != 0) {
+			result = 1;
+		}
+		System.out.println(sub + result + "{{{{{");
+		return Integer.toString(result);
+	}
 	//구독
 	@RequestMapping(value = "subInsert.vd")
 	@ResponseBody
@@ -1041,7 +1118,6 @@ public class VideoController {
 			try {
 				file2.transferTo(new File(filepath1 + "\\" + enrollNm));
 			} catch (IllegalStateException | IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
@@ -1082,9 +1158,11 @@ public class VideoController {
 			video.setAdInfo(adInfo);
 			video.setChNm(chNm);
 			System.out.println("openTy : " + openTy);
-			if(openTy == "U") {
+			
+			if(openTy.equals("U")) {
+				System.out.println("Utype");
 				info = request.getParameter("uploadDate") + " " + request.getParameter("uploadTime");
-				System.out.println("upload : " + info);
+				System.out.println("upload :::: " + info);
 				video.setInfo(info);
 			}
 

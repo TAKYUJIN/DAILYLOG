@@ -1,6 +1,5 @@
 package com.kh.with.video.model.dao;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,6 +10,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.with.loger.model.vo.Loger;
+import com.kh.with.loger.model.vo.Support;
+import com.kh.with.main.model.vo.VideoLike;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.report.model.vo.Report;
 import com.kh.with.video.model.vo.AddInfo;
@@ -144,13 +145,9 @@ public class VideoDaoImpl implements VideoDao {
 	}
 	
 	@Override
-	public int selectRegStatus(SqlSessionTemplate sqlSession, int userNo, int chNo) {
+	public List<Support> selectRegStatus(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
 		
-		Map<String, Integer> map = new HashMap<String, Integer>();
-		map.put("userNo", userNo);
-		map.put("chNo", chNo);
-		
-		return sqlSession.selectOne("Video.selectRegStatus", map);
+		return sqlSession.selectList("Video.selectRegStatus", map);
 	}
 
 
@@ -329,25 +326,21 @@ public class VideoDaoImpl implements VideoDao {
 		return sqlSession.selectOne("Video.selectProfile", map);
 	}
 	
+
 	@Override
-	public int selectRegStatus(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
+	public List<VideoLike> selectLike(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
 		
-		return sqlSession.selectOne("Video.selectRegStatus", map);
+		return sqlSession.selectList("Video.selectLike", map);
 	}
 	@Override
-	public int selectLike(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
+	public List<VideoLike> selectHate(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
 		
-		return sqlSession.selectOne("Video.selectLike", map);
+		return sqlSession.selectList("Video.selectHate", map);
 	}
 	@Override
-	public int selectHate(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
+	public List<VideoLike> selectBook(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
 		
-		return sqlSession.selectOne("Video.selectHate", map);
-	}
-	@Override
-	public int selectBook(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
-		
-		return sqlSession.selectOne("Video.selectBook", map);
+		return sqlSession.selectList("Video.selectBook", map);
 	}
 
 	@Override
@@ -521,13 +514,47 @@ public class VideoDaoImpl implements VideoDao {
 	}
 
 	@Override
+
 	public int insertnewAction(SqlSessionTemplate sqlSession, HashMap map) {
 		// TODO Auto-generated method stub
 		return sqlSession.insert("Video.newAction", map);
 	}
 
 
-	
+	public List<Attachment> selectFiles(SqlSessionTemplate sqlSession) {
+		
+		return sqlSession.selectList("Video.selectFiles");
+	}
+	@Override
+	public int vStatus(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
+		
+		return sqlSession.update("Video.vStatus", map);
+	}
 
-	
+
+	@Override
+	public int channelReport(SqlSessionTemplate sqlSession, Map<String, Object> map) {
+		
+		return sqlSession.insert("Video.channelReport", map);
+	}
+	@Override
+	public int channelReportAlram(SqlSessionTemplate sqlSession, Map<String, Object> map) {
+		
+		return sqlSession.insert("Video.channelReportAlram", map);
+	}
+	@Override
+	public List<VideoLike> selectReplyLike(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
+		
+		return sqlSession.selectList("Video.selectReplyLike", map);
+	}
+	@Override
+	public List<VideoLike> selectReplyHate(SqlSessionTemplate sqlSession, Map<String, Integer> map) {
+		
+		return sqlSession.selectList("Video.selectReplyHate", map);
+	}
+	@Override
+	public int selectSubtitle(SqlSessionTemplate sqlSession, Map<String, Object> map) {
+		
+		return sqlSession.selectOne("Video.selectSubtitle", map);
+	}
 }

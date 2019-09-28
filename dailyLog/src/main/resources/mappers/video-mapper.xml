@@ -135,7 +135,17 @@
 		<result property="userNo" column="USER_NO" />
 		<result property="newlyDt" column="NEWLY_DT" />
 	</resultMap>
-
+	
+	<resultMap type="Attach" id="AttachResultSet">
+		<result property="fileNm" column="FILE_NM" />
+		<result property="chNm" column="CH_NM" />
+	</resultMap>
+	
+	<resultMap type="Sub" id="SubResultSet">
+		<id property="subNo" column="SUB_NO" />
+		<result property="chNo" column="CH_NO" />
+		<result property="userNo" column="USER_NO" />
+	</resultMap>
 	<!-- 업로드할 동영상 정보 insert 쿼리 -->
 
 	<insert id="insertVideoInfo" parameterType="Video">
@@ -196,6 +206,7 @@
 		V_NO = #{vNo}
 		AND CH_NO = #{chNo}
 		AND V_TY = '좋아요'
+		AND REP_NO IS NULL
 	</delete>
 
 	<insert id="insertHate" parameterType="map">
@@ -211,6 +222,7 @@
 		V_NO = #{vNo}
 		AND CH_NO = #{chNo}
 		AND V_TY = '싫어요'
+		AND REP_NO IS NULL
 	</delete>
 
 	<insert id="insertBookmark" parameterType="map">
@@ -226,6 +238,7 @@
 		V_NO = #{vNo}
 		AND CH_NO = #{chNo}
 		AND V_TY = '북마크'
+		AND REP_NO IS NULL
 	</delete>
 	<select id="searchch" resultMap="videoResultSet"
 		parameterType="com.kh.with.main.model.vo.Video">
@@ -355,43 +368,40 @@
 
 	<select id="selectRegStatus" parameterType="map"
 		resultType="int">
-		SELECT NVL(SUP_NO, 0)
+		SELECT SUP_NO
 		FROM SUPPORT
 		WHERE SUP_TY = '정기'
-		AND
-		SYSDATE BETWEEN SUP_STDT AND REG_EDT
+		AND SYSDATE BETWEEN SUP_STDT AND REG_EDT
 		AND USER_NO = #{loginUser}
-		AND
-		CH_NO = #{chNo}
+		AND CH_NO = #{chNo}
 	</select>
 
 	<select id="selectLike" parameterType="map" resultType="int">
-		SELECT
-		NVL(LIKE_NO, 0)
+		SELECT LIKE_NO
 		FROM VIDEO_LIKE
 		WHERE V_NO = #{vNo}
-		AND USER_NO =
-		#{loginUser}
+		AND USER_NO = #{loginUser}
 		AND V_TY = '좋아요'
+		AND REP_NO IS NULL
 	</select>
 
 	<select id="selectHate" parameterType="map" resultType="int">
-		SELECT
-		LIKE_NO
+		SELECT LIKE_NO
 		FROM VIDEO_LIKE
 		WHERE V_NO = #{vNo}
 		AND USER_NO = #{loginUser}
 		AND V_TY = '싫어요'
+		AND REP_NO IS NULL
 	</select>
 
 
 	<select id="selectBook" parameterType="map" resultType="int">
-		SELECT
-		LIKE_NO
+		SELECT LIKE_NO
 		FROM VIDEO_LIKE
 		WHERE V_NO = #{vNo}
 		AND USER_NO = #{loginUser}
 		AND V_TY = '북마크'
+		AND REP_NO IS NULL
 	</select>
 
 	<select id="selectReply" parameterType="map"
@@ -491,7 +501,7 @@
 	<insert id="replyReportAlram" parameterType="map">
 		INSERT INTO ALRAM
 		VALUES(AL_NO.NEXTVAL, #{userNo}, SYSDATE,
-		#{nickName} || '님이 댓글을 남기셨습니다.', '댓글', NULL, #{repNo}, NULL, NULL)
+		#{nickName} || '님의 댓글이 ' || #{check} || '의 사유로 신고되었습니다.', '댓글', NULL, #{repNo}, NULL, NULL)
 	</insert>
 
 	<insert id="insertReplyLike" parameterType="map">
@@ -617,7 +627,53 @@
 	
 	</insert>
 
+	<select id="selectFiles" resultMap="AttachResultSet">
+		SELECT A.FILE_NM, L.CH_NM 
+		FROM ATTACHMENT A
+		JOIN LOGER L ON(A.USER_NO = L.USER_NO)
+		WHERE A.AM_TY = '회원'
+	</select>
 
+	<update id="vStatus" parameterType="map">
+		UPDATE VIDEO
+		SET V_STATUS = 1
+		WHERE V_NO = #{vNo}
+	</update>
+
+	<insert id="channelReport" parameterType="map">
+		INSERT INTO REPORT
+		VALUES(RE_NO.NEXTVAL, #{loginUser}, #{userNo}, SYSDATE, #{check},
+		'채널', NULL, NULL, #{chNm}, #{rCount} + 1, #{cCount} + 1)
+	</insert>
+
+	<insert id="channelReportAlram" parameterType="map">
+		INSERT INTO ALRAM
+		VALUES(AL_NO.NEXTVAL, #{userNo}, SYSDATE,
+		#{chNm} || '님의 채널이 ' || #{check} || '의 사유로 신고되었습니다.', '댓글', NULL, NULL, NULL, #{chNo})
+	</insert>
+	
+	<select id="selectReplyLike" parameterType="map" resultMap="videoLikeResultSet">
+		SELECT *
+		FROM VIDEO_LIKE
+		WHERE REP_NO IS NOT NULL
+		AND V_NO = #{vNo}
+		AND V_TY = '좋아요'
+	</select>
+	
+	<select id="selectReplyHate" parameterType="map" resultMap="videoLikeResultSet">
+		SELECT *
+		FROM VIDEO_LIKE
+		WHERE REP_NO IS NOT NULL
+		AND V_NO = #{vNo}
+		AND V_TY = '싫어요'
+	</select>
+	
+	<select id="selectSubtitle" resultMap="SubResultSet">
+		SELECT SUB_NO
+		FROM SUBSCRIBE
+		WHERE CH_NO = #{chNo}
+		AND USER_NO = #{loginUser}
+	</select>
 </mapper>
 
 

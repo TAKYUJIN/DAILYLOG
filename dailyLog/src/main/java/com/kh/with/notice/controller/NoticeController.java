@@ -24,6 +24,7 @@ import com.google.gson.JsonIOException;
 import com.kh.with.admin.model.vo.Board;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.notice.model.service.NoticeService;
+import com.kh.with.notice.model.vo.Chat;
 import com.kh.with.notice.model.vo.ChatContent;
 import com.kh.with.notice.model.vo.noticeEmail;
 import com.kh.with.video.model.service.VideoService;
@@ -100,8 +101,6 @@ public class NoticeController {
 		
 		ArrayList<Board> showNoticeList = ns.showNoticeList(board);
 		
-		System.out.println("결과값이 담겼나요?" + showNoticeList);
-		
 		model.addAttribute("showNoticeList", showNoticeList);
 
 
@@ -170,10 +169,42 @@ public class NoticeController {
 	
 	//고객센터 나의 문의 내역로 이동
 	@RequestMapping(value="selectNoticeQuestion.no")
-	public String showSelectNoticeQuestion() {
+	public String showSelectNoticeQuestion(HttpSession session, HttpServletRequest request, Model model) {
+		Member m = (Member) session.getAttribute("loginUser");
+		int userNo = m.getUserNo();
+
+		ArrayList<Chat> cList = ns.selectUserQuestion(userNo);
+		
+		System.out.println("cList::::::" + cList);
+		model.addAttribute("cList", cList);
+		
 		
 		return "notice/selectNoticeQuestion";
 	}
+	
+//	@RequestMapping(value="goUserChatList.no")
+//	public void selectUserChatList(HttpServletRequest request, HttpServletResponse response) {
+//		int userNo = Integer.parseInt(request.getParameter("userNo"));
+//		int chatNo = Integer.parseInt(request.getParameter("chatNo"));
+//		
+//		System.out.println(userNo);
+//		System.out.println(chatNo);
+//		
+//		response.setContentType("application/json");
+//		response.setCharacterEncoding("UTF-8");
+//		
+//
+//		ArrayList<ChatContent> date = null;
+//		
+//		try {
+//			new Gson().toJson(date, response.getWriter());
+//		} catch (JsonIOException e) {
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		
+//	}
 	
 	@RequestMapping(value="noticeEmail.no")
 	public String noticeEmail( ) {
