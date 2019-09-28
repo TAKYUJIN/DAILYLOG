@@ -78,10 +78,10 @@ public class LogerController {
 		model.addAttribute("rList", rList);	
 
 
-			System.out.println(rList);
-			return "loger/searchLogerReply";
-		}
-	
+		System.out.println(rList);
+		return "loger/searchLogerReply";
+	}
+
 
 
 	// 로거 동영상 수정 기본정보 페이지로 이동
@@ -397,7 +397,13 @@ public class LogerController {
 	@RequestMapping(value = "newHomeChannel.lo")
 	public ModelAndView newHomeChannel(ModelAndView mv, HttpSession session, HttpServletRequest request, Model model,
 			@ModelAttribute Member m) {
-
+		
+		Object newHomeChannellVideo = request.getAttribute("newHomeChannellVideo");   
+		Object favHomeChannellVideo = request.getAttribute("favHomeChannellVideo");  
+		
+		System.out.println("최신순비디오왔어????" +newHomeChannellVideo);
+		System.out.println("인기순비디오왔어????" +favHomeChannellVideo);
+	
 		int userNo = Integer.parseInt(request.getParameter("userNo"));
 
 		int getUserNo = ((Member) request.getSession().getAttribute("loginUser")).getUserNo();
@@ -438,11 +444,13 @@ public class LogerController {
 		MyVideo myvideo = new MyVideo();
 		myvideo.setUserNo(userNo);
 
-		// 최근동영상
-		ArrayList<MyVideo> newHomeChannellVideo = ls.newHomeChannellVideo(myvideo);
-
-		// 인기동영상
-		ArrayList<MyVideo> favHomeChannellVideo = ls.favHomeChannellVideo(myvideo);
+		/*
+		 * // 최근동영상 ArrayList<MyVideo> newHomeChannellVideo =
+		 * ls.newHomeChannellVideo(myvideo);
+		 * 
+		 * // 인기동영상 ArrayList<MyVideo> favHomeChannellVideo =
+		 * ls.favHomeChannellVideo(myvideo);
+		 */
 
 		// 최신동영상 1개
 		Video favOne = ls.favOne(myvideo);
@@ -460,7 +468,7 @@ public class LogerController {
 
 		mv.addObject("result", result);
 		mv.addObject("newHomeChannellVideo", newHomeChannellVideo);
-		mv.addObject("favHomeChannellVideo", favHomeChannellVideo);
+		mv.addObject("favHomeChannellVideo", favHomeChannellVideo);	 
 		mv.addObject("logertitleimg", logertitleimg);
 		mv.addObject("favOne", favOne);
 		mv.addObject("favOnesum", favOnesum);
@@ -802,27 +810,35 @@ public class LogerController {
 	public String logerChannelSet(HttpSession session, HttpServletRequest request, Model model, @ModelAttribute Member m) {
 		String preview = request.getParameter("preview");
 		System.out.println("인기순 로거 스튜디오로 이동했니?" + preview);
-		
+		int userNo = Integer.parseInt(request.getParameter("userNo"));
+		System.out.println("userNo들어왔나?" + userNo);
 
-		
-		
-		
-		
-		
-		
+		MyVideo myvideo = new MyVideo();
+		myvideo.setUserNo(userNo);
+
+
+
+		//최근동영상
 		if(preview.equals("newlist")) {
 			System.out.println("최신순으로 들어왔나요?");
+			ArrayList<MyVideo> newHomeChannellVideo = ls.newHomeChannellVideo(myvideo);
+			System.out.println("newHomeChannellVideo" + newHomeChannellVideo);
+			
+			
+			model.addAttribute("newHomeChannellVideo", newHomeChannellVideo);	
+			return "forward:/newHomeChannel.lo";
 
+		}else if(preview.equals("favlist")){ 
+			ArrayList<MyVideo> favHomeChannellVideo = ls.favHomeChannellVideo(myvideo);
+			System.out.println("favHomeChannellVideo" + favHomeChannellVideo);	
+			model.addAttribute("favHomeChannellVideo", favHomeChannellVideo);
+			
+			
+			return "forward:/newHomeChannel.lo";
+		}else {
+			return "loger/newHomeChannel.lo";
 		}
 
-
-
-
-
-
-
-
-		return "";
 	}
 
 	//전체동영상 팝업
