@@ -293,18 +293,6 @@ table.table-striped tbody tr:nth-of-type(odd) {
 	    		var todayDate = $("#todayDate").val();
 	    		
 	    		location.href="logerCalculateApply.lo?monthDate="+monthDate+"&&todayDate="+todayDate;
-	    		/* 
-	    		$.ajax({
-	    			url:"logerCalculateApply.lo",
-	    			data:{"monthDate":monthDate,"todayDate":todayDate},
-	    			type:"post",
-	    			success:function(data){
-	    				alert("정산 신청이 완료되었습니다.");
-	    			},
-	    			error : function(){
-	    				alert("알 수 없는 에러로 정산 신청이 불가능 합니다.");
-	    			}
-	    	}) */
 		 });
 			
 		});

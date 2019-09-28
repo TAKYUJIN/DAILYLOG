@@ -15,6 +15,7 @@ import com.kh.with.main.model.vo.SubscribeVideo;
 import com.kh.with.member.model.vo.Member;
 import com.kh.with.reply.model.vo.Reply;
 import com.kh.with.report.model.vo.Report;
+import com.kh.with.video.model.vo.AddPlace;
 import com.kh.with.video.model.vo.Attachment;
 import com.kh.with.video.model.vo.Video;
 
@@ -131,6 +132,11 @@ public interface LogerService {
 
 	//로거스튜디오 타이틀 이미지 변경
 	int updateTitle(Attachment attachment);
+
+	//로거 동영상 썸네일 업데이트
+	int updateLogerAttachment(Attachment a);
+
+	int deleteAddPlace(AddPlace addPlace);
 
 
 

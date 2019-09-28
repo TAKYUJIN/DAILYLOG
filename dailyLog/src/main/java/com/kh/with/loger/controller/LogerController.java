@@ -44,6 +44,7 @@ import com.kh.with.member.model.vo.Member;
 import com.kh.with.reply.model.vo.Reply;
 import com.kh.with.report.model.vo.Report;
 import com.kh.with.video.model.service.VideoService;
+import com.kh.with.video.model.vo.AddPlace;
 import com.kh.with.video.model.vo.Attachment;
 import com.kh.with.video.model.vo.Video;
 
@@ -78,10 +79,10 @@ public class LogerController {
 		model.addAttribute("rList", rList);	
 
 
-			System.out.println(rList);
-			return "loger/searchLogerReply";
-		}
-	
+		System.out.println(rList);
+		return "loger/searchLogerReply";
+	}
+
 
 
 	// 로거 동영상 수정 기본정보 페이지로 이동
@@ -96,11 +97,14 @@ public class LogerController {
 		l.setUserNo(userNo);
 		l.setvNo(vNo);
 		ArrayList<Video> vList = ls.selectLogerVideo(l);
-
+		ArrayList<Video> dateList = ls.selectLogerAddVideo(l);
+		
 		String adultAut = vList.get(0).getAdultAut();
 		String adYn = vList.get(0).getAdYn();
 		String openTy = vList.get(0).getOpenTy();
+		
 
+		model.addAttribute("dateList", dateList);
 		model.addAttribute("vList", vList);
 		model.addAttribute("adultAut", adultAut);
 		model.addAttribute("adYn", adYn);
@@ -111,78 +115,161 @@ public class LogerController {
 
 	// 로거 동영상 수정 추가정보 페이지로 이동
 	@RequestMapping(value = "addVideoUpdate.lo", produces = "application/text; charset=UTF-8")
-	public ModelAndView addVideoUpdate(HttpSession session, HttpServletRequest request, ModelAndView mv,
-			HttpServletResponse response, @RequestParam(value = "vNo") int vNo) {
+	public void addVideoUpdate(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+//		response.setContentType("text/html;charset=UTF-8");
+//		Member m = (Member) session.getAttribute("loginUser");
+//		int userNo = m.getUserNo();
+//		ArrayList<Loger> loger = ls.selectLogerInfo(m);
+//
+//		String vTitle = request.getParameter("vTitle");
+//		String tag = request.getParameter("tag");
+//		String allArea = request.getParameter("allArea");
+//		String adultArea = request.getParameter("adultArea");
+//		String adultAut = "";
+//		String adYn = request.getParameter("adYn");
+//		String openY = request.getParameter("openY");
+//		String openN = request.getParameter("openN");
+//		String openTy = "";
+//		String adInfo = request.getParameter("adInfo");
+//
+//		System.out.println("전체공개:::::::::" + allArea);
+//		System.out.println("성인공개:::::::::" + adultArea);
+//		System.out.println("오픈Y:::::::::" + openY);
+//		System.out.println("오픈N:::::::::" + openN);
+//
+//		if (allArea != null) {
+//			adultAut = allArea;
+//		} else if (adultArea != null) {
+//			adultAut = adultArea;
+//		}
+//
+//		if (openY != null) {
+//			openTy = openY;
+//		} else if (openN != null) {
+//			openTy = openN;
+//		}
+//
+//		Video v = new Video();
+//		v.setvTitle(vTitle);
+//		v.setTag(tag);
+//		v.setAdultAut(adultAut);
+//		v.setAdYn(adYn);
+//		v.setOpenTy(openTy);
+//		v.setAdInfo(adInfo);
+//
+//		Loger l = new Loger();
+//		l.setUserNo(userNo);
+//		l.setvNo(vNo);
+//		ArrayList<Video> dateList = ls.selectLogerAddVideo(l);
+//		
+//		
+//		// 썸네일 업로드 및 파일이름바꾸기
+//		String root = request.getSession().getServletContext().getRealPath("resources");
+//
+//		String filepath1 = root + "\\uploadFiles";
+//		String beforeenrollNm = file2.getOriginalFilename();
+//		String ext = beforeenrollNm.substring(beforeenrollNm.lastIndexOf("."));
+//		String enrollNms = CommonUtils.getRandomString()+ext;
+//		String enrollNm =  enrollNms.substring(1,10)  + ext;
+//
+//		// 파일 업로드 하는 구문
+//		try {
+//			file2.transferTo(new File(filepath1 + "\\" + enrollNm));
+//		} catch (IllegalStateException | IOException e) {
+//			e.printStackTrace();
+//		}
+//
+//		
+//		Attachment a = new Attachment();
+//		a.setFileNm(enrollNm);
+//		a.setUserNo(userNo);
+//		a.setvNo(vNo);
+//		
+//
+//		// 추가정보 페이지에 v 넘겨주고 거기서 다시 컨트롤러로 받아와보자..
+//		HashMap<String, Object> hmap = new HashMap<String, Object>();
+//		hmap.put("v", v);
+//		hmap.put("a", a);
+//
+//		mv.addObject("a", a);
+//		mv.addObject("v", v);
+//		mv.addObject("dateList", dateList);
+//		mv.setViewName("jsonView");
+//
+//
+//		return mv;
 		response.setContentType("text/html;charset=UTF-8");
 		Member m = (Member) session.getAttribute("loginUser");
+		
 		int userNo = m.getUserNo();
-		ArrayList<Loger> loger = ls.selectLogerInfo(m);
-
-		String vTitle = request.getParameter("vTitle");
-		String tag = request.getParameter("tag");
-		String allArea = request.getParameter("allArea");
-		String adultArea = request.getParameter("adultArea");
-		String adultAut = "";
-		String adYn = request.getParameter("adYn");
-		String openY = request.getParameter("openY");
-		String openN = request.getParameter("openN");
-		String openTy = "";
-		String adInfo = request.getParameter("adInfo");
-
-		System.out.println("전체공개:::::::::" + allArea);
-		System.out.println("성인공개:::::::::" + adultArea);
-		System.out.println("오픈Y:::::::::" + openY);
-		System.out.println("오픈N:::::::::" + openN);
-
-		if (allArea != null) {
-			adultAut = allArea;
-		} else if (adultArea != null) {
-			adultAut = adultArea;
+		int result = 0;
+		
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+		
+		
+		try {
+			new Gson().toJson(result, response.getWriter());
+		} catch (JsonIOException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
+	}
+	//로거 동영상 장소 delete
+	@RequestMapping(value = "deleteAddInfo.lo")
+	public ModelAndView deleteAddPlace(HttpServletRequest request, ModelAndView mv) {
+		String apNm = request.getParameter("apNm");
+		String apAd = request.getParameter("apAd");
+		int vNo = Integer.parseInt(request.getParameter("vNo"));
+		int userNo = Integer.parseInt(request.getParameter("userNo"));
+		
+		AddPlace addPlace = new AddPlace();
+		
+		addPlace.setvNo(vNo);
+		addPlace.setuserNo(userNo);
+		addPlace.setapNm(apNm);
+		addPlace.setapAd(apAd);
+		
+		System.out.println("controller vNo ;;;; " + vNo);
+		
+		int result = ls.deleteAddPlace(addPlace);
 
-		if (openY != null) {
-			openTy = openY;
-		} else if (openN != null) {
-			openTy = openN;
-		}
-
-		Video v = new Video();
-		v.setvTitle(vTitle);
-		v.setTag(tag);
-		v.setAdultAut(adultAut);
-		v.setAdYn(adYn);
-		v.setOpenTy(openTy);
-		v.setAdInfo(adInfo);
-
-		Loger l = new Loger();
-		l.setUserNo(userNo);
-		l.setvNo(vNo);
-		ArrayList<Video> dateList = ls.selectLogerAddVideo(l);
-
-		// 추가정보 페이지에 v 넘겨주고 거기서 다시 컨트롤러로 받아와보자..
-		HashMap<String, Object> hmap = new HashMap<String, Object>();
-		hmap.put("v", v);
-
-		mv.addObject("v", v);
-		mv.addObject("dateList", dateList);
 		mv.setViewName("jsonView");
-
-		// try {
-		// new Gson().toJson(hmap, response.getWriter());
-		// } catch (JsonIOException e) {
-		// e.printStackTrace();
-		// } catch (IOException e) {
-		// e.printStackTrace();
-		// }
-		//
-
+		
 		return mv;
 	}
+	
+	
+//	//로거 동영상 장소 update
+//	@RequestMapping(value = "updateAddPlace.lo", method= RequestMethod.POST)
+//	public String insertAddPlace(HttpServletRequest request) {
+//		String apXY = request.getParameter("apXY");
+//		String apNm = request.getParameter("apNm");
+//		String apAd = request.getParameter("apAd");
+//		int vNo = Integer.parseInt(request.getParameter("vNo"));
+//		int userNo = Integer.parseInt(request.getParameter("userNo"));
+//		
+//		AddPlace addPlace = new AddPlace();
+//		
+//		addPlace.setvNo(vNo);
+//		addPlace.setuserNo(userNo);
+//		addPlace.setapXY(apXY);
+//		addPlace.setapNm(apNm);
+//		addPlace.setapAd(apAd);
+//		
+//		System.out.println("controller vNo ;;;; " + vNo);
+//		
+//		int result = ls.updateAddPlace(addPlace);
+//		
+//		return "video/videoAddInfo";
+//	}
 
 	// 로거 동영상 수정 update
 	@RequestMapping(value = "updateLogerVideo.lo")
 	public String updateLogerVideo(HttpSession session, Model model, HttpServletRequest request,
-			@RequestParam(value = "vNo", required = false) Integer vNo) {
+			@RequestParam(value = "vNo", required = false) Integer vNo, @RequestParam("file2") MultipartFile file2) {
+
 		Member m = (Member) session.getAttribute("loginUser");
 		int userNo = m.getUserNo();
 
@@ -212,9 +299,35 @@ public class LogerController {
 		v.setAdYn(adYn);
 		v.setAdInfo(adInfo);
 
-		int result = ls.updateLogerVideo(v);
+		// 썸네일 업로드 및 파일이름바꾸기
+		String root = request.getSession().getServletContext().getRealPath("resources");
 
-		return "loger/updateLogerVideo";
+		String filepath1 = root + "\\uploadFiles";
+		String beforeenrollNm = file2.getOriginalFilename();
+		String ext = beforeenrollNm.substring(beforeenrollNm.lastIndexOf("."));
+		String enrollNms = CommonUtils.getRandomString()+ext;
+		String enrollNm =  enrollNms.substring(1,10)  + ext;
+
+		// 파일 업로드 하는 구문
+		try {
+			file2.transferTo(new File(filepath1 + "\\" + enrollNm));
+		} catch (IllegalStateException | IOException e) {
+			e.printStackTrace();
+		}
+
+		
+		Attachment a = new Attachment();
+		a.setFileNm(enrollNm);
+		a.setUserNo(userNo);
+		a.setvNo(vNo);
+		
+		//동영상 업데이트
+		int result = ls.updateLogerVideo(v);
+		
+		//썸네일 업데이트
+		int result1 = ls.updateLogerAttachment(a);
+
+		return "forward:/selectLogerVideo.lo";
 	}
 
 	// 로거 동영상 삭제
@@ -397,7 +510,13 @@ public class LogerController {
 	@RequestMapping(value = "newHomeChannel.lo")
 	public ModelAndView newHomeChannel(ModelAndView mv, HttpSession session, HttpServletRequest request, Model model,
 			@ModelAttribute Member m) {
-
+		
+		Object newHomeChannellVideo = request.getAttribute("newHomeChannellVideo");   
+		Object favHomeChannellVideo = request.getAttribute("favHomeChannellVideo");  
+		
+		System.out.println("최신순비디오왔어????" +newHomeChannellVideo);
+		System.out.println("인기순비디오왔어????" +favHomeChannellVideo);
+	
 		int userNo = Integer.parseInt(request.getParameter("userNo"));
 
 		int getUserNo = ((Member) request.getSession().getAttribute("loginUser")).getUserNo();
@@ -438,11 +557,13 @@ public class LogerController {
 		MyVideo myvideo = new MyVideo();
 		myvideo.setUserNo(userNo);
 
-		// 최근동영상
-		ArrayList<MyVideo> newHomeChannellVideo = ls.newHomeChannellVideo(myvideo);
-
-		// 인기동영상
-		ArrayList<MyVideo> favHomeChannellVideo = ls.favHomeChannellVideo(myvideo);
+		/*
+		 * // 최근동영상 ArrayList<MyVideo> newHomeChannellVideo =
+		 * ls.newHomeChannellVideo(myvideo);
+		 * 
+		 * // 인기동영상 ArrayList<MyVideo> favHomeChannellVideo =
+		 * ls.favHomeChannellVideo(myvideo);
+		 */
 
 		// 최신동영상 1개
 		Video favOne = ls.favOne(myvideo);
@@ -460,7 +581,7 @@ public class LogerController {
 
 		mv.addObject("result", result);
 		mv.addObject("newHomeChannellVideo", newHomeChannellVideo);
-		mv.addObject("favHomeChannellVideo", favHomeChannellVideo);
+		mv.addObject("favHomeChannellVideo", favHomeChannellVideo);	 
 		mv.addObject("logertitleimg", logertitleimg);
 		mv.addObject("favOne", favOne);
 		mv.addObject("favOnesum", favOnesum);
@@ -802,27 +923,35 @@ public class LogerController {
 	public String logerChannelSet(HttpSession session, HttpServletRequest request, Model model, @ModelAttribute Member m) {
 		String preview = request.getParameter("preview");
 		System.out.println("인기순 로거 스튜디오로 이동했니?" + preview);
-		
+		int userNo = Integer.parseInt(request.getParameter("userNo"));
+		System.out.println("userNo들어왔나?" + userNo);
 
-		
-		
-		
-		
-		
-		
+		MyVideo myvideo = new MyVideo();
+		myvideo.setUserNo(userNo);
+
+
+
+		//최근동영상
 		if(preview.equals("newlist")) {
 			System.out.println("최신순으로 들어왔나요?");
+			ArrayList<MyVideo> newHomeChannellVideo = ls.newHomeChannellVideo(myvideo);
+			System.out.println("newHomeChannellVideo" + newHomeChannellVideo);
+			
+			
+			model.addAttribute("newHomeChannellVideo", newHomeChannellVideo);	
+			return "forward:/newHomeChannel.lo";
 
+		}else if(preview.equals("favlist")){ 
+			ArrayList<MyVideo> favHomeChannellVideo = ls.favHomeChannellVideo(myvideo);
+			System.out.println("favHomeChannellVideo" + favHomeChannellVideo);	
+			model.addAttribute("favHomeChannellVideo", favHomeChannellVideo);
+			
+			
+			return "forward:/newHomeChannel.lo";
+		}else {
+			return "loger/newHomeChannel.lo";
 		}
 
-
-
-
-
-
-
-
-		return "";
 	}
 
 	//전체동영상 팝업

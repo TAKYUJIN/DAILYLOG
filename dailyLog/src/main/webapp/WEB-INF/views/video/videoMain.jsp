@@ -444,15 +444,23 @@
 					<div align="right" style="margin-top:15%;">
 						 <nav class="navbar navbar-default navbar-expand-lg navbar-light" style="background:none;">
 							<ul class="nav navbar-nav navbar-right ml-auto">	 <!-- style="width:300px;" -->		
+
 								<li class="nav-item" > 
 									<a href="#none" data-toggle="dropdown" id="profile">
+
+                    <!-- 
+								<li class="nav-item" stlye="border:1px solid #A8B7BC;"> 
+									<a href="" data-toggle="dropdown" id="profile"> -->
+
 										<!-- <img src="resources/images/chat.png" style="width:18px; align:right;"> -->
 										<div>
 											<c:if test="${profile != null}">
-												<img class="chImg" src="resources/images/${profile}">
+												<a href="newHomeChannel.lo?userNo=${list2[0].userNo}">
+												<img class="chImg" src="resources/images/${profile}"></a>
 											</c:if>
 											<c:if test="${profile == null}">
-												<img class="chImg" src="resources/images/newlogo3.png">
+											<a href="newHomeChannel.lo?userNo=${list2[0].userNo}">
+												<img class="chImg" src="resources/images/newlogo3.png"></a>
 											</c:if>
 										</div>
 									</a>
