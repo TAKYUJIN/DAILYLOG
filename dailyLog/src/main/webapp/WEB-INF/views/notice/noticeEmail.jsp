@@ -15,11 +15,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
 <style type="text/css">    
-    body {
-        color: #333;
-        background: #fafafa;
-        font-family: "Patua One", sans-serif;
-    }
     .contact-form {
         padding: 10px;
         margin: 10px 0;
@@ -163,10 +158,8 @@
 	.table-wrapper {
     	
     	width:800px;
-        background: #fff;
         padding: 20px;
         margin: 30px 0;
-        box-shadow: 0 1px 1px rgba(0,0,0,.05);
     }
 </style>
 </head>
@@ -176,7 +169,7 @@
 <div class="col-lg-15">
 			<a href="noticeMain.no" class="noticeLink" style="float:left; width:25%;"><h1 class="page-title1">FAQs</h1></a> 
 			<a href="noticeList.no" class="noticeLink" style="float:left; width:25%;"><h1 class="page-title2">Notice</h1></a>
-			<a href="noticeEmailQuestion.no" class="noticeLink" style="float:left; width:25%;"><h1 class="page-title3">question</h1></a>
+			<a href="noticeEmail.no" class="noticeLink" style="float:left; width:25%;"><h1 class="page-title3">question</h1></a>
 			</div>
 			<div>
 			<a href="selectNoticeQuestion.no" class="noticeLink" style="float:right; width:36%;"><h4 class="page-title4">나의 문의내역</h4></a>

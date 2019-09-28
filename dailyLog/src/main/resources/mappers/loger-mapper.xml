@@ -115,6 +115,8 @@
 		<result property="openTy" column="OPEN_TY" />
 		<result property="nNo" column="RANK" />
 		<result property="afileNm" column="AFILE_NM" />
+		<result property="apNm" column="AP_NM" />
+		<result property="apAd" column="AP_AD" />
 	</resultMap>
 	
 	
@@ -141,23 +143,33 @@
 		<result property="apAd" column="AP_AD" />
 	</resultMap>
 	
-	<!-- 구독시 값 가지고 오는 셀렉트 -->
-	<select id="subUserInfo"  resultMap="SubUserInfoResultSet">
-		SELECT L.CH_NO, M.NICKNAME , L.CH_NM 
-	FROM LOGER L
-	JOIN MEMBER M
-	ON (L.USER_NO = M.USER_NO)
-	WHERE  L.USER_NO = #{userNo}
+	<resultMap type="Attachment" id="AttachmentResultSet">
+		<id property="userNo" column="USER_NO" />
+		<result property="amNo" column="AM_NO" />
+		<result property="fileNm" column="FILE_NM" />
+		<result property="amDt" column="AM_DT" />
+		<result property="enrollNm" column="ENROLL_NM" />
+		<result property="modifyNm" column="MODIFY_NM" />
+		<result property="amTY" column="AM_TY" />
+	</resultMap>
 	
-	</select>
+	<!-- 로거 동영상 장소 삭제  -->
+	<delete id="delectAddplace" parameterType="int">
+		DELETE FROM ADDPLACE
+		WHERE V_NO = #{vNo}
+		AND AP_NM = #{apNm}
+		AND AP_AD = #{apAd}
+	</delete>
 	
 	<!-- 로거 동영상 수정 기본 정보 페이지 출력 -->
 	<select id="selectLogerVideo" resultMap="VideoResultSet">
-	SELECT RANK, AFILE_NM, V_NO, USER_NO, V_TITLE, COUNT, CH_NM, TAG, VBL_YN, UPLOAD_DT, MODIFY_DT, ADULT_AUT, AD_YN, AD_INFO, LOCATION, INFO, FILE_NM, OPEN_TY
-		FROM (SELECT ROW_NUMBER() OVER(ORDER BY V.UPLOAD_DT DESC) RANK,	V.*, A.FILE_NM AFILE_NM
+	SELECT RANK, AFILE_NM, V_NO, USER_NO, V_TITLE, COUNT, CH_NM, TAG, VBL_YN, UPLOAD_DT, MODIFY_DT, 
+        ADULT_AUT, AD_YN, AD_INFO, LOCATION, INFO, FILE_NM, OPEN_TY, AP_NM, AP_AD
+		FROM (SELECT ROW_NUMBER() OVER(ORDER BY V.UPLOAD_DT DESC) RANK,	V.*, A.FILE_NM AFILE_NM, AP.AP_NM, AP.AP_AD
 		FROM VIDEO V
 		JOIN MEMBER M ON(V.USER_NO = M.USER_NO)
 		JOIN ATTACHMENT A ON(V.V_NO = A.V_NO)
+        LEFT OUTER JOIN ADDPLACE AP ON(V.V_NO = AP.V_NO)
 		WHERE V.V_NO = #{vNo})
 		ORDER BY RANK ASC
 	</select>
@@ -180,6 +192,13 @@
 		UPDATE VIDEO SET V_TITLE = #{vTitle}, TAG = #{tag}, OPEN_TY = #{openTy}, ADULT_AUT = #{adultAut},
 		AD_YN = #{adYn}, AD_INFO = #{adInfo}
 		WHERE V_NO = #{vNo}
+	</update>
+	
+	<!-- 로거 동영상 썸네일 수정 update -->
+	<update id="updateLogerAttachment" parameterType="Attachment">
+		UPDATE ATTACHMENT SET FILE_NM = #{fileNm}
+		WHERE V_NO = #{vNo}
+        AND USER_NO = #{userNo}
 	</update>
 	
 	
@@ -429,6 +448,14 @@
     WHERE USER_NO = #{userNo}
    </update>
  
+	<!-- 구독시 값 가지고 오는 셀렉트 -->
+	<select id="subUserInfo"  resultMap="SubUserInfoResultSet">
+		SELECT L.CH_NO, M.NICKNAME , L.CH_NM 
+	FROM LOGER L
+	JOIN MEMBER M
+	ON (L.USER_NO = M.USER_NO)
+	WHERE  L.USER_NO = #{userNo}
+	</select>
 </mapper>
 
 
