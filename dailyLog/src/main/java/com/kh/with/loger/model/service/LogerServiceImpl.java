@@ -154,6 +154,13 @@ public class LogerServiceImpl implements LogerService{
 	public int videoDelete(int vNo) {
 		return ld.videoDelete(sqlSession, vNo);
 	}
+	
+	@Override
+	public int replyDelete(int repNo) {
+		// TODO Auto-generated method stub
+		return ld.replyDelete(sqlSession, repNo);
+	}
+
 
 
 	@Override
@@ -303,6 +310,8 @@ public class LogerServiceImpl implements LogerService{
 	public int deleteAddPlace(AddPlace addPlace) {
 		return ld.deleteAddplace(sqlSession, addPlace);
 	}
+
+	
 
 	
 

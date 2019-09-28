@@ -161,7 +161,7 @@ $(function() {
                   </div>
                   <div class="col-xs-3">
                      <button id="sendId"
-                        style="height: 35px; border-radius: 5px; background: #13334A; color: white; border: solid 1px;"
+                        style="height: 35px; border-radius: 5px; background: #13334A; color: white; "
                         name="btncheck">번호발송</button>
                   </div>
                </div>
@@ -179,7 +179,7 @@ $(function() {
                   </div>
                   <div class="col-xs-3">
                      <button id="cksmsPn"
-                        style="height: 35px; border-radius: 5px; background: #13334A; color: white; border: solid 1px;"
+                        style="height: 35px; border-radius: 5px; background: #13334A; color: white;"
                         name="btncheck">인증확인</button>
 
                   </div>

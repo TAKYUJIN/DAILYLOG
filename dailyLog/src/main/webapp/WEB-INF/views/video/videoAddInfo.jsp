@@ -514,7 +514,7 @@ function displayCenterInfo(result, status) {
 
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
@@ -524,7 +524,7 @@ function displayCenterInfo(result, status) {
 <title>지도 제발</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
-   href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <script
    src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script
@@ -532,167 +532,331 @@ function displayCenterInfo(result, status) {
 <script
    src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-
 </head>
 <style>
 .mainpage {
-   width: 1600px;
-   margin-top: 100px;
+	width: 1600px;
+	margin-top: 100px;
 }
 
 .btn {
-   border: 1px solid lightgray;
-   margin-left: 20px;
+	border: 1px solid lightgray;
+	margin-left: 20px;
 }
 
 .infobtn {
-   margin-top: 50px;
-   margin-left: -10px;
+	margin-top: 50px;
+	margin-left: -10px;
 }
 
 #uploadbtn {
-   margin-top: 30px;
-   margin-left: 900px;
+	margin-top: 30px;
+	margin-left: 900px;
 }
 
 #advertising {
-   color: gray;
+	color: gray;
 }
 
 #innerbox {
-   margin-left: 100px;
+	margin-left: 100px;
 }
 
 #minor {
-   margin-left: 600px;
-   margin-top: -400px;
+	margin-left: 600px;
+	margin-top: -400px;
 }
 
 #minorimg {
-   margin-left: 70px;
+	margin-left: 70px;
 }
 
 .form-group {
-   width: 500px;
-   margin-left: -10px;
+	width: 500px;
+	margin-left: -10px;
 }
 
 #thumbnail {
-   margin-top: 80px;
-   margin-left: -85px;
+	margin-top: 80px;
+	margin-left: -85px;
 }
 
 #adInfo {
-   margin-left: 10px;
+	margin-left: 10px;
 }
 
 #map {
-   height: 400px; !important;
-   width: 500px; !important;
+	height: 400px; ! important;
+	width: 500px;
+	!
+	important;
 }
 
-.map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
-.map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
-.map_wrap {position:relative;width:100%;height:500px;}
-#menu_wrap {position:absolute;top:0;left:0;bottom:0;width:250px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
-.bg_white {background:#fff;}
-#menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
-#menu_wrap .option{text-align: center;}
-#menu_wrap .option p {margin:10px 0;}  
-#menu_wrap .option button {margin-left:5px;}
-#placesList li {list-style: none;}
-#placesList .item {position:relative;border-bottom:1px solid #888;overflow: hidden;cursor: pointer;min-height: 65px;}
-#placesList .item span {display: block;margin-top:4px;}
-#placesList .item h5, #placesList .item .info {text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
-#placesList .item .info{padding:10px 0 10px 55px;}
-#placesList .info .gray {color:#8a8a8a;}
-#placesList .info .jibun {padding-left:26px;background:url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png) no-repeat;}
-#placesList .info .tel {color:#009900;}
-#placesList .item .markerbg {float:left;position:absolute;width:36px; height:37px;margin:10px 0 0 10px;background:url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png) no-repeat;}
-#placesList .item .marker_1 {background-position: 0 -10px;}
-#placesList .item .marker_2 {background-position: 0 -56px;}
-#placesList .item .marker_3 {background-position: 0 -102px}
-#placesList .item .marker_4 {background-position: 0 -148px;}
-#placesList .item .marker_5 {background-position: 0 -194px;}
-#placesList .item .marker_6 {background-position: 0 -240px;}
-#placesList .item .marker_7 {background-position: 0 -286px;}
-#placesList .item .marker_8 {background-position: 0 -332px;}
-#placesList .item .marker_9 {background-position: 0 -378px;}
-#placesList .item .marker_10 {background-position: 0 -423px;}
-#placesList .item .marker_11 {background-position: 0 -470px;}
-#placesList .item .marker_12 {background-position: 0 -516px;}
-#placesList .item .marker_13 {background-position: 0 -562px;}
-#placesList .item .marker_14 {background-position: 0 -608px;}
-#placesList .item .marker_15 {background-position: 0 -654px;}
-#pagination {margin:10px auto;text-align: center;}
-#pagination a {display:inline-block;margin-right:10px;}
-#pagination .on {font-weight: bold; cursor: default;color:#777;}
+.map_wrap, .map_wrap * {
+	margin: 0;
+	padding: 0;
+	font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
+	font-size: 12px;
+}
+
+.map_wrap a, .map_wrap a:hover, .map_wrap a:active {
+	color: #000;
+	text-decoration: none;
+}
+
+.map_wrap {
+	position: relative;
+	width: 100%;
+	height: 500px;
+}
+
+#menu_wrap {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	width: 250px;
+	margin: 10px 0 30px 10px;
+	padding: 5px;
+	overflow-y: auto;
+	background: rgba(255, 255, 255, 0.7);
+	z-index: 1;
+	font-size: 12px;
+	border-radius: 10px;
+}
+
+.bg_white {
+	background: #fff;
+}
+
+#menu_wrap hr {
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 2px solid #5F5F5F;
+	margin: 3px 0;
+}
+
+#menu_wrap .option {
+	text-align: center;
+}
+
+#menu_wrap .option p {
+	margin: 10px 0;
+}
+
+#menu_wrap .option button {
+	margin-left: 5px;
+}
+
+#placesList li {
+	list-style: none;
+}
+
+#placesList .item {
+	position: relative;
+	border-bottom: 1px solid #888;
+	overflow: hidden;
+	cursor: pointer;
+	min-height: 65px;
+}
+
+#placesList .item span {
+	display: block;
+	margin-top: 4px;
+}
+
+#placesList .item h5, #placesList .item .info {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+#placesList .item .info {
+	padding: 10px 0 10px 55px;
+}
+
+#placesList .info .gray {
+	color: #8a8a8a;
+}
+
+#placesList .info .jibun {
+	padding-left: 26px;
+	background:
+		url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png)
+		no-repeat;
+}
+
+#placesList .info .tel {
+	color: #009900;
+}
+
+#placesList .item .markerbg {
+	float: left;
+	position: absolute;
+	width: 36px;
+	height: 37px;
+	margin: 10px 0 0 10px;
+	background:
+		url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png)
+		no-repeat;
+}
+
+#placesList .item .marker_1 {
+	background-position: 0 -10px;
+}
+
+#placesList .item .marker_2 {
+	background-position: 0 -56px;
+}
+
+#placesList .item .marker_3 {
+	background-position: 0 -102px
+}
+
+#placesList .item .marker_4 {
+	background-position: 0 -148px;
+}
+
+#placesList .item .marker_5 {
+	background-position: 0 -194px;
+}
+
+#placesList .item .marker_6 {
+	background-position: 0 -240px;
+}
+
+#placesList .item .marker_7 {
+	background-position: 0 -286px;
+}
+
+#placesList .item .marker_8 {
+	background-position: 0 -332px;
+}
+
+#placesList .item .marker_9 {
+	background-position: 0 -378px;
+}
+
+#placesList .item .marker_10 {
+	background-position: 0 -423px;
+}
+
+#placesList .item .marker_11 {
+	background-position: 0 -470px;
+}
+
+#placesList .item .marker_12 {
+	background-position: 0 -516px;
+}
+
+#placesList .item .marker_13 {
+	background-position: 0 -562px;
+}
+
+#placesList .item .marker_14 {
+	background-position: 0 -608px;
+}
+
+#placesList .item .marker_15 {
+	background-position: 0 -654px;
+}
+
+#pagination {
+	margin: 10px auto;
+	text-align: center;
+}
+
+#pagination a {
+	display: inline-block;
+	margin-right: 10px;
+}
+
+#pagination .on {
+	font-weight: bold;
+	cursor: default;
+	color: #777;
+}
 </style>
 
 </head>
 <body>
 
-   <jsp:include page="../common/mainBar.jsp"></jsp:include>
-   <br><br><br><br><br>
-   <p id="result"></p>
- 	
-   <div class="container">
-   <div class="row">
-            <div class="progress" style="width: 970px; margin-left:-182px;">
-               <div class="progress-bar progress-bar-striped active"
-                  role="progressbar" aria-valuenow="40" aria-valuemin="0"
-                  aria-valuemax="100" style="width: 40%"></div>
-            </div>
-         </div>
-        
-         <button id="addInfo" class="btn btn-primary" name="addInfo" style="margin-top:-75px; margin-left:860px;" >저장하기</button>
-</div>
-<div class="map_wrap" style="margin-left:100px">
-   <div class="row">
-    <div id="map" style="width:1000px;height:500px;position:relative;overflow:hidden;"></div>
+	<jsp:include page="../common/mainBar.jsp"></jsp:include>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<p id="result"></p>
 
-    <div id="menu_wrap" class="bg_white" style="margin-left:-10px;">
-        <div class="option">
-            <div>
-                <form onsubmit="searchPlaces(); return false;">
-                    키워드 : <input type="text" id="keyword" size="15"> 
-                    <button type="submit">검색하기</button> 
-                </form>
-            </div>
-        </div>
-        <hr>
-        <ul id="placesList"></ul>
-        <div id="pagination"></div>
-    </div>
-    </div>
-</div>
-<br><br><br>
+	<div class="container">
+		<div class="row">
+			<div class="progress" style="width: 970px; margin-left: -182px;">
+				<div class="progress-bar progress-bar-striped active"
+					role="progressbar" aria-valuenow="40" aria-valuemin="0"
+					aria-valuemax="100" style="width: 40%"></div>
+			</div>
+		</div>
+		<div>
+		<button id="addInfo" class="btn btn-primary" name="addInfo"
+			style="margin-top: -75px; margin-left: 860px;" onclick="move();">업로드 </button>
+		<button id="uploadBtn" class="btn btn-primary" name="uploadBtn"
+			style="margin-top: -115px; margin-left: 860px;" hidden>&nbsp;업로드 &nbsp;</button>	
+			</div>
+	</div>
+	<div class="map_wrap" style="margin-left: 100px">
+		<div class="row">
+			<div id="map"
+				style="width: 1000px; height: 500px; position: relative; overflow: hidden;"></div>
+
+			<div id="menu_wrap" class="bg_white" style="margin-left: -10px;">
+				<div class="option">
+					<div>
+						<form onsubmit="searchPlaces(); return false;">
+							키워드 : <input type="text" id="keyword" size="15">
+							<button type="submit">검색하기</button>
+						</form>
+					</div>
+				</div>
+				<hr>
+				<ul id="placesList"></ul>
+				<div id="pagination"></div>
+			</div>
+		</div>
+	</div>
+	<br>
+	<br>
+	<br>
 
 
-<div id="info" style="margin-left:90px;">
+	<div id="info" style="margin-left: 90px;"></div>
 
-</div>
+	<br>
+	<br>
+	<br>
+	<br>
 
-<br><br><br><br>
+	<textarea cols="120" rows="10" id="inputAdd" name="inputAdd"
+		style="resize: none; margin-left: 90px; border: none;"
+		placeholder="상세정보를 작성해주세요"></textarea>
 
-<textarea cols="120" rows="10" id="inputAdd" name="inputAdd" style="resize:none; margin-left:90px; border:none;" placeholder="상세정보를 작성해주세요"></textarea>
 
 
+	<div id="minor"
+		style="margin-left: 1200px; margin-top: -660px; width: 300px;">
+		<img id="minorimg" src="resources/images/family.png"
+			style="width: 100px;"> <br> <a>동영상에 미성년자가 등장하는지 살펴주세요<br>
+			DailyLog에서의 아동 안전에 대한 정책과 <br>거주 지역의 모든 노동법 의무를 준수해야합니다
+		</a>
+	</div>
 
-<div id="minor" style="margin-left:1200px; margin-top:-660px; width:300px; ">
-               <img id="minorimg" src="resources/images/family.png"
-                  style="width: 100px; "> <br> <a>동영상에 미성년자가 등장하는지
-                  살펴주세요<br> DailyLog에서의 아동 안전에 대한 정책과 <br>거주 지역의 모든 노동법
-                  의무를 준수해야합니다
-               </a>
-            </div>
-            
-<div>
-<button type="button" name="mvHomeCh" id="mvHomeCh" onclick="move();" style="margin-top:600px; margin-left:530px; font-size: medium; background: #13334A; color: white; height:40px;">업로드하기 </button>
-</div>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1bbe6319293d273f5cc3cd430eba39d2&libraries=services"></script>
-<script>
+		
+
+	<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1bbe6319293d273f5cc3cd430eba39d2&libraries=services"></script>
+	<script>
 // 마커를 담을 배열입니다
 var markers = [];
 
@@ -786,15 +950,13 @@ function displayPlaces(places) {
         (function(marker, places ) {
             kakao.maps.event.addListener(marker, 'click', function() {
                console.log(places.y+","+places.x+","+places.place_name+","+places.road_address_name );
-                
-               var message ="<ul> <li>"+places.place_name+"<button>X</button></li> </ul>";
+               
+					var message ="<ul> <li>"+places.place_name+"<button>X</button></li> </ul>";
                
                
-               document.getElementById('info').innerHTML +=message;
-				
-              
+               		document.getElementById('info').innerHTML +=message;
                
-           
+           		
                 
                 var userNo = "${addUserNo}";
               	var vNo = "${addvNo}";
@@ -808,6 +970,7 @@ function displayPlaces(places) {
               		data:{userNo:userNo,vNo:vNo,apXY:apXY,apNm:apNm,apAd:apAd},
               		success:function(data){
               			console.log("장소정보 성공!");
+              			
               		},
               		error:function(data){
               			console.log("장소정보 실패!");
@@ -1047,13 +1210,16 @@ $("#addInfo").click(function(){
 		success:function(data){
 			console.log("성공! ");
 			
-			//document.loaction.href="loginbutton.me";
 			
 		},
 		error:function(data){
 			console.log("실패!");
+			
 		}
 	});
+	
+	$("#addInfo").hide();
+    
 });
 
 //var message = "${msg}";
@@ -1066,53 +1232,54 @@ console.log("addinfo"+addUserNo + ";;;;;;" +addvNo)
 
 function move(){
 	alert("동영상 업로드에 성공하셨습니다. ");
+	$("#uploadBtn").show();
 	location.href="newHomeChannel.lo?userNo="+userNo;
 }
 </script>
 
 
-   
-
-
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
-      <br>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
 
 
 
-	
-			
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
+
+
+
+
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
 </html>

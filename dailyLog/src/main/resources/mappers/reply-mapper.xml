@@ -37,6 +37,10 @@
 	
 	</select>
      
+     
+    <delete id="replyDelete" parameterType="int">
+	 	DELETE FROM REPLY WHERE REP_NO = #{repNo}
+	 </delete>
 	
 	
 </mapper>

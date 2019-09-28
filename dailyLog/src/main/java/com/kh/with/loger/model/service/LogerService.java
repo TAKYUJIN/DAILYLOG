@@ -133,10 +133,14 @@ public interface LogerService {
 	//로거스튜디오 타이틀 이미지 변경
 	int updateTitle(Attachment attachment);
 
+
+	int replyDelete(int repNo);
+
 	//로거 동영상 썸네일 업데이트
 	int updateLogerAttachment(Attachment a);
 
 	int deleteAddPlace(AddPlace addPlace);
+
 
 
 

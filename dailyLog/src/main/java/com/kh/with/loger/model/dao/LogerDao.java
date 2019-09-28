@@ -139,7 +139,13 @@ public interface LogerDao {
 	//로거스튜디오 타이틀 이미지 변경
 	int updateTitle(SqlSessionTemplate sqlSession, Attachment attachment);
 
+
+	
+	//댓글 삭제 
+	int replyDelete(SqlSessionTemplate sqlSession, int repNo);
+
 	int deleteAddplace(SqlSessionTemplate sqlSession, AddPlace addPlace);
+
 
 
 

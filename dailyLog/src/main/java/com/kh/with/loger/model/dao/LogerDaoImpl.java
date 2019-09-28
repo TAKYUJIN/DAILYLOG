@@ -202,6 +202,13 @@ public class LogerDaoImpl implements LogerDao{
 	public int videoDelete(SqlSessionTemplate sqlSession, int vNo) {
 		return sqlSession.delete("Loger.videoDelete", vNo);
 	}
+	
+	@Override
+	public int replyDelete(SqlSessionTemplate sqlSession, int repNo) {
+		// TODO Auto-generated method stub
+		return sqlSession.delete("Reply.replyDelete", repNo);
+	}
+	
 	@Override
 	public int attachmentDelete(SqlSessionTemplate sqlSession, int vNo) {
 		return sqlSession.delete("Loger.attachmentDelete", vNo);
@@ -343,10 +350,12 @@ public class LogerDaoImpl implements LogerDao{
 		
 		return sqlSession.update("Attachment.updateTitle", attachment);
 	}
+
 	@Override
 	public int deleteAddplace(SqlSessionTemplate sqlSession, AddPlace addPlace) {
 		return sqlSession.delete("Loger.delectAddplace", addPlace);
 	}
+
 
 }
 
