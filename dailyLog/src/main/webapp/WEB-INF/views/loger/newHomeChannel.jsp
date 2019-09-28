@@ -219,11 +219,11 @@ body {
 		<hr class="my-hr1">
 
 		<form class="navbar-form form-inline" action="search.mb" method="get">
-			<div class="input-group search-box" style="margin-left: 1200px">
+			<!-- <div class="input-group search-box" style="margin-left: 1200px">
 				<input type="text" id="search" name="search" class="form-control"
 					placeholder="검색"> <span class="input-group-addon"><i
 					class="material-icons">&#xE8B6;</i></span>
-			</div>
+			</div> -->
 		</form>
 
 		<div class="myInfo">
@@ -265,6 +265,7 @@ body {
 
 				<h3>
 					<strong><c:out value="${favOne.vTitle}" /></strong>
+					<c:out value="${newHomeChannellVideo}" />
 				</h3>
 				<br>
 
