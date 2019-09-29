@@ -9,17 +9,20 @@
 <head>
 <meta charset="UTF-8">
 <title>WITH</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script>
-   $(function() {
-      var idx = false;
-      var ndx = false;
-      var pdx = false;
-      var smsPn = false;
-      
-      
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+var idx = false;
+var ndx = false;
+var pdx = false;
+var smsPn = false;
+var receiveMsg = "";
 
+	$(function() {
       $("#ckId").click(function() {
          $.ajax({
             url : "idCheck.me",
@@ -107,43 +110,42 @@
          $.ajax({
             url : "smssend.me",
             type:"post",
-            data:{rphone:rphone, sphone1:sphone1, sphone2:sphone2, sphone3:sphone3, msg:msg, action:action},
+            data:{rphone:rphone, sphone1:sphone1, sphone2:sphone2, sphone3:sphone3, msg:msg, action:action
+            },
             success : function(data) {
-				alert("인증번호가 발송되었습니다.");			
+            	alert("인증번호가 발송되었습니다.");
 			
           },
           error : function() {
              //alert("서버에러 ");
           }
        });
-    });ㄴ	
-		
-				$("#cksmsPn").click(function(){
-					
-					var checkNo = $("input[name='msg']").val();
-					var checkPhone = $("input[name='authorization_code']").val();		
-					
-					console.log("checkNo :::: " + checkNo);
-					console.log("checkPhone ::::" + checkPhone);
-					
-					if(checkNo == checkPhone){
-						$("#checkNo").attr({"readonly":"true"});
-						$("#cksmsPn").hide();
-						smsPn = true;
-						alert("인증이 완료되었습니다.");
-						$("#joinBtn").removeAttr("disabled");
-						
-					}else{
-						alert("인증번호가 틀렸습니다. 다시 입력하세요.");
-						$("#joinBtn").attr("disabled", "disabled");
-					}	
-			
-		
-	});
+    });
+   });
+   
+   function fnAuthConfirm(){
+	   
+	   var checkNo = $("input[name='msg']").val();
+	   var inputNumber = $("input[name='phone1']").val(); // 입력받은 인증번호
+		//receiveMsg : 랜덤으로 생성한 인증번호
+
+		if (inputNumber == checkNo) {
+			$("#checkNo").attr({
+				"readonly" : "true"
+			});
+			$("#cksmsPn").hide();
+			smsPn = true;
+			alert("인증이 완료되었습니다.");
+			$("#joinBtn").removeAttr("disabled");
+
+		} else {
+			alert("인증번호가 틀렸습니다. 다시 입력하세요.");
+			$("#joinBtn").attr("disabled", "disabled");
+		}
+	}
       
       
-      $("#joinForm").submit(
-            function() {
+            function fnSend() {
                if ($("#userPwd").val() !== $("#userPwd2").val()) {
                   alert("비밀번호가 다릅니다.");
                   $("#userPwd").val("").focus();
@@ -153,12 +155,9 @@
                   alert("비밀번호는 8자 이상으로 설정해야 합니다.");
                   $("#userPwd").val("").focus();
                   return false;
-               } else if ($.trim($("#userPwd").val()) !== $("#userPwd")
-                     .val()
-                     || $.trim($("#userId").val()) !== $("#userId")
-                           .val()
-                     || $.trim($("#nickname").val()) !== $("#nickname")
-                           .val()) {
+               } else if ($.trim($("#userPwd").val()) !== $("#userPwd").val()
+                     || $.trim($("#userId").val()) !== $("#userId").val()
+                     || $.trim($("#nickname").val()) !== $("#nickname").val()) {
                   alert("공백은 입력이 불가능합니다.");
                   return false;
                } else if (idx == false) {
@@ -173,15 +172,14 @@
                } else if (smsPn == false) {
                    alert("인증번호 입력 후 확인을 눌러주세요 ");
                    return false;
-                   
-               } else {
-            	   $("#joinForm").submit();
-                  alert("회원가입 인증 이메일 발송완료! \n가입하기 버튼을 누르셔야 로그인이 가능합니다  ");
-                 
-               }
-            })
+     
+               } 
+           	
+               joinForm.action="insert.me";
+               joinForm.submit();
+               alert("회원가입 인증 이메일 발송완료! \n가입하기 버튼을 누르셔야 로그인이 가능합니다  ");
 
-   });
+   }
 </script>
 
 <style type="text/css">
@@ -307,7 +305,7 @@ body {
 	<br>
 	<div class="signup-form">
 
-		<form id="joinForm" action="insert.me" method="post"
+		<form id="joinForm" name="joinForm" method="post"
 			encType="multipart/form-data">
 			<table align="center">
 				<h2>Sign up</h2>
@@ -374,7 +372,7 @@ body {
 
 				<div class="form-group">
 					<input type="text" class="form-control" name="birth" id="birth"
-						placeholder="Birth  ex) 961231" required="required" style="color: black;">
+						placeholder="Birth  ex) 20191001" required="required" style="color: black;">
 				</div>
 
 				<div class="form-group">
@@ -384,12 +382,11 @@ body {
 								placeholder="Phone" required="required" style="color: black;">
 						</div>
 						<div class="col-xs-3">
-							<button id="ckPn"
-								style="height: 35px; border-radius: 5px; background: #13334A; color: white;"
-								name="btncheck">중복확인</button>
-							<button id="sendPn"
-								style="height: 35px; border-radius: 5px; background: #13334A; color: white; "
-								name="btncheck" hidden>문자전송</button>
+							<input type="button" id="ckPn"
+							style="height: 35px; border-radius: 5px; background: #13334A; color: white; "
+							name="btncheck" value="중복확인" />
+							 <input type="button" id="sendPn" style="height: 35px; border-radius: 5px; background: #13334A; 
+							 color: white; "name="btncheck" hidden value="문자전송" />
 						</div>
 
 					</div>
@@ -397,8 +394,8 @@ body {
 				<div class="form-group" id="showsms" hidden>
 					<div class="row">
 						<div class="col-xs-9">
-							<input type="text" class="form-control" name="authorization_code"
-								id="authorization_code" placeholder="authorization code"
+							<input type="text" class="form-control" name="phone1"
+								id="phone1" placeholder="authorization code"
 								 style="color: black;"> <input type="hidden" id="action"
 								name="action" value="go"> <input type="hidden"
 								name="msg" value="<%=checkNo%>"> <input type="hidden"
@@ -407,9 +404,9 @@ body {
 							<input type="hidden" id="sphone3" name="sphone3" value="0092">
 						</div>
 						<div class="col-xs-3">
-							<button id="cksmsPn"
-								style="height: 35px; border-radius: 5px; background: #13334A; color: white; border: solid 1px;"
-								name="cksmsPn">인증확인</button>
+							<input type="button" id="cksmsPn"
+							style="height: 35px; border-radius: 5px; background: #13334A; color: white; "
+							name="cksmsPn" onclick="fnAuthConfirm();" value="인증확인" />
 
 						</div>
 					</div>
@@ -419,8 +416,8 @@ body {
 				<br>
 				<br>
 				<div class="form-group">
-					<button type="submit" id="joinBtn"
-						class="btn btn-join btn-lg btn-block" style="">가입하기
+					<button type="button" id="joinBtn"
+						class="btn btn-join btn-lg btn-block" onclick="fnSend();">가입하기
 					</button>
 
 				</div>

@@ -71,17 +71,26 @@ A:hover {
 				var email = $('#email').val();
 				
 				$.ajax({
-					url:"/sendPwd.me",
+					url:"sendPwd.me",
 					type:"post",
 					data:{userNm:userNm, email:email},
-					success:function(data){
-						location.href="loginbutton.me";				
+					success:function(data){		
+						console.log("재발급 성공 !")
 					},
 					error:function(){
 						console.log("실패!");
 					}
 				});
-				alert("임시비밀번호가 발송되었습니다.\n확인 후 로그인 해주세요");
+				
+				
+				}
+				
+			
+			
+			var message = "${msg}";
+			if(message == "임시비밀번호가 발송되었습니다"){
+				alert(message);
+				document.location.href="loginbutton.me";	
 			}
 		</script>
 </head>
@@ -137,7 +146,7 @@ A:hover {
 				<div class="col-xs-4">
 					<button id="sendPwd"
 						class="btn btn-join btn-lg btn-block" 
-						style="height: 40px; font-size: medium; background: #13334A; color: white;" onclick="sendPwd();">번호
+						style="height: 40px; font-size: medium; background: #13334A; color: white;">번호
 						발송</button>
 				</div>
 				<div class="col-xs-4">

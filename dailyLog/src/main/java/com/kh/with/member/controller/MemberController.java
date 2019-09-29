@@ -731,13 +731,17 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="sendPwd.me", method= RequestMethod.POST)
-	public String sendPwd(HttpServletRequest request) {
+	public String sendPwd(HttpServletRequest request, Model model) {
 		String email = request.getParameter("email");
 		
 		System.out.println("email ~~ " + email);
 		
 		
 		ms.mailSendWithPwd(email, request);
+		
+		if(email != null) {
+			model.addAttribute("msg", "임시비밀번호가 발송되었습니다");
+		}
 		
 		return "member/findPwd";
 	}
