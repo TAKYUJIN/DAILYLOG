@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.common.eventbus.Subscribe;
 import com.kh.with.common.CommonUtils;
 import com.kh.with.loger.model.service.LogerService;
 import com.kh.with.loger.model.vo.Loger;
@@ -801,18 +802,18 @@ public class VideoController {
 		Member m = (Member) session.getAttribute("loginUser");
 		int loginUser = m.getUserNo();
 		int chNo = Integer.parseInt(request.getParameter("chNo"));
-
+		System.out.println("sub : " + loginUser + chNo);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("loginUser", loginUser);
 		map.put("chNo", chNo);
 		System.out.println("PP " + loginUser + " p " + chNo);
-		int sub = 0;
-		sub = vs.selectSubtitle(map);
+		List<Subscribe> sub = vs.selectSubtitle(map);
+		System.out.println("여기");
 		int result = 0;
-		if(sub != 0) {
+		if(!sub.isEmpty()) {
 			result = 1;
 		}
-		System.out.println(sub + result + "{{{{{");
+		System.out.println("sub result : " + result);
 		return Integer.toString(result);
 	}
 	//구독
