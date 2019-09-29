@@ -125,20 +125,30 @@ table.table td .add {
 	width: 100px;
 }
 .mainpage {
-	width:1024px;
+	width:1600px;
 	margin-top:-150px;
 }
 .button1 {
-	background-color: #f08080;
-	padding: 6px 24px;
-	font-color: white;
+	margin-left:1200px;
+	background-color: #13334A;
+	padding: 10px 24px;
+	color: white;
 	border: none;
+	border-radius: 7px;
+	moz-border-radius: 7px;
+	khtml-border-radius: 7px;
+	webkit-border-radius: 7px;
 }
-
-.buttonarea {
-	width: 180px;
-	margin-left: 950px;
-	margin-top: 20px;
+.button2 {
+	margin-left:50px;
+	background-color: #A8B7BC ;
+	padding: 10px 24px;
+	color: white;
+	border: none;
+	border-radius: 7px;
+	moz-border-radius: 7px;
+	khtml-border-radius: 7px;
+	webkit-border-radius: 7px;
 }
 </style>
 <body>
@@ -147,11 +157,11 @@ table.table td .add {
 	<form action="noticeWriteAdmin.ad" method="post">
 	<div class="mainpage">
 		<div class="container">
-			<div class="table-wrapper">
+			<!-- <div class="table-wrapper">
 				<div class="table-title">
 					<div class="row"></div>
 				</div>
-			</div>
+			</div> -->
 			<table class="table table-bordered">
 				<thead>
 
@@ -173,7 +183,7 @@ table.table td .add {
 	</div>
 	<div class="buttonarea">
 		<button class="button1" type="submit" >작성</button>
-		<button class="button1">취소</button>
+		<button class="button2">취소</button>
 	</div>
 	</form>
 	<br><br>

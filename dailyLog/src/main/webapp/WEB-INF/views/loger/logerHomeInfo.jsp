@@ -223,23 +223,23 @@ body {
 		</div>
 		<br> <br>
 		<hr class="my-hr1">
-		<form class="navbar-form form-inline" action="search.mb" method="get">
-			<div class="input-group search-box" style="margin-left: 1200px">
-				<input type="text" id="search" name="search" class="form-control"
-					placeholder="검색"> <span class="input-group-addon"><i
-					class="material-icons">&#xE8B6;</i></span>
-			</div>
-		</form>
+		
 
 
 		<div class="myInfo">
-			<img src="resources/uploadFiles/${logerHomeInfo.fileNm}"
-				width="200px" height="200px">
-
-
+			<div class="profileImg">
+				<c:if test="${result.fileNm != null}">
+					<img src="resources/uploadFiles/${result.fileNm}" width="200px"
+				height="200px">
+				</c:if>
+					<c:if test="${result.fileNm == null}">
+				<img class="chImg" src="resources/images/newlogo3.png" width="200px"
+				height="200px">
+				</c:if>
+			</div>
 			<div class="textInfo" style="font-size: 30px">
 				<p style="widht: 200px; margin-left: 230px; margin-top: -90px;">
-					<strong><c:out value="${logerHomeInfo.chNm}" /></strong>
+					<strong><c:out value="${logerTitleNm.chNm}" /></strong>
 				</p>
 			</div>
 			<div id="subDiv">
@@ -255,7 +255,7 @@ body {
 		
 		</div>
 
-		<div class="row" style="margin-left: 30px;">
+			<div class="row" style="margin-left: 30px; margin-top:70px;" >
 			<div class="col-lg-15">
 				<a href="newHomeChannel.lo?userNo=${sessionScope.userNo}"
 					class="noticeLink" style="float: left; width: 15%;"><h4

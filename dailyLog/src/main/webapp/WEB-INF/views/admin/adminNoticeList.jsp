@@ -10,7 +10,7 @@
 </head>
 <style>
 .mainpage {
-	width: 1024px;
+	width: 1600pxx;
 	/* border: 1px solid black; */
 	margin-top: 80px;
 }
@@ -29,7 +29,7 @@
 
 .buttonarea {
 	width: 180px;
-	margin-left: 950px;
+	margin-left: 1200px;
 	margin-top: 30px;
 }
 
@@ -38,16 +38,15 @@
 <body>
 	<jsp:include page="../common/adminBar.jsp"></jsp:include>
 	<form action="" method="post">
-		<div class="mainpage">
-			<div class="container">
-				<div class="table-wrapper">
-					<table class="table table-striped">
+		<div class="mainpage" style="backgroudn:white">
+			<div class="container" >
+				<div class="table-wrapper" >
+					<table class="table table-striped" style="backgroudn:white">
 						<thead>
 							<tr>
 								<th>No</th>
 								<th>Subject</th>
 								<th>Writer</th>
-								<th>views</th>
 								<th>Date</th>
 							</tr>
 						</thead>
@@ -59,7 +58,7 @@
 							<td><c:set var="name" value="${n.userNo}" />
 							<c:if test="${name =v0 }"/>
   							  <c:out value="관리자" /></td>
-								<td><c:out value="${n.bcount}"/></td>								
+											
 								<td><c:out value="${n.createDt}"/></td>
 							</tr>
 							</c:forEach>

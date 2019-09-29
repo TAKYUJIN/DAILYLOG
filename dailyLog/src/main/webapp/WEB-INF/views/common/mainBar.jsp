@@ -314,10 +314,9 @@
 
 			<li class="nav-item" >
 	
-			
- <a href="newHomeChannel.lo?userNo=${sessionScope.loginUser.userNo}" class="nav-link" style="padding-right:0px;" onclick="">로거 스튜디오</a></li> 
-			
-			
+		
+ 			<a href="loger.lo" class="nav-link" style="padding-right:0px;" onclick="">로거 스튜디오</a></li>  
+		
 
     <!-- 주석 에진
 			<li class="nav-item"><a href="newHomeChannel.lo?userNo=${sessionScope.loginUser.userNo}" class="nav-link" style="padding-right:0px;" onclick="">로거 스튜디오</a></li>

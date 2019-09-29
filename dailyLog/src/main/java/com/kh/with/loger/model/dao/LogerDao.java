@@ -146,6 +146,9 @@ public interface LogerDao {
 
 	int deleteAddplace(SqlSessionTemplate sqlSession, AddPlace addPlace);
 
+	Loger logerTitleNm(SqlSessionTemplate sqlSession, Loger logerTitleNm);
+
+
 
 
 

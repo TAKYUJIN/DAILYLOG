@@ -18,7 +18,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<title>Insert title here</title>
+<title>WITH</title>
 <style>
 .mainpage {
 	width: 1600px;
@@ -55,6 +55,18 @@ h4 {
 
 .submit {
 	margin-left: 50px;
+	background-color: #13334A;
+	padding: 10px 24px;
+	color: white;
+	border: none;
+	border-radius: 7px;
+	moz-border-radius: 7px;
+	khtml-border-radius: 7px;
+	webkit-border-radius: 7px;
+}
+  .button1 {
+  	margin-top:20px;
+	margin-left:450px;
 	background-color: #13334A;
 	padding: 10px 24px;
 	color: white;

@@ -224,7 +224,7 @@ table.table td .add {
 					</tr>
 					<tr>
 						<td colspan="2" align="center">
-						<textarea rows = "20"  cols="120"  wrap="soft"  id="bcontent" name="bcontent" 
+						<textarea rows = "20"  cols="115"  wrap="soft"  id="bcontent" name="bcontent" 
 						style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;"><c:out value="${result.bcontent}"/></textarea></td>
 					</tr>
 					
@@ -244,9 +244,8 @@ table.table td .add {
 	
 	<!-- 수정 -->
 	<script>
-		$(document).ready(function(){
+	
 			$("#NoticeChange").click(function(){
-				
 				var bTitle = $("#bTitle").val();
 				var bcontent = $("#bcontent").val();
 				var bNo = $("#bNo").val();
@@ -266,15 +265,14 @@ table.table td .add {
 					}
 				});	
 			});
-		});
+	
 	</script>
 	
 	
 	<!-- 삭제 -->
 	<script>
-		$(document).ready(function(){
+	
 			$("#delete").click(function(){
-
 				var bNo = $("#bNo").val();
 				
 				console.log(bNo);
@@ -291,7 +289,7 @@ table.table td .add {
 					}
 				});	
 			});
-		});
+		
 	</script>
 	<jsp:include page="../common/footer.jsp" />
 

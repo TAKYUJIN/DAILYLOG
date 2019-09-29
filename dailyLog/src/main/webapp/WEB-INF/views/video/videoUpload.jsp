@@ -18,9 +18,10 @@
 </head>
 <style>
 .mainpage {
-	width: 1024px;
+	width: 1600px;
 	height: 500px;
-	margin-top: 20px;
+	margin-left:250px;
+	margin-top: 100px;
 }
 
 .upload {
@@ -56,6 +57,17 @@ margin-top:-50px;
 #file {
  display:none;
   }
+  .button1 {
+
+	background-color: #13334A;
+	padding: 10px 24px;
+	color: white;
+	border: none;
+	border-radius: 7px;
+	moz-border-radius: 7px;
+	khtml-border-radius: 7px;
+	webkit-border-radius: 7px;
+}
 </style>
 
 </head>
@@ -87,7 +99,7 @@ margin-top:-50px;
 			</a>
 		</div>
 	</div>
-	<button id="uploadbtn" class="btn btn-primary" >다음으로</button>
+	<button id="uploadbtn" class="button1" style="margin-left:700px;" >다음으로</button>
 	</form>
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 </body>

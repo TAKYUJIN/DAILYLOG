@@ -296,13 +296,8 @@
 	<!-- Collection of nav links, forms, and other content for toggling -->
 	<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
 		<ul class="nav navbar-nav" >
-			<li class="nav-item"><a href="logerHomeChannel.lo" class="nav-link" style="padding-right:0px;">홈</a></li>
-				<li class="nav-item dropdown">
-				<a data-toggle="dropdown" class="nav-link dropdown-toggle" style="padding-right:0px;">채널설정 <b class="caret"></b></a>
-				<ul class="dropdown-menu">					
-						<li><a href="goChannelChangeInfo.lo" class="dropdown-item">채널정보수정</a></li>
-					<li><a href="goChannelChangeSet.lo" class="dropdown-item">채널구성설정</a></li>
-				</ul>
+			<li class="nav-item"><a href="loger.lo" class="nav-link" style="padding-right:0px;">홈</a></li>
+			<li class="nav-item"><a href="goChannelChangeInfo.lo" class="nav-link" style="padding-right:0px;">채널설정</a></li>
 			<li class="nav-item"><a href="logerVideo.lo" class="nav-link" style="padding-right:0px;">동영상</a></li>			
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">분석</a></li>	
 			<li class="nav-item"><a href="logerCalculate.lo" class="nav-link" style="padding-right:0px;">정산</a></li>	
