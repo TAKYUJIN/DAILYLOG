@@ -7,14 +7,8 @@ public class MailVo {
 	private String friId;
 	private String status_yn;
 	private String nickname;
+	private String fileNm;
 	public MailVo() {}
-	public MailVo(String userId, String friId, String status_yn, String nickname) {
-		super();
-		this.userId = userId;
-		this.friId = friId;
-		this.status_yn = status_yn;
-		this.nickname = nickname;
-	}
 	public String getUserId() {
 		return userId;
 	}
@@ -39,12 +33,24 @@ public class MailVo {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
+	public String getFileNm() {
+		return fileNm;
+	}
+	public void setFileNm(String fileNm) {
+		this.fileNm = fileNm;
+	}
+	public MailVo(String userId, String friId, String status_yn, String nickname, String fileNm) {
+		super();
+		this.userId = userId;
+		this.friId = friId;
+		this.status_yn = status_yn;
+		this.nickname = nickname;
+		this.fileNm = fileNm;
+	}
 	@Override
 	public String toString() {
 		return "MailVo [userId=" + userId + ", friId=" + friId + ", status_yn=" + status_yn + ", nickname=" + nickname
-				+ "]";
+				+ ", fileNm=" + fileNm + "]";
 	}
-
-	 
 	 
 }

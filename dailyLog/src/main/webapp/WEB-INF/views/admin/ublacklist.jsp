@@ -7,8 +7,7 @@
 	<head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Elements Reference - Massively by HTML5 UP</title>
-				 
+<title>WITH</title>				 
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -21,7 +20,7 @@
 		font-family: 'Roboto', sans-serif;
 	}
 	.table-wrapper {
-        background: #fff;
+        background: none;
         padding: 20px;
         margin: 30px 0;
         box-shadow: 0 1px 1px rgba(0,0,0,.05);
@@ -109,37 +108,40 @@
     table.table td i {
         font-size: 19px;
     }    
-    .pagination {
-        float: right;
-        margin: 0 0 5px;
+     .pagination {
+        margin: 10px 0 5px;
     }
     .pagination li a {
         border: none;
-        font-size: 13px;
         min-width: 30px;
         min-height: 30px;
-		padding: 0 10px;
         color: #999;
         margin: 0 2px;
         line-height: 30px;
-        border-radius: 30px !important;
+        border-radius: 4px !important;
         text-align: center;
+        padding: 0;
     }
     .pagination li a:hover {
         color: #666;
-    }	
-    .pagination li.active a {
-        background: #03A9F4;
+    }
+    .pagination li.active a, .pagination li.active a.page-link {
+        background: #59bdb3;
     }
     .pagination li.active a:hover {        
-        background: #0397d6;
+        background: #45aba0;
     }
-	.pagination li.disabled i {
+    .pagination li:first-child a, .pagination li:last-child a {
+        padding: 0 10px;
+    }
+    .pagination li.disabled a {
         color: #ccc;
     }
     .pagination li i {
-        font-size: 16px;
-        padding-top: 6px
+        font-size: 17px;
+        position: relative;
+        top: 1px;
+        margin: 0 2px;
     }
     .hint-text {
         float: left;
@@ -232,15 +234,15 @@ $(document).ready(function(){
                     </c:forEach>
                 </tbody>
             </table>
-              <div class="clearfix">
-                 <ul class="pagination">
-                    <li class="page-item disabled"><a href="#"><<</a></li>
-                    <li class="page-item"><a href="#" class="page-link">1</a></li>
+             <div class="text-center">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled"><a href="#"><i class="fa fa-long-arrow-left"></i> Previous</a></li>
+                    <li class="page-item active"><a href="#" class="page-link">1</a></li>
                     <li class="page-item"><a href="#" class="page-link">2</a></li>
-                    <li class="page-item active"><a href="#" class="page-link">3</a></li>
+                    <li class="page-item "><a href="#" class="page-link">3</a></li>
                     <li class="page-item"><a href="#" class="page-link">4</a></li>
                     <li class="page-item"><a href="#" class="page-link">5</a></li>
-                    <li class="page-item"><a href="#" class="page-link">>></a></li>
+                    <li class="page-item"><a href="#" class="page-link">Next <i class="fa fa-long-arrow-right"></i></a></li>
                 </ul>
             </div>  
         </div>

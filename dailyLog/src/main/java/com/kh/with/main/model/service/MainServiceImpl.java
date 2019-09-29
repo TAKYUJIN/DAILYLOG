@@ -119,12 +119,12 @@ public class MainServiceImpl implements MainService{
 		return md.friendSending2(sqlSession,f);
 	}
 
-	@Override
-	public List<Friend> friendconfirm(Friend f) {
+	/*@Override
+	public List<Friend> friendconfirm(Member m) {
 		// TODO Auto-generated method stub
-		return md.friendconfirm(sqlSession,f);
+		return md.friendconfirm(sqlSession,m);
 	}
-
+*/
 	@Override
 	public ArrayList<NewlyVideo> newAction(Member m) {
 		// TODO Auto-generated method stub

@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 <!DOCTYPE html>
-<html>
+<html >
 <head>
 <meta charset="UTF-8">
 <title>WITH</title>
@@ -2059,8 +2059,9 @@ var socket;
 var login_ids={};
     var textarea = document.getElementById("messageWindow");
     var nickname="${loginUser.nickname}";
-    var webSocket = new WebSocket('ws://192.168.200.173:8001/with/broadcasting');
-    /* socket.emit('login','nickname'); */
+    console.log(nickname);
+    webSocket = new WebSocket("ws://localhost:8001"+"<%=request.getContextPath()%>/broadcasting?nickname"+"="+nickname); 
+	 /* socket.emit('login','nickname'); */
     var inputMessage = document.getElementById('inputMessage');
     console.log(inputMessage);
     webSocket.onerror = function(event) {
@@ -2112,6 +2113,36 @@ var login_ids={};
                 }
             }
        
+      /*   if(chatMsg1.substring(0,8) == 'sendlist'){
+			 // $('#frilist').append($chat);
+				 if (chatMsg1 =='sendlist : heejung9655@gmail.com'){
+					
+					 $('#frilist').append(chatMsg1);
+				   }else{
+					   
+					   $('#frilist').append(chatMsg1);
+				   }  
+				 
+			 console.log(chatMsg1);
+			} 
+		  
+		  
+		if(chatMsg.substring(0,8) == 'DAILYLOG' ){
+			var $chat = $("<div id='chatForm'>" + chatMsg + "</div>");
+			$('#messageWindow').append(chatMsg);
+			 
+			//console.log(chatMsg);
+		}  else if(chatMsg.substring(0,8) == 'sendlist'){
+			 console.log('');
+		}   else{
+			
+			var $chat = $("<div class='chat-box'><div class='chat'>" + chatMsg + "</div><div class='chat-info chat-box'>"+ dateInfo +"</div></div>");
+			$('#messageWindow').append(chatMsg);
+			
+			} */
+            
+            
+            
     } 
     function onOpen(event) {
     	var chat_id ="${loginUser.nickname}";

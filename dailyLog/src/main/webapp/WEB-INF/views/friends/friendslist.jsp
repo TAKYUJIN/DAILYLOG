@@ -8,8 +8,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title></title>
-<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+<title>WITH</title><link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -18,9 +17,9 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style type="text/css">
 	body{
-		font-family: 'Varela Round', sans-serif;
-		margin: 10px;
+		margin: 20px;
 		    height:100%;
+		      background-color: #f8f8f8;
 	}
 .where {
   display: block;
@@ -32,9 +31,13 @@
  /*  font-family: verdana;
   font-style: italic; */
 }
-
+ 
 /*  .checks {position: relative;} */
-
+.navbar-default {
+    background-color: #f8f8f8;
+   /* border-color: #e7e7e7; */
+   height:1000px; 
+}
 .checks input[type="checkbox"] {  /* 실제 체크박스는 화면에서 숨김 */
  /*  position: absolute; */
   width: 1px;
@@ -124,7 +127,31 @@
   text-align: center;
   border: 1px solid #16499c;
   }
+ 
+ #daily a{
+ width:100px;
+  padding-top:10px; 
+  padding-left:10px; 
+  color:black;
+  text-decoration:none;
+ }
+ #daily  {
+ width:200px;
+  padding-top:5px; 
+  padding-left:10px; 
+  color:black;
+  text-decoration:none;
+ }
+  #daily a:hover{
+ width:200px;
+  padding-top:10px; 
+    padding-left:10px; 
+  
+  color:black;
+  text-decoration:none;
+ }
 </style>
+ 
  
 </head> 
 <body>
@@ -133,16 +160,17 @@
   <label for="ex_chk3">체크박스</label> 
 </div> -->
 
-<nav class="navbar navbar-default navbar-expand-lg navbar-light">
-	<div class="navbar-header d-flex col" >
-		
-		<a href="List.mb"> <img src="resources/images/logo.png" style="width:90px; padding-top:10px;"></a>	
-		<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;" onclick="">친구 요청 확인</a></li>			
-			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">친구 요청 보내기</a></li>	
-			
+<nav class="navbar navbar-default navbar-expand-lg navbar-light"   >
+		<div id="daily">
+		<!-- <a href="List.mb"> <img src="resources/images/logo.png" style="width:90px; padding-top:10px;"></a>	 -->
+		<a href="List.mb"> <h2>Daily Log</h2>  </a>	
+		<li class="nav-item"><a href="friendconfirm.mb" class="nav-link" style="padding-right:0px;" onclick="">친구 요청 확인</a></li>			
+		<!-- 	<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">친구 요청 보내기</a></li>	
+		 -->	
 	</div><br><br>
   <div class="page-wrapper">
-  
+ <h3>${MailVo}</h3> <br> 
+   <%--  <h3>${list}</h3>  --%>
     <div class="container-fluid" id="frilist">
         <div class="col-lg-8"><!--게시판 넓이 --><form action="FriendChat.mb" >
             <div class="panel panel-default" >
@@ -177,29 +205,30 @@
                 
                 
      <div class="container-fluid" id="myDiv">
-        <div class="col-lg-8"><!--게시판 넓이 -->
+         
             <div class="panel panel-default" >
             <div>
                  <div class="panel-body">
                     <table class="table table-hover">
          <h4>친구요청 보내기</h4>
-        <!-- <form action="mailSending.mb" method="get"  > --> 
-        <form action="friendSending.mb" method="get"  >
-        <c:forEach var="user" items="${user}">
- 			
- 			<input type="hidden" id="userId" name="userId" value="${user.userId }"/>
- 			
+        <form action="mailSending.mb" method="get"  > 
+       <!--  <form action="friendSending.mb" method="get"  >
+        --> <c:forEach var="user" items="${user}">
+ 			<input type="hidden" id="userId" name="userId" value="${user.userId}"/>
+ 			<input type="hidden" id="usernickname" name="usernickname" value="${user.nickname}"/>
+ 			<input type="hidden" id="status_yn" name="status_yn" value="NN"/>
+			
 			<!-- 아이디 -->
 			<div class="form-group">
 			 	<label for="friId">친구 이메일</label>
 					<input  style="float:left;"type="text" class="form-control" id="friId" name="friId" placeholder="친구 이메일" required>
 				 <!--  <button type="button" id ="fricheck" class="btn btn-default" style="background:#13334A; color:#fff;  float:left;"   >이메일 확인</button>
 	  -->
-		<!-- <div class="check" id="id_check"></div>
-	  <p id="result">
+		  <div class="check" id="id_check"></div>
+	 <!--  <p id="result">
 			<span class="msg">친구 이메일을 다시 한번 확인 해주세요.</span>
 		
-		</p>   -->
+		</p>  -->
 		
 		 
 		
@@ -262,7 +291,29 @@
 <script>
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" </script>
 	
-	
+		<script>
+
+$(function(){
+	$("#chat").each(function(){
+		$(this).click(function(){
+			/* var Usernickname = $(this).parent().children(".frinickname").val();
+			var loginnickname = $(this).parent().children("#usernickname").val();
+			 */
+			 var Usernickname = $(".frinickname").val();
+				var loginnickname = $("#usernickname").val();
+			alert(loginnickname);
+			alert(Usernickname);
+			var msg = loginnickname + "&" + Usernickname;
+			alert(msg);
+			webSocket.send(msg);
+		});
+	});
+});
+
+
+
+
+</script>
 <script>
 $(function() {
     var idx = false;

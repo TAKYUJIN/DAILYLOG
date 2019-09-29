@@ -361,7 +361,7 @@
   <script type="text/javascript">
 $('#friendlist').click(function(){
 	 var popUrl = "List.mb";	 
-	 var popOption = "width=370, height=500, resizable=no, scrollbars=no, status=no;";   
+	 var popOption = "width=450, height=700, resizable=no, scrollbars=no, status=no;";   
 			window.open(popUrl,"",popOption);
 	 
 });

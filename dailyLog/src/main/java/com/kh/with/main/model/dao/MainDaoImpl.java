@@ -140,11 +140,11 @@ public class MainDaoImpl implements MainDao{
 		return sqlSession.insert("friend.friendSending1",f);
 	}
 
-	@Override
-	public List<Friend> friendconfirm(SqlSessionTemplate sqlSession, Friend f) {
+	/*@Override
+	public List<Friend> friendconfirm(SqlSessionTemplate sqlSession,Member m) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("friend.friendconfirm",f);
-	}
+		return sqlSession.selectList("friend.friendconfirm",m);
+	}*/
 
 	@Override
 	public ArrayList<NewlyVideo> newAction(SqlSessionTemplate sqlSession, Member m) {

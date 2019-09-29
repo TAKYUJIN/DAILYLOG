@@ -48,7 +48,7 @@ public interface MainDao {
 	int friendSending1(SqlSessionTemplate sqlSession, Friend f);
 	int friendSending2(SqlSessionTemplate sqlSession, Friend f);
 
-	List<Friend> friendconfirm(SqlSessionTemplate sqlSession, Friend f);
+	//List<Friend> friendconfirm(SqlSessionTemplate sqlSession,Member m);
 
 	ArrayList<NewlyVideo> newAction(SqlSessionTemplate sqlSession, Member m);
 
