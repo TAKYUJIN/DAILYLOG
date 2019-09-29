@@ -524,6 +524,8 @@
 						<div style="display:inline-block; margin-right:3%;">
 							<label id="regsubTY" style="color:#525252;"></label>
 						</div>
+						<input type="hidden" id="userNo" name="userNo"  value="${loginUser.userNo}"/>
+					  		<input type="hidden"  id="retarget" name="retarget" value="${list1[0].userNo}"/>
 							<input type="button" class="btn" id="subscribe" value="구독"><br>
 						<small style="display:inline-block;">구독자 <b> ${ list2[0].subNum }명 </b><br></small>
 						
@@ -2336,6 +2338,47 @@ var login_ids={};
 				}					
 			});
 	});
+</script>
+<script>
+$(function(){
+	   var sub = $("#subscribe").val();
+		$("#subscribe").click(function(){
+			
+			if(sub == "구독"){
+				console.log(sub);
+				var videoUserNo = $(this).parent().children("#retarget").val();
+				var loginUserNo = $(this).parent().children("#userNo").val();
+				console.log(videoUserNo);
+				console.log(loginUserNo);
+				var msg = loginUserNo + "&" + videoUserNo;
+				ws2.send(msg);
+			}
+		});
+		
+		$("#reportNext").click(function(){
+			
+				var videoUserNo = $("#retarget").val();
+				var loginUserNo = $("#userNo").val();
+				console.log(videoUserNo);
+				console.log(loginUserNo);
+				var msg = loginUserNo + "&" + videoUserNo;
+				ws2.send(msg);
+			
+		});
+		
+		$("#insertReply").click(function(){
+			
+			var videoUserNo = $("#retarget").val();
+			var loginUserNo = $("#userNo").val();
+			console.log(videoUserNo);
+			console.log(loginUserNo);
+			var msg = loginUserNo + "&" + videoUserNo;
+			ws2.send(msg);
+		
+	});
+		
+});
+	   
 </script>
 	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 	<jsp:include page="../common/footer.jsp"></jsp:include> 

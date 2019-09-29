@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>WITH</title>
 <style>
 	body {
         color: #666;
@@ -256,7 +256,7 @@ var socket;
 var login_ids={};
     var textarea = document.getElementById("messageWindow");
     var nickname="${loginUser.nickname}";
-    var webSocket = new WebSocket('ws://192.168.0.22:8001/with/broadcasting');
+    var webSocket = new WebSocket('ws://192.168.0.13:8001/with/broadcasting');
     /* socket.emit('login','nickname'); */
     var inputMessage = document.getElementById('inputMessage');
     webSocket.onerror = function(event) {
@@ -275,7 +275,6 @@ var login_ids={};
         var message = event.data.split("|");
         var sender = message[0];
         var content = message[1];
-        alert("11");
        
         if (content == "") {
         	 

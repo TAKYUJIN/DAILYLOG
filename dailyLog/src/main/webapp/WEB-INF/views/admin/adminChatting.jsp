@@ -118,7 +118,7 @@
 					<tr id="test" onclick="chatResult(${c.chatNo},${c.userNo});">
 						<td><c:out value="${c.chatNo}"/></td>
 						<td><c:out value="${c.userNo}"/></td>
-						<td><c:out value="${c.chatDt}"/></td>
+						<td><c:out value="${fn:substring(c.chatDt,0,10)}"/></td>
 						<td><c:out value="${c.status}"/></td>
 					</tr>
 					</c:forEach>
@@ -156,7 +156,7 @@
 
 	$("#updateChat").click(function(){
 	/* var chatNo = $(this).parent().parent().children("#test").val(); */
-	var chatNo = 1;
+	var chatNo = 22;
 	console.log(chatNo);
 	
 	location.href='succChat.ad?chatNo='+chatNo;
@@ -194,7 +194,7 @@ var socket;
 var login_ids={};
     var textarea = document.getElementById("messageWindow");
     var nickname="${loginUser.nickname}";
-    var webSocket = new WebSocket('ws://192.168.0.22:8001/with/broadcasting');
+    var webSocket = new WebSocket('ws://192.168.0.13:8001/with/broadcasting');
     var inputMessage = document.getElementById('inputMessage');
     webSocket.onerror = function(event) {
         onError(event)

@@ -8,7 +8,7 @@
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Insert title here</title>
+<title>WITH</title>
 <link href="https://vjs.zencdn.net/7.6.0/video-js.css" rel="stylesheet">
 
 <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
@@ -55,12 +55,19 @@ input:focus {outline:none;}
 		<div id="searchArea" style="float:right;">
 
 				<div class="input-group search-box">
-					<input type="text" id="searchTitle" class="form-control" placeholder="북마크 검색">
+					<input type="text" id="searchTitle" class="form-control" placeholder="북마크 검색" onkeyup="enterkey()">
 					<span class="input-group-addon"><i class="material-icons" onclick="selectBookmark();">&#xE8B6;</i></span>
 				</div>
 
 		</div>
+		<script>
+		 function enterkey() {
+		        if (window.event.keyCode == 13) {
+		        	selectBookmark();
+		        }
+		    }
 		
+		</script>
 
 		<table id="bookmarkArea">
 			<tbody id="bookmark">

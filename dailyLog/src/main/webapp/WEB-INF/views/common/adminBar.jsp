@@ -9,7 +9,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title></title>
+<title>WITH</title>
 <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -306,8 +306,8 @@
 			<li class="nav-item"><a href="channelManage.ad" class="nav-link" style="padding-right:0px;">채널관리</a></li>	
 			<li class="nav-item"><a href="adminCalculate.ad" class="nav-link" style="padding-right:0px;">정산관리</a></li>	
 			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">환불</a></li>
-			<li class="nav-item"><a href="adminStatistics.ad" class="nav-link" style="padding-right:0px;">통계</a></li>
-			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">문의내역</a></li>
+			<!-- <li class="nav-item"><a href="adminStatistics.ad" class="nav-link" style="padding-right:0px;">통계</a></li> -->
+			<li class="nav-item"><a href="adminChattingComplete.ad" class="nav-link" style="padding-right:0px;">문의내역</a></li>
 		</ul>
 		
 		<ul class="nav navbar-nav navbar-right ml-auto">	
