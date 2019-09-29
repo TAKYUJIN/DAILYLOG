@@ -112,7 +112,7 @@
 					<tr id="test" onclick="chatResult(${c.chatNo},${c.userNo});">
 						<td><c:out value="${c.chatNo}"/></td>
 						<td><c:out value="${c.userNo}"/></td>
-						<td><c:out value="${c.chatDt}"/></td>
+						<td><c:out value="${fn:substring(c.chatDt,0,10)}"/></td>
 						<td><c:out value="${c.status}"/></td>
 					</tr>
 					</c:forEach>

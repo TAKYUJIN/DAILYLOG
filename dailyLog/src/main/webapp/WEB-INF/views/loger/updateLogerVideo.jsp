@@ -871,8 +871,8 @@ function displayCenterInfo(result, status) {
 }
 
 $("#addInfo").click(function(){
-	var userNo = "${addUserNo}";
-	var vNo = "${addvNo}";
+	var userNo = $("#userNo").val();
+	var vNo = $("#vNo").val();
 	var addCt = $("#inputAdd").val();
 	
 	console.log(addCt);
@@ -893,13 +893,10 @@ $("#addInfo").click(function(){
 	});
 });
 
-//var message = "${msg}";
 
-///newHomeChannel.lo?userNo="+userNo;
-var userNo = "${addUserNo}";
-//var addvNo = "${addvNo}";
+var userNo = $("#userNo").val();
 
-console.log("addinfo"+addUserNo + ";;;;;;" +addvNo)
+console.log("addinfo"+userNo + ";;;;;;" +vNo)
 
 function move(){
 	alert("동영상 업로드에 성공하셨습니다. ");
