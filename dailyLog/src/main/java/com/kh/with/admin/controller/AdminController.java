@@ -481,11 +481,13 @@ public class AdminController {
 		}
 		
 		int recount = Integer.parseInt(request.getParameter("recount"));
-		int reno = Integer.parseInt(request.getParameter("reno"));
+		int retarget =Integer.parseInt(request.getParameter("retarget"));
+		int reno =Integer.parseInt(request.getParameter("reno"));
 		Report2 report = new Report2();
 		report.setReno(reno);
 		report.setRecount(recount);
-		int result = rs.videoreportupdate(report);
+		report.setRetarget(retarget); 
+		int result = rs.rereportupdate(report);
 		if (result > 0) {
 			//
 			
@@ -534,10 +536,12 @@ public class AdminController {
 		
 		int recount = Integer.parseInt(request.getParameter("recount"));
 		int reno = Integer.parseInt(request.getParameter("reno"));
+		String chNm =request.getParameter("chNm");
 		Report2 report = new Report2();
 		report.setReno(reno);
 		report.setRecount(recount);
-		int result = rs.videoreportupdate(report);
+		report.setChNm(chNm);
+		int result = rs.chreportupdate(report);
 		if (result > 0) {
 			//
 			

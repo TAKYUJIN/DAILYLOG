@@ -550,7 +550,7 @@ color: black; text-decoration: none;
 			<div id="myCarousel1" class="carousel slide" data-ride="carousel" data-interval="0">
 						<div class="row">
 						<c:forEach var="videoimage" items="${map.searchch}" begin="0" end="5"> 
-						<div class="col-sm-4" style="margin-top:10px;"><div class="img-box"><div id="sty"class="scale" style=" float:left;">  <a href="video.vd?userNo=${videoimage.userNo}&vNo=${videoimage.vNo}">
+						<div class="col-sm-4" style="margin-top:10px;"><div class="img-box"><div id="sty"class="scale" style=" float:left;">   <a href="video.vd?userNo=${videoimage.userNo}&vNo=${videoimage.vNo}">
 						<img style=" border-radius:10px;  margin:10px;"  src="resources/uploadFiles/${videoimage.fileNm}" width = "300px"  height="200px"  >
 							 <div id="sty1"><h4><b>  ${videoimage.vTitle}</b></h4>
 							<div id="sty2"><h5><b> ${videoimage.chNm }</b>&nbsp;&nbsp; 
@@ -646,7 +646,7 @@ color: black; text-decoration: none;
       
       
       
-      
+     
       
       <div class="row">
 		<div class="col-md-10 col-center m-auto" style="z-index:  1;">
@@ -654,7 +654,7 @@ color: black; text-decoration: none;
 			<div id="myCarousel1" class="carousel slide" data-ride="carousel" data-interval="0">
 						<div class="row">
 						<c:forEach var="videoimage" items="${map.searchtag}" begin="0" end="5"> 
-						<div class="col-sm-4" style="margin-top:10px;"><div class="img-box"><div id="sty"class="scale" style=" float:left;">  <a href="video.vd?userNo=${videoimage.userNo}&vNo=${videoimage.vNo}">
+						<div class="col-sm-4" style="margin-top:10px;"><div class="img-box"><div id="sty"class="scale" style=" float:left;"> <a href="video.vd?userNo=${videoimage.userNo}&vNo=${videoimage.vNo}">
 						<img style=" border-radius:10px;  margin:10px;"  src="resources/uploadFiles/${videoimage.fileNm}" width = "300px"  height="200px"  >
 							 <div id="sty1"><h4><b>  ${videoimage.vTitle}</b></h4>
 							<div id="sty2"><h5><b> ${videoimage.chNm }</b>&nbsp;&nbsp; 

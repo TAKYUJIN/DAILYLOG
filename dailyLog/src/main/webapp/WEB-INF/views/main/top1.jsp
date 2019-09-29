@@ -514,32 +514,63 @@ color: black; text-decoration: none;
   #re{
   width:100%;
   }
+  #movies1{
+    width:560px;
+  height:300px; 
+  object-fit:fill;
+    background:none;
+  }
+  #movies{
+ 
+   width:300px;
+  height:200px; 
+  object-fit:fill;
+  }
+  #adinfo{
+  height:500px; 
+    width:1200px;
+  object-fit:fill;
+    background:none;
+  }
 </style>
+<link href="https://vjs.zencdn.net/7.6.0/video-js.css" rel="stylesheet">
+
+<!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
+<script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+<script src='https://vjs.zencdn.net/7.6.0/video.js'></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
 </head>
 <body>
       		 <jsp:include page="../common/mainBar.jsp"></jsp:include>	
-	<%-- 
 
-	  	<!-- <script>
-					$("#mainSome").click(function(){
-						var userNo = $('#mainNo').val();
-						$.ajax({
-							url:"video.vd",
-							type:"post",
-							data:{userNo:userNo},
-							success:function(data){
-								console.log("성공:");
-							},
-
-							error:function(){
-								console.log("실패:");
-							}
-
-						});
-
-					});
-				</script> --> 
-	   --%>
+ <div class="row"><br><br><br><br> 
+		<div class="col-md-10 col-center m-auto"><br><br><br><br><br><br>
+		<c:forEach var="videoimage" items="${adinfo}" >
+			<h3>  <span><div id="vid"><b>  ${videoimage.vTitle} </b></div>  </span></h3>  <br>
+			<div id="myCarousel1" class="carousel slide" data-ride="carousel" data-interval="0">
+				  
+				<div class="carousel-inner">
+						<div class="row">
+						
+						<div class="col-sm-12 "><div class="img-box"><div id="sty" class="scale"style=" float:left;text-decoration: none;  color: black; "> 
+						<a href="video.vd?userNo=${videoimage.userNo}&vNo=${videoimage.vNo}">
+						<%-- <img style=" border-radius:10px;  color: black; text-decoration: none; margin:10px;" src="resources/uploadFiles/${videoimage.fileNm}" width = "300px"  height="200px"  >
+						 --%>	
+						  <video id="adinfo"  class='video-js'  onmouseover="this.play()" onmouseout="this.pause()"
+						     >
+						  <source src='resources/uploadFiles/${videoimage.fileNm}' type='video/mp4'>
+						   <source src='MY_VIDEO.webm' type='video/webm'>  
+						</video>
+							
+							<div id="sty1"><h4><b> </b></h4>
+							<div id="sty2"><h3><b> ${videoimage.chNm }</b> &nbsp;&nbsp;<b>  ${videoimage.tag }</b>
+							 <b>  ${videoimage.uploadDt }</b></h3>
+							 </div></div>
+				</a></div></div></div> 
+						  
+						  </div></div>
+				</div></c:forEach>
+  </div></div> 
 
  <div class="row">
 		<div class="col-md-10 col-center m-auto">
@@ -550,7 +581,13 @@ color: black; text-decoration: none;
 						<div class="row">
 						<c:forEach var="videoimage" items="${videopop}" begin="0" end="0"> 
 						<div class="col-sm-7"><div class="img-box"><div id="sty"class="scale" style=" float:left;">  <a href="video.vd?userNo=${videoimage.userNo}&vNo=${videoimage.vNo}">
-						<img style=" border-radius:10px;  margin:10px;" src="resources/uploadFiles/${videoimage.fileNm}" width = "530px"  height="300px"  >
+						
+						    <video id="movies1"  class='video-js'  onmouseover="this.play()" onmouseout="this.pause()"
+						     >
+						  <source src='resources/uploadFiles/${videoimage.fileNm}' type='video/mp4'>
+						   <source src='MY_VIDEO.webm' type='video/webm'>  
+						</video>
+						
 			 	<div id="sty1">  <h4> <b>${videoimage.vTitle}</b></h4>
 						<div id="sty2">	<h5><b> ${videoimage.chNm }</b> &nbsp;&nbsp; 
 								<b>${videoimage.tag }</b> <b>  ${videoimage.uploadDt }</b></h5></div></div>
@@ -600,7 +637,14 @@ color: black; text-decoration: none;
 						<div class="row">
 						<c:forEach var="videoimage" items="${videonew}" begin="0" end="5"> 
 						<div class="col-sm-4" style="margin-top:10px;"><div class="img-box"><div id="sty"class="scale" style=" float:left;">  <a href="video.vd?userNo=${videoimage.userNo}&vNo=${videoimage.vNo}">
-						<img style=" border-radius:10px;  margin:10px;"  src="resources/uploadFiles/${videoimage.fileNm}" width = "300px"  height="200px"  >
+						
+						  <video id="movies"  class='video-js'  onmouseover="this.play()" onmouseout="this.pause()"
+						     >
+						  <source src='resources/uploadFiles/${videoimage.fileNm}' type='video/mp4'>
+						   <source src='MY_VIDEO.webm' type='video/webm'>  
+						</video>
+						
+						
 							 <div id="sty1"><h4><b>  ${videoimage.vTitle}</b></h4>
 							<div id="sty2"><h5><b> ${videoimage.chNm }</b>&nbsp;&nbsp; 
 								 <b>${videoimage.tag }</b> <b>  ${videoimage.uploadDt }</b></h5></div></div>

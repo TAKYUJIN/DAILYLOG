@@ -19,7 +19,7 @@
 	body{
 		margin: 20px;
 		    height:100%;
-		      background-color: #f8f8f8;
+		      background-color: #fff;
 	}
 .where {
   display: block;
@@ -36,7 +36,7 @@
 .navbar-default {
     background-color: #f8f8f8;
    /* border-color: #e7e7e7; */
-   height:1000px; 
+   height:600px; 
 }
 .checks input[type="checkbox"] {  /* 실제 체크박스는 화면에서 숨김 */
  /*  position: absolute; */
@@ -172,7 +172,7 @@
  <h3>${MailVo}</h3> <br> 
    <%--  <h3>${list}</h3>  --%>
     <div class="container-fluid" id="frilist">
-        <div class="col-lg-8"><!--게시판 넓이 --><form action="FriendChat.mb" >
+        <div class="col-lg-8" style=""><!--게시판 넓이 --><form action="FriendChat.mb" >
             <div class="panel panel-default" >
                  <div class="panel-body">
             <!--  <div class="checks etrans" > -->
@@ -182,12 +182,12 @@
                                 <td>친구  아이디</td>
                             </tr>
                         </thead>
-                            <tbody>
+                            <tbody> 
                          
                              <c:forEach var="MailVo" items="${list}">
                              <tr>
                              <td><input type="checkbox" name="list" id="ex_chk3" value="${MailVo.nickname}">
- 			   
+ 			 <%--   <input type="hidden" name="list" id="ex_chk3" value="${MailVo.fileNm}"> --%>
  		     		 ${MailVo.nickname}
  				   </td> 
  				 		</tr>

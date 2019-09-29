@@ -47,7 +47,7 @@
 		color: #999;
 		border-radius: 3px;
     	margin-bottom: 15px;
-        background: #fff;
+        background: none;
         box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
         padding: 30px;
     }
@@ -100,10 +100,13 @@
  <form action="chreportdetail2.ad" method="get">
 			<label>신고 번호:${de.reno}  </label><br><br>
 			<input type="hidden" id="reno" name="reno" value="${de.reno}">
-			<label>신고 동영상 번호:${de.vNo}  </label><br><br>
+			<label>신고 채널명:${de.chNm}</label> <br><br>
+			 <input type="hidden"  id="chNm" name="chNm" value="${de.chNm}">
+			<%--<input type="hidden" id="vTitle" name="vTitle" value="${de.vTitle}">
+			 <label>신고 동영상 번호:${de.vNo}  </label><br><br>
 			<input type="hidden" id="vNo" name="vNo" value="${de.vNo}">
 			<label>신고 동영상 제목:${de.vTitle} </label><br><br>
-			<input type="hidden" id="vTitle" name="vTitle" value="${de.vTitle}">
+			<input type="hidden" id="vTitle" name="vTitle" value="${de.vTitle}"> --%>
 			<label>신고인  :${de.userNm}</label><br><br>
 			<input type="hidden" id="userNm" name="userNm" value="${de.userNm}">
 			<label>신고일:${de.redt} </label><br><br>

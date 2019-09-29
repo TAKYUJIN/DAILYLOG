@@ -1312,6 +1312,7 @@ public class VideoController {
 		mav.addObject("videobook", videoservice.videobook(m));
 		mav.addObject("videosub", videoservice.videosub(m));
 		mav.addObject("videolike", videoservice.videolike(m));
+		mav.addObject("adinfo", videoservice.adinfo(m));
 		System.out.println(mav);
 		return mav;
 	}

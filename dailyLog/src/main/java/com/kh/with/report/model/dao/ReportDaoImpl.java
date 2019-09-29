@@ -56,6 +56,20 @@ public class ReportDaoImpl implements ReportDao{
 	}
 
 
+	@Override
+	public int rereportupdate(SqlSessionTemplate sqlSession, Report2 report) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("Report.rereportupdate",report);
+	}
+
+
+	@Override
+	public int chreportupdate(SqlSessionTemplate sqlSession, Report2 report) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("Report.chreportupdate",report);
+	}
+
+
 
 	
 

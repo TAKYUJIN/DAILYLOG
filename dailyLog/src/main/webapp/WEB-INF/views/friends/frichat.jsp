@@ -206,25 +206,24 @@ var login_ids={};
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>DevEric Chatting</title>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<title>WITH</title><script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
 <style type="text/css">
  
 	#messageWindow{
-		background: #c2baba;
+		background: #d9c7c7;
 	 
 	}
 	#inputMessage{
-		width:500px;
+		width:410px;
 		height:20px
 	}
 	#btn-submit{
-		background: white;
-		background: white;
+		 
+		background-color: #13334A;  
 		width:60px;
 		height:30px;
-		color:#616b75;
+		color:#d9c7c7;
 		border:none;
 	}
 	
@@ -242,9 +241,10 @@ var login_ids={};
 		margin:10px;
 		width:500px;
 		height:500px;
-		overflow: scroll;
+		  background-image: url( "resources/images/newlogo3.png" ); 
+ background-size: 515px;
 		overflow-x:hidden;
-		background: #9ea6ad;
+		 
 		border-radius: 10px 10px 10px 10px;
 		
 	}
@@ -263,21 +263,26 @@ var login_ids={};
         width:auto;
         display:inline-block;
         border-radius: 10px 10px 10px 10px;
+        
+        
 	}
 	
-	.notice{
-		color:#465769;
+	.notice {
+		color:black;
 		font-weight: bold;
 		border : none;
 		text-align: center;
-		background-color: #9ea6ad;
-		display: block;
+		 		display: block;
 		font-size:17px;
+		border-radius :0px 0px 0px 0px;
+		margin:0px;
+		height:30px; 
+		    opacity: 0.5;
 	}
 
 	.my-chat{
 		text-align: right;
-		background: #b8bdc2;
+		background: #e6e6e6;
 		border-radius: 10px 10px 10px 10px;
 		border:1px solid #c2baba;
 	}
@@ -297,31 +302,55 @@ var login_ids={};
 	
 	.chat-box{
 		text-align:left;
+		 
 	}
 	.my-chat-box{
 		text-align: right;
+		 
 	}
 	
 	#frilist{
 	float:left;
-	border :1px solid black;
+	border :1px solid #b8bdc2;
 	margin:10px;
 	width:150px;
 	height:150px;
 	 border-radius: 10px 10px 10px 10px;
 	}
-	
+#daily a{
+ width:100px;
+   
+  padding-left:10px; 
+  color:black;
+  text-decoration:none;
+ }
+ #daily  {
+ width:200px;
+  
+  padding-left:10px; 
+  color:black;
+  text-decoration:none;
+ }
+  #daily a:hover{
+ width:200px;
+  
+    padding-left:10px; 
+  
+  color:black;
+  text-decoration:none;
+ }
 </style>
 </head>
-<body>
-
-	<div id="main-container" style="float:left">
-		<div id="chat-container">
+<body>	<div id="daily">
+<a href="List.mb"> <h2>Daily Log</h2>  </a></div>
+	<div id="main-container" style="float:left; ">
+		<div id="chat-container"  >
 			
-		</div>
+	 <!-- <img class="max-small" src="resources/images/newlogo3.png" style="border-radius: 60%; margin-left:30px;z-index:1px; ">
+	 -->	</div>
 		<div id="bottom-container">
 			<input id="inputMessage" type="text">
-			<input id="btn-submit" type="submit" value="전송" >
+			<input id="btn-submit" type="submit" style="background:#7c6585; color:#fff"value="전송" >
 		</div>
 	</div>
 	
@@ -337,7 +366,9 @@ var login_ids={};
    %>
     <tr>
    
-      <%= list[i] %> <br>
+       <%= list[i]%> 
+      
+       <br>
     </tr>
    <%}%>
   <%}%>
@@ -347,14 +378,10 @@ var login_ids={};
 	
 </body>
 <script type="text/javascript">
-var nickname='${loginUser.nickname}';
-//nickname=decode(nickname,"utf-8");
-//encode(nickname);
+var nickname='${loginUser.userId}';
 console.log(nickname);
 	var textarea = document.getElementById("messageWindow");
-	<%--   webSocket = new WebSocket("ws://localhost:8001"+"<%=request.getContextPath()%>/broadcasting?nickname"="+nickname); 
-	 --%>
-	 webSocket = new WebSocket("ws://localhost:8001"+"<%=request.getContextPath()%>/broadcasting?nickname"+"="+nickname); 
+	 webSocket = new WebSocket("ws://192.168.30.130:8001"+"<%=request.getContextPath()%>/broadcasting?nickname"+"="+nickname); 
 				
 	console.log(webSocket);
 	// 로컬에서 테스트할 때 사용하는 URL입니다.
@@ -378,7 +405,7 @@ console.log(nickname);
 		var date = new Date();
 		var dateInfo = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
 		
-		  if(chatMsg1.substring(0,8) == 'sendlist'){
+		 /*  if(chatMsg1.substring(0,8) == 'sendlist'){
 			 // $('#frilist').append($chat);
 				 if (chatMsg1 =='sendlist : heejung9655@gmail.com'){
 					
@@ -389,7 +416,7 @@ console.log(nickname);
 				   }  
 				 
 			 console.log(chatMsg1);
-			} 
+			}  */
 		  
 		  
 		if(chatMsg.substring(0,8) == 'DAILYLOG' ){

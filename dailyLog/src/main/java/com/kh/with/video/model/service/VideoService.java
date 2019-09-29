@@ -202,6 +202,8 @@ public interface VideoService {
 
 	int selectSubtitle(Map<String, Object> map);
 
+	List<Video> adinfo(Member m);
+
 
 
 

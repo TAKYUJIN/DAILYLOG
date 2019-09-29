@@ -244,7 +244,7 @@
 		parameterType="com.kh.with.main.model.vo.Video">
 
 		<!-- SELECT * FROM VIDEO WHERE CH_NM LIKE '%${searchId}%' -->
-		SELECT V_TITLE,V.CH_NM,V.TAG,A.FILE_NM,V.UPLOAD_DT FROM VIDEO V
+		SELECT V_TITLE,V.CH_NM,V.TAG,A.FILE_NM,V.UPLOAD_DT,V.V_NO,V.USER_NO FROM VIDEO V
 		JOIN ATTACHMENT A ON (V.V_NO=A.V_NO)
 		WHERE CH_NM LIKE '%'||#{search}||'%'
 
@@ -254,14 +254,14 @@
 	<select id="searchtitle" resultMap="videoResultSet"
 		parameterType="com.kh.with.main.model.vo.Video">
 
-		SELECT V_TITLE,V.CH_NM,V.TAG,A.FILE_NM,V.UPLOAD_DT FROM VIDEO V
+		SELECT V_TITLE,V.CH_NM,V.TAG,A.FILE_NM,V.UPLOAD_DT ,V.V_NO,V.USER_NO FROM VIDEO V
 		JOIN ATTACHMENT A ON (V.V_NO=A.V_NO)
 		WHERE V_TITLE LIKE '%'||#{search}||'%'
 	</select>
 	<select id="searchtag" resultMap="videoResultSet"
 		parameterType="com.kh.with.main.model.vo.Video">
 
-		SELECT V_TITLE,V.CH_NM,V.TAG,A.FILE_NM,V.UPLOAD_DT FROM VIDEO V
+		SELECT V_TITLE,V.CH_NM,V.TAG,A.FILE_NM,V.UPLOAD_DT,V.V_NO,V.USER_NO FROM VIDEO V
 		JOIN ATTACHMENT A ON (V.V_NO=A.V_NO)
 		WHERE TAG LIKE '%'||#{search}||'%'
 
@@ -569,12 +569,11 @@
 		FROM VIDEO
 		WHERE V_NO = #{vNo}
 
-		<!-- <select id="adinfo" resultMap="videoResultSet"> select * from VIDEO 
-			where NOT AD_INFO IS NULL -->
-
 	</select>
-
-
+  <select id="adinfo" resultMap="videoResultSet"> 
+  select * from VIDEO 
+where NOT AD_INFO IS NULL 
+</select>
 
 	<insert id="writeReReply" parameterType="map">
 		INSERT INTO REPLY

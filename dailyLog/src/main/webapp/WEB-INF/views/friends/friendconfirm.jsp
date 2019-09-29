@@ -222,7 +222,7 @@ font-size: 20px;
                    <table class="table table-hover">
                            <thead> 
                             <tr>
-                                <td><h2>친구 요청</h2></td>
+                                <td><h4>친구 요청</h4></td>
                             </tr>
                         </thead>
                                  <tbody>
@@ -249,7 +249,7 @@ font-size: 20px;
             
             
             
-             <span class="nick" > ${user.nickname}  </span>
+          <span class="nick" > ${user.nickname}  </span>
          
         <label class="rocker" style="width:100px; white-space: nowrap; " >
          <input type="checkbox">
@@ -275,7 +275,35 @@ font-size: 20px;
             
             
            <!--  <input type="reset"value="거절"></span> -->
+         </label> 
+         
+         
+         <%-- 
+             <span class="nick" > ${user.nickname}  </span>
+         
+        <label class="rocker" style="width:100px; white-space: nowrap; " >
+         <input type="checkbox">
+          <a href="video.vd?userNo=${videoimage.userNo}&vNo=${videoimage.vNo}">
+            <span class="switch-left" >
+						
+            		  </span></a>
+            		  
+            		  
+               <span  class="switch-right" > 
+ 		  <form action="frirequestf.mb">  
+             <input type="hidden" id="friId" name="friId" value="${user.friId }"/>
+            <input type="hidden" id="status_yn" name="status_yn" value="N"/>  
+               <input  type="submit" value="거절" style="border:none; background:none;width:32px;height:32px;padding:none;">
+            		  </form> 
+            		  </span> --%>
+           
+       
+            
+            
+           <!--  <input type="reset"value="거절"></span> -->
          </label>
+         
+         
     </td></tr>
     </c:forEach>
                 </table>    
