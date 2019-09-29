@@ -496,7 +496,7 @@ $('#friendlist').click(function(){
 		})
 			
 			function getConnection2(){
-				ws2 = new WebSocket("ws://192.168.0.13:8001" + "<%=request.getContextPath()%>/alramStart?userNo="+alramUserNo);
+				ws2 = new WebSocket("ws://192.168.30.130:8001" + "<%=request.getContextPath()%>/alramStart?userNo="+alramUserNo);
 				
 				ws2.onopen2 = function(event){
 					
@@ -518,7 +518,6 @@ $('#friendlist').click(function(){
 			}
 			
 			function send2(msg){
-				/* location.href="notification.mb"; */
 				var tryMoney = $("#tryMoney").val();
 				var userId = "${m.userNm}";
 				var sendMsg = userId + ":" + tryMoney;

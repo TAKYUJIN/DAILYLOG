@@ -366,11 +366,11 @@
           	<c:forEach items="${vList}" var="v">
           	<c:if test="${!empty v.apNm}">
                <tr>
-              	<td>
+              	<td><p>현재 추가 정보</p>
               	<input type="text" class="video_td" id="apNm" name="apNm" value="상호명 : ${v.apNm}" 
-					onfocus="this.select()" style="border:none;background:transparent;font-size:20px;">
+					onfocus="this.select()" style="width:300px;border:none;background:transparent;font-size:20px;">
 					<input type="text" class="video_td" id="apAd" name="apAd" value="주소 : ${v.apAd}" 
-					onfocus="this.select()" style="border:none;background:transparent;font-size:20px;">
+					onfocus="this.select()" style="width:550px;border:none;background:transparent;font-size:20px;">
               	<button type="button" class="infobtn3" onclick="delectPlace();">삭제</button>
               	</td>
               </tr>

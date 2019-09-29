@@ -129,7 +129,7 @@ table.table td .add {
 	margin-top:-150px;
 }
 .button1 {
-	margin-left:1200px;
+	margin-left:1100px;
 	background-color: #13334A;
 	padding: 10px 24px;
 	color: white;

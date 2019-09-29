@@ -8,7 +8,7 @@
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Insert title here</title>
+<title>WITH</title>
 <link href="https://vjs.zencdn.net/7.6.0/video-js.css" rel="stylesheet">
 <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
 <script src='https://vjs.zencdn.net/7.6.0/video.js'></script>
@@ -70,7 +70,7 @@ input:focus {outline:none;}
 					</c:if>
 					<td><video id='my-video' class='video-js' width="300px;"
 							height="200px;" controls loop poster='resources/images/${b.fileNm}' data-setup='{}'
-							onclick="location.href='video.vd?userNo=${b.userNo}&vNo=${b.vNo}'">
+							onclick="location.href='video.vd?userNo=${b.logerNo}&vNo=${b.vNo}'">
 							<source src="resources/images/${b.fileNm}" type="">
 							 <source src='resources/uploadFiles/${b.vfileNm}' type='video/mp4'>
 							<!--  <source src='MY_VIDEO.webm' type='video/webm'> -->

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.google.common.eventbus.Subscribe;
 import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.loger.model.vo.Support;
 import com.kh.with.main.model.vo.VideoLike;
@@ -544,7 +545,7 @@ public class VideoServiceImpl implements VideoService{
 		return vd.selectReplyHate(sqlSession, map);
 	}
 	@Override
-	public int selectSubtitle(Map<String, Object> map) {
+	public List<Subscribe> selectSubtitle(Map<String, Object> map) {
 		
 		return vd.selectSubtitle(sqlSession, map);
 	}

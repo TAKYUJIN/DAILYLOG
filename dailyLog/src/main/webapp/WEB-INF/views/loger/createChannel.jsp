@@ -55,8 +55,7 @@
 	margin-right: 1000px;
 }
 
-.button1 {
-	margin-left: 50px;
+  .button1 {
 	background-color: #13334A;
 	padding: 10px 24px;
 	color: white;
@@ -104,7 +103,7 @@
 					 <input type="file" name="file2" value="file2" id="file2"/> 
 					</div>
 					<br> <br> <br> <br> <br> <br>
-					<button type="submit" id="submit" class="btn btn-primary btn-lg">채널개설</button>
+					<button type="submit" id="submit" class="button1" style="margin-top:-50px;">채널개설</button>
 				</div>
 			</div>
 		</div>

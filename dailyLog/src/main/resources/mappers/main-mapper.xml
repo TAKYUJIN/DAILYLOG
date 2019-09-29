@@ -16,6 +16,7 @@
 		<result property="fileNm" column="FILE_NM" />
 		<result property="vfileNm" column="VFILE_NM" />
 		<result property="nNo" column="RANK" />
+		<result property="logerNo" column="LUSER_NO" />
 	</resultMap>
 	
 	 <resultMap type="Alram" id="AlramResultSet"> 
@@ -42,13 +43,14 @@
 	<!-- 북마크 조회 -->
 	<select id="showBookmark" resultMap="videoLikeResultSet">
 		SELECT RANK, LIKE_NO,
-		USER_NO, V_NO, CH_NO, V_DT, V_TY, V_TITLE, UPLOAD_DT, FILE_NM, VFILE_NM
+		USER_NO, V_NO, CH_NO, V_DT, V_TY, V_TITLE, UPLOAD_DT, FILE_NM, VFILE_NM, LUSER_NO
 		FROM (SELECT ROW_NUMBER() OVER(ORDER BY VL.V_DT DESC) RANK, VL.*, V_TITLE,
-		UPLOAD_DT, A.FILE_NM, V.FILE_NM VFILE_NM
+		UPLOAD_DT, A.FILE_NM, V.FILE_NM VFILE_NM, L.USER_NO LUSER_NO
 		FROM VIDEO_LIKE VL
 		JOIN MEMBER M ON(VL.USER_NO = M.USER_NO)
 		JOIN VIDEO V ON(VL.V_NO = V.V_NO)
 		JOIN ATTACHMENT A ON(V.V_NO = A.V_NO)
+        JOIN LOGER L ON(V.USER_NO = L.USER_NO)
 		WHERE VL.USER_NO = #{userNo}
         AND V_TY = '북마크')
 		ORDER BY RANK ASC
@@ -57,13 +59,14 @@
 	<!--좋아요  조회 -->
 	<select id="showVideoLike" resultMap="videoLikeResultSet">
 		SELECT RANK, LIKE_NO,
-		USER_NO, V_NO, CH_NO, V_DT, V_TY, V_TITLE, UPLOAD_DT, FILE_NM, VFILE_NM
+		USER_NO, V_NO, CH_NO, V_DT, V_TY, V_TITLE, UPLOAD_DT, FILE_NM, VFILE_NM, LUSER_NO
 		FROM (SELECT ROW_NUMBER() OVER(ORDER BY VL.V_DT DESC) RANK, VL.*, V_TITLE,
-		UPLOAD_DT, A.FILE_NM, V.FILE_NM VFILE_NM
+		UPLOAD_DT, A.FILE_NM, V.FILE_NM VFILE_NM, L.USER_NO LUSER_NO
 		FROM VIDEO_LIKE VL
 		JOIN MEMBER M ON(VL.USER_NO = M.USER_NO)
 		JOIN VIDEO V ON(VL.V_NO = V.V_NO)
 		JOIN ATTACHMENT A ON(V.V_NO = A.V_NO)
+		JOIN LOGER L ON(V.USER_NO = L.USER_NO)
 		WHERE VL.USER_NO = #{userNo}
 		AND V_TY = '좋아요')
 		ORDER BY RANK ASC
@@ -85,13 +88,14 @@
 	
 	<!-- 검색한 제목의 좋아요  조회 -->
 	<select id="selectVideoLike" resultMap="videoLikeResultSet">
-		SELECT RANK, LIKE_NO, USER_NO, V_NO, CH_NO, V_DT, V_TY, V_TITLE, UPLOAD_DT, FILE_NM, VFILE_NM
+		SELECT RANK, LIKE_NO, USER_NO, V_NO, CH_NO, V_DT, V_TY, V_TITLE, UPLOAD_DT, FILE_NM, VFILE_NM, LUSER_NO
 		FROM (SELECT ROW_NUMBER() OVER(ORDER BY VL.V_DT DESC) RANK,	VL.*, V_TITLE,
-		UPLOAD_DT, A.FILE_NM, V.FILE_NM VFILE_NM
+		UPLOAD_DT, A.FILE_NM, V.FILE_NM VFILE_NM, L.USER_NO LUSER_NO
 		FROM VIDEO_LIKE VL
 		JOIN MEMBER M ON(VL.USER_NO = M.USER_NO)
 		JOIN VIDEO V ON(VL.V_NO = V.V_NO)
 		JOIN ATTACHMENT A ON(V.V_NO = A.V_NO)
+		JOIN LOGER L ON(V.USER_NO = L.USER_NO)
 		WHERE VL.USER_NO = #{userNo}
 		AND V_TITLE LIKE '%' || #{vTitle} || '%')
 		ORDER BY RANK ASC

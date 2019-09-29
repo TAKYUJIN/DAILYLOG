@@ -23,13 +23,10 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <style type="text/css">
-body {
-	color: black;
-	background: white;
-	font-family: 'Open Sans', sans-serif;
-}
+
 
 .table-wrapper {
+	margin-left:70px;
 	width: 1000px;
 	background: white;
 	padding: 20px;
@@ -135,7 +132,7 @@ table.table td .add {
 }
 
 .button1 {
-	margin-left:50px;
+	margin-left:90px;
 	background-color: #13334A;
 	padding: 10px 24px;
 	color: white;

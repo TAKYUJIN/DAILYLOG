@@ -568,8 +568,8 @@
 		SELECT NVL(INFO, 'info없음')
 		FROM VIDEO
 		WHERE V_NO = #{vNo}
-
 	</select>
+  
   <select id="adinfo" resultMap="videoResultSet"> 
   select * from VIDEO 
 where NOT AD_INFO IS NULL 
@@ -667,7 +667,7 @@ where NOT AD_INFO IS NULL
 		AND V_TY = '싫어요'
 	</select>
 	
-	<select id="selectSubtitle" resultMap="SubResultSet">
+	<select id="selectSubtitle" parameterType="map" resultMap="SubResultSet">
 		SELECT SUB_NO
 		FROM SUBSCRIBE
 		WHERE CH_NO = #{chNo}

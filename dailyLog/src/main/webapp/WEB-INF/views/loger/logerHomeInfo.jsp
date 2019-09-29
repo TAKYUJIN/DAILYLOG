@@ -207,7 +207,28 @@ body {
 	width: 1400px;
 	margin-right: 1000px;
 }
+ .button1 {
 
+	background-color: #13334A;
+	padding: 10px 24px;
+	color: white;
+	border: none;
+	border-radius: 7px;
+	moz-border-radius: 7px;
+	khtml-border-radius: 7px;
+	webkit-border-radius: 7px;
+}
+.button2 {
+	margin-left:50px;
+	background-color: #A8B7BC ;
+	padding: 10px 24px;
+	color: white;
+	border: none;
+	border-radius: 7px;
+	moz-border-radius: 7px;
+	khtml-border-radius: 7px;
+	webkit-border-radius: 7px;
+}
 </style>
 
 
@@ -244,11 +265,11 @@ body {
 			</div>
 			<div id="subDiv">
 				<c:if test="${subcount == 0}">
-					<input type="button" id="subscribe" class="btn btn-primary"
+					<input type="button" id="subscribe" class="button1"
 						value="구독">
 				</c:if>
 				<c:if test="${subcount == 1}">
-					<input type="button" id="subscribecancel" class="btn btn-primary"
+					<input type="button" id="subscribecancel" class="button2"
 						value="구독취소">
 				</c:if>
 			</div>

@@ -257,7 +257,7 @@ var socket;
 var login_ids={};
     var textarea = document.getElementById("messageWindow");
     var nickname="${loginUser.nickname}";
-    var webSocket = new WebSocket('ws://192.168.0.13:8001/with/broadcasting');
+    var webSocket = new WebSocket('ws://192.168.30.130:8001/with/chatStart');
     /* socket.emit('login','nickname'); */
     var inputMessage = document.getElementById('inputMessage');
     webSocket.onerror = function(event) {
