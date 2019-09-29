@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.with.main.model.dao.BoardDao;
 import com.kh.with.main.model.dao.BoardDaoImpl;
+import com.kh.with.main.model.vo.Friend;
 import com.kh.with.main.model.vo.MailVo;
 import com.kh.with.member.model.vo.Member;
 
@@ -31,6 +32,31 @@ public class BoardServiceImpl implements BoardService{
 		// TODO Auto-generated method stub
 		return boarddao.user(m);
 	}
+
+	@Override
+	public List<MailVo> friendconfirm(Member m) {
+		// TODO Auto-generated method stub
+		return boarddao.friendconfirm(m);
+	}
+
+	@Override
+	public int frirequests(Friend f) {
+		// TODO Auto-generated method stub
+		return boarddao.frirequests(f);
+	}
+
+	@Override
+	public int frirequestf(Friend f) {
+		// TODO Auto-generated method stub
+		return boarddao.frirequestf(f);
+	}
+
+	@Override
+	public int frirequests1(Friend f) {
+		// TODO Auto-generated method stub
+		return boarddao.frirequests1(f);
+	}
+
  
  
 	

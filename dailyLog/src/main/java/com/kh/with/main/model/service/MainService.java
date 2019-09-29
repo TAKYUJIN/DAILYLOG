@@ -47,7 +47,7 @@ public interface MainService {
 	int friendSending1(Friend f);
 	int friendSending2(Friend f);
 
-	List<Friend> friendconfirm(Friend f);
+	//List<Friend> friendconfirm(Member m);
 
 	ArrayList<NewlyVideo> newAction(Member m);
 

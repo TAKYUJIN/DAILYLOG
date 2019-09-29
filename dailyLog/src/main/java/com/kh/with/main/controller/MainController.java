@@ -417,15 +417,47 @@ public class MainController {
 		}
 		
 		@RequestMapping(value="friendconfirm.mb",method=RequestMethod.GET)
-		public String friendconfirm(Model model,Friend f,HttpSession session,HttpServletRequest request) {
-			  
-			  ms.friendconfirm(f);
-		/* model.addAttribute("list",friendconfirm); */
+		public String friendconfirm(Model model ,HttpSession session,HttpServletRequest request) {
+			Member m = (Member) session.getAttribute("loginUser");
+			List<MailVo> list= service.friendconfirm(m);
+		  model.addAttribute("list",list);  
 		 	return "friends/friendconfirm"; 
-			
-			
 		}
-	
+		@RequestMapping(value="frirequests.mb",method=RequestMethod.GET)
+		public String frirequests(Friend f,HttpSession session,HttpServletRequest request) {
+			Member m = (Member) session.getAttribute("loginUser");
+			String friId =request.getParameter("friId");
+			String status_yn=request.getParameter("status_yn");
+			String userId=m.getUserId();
+			System.out.println("friId:"+friId+"status_yn"+status_yn
+					+"userId"+userId);
+			f.setFriId(friId);
+			f.setStatus_yn(status_yn);
+			f.setUserId(userId);
+			System.out.println("friId:"+friId+"status_yn"+status_yn
+					+"userId"+userId);
+			int list= service.frirequests(f);
+			int list1= service.frirequests1(f);
+		     //model.addAttribute("list",list);  
+		 	return "redirect:/friendconfirm.mb"; 
+		}
 
-		
+		@RequestMapping(value="frirequestf.mb",method=RequestMethod.GET)
+		public String frirequestf(Friend f,HttpSession session,HttpServletRequest request) {
+			Member m = (Member) session.getAttribute("loginUser");
+			String friId =request.getParameter("friId");
+			String status_yn=request.getParameter("status_yn");
+			String userId=m.getUserId();
+			System.out.println("friId:"+friId+"status_yn"+status_yn
+					+"userId"+userId);
+			f.setFriId(friId);
+			f.setStatus_yn(status_yn);
+			f.setUserId(userId);
+			System.out.println("friId:"+friId+"status_yn"+status_yn
+					+"userId"+userId);
+			int list= service.frirequestf(f);
+			
+		     //model.addAttribute("list",list);  
+		 	return "redirect:/friendconfirm.mb"; 
+		}
 }

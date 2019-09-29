@@ -2067,8 +2067,8 @@ var socket;
 var login_ids={};
     var textarea = document.getElementById("messageWindow");
     var nickname="${loginUser.nickname}";
-    var webSocket = new WebSocket('ws://192.168.200.173:8001/with/broadcasting');
-    /* socket.emit('login','nickname'); */
+    webSocket = new WebSocket("ws://localhost:8001"+"<%=request.getContextPath()%>/broadcasting?nickname"+"="+nickname); 
+	 /* socket.emit('login','nickname'); */
     var inputMessage = document.getElementById('inputMessage');
     console.log(inputMessage);
     webSocket.onerror = function(event) {
@@ -2087,12 +2087,11 @@ var login_ids={};
         var message = event.data.split("|");
         var sender = message[0];
         var content = message[1];
+        /* var chatMsg = event.data;
+		var chatMsg1 = event.data; */
        /*  alert("11"); */
        var d = new Date();
         
-       
-      
-       
         if (content == "") {
         	 
         } /* else {
@@ -2119,6 +2118,46 @@ var login_ids={};
                 		 
                 }
             }
+            
+            
+        /* if(chatMsg1.substring(0,8) == 'sendlist'){
+			 // $('#frilist').append($chat);
+				 if (chatMsg1 =='sendlist : heejung9655@gmail.com'){
+					
+					 $('#frilist').append(chatMsg1);
+				   }else{
+					   
+					   $('#frilist').append(chatMsg1);
+				   }  
+				 
+				 console.log(chatMsg1);
+
+			} 
+		  
+		  
+		if(chatMsg.substring(0,8) == 'DAILYLOG' ){
+			var $chat = $("<div id='chatForm'>" + chatMsg + "</div>");
+			$('#messageWindow').append($chat);
+			console.log(chatMsg+"111");
+			console.log($chat+"111");
+			
+		}  else if(chatMsg.substring(0,8) == 'sendlist'){
+			 console.log('');
+		}   else{
+			
+			var $chat = $(" <div class='chat'>" + chatMsg + "</div>);
+			$('#messageWindow').append(chatMsg);
+			}
+            
+             */
+            
+            
+            
+            
+            
+            
+            
+            
        
     } 
     function onOpen(event) {

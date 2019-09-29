@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>WITH</title>>
 </head>
 <body>
 <nav class="navbar navbar-default navbar-expand-lg navbar-light">

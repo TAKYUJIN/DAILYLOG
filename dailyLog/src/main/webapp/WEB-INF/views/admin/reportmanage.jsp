@@ -5,7 +5,7 @@
 	<head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Elements Reference - Massively by HTML5 UP</title>
+	 <title>WITH</title>
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -18,7 +18,7 @@
 		font-family: 'Roboto', sans-serif;
 	}
 	.table-wrapper {
-        background: #fff;
+        background: none;
         padding: 20px;
         margin: 30px 0;
         box-shadow: 0 1px 1px rgba(0,0,0,.05);

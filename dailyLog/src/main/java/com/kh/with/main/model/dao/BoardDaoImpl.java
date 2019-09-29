@@ -6,6 +6,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.kh.with.main.model.vo.Friend;
 import com.kh.with.main.model.vo.MailVo;
 import com.kh.with.member.model.vo.Member;
 
@@ -26,6 +27,26 @@ public class BoardDaoImpl implements BoardDao {
 	public List<Member> user(Member m) {
 		// TODO Auto-generated method stub
 		return session.selectList("friend.user",m); 
+	}
+
+	public List<MailVo> friendconfirm(Member m) {
+		// TODO Auto-generated method stub
+		return session.selectList("friend.friendconfirm",m);
+	}
+
+	public int frirequests(Friend f) {
+		// TODO Auto-generated method stub
+		return session.update("friend.frirequests",f);
+	}
+
+	public int frirequestf(Friend f) {
+		// TODO Auto-generated method stub
+		return session.update("friend.frirequestf",f);
+	}
+
+	public int frirequests1(Friend f) {
+		// TODO Auto-generated method stub
+		return session.update("friend.frirequests1",f);
 	}
 
 	 
