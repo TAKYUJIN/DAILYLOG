@@ -160,7 +160,12 @@ public interface VideoDao {
 	int channelReportAlram(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	List<VideoLike> selectReplyLike(SqlSessionTemplate sqlSession, Map<String, Integer> map);
 	List<VideoLike> selectReplyHate(SqlSessionTemplate sqlSession, Map<String, Integer> map);
+
+	int selectSubtitle(SqlSessionTemplate sqlSession, Map<String, Object> map);
+	List<Video> adinfo(SqlSessionTemplate sqlSession, Member m);
+
 	List<Subscribe> selectSubtitle(SqlSessionTemplate sqlSession, Map<String, Object> map);
+
 
 
 

@@ -29,6 +29,12 @@ public interface ReportDao {
 
 	int alramreport(SqlSessionTemplate sqlSession, Alram alram);
 
+
+	int rereportupdate(SqlSessionTemplate sqlSession, Report2 report);
+
+
+	int chreportupdate(SqlSessionTemplate sqlSession, Report2 report);
+
 	 
 
 

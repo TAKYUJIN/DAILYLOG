@@ -26,9 +26,13 @@ public interface ReportService {
 	
 	//관리자 동영상 신고 상세 내역->신고
 	public int videoreportupdate(Report2 report);
-
+	public int chreportupdate(Report2 report);
+	public int rereportupdate(Report2 report);
 
 	int alramreport(Alram alram);
+
+
+	
 
 
 

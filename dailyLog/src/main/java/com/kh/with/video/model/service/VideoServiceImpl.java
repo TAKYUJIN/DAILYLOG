@@ -549,6 +549,14 @@ public class VideoServiceImpl implements VideoService{
 		
 		return vd.selectSubtitle(sqlSession, map);
 	}
+
+
+
+	@Override
+	public List<Video> adinfo(Member m) {
+		// TODO Auto-generated method stub
+		return vd.adinfo(sqlSession,m);
+	}
 	
 }
 

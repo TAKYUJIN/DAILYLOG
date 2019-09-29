@@ -562,4 +562,10 @@ public class VideoDaoImpl implements VideoDao {
 		// TODO Auto-generated method stub
 		return sqlSession.insert("Video.insertnewAction", map);
 	}
+
+	@Override
+	public List<Video> adinfo(SqlSessionTemplate sqlSession, Member m) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("Video.adinfo");
+	}
 }

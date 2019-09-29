@@ -127,7 +127,7 @@ SELECT  V_NO,USER_ID ,M.USER_NO,STATUS,RE_COUNT,FLOOR(C_COUNT/3) AS C_COUNT , RE
 		
 	</select>
 	<select id="chreportdetail" resultMap="Report2ResultSet">
- 		SELECT 	R.RE_NO,V.V_NO,V.V_TITLE,M.USER_NM,R.RE_COUNT,R.RE_DT,R.RE_WHY
+ 		SELECT 	R.RE_NO,V.V_NO,V.V_TITLE,M.USER_NM,R.RE_COUNT,R.RE_DT,R.RE_WHY,R.CH_NM
 		 FROM REPORT R
 		 JOIN MEMBER M ON
          (R.USER_NO=M.USER_NO)
@@ -136,7 +136,7 @@ SELECT  V_NO,USER_ID ,M.USER_NO,STATUS,RE_COUNT,FLOOR(C_COUNT/3) AS C_COUNT , RE
 		   
 	</select>
 	<select id="repreportdetail" resultMap="Report2ResultSet">
- 		SELECT 	R.RE_NO,V.V_NO,V.V_TITLE,M.USER_NM,R.RE_COUNT,R.RE_DT,R.RE_WHY,R.REP_NO
+ 		SELECT 	R.RE_NO,V.V_NO,V.V_TITLE,M.USER_NM,R.RE_COUNT,R.RE_DT,R.RE_WHY,R.REP_NO,R.RE_TARGET
 		 FROM REPORT R
 		 JOIN MEMBER M ON
          (R.USER_NO=M.USER_NO)
@@ -151,11 +151,21 @@ SELECT  V_NO,USER_ID ,M.USER_NO,STATUS,RE_COUNT,FLOOR(C_COUNT/3) AS C_COUNT , RE
 		UPDATE REPORT
 		SET RE_COUNT=RE_COUNT+1,
 		C_COUNT=C_COUNT +1
-        WHERE RE_NO=#{reno}
-	
+        WHERE V_NO=#{vNo}
 	</update>
 	
-	
+	<update id="rereportupdate"  parameterType="com.kh.with.report.model.vo.Report2">
+		UPDATE REPORT
+		SET RE_COUNT=RE_COUNT+1,
+		C_COUNT=C_COUNT +1
+        WHERE RE_TARGET=#{retarget}
+	</update>
+	<update id="chreportupdate"  parameterType="com.kh.with.report.model.vo.Report2">
+		UPDATE REPORT
+		SET RE_COUNT=RE_COUNT+1,
+		C_COUNT=C_COUNT +1
+        WHERE CH_NM=#{chNm}
+	</update>
 	
 	
 	

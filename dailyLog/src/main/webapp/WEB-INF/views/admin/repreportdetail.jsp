@@ -47,7 +47,7 @@
 		color: #999;
 		border-radius: 3px;
     	margin-bottom: 15px;
-        background: #fff;
+        background: none;
         box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
         padding: 30px;
     }
@@ -112,6 +112,7 @@
 			<label>신고 사유:${de.rewhy}</label><br><br>
 			<input type="hidden" id="rewhy" name="rewhy" value="${de.rewhy}">
 			<input type="hidden" id="recount" name="recount" value="${de.recount}">
+			<input type="hidden" id="retarget" name="retarget" value="${de.retarget}">
 			 <br>
              
 			<div class="col-xs-8 col-xs-offset-4"><br><br><br>

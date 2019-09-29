@@ -203,6 +203,8 @@ public interface VideoService {
 
 	List<Subscribe> selectSubtitle(Map<String, Object> map);
 
+	List<Video> adinfo(Member m);
+
 
 
 

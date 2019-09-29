@@ -5,7 +5,7 @@ public class Report2 implements java.io.Serializable {
 	private int userNo;//회원번호
 	private String userNm;//회원 이름
 	private String userId; //회원 아이디
-	private String retarget;//신고대상자
+	private int retarget;//신고대상자
 	private String redt;//신고날짜
 	private String rewhy;//신고사유
 	private String rety;//신고구분
@@ -20,29 +20,6 @@ public class Report2 implements java.io.Serializable {
 	private int status;//status
 	
 	public Report2() { }
-
-	public Report2(int reno, int userNo, String userNm, String userId, String retarget, String redt, String rewhy,
-			String rety, int vNo, int repno, String chNm, int recount, int ccount, String vTitle, String vcount,
-			String filepath, int status) {
-		super();
-		this.reno = reno;
-		this.userNo = userNo;
-		this.userNm = userNm;
-		this.userId = userId;
-		this.retarget = retarget;
-		this.redt = redt;
-		this.rewhy = rewhy;
-		this.rety = rety;
-		this.vNo = vNo;
-		this.repno = repno;
-		this.chNm = chNm;
-		this.recount = recount;
-		this.ccount = ccount;
-		this.vTitle = vTitle;
-		this.vcount = vcount;
-		this.filepath = filepath;
-		this.status = status;
-	}
 
 	public int getReno() {
 		return reno;
@@ -76,11 +53,11 @@ public class Report2 implements java.io.Serializable {
 		this.userId = userId;
 	}
 
-	public String getRetarget() {
+	public int getRetarget() {
 		return retarget;
 	}
 
-	public void setRetarget(String retarget) {
+	public void setRetarget(int retarget) {
 		this.retarget = retarget;
 	}
 
@@ -180,6 +157,29 @@ public class Report2 implements java.io.Serializable {
 		this.status = status;
 	}
 
+	public Report2(int reno, int userNo, String userNm, String userId, int retarget, String redt, String rewhy,
+			String rety, int vNo, int repno, String chNm, int recount, int ccount, String vTitle, String vcount,
+			String filepath, int status) {
+		super();
+		this.reno = reno;
+		this.userNo = userNo;
+		this.userNm = userNm;
+		this.userId = userId;
+		this.retarget = retarget;
+		this.redt = redt;
+		this.rewhy = rewhy;
+		this.rety = rety;
+		this.vNo = vNo;
+		this.repno = repno;
+		this.chNm = chNm;
+		this.recount = recount;
+		this.ccount = ccount;
+		this.vTitle = vTitle;
+		this.vcount = vcount;
+		this.filepath = filepath;
+		this.status = status;
+	}
+
 	@Override
 	public String toString() {
 		return "Report2 [reno=" + reno + ", userNo=" + userNo + ", userNm=" + userNm + ", userId=" + userId
@@ -187,10 +187,6 @@ public class Report2 implements java.io.Serializable {
 				+ ", repno=" + repno + ", chNm=" + chNm + ", recount=" + recount + ", ccount=" + ccount + ", vTitle="
 				+ vTitle + ", vcount=" + vcount + ", filepath=" + filepath + ", status=" + status + "]";
 	}
-
  
- 
-	 
-
 	 
 }

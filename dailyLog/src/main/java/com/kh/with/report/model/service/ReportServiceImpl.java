@@ -67,6 +67,18 @@ public class ReportServiceImpl implements ReportService {
 		// TODO Auto-generated method stub
 		return rd.alramreport(sqlSession,alram);
 	}
+
+	@Override
+	public int chreportupdate(Report2 report) {
+		// TODO Auto-generated method stub
+		return rd.chreportupdate(sqlSession,report);
+	}
+
+	@Override
+	public int rereportupdate(Report2 report) {
+		// TODO Auto-generated method stub
+		return rd.rereportupdate(sqlSession,report);
+	}
 	 
 	
 	
