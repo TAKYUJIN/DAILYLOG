@@ -44,7 +44,6 @@ body {
 	margin-bottom:10px;
 }
 input:focus {outline:none;}
-
 </style>
 </head>
 <body>
@@ -57,11 +56,11 @@ input:focus {outline:none;}
 					<span class="input-group-addon"><i class="material-icons" onclick="selectBookmark();">&#xE8B6;</i></span>
 				</div>
 		</div>
+		<!-- 북마크 -->
 		<table id="bookmarkArea">
-			<tbody id="bookmark">
+			<tbody>
 			<c:set var="i" value="0" />
 			 <c:set var="j" value="3" />
-					<!-- 비디오 -->
 				<c:choose>
 					<c:when test="${list ne null && fn:length(list) gt 0}">
 				<c:forEach items="${list}" var="b" varStatus="status">
@@ -70,13 +69,14 @@ input:focus {outline:none;}
 					</c:if>
 					<td><video id='my-video' class='video-js' width="300px;"
 							height="200px;" controls loop poster='resources/images/${b.fileNm}' data-setup='{}'
-							onclick="location.href='video.vd?userNo=${b.userNo}&vNo=${b.vNo}'">
+							onclick="location.href='video.vd?userNo=${b.logerNo}&vNo=${b.vNo}'">
 							<source src="resources/images/${b.fileNm}" type="">
 							 <source src='resources/uploadFiles/${b.vfileNm}' type='video/mp4'>
-							<!--  <source src='MY_VIDEO.webm' type='video/webm'> -->
 						</video><br> 
 						<input type="text" value="${b.vTitle}" class="video_td" id="videoTitle" readonly onfocus="this.blur();"> 
-						<input type="text" value="업데이트  ${fn:substring(b.uploadDT,0,10)}" class="video_td" id="videoDate" readonly onfocus="this.blur();"></td>
+						<input type="text" value="업데이트  ${fn:substring(b.uploadDT,0,10)}" class="video_td" 
+						id="videoDate" readonly onfocus="this.blur();">
+					</td>
 					<c:if test="${i%j eq j-1}">
 						</tr>
 					</c:if>

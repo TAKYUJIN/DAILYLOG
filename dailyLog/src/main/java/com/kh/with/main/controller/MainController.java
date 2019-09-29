@@ -24,6 +24,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonIOException;
+import com.kh.with.loger.model.service.LogerService;
+import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.main.model.service.BoardService;
 import com.kh.with.main.model.service.MailSendService;
 import com.kh.with.main.model.service.MainService;
@@ -48,7 +50,7 @@ public class MainController {
 	
 	@Autowired
 	private MainService ms;
-	 
+	
 	@Inject
 	 BoardService service;
 	// 북마크페이지로 이동

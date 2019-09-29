@@ -69,11 +69,11 @@ input:focus {outline:none;}
 		
 		</script>
 
+		<!-- 북마크 -->
 		<table id="bookmarkArea">
-			<tbody id="bookmark">
+			<tbody>
 			<c:set var="i" value="0" />
 			 <c:set var="j" value="3" />
-					<!-- 비디오 -->
 				<c:choose>
 					<c:when test="${bList ne null && fn:length(bList) gt 0}">
 				<c:forEach items="${bList}" var="b" varStatus="status">
@@ -82,12 +82,13 @@ input:focus {outline:none;}
 					</c:if>
 					<td><video id='my-video' class='video-js' width="300px;"
 							height="200px;" controls loop poster='resources/uploadFiles/${b.fileNm}' data-setup='{}'
-							onclick="location.href='video.vd?userNo=${b.userNo}&vNo=${b.vNo}'">
+							onclick="location.href='video.vd?userNo=${b.logerNo}&vNo=${b.vNo}'">
 							 <source src="resources/uploadFiles/${b.vfileNm}" type="video/mp4">
-							<!--  <source src='MY_VIDEO.webm' type='video/webm'> -->
 						</video><br> 
 						<input type="text" value="${b.vTitle}" class="video_td" id="videoTitle" readonly onfocus="this.blur();"> 
-						<input type="text" value="업데이트  ${fn:substring(b.uploadDT,0,10)}" class="video_td" id="videoDate" readonly onfocus="this.blur();"></td>
+						<input type="text" value="업데이트  ${fn:substring(b.uploadDT,0,10)}" class="video_td" 
+							id="videoDate" readonly onfocus="this.blur();">
+					</td>
 					<c:if test="${i%j eq j-1}">
 						</tr>
 					</c:if>
@@ -96,6 +97,9 @@ input:focus {outline:none;}
 					</c:when>
 				</c:choose>
 				</tbody>
+		</table>
+	</form>
+	<jsp:include page="../common/footer.jsp"></jsp:include>
 						<%-- 
 					<c:choose>
 						<c:when test="${fn:length(bList.get()) > 2">
@@ -185,9 +189,6 @@ input:focus {outline:none;}
 			<input type="text" value="동영상제목" class="video_td" id="videoTitle">
 			<input type="text" value="업데이트 2019.08.13" class="video_td" id="videoDate">
 			</td> -->
-		</table>
-	</form>
-	<jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
 <script>
 			function selectBookmark(){

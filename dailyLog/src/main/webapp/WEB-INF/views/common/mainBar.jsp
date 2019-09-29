@@ -518,7 +518,6 @@ $('#friendlist').click(function(){
 			}
 			
 			function send2(msg){
-				/* location.href="notification.mb"; */
 				var tryMoney = $("#tryMoney").val();
 				var userId = "${m.userNm}";
 				var sendMsg = userId + ":" + tryMoney;
