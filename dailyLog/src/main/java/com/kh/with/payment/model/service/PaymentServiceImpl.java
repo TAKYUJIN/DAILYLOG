@@ -18,9 +18,9 @@ public class PaymentServiceImpl implements PaymentService {
 	@Autowired
 	private PaymentDao pd;
 	
-	public ArrayList<Payment> selectPointList(Payment p) {
+	public ArrayList selectPointList(Payment p) {
 		// TODO Auto-generated method stub
-		return pd.selectPayment(sqlSession, p);
+		return pd.selectPointList(sqlSession, p);
 	}
 
 	@Override

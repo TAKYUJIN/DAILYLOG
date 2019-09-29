@@ -559,6 +559,6 @@ public class VideoDaoImpl implements VideoDao {
 	@Override
 	public int insertnewAction(SqlSessionTemplate sqlSession, HashMap map) {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.insert("Video.insertnewAction", map);
 	}
 }
