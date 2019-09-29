@@ -19,8 +19,9 @@
 </head>
 <style>
 .mainpage {
-	width: 1024px;
+	width: 1600px;
 	margin-top: 100px;
+	margin-left:250px;
 }
 
 .btn {
@@ -69,6 +70,18 @@
 	margin-left:10px;
 
 }
+ .button1 {
+
+	background-color: #13334A;
+	padding: 10px 24px;
+	color: white;
+	border: none;
+	border-radius: 7px;
+	moz-border-radius: 7px;
+	khtml-border-radius: 7px;
+	webkit-border-radius: 7px;
+}
+
 
 </style>
 
@@ -84,7 +97,7 @@
 		enctype="multipart/form-data">
 		<div class="mainpage">
 			<br> <br> <br>
-			<div class="container">
+			<div class="container" style="margin-left:60px">
 				<div class="progress" style="width: 950px;">
 					<div class="progress-bar progress-bar-striped active"
 						role="progressbar" aria-valuenow="40" aria-valuemin="0"
@@ -92,15 +105,15 @@
 				</div>
 			</div>
 			
-			<button id="uploadbtn" class="btn btn-primary" type="submit" >다음으로</button>
+			<button id="uploadbtn" class="button1" type="submit" >다음으로</button>
 			
 			
 			<div id="innerbox">
 				
 				<br>
 				<div class="basicInfo">
-					<div class="container">
-						<div class="form-group">
+					<div class="container" style="margin-left:10px;" >
+						<div class="form-group" >
 							<input type="text"  id="vTitle" name="vTitle"
 								style="width: 400px" placeholder="동영상제목">
 						</div>

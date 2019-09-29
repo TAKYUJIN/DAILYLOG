@@ -456,6 +456,14 @@
 	ON (L.USER_NO = M.USER_NO)
 	WHERE  L.USER_NO = #{userNo}
 	</select>
+
+
+ <!-- 채널명 -->
+	<select id="logerTitleNm"  resultMap="logerResultSet">
+	SELECT CH_NM
+	FROM LOGER
+	WHERE USER_NO  = #{userNo}
+	</select>
 </mapper>
 
 

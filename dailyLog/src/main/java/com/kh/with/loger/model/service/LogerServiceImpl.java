@@ -311,7 +311,13 @@ public class LogerServiceImpl implements LogerService{
 		return ld.deleteAddplace(sqlSession, addPlace);
 	}
 
-	
+
+	@Override
+	public Loger logerTitleNm(Loger logerTitleNm) {
+		return ld.logerTitleNm(sqlSession, logerTitleNm);
+	}
+
+
 
 	
 

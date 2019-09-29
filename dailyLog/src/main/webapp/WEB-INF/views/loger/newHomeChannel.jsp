@@ -217,23 +217,20 @@ body {
 		</div>
 		<br> <br>
 		<hr class="my-hr1">
-
-		<form class="navbar-form form-inline" action="search.mb" method="get">
-			<!-- <div class="input-group search-box" style="margin-left: 1200px">
-				<input type="text" id="search" name="search" class="form-control"
-					placeholder="검색"> <span class="input-group-addon"><i
-					class="material-icons">&#xE8B6;</i></span>
-			</div> -->
-		</form>
-
 		<div class="myInfo">
-			<img src="resources/uploadFiles/${result.fileNm}" width="200px"
-				height="200px">
-
-
+			<div class="profileImg">
+				<c:if test="${result.fileNm != null}">
+					<img src="resources/uploadFiles/${result.fileNm}" width="200px"
+						height="200px">
+				</c:if>
+				<c:if test="${result.fileNm == null}">
+					<img class="chImg" src="resources/images/newlogo3.png"
+						width="200px" height="200px">
+				</c:if>
+			</div>
 			<div class="textInfo" style="font-size: 30px">
 				<p style="widht: 200px; margin-left: 230px; margin-top: -90px;">
-					<strong><c:out value="${result.chNm}" /></strong>
+					<strong><c:out value="${logerTitleNm.chNm}" /></strong>
 				</p>
 			</div>
 			<div id="subDiv">
@@ -248,39 +245,48 @@ body {
 			</div>
 		</div>
 
-		<div class="row" style="margin-left: 30px;">
+			<div class="row" style="margin-left: 30px; margin-top:70px;" >
 			<div class="col-lg-15">
-				<a href="newHomeChannel.lo?userNo=${sessionScope.userNo}"
-					class="noticeLink" style="float: left; width: 15%;"><h4
-						class="page-title1">홈</h4></a> <a
-					href="logerHomeAllVideo.lo?userNo=${sessionScope.userNo}"
-					class="noticeLink" style="float: left; width: 15%;"><h4
-						class="page-title2">동영상</h4></a> <a
-					href="logerHomeInfo.lo?userNo=${sessionScope.userNo}"
-					class="noticeLink" style="float: left; width: 15%;"><h4
-						class="page-title3">정보</h4></a>
+				<a href="newHomeChannel.lo?userNo=${userNo}" class="noticeLink"
+					style="float: left; width: 15%;"><h4 class="page-title1">홈</h4></a>
+				<a href="logerHomeAllVideo.lo?userNo=${userNo}" class="noticeLink"
+					style="float: left; width: 15%;"><h4 class="page-title2">동영상</h4></a>
+				<a href="logerHomeInfo.lo?userNo=${userNo}" class="noticeLink"
+					style="float: left; width: 15%;"><h4 class="page-title3">정보</h4></a>
 			</div>
 			<div class="newVideo"></div>
 			<div class="textNewVideo">
 
 				<h3>
 					<strong><c:out value="${favOne.vTitle}" /></strong>
-					<c:out value="${newHomeChannellVideo}" />
 				</h3>
 				<br>
+				<c:if test="${empty favOne}">
+					<div class="ch_cnt"></div>
+				</c:if>
+				<c:if test="${!empty favOne}">
+					<div class="ch_cnt">
+						<a href="video.vd?userNo=${favOne.userNo}&vNo=${favOne.vNo}">
+							<img
+							style="border-radius: 7px; -moz-border-radius: 7px; -khtml-border-radius: 7px; -webkit-border-radius: 7px;"
+							src="resources/uploadFiles/${favOnesum.fileNm}" width="250px"
+							height="200px">
+						</a> <br> <br> <span class="hit"> <strong
+							class="blind">조회수</strong> <em><c:out
+									value="${favOne.count}" /></em>
+						</span> <span class="bar"></span> <span class="date"> <strong>등록</strong>
+							<em><c:out value="${favOne.uploadDt}" /></em>
+						</span> <br> <br> <span class="tag"><em><c:out
+									value="${favOne.tag}" /></em> </span>
+					</div>
+				</c:if>
 
-				<div class="ch_cnt">
-					<a href="video.vd?userNo=${favOne.userNo}&vNo=${favOne.vNo}"> <img
-						style="border-radius: 7px; -moz-border-radius: 7px; -khtml-border-radius: 7px; -webkit-border-radius: 7px;"
-						src="resources/uploadFiles/${favOnesum.fileNm}" width="250px"
-						height="200px"></a> <br> <br> <span class="hit">
-						<strong class="blind">조회수</strong> <em><c:out
-								value="${favOne.count}" /></em>
-					</span> <span class="bar"></span> <span class="date"> <strong>등록</strong>
-						<em><c:out value="${favOne.uploadDt}" /></em>
-					</span> <br> <br> <span class="tag"><em><c:out
-								value="${favOne.tag}" /></em> </span>
-				</div>
+
+
+
+
+
+
 			</div>
 		</div>
 		<br>
@@ -322,7 +328,6 @@ body {
 			<strong>인기동영상</strong>
 		</p>
 		<br>
-		<c:if test="">
 		<c:forEach items="${favHomeChannellVideo}" var="fv" begin="0" end="2">
 
 			<div class="col-sm-4">
@@ -344,12 +349,11 @@ body {
 				</div>
 				<br> <br> <br>
 			</div>
-			
+
 			<input type="hidden" id="userNo" value="${loginUser.userNo}">
 
 			<input type="hidden" id="chNo" value="${result.chNo}">
 		</c:forEach>
-		</c:if>
 	</div>
 	<!-- <hr class="my-hr2"> -->
 	<script>

@@ -355,6 +355,10 @@ public class LogerDaoImpl implements LogerDao{
 	public int deleteAddplace(SqlSessionTemplate sqlSession, AddPlace addPlace) {
 		return sqlSession.delete("Loger.delectAddplace", addPlace);
 	}
+	@Override
+	public Loger logerTitleNm(SqlSessionTemplate sqlSession, Loger logerTitleNm) {
+		return sqlSession.selectOne("Loger.logerTitleNm", logerTitleNm);
+	}
 
 
 }

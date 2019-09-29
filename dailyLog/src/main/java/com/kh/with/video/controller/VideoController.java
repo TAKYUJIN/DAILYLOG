@@ -995,15 +995,10 @@ public class VideoController {
 
 		System.out.println("페이지이동의 로그인유저정보 가지고 왔니?:::" + chYN);
 
-		if(chYN.equals("Y")) {
 			return"video/videoUpload";
-		}else {
-
-			return "loger/createChannel";
-
+	
 		}
 
-	}
 	//장소 정보 insert 메소드
 	@RequestMapping(value = "insertaddPlace.vd", method= RequestMethod.POST)
 	public String insertAddPlace(HttpServletRequest request) {

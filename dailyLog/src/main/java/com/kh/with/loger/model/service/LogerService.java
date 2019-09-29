@@ -141,6 +141,10 @@ public interface LogerService {
 
 	int deleteAddPlace(AddPlace addPlace);
 
+	Loger logerTitleNm(Loger logerTitleNm);
+
+
+
 
 
 
