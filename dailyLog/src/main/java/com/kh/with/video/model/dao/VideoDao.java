@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
+import com.google.common.eventbus.Subscribe;
 import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.loger.model.vo.Support;
 import com.kh.with.main.model.vo.VideoLike;
@@ -159,7 +160,7 @@ public interface VideoDao {
 	int channelReportAlram(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	List<VideoLike> selectReplyLike(SqlSessionTemplate sqlSession, Map<String, Integer> map);
 	List<VideoLike> selectReplyHate(SqlSessionTemplate sqlSession, Map<String, Integer> map);
-	int selectSubtitle(SqlSessionTemplate sqlSession, Map<String, Object> map);
+	List<Subscribe> selectSubtitle(SqlSessionTemplate sqlSession, Map<String, Object> map);
 
 
 

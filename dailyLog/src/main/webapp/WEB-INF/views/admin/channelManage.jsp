@@ -245,9 +245,9 @@
                 <div class="row">
                     <div class="col-sm-4">
 					</div>
-					<div class="col-sm-8">						
+<!-- 					<div class="col-sm-8">						
 						<a href="#" class="btn btn-info"><i class="material-icons">&#xE24D;</i> <span>Export to Excel</span></a>
-					</div>
+					</div> -->
                 </div>
             </div>
 			<div class="table-filter">
@@ -255,11 +255,11 @@
                     <div class="col-sm-3">
 					</div>
                     <div class="col-sm-9">
-						<button type="button" id="search" class="btn btn-primary"><i class="fa fa-search"></i></button>
+						<!-- <button type="button" id="search" class="btn btn-primary"><i class="fa fa-search"></i></button>
 						<div class="filter-group">
 							<label>채널명</label>
 							<input type="text" class="form-control">
-						</div>
+						</div> -->
 						<!-- <div class="filter-group">
 							<label>중지사유</label>
 							<select class="form-control">
@@ -275,7 +275,7 @@
 								<option>자막 문제</option>		
 							</select>
 						</div> -->
-						<span class="filter-icon"><i class="fa fa-filter"></i></span>
+						<!-- <span class="filter-icon"><i class="fa fa-filter"></i></span> -->
                     </div>
                 </div>
 			</div>
@@ -316,30 +316,11 @@
 							<c:if test="${ ch.cCount >= 2}">
 								<td><span class="status text-danger">&bull;</span>${ch.cCount } / ${ch.reCount }</td>
 							</c:if>
-								<td>
-									<a href="channelDetail.ad" class="view" title="View Details" data-toggle="tooltip">
-										<i class="material-icons">&#xE5C8;</i>
-									</a>
-								</td>
 	                    </tr> 
 					</c:forEach>
                 </tbody>
             </table>
-            
-			<div class="clearfix">
-                <!-- <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div> -->
-                <ul class="pagination">
-                    <li class="page-item disabled"><a href="#">Previous</a></li>
-                    <li class="page-item"><a href="#" class="page-link">1</a></li>
-                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                    <li class="page-item"><a href="#" class="page-link">3</a></li>
-                    <li class="page-item active"><a href="#" class="page-link">4</a></li>
-                    <li class="page-item"><a href="#" class="page-link">5</a></li>
-					<li class="page-item"><a href="#" class="page-link">6</a></li>
-					<li class="page-item"><a href="#" class="page-link">7</a></li>
-                    <li class="page-item"><a href="#" class="page-link">Next</a></li>
-                </ul>
-            </div>
+
         </div>
     </div>  
 	

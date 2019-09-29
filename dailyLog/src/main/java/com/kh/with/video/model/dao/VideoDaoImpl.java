@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.google.common.eventbus.Subscribe;
 import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.loger.model.vo.Support;
 import com.kh.with.main.model.vo.VideoLike;
@@ -551,9 +552,9 @@ public class VideoDaoImpl implements VideoDao {
 		return sqlSession.selectList("Video.selectReplyHate", map);
 	}
 	@Override
-	public int selectSubtitle(SqlSessionTemplate sqlSession, Map<String, Object> map) {
+	public List<Subscribe> selectSubtitle(SqlSessionTemplate sqlSession, Map<String, Object> map) {
 		
-		return sqlSession.selectOne("Video.selectSubtitle", map);
+		return sqlSession.selectList("Video.selectSubtitle", map);
 	}
 
 	@Override

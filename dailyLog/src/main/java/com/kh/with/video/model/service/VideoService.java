@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.google.common.eventbus.Subscribe;
 import com.kh.with.loger.model.vo.Loger;
 import com.kh.with.loger.model.vo.Support;
 import com.kh.with.main.model.vo.VideoLike;
@@ -200,7 +201,7 @@ public interface VideoService {
 
 	List<VideoLike> selectReplyHate(Map<String, Integer> map);
 
-	int selectSubtitle(Map<String, Object> map);
+	List<Subscribe> selectSubtitle(Map<String, Object> map);
 
 
 

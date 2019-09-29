@@ -444,31 +444,23 @@
 					<div align="right" style="margin-top:15%;">
 						 <nav class="navbar navbar-default navbar-expand-lg navbar-light" style="background:none;">
 							<ul class="nav navbar-nav navbar-right ml-auto">	 <!-- style="width:300px;" -->		
-
 								<li class="nav-item" > 
 									<a href="#none" data-toggle="dropdown" id="profile">
-
-                    <!-- 
-								<li class="nav-item" stlye="border:1px solid #A8B7BC;"> 
-									<a href="" data-toggle="dropdown" id="profile"> -->
-
 										<!-- <img src="resources/images/chat.png" style="width:18px; align:right;"> -->
 										<div>
 											<c:if test="${profile != null}">
-												<a href="newHomeChannel.lo?userNo=${list2[0].userNo}">
-												<img class="chImg" src="resources/images/${profile}"></a>
+												<img class="chImg" src="resources/images/${profile}">
 											</c:if>
 											<c:if test="${profile == null}">
-											<a href="newHomeChannel.lo?userNo=${list2[0].userNo}">
-												<img class="chImg" src="resources/images/newlogo3.png"></a>
+												<img class="chImg" src="resources/images/newlogo3.png">
 											</c:if>
 										</div>
 									</a>
 									<ul class="dropdown-menu form-wrapper" style="width:280px;border:1px solid #A8B7BC; margin-left:10%;">					
 										<li>
 											<div class="form-group" id="chchch">
-												<table class="noti_table">
-													<tr><td><a id="moveChannel">채널로 이동</a></td></tr>
+												<table class="noti_table" align="center">
+													<tr><td><a href="newHomeChannel.lo?userNo=${list2[0].userNo}" id="moveChannel">채널로 이동</a></td></tr>
 													<tr><td><a id="reportChannel">신고</a></td></tr>
 												</table>
 											</div>
@@ -824,8 +816,7 @@
 			</tr>
 		</table>
 	</div>
-			<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1bbe6319293d273f5cc3cd430eba39d2&libraries=services"></script>
-		
+		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1bbe6319293d273f5cc3cd430eba39d2&libraries=services"></script>
  		<script>
 	 		var mapContainer = document.getElementById('map'), // 지도의 중심좌표
 	 	    mapOption = { 
@@ -1785,13 +1776,13 @@
 				});
 			}
 		}
-		var q3 = 0
+		var hh = 0
 		//북마크 조회
 		function selectBookmark(){
 			var chNo = "<c:out value='${list2[0].chNo}'/>";
 			var vNo = "<c:out value='${list1[0].vNo}'/>";
 			console.log(chNo + "::" + vNo);
-			if(q3 == 0){
+			if(hh == 0){
 				document.getElementById('bookmark').src = "resources/images/bookmark_color.png";
 				
 				$.ajax({
@@ -1800,7 +1791,7 @@
 					data:{chNo:chNo, vNo:vNo},
 					success:function(data){
 						console.log("insert성공!");
-						q3 = 1;
+						hh = 1;
 						alert("북마크에 추가되었습니다.");
 					},
 					error:function(){
@@ -1817,7 +1808,7 @@
 					success:function(data){
 						console.log("delete성공!");
 						alert("북마크에서 삭제되었습니다.");
-						q3 = 0;
+						hh = 0;
 					},
 					error:function(){
 						console.log("실패!");
@@ -2069,7 +2060,7 @@ var socket;
 var login_ids={};
     var textarea = document.getElementById("messageWindow");
     var nickname="${loginUser.nickname}";
-    webSocket = new WebSocket("ws://localhost:8001"+"<%=request.getContextPath()%>/broadcasting?nickname"+"="+nickname); 
+    webSocket = new WebSocket("ws://192.168.200.173:8001"+"<%=request.getContextPath()%>/broadcasting?nickname"+"="+nickname); 
 	 /* socket.emit('login','nickname'); */
     var inputMessage = document.getElementById('inputMessage');
     console.log(inputMessage);
@@ -2258,7 +2249,7 @@ var login_ids={};
 			}
 		});
 		
-	}	
+
 		});
 	
 </script>
@@ -2369,8 +2360,10 @@ var login_ids={};
 				type:"post",
 				data:{vNo:vNo},
 				success:function(data){
-					document.getElementById('bookmark').src = "resources/images/bookmark_color.png";
-					console.log("success book " +data);
+					if(data == 1){
+						document.getElementById('bookmark').src = "resources/images/bookmark_color.png";
+						console.log("success book " +data);
+					}
 				},
 				error:function(){
 					console.log('selectBook실패!');
@@ -2416,7 +2409,7 @@ $(function(){
 		
 	});
 		
-});
+})
 	   
 </script>
 	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
