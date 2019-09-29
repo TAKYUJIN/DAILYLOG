@@ -104,10 +104,7 @@
 						aria-valuemax="100" style="width: 40%"></div>
 				</div>
 			</div>
-			
-			<button id="uploadbtn" class="button1" type="submit" >다음으로</button>
-			
-			
+			<button id="uploadbtn" class="button1" type="submit" >다음으로</button>	
 			<div id="innerbox">
 				
 				<br>
@@ -118,11 +115,11 @@
 								style="width: 400px" placeholder="동영상제목">
 						</div>
 						<div class="form-group">
-							<textarea  rows="3" id="tag" name="tag"
+						<textarea  rows="3" id="tag" name="tag"
 								style="width: 400px" placeholder="태그(예:일상기록,여행,강아지,음식)"></textarea>
 						</div>
 					</div>
-					<a>시청등급을 선택하세요</a> <br> <input type="checkbox" name="adultAut"
+				<a><a>*</a>시청등급을 선택하세요</a> <br> <input type="checkbox" name="adultAut"
 						value="Y"> 전체시청가능<br> <input type="checkbox"
 						name="adultAut" value="N"> 19세 이상 시청가능<br> <br>
 					
@@ -134,7 +131,7 @@
 						style="width: 400px" placeholder="광고정보"> <br> <br>
 						
 						
-					<a>공개여부</a> <br> 
+					<a><a>*</a>공개여부</a> <br> 
 					<input type="checkbox" name="openTy" value="Y">전체공개<br>
 					<input type="checkbox" name="openTy" value="N">비공개<br>
 					<input type="checkbox" name="openTy" class="upload" value="U">게시 예정<br>
@@ -160,7 +157,7 @@
 					</script>
 				</div>
 				<br>
-				<br> <a>썸네일이미지첨부</a> <input type="file" name="file2" value="file2" id="file2"/> 
+				<br> <a><a>*</a>썸네일이미지첨부</a> <input type="file" name="file2" value="file2" id="file2"/> 
 
 				<div id="minor">
 					<img id="minorimg" src="resources/images/family.png"

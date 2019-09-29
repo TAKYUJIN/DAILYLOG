@@ -13,6 +13,9 @@
 	이것은...자주찾는질문 첫번째 질문을 다시 누르면 아니되오...이것이 없으면.. -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
 <style type="text/css">
+.main{
+	margin-left:260px;
+}
 	body {
 		background: #fff;
 		font-family: 'Varela Round', sans-serif;
@@ -141,6 +144,7 @@
 </head>
 <body>
 <jsp:include page="../common/mainBar.jsp"></jsp:include>
+<div class="main">
 <div class="noticeMain">
 	<div class="row">
 		<div class="col-lg-15">
@@ -196,6 +200,7 @@ DailyLog 고객센터 1544-9970 / 운영시간 평일 오전 9시~오후 6시<br
 				</div>
 			</div>
 	</div>
+</div>
 </div>
 </body>
 </html>                            
