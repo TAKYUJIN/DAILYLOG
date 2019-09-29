@@ -9,7 +9,7 @@ import com.kh.with.payment.model.vo.Payment;
 
 public interface PaymentDao {
 
-	ArrayList<Payment> selectPayment(SqlSessionTemplate sqlSession, Payment p);
+	ArrayList selectPointList(SqlSessionTemplate sqlSession, Payment p);
 
 	ArrayList selectPayment(SqlSessionTemplate sqlSession, HashMap map);
 

@@ -13,11 +13,12 @@ public class PaymentDaoImpl implements PaymentDao{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public ArrayList<Payment> selectPayment(SqlSessionTemplate sqlSession, Payment p) {
+	public ArrayList selectPointList(SqlSessionTemplate sqlSession, Payment p) {
 		// TODO Auto-generated method stub
-		ArrayList<Payment> pointlist = null;
+		ArrayList pointlist = null;
+		System.out.println("test!!!!!!!!!!!!!!!!!");
+		pointlist = (ArrayList)sqlSession.selectList("Payment.selectPoint",p);
 		
-		pointlist = (ArrayList)sqlSession.selectList("Payment.selectPayment",p);
 		return pointlist;
 	}
 

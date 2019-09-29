@@ -10,12 +10,15 @@ public class Payment {
 	private int payPrice;	//결제금액
 	private String vKey;	//빌링키
 	private String orgNo;	//영수증고유값
+	private int supPrice;	//포인트 이용금액
+	private int calPrice;	//포인트 남은금액
 	
-	public Payment() {
-		super();
-	}
+	public Payment() {}
 
-	public Payment(int payNo, int userNo, int chNo, Date payDate, int payPrice, String vKey, String orgNo) {
+
+
+	public Payment(int payNo, int userNo, int chNo, Date payDate, int payPrice, String vKey, String orgNo, int supPrice,
+			int calPrice) {
 		super();
 		this.payNo = payNo;
 		this.userNo = userNo;
@@ -24,7 +27,11 @@ public class Payment {
 		this.payPrice = payPrice;
 		this.vKey = vKey;
 		this.orgNo = orgNo;
+		this.supPrice = supPrice;
+		this.calPrice = calPrice;
 	}
+
+
 
 	public int getPayNo() {
 		return payNo;
@@ -81,12 +88,40 @@ public class Payment {
 	public void setOrgNo(String orgNo) {
 		this.orgNo = orgNo;
 	}
+	
+
+
+	public int getSupPrice() {
+		return supPrice;
+	}
+
+
+
+	public void setSupPrice(int supPrice) {
+		this.supPrice = supPrice;
+	}
+
+
+
+	public int getCalPrice() {
+		return calPrice;
+	}
+
+
+	public void setCalPrice(int calPrice) {
+		this.calPrice = calPrice;
+	}
+
+
 
 	@Override
 	public String toString() {
 		return "Payment [payNo=" + payNo + ", userNo=" + userNo + ", chNo=" + chNo + ", payDate=" + payDate
-				+ ", payPrice=" + payPrice + ", vKey=" + vKey + ", orgNo=" + orgNo + "]";
+				+ ", payPrice=" + payPrice + ", vKey=" + vKey + ", orgNo=" + orgNo + ", supPrice=" + supPrice
+				+ ", calPrice=" + calPrice + "]";
 	}
+
+
 	
 
 }

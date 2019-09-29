@@ -20,6 +20,9 @@
 <input type="hidden" name="PAID_AT"/>	<!-- 결제승인시각 -->
 
 <script type="text/javascript">
+var name = '${sessionScope.loginUser.userNm}';
+var id = '${sessionScope.loginUser.userId}';
+var phone = '${sessionScope.loginUser.phone}';
 
 	IMP.init('imp51812845');
 	IMP.request_pay({
@@ -28,9 +31,9 @@
 	    merchant_uid : 'merchant_' + new Date().getTime(), //상점에서 관리하시는 고유 주문번호를 전달
 	    name: "정기결제",
 	    amount : 1100,
-	    buyer_email : 'eunju9503@naver.com',
-	    buyer_name : '정은주',
-	    buyer_tel : '010-9923-0092', //누락되면 이니시스 결제창에서 오류
+	    buyer_email : id,
+	    buyer_name : name,
+	    buyer_tel : phone, //누락되면 이니시스 결제창에서 오류
 	    buyer_addr : '서울특별시 강남구 삼성동',
 	    buyer_postcode : '123-456'
 	}, function(rsp) {
