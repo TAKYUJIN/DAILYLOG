@@ -297,11 +297,11 @@
 	                    }
 	                } else {
 	                }
-	            }  */else {
+	            }  */else { 
 	                if (content.match("/")) {
-	                   
+	                    
 	                    $("#messageWindow").html($("#messageWindow").html()
-	                        + "<p class='chat_content'><b class='impress'>" + sender + " : " + content + "</b></p>");
+	                        + "<p class='chat_content'><b class='impress'>" + sender + " : " + content + "</b></p>"); 
 	                } else {
 	                    /* 다른 채팅자 */
 	                   $("#messageWindow").html($("#messageWindow").html()

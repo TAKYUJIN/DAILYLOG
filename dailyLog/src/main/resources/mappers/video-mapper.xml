@@ -559,7 +559,7 @@
 		DELETE FROM REPLY
 		WHERE USER_NO = #{loginUser}
 		AND V_NO
-		= #{vNo}
+		= #{vNo}  
 		AND REP_NO = #{repNo}
 	</delete>
 

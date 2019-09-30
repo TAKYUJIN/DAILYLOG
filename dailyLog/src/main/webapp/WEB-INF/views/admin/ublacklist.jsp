@@ -201,7 +201,7 @@ $(document).ready(function(){
                    		<td>${v.userId}</td>
                    		
 						<td>${v.recount}</td>
-					    <td>${v.ccount}</td>
+	 				    <td>${v.ccount}</td>
 					    <td>
 					    <c:choose> 
 					    <c:when test="${v.ccount >=3}">

@@ -229,8 +229,8 @@ var login_ids={};
                     } else {
                         $("#messageWindow").html($("#messageWindow").html() + "<p class='whisper'>"
                             + sender + content.replace("/" + $("#chat_id").val(), "(귓속말) :") + "</p>");
-                    }
-                } else {
+                    } 
+                } else { 
                 }
             }  */else {
                 if (content.match("/")) {

@@ -219,7 +219,7 @@ $(document).ready(function(){
 	 					<td><div style="float:left;">
 	 					<form action="cstop.lo" method="get" >
 	 					<input type="hidden" id="userNo" name="userNo" value="${v.userNo}">
-	 					 <input type="submit" id="submit"  value="중지">
+	 			 		 <input type="submit" id="submit"  value="중지">
 	 					</form>
 	 					</div>
 	 					

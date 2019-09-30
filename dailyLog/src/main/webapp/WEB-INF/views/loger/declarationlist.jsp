@@ -235,7 +235,7 @@
 														 ${list} 
 														
 													<h5><b>업로드</b>${list.uploadDt}</h5>
-														</c:forEach> --%>
+				 										</c:forEach> --%>
 												 <c:set var="TextValue" value="${list.uploadDt}"/>
 													<h5><b>업로드</b>${fn:substring(TextValue,0,10) }</h5>
 													

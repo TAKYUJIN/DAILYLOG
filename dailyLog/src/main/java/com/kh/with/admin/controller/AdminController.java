@@ -535,7 +535,7 @@ public class AdminController {
 			report.setRecount(recount);
 			int result = rs.videoreportupdate(report);
 			if (result > 0) {
-				try {
+				try { 
 					response.setContentType("text/html; charset=UTF-8");
 					PrintWriter out;
 					out = response.getWriter();

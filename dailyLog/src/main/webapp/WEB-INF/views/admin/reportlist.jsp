@@ -407,7 +407,7 @@ $(document).ready(function(){
 		position: relative;
 		top: 2px;
 		left: -10px;
-    }
+    } 
     table.table tr th, table.table tr td {
         border-color: #525252;
     }

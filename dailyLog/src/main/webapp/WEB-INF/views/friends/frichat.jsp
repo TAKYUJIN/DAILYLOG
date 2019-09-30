@@ -238,7 +238,7 @@ console.log(nickname);
 		$('#chat-container').scrollTop($('#chat-container')[0].scrollHeight+20);
 	}
 	
-	function onOpen(e){
+	function onOpen(e){  
 		 
 	}
 	

@@ -65,7 +65,7 @@ public class ReportController {
 	  int result =rs.mainreport(report);
 	  int result1 =rs.alramreport(alram);
 	  
-	  
+	   
 	  
 	  if (result > 0 && result1>0) { 
 			/*

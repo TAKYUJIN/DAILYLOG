@@ -336,7 +336,7 @@ $(function() {
                 $("#id_check").text("사용 가능한 이메일 입니다");
 				$("#id_check").css("color", "red");
             $("#joinBtn").attr("disabled", true);
-             } else {
+             } else {  
             	 $("#id_check").text("없는 아이디 입니다ㅠ 친구 아이디를 다시 확인 해주세요");
 					$("#id_check").css("color", "red");
              }
