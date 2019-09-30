@@ -32,7 +32,7 @@ img.fixed{
 }
 h3 {
  background:none;
-	color: #696969;
+	color: #525252;
 	font-size: 26px;
 	font-weight: 300;
 	text-align: center;
@@ -185,7 +185,7 @@ background:none;
 	border:1px none;
 	}
 	  #vid{
-	  color:#7d7d7d;  letter-spacing: 5px;
+	  color:#525252;  letter-spacing: 5px;
 	   border-radius: 5px;
 	   font-size:35px;
 	 }
@@ -214,7 +214,7 @@ color: black; text-decoration: none;
 	 } */
 	 
 	 	 #sty2{
-	 color:#9e9d9d;
+	 color:#525252;
 	 }
 	/*  #sty:hover{
 	  background:#c9c9c9;
@@ -329,7 +329,7 @@ color: black; text-decoration: none;
 	   
 	   
 	  
-	 <div class="row"><br><br><br><br>
+	 <div class="row">
 		<div class="col-md-10 col-center m-auto"><br><br><br><br><br><br>
 			<h3>  <span><div id="vid"><b> 인기 동영상 </b></div>  </span></h3>  <br>
 			<div id="myCarousel1" class="carousel slide" data-ride="carousel" data-interval="0">

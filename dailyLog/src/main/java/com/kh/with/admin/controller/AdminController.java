@@ -428,131 +428,141 @@ public class AdminController {
 	}
 
 	// 관리자 동영상,채널,댓글 신고 내역
-	@RequestMapping(value = "videoreportdetail.ad", method = RequestMethod.GET)
-	public String videoreportdetail(@ModelAttribute Report2 report, Model model,
-			HttpSession session, HttpServletRequest request) {
-		int reno = Integer.parseInt(request.getParameter("reno"));
-		List<Report> videoreportdetail = rs.videoreportdetail(reno);
-		List<Report> chreportdetail = rs.chreportdetail(reno);
-		List<Report> repreportdetail = rs.repreportdetail(reno);
+	// 관리자 동영상,채널,댓글 신고 내역
+		@RequestMapping(value = "videoreportdetail.ad", method = RequestMethod.GET)
+		public String videoreportdetail(@ModelAttribute Report2 report, Model model,
+				HttpSession session, HttpServletRequest request) {
+			int reno = Integer.parseInt(request.getParameter("reno"));
+			
+			Report r = new Report();
+			r.setReno(reno);
+			List<Report> videoreportdetail = rs.videoreportdetail(reno);
+			List<Report> chreportdetail = rs.chreportdetail(reno);
+			List<Report> repreportdetail = rs.repreportdetail(reno);
 
-		model.addAttribute("videoreportdetail", videoreportdetail);
-		model.addAttribute("chreportdetail", chreportdetail);
-		model.addAttribute("repreportdetail", repreportdetail);
-		System.out.println("model" + model);
-		System.out.println("repreportdetail" + repreportdetail);
-		return "admin/videoreportdetail";
-	}
-	@RequestMapping(value = "chreportdetail.ad", method = RequestMethod.GET)
-	public String chreportdetail(@ModelAttribute Report2 report, Model model,
-			HttpSession session, HttpServletRequest request) {
-		int reno = Integer.parseInt(request.getParameter("reno"));
-		List<Report> chreportdetail = rs.chreportdetail(reno);
+			model.addAttribute("videoreportdetail", videoreportdetail);
+			model.addAttribute("chreportdetail", chreportdetail);
+			model.addAttribute("repreportdetail", repreportdetail);
+			return "admin/videoreportdetail";
+		}
+		@RequestMapping(value = "chreportdetail.ad", method = RequestMethod.GET)
+		public String chreportdetail(@ModelAttribute Report2 report, Model model,
+				HttpSession session, HttpServletRequest request) {
+			int reno = Integer.parseInt(request.getParameter("reno"));
+			System.out.println("reno11:" + reno);
+			Report r = new Report();
+			r.setReno(reno);
+			List<Report> chreportdetail = rs.chreportdetail(reno);
 
-		model.addAttribute("chreportdetail", chreportdetail);
-		System.out.println("model" + model);
-		return "admin/chreportdetail";
-	}
-	@RequestMapping(value = "repreportdetail.ad", method = RequestMethod.GET)
-	public String repreportdetail(@ModelAttribute Report2 report, Model model,
-			HttpSession session, HttpServletRequest request) {
-		int reno = Integer.parseInt(request.getParameter("reno"));
-		List<Report> repreportdetail = rs.repreportdetail(reno);
+			model.addAttribute("chreportdetail", chreportdetail);
+			System.out.println("chreportdetail" + chreportdetail);
+			return "admin/chreportdetail";
+			
+		}
+		@RequestMapping(value = "repreportdetail.ad", method = RequestMethod.GET)
+		public String repreportdetail(@ModelAttribute Report2 report, Model model,
+				HttpSession session, HttpServletRequest request) {
+			int reno = Integer.parseInt(request.getParameter("reno"));
+			Report r = new Report();
+			r.setReno(reno);
+			System.out.println("reno11:" + reno);
+			List<Report> repreportdetail = rs.repreportdetail(reno);
 
-		model.addAttribute("repreportdetail", repreportdetail);
-		System.out.println("model" + model);
-		System.out.println("repreportdetail" + repreportdetail);
-		return "admin/repreportdetail";
-	}
-	
-	
-	
-	
-	// 관리자 동영상 신고 상세내역 ->신고처리
-	//@RequestParam(value="reno",defaultValue="false") String r,
-	
-	@RequestMapping(value = "repreportdetail2.ad")
-	public String repreportdetail2(HttpSession session, HttpServletRequest request) {
-		System.out.println("controller start");
-		Enumeration e = request.getParameterNames();
-		
-		while(e.hasMoreElements()) {
-			System.out.println(e.nextElement());
+			model.addAttribute("repreportdetail", repreportdetail);
+			System.out.println("model" + model);
+			System.out.println("repreportdetail" + repreportdetail);
+			return "admin/repreportdetail";
 		}
 		
-		int recount = Integer.parseInt(request.getParameter("recount"));
-		int retarget =Integer.parseInt(request.getParameter("retarget"));
-		int reno =Integer.parseInt(request.getParameter("reno"));
-		Report2 report = new Report2();
-		report.setReno(reno);
-		report.setRecount(recount);
-		report.setRetarget(retarget); 
-		int result = rs.rereportupdate(report);
-		if (result > 0) {
-			//
+		
+		
+		
+		// 관리자 동영상 신고 상세내역 ->신고처리
+		//@RequestParam(value="reno",defaultValue="false") String r,
+		
+		@RequestMapping(value = "repreportdetail2.ad")
+		public String repreportdetail2(HttpSession session, HttpServletRequest request) {
+			System.out.println("controller start");
+			Enumeration e = request.getParameterNames();
 			
-		//	return "redirect:/videoreportdetail.ad?reno=${v.reno}";
-			return "redirect:/repreportdetail.ad?reno="+reno;
+			while(e.hasMoreElements()) {
+				System.out.println(e.nextElement());
+			}
 			
-		} else {
-			return "redirect:/videoreportdetail.ad";
+			Report2 report = new Report2();
+			int recount = Integer.parseInt(request.getParameter("recount"));
+			int retarget =Integer.parseInt(request.getParameter("retarget"));
+			int reno =Integer.parseInt(request.getParameter("reno"));
+			report.setReno(reno);
+			report.setRecount(recount);
+			report.setRetarget(retarget); 
+			int result = rs.rereportupdate(report);
+			if (result > 0) {
+				//
+				
+			//	return "redirect:/videoreportdetail.ad?reno=${v.reno}";
+				return "redirect:/repreportdetail.ad?reno="+reno;
+				
+			} else {
+				return "redirect:/videoreportdetail.ad";
+			}
 		}
-	}
 
-	@RequestMapping(value = "videoreportdetail2.ad")
-	public String videoreportdetail2(HttpSession session, HttpServletRequest request) {
-		System.out.println("controller start");
-		Enumeration e = request.getParameterNames();
-		
-		while(e.hasMoreElements()) {
-			System.out.println(e.nextElement());
-		}
-		
-		int recount = Integer.parseInt(request.getParameter("recount"));
-		int reno = Integer.parseInt(request.getParameter("reno"));
-		Report2 report = new Report2();
-		report.setReno(reno);
-		report.setRecount(recount);
-		int result = rs.videoreportupdate(report);
-		if (result > 0) {
-			//
+		@RequestMapping(value = "videoreportdetail2.ad")
+		public String videoreportdetail2(HttpSession session, HttpServletRequest request) {
+			System.out.println("controller start");
+			Enumeration e = request.getParameterNames();
 			
-		//	return "redirect:/videoreportdetail.ad?reno=${v.reno}";
-			return "redirect:/videoreportdetail.ad?reno="+reno;
+			while(e.hasMoreElements()) {
+				System.out.println(e.nextElement());
+			}
 			
-		} else {
-			return "redirect:/videoreportdetail.ad";
+			int recount = Integer.parseInt(request.getParameter("recount"));
+			int reno = Integer.parseInt(request.getParameter("reno"));
+			int vNo = Integer.parseInt(request.getParameter("vNo"));
+			Report2 report = new Report2();
+			report.setvNo(vNo);
+			report.setReno(reno);
+			report.setRecount(recount);
+			int result = rs.videoreportupdate(report);
+			if (result > 0) {
+				//
+				
+			//	return "redirect:/videoreportdetail.ad?reno=${v.reno}";
+				return "redirect:/videoreportdetail.ad?reno="+reno;
+				
+			} else {
+				return "redirect:/videoreportdetail.ad";
+			}
 		}
-	}
-	//채널 차단
-	@RequestMapping(value = "chreportdetail2.ad")
-	public String chreportdetail2(HttpSession session, HttpServletRequest request) {
-		System.out.println("controller start");
-		Enumeration e = request.getParameterNames();
-		
-		while(e.hasMoreElements()) {
-			System.out.println(e.nextElement());
-		}
-		
-		int recount = Integer.parseInt(request.getParameter("recount"));
-		int reno = Integer.parseInt(request.getParameter("reno"));
-		String chNm =request.getParameter("chNm");
-		Report2 report = new Report2();
-		report.setReno(reno);
-		report.setRecount(recount);
-		report.setChNm(chNm);
-		int result = rs.chreportupdate(report);
-		if (result > 0) {
-			//
+		//채널 차단
+		@RequestMapping(value = "chreportdetail2.ad")
+		public String chreportdetail2(HttpSession session, HttpServletRequest request) {
+			System.out.println("controller start");
+			Enumeration e = request.getParameterNames();
 			
-		//	return "redirect:/videoreportdetail.ad?reno=${v.reno}";
-			return "redirect:/chreportdetail.ad?reno="+reno;
+			while(e.hasMoreElements()) {
+				System.out.println(e.nextElement());
+			}
 			
-		} else {
-			return "redirect:/videoreportdetail.ad";
+			int recount = Integer.parseInt(request.getParameter("recount"));
+			int reno = Integer.parseInt(request.getParameter("reno"));
+			String chNm =request.getParameter("chNm");
+			Report2 report = new Report2();
+			report.setReno(reno);
+			report.setRecount(recount);
+			report.setChNm(chNm);
+			int result = rs.chreportupdate(report);
+			if (result > 0) {
+				//
+				
+			//	return "redirect:/videoreportdetail.ad?reno=${v.reno}";
+				return "redirect:/chreportdetail.ad?reno="+reno;
+				
+			} else {
+				return "redirect:/videoreportdetail.ad";
+			}
 		}
-	}
-	
 	
 	// 관리자 메인 페이지 이동 통계
 	@RequestMapping(value = "adminStatisticsChart.ad")
