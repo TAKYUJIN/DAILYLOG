@@ -14,6 +14,9 @@
 	/* border: 1px solid black; */
 	margin-top: 80px;
 }
+table.table-striped tbody tr:nth-of-type(odd) {
+    	background:none;
+	}
 
 .button1 {
 	margin-left:50px;

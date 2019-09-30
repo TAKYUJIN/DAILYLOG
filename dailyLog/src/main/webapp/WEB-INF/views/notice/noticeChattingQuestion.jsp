@@ -236,6 +236,7 @@
 		var loginUserNo = $(this).parent().children("#userNo").val();
 		var msg = loginUserNo + "&" + videoUserNo;
 		ws2.send(msg);
+		
 			 $.ajax({
 					url:"insertChat.no",
 					type:"post",
@@ -250,120 +251,156 @@
 			})
 			
 		});
+		
 	});
-	
 
-var socket;
-var login_ids={};
-    var textarea = document.getElementById("messageWindow");
-    var nickname="${loginUser.nickname}";
-    var webSocket = new WebSocket('ws://192.168.30.16:8001/with/chatStart');
-    /* socket.emit('login','nickname'); */
-    var inputMessage = document.getElementById('inputMessage');
-    webSocket.onerror = function(event) {
-        onError(event)
-    };
-    webSocket.onopen = function(event) {
-        onOpen(event)
-    };
-    webSocket.onmessage = function(event) {
-        onMessage(event)
-    };
-   function onMessage(event) {
-	   var chat_id ="${loginUser.nickname}";
-/* 	   $("#messageWindow").html("  <p class='chat_content'>"+chat_id  +"님이 채팅에 참여하였습니다.</p> ");  
- */	   console.log("event"+event);
-        var message = event.data.split("|");
-        var sender = message[0];
-        var content = message[1];
-       
-        if (content == "") {
-        	 
-        } /* else {
-            if (content.match("/")) {
-                if (content.match(("/" + $("#chat_id").val()))) {
-                    var temp = content.replace("/" + $("#chat_id").val(), "(귓속말) :").split(":");
-                   
-                    if (temp[1].trim() == "") {
-                    } else {
-                        $("#messageWindow").html($("#messageWindow").html() + "<p class='whisper'>"
-                            + sender + content.replace("/" + $("#chat_id").val(), "(귓속말) :") + "</p>");
-                    }
-                } else {
-                }
-            }  */else {
-                if (content.match("/")) {
-                	
-                    $("#messageWindow").html($("#messageWindow").html()
-                        + "<p class='chat_content'><b class='impress'>" + sender + " : " + content + "</b></p>");
-                } else {
-                    $("#messageWindow").html($("#messageWindow").html()
-                        + "<p class='chat_content'>" + sender + " : " + content + "</p>");
-                }
-            }
-       
-    } 
-    function onOpen(event) {
-    	var chat_id ="${loginUser.nickname}";
-    	console.log(chat_id);
-    	console.log(event+"11");
-      $("#messageWindow").append("  <p class='chat_content'>"+chat_id  +"님이 채팅에 참여하였습니다.</p> ");  
-   
-        
-       /*  if (inputMessage.value == "") {
-        } else {
-            $("#messageWindow").html($("#messageWindow").html()
-            		("  <p class='chat_content'>" +chat_id+ "님이 채팅에 참여하였습니다."+"</p> "));
-            
-        } */
-        webSocket.send(chat_id  +"님이 채팅에 참여하였습니다." + inputMessage.value);
-      /*   inputMessage.value = ""; */
-        
-        
-        
-    }
-  /*   function onError(event) {
-        alert(event.data);
-    } */
-    function send() {
-    	var chat_id ="${loginUser.nickname}";
-    	var message = inputMessage.value;
-    	  
-        if (inputMessage.value == "") {
-        } else {
-            $("#messageWindow").html($("#messageWindow").html()
-                + "<p class='chat_content'>  "+"<b>"+chat_id+"<b>" + " : " + inputMessage.value + "</p>");
-            
-        }
-        
-        
-        webSocket.send(chat_id + "|" + inputMessage.value);
-        inputMessage.value = "";
-        
-        $.ajax({
-			url:"insertChatContent.no",
-			data:{"message":message},
-			type:"post",
-			success:function(data){
-				console.log('succ');
-				
-			},
-			error : function(){
-				console.log('error');
-			}
-	})
-        
-    }
-    //     엔터키를 통해 send함
-    function enterkey() {
-        if (window.event.keyCode == 13) {
-            send();
-        }
-    }
-    //     채팅이 많아져 스크롤바가 넘어가더라도 자동적으로 스크롤바가 내려가게함
-/*     window.setInterval(function() {
-        var elem = document.getElementById('messageWindow');
-        elem.scrollTop = elem.scrollHeight;
-    }, 0); */
+	var socket;
+	var login_ids={};
+	    var textarea = document.getElementById("messageWindow");
+	    var nickname="${loginUser.nickname}";
+	    webSocket = new WebSocket("ws://192.168.30.142:8001"+"<%=request.getContextPath()%>/broadcasting?nickname"+"="+nickname); 
+	    /* socket.emit('login','nickname'); */
+	    var inputMessage = document.getElementById('inputMessage');
+	    console.log(inputMessage);
+	    webSocket.onerror = function(event) {
+	        onError(event)
+	    };
+	    webSocket.onopen = function(event) {
+	        onOpen(event)
+	    };
+	    webSocket.onmessage = function(event) {
+	        onMessage(event)
+	    };
+	   function onMessage(event) {
+	      var chat_id ="${loginUser.nickname}";
+	/*       $("#messageWindow").html("  <p class='chat_content'>"+chat_id  +"님이 채팅에 참여하였습니다.</p> ");  
+	 */      console.log("event"+event);
+	        var message = event.data.split("|");
+	        var sender = message[0];
+	        var content = message[1];
+	        /* var chatMsg = event.data;
+	      var chatMsg1 = event.data; */
+	       /*  alert("11"); */
+	       var d = new Date();
+	        
+	        if (content == "") {
+	            
+	        } /* else {
+	            if (content.match("/")) {
+	                if (content.match(("/" + $("#chat_id").val()))) {
+	                    var temp = content.replace("/" + $("#chat_id").val(), "(귓속말) :").split(":");
+	                   
+	                    if (temp[1].trim() == "") {
+	                    } else {
+	                        $("#messageWindow").html($("#messageWindow").html() + "<p class='whisper'>"
+	                            + sender + content.replace("/" + $("#chat_id").val(), "(귓속말) :") + "</p>");
+	                    }
+	                } else {
+	                }
+	            }  */else {
+	                if (content.match("/")) {
+	                   
+	                    $("#messageWindow").html($("#messageWindow").html()
+	                        + "<p class='chat_content'><b class='impress'>" + sender + " : " + content + "</b></p>");
+	                } else {
+	                    /* 다른 채팅자 */
+	                   $("#messageWindow").html($("#messageWindow").html()
+	                       + "<div style='text-align:left !important; float:left; clear:both; margin-bottom:3%;'><table style='text-align:left;'><tr><td rowspan='2'><img class='userImg' src='resources/uploadFiles/newlogo3.png' style='align:left;'></td><td><p class='chat_content'>" + nickname + "</p></td></tr><tr><td><div class='chat_content'>" + content + "</div></td></tr><tr><td></td><td><small>" + d.getHours() +":"+ d.getMinutes() + "</small></td></tr><table></div>"); 
+	                       
+	                }
+	            }
+	            
+	            
+	        /* if(chatMsg1.substring(0,8) == 'sendlist'){
+	          // $('#frilist').append($chat);
+	             if (chatMsg1 =='sendlist : heejung9655@gmail.com'){
+	               
+	                $('#frilist').append(chatMsg1);
+	               }else{
+	                  
+	                  $('#frilist').append(chatMsg1);
+	               }  
+	             
+	             console.log(chatMsg1);
+
+	         } 
+	        
+	        
+	      if(chatMsg.substring(0,8) == 'DAILYLOG' ){
+	         var $chat = $("<div id='chatForm'>" + chatMsg + "</div>");
+	         $('#messageWindow').append($chat);
+	         console.log(chatMsg+"111");
+	         console.log($chat+"111");
+	         
+	      }  else if(chatMsg.substring(0,8) == 'sendlist'){
+	          console.log('');
+	      }   else{
+	         
+	         var $chat = $(" <div class='chat'>" + chatMsg + "</div>);
+	         $('#messageWindow').append(chatMsg);
+	         }
+	            
+	             */
+	            
+	            
+	            
+	            
+	            
+	            
+	            
+	            
+	       
+	    } 
+	    function onOpen(event) {
+	       var chat_id ="${loginUser.nickname}";
+	       console.log(chat_id);
+	       console.log(event+"11");
+	      $("#messageWindow").append("  <p class='chat_content'>"+chat_id  +"님이 채팅에 참여하였습니다.</p> ");  
+	   
+	        
+	       /*  if (inputMessage.value == "") {
+	        } else {
+	            $("#messageWindow").html($("#messageWindow").html()
+	                  ("  <p class='chat_content'>" +chat_id+ "님이 채팅에 참여하였습니다."+"</p> "));
+	            
+	        } */
+	        webSocket.send(chat_id  +"님이 채팅에 참여하였습니다." + inputMessage.value);
+	      /*   inputMessage.value = ""; */
+	        
+	        
+	        
+	    }
+	  /*   function onError(event) {
+	        alert(event.data);
+	    } */
+	    function send() {
+	       var chat_id ="${loginUser.nickname}";
+	       var message = inputMessage.value;
+	       var d = new Date();
+	/*        var currentDate = d.getFullYear() + (d.getMonth() + 1) + d.getDate();
+	       var currentTime = d.getHours() + d.getMinutes() + d.getSeconds();
+	       alert(surrentDate + currentTime); */
+	       
+	        if (inputMessage.value == "") {
+	        } else {
+	        /*     $("#messageWindow").html($("#messageWindow").html()
+	               + "<div style='text-align:right;'>" +     
+	                + "<p class='chat_content'>"+ chat_id + ":::" + inputMessage.value + "</p>" + "</div>")
+	               
+	                ; */
+	            $("#messageWindow").html($("#messageWindow").html()
+	                   + "<div style='align:right !important; clear:both; float:right; text-align:right !important; margin-bottom:3%;'><table><tr><td><p class='chat_content'>" + chat_id + "</p></td><td rowspan='2'><img class='userImg' src='resources/uploadFiles/${userImg}' style='align:right; margin-left:7% !important;'></td></tr><tr><td><div class='chat_content'>" + inputMessage.value + "</div></td></tr><tr><td><small>" + d.getHours() +":"+ d.getMinutes() + "</small></td></tr></table></div>");
+	        }
+	        /*  */
+	        
+	        webSocket.send(chat_id + "|" + inputMessage.value);
+	        inputMessage.value = "";
+	    }
+	    //     엔터키를 통해 send함
+	    function enterkey() {
+	        if (window.event.keyCode == 13) {
+	            send();
+	        }
+	    }
 </script>
 </html>

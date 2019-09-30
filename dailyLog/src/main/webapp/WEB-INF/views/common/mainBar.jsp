@@ -496,7 +496,7 @@ $('#friendlist').click(function(){
 		})
 			
 			function getConnection2(){
-				ws2 = new WebSocket("ws://192.168.30.16:8001" + "<%=request.getContextPath()%>/alramStart?userNo="+alramUserNo);
+				ws2 = new WebSocket("ws://192.168.30.142:8001" + "<%=request.getContextPath()%>/alramStart?userNo="+alramUserNo);
 				
 				ws2.onopen2 = function(event){
 					

@@ -320,13 +320,13 @@ body {
 				</div>
 				<div class="form-group">
 					<div class="row">
-						<div class="col-xs-9">
+						<div class="col-xs-8">
 							<input type="email" class="form-control" name="userId"
 								id="userId" placeholder="Email" required="required" style="color: black;">
 						</div>
-						<div class="col-xs-3">
+						<div class="col-xs-4">
 							<button
-								style="height: 35px; border-radius: 5px; background: #13334A; color: white; "
+								style="width:98px; height: 35px; border-radius: 5px; background: #13334A; color: white; "
 								name="btncheck" id="ckId">중복확인</button>
 						</div>
 					</div>
@@ -341,13 +341,13 @@ body {
 				</div>
 				<div class="form-group">
 					<div class="row">
-						<div class="col-xs-9">
+						<div class="col-xs-8">
 							<input type="text" class="form-control" name="nickname"
 								id="nickname" placeholder="Nickname" required="required" style="color: black;">
 						</div>
-						<div class="col-xs-3">
+						<div class="col-xs-4">
 							<button id="ckNn"
-								style="height: 35px; border-radius: 5px; background: #13334A; color: white; "
+								style="width:98px;height: 35px; border-radius: 5px; background: #13334A; color: white; "
 								name="btncheck">중복확인</button>
 						</div>
 					</div>
@@ -377,15 +377,15 @@ body {
 
 				<div class="form-group">
 					<div class="row">
-						<div class="col-xs-9">
+						<div class="col-xs-8">
 							<input type="tel" class="form-control" name="phone" id="phone"
 								placeholder="Phone" required="required" style="color: black;">
 						</div>
-						<div class="col-xs-3">
+						<div class="col-xs-4">
 							<input type="button" id="ckPn"
-							style="height: 35px; border-radius: 5px; background: #13334A; color: white; "
+							style="width:98px;height: 35px; border-radius: 5px; background: #13334A; color: white; "
 							name="btncheck" value="중복확인" />
-							 <input type="button" id="sendPn" style="height: 35px; border-radius: 5px; background: #13334A; 
+							 <input type="button" id="sendPn" style="width:98px;height: 35px; border-radius: 5px; background: #13334A; 
 							 color: white; "name="btncheck" hidden value="문자전송" />
 						</div>
 
@@ -393,7 +393,7 @@ body {
 				</div>
 				<div class="form-group" id="showsms" hidden>
 					<div class="row">
-						<div class="col-xs-9">
+						<div class="col-xs-8">
 							<input type="text" class="form-control" name="phone1"
 								id="phone1" placeholder="authorization code"
 								 style="color: black;"> <input type="hidden" id="action"
@@ -403,9 +403,9 @@ body {
 								type="hidden" id="sphone2" name="sphone2" value="9923">
 							<input type="hidden" id="sphone3" name="sphone3" value="0092">
 						</div>
-						<div class="col-xs-3">
+						<div class="col-xs-4">
 							<input type="button" id="cksmsPn"
-							style="height: 35px; border-radius: 5px; background: #13334A; color: white; "
+							style="width:98px;height: 35px; border-radius: 5px; background: #13334A; color: white; "
 							name="cksmsPn" onclick="fnAuthConfirm();" value="인증확인" />
 
 						</div>
