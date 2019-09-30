@@ -29,14 +29,15 @@ public class ReportDaoImpl implements ReportDao{
 
 	@Override
 	public List<Report> chreportdetail(SqlSessionTemplate sqlSession, int reno) {
-		// TODO Auto-generated method stub
+		System.out.println("ch"+reno);
+		
 		return sqlSession.selectList("Report.chreportdetail",reno);
 	}
 
 
 	@Override
 	public List<Report> repreportdetail(SqlSessionTemplate sqlSession, int reno) {
-		// TODO Auto-generated method stub
+		System.out.println("re"+reno);
 		return sqlSession.selectList("Report.repreportdetail",reno);
 	}
 

@@ -34,7 +34,7 @@ img.fixed{
 h3 {
 background: none !important;
 
-	  color:#7d7d7d; 
+	  color:#525252; 
 
 	font-size: 26px;
 
@@ -417,7 +417,7 @@ width:150px;
 
 	 }  #vid{
 
-	  color:#7d7d7d;  letter-spacing: 5px;
+	  color:#525252;  letter-spacing: 5px;
 
 	   border-radius: 5px;
 
@@ -466,7 +466,7 @@ color: black; text-decoration: none;
 
 	 	 #sty2{
 
-	 color:#9e9d9d;
+	 color:#525252;
 
 	 }
 
