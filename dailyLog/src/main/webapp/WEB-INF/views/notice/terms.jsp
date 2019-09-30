@@ -54,14 +54,15 @@
 	<br><br>
 	<div class="body margin" align="center">
 		<h3><b>이용약관</b></h3>
-		<div>
+<!-- 		<div>
 			<div style="display:inline-block; margin:0%;"><h3 class="icon fa-comment"></h3></div>
 			<div style="display:inline-block; margin:1%;"><h3 class="icon fa-sync"></h3></div>
 			<div style="display:inline-block; margin:1%;"><h3 class="icon fa-image"></h3></div>
 			<div style="display:inline-block; margin:1%;"><h3 class="icon solid fa-cog"></h3></div>
 			<div style="display:inline-block; margin:1%;"><h3 class="icon solid fa-wrench"></h3></div>
 			<div style="display:inline-block; margin:1%;"><h3 class="icon solid fa-check"></h3></div>
-		</div>
+		</div> -->
+		<br>
 		<p style="color:gray;">다른 사용자가 서비스 약관을 위반하도록 조장하는 콘텐츠를 게시하면 해당 콘텐츠가 삭제되고 <br>
 		계정 활동에 불이익이 발생하며 경우에 따라서는 계정이 해지될 수도 있습니다</p>
 		<br><br>

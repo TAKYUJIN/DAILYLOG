@@ -30,10 +30,7 @@ table.table tr th, table.table tr td {
 }
 
 table.table-striped tbody tr:nth-of-type(odd) {
-	
-}
-.main{
-	margin-left:250px;
+	background:none;
 }
 .noticeList {
 	margin-top: 50px;

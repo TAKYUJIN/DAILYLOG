@@ -20,9 +20,7 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style type="text/css">
-.main {
-	margin-left: 250px;
-}
+
 
 .contact-form {
 	padding: 10px;

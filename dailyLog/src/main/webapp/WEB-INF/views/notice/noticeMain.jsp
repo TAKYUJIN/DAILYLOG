@@ -13,9 +13,7 @@
 	이것은...자주찾는질문 첫번째 질문을 다시 누르면 아니되오...이것이 없으면.. -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
 <style type="text/css">
-.main{
-	margin-left:260px;
-}
+
 	body {
 		background: #fff;
 		font-family: 'Varela Round', sans-serif;

@@ -96,7 +96,10 @@ public class PaymentController {
   
   // payment 테이블에서 해당 사용자 포인트 내역 조회 후 jsp에 표시
   
-  ArrayList paylist =ps.selectPointList(p);
+  ArrayList<Payment> paylist =ps.selectPointList(p);
+  
+      
+       
   
   
   model.addAttribute("paylist", paylist); model.addAttribute("Payment",p);
