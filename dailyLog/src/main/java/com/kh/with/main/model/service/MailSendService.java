@@ -56,7 +56,7 @@ public class MailSendService {
 				 * "<img src= 'resources\images\logo.png\' style='width:90px; padding-top:10px;\'>"
 				 */   "<h1>안녕하세요 :Daily Log 입니다</h1> <br>" + "<h2>" + friId +
 			  "님 <br>"+userId+"님의 친구 요청이 도착 하였습니다.</h2>" + "<p>요청 보기를 누르시면 친구 요청이 보여 집니다. :<br>  " +
-			  "<a href='http://localhost:8001" + request.getContextPath() +
+			  "<a href='http://192.168.30.16:8001" + request.getContextPath() +
 			  "/frimail.mb?userId="+ friId
 			  +"&status_yn="+status_yn+"&friId="+userId+"'><br>  <button style='background: linear-gradient(rgb(237, 234, 215) 0%, rgb(221, 208, 218) 85%);color:#fff; border-radius:0.5em; padding:5px 20px;  font-size:15px; width:140px;height:50px;'> " + 
 			  		" 				요청 보기</button></a></p>" +

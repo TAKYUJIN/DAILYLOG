@@ -5,30 +5,36 @@
 
 <mapper namespace="Payment">
 
-	
-	<select id="selectPayment" parameterType="map" resultType="map">
+   
+   <select id="selectPayment" parameterType="map" resultType="map">
 
-		SELECT M.*
-     	      ,CH_NO
-     	  FROM MEMBER M
-     	      ,LOGER  L
-     	 WHERE M.USER_NO = L.USER_NO (+)
-     	   AND M.USER_NM = #{BUYER_NAME}
-     	   AND M.PHONE = #{BUYER_PHONE}
-	</select>
+      SELECT M.*
+              ,CH_NO
+          FROM MEMBER M
+              ,LOGER  L
+         WHERE M.USER_NO = L.USER_NO (+)
+           AND M.USER_NM = #{BUYER_NAME}
+           AND M.PHONE = #{BUYER_PHONE}
+   </select>
 
-	<insert id="insertPayment" parameterType="map">
-		INSERT INTO PAYMENT
-		VALUES(PAY_NO.NEXTVAL, #{USER_NO},
-		#{CH_NO},SYSDATE,#{PAID_AMOUNT},NULL,NULL)
-	</insert>
-	
-		<select id="selectPoint" parameterType="Payment" resultType="map">
+   <insert id="insertPayment" parameterType="map">
+      INSERT INTO PAYMENT
+      VALUES(PAY_NO.NEXTVAL, #{USER_NO},
+      #{CH_NO},SYSDATE,#{PAID_AMOUNT},NULL,NULL)
+   </insert>
+   
+      <select id="selectPoint" parameterType="Payment" resultType="map">
 
-		SELECT P.*
-		FROM PAYMENT P
-		WHERE USER_NO = #{userNo}
-	</select>
+   SELECT P.*,
+      SUP_PRICE,
+      CAL_PRICE
+      FROM PAYMENT P
+      , SUPPORT S
+      , CALCULATE C
+      WHERE P.USER_NO = S.USER_NO(+)
+        AND P.USER_NO = C.USER_NO(+)
+        AND USER_NO = #{userNo}
+   </select>
 
 
 </mapper>

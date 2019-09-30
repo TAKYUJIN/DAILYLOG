@@ -381,7 +381,7 @@ var login_ids={};
 var nickname='${loginUser.userId}';
 console.log(nickname);
 	var textarea = document.getElementById("messageWindow");
-	 webSocket = new WebSocket("ws://192.168.30.130:8001"+"<%=request.getContextPath()%>/broadcasting?nickname"+"="+nickname); 
+	 webSocket = new WebSocket("ws://192.168.30.16:8001"+"<%=request.getContextPath()%>/broadcasting?nickname"+"="+nickname); 
 				
 	console.log(webSocket);
 	// 로컬에서 테스트할 때 사용하는 URL입니다.

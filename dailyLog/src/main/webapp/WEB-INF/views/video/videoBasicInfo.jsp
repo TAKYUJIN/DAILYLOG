@@ -137,7 +137,7 @@
 					<input type="checkbox" name="openTy" class="upload" value="U">게시 예정<br>
 					<div style="margin-left:5%;" class="uploadVideo">
 					   	<input type="date" id="start" name="uploadDate" min="2019-09-25" max="2019-10-31">
-						<input type="text" name="uploadTime" placeholder="00:00 ( 12H )"> 시에 게시하겠습니다.
+						<input type="text" name="uploadTime" placeholder="00:00"> 시에 게시하겠습니다.
 					</div>
 					<script>
 					$(document).ready(function(){

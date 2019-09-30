@@ -21,18 +21,18 @@ import com.kh.with.video.model.vo.Video;
  
 public interface VideoDao {
 	
-	//동영상 페이지 포인트 조회
+	//�룞�쁺�긽 �럹�씠吏� �룷�씤�듃 議고쉶
 	int selectPoint(SqlSessionTemplate sqlSession, int userNo);
-	//정기후원
+	//�젙湲고썑�썝
 	int regSub(SqlSessionTemplate sqlSession, Map<String, Integer> map);
 	int onceSub(SqlSessionTemplate sqlSession, Map<String, Integer> map);
 	
 
-	//동영상 업로드정보 insert 메소드
+	//�룞�쁺�긽 �뾽濡쒕뱶�젙蹂� insert 硫붿냼�뱶
 	int insertVideoInfo(SqlSessionTemplate sqlSession, Video video);
 	
 
-	// 업로드할 동영상 정보 insert메소드
+	// �뾽濡쒕뱶�븷 �룞�쁺�긽 �젙蹂� insert硫붿냼�뱶
 	//int insertVideoInfo(SqlSessionTemplate sqlSession, Model model);
 	
 	
@@ -52,7 +52,7 @@ public interface VideoDao {
 	*/
 	
 
-	//썸네일  insert 메소드
+	//�뜽�꽕�씪  insert 硫붿냼�뱶
 	int insertAttachment(SqlSessionTemplate sqlSession, Attachment attachment);
 	
 	List<Video> selectVideoInfo(SqlSessionTemplate sqlSession, Map<String, Object> map);
@@ -65,19 +65,19 @@ public interface VideoDao {
 
 	int insertOnce(SqlSessionTemplate sqlSession, Map<String, Integer> map);
 	
-	//좋아요
+	//醫뗭븘�슂
 	int insertLike(SqlSessionTemplate sqlSession, Map<String, Integer> map);	
 	int deleteLike(SqlSessionTemplate sqlSession, Map<String, Integer> map);
 	
-	//싫어요
+	//�떕�뼱�슂
 	int insertHate(SqlSessionTemplate sqlSession, Map<String, Integer> map);
 	int deleteHate(SqlSessionTemplate sqlSession, Map<String, Integer> map);
 
-	//북마크
+	//遺곷쭏�겕
 	int insertBookmark(SqlSessionTemplate sqlSession, Map<String, Integer> map);
 	int deleteBookmark(SqlSessionTemplate sqlSession, Map<String, Integer> map);
 	
-	//신고
+	//�떊怨�
 	int report(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	int block(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	List<Attachment> videolike(SqlSessionTemplate sqlSession,Member m);
@@ -90,7 +90,7 @@ public interface VideoDao {
 	List<Attachment> videonew(SqlSessionTemplate sqlSession);
 
 	
-	//동영상번호 셀렉
+	//�룞�쁺�긽踰덊샇 ���젆
 	
 	Video selectvNo(SqlSessionTemplate sqlSession, int getUserNo);
 	List<Attachment> videotak(SqlSessionTemplate sqlSession);
@@ -120,9 +120,9 @@ public interface VideoDao {
 	int replyAlram(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	int repNo(SqlSessionTemplate sqlSession, Map<String, Object> map);
 
-	//기존 구독자수 셀렉
+	//湲곗〈 援щ룆�옄�닔 ���젆
 	Loger resultSubnum(SqlSessionTemplate sqlSession, Loger loger);
-	//구독자수 업데이트
+	//援щ룆�옄�닔 �뾽�뜲�씠�듃
 	int subBumUpdate(SqlSessionTemplate sqlSession, Loger loger1);
 
 	int updateCount(SqlSessionTemplate sqlSession, Map<String, Object> map);
@@ -161,7 +161,7 @@ public interface VideoDao {
 	List<VideoLike> selectReplyLike(SqlSessionTemplate sqlSession, Map<String, Integer> map);
 	List<VideoLike> selectReplyHate(SqlSessionTemplate sqlSession, Map<String, Integer> map);
 
-	int selectSubtitle(SqlSessionTemplate sqlSession, Map<String, Object> map);
+	//int selectSubtitle(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	List<Video> adinfo(SqlSessionTemplate sqlSession, Member m);
 
 	List<Subscribe> selectSubtitle(SqlSessionTemplate sqlSession, Map<String, Object> map);

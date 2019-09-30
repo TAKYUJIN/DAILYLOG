@@ -225,7 +225,7 @@ public class MemberServiceImpl implements MemberService {
 		String htmlStr = "<h2>안녕하세요 데일리로그입니다!</h2><br><br>" 
 				+ "<p>비밀번호 찾기를 신청해주셔서 임시 비밀번호를 발급해드렸습니다.</p>"
 				+ "<p>임시로 발급 드린 비밀번호는 <h2 style='color : blue'>'" + key +"'</h2>이며 로그인 후 마이페이지에서 비밀번호를 변경해주시면 됩니다.</p><br>"
-				+ "<a href='http://localhost:8001" + request.getContextPath() + "/loginbutton.me" +"'>로그인하기</a></p>"
+				+ "<a href='http://localhost:8001/with"  + "/loginbutton.me" +"'>로그인하기</a></p>"
 				+ "(혹시 잘못 전달된 메일이라면 이 이메일을 무시하셔도 됩니다)";
 		try {
 			mail.setSubject("[데일리로그] 비밀번호 재발급 되었습니다. ", "utf-8");

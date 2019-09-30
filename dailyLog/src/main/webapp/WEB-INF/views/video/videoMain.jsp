@@ -2060,7 +2060,7 @@ var socket;
 var login_ids={};
     var textarea = document.getElementById("messageWindow");
     var nickname="${loginUser.nickname}";
-    webSocket = new WebSocket("ws://192.168.200.173:8001"+"<%=request.getContextPath()%>/broadcasting?nickname"+"="+nickname); 
+    webSocket = new WebSocket("ws://192.168.30.16:8001"+"<%=request.getContextPath()%>/broadcasting?nickname"+"="+nickname); 
 	 /* socket.emit('login','nickname'); */
     var inputMessage = document.getElementById('inputMessage');
     console.log(inputMessage);
