@@ -5,6 +5,37 @@
 
 <mapper namespace="Payment">
 
+<resultMap type="Payment" id="PaymentResultSet">
+		<id property="payNo" column="PAY_NO" />
+		<result property="userNo" column="USER_NO" />
+		<result property="chNo" column="CH_NO" />
+		<result property="payDate" column="PAY_DT" />
+		<result property="payPrice" column="PAY_PRICE" />
+		<result property="vKey" column="VKEY" />
+		<result property="orgNo" column="ORG_NO" />
+		<result property="supPrice" column="SUP_PRICE" />
+		<result property="calPrice" column="CAL_PRICE" />
+		
+	
+	</resultMap>
+	<resultMap type="Member" id="memberResultSet">
+		<id property="userNo" column="USER_NO" />
+		<result property="userNm" column="USER_NM" />
+		<result property="userId" column="USER_ID" />
+		<result property="userPwd" column="USER_PWD" />
+		<result property="nickname" column="NICKNAME" />
+		<result property="phone" column="PHONE" />
+		<result property="gender" column="GENDER" />
+		<result property="birth" column="BIRTH" />
+		<result property="age" column="AGE" />
+		<result property="adultYN" column="ADULT_YN" />
+		<result property="chYN" column="CH_YN" />
+		<result property="enrollDT" column="ENROLL_DT" />
+		<result property="leaveDT" column="LEAVE_DT" />
+		<result property="remainPT" column="REMAIN_PT" />
+		<result property="status" column="STATUS" />
+		<result property="chNo" column="CH_NO" />	
+	</resultMap>
    
    <select id="selectPayment" parameterType="map" resultType="map">
 
@@ -23,17 +54,19 @@
       #{CH_NO},SYSDATE,#{PAID_AMOUNT},NULL,NULL)
    </insert>
    
-      <select id="selectPoint" parameterType="Payment" resultType="map">
+     <select id="selectPointList" resultMap="PaymentResultSet">
 
    SELECT P.*,
-      SUP_PRICE,
-      CAL_PRICE
+      S.SUP_PRICE,
+      C.CAL_PRICE
       FROM PAYMENT P
-      , SUPPORT S
-      , CALCULATE C
-      WHERE P.USER_NO = S.USER_NO(+)
+      ,MEMBER M
+      ,SUPPORT S
+      ,CALCULATE C
+      WHERE M.USER_NO = P.USER_NO (+)
+        AND P.USER_NO = S.USER_NO(+)
         AND P.USER_NO = C.USER_NO(+)
-        AND USER_NO = #{userNo}
+        AND P.USER_NO = #{userNo}
    </select>
 
 

@@ -7,7 +7,7 @@ import com.kh.with.payment.model.vo.Payment;
 
 public interface PaymentService {
 
-   ArrayList selectPointList(Payment p);
+   ArrayList<Payment> selectPointList(Payment p);
 
    ArrayList selectPayment(HashMap map);
 

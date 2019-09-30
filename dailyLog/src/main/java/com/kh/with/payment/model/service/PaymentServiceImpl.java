@@ -20,7 +20,7 @@ public class PaymentServiceImpl implements PaymentService {
    @Autowired
    private PaymentDao pd;
 
-   public ArrayList selectPointList(Payment p) {
+   public ArrayList<Payment> selectPointList(Payment p) {
       // TODO Auto-generated methodstub
       return pd.selectPointList(sqlSession, p);
    }
