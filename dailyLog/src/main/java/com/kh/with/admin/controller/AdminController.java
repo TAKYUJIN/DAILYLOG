@@ -1,6 +1,7 @@
 package com.kh.with.admin.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
@@ -481,7 +482,7 @@ public class AdminController {
 		//@RequestParam(value="reno",defaultValue="false") String r,
 		
 		@RequestMapping(value = "repreportdetail2.ad")
-		public String repreportdetail2(HttpSession session, HttpServletRequest request) {
+		public String repreportdetail2(HttpSession session, HttpServletRequest request, Model model,HttpServletResponse response) {
 			System.out.println("controller start");
 			Enumeration e = request.getParameterNames();
 			
@@ -499,9 +500,17 @@ public class AdminController {
 			int result = rs.rereportupdate(report);
 			if (result > 0) {
 				//
-				
-			//	return "redirect:/videoreportdetail.ad?reno=${v.reno}";
-				return "redirect:/repreportdetail.ad?reno="+reno;
+				try {
+					response.setContentType("text/html; charset=UTF-8");
+					PrintWriter out;
+					out = response.getWriter();
+					out.println("<script>alert('신고 처리 되었습니다.');</script>");
+					out.flush();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				return "forward:/repreportdetail.ad?reno="+reno;
 				
 			} else {
 				return "redirect:/videoreportdetail.ad";
@@ -509,7 +518,7 @@ public class AdminController {
 		}
 
 		@RequestMapping(value = "videoreportdetail2.ad")
-		public String videoreportdetail2(HttpSession session, HttpServletRequest request) {
+		public String videoreportdetail2(HttpSession session, HttpServletRequest request,HttpServletResponse response) {
 			System.out.println("controller start");
 			Enumeration e = request.getParameterNames();
 			
@@ -526,10 +535,16 @@ public class AdminController {
 			report.setRecount(recount);
 			int result = rs.videoreportupdate(report);
 			if (result > 0) {
-				//
-				
-			//	return "redirect:/videoreportdetail.ad?reno=${v.reno}";
-				return "redirect:/videoreportdetail.ad?reno="+reno;
+				try {
+					response.setContentType("text/html; charset=UTF-8");
+					PrintWriter out;
+					out = response.getWriter();
+					out.println("<script>alert('신고 처리 되었습니다.');</script>");
+					out.flush();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}	return "forward:/videoreportdetail.ad?reno="+reno;
 				
 			} else {
 				return "redirect:/videoreportdetail.ad";
@@ -537,7 +552,7 @@ public class AdminController {
 		}
 		//채널 차단
 		@RequestMapping(value = "chreportdetail2.ad")
-		public String chreportdetail2(HttpSession session, HttpServletRequest request) {
+		public String chreportdetail2(HttpSession session, HttpServletRequest request,HttpServletResponse response) {
 			System.out.println("controller start");
 			Enumeration e = request.getParameterNames();
 			
@@ -554,10 +569,16 @@ public class AdminController {
 			report.setChNm(chNm);
 			int result = rs.chreportupdate(report);
 			if (result > 0) {
-				//
-				
-			//	return "redirect:/videoreportdetail.ad?reno=${v.reno}";
-				return "redirect:/chreportdetail.ad?reno="+reno;
+				try {
+					response.setContentType("text/html; charset=UTF-8");
+					PrintWriter out;
+					out = response.getWriter();
+					out.println("<script>alert('신고 처리 되었습니다.');</script>");
+					out.flush();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}return "forward:/chreportdetail.ad?reno="+reno;
 				
 			} else {
 				return "redirect:/videoreportdetail.ad";

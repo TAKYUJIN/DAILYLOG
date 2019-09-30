@@ -1,8 +1,11 @@
 package com.kh.with.report.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -30,7 +33,7 @@ public class ReportController {
 	private  final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	//동영상 메인 동영상 신고
 	 @RequestMapping(value="report.rp",method= RequestMethod.POST) 
-	 public String	 mainreport(Model model,HttpServletRequest request, 
+	 public String	 mainreport(Model model,HttpServletRequest request,HttpServletResponse response,
 			 @RequestParam(name = "userNo", required = false)  int userNo)
 	 { userNo=((Member)request.getSession().getAttribute("loginUser")).getUserNo(); int vNo=
 	  Integer.parseInt(request.getParameter("vNo")); 
@@ -64,7 +67,20 @@ public class ReportController {
 	  
 	  
 	  
-	  if (result > 0 && result1>0) { return "redirect:/home.mb"; } else {
+	  if (result > 0 && result1>0) { 
+			/*
+			 * try { response.setContentType("text/html; charset=UTF-8"); PrintWriter out;
+			 * out = response.getWriter();
+			 * out.println("<script>alert('신고 처리 되었습니다.');</script>"); out.flush(); } catch
+			 * (IOException e1) { // TODO Auto-generated catch block e1.printStackTrace();
+			 * 
+			 * }
+			 */
+		  
+		  return "forward:/home.mb";
+		  
+		  
+	  } else {
 	  model.addAttribute("msg", "신고 실패"); 
 	  return "common/errorPage"; }
 	  
