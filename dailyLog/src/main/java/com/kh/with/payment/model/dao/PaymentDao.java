@@ -9,7 +9,7 @@
   
   public interface PaymentDao {
   
-  ArrayList selectPointList(SqlSessionTemplate sqlSession, Payment p);
+  ArrayList<Payment> selectPointList(SqlSessionTemplate sqlSession, Payment p);
   
   ArrayList selectPayment(SqlSessionTemplate sqlSession, HashMap map);
   

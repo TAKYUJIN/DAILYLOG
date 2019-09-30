@@ -196,19 +196,7 @@
 					
                 </tbody>
             </table>
-			<div class="clearfix" style="margin 0 auto;">
-                <ul class="pagination">
-                    <li class="page-item disabled"><a href="#">Previous</a></li>
-                    <li class="page-item"><a href="#" class="page-link">1</a></li>
-                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                    <li class="page-item"><a href="#" class="page-link">3</a></li>
-                    <li class="page-item active"><a href="#" class="page-link">4</a></li>
-                    <li class="page-item"><a href="#" class="page-link">5</a></li>
-					<li class="page-item"><a href="#" class="page-link">6</a></li>
-					<li class="page-item"><a href="#" class="page-link">7</a></li>
-                    <li class="page-item"><a href="#" class="page-link">Next</a></li>
-                </ul>
-            </div>
+		
             
             <h1>
        <a>포인트</a>
@@ -229,33 +217,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach items="${list}" var="p">
+                    <c:forEach items="${paylist}" var="p">
                     <tr>
-                        <td><c:out value="${p.payNo }"/></td>
-                        <td> <c:out value="${p.userNo }"/></a></td>
-						<td><c:out value="${p.payDate }"/></td>
-                        <td><c:out value="${p.payPrice }"/></td>                        
-						<td><c:out value=" pay_method"/>p</td>
-						<td><c:out value="${p.payNo }"/></td>
+                        <td>${p.payNo }</td>
+                        <td>${p.userNo }</td>
+						<td>${p.payDate }</td>
+                        <td>${p.payPrice }</td>                        
+						<td>${p.supPrice }p</td>
+						<td>${p.calPrice}</td>
 						<td>card</td>
                     </tr>
                     </c:forEach>
 					
                 </tbody>
             </table>
-			<div class="clearfix">
-                <ul class="pagination">
-                    <li class="page-item disabled"><a href="#">Previous</a></li>
-                    <li class="page-item"><a href="#" class="page-link">1</a></li>
-                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                    <li class="page-item"><a href="#" class="page-link">3</a></li>
-                    <li class="page-item active"><a href="#" class="page-link">4</a></li>
-                    <li class="page-item"><a href="#" class="page-link">5</a></li>
-					<li class="page-item"><a href="#" class="page-link">6</a></li>
-					<li class="page-item"><a href="#" class="page-link">7</a></li>
-                    <li class="page-item"><a href="#" class="page-link">Next</a></li>
-                </ul>
-            </div>
+			
         </div>
         <div id="rep">
         	<h4 style="color :red;"><b>경고! 필독해주세요</b></h4>

@@ -22,11 +22,9 @@
 		font-family: 'Roboto', sans-serif;
 	}
     table.table tr th, table.table tr td {
-        border-color: #e9e9e9;
         text-align:center;
     }
     table.table-striped tbody tr:nth-of-type(odd) {
-    	background-color: #fcfcfc;
     	width:1000px;
 		text-align:center;
 		margin-bottom:100px;
@@ -49,7 +47,6 @@
 		text-align:center;
 	}
     .table-wrapper {
-        background: #fff;
         padding: 20px;
         margin: 30px 0;
         box-shadow: 0 1px 1px rgba(0,0,0,.05);
@@ -158,7 +155,7 @@
 						<th class="calculate_th">탈퇴여부</th>
                     </tr>
                 </thead>
-                <tbody id="list">
+                <tbody id="list" onclick="location.href='adminUserDetail.ad'">
                 <c:forEach items="${userlist}" var="user">
                     <tr>
                         <td>${user.userNo}</td>
@@ -172,21 +169,10 @@
                 </tbody>
             </table>
             
-            <!-- 예비용 페이징 ui -->
-            <div class="text-center">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item disabled"><a href="#"><i class="fa fa-long-arrow-left"></i> Previous</a></li>
-                    <li class="page-item"><a href="#" class="page-link">1</a></li>
-                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                    <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                    <li class="page-item"><a href="#" class="page-link">4</a></li>
-                    <li class="page-item"><a href="#" class="page-link">5</a></li>
-                    <li class="page-item"><a href="#" class="page-link">Next <i class="fa fa-long-arrow-right"></i></a></li>
-                </ul>
-            </div>
+          
         </div>
         </form>
-        
+        <jsp:include page="../common/footer.jsp"/>
     </div>  
 </body>
 <script type="text/javascript">
