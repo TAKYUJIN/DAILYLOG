@@ -65,7 +65,7 @@ public class ReportController {
 	  int result =rs.mainreport(report);
 	  int result1 =rs.alramreport(alram);
 	  
-	  
+	   
 	  
 	  if (result > 0 && result1>0) { 
 			/*
@@ -77,7 +77,7 @@ public class ReportController {
 			 * }
 			 */
 		  
-		  return "forward:/home.mb";
+		  return "redirect:/home.mb";
 		  
 		  
 	  } else {

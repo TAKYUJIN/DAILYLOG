@@ -559,7 +559,7 @@
 		DELETE FROM REPLY
 		WHERE USER_NO = #{loginUser}
 		AND V_NO
-		= #{vNo}
+		= #{vNo}  
 		AND REP_NO = #{repNo}
 	</delete>
 
@@ -571,8 +571,11 @@
 	</select>
   
   <select id="adinfo" resultMap="videoResultSet"> 
-  select * from VIDEO 
-where NOT AD_INFO IS NULL 
+ SELECT A.USER_NO,A.FILE_NM,A.AM_DT,V.V_NO,V.V_TITLE,V.CH_NM ,
+		V.TAG,V.UPLOAD_DT
+		FROM ATTACHMENT A
+		JOIN VIDEO V ON(V.V_NO = A.V_NO)
+		WHERE  NOT INFO IS NULL
 </select>
 
 	<insert id="writeReReply" parameterType="map">

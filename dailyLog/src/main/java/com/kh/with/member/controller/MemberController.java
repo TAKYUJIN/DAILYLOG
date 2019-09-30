@@ -701,7 +701,7 @@ public class MemberController {
 
 		String root = request.getSession().getServletContext().getRealPath("resources");
 
-		try {
+		try { 
 
 			m.setUserPwd(passwordEncoder.encode(m.getUserPwd()));
 			System.out.println(m.getUserPwd());

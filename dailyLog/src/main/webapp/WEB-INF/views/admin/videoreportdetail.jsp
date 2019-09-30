@@ -231,7 +231,7 @@
 			<label>신고 동영상 번호:${de.vNo}  </label><br><br>
 			<input type="hidden" id="vNo" name="vNo" value="${de.vNo}">
 			<label>신고 동영상 제목:${de.vTitle} </label><br><br>
-			<input type="hidden" id="vTitle" name="vTitle" value="${de.vTitle}">
+	 		<input type="hidden" id="vTitle" name="vTitle" value="${de.vTitle}">
 			<label>신고인 :${de.userNm}</label><br><br>
 			<input type="hidden" id="userNm" name="userNm" value="${de.userNm}">
 			<label>신고일:${de.redt} </label><br><br>

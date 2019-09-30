@@ -527,8 +527,8 @@ color: black; text-decoration: none;
   object-fit:fill;
   }
   #adinfo{
-  height:500px; 
-    width:1200px;
+  height:350px; 
+    width:800px;
   object-fit:fill;
     background:none;
   }
@@ -554,13 +554,13 @@ color: black; text-decoration: none;
 						
 						<div class="col-sm-12 "><div class="img-box"><div id="sty" class="scale"style=" float:left;text-decoration: none;  color: black; "> 
 						<a href="video.vd?userNo=${videoimage.userNo}&vNo=${videoimage.vNo}">
-						<%-- <img style=" border-radius:10px;  color: black; text-decoration: none; margin:10px;" src="resources/uploadFiles/${videoimage.fileNm}" width = "300px"  height="200px"  >
-						 --%>	
-						  <video id="adinfo"  class='video-js'  onmouseover="this.play()" onmouseout="this.pause()"
+						  <img style=" border-radius:10px;  color: black; text-decoration: none; margin:10px;" id="adinfo" src="resources/uploadFiles/${videoimage.fileNm}"   >
+						 
+						   <%-- <video id="adinfo"  class='video-js'  onmouseover="this.play()" onmouseout="this.pause()"
 						     >
 						  <source src='resources/uploadFiles/${videoimage.fileNm}' type='video/mp4'>
 						   <source src='MY_VIDEO.webm' type='video/webm'>  
-						</video>
+						</video> --%>  
 							
 							<div id="sty1"><h4><b> </b></h4>
 							<div id="sty2"><h3><b> ${videoimage.chNm }</b> &nbsp;&nbsp;<b>  ${videoimage.tag }</b>
@@ -607,7 +607,7 @@ color: black; text-decoration: none;
 					   <li> <input type="radio" id="rewhy" name="rewhy"  value="성적인 콘텐츠" checked>성적인 콘텐츠</li>
 					    <li><input type="radio" id="rewhy" name="rewhy"  value="폭력적 또는 혐오스러운 콘텐츠">폭력적 또는 혐오스러운 콘텐츠</li>
 					      <li><input type="radio"id="rewhy" name="rewhy"  value="증오 또는 악의적인 콘텐츠">증오 또는 악의적인 콘텐츠</li>
-					   <li><input type="radio" id="rewhy" name="rewhy"  value="유해하거나 위험한행위 ">유해하거나 위험한행위</li>
+		 			   <li><input type="radio" id="rewhy" name="rewhy"  value="유해하거나 위험한행위 ">유해하거나 위험한행위</li>
 					    <li> <input type="radio"id="rewhy" name="rewhy"  value="스팸 또는 사용자를 현혹하는 콘텐츠">스팸 또는 사용자를 현혹하는 콘텐츠</li>
 					    <li> <input type="text" class="form-control" id="rewhy" name="rewhy" placeholder="기타"></li >
  					  <input type="hidden" id="rety" name="rety" value="동영상"/>

@@ -535,7 +535,7 @@ public class AdminController {
 			report.setRecount(recount);
 			int result = rs.videoreportupdate(report);
 			if (result > 0) {
-				try {
+				try { 
 					response.setContentType("text/html; charset=UTF-8");
 					PrintWriter out;
 					out = response.getWriter();
@@ -547,7 +547,7 @@ public class AdminController {
 				}	return "forward:/videoreportdetail.ad?reno="+reno;
 				
 			} else {
-				return "redirect:/videoreportdetail.ad";
+				return "redirect:/chreportdetail.ad";
 			}
 		}
 		//채널 차단

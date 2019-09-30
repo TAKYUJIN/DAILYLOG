@@ -101,7 +101,7 @@
 			<label class="control-label col-xs-4">신고 채널</label>
 			<div class="col-xs-8">
                 <input type="text" class="form-control"name="text" required="required">
-            </div>        	
+             </div>        	
         </div>
 		<div class="form-group">
 			<label class="control-label col-xs-4">신고인</label>
