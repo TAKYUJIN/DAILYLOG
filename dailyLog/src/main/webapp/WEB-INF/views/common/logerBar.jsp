@@ -299,7 +299,6 @@
 			<li class="nav-item"><a href="loger.lo" class="nav-link" style="padding-right:0px;">홈</a></li>
 			<li class="nav-item"><a href="goChannelChangeInfo.lo" class="nav-link" style="padding-right:0px;">채널설정</a></li>
 			<li class="nav-item"><a href="logerVideo.lo" class="nav-link" style="padding-right:0px;">동영상</a></li>			
-			<li class="nav-item"><a href="#" class="nav-link" style="padding-right:0px;">분석</a></li>	
 			<li class="nav-item"><a href="logerCalculate.lo" class="nav-link" style="padding-right:0px;">정산</a></li>	
 			<li class="nav-item"><a href="logerReply.lo" class="nav-link" style="padding-right:0px;">댓글</a></li>
 			<li class="nav-item"><a href="logerdeclarationlist.lo" class="nav-link" style="padding-right:0px;">신고기록</a></li>

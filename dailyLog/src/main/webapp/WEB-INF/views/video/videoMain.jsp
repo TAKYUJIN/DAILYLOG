@@ -427,7 +427,7 @@
 		  <meta property="og:title"         content="일상 영상 공유 플랫폼 Daily Log - WITH" />
 		  <meta property="og:url"           content="http://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:8001/with/video.vd?userNo=${list1[0].userNo}&vNo=${list1[0].vNo}" />
 		  <meta property="og:description"   content="영상 플랫폼 Daily Log" />
-		  <meta property="og:image"         content="http://127.0.0.1:8001/with/resources/images/logo.png" />
+		  <meta property="og:image"         content="http://127.0.0.1:8001/with/resources/images/newlogo3.png" />
 	
 </head>
 <body>
@@ -449,10 +449,10 @@
 										<!-- <img src="resources/images/chat.png" style="width:18px; align:right;"> -->
 										<div>
 											<c:if test="${profile != null}">
-												<img class="chImg" src="resources/images/${profile}">
+												<img class="chImg" src="resources/uploadFiles/${profile}">
 											</c:if>
 											<c:if test="${profile == null}">
-												<img class="chImg" src="resources/images/newlogo3.png">
+												<img class="chImg" src="resources/uploadFiles/newlogo3.png">
 											</c:if>
 										</div>
 									</a>
@@ -466,7 +466,7 @@
 											</div>
 											<!-- 신고-->
 											<div id="reportCh">
-												<div class="noti_text" align="center" style="margin-top:5%; width:350px;"><b>동영상신고</b></div>
+												<div class="noti_text" align="left" style="margin-top:5%; margin-left:10%; width:370px;"><b>채널신고</b></div>
 												<div align="left" style="margin-left:10%; margin-right:10%;">
 													<table class="noti_table">
 														<tr><td>
@@ -493,8 +493,8 @@
 														</td></tr>
 														<tr>
 															<td>
-																<button style="background:#A8B7BC;display:inline-block;width:100px;margin-right:5% !important;" class="btn" id="cancle4">취소</button>
-																<button class="btn channelReportNext" style="width:100px;display:inline-block;" >다음</button><br><br>
+																<button style="background:#A8B7BC;display:inline-block;width:80px;margin-right:5% !important;" class="btn" id="cancle4">취소</button>
+																<button class="btn channelReportNext" style="width:80px;display:inline-block;" >다음</button><br><br>
 															</td>
 														</tr>
 													</table>
@@ -657,7 +657,7 @@
 											</div>
 											<!-- 신고 -->
 											<div id="report1">
-												<div class="noti_text" style="margin-top:5%; width:350px;"><b style="text-align:center;">동영상신고</b></div>
+												<div class="noti_text" align="left" style="margin-top:5%; margin-left:10%; width:350px;"><b>동영상신고</b></div>
 												<div align="left" style="margin-left:10%; margin-right:10%;">
 													<table class="noti_table">
 														<tr><td>
@@ -821,7 +821,7 @@
 	 		var mapContainer = document.getElementById('map'), // 지도의 중심좌표
 	 	    mapOption = { 
 	 	        center: new kakao.maps.LatLng(${addPlace[0].apXY}), // 지도의 중심좌표
-	 	        level: 3 // 지도의 확대 레벨
+	 	        level: 6 // 지도의 확대 레벨
 	 	    }; 
 	
 		 	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
@@ -1034,7 +1034,7 @@
 							<img class="userImg" src="resources/uploadFiles/${userImg}" style="margin-bottom:30px;">
 						</c:if>
 						<c:if test="${userImg == null}">
-							<img class="userImg" src="resources/images/newlogo3.png" style="margin-bottom:30px;">
+							<img class="userImg" src="resources/uploadFiles/newlogo3.png" style="margin-bottom:30px;">
 						</c:if>	
 					</div>
            		</div>
@@ -1060,10 +1060,10 @@
 		           				<div style="width:50px; display:inline-block;">
 				       			    <div>
 										<c:if test="${userImg != null}">
-											<img class="userImg" src="resources/images/${userImg}" style="margin-bottom:30px;">
+											<img class="userImg" src="resources/uploadFiles/${userImg}" style="margin-bottom:30px;">
 										</c:if>
 										<c:if test="${userImg == null}">
-											<img class="userImg" src="resources/images/newlogo3.png" style="margin-bottom:30px;">
+											<img class="userImg" src="resources/uploadFiles/newlogo3.png" style="margin-bottom:30px;">
 										</c:if>	
 									</div>
 		           				</div>
@@ -1090,10 +1090,10 @@
 		                    <td width="60px">
 		                    	<div style="margin-top:10px;">
 									<c:if test="${r.fileNm != null}">
-										<img class="userImg" src="resources/images/${r.fileNm}">
+										<img class="userImg" src="resources/uploadFiles/${r.fileNm}">
 									</c:if>
 									<c:if test="${r.fileNm == null}">
-										<img class="userImg" src="resources/images/newlogo3.png">
+										<img class="userImg" src="resources/uploadFiles/newlogo3.png">
 									</c:if>	
 								</div>
 		                    </td>
@@ -1225,7 +1225,7 @@
 										<li>
 											<!-- 신고 -->
 											<div>
-												<div class="noti_text" style="margin-top:5%; width:350px;"><b style="text-align:center;">동영상신고</b></div>
+												<div class="noti_text" align="left" style="margin-top:5%; margin-left:14%; width:350px;"><b>댓글신고</b></div>
 												<div align="left" style="margin-left:10%; margin-right:10%;"><!-- onclick="repNoThis(this.value);" -->
 													<table class="noti_table">
 														<tr><td>
@@ -1507,6 +1507,7 @@
 			var check = lists[0];
 	        var chNm = "<c:out value='${list2[0].chNm}'/>";
 	        var chNo = "<c:out value='${list2[0].chNo}'/>";
+	        var vNo = "<c:out value='${list1[0].vNo}'/>";
 	        
 	        $.ajax({
 	        	url:"channelReport.vd",
@@ -1514,7 +1515,8 @@
 				data:{check:check, 
 					  userNo:userNo,
 					  chNm:chNm,
-					  chNo:chNo},
+					  chNo:chNo,
+					  vNo:vNo},
 				success:function(data){
 					console.log("성공!");
 					if(data == 1){
@@ -1544,6 +1546,7 @@
 	        var chNm = "<c:out value='${list2[0].chNm}'/>";
 	        var vTitle = "<c:out value='${list1[0].vTitle}'/>";
 	        var a = $(this).siblings().eq(0).val();
+	        var vNo = "<c:out value='${list1[0].vNo}'/>";
 			console.log("나는 대머리다" + a);
 			console.log(lists);
 	        $.ajax({
@@ -1553,7 +1556,8 @@
 					  userNo:userNo,
 					  chNm:chNm,
 					  vTitle:vTitle,
-					  repNo:repNo},
+					  repNo:repNo,
+					  vNo:vNo},
 				success:function(data){
 					console.log("성공!");
 					if(data == 1){
@@ -2060,7 +2064,7 @@ var socket;
 var login_ids={};
     var textarea = document.getElementById("messageWindow");
     var nickname="${loginUser.nickname}";
-    webSocket = new WebSocket("ws://192.168.30.16:8001"+"<%=request.getContextPath()%>/broadcasting?nickname"+"="+nickname); 
+    webSocket = new WebSocket("ws://192.168.30.142:8001"+"<%=request.getContextPath()%>/broadcasting?nickname"+"="+nickname); 
 	 /* socket.emit('login','nickname'); */
     var inputMessage = document.getElementById('inputMessage');
     console.log(inputMessage);
@@ -2107,7 +2111,7 @@ var login_ids={};
                 } else {
                     /* 다른 채팅자 */
                 	$("#messageWindow").html($("#messageWindow").html()
-                		 + "<div style='text-align:left !important; float:left; clear:both; margin-bottom:3%;'><table style='text-align:left;'><tr><td rowspan='2'><img class='userImg' src='resources/uploadFiles/newlogo3.png' style='align:left;'></td><td><p class='chat_content'>" + sender + "</p></td></tr><tr><td><div class='chat_content'>" + content + "</div></td></tr><tr><td></td><td><small>" + d.getHours() +":"+ d.getMinutes() + "</small></td></tr><table></div>"); 
+                		 + "<div style='text-align:left !important; float:left; clear:both; margin-bottom:3%;'><table style='text-align:left;'><tr><td rowspan='2'><img class='userImg' src='resources/uploadFiles/newlogo3.png' style='align:left;'></td><td><p class='chat_content'>" + nickname + "</p></td></tr><tr><td><div class='chat_content'>" + content + "</div></td></tr><tr><td></td><td><small>" + d.getHours() +":"+ d.getMinutes() + "</small></td></tr><table></div>"); 
                 		 
                 }
             }
@@ -2191,7 +2195,7 @@ var login_ids={};
                
                 ; */
             $("#messageWindow").html($("#messageWindow").html()
-                	+ "<div style='align:right !important; clear:both; float:right; text-align:right !important; margin-bottom:3%;'><table><tr><td><p class='chat_content'>" + chat_id + "</p></td><td rowspan='2'><img class='userImg' src='resources/uploadFiles/${userImg}' style='align:right; margin-left:7% !important;'></td></tr><tr><td><div class='chat_content'>" + inputMessage.value + "</div></td></tr><tr><td><small>" + d.getFullYear() +"."+ (d.getMonth() + 1) +"."+ d.getDate() +" "+ d.getHours() +":"+ d.getMinutes() + "</small></td></tr></table></div>");
+                	+ "<div style='align:right !important; clear:both; float:right; text-align:right !important; margin-bottom:3%;'><table><tr><td><p class='chat_content'>" + chat_id + "</p></td><td rowspan='2'><img class='userImg' src='resources/uploadFiles/${userImg}' style='align:right; margin-left:7% !important;'></td></tr><tr><td><div class='chat_content'>" + inputMessage.value + "</div></td></tr><tr><td><small>" + d.getHours() +":"+ d.getMinutes() + "</small></td></tr></table></div>");
         }
         /*  */
         

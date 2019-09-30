@@ -696,6 +696,7 @@ public class VideoController {
 		String check = request.getParameter("check");
 		String chNm = request.getParameter("chNm");
 		String vTitle = request.getParameter("vTitle");
+		int vNo = Integer.parseInt(request.getParameter("vNo"));
 
 		int repNo = Integer.parseInt(request.getParameter("repNo"));
 		String nickName = m.getNickname();
@@ -711,7 +712,7 @@ public class VideoController {
 		/* map.put("repNo", repNo); */
 		map.put("chNm", chNm);
 		map.put("vTitle", vTitle);
-
+		map.put("vNo", vNo);
 		map.put("repNo", repNo);
 		map.put("nickName", nickName);
 		
@@ -746,7 +747,7 @@ public class VideoController {
 			String check = request.getParameter("check");
 			String chNm = request.getParameter("chNm");
 			int chNo = Integer.parseInt(request.getParameter("chNo"));
-
+			int vNo = Integer.parseInt(request.getParameter("vNo"));
 
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("userNo", userNo);
@@ -754,7 +755,7 @@ public class VideoController {
 			map.put("check", check);
 			map.put("chNm", chNm);
 			map.put("chNo", chNo);
-			
+			map.put("vNo", vNo);
 
 			//select rcount, ccount
 			List<Report> count = vs.selectCount(map);

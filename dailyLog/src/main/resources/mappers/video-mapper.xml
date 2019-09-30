@@ -321,7 +321,7 @@
 		INSERT INTO REPORT
 		VALUES(RE_NO.NEXTVAL, #{loginUser}, #{userNo}, SYSDATE, #{check},
 		'동영상', #{vNo}
-		, NULL, #{chNm}, #{rCount} + 1, #{cCount} + 1)
+		, NULL, #{chNm}, #{rCount}, #{cCount})
 	</insert>
 
 	<insert id="insertBlock" parameterType="map">
@@ -495,7 +495,7 @@
 	<insert id="replyReport" parameterType="map">
 		INSERT INTO REPORT
 		VALUES(RE_NO.NEXTVAL, #{loginUser}, #{userNo}, SYSDATE, #{check},
-		'댓글', NULL, #{repNo}, #{chNm}, #{rCount} + 1, #{cCount} + 1)
+		'댓글', #{vNo}, #{repNo}, #{chNm}, #{rCount}, #{cCount})
 	</insert>
 
 	<insert id="replyReportAlram" parameterType="map">
@@ -591,8 +591,7 @@ where NOT AD_INFO IS NULL
 		SELECT *
 		FROM ADDINFO
 		WHERE USER_NO = #{userNo}
-		AND V_NO =
-		#{vNo}
+		AND V_NO = #{vNo}
 	</select>
 
 	<select id="selectAddPlace" parameterType="map"
@@ -600,8 +599,7 @@ where NOT AD_INFO IS NULL
 		SELECT *
 		FROM ADDPLACE
 		WHERE USER_NO = #{userNo}
-		AND V_NO =
-		#{vNo}
+		AND V_NO = #{vNo}
 	</select>
 
 	<select id="newActionList" resultMap="NewlyVideoResultSet">
@@ -642,7 +640,7 @@ where NOT AD_INFO IS NULL
 	<insert id="channelReport" parameterType="map">
 		INSERT INTO REPORT
 		VALUES(RE_NO.NEXTVAL, #{loginUser}, #{userNo}, SYSDATE, #{check},
-		'채널', NULL, NULL, #{chNm}, #{rCount} + 1, #{cCount} + 1)
+		'채널', #{vNo}, NULL, #{chNm}, #{rCount}, #{cCount})
 	</insert>
 
 	<insert id="channelReportAlram" parameterType="map">
