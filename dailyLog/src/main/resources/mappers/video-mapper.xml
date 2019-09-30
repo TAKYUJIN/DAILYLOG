@@ -495,7 +495,7 @@
 	<insert id="replyReport" parameterType="map">
 		INSERT INTO REPORT
 		VALUES(RE_NO.NEXTVAL, #{loginUser}, #{userNo}, SYSDATE, #{check},
-		'댓글', NULL, #{repNo}, #{chNm}, #{rCount}, #{cCount})
+		'댓글', #{vNo}, #{repNo}, #{chNm}, #{rCount}, #{cCount})
 	</insert>
 
 	<insert id="replyReportAlram" parameterType="map">
@@ -640,7 +640,7 @@ where NOT AD_INFO IS NULL
 	<insert id="channelReport" parameterType="map">
 		INSERT INTO REPORT
 		VALUES(RE_NO.NEXTVAL, #{loginUser}, #{userNo}, SYSDATE, #{check},
-		'채널', NULL, NULL, #{chNm}, #{rCount}, #{cCount})
+		'채널', #{vNo}, NULL, #{chNm}, #{rCount}, #{cCount})
 	</insert>
 
 	<insert id="channelReportAlram" parameterType="map">

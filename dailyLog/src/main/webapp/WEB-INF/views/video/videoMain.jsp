@@ -1507,6 +1507,7 @@
 			var check = lists[0];
 	        var chNm = "<c:out value='${list2[0].chNm}'/>";
 	        var chNo = "<c:out value='${list2[0].chNo}'/>";
+	        var vNo = "<c:out value='${list1[0].vNo}'/>";
 	        
 	        $.ajax({
 	        	url:"channelReport.vd",
@@ -1514,7 +1515,8 @@
 				data:{check:check, 
 					  userNo:userNo,
 					  chNm:chNm,
-					  chNo:chNo},
+					  chNo:chNo,
+					  vNo:vNo},
 				success:function(data){
 					console.log("성공!");
 					if(data == 1){
@@ -1544,6 +1546,7 @@
 	        var chNm = "<c:out value='${list2[0].chNm}'/>";
 	        var vTitle = "<c:out value='${list1[0].vTitle}'/>";
 	        var a = $(this).siblings().eq(0).val();
+	        var vNo = "<c:out value='${list1[0].vNo}'/>";
 			console.log("나는 대머리다" + a);
 			console.log(lists);
 	        $.ajax({
@@ -1553,7 +1556,8 @@
 					  userNo:userNo,
 					  chNm:chNm,
 					  vTitle:vTitle,
-					  repNo:repNo},
+					  repNo:repNo,
+					  vNo:vNo},
 				success:function(data){
 					console.log("성공!");
 					if(data == 1){
