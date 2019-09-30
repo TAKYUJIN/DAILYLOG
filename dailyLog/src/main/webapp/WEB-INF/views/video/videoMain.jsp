@@ -1246,7 +1246,7 @@
 															<td>
 																<input type="text" class="repNoThis" style="display:none;"value="${r.repNo }" >
 																<button style="background:#A8B7BC;display:inline-block;width:100px;margin-right:5% !important;" class="btn" id="cancle4">취소</button>
-																<button class="btn replyReportNext" style="width:100px;display:inline-block;" class="btn">다음</button><br><br>
+																<button class="btn replyReportNext" id="replyReportNext" style="width:100px;display:inline-block;" class="btn">다음</button><br><br>
 															</td>
 														</tr>
 													</table>
@@ -2409,7 +2409,18 @@ $(function(){
 		
 	});
 		
-})
+		$("#replyReportNext").click(function(){
+			
+			var videoUserNo = $("#retarget").val();
+			var loginUserNo = $("#userNo").val();
+			console.log(videoUserNo);
+			console.log(loginUserNo);
+			var msg = loginUserNo + "&" + videoUserNo;
+			ws2.send(msg);
+		
+	});
+		
+});
 	   
 </script>
 	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
