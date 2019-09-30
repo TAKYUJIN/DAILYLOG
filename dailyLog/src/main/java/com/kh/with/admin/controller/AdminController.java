@@ -547,7 +547,7 @@ public class AdminController {
 				}	return "forward:/videoreportdetail.ad?reno="+reno;
 				
 			} else {
-				return "redirect:/videoreportdetail.ad";
+				return "redirect:/chreportdetail.ad";
 			}
 		}
 		//채널 차단

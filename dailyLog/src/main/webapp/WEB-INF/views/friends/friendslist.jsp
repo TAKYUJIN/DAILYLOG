@@ -301,8 +301,8 @@ $(function(){
 			 */
 			 var Usernickname = $(".frinickname").val();
 				var loginnickname = $("#usernickname").val();
-			alert(loginnickname);
-			alert(Usernickname);
+			/* alert(loginnickname);
+			alert(Usernickname); */
 			var msg = loginnickname + "&" + Usernickname;
 			alert(msg);
 			webSocket.send(msg);
@@ -343,7 +343,7 @@ $(function() {
           },
           error : function() {
              alert("서버에러 ");
-             alert(data);
+             /* alert(data); */
           }
        });
     });

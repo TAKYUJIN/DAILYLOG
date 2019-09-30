@@ -2120,7 +2120,7 @@ var login_ids={};
                   */     
 
                 	$("#messageWindow").html($("#messageWindow").html()
-                		 + "<div style='text-align:left !important; float:left; clear:both; margin-bottom:3%;'><table style='text-align:left;'><tr><td rowspan='2'><img class='userImg' src='resources/uploadFiles/newlogo3.png' style='align:left;'></td><td><p class='chat_content'>" + chat_id + "</p></td></tr><tr><td><div class='chat_content'>" + content + "</div></td></tr><tr><td></td><td><small>" + d.getHours() +":"+ d.getMinutes() + "</small></td></tr><table></div>"); 
+                		 + "<div style='text-align:left !important; float:left; clear:both; margin-bottom:3%;'><table style='text-align:left;'><tr><td rowspan='2'><img class='userImg' src='resources/uploadFiles/newlogo3.png' style='align:left;'></td><td><p class='chat_content'>" + sender + "</p></td></tr><tr><td><div class='chat_content'>" + content + "</div></td></tr><tr><td></td><td><small>" + d.getHours() +":"+ d.getMinutes() + "</small></td></tr><table></div>"); 
                 		 
 
                 }

@@ -77,7 +77,7 @@ public class ReportController {
 			 * }
 			 */
 		  
-		  return "forward:/home.mb";
+		  return "redirect:/home.mb";
 		  
 		  
 	  } else {

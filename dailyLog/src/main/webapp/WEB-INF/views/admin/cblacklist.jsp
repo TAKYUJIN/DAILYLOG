@@ -236,17 +236,7 @@ $(document).ready(function(){
                     </c:forEach>
                 </tbody>
             </table>
-              <div class="clearfix">
-                 <ul class="pagination">
-                    <li class="page-item disabled"><a href="#"><<</a></li>
-                    <li class="page-item"><a href="#" class="page-link">1</a></li>
-                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                    <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                    <li class="page-item"><a href="#" class="page-link">4</a></li>
-                    <li class="page-item"><a href="#" class="page-link">5</a></li>
-                    <li class="page-item"><a href="#" class="page-link">>></a></li>
-                </ul>
-            </div>
+              <br><br><br><br>
             
            <h4><b>동영상 </b> </h4>
              <table class="table table-bordered">
@@ -256,7 +246,6 @@ $(document).ready(function(){
                         <th>아이디 <i class="fa fa-sort"></i></th>
                         <th>구분</th>
                         <th>동영상 번호</th>
-                        <th>채널 신고 횟수</th>
 						<th>채널 경고 횟수</th>
                         <th>유무</th>
 						<th>중지/블랙 리스트</th>
@@ -304,17 +293,6 @@ $(document).ready(function(){
                     </c:forEach>
                 </tbody>
             </table>
-              <div class="text-center">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item disabled"><a href="#"><i class="fa fa-long-arrow-left"></i> Previous</a></li>
-                    <li class="page-item active"><a href="#" class="page-link">1</a></li>
-                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                    <li class="page-item "><a href="#" class="page-link">3</a></li>
-                    <li class="page-item"><a href="#" class="page-link">4</a></li>
-                    <li class="page-item"><a href="#" class="page-link">5</a></li>
-                    <li class="page-item"><a href="#" class="page-link">Next <i class="fa fa-long-arrow-right"></i></a></li>
-                </ul>
-            </div> 
         </div>
     </div>
      <jsp:include page="../common/footer.jsp" />     

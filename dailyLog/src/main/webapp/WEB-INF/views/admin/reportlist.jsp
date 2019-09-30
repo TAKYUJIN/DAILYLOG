@@ -35,7 +35,7 @@
         font-size: 24px;
     }
 	.table-title select {
-		border-color: #ddd;
+		border-color: #525252;
 		border-width: 0 0 1px 0;
 		padding: 3px 10px 3px 5px;
 		margin: 0 5px;
@@ -53,7 +53,7 @@
 		right: 0;
 	}
 	.search-box .input-group-addon, .search-box input {
-		border-color: #ddd;
+		border-color: #525252;
 		border-radius: 0;
 	}
 	.search-box .input-group-addon {
@@ -73,7 +73,7 @@
 		border-color: #3FBAE4;
 	}
     .search-box i {
-        color: #a0a5b1;
+        color: #525252;
         font-size: 19px;
 		position: relative;
 		top: 2px;
@@ -91,7 +91,7 @@
         width: 130px;
     }
     table.table td a {
-        color: #a0a5b1;
+        color: #525252;
         display: inline-block;
         margin: 0 5px;
     }
@@ -364,7 +364,7 @@ $(document).ready(function(){
         font-size: 24px;
     }
 	.table-title select {
-		border-color: #ddd;
+		border-color: #525252;
 		border-width: 0 0 1px 0;
 		padding: 3px 10px 3px 5px;
 		margin: 0 5px;
@@ -382,7 +382,7 @@ $(document).ready(function(){
 		right: 0;
 	}
 	.search-box .input-group-addon, .search-box input {
-		border-color: #ddd;
+		border-color: #525252;
 		border-radius: 0;
 	}
 	.search-box .input-group-addon {
@@ -402,14 +402,14 @@ $(document).ready(function(){
 		border-color: #3FBAE4;
 	}
     .search-box i {
-        color: #a0a5b1;
+        color: #525252;
         font-size: 19px;
 		position: relative;
 		top: 2px;
 		left: -10px;
     }
     table.table tr th, table.table tr td {
-        border-color: #e9e9e9;
+        border-color: #525252;
     }
     table.table th i {
         font-size: 13px;
@@ -420,7 +420,7 @@ $(document).ready(function(){
         width: 130px;
     }
     table.table td a {
-        color: #a0a5b1;
+        color: #525252;
         display: inline-block;
         margin: 0 5px;
     }

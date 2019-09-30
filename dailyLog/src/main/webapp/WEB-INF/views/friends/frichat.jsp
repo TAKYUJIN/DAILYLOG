@@ -243,7 +243,7 @@ console.log(nickname);
 	}
 	
 	function onError(e){
-		alert(e.data);
+		/* alert(e.data); */
 	}
 	
 	function send(){

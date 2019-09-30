@@ -252,19 +252,9 @@
     
               </tr> </c:forEach>  </tbody> 
             </table>
-              <div class="text-center">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item disabled"><a href="#"><i class="fa fa-long-arrow-left"></i> Previous</a></li>
-                    <li class="page-item active"><a href="#" class="page-link">1</a></li>
-                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                    <li class="page-item "><a href="#" class="page-link">3</a></li>
-                    <li class="page-item"><a href="#" class="page-link">4</a></li>
-                    <li class="page-item"><a href="#" class="page-link">5</a></li>
-                    <li class="page-item"><a href="#" class="page-link">Next <i class="fa fa-long-arrow-right"></i></a></li>
-                </ul>
-            </div>  <br><br>
+                 
         </div>
-    </div>     </div>    
+    </div>     </div>    <br><br><br><br><br><br><br><br>
 </body>
 
 </html>
