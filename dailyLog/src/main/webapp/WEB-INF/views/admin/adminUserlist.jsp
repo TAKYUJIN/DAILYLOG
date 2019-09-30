@@ -23,16 +23,20 @@
 	}
     table.table tr th, table.table tr td {
         text-align:center;
+        background:none;
+        
     }
     table.table-striped tbody tr:nth-of-type(odd) {
     	width:1000px;
 		text-align:center;
 		margin-bottom:100px;
 		text-align:center;
+		background:none;
 	}
 	.selectSupport {
+		
 		width:1000px;
-		margin-left:10px;
+		margin:0 auto;
 		font-size:12px;
 	}
 	

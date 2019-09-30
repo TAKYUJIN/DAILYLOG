@@ -115,8 +115,8 @@
 				  
 				  
 		<!-- 채팅 참여자 출력 -->		  
-		<div style="width:100%; height:400px;  overflow-y:"scroll;" class="ui message" id="listPeople">		</div></td></tr>  
-				  
+		<!-- <div style="width:100%; height:400px;  overflow-y:"scroll;" class="ui message" id="listPeople">		</div></td></tr>  
+		 -->		  
 		<!-- 입력 창 -->		  
 		<tr height="100px;"> 
 			<!-- 보낼 메세지 입력 -->	  
@@ -133,21 +133,6 @@
 				  </td>
 				  
 	</table>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	</nav>
 </body>
